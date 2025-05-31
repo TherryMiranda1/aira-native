@@ -1,0 +1,723 @@
+[
+    {
+      "id_ejercicio": "uuid_leg_01",
+      "nombre": "Sentadilla con Barra Trasera",
+      "descripcion": "Ejercicio fundamental y compuesto para el desarrollo general de las piernas, con énfasis en cuádriceps y glúteos.",
+      "instrucciones": [
+        "Coloca la barra sobre los trapecios y deltoides posteriores, no sobre el cuello.",
+        "Pies separados al ancho de los hombros o ligeramente más, puntas ligeramente hacia afuera.",
+        "Mantén la espalda recta y el core activado. Baja flexionando caderas y rodillas como si te sentaras en una silla, hasta que los muslos estén paralelos al suelo o más abajo si la movilidad lo permite.",
+        "Empuja con los talones y la parte media del pie para volver a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["cuadriceps", "gluteo_mayor", "isquiosurales", "aductores", "erector_espinal"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso", "soporte_sentadillas"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_sentadilla_trasera.jpg",
+        "video_url": "url_video_sentadilla_trasera.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 60,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 90
+      },
+      "tags_busqueda": ["piernas", "cuadriceps", "gluteos", "sentadilla", "squat", "fuerza_piernas"],
+      "advertencias": "Técnica primordial para evitar lesiones en rodillas y espalda baja. Mantener la curvatura lumbar natural."
+    },
+    {
+      "id_ejercicio": "uuid_leg_02",
+      "nombre": "Sentadilla Frontal con Barra",
+      "descripcion": "Variante de la sentadilla que enfatiza más los cuádriceps y requiere mayor estabilidad del core debido a la posición de la barra.",
+      "instrucciones": [
+        "Coloca la barra sobre la parte anterior de los hombros, sujetándola con los dedos (agarre de halterofilia) o cruzando los brazos.",
+        "Codos elevados y paralelos al suelo. Pies al ancho de los hombros.",
+        "Mantén el torso erguido y baja controladamente, manteniendo la espalda recta.",
+        "Empuja para volver a la posición inicial, liderando con el pecho."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["cuadriceps", "gluteo_mayor", "core", "erector_espinal"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso", "soporte_sentadillas"],
+      "nivel_dificultad": "avanzado",
+      "media": {
+        "imagen_url": "url_imagen_sentadilla_frontal.jpg",
+        "video_url": "url_video_sentadilla_frontal.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 40,
+        "repeticiones": 8,
+        "series": 3,
+        "descanso_entre_series_segundos": 90
+      },
+      "tags_busqueda": ["piernas", "cuadriceps", "sentadilla_frontal", "front_squat", "core"],
+      "advertencias": "Requiere buena movilidad de muñecas, hombros y tobillos. Mantener codos altos."
+    },
+    {
+      "id_ejercicio": "uuid_leg_03",
+      "nombre": "Prensa de Piernas (Leg Press)",
+      "descripcion": "Ejercicio en máquina que permite mover grandes cargas con menor implicación de la espalda baja, enfocado en cuádriceps y glúteos.",
+      "instrucciones": [
+        "Siéntate en la máquina con la espalda y cabeza apoyadas. Coloca los pies en la plataforma separados al ancho de los hombros.",
+        "Desbloquea los seguros y baja la plataforma flexionando las rodillas hasta un ángulo de 90 grados o más si la movilidad lo permite.",
+        "Empuja la plataforma para volver a la posición inicial, sin bloquear completamente las rodillas.",
+        "La posición de los pies puede variar el énfasis: más bajos para cuádriceps, más altos para glúteos/isquios."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["cuadriceps", "gluteo_mayor", "isquiosurales", "aductores"],
+      "equipamiento_necesario": ["maquina_prensa_piernas", "discos_peso_si_aplica"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_prensa_piernas.jpg",
+        "video_url": "url_video_prensa_piernas.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 100,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["piernas", "cuadriceps", "gluteos", "prensa_piernas", "leg_press"],
+      "advertencias": "No levantar la cadera del asiento. Evitar bloquear las rodillas en la extensión."
+    },
+    {
+      "id_ejercicio": "uuid_leg_04",
+      "nombre": "Extensiones de Cuádriceps en Máquina",
+      "descripcion": "Ejercicio de aislamiento específico para los cuádriceps.",
+      "instrucciones": [
+        "Siéntate en la máquina con las rodillas al borde del asiento y los tobillos detrás del rodillo acolchado.",
+        "Ajusta el rodillo para que quede sobre la parte inferior de las espinillas.",
+        "Extiende las piernas levantando el peso hasta que estén casi rectas, contrayendo los cuádriceps.",
+        "Baja el peso de forma controlada."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["cuadriceps"],
+      "equipamiento_necesario": ["maquina_extensiones_cuadriceps"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_extensiones_cuadriceps.jpg",
+        "video_url": "url_video_extensiones_cuadriceps.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 30,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "cuadriceps", "leg_extensions", "aislamiento_cuadriceps"],
+      "advertencias": "Evitar usar impulso. Puede no ser adecuado para personas con ciertos problemas de rodilla."
+    },
+    {
+      "id_ejercicio": "uuid_leg_05",
+      "nombre": "Zancadas con Mancuernas (Lunges)",
+      "descripcion": "Ejercicio unilateral que trabaja cuádriceps, glúteos e isquiosurales, además de mejorar el equilibrio y la estabilidad.",
+      "instrucciones": [
+        "De pie, sujeta una mancuerna en cada mano a los costados del cuerpo.",
+        "Da un paso largo hacia adelante con una pierna, bajando la cadera hasta que ambas rodillas formen un ángulo de 90 grados. La rodilla delantera no debe sobrepasar el tobillo.",
+        "Mantén el torso erguido. Empuja con el talón del pie delantero para volver a la posición inicial.",
+        "Alterna las piernas o completa todas las repeticiones con una pierna antes de cambiar."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["cuadriceps", "gluteo_mayor", "isquiosurales", "aductores"],
+      "equipamiento_necesario": ["mancuernas"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_zancadas_mancuernas.jpg",
+        "video_url": "url_video_zancadas_mancuernas.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 10,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "cuadriceps", "gluteos", "zancadas", "lunges", "unilateral"],
+      "advertencias": "Mantener el equilibrio y controlar el movimiento. Evitar que la rodilla delantera se desplace hacia adentro."
+    },
+    {
+      "id_ejercicio": "uuid_leg_06",
+      "nombre": "Step-ups con Mancuernas (Subidas al Cajón)",
+      "descripcion": "Ejercicio unilateral que desarrolla fuerza en cuádriceps y glúteos, además de mejorar la estabilidad de la cadera.",
+      "instrucciones": [
+        "Colócate frente a un banco o cajón estable, sujetando una mancuerna en cada mano.",
+        "Sube un pie completamente sobre el banco. Empuja con el talón de ese pie para elevar todo el cuerpo hasta que la pierna esté extendida sobre el banco.",
+        "Baja lentamente la otra pierna al suelo, controlando el descenso. Completa las repeticiones y cambia de pierna."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["cuadriceps", "gluteo_mayor", "isquiosurales"],
+      "equipamiento_necesario": ["mancuernas", "banco_o_cajon_estable"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_step_ups.jpg",
+        "video_url": "url_video_step_ups.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 8,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "cuadriceps", "gluteos", "step_ups", "subidas_cajon", "unilateral"],
+      "advertencias": "Asegurar que el cajón sea estable. Controlar el movimiento, especialmente en la fase de descenso."
+    },
+    {
+      "id_ejercicio": "uuid_leg_07",
+      "nombre": "Peso Muerto Rumano (RDL)",
+      "descripcion": "Ejercicio dominante de cadera que enfoca el trabajo en los isquiosurales y glúteos, con menor flexión de rodilla que el peso muerto convencional.",
+      "instrucciones": [
+        "De pie, sujeta una barra o mancuernas frente a los muslos, pies separados al ancho de las caderas.",
+        "Mantén una ligera flexión en las rodillas (casi rectas pero no bloqueadas) durante todo el movimiento.",
+        "Bisagra en la cadera, bajando el torso hacia adelante mientras mantienes la espalda recta y la barra cerca de las piernas.",
+        "Baja hasta sentir un buen estiramiento en los isquiosurales o hasta que el torso esté casi paralelo al suelo.",
+        "Vuelve a la posición inicial contrayendo glúteos e isquiosurales."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["isquiosurales", "gluteo_mayor", "erector_espinal"],
+      "equipamiento_necesario": ["barra_olimpica_o_mancuernas", "discos_peso"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_rdl.jpg",
+        "video_url": "url_video_rdl.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 50,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["piernas", "isquiosurales", "gluteos", "rdl", "peso_muerto_rumano", "cadena_posterior"],
+      "advertencias": "Mantener la espalda recta y evitar redondearla. El movimiento es una bisagra de cadera, no una sentadilla."
+    },
+    {
+      "id_ejercicio": "uuid_leg_08",
+      "nombre": "Curl Femoral Tumbado en Máquina",
+      "descripcion": "Ejercicio de aislamiento para los isquiosurales, realizado boca abajo en una máquina específica.",
+      "instrucciones": [
+        "Acuéstate boca abajo en la máquina, con las rodillas justo fuera del borde del banco y los tobillos debajo del rodillo acolchado.",
+        "Sujeta los agarres de la máquina para mayor estabilidad.",
+        "Flexiona las rodillas, llevando los talones hacia los glúteos, contrayendo los isquiosurales.",
+        "Baja el peso de forma controlada hasta la extensión casi completa."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["isquiosurales", "gastrocnemio_secundario"],
+      "equipamiento_necesario": ["maquina_curl_femoral_tumbado"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_curl_femoral_tumbado.jpg",
+        "video_url": "url_video_curl_femoral_tumbado.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 25,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "isquiosurales", "leg_curl", "curl_femoral", "aislamiento_isquios"],
+      "advertencias": "Evitar levantar la cadera del banco. Realizar el movimiento de forma controlada."
+    },
+    {
+      "id_ejercicio": "uuid_leg_09",
+      "nombre": "Curl Femoral Sentado en Máquina",
+      "descripcion": "Variante del curl femoral que trabaja los isquiosurales desde una posición sentada.",
+      "instrucciones": [
+        "Siéntate en la máquina, ajusta el respaldo para que la espalda esté apoyada y las rodillas alineadas con el eje de rotación de la máquina.",
+        "Coloca el rodillo superior sobre los muslos para fijar la posición y el rodillo inferior detrás de los tobillos.",
+        "Flexiona las rodillas, tirando del rodillo inferior hacia abajo y atrás, contrayendo los isquiosurales.",
+        "Regresa lentamente a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["isquiosurales"],
+      "equipamiento_necesario": ["maquina_curl_femoral_sentado"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_curl_femoral_sentado.jpg",
+        "video_url": "url_video_curl_femoral_sentado.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 30,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "isquiosurales", "seated_leg_curl", "curl_femoral_sentado"],
+      "advertencias": "Ajustar bien la máquina para evitar tensión innecesaria. Movimiento controlado."
+    },
+    {
+      "id_ejercicio": "uuid_leg_10",
+      "nombre": "Kettlebell Swings (Balanceo con Pesa Rusa)",
+      "descripcion": "Ejercicio explosivo que trabaja toda la cadena posterior, especialmente isquiosurales, glúteos y espalda baja, además de mejorar la potencia.",
+      "instrucciones": [
+        "De pie, con los pies separados al ancho de los hombros, sujeta una pesa rusa con ambas manos frente al cuerpo.",
+        "Realiza una bisagra de cadera, llevando la pesa rusa hacia atrás entre las piernas, manteniendo la espalda recta.",
+        "Extiende explosivamente las caderas y rodillas, impulsando la pesa rusa hacia adelante y arriba hasta la altura del pecho (estilo ruso) o por encima de la cabeza (estilo americano).",
+        "Deja que la pesa rusa regrese de forma controlada entre las piernas e inicia la siguiente repetición."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["isquiosurales", "gluteo_mayor", "erector_espinal", "deltoides_anterior_si_americano", "core"],
+      "equipamiento_necesario": ["pesa_rusa_kettlebell"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_kettlebell_swings.jpg",
+        "video_url": "url_video_kettlebell_swings.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 16,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["piernas", "isquiosurales", "gluteos", "kettlebell_swings", "potencia", "cadena_posterior"],
+      "advertencias": "El movimiento debe originarse en la cadera, no en los brazos. Mantener la espalda recta."
+    },
+    {
+      "id_ejercicio": "uuid_leg_11",
+      "nombre": "Empuje de Cadera con Barra (Hip Thrust)",
+      "descripcion": "Ejercicio altamente efectivo para el desarrollo de los glúteos, permitiendo cargar pesos significativos.",
+      "instrucciones": [
+        "Siéntate en el suelo con la parte superior de la espalda (omóplatos) apoyada contra el borde de un banco plano.",
+        "Coloca una barra cargada sobre tus caderas (usa una almohadilla para mayor comodidad). Rodillas flexionadas y pies apoyados en el suelo.",
+        "Empuja con los talones y contrae los glúteos para elevar las caderas hasta que el cuerpo forme una línea recta desde los hombros hasta las rodillas.",
+        "Mantén la contracción en la parte superior por un segundo y baja lentamente."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["gluteo_mayor", "isquiosurales", "aductores", "cuadriceps_secundario"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso", "banco_plano", "almohadilla_barra_opcional"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_hip_thrust.jpg",
+        "video_url": "url_video_hip_thrust.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 70,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["piernas", "gluteos", "hip_thrust", "empuje_cadera", "fuerza_gluteo"],
+      "advertencias": "Mantener la barbilla ligeramente metida para proteger el cuello. Asegurar que el banco no se deslice."
+    },
+    {
+      "id_ejercicio": "uuid_leg_12",
+      "nombre": "Peso Muerto Convencional",
+      "descripcion": "Ejercicio de cuerpo completo que desarrolla masivamente la cadena posterior, incluyendo glúteos, isquiosurales y espalda baja.",
+      "instrucciones": [
+        "Colócate frente a una barra cargada, pies separados al ancho de las caderas, barra sobre el mediopié.",
+        "Flexiona las caderas y rodillas para agarrar la barra, manos justo por fuera de las piernas, agarre mixto o prono.",
+        "Mantén la espalda recta, pecho arriba, y la mirada al frente o ligeramente abajo.",
+        "Levanta la barra extendiendo caderas y rodillas simultáneamente, manteniendo la barra cerca del cuerpo.",
+        "Finaliza el movimiento erguido, contrayendo glúteos. Baja la barra de forma controlada invirtiendo el movimiento."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["gluteo_mayor", "isquiosurales", "erector_espinal", "cuadriceps", "dorsal_ancho", "trapecio"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso"],
+      "nivel_dificultad": "avanzado",
+      "media": {
+        "imagen_url": "url_imagen_peso_muerto_conv.jpg",
+        "video_url": "url_video_peso_muerto_conv.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 80,
+        "repeticiones": 5,
+        "series": 3,
+        "descanso_entre_series_segundos": 120
+      },
+      "tags_busqueda": ["piernas", "gluteos", "isquiosurales", "peso_muerto", "deadlift", "fuerza_total"],
+      "advertencias": "Técnica crucial para la seguridad. Aprender con supervisión cualificada."
+    },
+    {
+      "id_ejercicio": "uuid_leg_13",
+      "nombre": "Sentadilla Búlgara con Mancuernas",
+      "descripcion": "Ejercicio unilateral desafiante que trabaja intensamente los glúteos y cuádriceps, además de mejorar el equilibrio.",
+      "instrucciones": [
+        "Colócate de espaldas a un banco o superficie elevada. Apoya el empeine de un pie en el banco.",
+        "Sujeta una mancuerna en cada mano (o una sola). El pie delantero debe estar lo suficientemente adelante para permitir una bajada cómoda.",
+        "Baja el cuerpo flexionando la rodilla delantera hasta que el muslo esté paralelo al suelo o la rodilla trasera casi toque el suelo.",
+        "Mantén el torso erguido. Empuja con el talón del pie delantero para volver a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["gluteo_mayor", "cuadriceps", "isquiosurales_estabilizador", "aductores"],
+      "equipamiento_necesario": ["mancuernas", "banco_o_superficie_elevada"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_sentadilla_bulgara.jpg",
+        "video_url": "url_video_sentadilla_bulgara.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 10,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["piernas", "gluteos", "cuadriceps", "sentadilla_bulgara", "bulgarian_split_squat", "unilateral"],
+      "advertencias": "Mantener el equilibrio puede ser difícil al principio. La rodilla delantera no debe sobrepasar excesivamente el tobillo."
+    },
+    {
+      "id_ejercicio": "uuid_leg_14",
+      "nombre": "Patada de Glúteo en Polea",
+      "descripcion": "Ejercicio de aislamiento para el glúteo mayor, ideal para la contracción y forma del músculo.",
+      "instrucciones": [
+        "Coloca un grillete de tobillo en una polea baja. Engancha el grillete a uno de tus tobillos.",
+        "De pie frente a la máquina, sujétate para mayor estabilidad. Inclina ligeramente el torso hacia adelante.",
+        "Manteniendo la pierna casi recta (ligera flexión de rodilla), patea hacia atrás contrayendo el glúteo.",
+        "Controla el movimiento de regreso a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["gluteo_mayor", "isquiosurales_secundario"],
+      "equipamiento_necesario": ["maquina_poleas", "grillete_tobillo"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_patada_gluteo_polea.jpg",
+        "video_url": "url_video_patada_gluteo_polea.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 10,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["piernas", "gluteos", "patada_gluteo", "glute_kickback", "aislamiento_gluteo"],
+      "advertencias": "Evitar arquear la espalda baja. Concentrarse en la contracción del glúteo."
+    },
+    {
+      "id_ejercicio": "uuid_leg_15",
+      "nombre": "Elevaciones de Talones de Pie con Barra",
+      "descripcion": "Ejercicio para desarrollar los músculos gastrocnemios (la parte más visible de la pantorrilla).",
+      "instrucciones": [
+        "Coloca una barra sobre tus trapecios, como en una sentadilla, o sujeta mancuernas.",
+        "De pie, con los pies separados al ancho de las caderas, preferiblemente con las puntas de los pies sobre un escalón o disco para mayor rango de movimiento.",
+        "Manteniendo las rodillas rectas (pero no bloqueadas), eleva los talones lo más alto posible, contrayendo las pantorrillas.",
+        "Baja lentamente los talones por debajo del nivel del escalón para un estiramiento completo."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["gastrocnemio", "soleo_secundario"],
+      "equipamiento_necesario": ["barra_olimpica_o_mancuernas", "discos_peso", "escalon_o_disco_opcional"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_elevaciones_talones_pie.jpg",
+        "video_url": "url_video_elevaciones_talones_pie.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 40,
+        "repeticiones": 15,
+        "series": 4,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["piernas", "gemelos", "pantorrillas", "calf_raises", "gastrocnemio"],
+      "advertencias": "Realizar el movimiento completo, tanto en la subida como en la bajada. Evitar rebotes."
+    },
+    {
+      "id_ejercicio": "uuid_leg_16",
+      "nombre": "Elevaciones de Talones Sentado en Máquina",
+      "descripcion": "Ejercicio que aísla el músculo sóleo, que se encuentra debajo del gastrocnemio y contribuye al tamaño de la pantorrilla.",
+      "instrucciones": [
+        "Siéntate en la máquina de elevaciones de talones sentado, con las rodillas flexionadas a 90 grados y las almohadillas sobre la parte inferior de los muslos.",
+        "Coloca las puntas de los pies sobre la plataforma.",
+        "Eleva los talones lo más alto posible empujando con las puntas de los pies, contrayendo el sóleo.",
+        "Baja lentamente los talones hasta sentir un estiramiento."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["soleo", "gastrocnemio_secundario"],
+      "equipamiento_necesario": ["maquina_elevaciones_talones_sentado"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_elevaciones_talones_sentado.jpg",
+        "video_url": "url_video_elevaciones_talones_sentado.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 25,
+        "repeticiones": 20,
+        "series": 4,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["piernas", "gemelos", "pantorrillas", "soleo", "seated_calf_raises"],
+      "advertencias": "Asegurar un rango de movimiento completo. El sóleo responde bien a repeticiones más altas."
+    },
+    {
+      "id_ejercicio": "uuid_leg_17",
+      "nombre": "Máquina de Aductores (Sentado)",
+      "descripcion": "Ejercicio de aislamiento para fortalecer los músculos aductores de la parte interna del muslo.",
+      "instrucciones": [
+        "Siéntate en la máquina con la espalda apoyada y las piernas abiertas, colocando la parte interna de los muslos o rodillas contra las almohadillas.",
+        "Selecciona el peso deseado.",
+        "Junta las piernas lentamente, apretando los músculos aductores.",
+        "Regresa de forma controlada a la posición inicial, permitiendo que las piernas se abran."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["aductores_cadera"],
+      "equipamiento_necesario": ["maquina_aductores"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_maquina_aductores.jpg",
+        "video_url": "url_video_maquina_aductores.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 35,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "aductores", "parte_interna_muslo", "adductor_machine"],
+      "advertencias": "Controlar el movimiento para evitar lesiones. No usar un rango de movimiento que cause dolor."
+    },
+    {
+      "id_ejercicio": "uuid_leg_18",
+      "nombre": "Sentadilla Sumo con Pesa Rusa",
+      "descripcion": "Variante de la sentadilla que, con una postura más ancha, enfatiza los aductores y los glúteos además de los cuádriceps.",
+      "instrucciones": [
+        "De pie, con los pies mucho más separados que el ancho de los hombros y las puntas de los pies mirando hacia afuera (aprox. 45 grados).",
+        "Sujeta una pesa rusa o mancuerna pesada con ambas manos frente al cuerpo, brazos extendidos hacia abajo.",
+        "Mantén la espalda recta y el pecho erguido. Baja flexionando caderas y rodillas, como en una sentadilla normal, hasta que los muslos estén paralelos al suelo.",
+        "Empuja con los talones para volver a la posición inicial, contrayendo glúteos y aductores."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["aductores_cadera", "gluteo_mayor", "cuadriceps", "isquiosurales_secundario"],
+      "equipamiento_necesario": ["pesa_rusa_kettlebell_o_mancuerna"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_sentadilla_sumo_kettlebell.jpg",
+        "video_url": "url_video_sentadilla_sumo_kettlebell.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 20,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["piernas", "aductores", "gluteos", "sentadilla_sumo", "sumo_squat"],
+      "advertencias": "Mantener las rodillas alineadas con los pies, evitando que se desplacen hacia adentro. Espalda recta."
+    },
+    {
+      "id_ejercicio": "uuid_leg_19",
+      "nombre": "Máquina de Abductores (Sentado)",
+      "descripcion": "Ejercicio de aislamiento para fortalecer los músculos abductores de la cadera, principalmente el glúteo medio y menor.",
+      "instrucciones": [
+        "Siéntate en la máquina con la espalda apoyada y las piernas juntas, colocando la parte externa de los muslos o rodillas contra las almohadillas.",
+        "Selecciona el peso deseado.",
+        "Separa las piernas lentamente, empujando contra las almohadillas y contrayendo los músculos abductores/glúteos.",
+        "Regresa de forma controlada a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["gluteo_medio", "gluteo_menor", "tensor_fascia_lata"],
+      "equipamiento_necesario": ["maquina_abductores"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_maquina_abductores.jpg",
+        "video_url": "url_video_maquina_abductores.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 35,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["piernas", "abductores", "gluteo_medio", "abductor_machine", "parte_externa_muslo"],
+      "advertencias": "Controlar el movimiento para evitar lesiones. No usar un rango de movimiento que cause dolor."
+    },
+    {
+      "id_ejercicio": "uuid_leg_20",
+      "nombre": "Paseos Laterales con Banda Elástica",
+      "descripcion": "Ejercicio efectivo para activar y fortalecer los abductores de la cadera (glúteo medio y menor), mejorando la estabilidad.",
+      "instrucciones": [
+        "Coloca una banda elástica de resistencia alrededor de tus tobillos o justo por encima de las rodillas.",
+        "Adopta una postura semi-agachada (como un cuarto de sentadilla), con los pies separados al ancho de las caderas, manteniendo tensión en la banda.",
+        "Da pasos laterales controlados, manteniendo la tensión en la banda y los pies paralelos.",
+        "Realiza un número determinado de pasos en una dirección y luego en la otra."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["gluteo_medio", "gluteo_menor", "tensor_fascia_lata", "cuadriceps_isometrico"],
+      "equipamiento_necesario": ["banda_elastica_resistencia"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_paseos_laterales_banda.jpg",
+        "video_url": "url_video_paseos_laterales_banda.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": null, "tipo_input": "texto" },
+        { "metrica": "repeticiones", "unidad": "pasos", "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "m", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso": "resistencia_media",
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["piernas", "abductores", "gluteo_medio", "banded_lateral_walks", "estabilidad_cadera"],
+      "advertencias": "Mantener la tensión constante en la banda. Evitar que las rodillas se junten o que el cuerpo se incline excesivamente."
+    }
+  ]

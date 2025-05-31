@@ -1,0 +1,759 @@
+[
+    {
+        "id_ejercicio": "uuid_back_01",
+        "nombre": "Dominadas (Pull-ups)",
+        "descripcion": "Ejercicio de peso corporal fundamental para el desarrollo de la espalda alta y ancha, principalmente los dorsales.",
+        "instrucciones": [
+            "Sujeta una barra fija con las palmas mirando hacia adelante (agarre prono), manos separadas a una anchura ligeramente mayor que los hombros.",
+            "Cuelga de la barra con los brazos completamente extendidos.",
+            "Tracciona con la espalda y los brazos para elevar el cuerpo hasta que la barbilla sobrepase la barra.",
+            "Baja el cuerpo de forma controlada hasta la posición inicial con los brazos extendidos."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "romboides",
+            "trapecio_medio_inferior",
+            "biceps_braquial",
+            "deltoides_posterior"
+        ],
+        "equipamiento_necesario": [
+            "barra_dominadas"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_dominadas.jpg",
+            "video_url": "url_video_dominadas.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "repeticiones": 8,
+            "series": 3,
+            "descanso_entre_series_segundos": 90
+        },
+        "tags_busqueda": [
+            "espalda",
+            "dorsales",
+            "dominadas",
+            "pull_ups",
+            "peso_corporal",
+            "calistenia"
+        ],
+        "advertencias": "Requiere una base de fuerza. Evitar el balanceo excesivo (kipping) si se busca fuerza estricta. Se puede usar asistencia si es necesario."
+    },
+    {
+        "id_ejercicio": "uuid_back_02",
+        "nombre": "Peso Muerto Convencional",
+        "descripcion": "Ejercicio compuesto global que desarrolla la cadena posterior, incluyendo espalda baja, glúteos, isquiotibiales y trapecios.",
+        "instrucciones": [
+            "Colócate frente a una barra cargada, pies separados al ancho de las caderas, barra sobre el mediopié.",
+            "Flexiona las caderas y rodillas para agarrar la barra, manos justo por fuera de las piernas, agarre mixto o prono.",
+            "Mantén la espalda recta, pecho arriba, y la mirada al frente o ligeramente abajo.",
+            "Levanta la barra extendiendo caderas y rodillas simultáneamente, manteniendo la barra cerca del cuerpo.",
+            "Finaliza el movimiento erguido, contrayendo glúteos. Baja la barra de forma controlada invirtiendo el movimiento."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "erector_espinal",
+            "gluteo_mayor",
+            "isquiotibiales",
+            "cuadriceps",
+            "dorsal_ancho",
+            "trapecio",
+            "romboides",
+            "antebrazos"
+        ],
+        "equipamiento_necesario": [
+            "barra_olimpica",
+            "discos_peso"
+        ],
+        "nivel_dificultad": "avanzado",
+        "media": {
+            "imagen_url": "url_imagen_peso_muerto.jpg",
+            "video_url": "url_video_peso_muerto.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 80,
+            "repeticiones": 5,
+            "series": 3,
+            "descanso_entre_series_segundos": 120
+        },
+        "tags_busqueda": [
+            "espalda_baja",
+            "peso_muerto",
+            "deadlift",
+            "fuerza_total",
+            "cadena_posterior"
+        ],
+        "advertencias": "Técnica primordial para evitar lesiones graves, especialmente en la espalda baja. Aprender con un instructor cualificado."
+    },
+    {
+        "id_ejercicio": "uuid_back_03",
+        "nombre": "Remo con Barra (Pendlay Row o Barbell Row)",
+        "descripcion": "Ejercicio compuesto para desarrollar la densidad y grosor de la espalda media y alta.",
+        "instrucciones": [
+            "Colócate frente a una barra en el suelo, similar al peso muerto, pero con el torso más paralelo al suelo.",
+            "Agarra la barra con las palmas hacia abajo (prono), manos separadas a la anchura de los hombros o un poco más.",
+            "Mantén la espalda recta y el core activado.",
+            "Tira de la barra hacia la parte inferior del pecho o el abdomen superior, retrayendo las escápulas.",
+            "Baja la barra de forma controlada hasta que toque el suelo (Pendlay) o casi (tradicional)."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "romboides",
+            "trapecio_medio",
+            "deltoides_posterior",
+            "erector_espinal_isometrico",
+            "biceps_braquial"
+        ],
+        "equipamiento_necesario": [
+            "barra_olimpica",
+            "discos_peso"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_remo_barra.jpg",
+            "video_url": "url_video_remo_barra.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 50,
+            "repeticiones": 8,
+            "series": 3,
+            "descanso_entre_series_segundos": 75
+        },
+        "tags_busqueda": [
+            "espalda_media",
+            "remo_barra",
+            "dorsales",
+            "barbell_row",
+            "grosor_espalda"
+        ],
+        "advertencias": "Mantener la espalda recta es crucial. Evitar tirones con la espalda baja."
+    },
+    {
+        "id_ejercicio": "uuid_back_04",
+        "nombre": "Remo con Mancuerna a una mano",
+        "descripcion": "Ejercicio unilateral que permite un gran rango de movimiento y ayuda a corregir desequilibrios musculares en la espalda.",
+        "instrucciones": [
+            "Coloca una rodilla y la mano del mismo lado sobre un banco plano, la otra pierna apoyada en el suelo.",
+            "Mantén la espalda paralela al suelo y recta. Sujeta una mancuerna con el brazo libre, palma hacia el cuerpo.",
+            "Tira de la mancuerna hacia la cadera, manteniendo el codo cerca del cuerpo y retrayendo la escápula.",
+            "Baja la mancuerna de forma controlada hasta la extensión completa del brazo."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "romboides",
+            "trapecio_medio",
+            "deltoides_posterior",
+            "biceps_braquial"
+        ],
+        "equipamiento_necesario": [
+            "mancuerna",
+            "banco_plano"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_remo_mancuerna.jpg",
+            "video_url": "url_video_remo_mancuerna.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 20,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "espalda",
+            "remo_mancuerna",
+            "unilateral",
+            "dorsales",
+            "dumbbell_row"
+        ],
+        "advertencias": "Evitar la rotación excesiva del torso. Concentrarse en el movimiento del brazo y la escápula."
+    },
+    {
+        "id_ejercicio": "uuid_back_05",
+        "nombre": "Jalón al Pecho (Lat Pulldown)",
+        "descripcion": "Ejercicio en máquina que simula el movimiento de las dominadas, ideal para trabajar los dorsales si aún no se pueden hacer dominadas o para añadir volumen.",
+        "instrucciones": [
+            "Siéntate en la máquina de jalón, ajusta el soporte de las rodillas para fijar el cuerpo.",
+            "Agarra la barra con un agarre prono, más ancho que los hombros.",
+            "Inclínate ligeramente hacia atrás manteniendo la espalda recta.",
+            "Tira de la barra hacia la parte superior del pecho, llevando los codos hacia abajo y atrás, y apretando las escápulas.",
+            "Regresa la barra de forma controlada a la posición inicial."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "romboides",
+            "trapecio_medio_inferior",
+            "biceps_braquial",
+            "deltoides_posterior"
+        ],
+        "equipamiento_necesario": [
+            "maquina_jalon_polea_alta",
+            "barra_jalon"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_jalon_pecho.jpg",
+            "video_url": "url_video_jalon_pecho.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 40,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "espalda",
+            "dorsales",
+            "jalon_pecho",
+            "lat_pulldown",
+            "maquina"
+        ],
+        "advertencias": "Evitar balancearse o usar impulso excesivo. Controlar la fase excéntrica."
+    },
+    {
+        "id_ejercicio": "uuid_back_06",
+        "nombre": "Remo Sentado en Polea (Agarre Estrecho)",
+        "descripcion": "Ejercicio en máquina para trabajar la espalda media, enfocándose en la retracción escapular y el grosor.",
+        "instrucciones": [
+            "Siéntate en la máquina de remo con los pies apoyados y las rodillas ligeramente flexionadas.",
+            "Sujeta el agarre (generalmente en V o estrecho) con los brazos extendidos y la espalda recta.",
+            "Tira del agarre hacia el abdomen, manteniendo los codos cerca del cuerpo y retrayendo las escápulas.",
+            "Regresa lentamente a la posición inicial, permitiendo un estiramiento controlado de la espalda."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "romboides",
+            "trapecio_medio",
+            "erector_espinal_isometrico",
+            "biceps_braquial",
+            "deltoides_posterior"
+        ],
+        "equipamiento_necesario": [
+            "maquina_remo_polea_baja",
+            "agarre_V"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_remo_sentado_polea.jpg",
+            "video_url": "url_video_remo_sentado_polea.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 35,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "espalda_media",
+            "remo_sentado",
+            "seated_cable_row",
+            "dorsales",
+            "maquina"
+        ],
+        "advertencias": "Mantener la espalda recta, evitar encorvarse o usar impulso con la zona lumbar."
+    },
+    {
+        "id_ejercicio": "uuid_back_07",
+        "nombre": "Hiperextensiones (Extensiones de Espalda)",
+        "descripcion": "Ejercicio para fortalecer la espalda baja (erectores espinales), glúteos e isquiotibiales.",
+        "instrucciones": [
+            "Colócate en un banco de hiperextensiones, ajustando el soporte para que la cadera quede libre para flexionarse.",
+            "Cruza los brazos sobre el pecho o colócalos detrás de la cabeza.",
+            "Manteniendo la espalda recta, baja el torso flexionando la cadera hasta donde sea cómodo.",
+            "Eleva el torso contrayendo los músculos de la espalda baja y glúteos hasta que el cuerpo forme una línea recta."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "erector_espinal",
+            "gluteo_mayor",
+            "isquiotibiales"
+        ],
+        "equipamiento_necesario": [
+            "banco_hiperextensiones"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_hiperextensiones.jpg",
+            "video_url": "url_video_hiperextensiones.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "repeticiones": 15,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "espalda_baja",
+            "hiperextensiones",
+            "back_extensions",
+            "erector_espinal",
+            "gluteos"
+        ],
+        "advertencias": "Evitar hiperextender la espalda en la parte superior del movimiento. Movimiento controlado."
+    },
+    {
+        "id_ejercicio": "uuid_back_08",
+        "nombre": "Pull-over con Mancuerna",
+        "descripcion": "Ejercicio que trabaja el dorsal ancho y el pectoral, así como el serrato anterior, promoviendo la expansión de la caja torácica.",
+        "instrucciones": [
+            "Acuéstate transversalmente sobre un banco plano, apoyando solo la parte superior de la espalda.",
+            "Sujeta una mancuerna con ambas manos por encima del pecho, brazos casi extendidos.",
+            "Baja la mancuerna por detrás de la cabeza en un arco amplio, manteniendo una ligera flexión en los codos, hasta sentir un estiramiento en dorsales y pecho.",
+            "Regresa la mancuerna a la posición inicial utilizando la fuerza de los dorsales y el pecho."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "pectoral_mayor",
+            "serrato_anterior",
+            "triceps_cabeza_larga",
+            "romboides"
+        ],
+        "equipamiento_necesario": [
+            "mancuerna",
+            "banco_plano"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_pullover_mancuerna.jpg",
+            "video_url": "url_video_pullover_mancuerna.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 15,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "espalda",
+            "dorsales",
+            "pullover",
+            "pectoral",
+            "expansion_toracica"
+        ],
+        "advertencias": "Usar un peso controlable para evitar lesiones en los hombros. Mantener la cadera baja."
+    },
+    {
+        "id_ejercicio": "uuid_back_09",
+        "nombre": "Face Pulls (Tirón a la Cara)",
+        "descripcion": "Ejercicio excelente para la salud del hombro, trapecio medio y romboides, y deltoides posterior.",
+        "instrucciones": [
+            "Ajusta una polea alta con un agarre de cuerda.",
+            "Sujeta los extremos de la cuerda con las palmas enfrentadas o hacia abajo.",
+            "Retrocede unos pasos para crear tensión. Mantén una postura erguida.",
+            "Tira de la cuerda hacia tu cara, separando las manos a los lados de la cabeza y rotando externamente los hombros.",
+            "Aprieta los omóplatos al final del movimiento. Regresa lentamente a la posición inicial."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "deltoides_posterior",
+            "trapecio_medio",
+            "romboides",
+            "manguito_rotador"
+        ],
+        "equipamiento_necesario": [
+            "maquina_poleas",
+            "cuerda_triceps"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_face_pulls.jpg",
+            "video_url": "url_video_face_pulls.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 10,
+            "repeticiones": 15,
+            "series": 3,
+            "descanso_entre_series_segundos": 45
+        },
+        "tags_busqueda": [
+            "espalda_alta",
+            "hombro_posterior",
+            "face_pulls",
+            "salud_hombro",
+            "trapecio"
+        ],
+        "advertencias": "Enfócate en la calidad del movimiento y la contracción muscular, no en el peso. Evita encoger los hombros."
+    },
+    {
+        "id_ejercicio": "uuid_back_10",
+        "nombre": "Remo en T con Barra (T-Bar Row)",
+        "descripcion": "Ejercicio de remo que permite cargar bastante peso y trabajar el grosor de la espalda media.",
+        "instrucciones": [
+            "Coloca un extremo de una barra en una esquina o usando un anclaje para remo en T. Carga discos en el otro extremo.",
+            "Párate a horcajadas sobre la barra, inclina el torso hacia adelante manteniendo la espalda recta (similar al remo con barra).",
+            "Sujeta la barra justo debajo de los discos, usando un agarre en V o directamente la barra.",
+            "Tira de la barra hacia tu pecho, apretando las escápulas.",
+            "Baja la barra de forma controlada."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "dorsal_ancho",
+            "romboides",
+            "trapecio_medio_inferior",
+            "deltoides_posterior",
+            "erector_espinal_isometrico",
+            "biceps_braquial"
+        ],
+        "equipamiento_necesario": [
+            "barra_olimpica",
+            "discos_peso",
+            "agarre_V_opcional",
+            "anclaje_remo_t_opcional"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_remo_t.jpg",
+            "video_url": "url_video_remo_t.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 40,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 75
+        },
+        "tags_busqueda": [
+            "espalda",
+            "remo_t",
+            "t_bar_row",
+            "dorsales",
+            "grosor_espalda"
+        ],
+        "advertencias": "Mantener la espalda recta es crucial. Usar un agarre que permita un rango de movimiento completo y cómodo."
+    }
+]

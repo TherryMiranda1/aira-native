@@ -1,0 +1,57 @@
+name: Tag and Update Version
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  tag_and_version:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Determine version bump
+        id: version_bump
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_TITLE_LOWER=$(echo "$PR_TITLE" | tr '[:upper:]' '[:lower:]')
+          if [[ "$PR_TITLE_LOWER" == patch* ]]; then
+            VERSION_BUMP="patch"
+          elif [[ "$PR_TITLE_LOWER" == minor* ]]; then
+            VERSION_BUMP="minor"
+          elif [[ "$PR_TITLE_LOWER" == major* ]]; then
+            VERSION_BUMP="major"
+          else
+            VERSION_BUMP="patch"
+          fi
+          echo "Version bump: $VERSION_BUMP"
+          echo "version_bump=$VERSION_BUMP" >> $GITHUB_ENV
+
+      - name: Bump version and tag
+        id: bump_version
+        run: |
+          NEW_VERSION=$(npm version ${{ env.version_bump }})
+          echo "New version: $NEW_VERSION"
+          echo "new_version=$NEW_VERSION" >> $GITHUB_ENV
+          
+      - name: Push changes and tags
+        run: |
+          git push origin main --follow-tags

@@ -1,0 +1,360 @@
+[
+    {
+      "id_ejercicio": "uuid_shoulder_01",
+      "nombre": "Press Militar con Barra (De Pie)",
+      "descripcion": "Ejercicio compuesto fundamental para el desarrollo de la fuerza y masa de los hombros, especialmente deltoides anterior y lateral.",
+      "instrucciones": [
+        "De pie, sujeta una barra con agarre prono (palmas hacia adelante) un poco más ancho que los hombros, a la altura de la parte superior del pecho (clavículas).",
+        "Mantén el core apretado y los glúteos contraídos para estabilidad.",
+        "Empuja la barra verticalmente hacia arriba hasta que los brazos estén completamente extendidos sobre la cabeza.",
+        "Baja la barra de forma controlada a la posición inicial (altura de las clavículas)."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["deltoides_anterior", "deltoides_lateral", "triceps_braquial", "trapecio_superior", "serrato_anterior"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso", "soportes_barra_opcional"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_press_militar_barra.jpg",
+        "video_url": "url_video_press_militar_barra.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 30,
+        "repeticiones": 8,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["hombros", "press_militar", "overhead_press", "deltoides", "fuerza_hombros"],
+      "advertencias": "Mantener una buena postura y evitar arquear excesivamente la espalda baja. Cuidado con la movilidad de hombros."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_02",
+      "nombre": "Press de Hombros con Mancuernas (Sentado)",
+      "descripcion": "Ejercicio compuesto que permite un mayor rango de movimiento y activación de los estabilizadores del hombro.",
+      "instrucciones": [
+        "Siéntate en un banco con respaldo vertical, sujetando una mancuerna en cada mano a la altura de los hombros, palmas hacia adelante.",
+        "Empuja las mancuernas verticalmente hacia arriba hasta que los brazos estén casi extendidos, sin que las mancuernas se toquen.",
+        "Baja las mancuernas de forma controlada a la altura de los hombros."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["deltoides_anterior", "deltoides_lateral", "triceps_braquial", "trapecio_superior"],
+      "equipamiento_necesario": ["mancuernas", "banco_con_respaldo"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_press_hombro_mancuernas.jpg",
+        "video_url": "url_video_press_hombro_mancuernas.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 12,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["hombros", "press_mancuernas", "deltoides", "dumbbell_shoulder_press"],
+      "advertencias": "Evitar arquear la espalda. Controlar el movimiento en todo el rango."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_03",
+      "nombre": "Elevaciones Laterales con Mancuernas",
+      "descripcion": "Ejercicio de aislamiento fundamental para desarrollar la cabeza lateral del deltoides, dando amplitud a los hombros.",
+      "instrucciones": [
+        "De pie, con la espalda recta y los pies separados al ancho de los hombros, sujeta una mancuerna en cada mano a los costados del cuerpo, palmas hacia adentro.",
+        "Manteniendo los brazos casi rectos (ligera flexión en codos), eleva las mancuernas lateralmente hasta que los brazos estén paralelos al suelo (altura de los hombros).",
+        "Imagina que estás sirviendo agua con las mancuernas al final del movimiento (pulgares ligeramente hacia abajo).",
+        "Baja las mancuernas de forma controlada a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["deltoides_lateral", "deltoides_anterior_ligero", "trapecio_superior_ligero"],
+      "equipamiento_necesario": ["mancuernas"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_elevaciones_laterales.jpg",
+        "video_url": "url_video_elevaciones_laterales.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 6,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["hombros", "elevaciones_laterales", "deltoides_lateral", "amplitud_hombros", "lateral_raises"],
+      "advertencias": "Evitar el balanceo o usar impulso. No subir las mancuernas por encima de la altura de los hombros."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_04",
+      "nombre": "Elevaciones Frontales con Disco",
+      "descripcion": "Ejercicio de aislamiento para la cabeza anterior del deltoides.",
+      "instrucciones": [
+        "De pie, con la espalda recta, sujeta un disco con ambas manos frente a tus muslos.",
+        "Manteniendo los brazos casi rectos, eleva el disco hacia adelante y arriba hasta la altura de los hombros o ligeramente por encima.",
+        "Baja el disco de forma controlada a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["deltoides_anterior", "pectoral_clavicular", "serrato_anterior"],
+      "equipamiento_necesario": ["disco_peso"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_elevaciones_frontales_disco.jpg",
+        "video_url": "url_video_elevaciones_frontales_disco.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 10,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["hombros", "elevaciones_frontales", "deltoides_anterior", "front_raises"],
+      "advertencias": "Evitar el balanceo. Se puede realizar también con mancuernas o barra."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_05",
+      "nombre": "Pájaros (Elevaciones Posteriores con Mancuernas en Banco Inclinado)",
+      "descripcion": "Ejercicio de aislamiento para la cabeza posterior del deltoides, crucial para un desarrollo completo y saludable del hombro.",
+      "instrucciones": [
+        "Ajusta un banco a una inclinación de 30-45 grados. Acuéstate boca abajo (pecho apoyado en el respaldo) sujetando una mancuerna en cada mano, brazos colgando.",
+        "Manteniendo una ligera flexión en los codos, eleva las mancuernas lateralmente y hacia arriba, como si abrieras las alas, contrayendo los deltoides posteriores y los músculos de la espalda alta.",
+        "Lleva las mancuernas hasta que los brazos estén aproximadamente paralelos al suelo.",
+        "Baja las mancuernas de forma controlada."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["deltoides_posterior", "romboides", "trapecio_medio"],
+      "equipamiento_necesario": ["mancuernas", "banco_inclinable"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_pajaros_banco_inclinado.jpg",
+        "video_url": "url_video_pajaros_banco_inclinado.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 5,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["hombros", "pajaros", "deltoides_posterior", "rear_delt_flyes", "espalda_alta"],
+      "advertencias": "Usar un peso ligero-moderado y enfocarse en la contracción. Evitar usar impulso o levantar el pecho del banco."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_06",
+      "nombre": "Remo al Mentón con Barra EZ (Agarre Ancho)",
+      "descripcion": "Ejercicio compuesto que trabaja los deltoides laterales y anteriores, así como los trapecios superiores. El agarre ancho ayuda a mitigar el riesgo de pinzamiento.",
+      "instrucciones": [
+        "De pie, sujeta una barra EZ con un agarre prono (palmas hacia el cuerpo) más ancho que los hombros.",
+        "Mantén la espalda recta y el core activado.",
+        "Tira de la barra verticalmente hacia arriba, llevándola cerca del cuerpo, hasta la altura del pecho o ligeramente por encima. Los codos deben liderar el movimiento y terminar más altos que las muñecas.",
+        "Baja la barra de forma controlada."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["deltoides_lateral", "deltoides_anterior", "trapecio_superior", "biceps_braquial_ligero"],
+      "equipamiento_necesario": ["barra_ez", "discos_peso"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_remo_menton_ancho.jpg",
+        "video_url": "url_video_remo_menton_ancho.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 15,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["hombros", "remo_al_menton", "upright_row", "deltoides_lateral", "trapecio"],
+      "advertencias": "Realizar con precaución. Si se siente dolor en el hombro, optar por agarres más anchos o ejercicios alternativos. No llevar la barra más allá de la altura del pecho."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_07",
+      "nombre": "Encogimientos de Hombros con Barra (Barbell Shrugs)",
+      "descripcion": "Ejercicio específico para el desarrollo del trapecio superior.",
+      "instrucciones": [
+        "De pie, sujeta una barra cargada con ambas manos frente a los muslos, agarre prono al ancho de los hombros.",
+        "Mantén los brazos rectos y la espalda erguida.",
+        "Encoge los hombros elevándolos verticalmente lo más alto posible, como si intentaras tocar tus orejas con ellos.",
+        "Sostén la contracción por un momento y luego baja los hombros de forma controlada."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["trapecio_superior", "trapecio_medio", "elevador_escapula"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_encogimientos_barra.jpg",
+        "video_url": "url_video_encogimientos_barra.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 60,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["hombros", "trapecio", "encogimientos", "shrugs", "fuerza_cuello"],
+      "advertencias": "Evitar rotar los hombros hacia adelante o atrás; el movimiento es puramente vertical. No usar impulso."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_08",
+      "nombre": "Arnold Press",
+      "descripcion": "Variación del press de hombros que involucra una rotación, trabajando las tres cabezas del deltoides.",
+      "instrucciones": [
+        "Siéntate en un banco con respaldo, sujetando una mancuerna en cada mano frente a tus hombros, palmas mirando hacia ti (agarre supino).",
+        "Comienza a empujar las mancuernas hacia arriba mientras rotas las muñecas, de modo que las palmas miren hacia adelante al final del movimiento (brazos extendidos).",
+        "Invierte el movimiento al bajar: rota las muñecas de nuevo para que las palmas miren hacia ti al llegar a la posición inicial.",
+        "Baja las mancuernas de forma controlada."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["deltoides_anterior", "deltoides_lateral", "deltoides_posterior_ligero", "triceps_braquial", "trapecio_superior"],
+      "equipamiento_necesario": ["mancuernas", "banco_con_respaldo"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_arnold_press.jpg",
+        "video_url": "url_video_arnold_press.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 10,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["hombros", "arnold_press", "deltoides_completo", "press_rotacion"],
+      "advertencias": "Realizar el movimiento de rotación de forma fluida y controlada. Usar un peso que permita mantener la técnica."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_09",
+      "nombre": "Rotaciones Externas con Goma Elástica",
+      "descripcion": "Ejercicio para fortalecer los músculos del manguito rotador, crucial para la salud y estabilidad del hombro.",
+      "instrucciones": [
+        "Sujeta un extremo de una goma elástica anclada a un poste a la altura del codo, o sostenida por la otra mano.",
+        "De pie o sentado, mantén el codo del brazo que trabaja flexionado a 90 grados y pegado al costado del cuerpo.",
+        "Gira el antebrazo hacia afuera, alejándolo del cuerpo, manteniendo el codo fijo.",
+        "Controla el movimiento de regreso a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["manguito_rotador_infraespinoso", "manguito_rotador_redondo_menor", "deltoides_posterior"],
+      "equipamiento_necesario": ["goma_elastica_resistencia", "anclaje_opcional"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_rotaciones_externas_goma.jpg",
+        "video_url": "url_video_rotaciones_externas_goma.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": null, "tipo_input": "texto" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso": "resistencia_ligera",
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 30
+      },
+      "tags_busqueda": ["hombros", "manguito_rotador", "rotacion_externa", "salud_hombro", "prevencion_lesiones"],
+      "advertencias": "Usar una resistencia ligera y enfocarse en la calidad del movimiento. No forzar el rango de movimiento."
+    },
+    {
+      "id_ejercicio": "uuid_shoulder_10",
+      "nombre": "Press Landmine (Unilateral)",
+      "descripcion": "Ejercicio de press unilateral que es más amigable con la articulación del hombro y trabaja el deltoides anterior y superior del pecho.",
+      "instrucciones": [
+        "Coloca un extremo de una barra en un anclaje landmine o en una esquina segura. Carga peso en el otro extremo.",
+        "De pie, frente al extremo libre de la barra, sujétala con una mano a la altura del hombro.",
+        "Empuja la barra hacia arriba y adelante hasta que el brazo esté completamente extendido.",
+        "Baja la barra de forma controlada a la posición inicial. Mantén el core activado."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["deltoides_anterior", "pectoral_clavicular", "triceps_braquial", "serrato_anterior", "core"],
+      "equipamiento_necesario": ["barra_olimpica", "discos_peso", "anclaje_landmine_o_esquina"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_press_landmine.jpg",
+        "video_url": "url_video_press_landmine.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 15,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["hombros", "press_landmine", "landmine_press", "unilateral", "deltoides_anterior"],
+      "advertencias": "Mantener una buena postura. Se puede realizar de rodillas para mayor estabilidad."
+    }
+  ]

@@ -1,0 +1,730 @@
+[
+    {
+        "id_ejercicio": "uuid_bicep_01",
+        "nombre": "Curl de Bíceps con Barra Recta",
+        "descripcion": "Ejercicio fundamental para el desarrollo de la masa general del bíceps braquial.",
+        "instrucciones": [
+            "De pie, sujeta una barra recta con las palmas hacia arriba (agarre supino), manos separadas al ancho de los hombros.",
+            "Mantén los codos pegados a los costados y la espalda recta.",
+            "Flexiona los codos para levantar la barra hacia los hombros, contrayendo los bíceps.",
+            "Baja la barra de forma controlada hasta la extensión completa de los brazos."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior",
+            "braquiorradial"
+        ],
+        "equipamiento_necesario": [
+            "barra_recta",
+            "discos_peso"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_curl_barra.jpg",
+            "video_url": "url_video_curl_barra.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 20,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_barra",
+            "brazos",
+            "fuerza_brazos"
+        ],
+        "advertencias": "Evitar el balanceo del cuerpo para levantar el peso. Mantener los codos fijos."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_02",
+        "nombre": "Curl de Bíceps con Mancuernas (Alterno o Simultáneo)",
+        "descripcion": "Permite un movimiento más natural de la muñeca y trabajar cada brazo de forma individual.",
+        "instrucciones": [
+            "De pie o sentado, sujeta una mancuerna en cada mano con las palmas hacia arriba (agarre supino).",
+            "Mantén los codos pegados a los costados.",
+            "Levanta una mancuerna (o ambas) flexionando el codo, girando la muñeca si se desea (supinación completa) al subir.",
+            "Baja la mancuerna de forma controlada. Alterna los brazos si se hace de forma alterna."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior",
+            "braquiorradial"
+        ],
+        "equipamiento_necesario": [
+            "mancuernas"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_curl_mancuernas.jpg",
+            "video_url": "url_video_curl_mancuernas.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 10,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_mancuernas",
+            "brazos",
+            "fuerza_brazos",
+            "unilateral"
+        ],
+        "advertencias": "Controlar el movimiento, evitar el balanceo. La supinación completa puede aumentar la activación del bíceps."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_03",
+        "nombre": "Curl Martillo (Hammer Curl)",
+        "descripcion": "Trabaja el bíceps braquial, el braquial anterior y especialmente el braquiorradial, dando grosor al antebrazo y brazo.",
+        "instrucciones": [
+            "De pie o sentado, sujeta una mancuerna en cada mano con las palmas enfrentadas (agarre neutro o de martillo).",
+            "Mantén los codos pegados a los costados.",
+            "Levanta las mancuernas flexionando los codos, manteniendo el agarre neutro.",
+            "Baja las mancuernas de forma controlada."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "braquiorradial",
+            "biceps_braquial",
+            "braquial_anterior"
+        ],
+        "equipamiento_necesario": [
+            "mancuernas"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_curl_martillo.jpg",
+            "video_url": "url_video_curl_martillo.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 12,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_martillo",
+            "braquiorradial",
+            "antebrazo",
+            "hammer_curl"
+        ],
+        "advertencias": "Mantener los codos fijos y evitar balancear el cuerpo."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_04",
+        "nombre": "Curl de Concentración",
+        "descripcion": "Ejercicio de aislamiento estricto que busca el pico del bíceps.",
+        "instrucciones": [
+            "Siéntate en un banco con las piernas separadas. Coge una mancuerna con una mano.",
+            "Apoya la parte posterior del brazo (tríceps) en la cara interna del muslo del mismo lado.",
+            "Deja que el brazo cuelgue extendido. Levanta la mancuerna hacia el hombro contrayendo el bíceps.",
+            "Concéntrate en apretar el bíceps en la parte alta del movimiento. Baja lentamente."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior"
+        ],
+        "equipamiento_necesario": [
+            "mancuerna",
+            "banco"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_curl_concentracion.jpg",
+            "video_url": "url_video_curl_concentracion.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 8,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 45
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_concentracion",
+            "pico_biceps",
+            "aislamiento"
+        ],
+        "advertencias": "Evitar mover el hombro o el cuerpo. El movimiento debe originarse únicamente en el codo."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_05",
+        "nombre": "Curl Predicador (Preacher Curl) con Barra EZ",
+        "descripcion": "Aísla el bíceps al fijar la parte superior del brazo, evitando el impulso.",
+        "instrucciones": [
+            "Siéntate en un banco predicador (o banco Scott), ajustando la altura para que las axilas descansen cerca de la parte superior del cojín.",
+            "Sujeta una barra EZ con agarre supino, manos a la anchura de los hombros.",
+            "Con la parte posterior de los brazos apoyada firmemente en el cojín, baja la barra lentamente hasta casi la extensión completa.",
+            "Levanta la barra contrayendo los bíceps hasta la máxima flexión. Aprieta en la parte superior."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior"
+        ],
+        "equipamiento_necesario": [
+            "banco_predicador",
+            "barra_ez",
+            "discos_peso"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_curl_predicador.jpg",
+            "video_url": "url_video_curl_predicador.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 15,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_predicador",
+            "preacher_curl",
+            "banco_scott",
+            "aislamiento"
+        ],
+        "advertencias": "No extender completamente el codo bajo carga pesada para evitar hiperextensión. Movimiento controlado."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_06",
+        "nombre": "Dominadas Supinas (Chin-ups)",
+        "descripcion": "Ejercicio compuesto que trabaja intensamente los bíceps además de los dorsales.",
+        "instrucciones": [
+            "Sujeta una barra fija con las palmas mirando hacia ti (agarre supino), manos separadas al ancho de los hombros o ligeramente menos.",
+            "Cuelga de la barra con los brazos completamente extendidos.",
+            "Tracciona con los brazos y la espalda para elevar el cuerpo hasta que la barbilla sobrepase la barra.",
+            "Baja el cuerpo de forma controlada hasta la posición inicial."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "compuesto",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "dorsal_ancho",
+            "braquial_anterior",
+            "romboides",
+            "trapecio_medio_inferior"
+        ],
+        "equipamiento_necesario": [
+            "barra_dominadas"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_chin_ups.jpg",
+            "video_url": "url_video_chin_ups.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "repeticiones": 8,
+            "series": 3,
+            "descanso_entre_series_segundos": 75
+        },
+        "tags_busqueda": [
+            "biceps",
+            "dominadas_supinas",
+            "chin_ups",
+            "espalda",
+            "peso_corporal",
+            "calistenia"
+        ],
+        "advertencias": "Controlar el descenso. Implica fuertemente a los dorsales además de los bíceps."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_07",
+        "nombre": "Curl Araña (Spider Curl)",
+        "descripcion": "Aísla el bíceps manteniendo el pecho apoyado, lo que minimiza el impulso y maximiza la contracción del bíceps.",
+        "instrucciones": [
+            "Colócate boca abajo en un banco inclinado (45-60 grados), con el pecho apoyado en el respaldo.",
+            "Deja que los brazos cuelguen verticalmente, sujetando una mancuerna en cada mano o una barra EZ con agarre supino.",
+            "Manteniendo la parte superior de los brazos inmóvil, flexiona los codos para llevar el peso hacia los hombros.",
+            "Contrae fuertemente los bíceps en la parte superior. Baja lentamente el peso."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior"
+        ],
+        "equipamiento_necesario": [
+            "banco_inclinable",
+            "mancuernas_o_barra_ez"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_curl_arana.jpg",
+            "video_url": "url_video_curl_arana.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 8,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_arana",
+            "spider_curl",
+            "aislamiento",
+            "pico_biceps"
+        ],
+        "advertencias": "Mantener los hombros fijos y evitar que se muevan hacia adelante. El movimiento es solo en el codo."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_08",
+        "nombre": "Curl Inverso con Barra",
+        "descripcion": "Fortalece el braquial anterior y el braquiorradial, además de los extensores de la muñeca.",
+        "instrucciones": [
+            "De pie, sujeta una barra recta o EZ con las palmas hacia abajo (agarre prono), manos separadas al ancho de los hombros.",
+            "Mantén los codos pegados a los costados y la espalda recta.",
+            "Flexiona los codos para levantar la barra hacia los hombros, manteniendo el agarre prono.",
+            "Baja la barra de forma controlada hasta la extensión completa de los brazos."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "braquiorradial",
+            "braquial_anterior",
+            "extensores_muneca",
+            "biceps_braquial_secundario"
+        ],
+        "equipamiento_necesario": [
+            "barra_recta_o_ez",
+            "discos_peso"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_curl_inverso.jpg",
+            "video_url": "url_video_curl_inverso.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 15,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "antebrazo",
+            "curl_inverso",
+            "reverse_curl",
+            "braquial"
+        ],
+        "advertencias": "Usar menos peso que en el curl supino. Mantener las muñecas rectas o ligeramente flexionadas."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_09",
+        "nombre": "Curl Zottman",
+        "descripcion": "Combina un curl supino en la subida con un curl prono en la bajada, trabajando todas las partes del bíceps y antebrazo.",
+        "instrucciones": [
+            "De pie o sentado, sujeta una mancuerna en cada mano con agarre supino (palmas arriba).",
+            "Levanta las mancuernas como en un curl de bíceps normal.",
+            "En la parte superior del movimiento, rota las muñecas para que las palmas miren hacia abajo (agarre prono).",
+            "Baja las mancuernas lentamente con el agarre prono.",
+            "En la parte inferior, rota las muñecas de nuevo a la posición supina para la siguiente repetición."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior",
+            "braquiorradial",
+            "extensores_muneca",
+            "flexores_muneca"
+        ],
+        "equipamiento_necesario": [
+            "mancuernas"
+        ],
+        "nivel_dificultad": "intermedio",
+        "media": {
+            "imagen_url": "url_imagen_curl_zottman.jpg",
+            "video_url": "url_video_curl_zottman.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 8,
+            "repeticiones": 10,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "antebrazo",
+            "curl_zottman",
+            "zottman_curl",
+            "fuerza_agarre"
+        ],
+        "advertencias": "Controlar especialmente la fase excéntrica (bajada). Usar un peso moderado."
+    },
+    {
+        "id_ejercicio": "uuid_bicep_10",
+        "nombre": "Curl de Bíceps en Polea Baja",
+        "descripcion": "Proporciona tensión constante en el bíceps a lo largo de todo el rango de movimiento.",
+        "instrucciones": [
+            "Colócate de pie frente a una polea baja con un agarre recto o EZ.",
+            "Sujeta el agarre con las palmas hacia arriba (agarre supino).",
+            "Mantén los codos pegados a los costados y la espalda recta.",
+            "Flexiona los codos para llevar el agarre hacia los hombros, contrayendo los bíceps.",
+            "Baja el agarre de forma controlada hasta la extensión casi completa, manteniendo la tensión."
+        ],
+        "tipo_ejercicio": "fuerza",
+        "modalidad": "aislamiento",
+        "grupos_musculares": [
+            "biceps_braquial",
+            "braquial_anterior",
+            "braquiorradial"
+        ],
+        "equipamiento_necesario": [
+            "maquina_poleas",
+            "agarre_recto_o_ez_polea"
+        ],
+        "nivel_dificultad": "principiante",
+        "media": {
+            "imagen_url": "url_imagen_curl_polea_baja.jpg",
+            "video_url": "url_video_curl_polea_baja.mp4"
+        },
+        "metricas_configurables": [
+            {
+                "metrica": "peso",
+                "unidad": "kg",
+                "tipo_input": "decimal"
+            },
+            {
+                "metrica": "repeticiones",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "series",
+                "unidad": null,
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "descanso_entre_series_segundos",
+                "unidad": "segundos",
+                "tipo_input": "entero"
+            },
+            {
+                "metrica": "duracion",
+                "unidad": "segundos",
+                "tipo_input": "tiempo"
+            },
+            {
+                "metrica": "distancia",
+                "unidad": "km",
+                "tipo_input": "decimal"
+            }
+        ],
+        "valores_ejemplo": {
+            "peso_kg": 15,
+            "repeticiones": 12,
+            "series": 3,
+            "descanso_entre_series_segundos": 60
+        },
+        "tags_busqueda": [
+            "biceps",
+            "curl_polea",
+            "tension_constante",
+            "cable_curl"
+        ],
+        "advertencias": "Evitar el balanceo. La tensión constante de la polea es ideal para la conexión mente-músculo."
+    }
+]

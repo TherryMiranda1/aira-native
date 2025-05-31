@@ -1,0 +1,462 @@
+[
+    {
+        "titulo": "Avena Nocturna (Overnight Oats) con Frutos Rojos y Semillas de Chía",
+        "ingrediente_principal": "Avena",
+        "preparacion": "1. En un tarro o bol, mezclar los copos de avena, las semillas de chía y la leche o bebida vegetal. 2. Añadir edulcorante al gusto si se desea (stevia, una pizca de miel). Remover bien. 3. Incorporar la mitad de los frutos rojos, mezclando suavemente. 4. Tapar el recipiente y refrigerar durante al menos 4 horas, o preferiblemente toda la noche. 5. Por la mañana, remover de nuevo. Si está muy espeso, añadir un poco más de leche. 6. Servir con el resto de los frutos rojos por encima y, opcionalmente, un puñadito de nueces o almendras fileteadas.",
+        "ingredientes": [
+            {
+                "item": "Copos de avena integral",
+                "cantidad": "40-50g (1/2 taza aprox.)"
+            },
+            {
+                "item": "Semillas de chía",
+                "cantidad": "1 cucharada (10g)"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal sin azúcar (almendras, soja)",
+                "cantidad": "150-200ml (1 taza aprox.)"
+            },
+            {
+                "item": "Frutos rojos variados (fresas, arándanos, frambuesas)",
+                "cantidad": "70-100g (1/2 - 3/4 taza)"
+            },
+            {
+                "item": "Edulcorante natural (opcional)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Nueces o almendras (opcional, para topping)",
+                "cantidad": "5-10g"
+            }
+        ],
+        "calorias": "250-300 kcal",
+        "tiempo_preparacion": "10 min (+ tiempo de reposo)",
+        "dificultad": "Muy Fácil"
+    },
+    {
+        "titulo": "Yogur Griego Natural Light con Nueces Tostadas y Canela",
+        "ingrediente_principal": "Yogur Griego Light",
+        "preparacion": "1. Tostar ligeramente las nueces en una sartén sin aceite durante 2-3 minutos, o en el horno, hasta que estén fragantes (opcional, pero realza el sabor). Dejar enfriar y picar groseramente. 2. En un bol, poner el yogur griego natural light. 3. Añadir las nueces picadas por encima. 4. Espolvorear con canela en polvo al gusto. 5. Si se desea un toque dulce, añadir unas gotas de extracto de vainilla o stevia (evitar miel o siropes si se busca bajo aporte calórico estricto, o usar una cantidad muy pequeña, ej. 1/2 cucharadita de miel cruda).",
+        "ingredientes": [
+            {
+                "item": "Yogur griego natural light (0% o 2% grasa)",
+                "cantidad": "200g (1 envase individual)"
+            },
+            {
+                "item": "Nueces (o almendras, avellanas)",
+                "cantidad": "10-15g (un puñadito pequeño)"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Extracto de vainilla o edulcorante natural (opcional)",
+                "cantidad": "Unas gotas o al gusto"
+            }
+        ],
+        "calorias": "180-220 kcal",
+        "tiempo_preparacion": "5 min",
+        "dificultad": "Muy Fácil"
+    },
+    {
+        "titulo": "Batido Verde Detox con Espinacas, Manzana Verde, Pepino y Jengibre",
+        "ingrediente_principal": "Espinacas y Frutas/Verduras",
+        "preparacion": "1. Lavar bien todos los ingredientes. 2. Pelar la manzana verde (opcional) y el pepino, y cortarlos en trozos. Pelar un trocito de jengibre. 3. Poner en el vaso de la batidora las espinacas frescas, la manzana troceada, el pepino troceado, el jengibre, el zumo de medio limón y el agua o agua de coco. 4. Batir a alta velocidad durante 1-2 minutos hasta obtener una mezcla suave y homogénea. Si está muy espeso, añadir un poco más de agua. 5. Servir inmediatamente. Se puede añadir hielo si se desea más frío.",
+        "ingredientes": [
+            {
+                "item": "Espinacas frescas (baby o normales)",
+                "cantidad": "Un puñado grande (30-40g)"
+            },
+            {
+                "item": "Manzana verde",
+                "cantidad": "1 mediana"
+            },
+            {
+                "item": "Pepino",
+                "cantidad": "1/2 mediano"
+            },
+            {
+                "item": "Jengibre fresco",
+                "cantidad": "Un trocito pequeño (1-2 cm)"
+            },
+            {
+                "item": "Limón",
+                "cantidad": "El zumo de 1/2 limón"
+            },
+            {
+                "item": "Agua o agua de coco",
+                "cantidad": "150-200ml"
+            }
+        ],
+        "calorias": "100-130 kcal",
+        "tiempo_preparacion": "10 min",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Pudding de Chía Cremoso con Leche de Almendras y Mango Fresco",
+        "ingrediente_principal": "Semillas de Chía",
+        "preparacion": "1. En un tarro o bol, mezclar las semillas de chía con la leche de almendras y el extracto de vainilla (opcional). Remover bien para evitar grumos. 2. Dejar reposar durante al menos 15-20 minutos a temperatura ambiente, removiendo de vez en cuando, o refrigerar durante al menos 2-3 horas (o toda la noche) hasta que espese y adquiera una consistencia gelatinosa. 3. Pelar y cortar el mango fresco en dados pequeños. 4. Servir el pudding de chía en un cuenco o vaso, cubierto con los dados de mango fresco. Opcionalmente, añadir coco rallado sin azúcar o unas hojas de menta para decorar.",
+        "ingredientes": [
+            {
+                "item": "Semillas de chía",
+                "cantidad": "2-3 cucharadas (20-30g)"
+            },
+            {
+                "item": "Leche de almendras sin azúcar",
+                "cantidad": "200-250ml (1 taza aprox.)"
+            },
+            {
+                "item": "Mango fresco",
+                "cantidad": "1/2 mango mediano"
+            },
+            {
+                "item": "Extracto de vainilla (opcional)",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Coco rallado sin azúcar (opcional, para decorar)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "200-250 kcal",
+        "tiempo_preparacion": "10 min (+ tiempo de reposo)",
+        "dificultad": "Muy Fácil"
+    },
+    {
+        "titulo": "Tostada de Pan de Centeno con Hummus Casero y Rodajas de Pepino",
+        "ingrediente_principal": "Pan de Centeno y Hummus",
+        "preparacion": "1. Tostar la rebanada de pan de centeno. 2. Untar una capa generosa de hummus casero (preferiblemente, o comprado bajo en grasa y sal) sobre la tostada. 3. Lavar y cortar el pepino en rodajas finas. 4. Colocar las rodajas de pepino sobre el hummus. 5. Espolvorear con un poco de pimienta negra molida y/o unas hojas de eneldo fresco (opcional).",
+        "ingredientes": [
+            {
+                "item": "Pan de centeno integral",
+                "cantidad": "1 rebanada mediana (30-40g)"
+            },
+            {
+                "item": "Hummus casero o comprado bajo en grasa",
+                "cantidad": "2-3 cucharadas (30-40g)"
+            },
+            {
+                "item": "Pepino",
+                "cantidad": "1/4 - 1/3 de pepino mediano"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Eneldo fresco (opcional)",
+                "cantidad": "Unas hojas"
+            }
+        ],
+        "calorias": "150-180 kcal",
+        "tiempo_preparacion": "5 min",
+        "dificultad": "Muy Fácil"
+    },
+    {
+        "titulo": "Gachas de Avena Calientes con Manzana Salteada y Canela",
+        "ingrediente_principal": "Avena y Manzana",
+        "preparacion": "1. Pelar y cortar la manzana en daditos pequeños. 2. En un cazo pequeño, saltear los daditos de manzana con una pizca de canela y unas gotas de agua (o 1/2 cucharadita de aceite de coco) durante 3-4 minutos hasta que estén tiernos. Reservar. 3. En el mismo cazo (o en otro), poner los copos de avena y la leche o agua. 4. Cocinar a fuego medio-bajo, removiendo constantemente, durante 5-7 minutos o hasta que la avena espese y esté cremosa. 5. Añadir edulcorante al gusto si se desea. 6. Servir las gachas calientes en un bol, cubiertas con la manzana salteada y un poco más de canela en polvo. Opcional: añadir unas nueces picadas.",
+        "ingredientes": [
+            {
+                "item": "Copos de avena integral",
+                "cantidad": "40-50g (1/2 taza aprox.)"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal sin azúcar",
+                "cantidad": "150-200ml (1 taza aprox.)"
+            },
+            {
+                "item": "Manzana",
+                "cantidad": "1 pequeña o 1/2 grande"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Edulcorante natural (opcional)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Nueces picadas (opcional)",
+                "cantidad": "5-10g"
+            }
+        ],
+        "calorias": "220-270 kcal",
+        "tiempo_preparacion": "15 min",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Porridge Proteico de Avena con Semillas y Fruta Fresca",
+        "ingrediente_principal": "Avena y Proteína en Polvo",
+        "preparacion": "1. En un cazo, mezclar los copos de avena con la leche o agua. 2. Cocinar a fuego medio-bajo, removiendo, hasta que la avena esté cocida y cremosa (unos 5-7 minutos). 3. Retirar del fuego y añadir la proteína en polvo (sabor neutro, vainilla o chocolate según preferencia). Remover enérgicamente para que se disuelva bien y no queden grumos. 4. Incorporar las semillas de chía y/o lino. 5. Servir en un bol y decorar con la fruta fresca troceada y, si se desea, un puñadito de frutos secos o un poco de canela.",
+        "ingredientes": [
+            {
+                "item": "Copos de avena integral",
+                "cantidad": "40g (1/2 taza aprox.)"
+            },
+            {
+                "item": "Proteína en polvo (whey o vegetal)",
+                "cantidad": "1 cucharada (15-20g)"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal sin azúcar",
+                "cantidad": "200ml (1 taza aprox.)"
+            },
+            {
+                "item": "Semillas de chía y/o lino molido",
+                "cantidad": "1 cucharadita (5g)"
+            },
+            {
+                "item": "Fruta fresca (bayas, plátano, manzana)",
+                "cantidad": "1 porción pequeña (80-100g)"
+            }
+        ],
+        "calorias": "300-350 kcal",
+        "tiempo_preparacion": "15 min",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Clafoutis Ligero Individual de Frutos Rojos con Harina de Almendras",
+        "ingrediente_principal": "Huevo y Frutos Rojos",
+        "preparacion": "1. Precalentar el horno a 180°C. Engrasar ligeramente un molde individual pequeño apto para horno (tipo ramequín). 2. En un bol, batir el huevo con la leche o bebida vegetal y el edulcorante. 3. Añadir la harina de almendras y una pizca de extracto de vainilla, mezclar hasta que no haya grumos. 4. Colocar los frutos rojos en el fondo del molde preparado. 5. Verter la mezcla líquida sobre los frutos rojos. 6. Hornear durante 20-25 minutos, o hasta que esté dorado y cuajado (al insertar un palillo, este debe salir limpio). 7. Dejar enfriar unos minutos antes de consumir. Se puede espolvorear con un poco de canela.",
+        "ingredientes": [
+            {
+                "item": "Huevo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal sin azúcar",
+                "cantidad": "60-80ml (1/3 taza aprox.)"
+            },
+            {
+                "item": "Harina de almendras",
+                "cantidad": "2 cucharadas (20g aprox.)"
+            },
+            {
+                "item": "Frutos rojos (frescos o congelados)",
+                "cantidad": "70-80g (1/2 taza aprox.)"
+            },
+            {
+                "item": "Edulcorante apto para hornear",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Extracto de vainilla",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "180-220 kcal",
+        "tiempo_preparacion": "30 min (incluyendo horneado)",
+        "dificultad": "Medio"
+    },
+    {
+        "titulo": "Batido de Proteínas con Café Frío, Plátano Congelado y Cacao",
+        "ingrediente_principal": "Proteína en Polvo y Café",
+        "preparacion": "1. Preparar un café espresso o café filtrado y dejarlo enfriar (o usar café frío preparado). 2. En el vaso de la batidora, añadir el plátano congelado (cortado en trozos previamente), la proteína en polvo (sabor vainilla, chocolate o neutro), el café frío, la leche o bebida vegetal y el cacao puro en polvo. 3. Batir todo bien hasta obtener una consistencia cremosa y homogénea. Si está muy espeso, añadir un poco más de leche o agua. 4. Servir inmediatamente. Se puede decorar con unos nibs de cacao.",
+        "ingredientes": [
+            {
+                "item": "Plátano congelado",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Proteína en polvo (whey o vegetal)",
+                "cantidad": "1 cucharada (15-20g)"
+            },
+            {
+                "item": "Café frío (espresso o filtrado)",
+                "cantidad": "60ml (1 shot espresso o 1/4 taza)"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal sin azúcar",
+                "cantidad": "100-150ml (1/2 taza aprox.)"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar",
+                "cantidad": "1 cucharadita (5g)"
+            },
+            {
+                "item": "Hielo (opcional)",
+                "cantidad": "2-3 cubitos"
+            }
+        ],
+        "calorias": "200-250 kcal",
+        "tiempo_preparacion": "5 min",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Crema Ligera de Arroz Integral con Bebida de Coco, Canela y Piel de Limón",
+        "ingrediente_principal": "Arroz Integral",
+        "preparacion": "1. En un cazo, poner el arroz integral (preferiblemente enjuagado), la bebida de coco (u otra vegetal), la rama de canela y un trozo de piel de limón (sin la parte blanca). 2. Llevar a ebullición y luego cocinar a fuego muy bajo, tapado parcialmente, durante 30-40 minutos, o hasta que el arroz esté muy tierno y el líquido se haya absorbido y espesado. Remover de vez en cuando para evitar que se pegue. 3. Retirar la rama de canela y la piel de limón. 4. Añadir edulcorante al gusto si es necesario. 5. Servir caliente o frío, espolvoreado con un poco más de canela en polvo.",
+        "ingredientes": [
+            {
+                "item": "Arroz integral redondo",
+                "cantidad": "40-50g (1/4 taza aprox.)"
+            },
+            {
+                "item": "Bebida de coco sin azúcar (o leche de almendras)",
+                "cantidad": "250-300ml (1 1/4 taza aprox.)"
+            },
+            {
+                "item": "Rama de canela",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Piel de limón",
+                "cantidad": "1 trozo pequeño"
+            },
+            {
+                "item": "Edulcorante natural (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-220 kcal",
+        "tiempo_preparacion": "45 min",
+        "dificultad": "Medio"
+    },
+    {
+        "titulo": "\"Nubes\" de Huevo al Horno (Egg Clouds) con Cebollino",
+        "ingrediente_principal": "Huevo",
+        "preparacion": "1. Precalentar el horno a 200°C. Forrar una bandeja de horno con papel de hornear. 2. Separar las claras de las yemas de los huevos (1 o 2 por persona), reservando las yemas intactas en cuencos individuales. 3. Batir las claras a punto de nieve firme con una pizca de sal. Opcionalmente, añadir un poco de queso parmesano rallado muy fino a las claras montadas. 4. Formar montoncitos (nubes) con las claras batidas sobre la bandeja de horno, dejando un hueco en el centro de cada nube. 5. Hornear las nubes de clara durante 3-4 minutos. 6. Retirar la bandeja del horno y colocar con cuidado una yema en el hueco de cada nube. 7. Volver a hornear durante 2-3 minutos más, o hasta que la yema esté caliente pero aún líquida (o al punto deseado). 8. Servir inmediatamente, espolvoreadas con cebollino fresco picado y pimienta negra.",
+        "ingredientes": [
+            {
+                "item": "Huevos",
+                "cantidad": "1-2 unidades (según apetito)"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Queso parmesano rallado fino (opcional)",
+                "cantidad": "1 cucharadita (5g)"
+            },
+            {
+                "item": "Cebollino fresco",
+                "cantidad": "Al gusto, para decorar"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "70-140 kcal (dependiendo del número de huevos)",
+        "tiempo_preparacion": "15 min",
+        "dificultad": "Medio"
+    },
+    {
+        "titulo": "Barritas Energéticas Caseras Ligeras de Avena y Dátiles (Sin Horno)",
+        "ingrediente_principal": "Avena y Dátiles",
+        "preparacion": "1. Remojar los dátiles Medjool (sin hueso) en agua caliente durante 10 minutos para ablandarlos. Escurrir bien. 2. En un procesador de alimentos, triturar los dátiles remojados hasta formar una pasta. 3. Añadir los copos de avena, los frutos secos (almendras, nueces) y las semillas (chía, lino) al procesador. Incorporar una pizca de canela o vainilla si se desea. Procesar hasta que todo esté bien mezclado y la masa sea pegajosa. 4. Forrar un molde pequeño rectangular o cuadrado con papel de hornear. Verter la mezcla en el molde y presionar firmemente con una espátula o el dorso de una cuchara para compactarla bien y obtener una capa uniforme. 5. Refrigerar durante al menos 1-2 horas para que se endurezca. 6. Desmoldar y cortar en barritas del tamaño deseado. Conservar en un recipiente hermético en la nevera. (La receta rinde para varias barritas, la información nutricional es por barrita de tamaño moderado).",
+        "ingredientes": [
+            {
+                "item": "Dátiles Medjool (sin hueso)",
+                "cantidad": "4-5 unidades (70-80g)"
+            },
+            {
+                "item": "Copos de avena integral",
+                "cantidad": "50-60g (1/2 taza aprox.)"
+            },
+            {
+                "item": "Frutos secos (almendras, nueces)",
+                "cantidad": "20g (un puñadito pequeño)"
+            },
+            {
+                "item": "Semillas (chía, lino)",
+                "cantidad": "1 cucharada (10g)"
+            },
+            {
+                "item": "Canela o extracto de vainilla (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "120-150 kcal por barrita",
+        "tiempo_preparacion": "20 min (+ tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Sopa\" Fría de Melón Cantalupo con Menta y Finas Virutas de Jamón Serrano",
+        "ingrediente_principal": "Melón Cantalupo",
+        "preparacion": "1. Quitar la piel y las semillas del melón. Cortar la pulpa en trozos. 2. Poner el melón troceado en el vaso de la batidora junto con unas hojas de menta fresca y, si se desea, un chorrito de zumo de lima o limón. 3. Triturar hasta obtener una sopa fina y homogénea. Si es necesario, añadir un poco de agua fría para aligerar la textura. 4. Enfriar bien en la nevera (al menos 30 minutos). 5. Servir la sopa de melón bien fría en cuencos individuales. Decorar con unas virutas muy finas de jamón serrano (usar con moderación para controlar la sal y grasa) y unas hojas de menta fresca.",
+        "ingredientes": [
+            {
+                "item": "Melón cantalupo maduro",
+                "cantidad": "1/4 de melón mediano (200-250g de pulpa)"
+            },
+            {
+                "item": "Hojas de menta fresca",
+                "cantidad": "5-6 hojas + algunas para decorar"
+            },
+            {
+                "item": "Zumo de lima o limón (opcional)",
+                "cantidad": "Un chorrito"
+            },
+            {
+                "item": "Jamón serrano en lonchas muy finas",
+                "cantidad": "5-10g (una cantidad muy pequeña)"
+            },
+            {
+                "item": "Agua fría (opcional)",
+                "cantidad": "Un poco, si es necesario"
+            }
+        ],
+        "calorias": "100-130 kcal",
+        "tiempo_preparacion": "10 min (+ tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Tofu Revuelto Estilo Ranchero con Cúrcuma, Pimiento y Cebolla",
+        "ingrediente_principal": "Tofu Firme",
+        "preparacion": "1. Escurrir bien el tofu firme y desmenuzarlo con las manos o un tenedor en un bol. 2. Picar finamente la cebolla, el pimiento verde y el pimiento rojo. Picar un diente de ajo. 3. En una sartén, calentar una cucharadita de aceite de oliva. Sofreír la cebolla, los pimientos y el ajo hasta que estén tiernos. 4. Añadir el tofu desmenuzado a la sartén. Espolvorear con cúrcuma, comino en polvo, sal y pimienta negra. Remover bien para que el tofu se impregne de las especias y tome un color amarillo. 5. Cocinar durante 5-7 minutos, removiendo ocasionalmente, hasta que el tofu esté caliente. 6. Opcional: añadir un poco de salsa de tomate natural o unos tomates cherry cortados por la mitad al final de la cocción. Servir caliente, espolvoreado con cilantro o perejil fresco.",
+        "ingredientes": [
+            {
+                "item": "Tofu firme",
+                "cantidad": "150g"
+            },
+            {
+                "item": "Cebolla",
+                "cantidad": "1/4 unidad pequeña"
+            },
+            {
+                "item": "Pimiento verde",
+                "cantidad": "1/4 unidad pequeña"
+            },
+            {
+                "item": "Pimiento rojo",
+                "cantidad": "1/4 unidad pequeña"
+            },
+            {
+                "item": "Ajo",
+                "cantidad": "1 diente pequeño"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita (5ml)"
+            },
+            {
+                "item": "Cúrcuma en polvo",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Comino en polvo",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Sal y pimienta negra",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Cilantro o perejil fresco (opcional)",
+                "cantidad": "Al gusto, para decorar"
+            },
+            {
+                "item": "Tomates cherry o salsa de tomate natural (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-220 kcal",
+        "tiempo_preparacion": "15 min",
+        "dificultad": "Fácil"
+    }
+]

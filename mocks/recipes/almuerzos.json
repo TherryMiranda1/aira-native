@@ -1,0 +1,232 @@
+[
+  {
+    "titulo": "Ensalada Mediterránea con Garbanzos y Atún",
+    "ingrediente_principal": "Garbanzos y Atún",
+    "preparacion": "1. Escurrir y enjuagar los garbanzos cocidos. 2. Lavar y cortar los tomates cherry por la mitad. 3. Lavar y picar el pepino en dados pequeños. 4. Picar finamente la cebolla roja. 5. Escurrir el atún al natural. 6. En un bol grande, mezclar los garbanzos, el atún, los tomates cherry, el pepino y la cebolla roja. 7. Añadir las aceitunas negras y el queso feta desmenuzado. 8. Aliñar con aceite de oliva virgen extra, vinagre de vino tinto o zumo de limón, orégano seco, sal y pimienta al gusto. 9. Mezclar suavemente todos los ingredientes y servir.",
+    "ingredientes": [
+      {
+        "item": "Garbanzos cocidos",
+        "cantidad": "150g (1/2 lata pequeña)"
+      },
+      {
+        "item": "Atún al natural",
+        "cantidad": "1 lata pequeña (60g escurrido)"
+      },
+      {
+        "item": "Tomates cherry",
+        "cantidad": "8-10 unidades"
+      },
+      {
+        "item": "Pepino",
+        "cantidad": "1/2 unidad pequeña"
+      },
+      {
+        "item": "Cebolla roja",
+        "cantidad": "1/4 unidad pequeña"
+      },
+      {
+        "item": "Aceitunas negras sin hueso",
+        "cantidad": "8-10 unidades"
+      },
+      {
+        "item": "Queso feta light",
+        "cantidad": "30g"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharada (10ml)"
+      },
+      {
+        "item": "Vinagre de vino tinto o zumo de limón",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Orégano seco",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "400-450 kcal",
+    "tiempo_preparacion": "15 min",
+    "dificultad": "Muy Fácil"
+  },
+  {
+    "titulo": "Bowl de Quinoa con Verduras Asadas y Huevo Poché",
+    "ingrediente_principal": "Quinoa",
+    "preparacion": "1. Enjuagar bien la quinoa bajo agua fría. Cocinarla según las instrucciones del paquete (generalmente 15-20 minutos en agua hirviendo con sal). Escurrir si es necesario y reservar. 2. Precalentar el horno a 200°C. Cortar el calabacín, la berenjena y el pimiento rojo en dados medianos. 3. Colocar las verduras en una bandeja de horno, rociar con aceite de oliva, espolvorear con las especias, sal y pimienta. Mezclar bien para que se impregnen. 4. Asar en el horno durante 20-25 minutos, removiendo a mitad de cocción, hasta que estén tiernas y ligeramente doradas. 5. Mientras tanto, preparar el huevo poché: llevar agua con un chorrito de vinagre a ebullición suave, hacer un remolino con una cuchara y deslizar el huevo (previamente cascado en un recipiente pequeño) en el centro. Cocinar 3 minutos para una yema cremosa. Retirar con una espumadera y escurrir sobre papel absorbente. 6. Montar el bowl: colocar la quinoa como base, añadir las verduras asadas alrededor y coronar con el huevo poché en el centro. 7. Decorar con semillas de sésamo, brotes tiernos o hierbas frescas si se desea.",
+    "ingredientes": [
+      {
+        "item": "Quinoa cruda",
+        "cantidad": "50g (1/4 taza aprox.)"
+      },
+      {
+        "item": "Calabacín",
+        "cantidad": "1/2 unidad pequeña"
+      },
+      {
+        "item": "Berenjena",
+        "cantidad": "1/4 unidad pequeña"
+      },
+      {
+        "item": "Pimiento rojo",
+        "cantidad": "1/2 unidad pequeña"
+      },
+      {
+        "item": "Huevo",
+        "cantidad": "1 unidad"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Especias (pimentón dulce, comino, etc.)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Vinagre (para el huevo poché)",
+        "cantidad": "Un chorrito"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Semillas de sésamo (opcional)",
+        "cantidad": "1 cucharadita"
+      }
+    ],
+    "calorias": "350-400 kcal",
+    "tiempo_preparacion": "40 min",
+    "dificultad": "Medio"
+  },
+  {
+    "titulo": "Wrap de Pollo a la Plancha con Aguacate y Espinacas",
+    "ingrediente_principal": "Pechuga de Pollo",
+    "preparacion": "1. Sazonar la pechuga de pollo con las especias, sal y pimienta. 2. Cocinar a la plancha con unas gotas de aceite de oliva hasta que esté bien hecha pero jugosa (unos 4-5 minutos por cada lado, dependiendo del grosor). Dejar reposar unos minutos y luego cortar en tiras. 3. Calentar ligeramente la tortilla de trigo integral (en la misma plancha o en el microondas durante 10-15 segundos). 4. Untar el hummus sobre la tortilla. 5. Colocar las hojas de espinaca fresca, las tiras de pollo y el aguacate en rodajas sobre la tortilla. 6. Añadir unas gotas de zumo de limón sobre el aguacate para evitar que se oxide. 7. Enrollar la tortilla firmemente, doblando primero los extremos hacia dentro si es necesario. Cortar por la mitad para servir.",
+    "ingredientes": [
+      {
+        "item": "Pechuga de pollo pequeña",
+        "cantidad": "100-120g"
+      },
+      {
+        "item": "Tortilla de trigo integral grande",
+        "cantidad": "1 unidad"
+      },
+      {
+        "item": "Hummus",
+        "cantidad": "1-2 cucharadas (20-30g)"
+      },
+      {
+        "item": "Espinacas frescas",
+        "cantidad": "Un puñado (20g aprox.)"
+      },
+      {
+        "item": "Aguacate",
+        "cantidad": "1/4 - 1/3 unidad"
+      },
+      {
+        "item": "Zumo de limón",
+        "cantidad": "Unas gotas"
+      },
+      {
+        "item": "Especias para el pollo (pimentón, orégano, etc.)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "Unas gotas"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "350-400 kcal",
+    "tiempo_preparacion": "20 min",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Crema de Calabaza y Zanahoria con Jengibre",
+    "ingrediente_principal": "Calabaza y Zanahoria",
+    "preparacion": "1. Pelar y cortar la calabaza y las zanahorias en dados medianos. Picar la cebolla finamente. 2. En una olla, calentar el aceite de oliva a fuego medio. Añadir la cebolla y sofreír hasta que esté transparente (3-4 minutos). 3. Añadir el jengibre rallado y cocinar durante 1 minuto más. 4. Incorporar la calabaza y las zanahorias. Remover para que se impregnen de los sabores. 5. Añadir el caldo de verduras, sal y pimienta. Llevar a ebullición, luego reducir el fuego y cocinar a fuego lento, tapado, durante 20-25 minutos o hasta que las verduras estén muy tiernas. 6. Triturar con una batidora de mano hasta obtener una crema suave y homogénea. Si está muy espesa, añadir un poco más de caldo o agua caliente. 7. Ajustar de sal y pimienta si es necesario. 8. Servir caliente, decorando con unas semillas de calabaza tostadas y, si se desea, un chorrito de yogur griego natural o nata ligera.",
+    "ingredientes": [
+      {
+        "item": "Calabaza limpia (sin piel ni semillas)",
+        "cantidad": "200g"
+      },
+      {
+        "item": "Zanahorias",
+        "cantidad": "2 medianas (100g aprox.)"
+      },
+      {
+        "item": "Cebolla",
+        "cantidad": "1/2 pequeña"
+      },
+      {
+        "item": "Jengibre fresco rallado",
+        "cantidad": "1 cucharadita (5g)"
+      },
+      {
+        "item": "Caldo de verduras bajo en sodio",
+        "cantidad": "400-500ml"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Semillas de calabaza tostadas (opcional)",
+        "cantidad": "1 cucharada (10g)"
+      },
+      {
+        "item": "Yogur griego natural o nata ligera (opcional)",
+        "cantidad": "1 cucharada (15g)"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "200-250 kcal",
+    "tiempo_preparacion": "40 min",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Tortilla de Claras con Espárragos Verdes y Queso de Cabra",
+    "ingrediente_principal": "Claras de Huevo",
+    "preparacion": "1. Lavar los espárragos verdes y cortar los extremos duros. Cortarlos en trozos de 2-3 cm. 2. En una sartén antiadherente pequeña, calentar unas gotas de aceite de oliva a fuego medio. 3. Añadir los espárragos y cocinar durante 3-4 minutos, removiendo ocasionalmente, hasta que estén tiernos pero aún crujientes. 4. Mientras tanto, batir las claras de huevo con una pizca de sal y pimienta. 5. Verter las claras batidas sobre los espárragos en la sartén. Cocinar a fuego medio-bajo durante 2-3 minutos. 6. Desmenuzar el queso de cabra sobre la tortilla y añadir las hierbas frescas picadas. 7. Cuando la base esté cuajada pero la parte superior aún húmeda, doblar la tortilla por la mitad (como una media luna) o, si se prefiere, dar la vuelta para cocinar brevemente el otro lado. 8. Servir inmediatamente, acompañada de una ensalada verde si se desea.",
+    "ingredientes": [
+      {
+        "item": "Claras de huevo",
+        "cantidad": "3-4 unidades (100-120g)"
+      },
+      {
+        "item": "Espárragos verdes finos",
+        "cantidad": "6-8 unidades"
+      },
+      {
+        "item": "Queso de cabra light",
+        "cantidad": "20g"
+      },
+      {
+        "item": "Hierbas frescas (cebollino, perejil o eneldo)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "Unas gotas"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "180-220 kcal",
+    "tiempo_preparacion": "15 min",
+    "dificultad": "Fácil"
+  }
+]

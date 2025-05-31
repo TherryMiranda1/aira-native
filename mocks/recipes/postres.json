@@ -1,0 +1,188 @@
+[
+  {
+    "titulo": "Mousse de Chocolate Negro con Aguacate",
+    "ingrediente_principal": "Aguacate y Chocolate Negro",
+    "preparacion": "1. Pelar y quitar el hueso de los aguacates. Colocar la pulpa en un procesador de alimentos. 2. Derretir el chocolate negro al baño maría o en el microondas (a potencia baja, en intervalos de 30 segundos, removiendo cada vez). Dejar enfriar ligeramente. 3. Añadir el chocolate derretido, el cacao en polvo, la esencia de vainilla, el edulcorante y una pizca de sal al procesador con el aguacate. 4. Procesar hasta obtener una mezcla suave y homogénea, parando para raspar los lados si es necesario. 5. Si la mezcla está muy espesa, añadir un poco de leche o bebida vegetal para ajustar la consistencia. 6. Dividir la mousse en 4 recipientes individuales y refrigerar durante al menos 2 horas. 7. Antes de servir, decorar con unas frambuesas frescas y, si se desea, unas virutas de chocolate negro.",
+    "ingredientes": [
+      {
+        "item": "Aguacates maduros",
+        "cantidad": "2 pequeños (o 1 grande)"
+      },
+      {
+        "item": "Chocolate negro (mínimo 70% cacao)",
+        "cantidad": "100g"
+      },
+      {
+        "item": "Cacao puro en polvo sin azúcar",
+        "cantidad": "2 cucharadas"
+      },
+      {
+        "item": "Esencia de vainilla",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Edulcorante natural (stevia, eritritol)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Leche o bebida vegetal sin azúcar (opcional)",
+        "cantidad": "1-2 cucharadas, si es necesario"
+      },
+      {
+        "item": "Sal",
+        "cantidad": "Una pizca"
+      },
+      {
+        "item": "Frambuesas frescas (para decorar)",
+        "cantidad": "8-12 unidades"
+      }
+    ],
+    "calorias": "250-300 kcal por ración",
+    "tiempo_preparacion": "15 min (+ tiempo de refrigeración)",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Crumble de Manzana y Canela con Avena",
+    "ingrediente_principal": "Manzanas",
+    "preparacion": "1. Precalentar el horno a 180°C. 2. Pelar y cortar las manzanas en dados medianos. 3. En una sartén, cocinar las manzanas con la canela, el zumo de limón y una cucharadita de miel o sirope de arce durante 5-7 minutos, hasta que estén ligeramente blandas pero aún mantengan su forma. 4. Mientras tanto, preparar el crumble: mezclar los copos de avena, la harina de almendras, las nueces picadas y la canela en un bol. 5. Añadir el aceite de coco derretido y la miel o sirope de arce restante. Mezclar con los dedos hasta obtener una textura arenosa. 6. Repartir las manzanas cocinadas en 4 ramequines individuales o en una fuente pequeña apta para horno. 7. Cubrir con la mezcla de crumble. 8. Hornear durante 15-20 minutos, hasta que el crumble esté dorado y crujiente. 9. Servir caliente, acompañado de yogur griego natural si se desea.",
+    "ingredientes": [
+      {
+        "item": "Manzanas (preferiblemente variedad ácida como Granny Smith)",
+        "cantidad": "3 medianas"
+      },
+      {
+        "item": "Canela en polvo",
+        "cantidad": "1 cucharadita (para las manzanas) + 1/2 cucharadita (para el crumble)"
+      },
+      {
+        "item": "Zumo de limón",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Miel o sirope de arce",
+        "cantidad": "1 cucharadita (para las manzanas) + 1 cucharada (para el crumble)"
+      },
+      {
+        "item": "Copos de avena integral",
+        "cantidad": "100g (1 taza aprox.)"
+      },
+      {
+        "item": "Harina de almendras",
+        "cantidad": "50g (1/2 taza aprox.)"
+      },
+      {
+        "item": "Nueces picadas",
+        "cantidad": "30g (1/4 taza aprox.)"
+      },
+      {
+        "item": "Aceite de coco",
+        "cantidad": "2 cucharadas"
+      },
+      {
+        "item": "Yogur griego natural (opcional, para servir)",
+        "cantidad": "4 cucharadas"
+      }
+    ],
+    "calorias": "300-350 kcal por ración (sin contar el yogur)",
+    "tiempo_preparacion": "40 min",
+    "dificultad": "Medio"
+  },
+  {
+    "titulo": "Trufas Energéticas de Dátiles y Cacao",
+    "ingrediente_principal": "Dátiles",
+    "preparacion": "1. Remojar los dátiles en agua caliente durante 10 minutos para ablandarlos. Escurrir bien. 2. Quitar los huesos de los dátiles si no vienen ya deshuesados. 3. En un procesador de alimentos, triturar los dátiles junto con las almendras, el cacao en polvo, el aceite de coco derretido y la esencia de vainilla hasta obtener una pasta homogénea. 4. Si la mezcla está muy pegajosa, refrigerarla durante 15-20 minutos para que sea más fácil de manipular. 5. Con las manos ligeramente humedecidas, formar pequeñas bolas (del tamaño de una nuez) con la mezcla. 6. Rebozar las trufas en el cacao en polvo, las semillas de chía o el coco rallado. 7. Refrigerar durante al menos 1 hora antes de servir. Conservar en la nevera en un recipiente hermético.",
+    "ingredientes": [
+      {
+        "item": "Dátiles Medjool",
+        "cantidad": "200g (aproximadamente 10-12 unidades)"
+      },
+      {
+        "item": "Almendras crudas",
+        "cantidad": "100g (2/3 taza aprox.)"
+      },
+      {
+        "item": "Cacao puro en polvo sin azúcar",
+        "cantidad": "2 cucharadas (para la mezcla) + 1 cucharada (para rebozar)"
+      },
+      {
+        "item": "Aceite de coco",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Esencia de vainilla",
+        "cantidad": "1/2 cucharadita"
+      },
+      {
+        "item": "Semillas de chía (opcional, para rebozar)",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Coco rallado sin azúcar (opcional, para rebozar)",
+        "cantidad": "1 cucharada"
+      }
+    ],
+    "calorias": "100-120 kcal por trufa",
+    "tiempo_preparacion": "25 min (+ tiempo de refrigeración)",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Helado de Plátano y Frutos Rojos (Sin Azúcar Añadido)",
+    "ingrediente_principal": "Plátano y Frutos Rojos",
+    "preparacion": "1. Pelar los plátanos maduros y cortarlos en rodajas. Colocarlos en una bolsa o recipiente apto para congelador y congelar durante al menos 4 horas, o preferiblemente toda la noche. 2. Lavar los frutos rojos si son frescos. Si son congelados, usarlos directamente. 3. En un procesador de alimentos potente o una batidora de vaso, añadir los plátanos congelados y los frutos rojos. 4. Procesar hasta obtener una textura cremosa similar a la de un helado, parando para raspar los lados si es necesario. Si la mezcla está muy espesa, añadir un poco de leche o bebida vegetal para facilitar el procesado. 5. Servir inmediatamente como helado suave, o transferir a un recipiente y congelar durante 1-2 horas para una textura más firme.",
+    "ingredientes": [
+      {
+        "item": "Plátanos maduros",
+        "cantidad": "3 unidades medianas"
+      },
+      {
+        "item": "Frutos rojos (frescos o congelados)",
+        "cantidad": "200g (1 1/2 taza aprox.)"
+      },
+      {
+        "item": "Leche o bebida vegetal sin azúcar (opcional)",
+        "cantidad": "1-2 cucharadas, si es necesario"
+      }
+    ],
+    "calorias": "150-180 kcal por ración",
+    "tiempo_preparacion": "10 min (+ tiempo de congelación)",
+    "dificultad": "Muy Fácil"
+  },
+  {
+    "titulo": "Panna Cotta de Yogur con Coulis de Frutos Rojos",
+    "ingrediente_principal": "Yogur Griego",
+    "preparacion": "1. En un cazo pequeño, calentar la leche a fuego medio-bajo. Añadir la gelatina previamente hidratada en agua fría durante 5 minutos y disolverla completamente en la leche caliente (no hirviendo). 2. Retirar del fuego y dejar enfriar ligeramente. 3. En un bol, mezclar el yogur griego con la esencia de vainilla y el edulcorante. 4. Incorporar la mezcla de leche y gelatina al yogur, removiendo suavemente para que no queden grumos. 5. Verter la mezcla en 4 moldes individuales o vasos. 6. Refrigerar durante al menos 4 horas, o hasta que cuaje completamente. 7. Para el coulis: en un cazo pequeño, cocinar los frutos rojos con el edulcorante y el zumo de limón a fuego medio durante 5-7 minutos, hasta que las frutas se ablanden y suelten su jugo. 8. Triturar el coulis y pasarlo por un colador fino para eliminar las semillas (opcional). Dejar enfriar. 9. Servir la panna cotta fría, cubierta con el coulis de frutos rojos.",
+    "ingredientes": [
+      {
+        "item": "Yogur griego natural 0% o 2%",
+        "cantidad": "400g (2 envases individuales)"
+      },
+      {
+        "item": "Leche desnatada",
+        "cantidad": "100ml (1/2 taza aprox.)"
+      },
+      {
+        "item": "Gelatina en polvo sin sabor",
+        "cantidad": "7g (1 sobre)"
+      },
+      {
+        "item": "Esencia de vainilla",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Edulcorante natural (stevia, eritritol)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Frutos rojos (frescos o congelados)",
+        "cantidad": "200g (1 1/2 taza aprox.)"
+      },
+      {
+        "item": "Zumo de limón",
+        "cantidad": "1 cucharadita"
+      }
+    ],
+    "calorias": "120-150 kcal por ración",
+    "tiempo_preparacion": "20 min (+ tiempo de refrigeración)",
+    "dificultad": "Medio"
+  }
+]

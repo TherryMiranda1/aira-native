@@ -1,0 +1,358 @@
+[
+    {
+      "id_ejercicio": "uuid_tricep_01",
+      "nombre": "Press Francés (Skullcrushers) con Barra EZ",
+      "descripcion": "Ejercicio efectivo para desarrollar la masa de las tres cabezas del tríceps, especialmente la cabeza larga y medial.",
+      "instrucciones": [
+        "Acuéstate en un banco plano sujetando una barra EZ con un agarre estrecho (manos más juntas que el ancho de los hombros), palmas hacia arriba.",
+        "Extiende los brazos perpendicularmente al cuerpo, la barra sobre la frente o ligeramente detrás.",
+        "Manteniendo los codos fijos y apuntando hacia el techo, baja la barra flexionando los codos hasta que casi toque tu frente o la parte superior de la cabeza.",
+        "Extiende los brazos para volver a la posición inicial, contrayendo fuertemente los tríceps."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["triceps_braquial_cabeza_larga", "triceps_braquial_cabeza_medial", "triceps_braquial_cabeza_lateral"],
+      "equipamiento_necesario": ["banco_plano", "barra_ez", "discos_peso"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_press_frances.jpg",
+        "video_url": "url_video_press_frances.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 15,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["triceps", "press_frances", "skullcrushers", "extension_triceps", "brazos"],
+      "advertencias": "Mantener los codos estables y no demasiado abiertos para proteger las articulaciones. Bajar de forma controlada."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_02",
+      "nombre": "Extensiones de Tríceps en Polea Alta con Cuerda",
+      "descripcion": "Ejercicio de aislamiento que trabaja las tres cabezas del tríceps, con énfasis en la cabeza lateral.",
+      "instrucciones": [
+        "Colócate de pie frente a una polea alta con un agarre de cuerda.",
+        "Sujeta los extremos de la cuerda con un agarre neutro (palmas enfrentadas). Mantén los codos pegados a los costados.",
+        "Extiende los brazos hacia abajo, separando ligeramente las manos al final del movimiento para maximizar la contracción.",
+        "Regresa lentamente el agarre a la posición inicial, controlando la tensión."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["triceps_braquial_cabeza_lateral", "triceps_braquial_cabeza_larga", "triceps_braquial_cabeza_medial"],
+      "equipamiento_necesario": ["maquina_poleas", "cuerda_triceps"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_extension_polea_cuerda.jpg",
+        "video_url": "url_video_extension_polea_cuerda.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 20,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["triceps", "extension_polea", "triceps_pushdown", "cuerda", "brazos"],
+      "advertencias": "Evitar usar el impulso del cuerpo. Mantener los codos fijos y pegados al torso."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_03",
+      "nombre": "Fondos en Banco (Bench Dips)",
+      "descripcion": "Ejercicio de peso corporal que trabaja intensamente los tríceps. Se puede añadir peso para mayor dificultad.",
+      "instrucciones": [
+        "Colócate de espaldas a un banco plano, apoya las palmas de las manos en el borde del banco, dedos apuntando hacia adelante.",
+        "Extiende las piernas hacia adelante, apoyando los talones en el suelo (o en otro banco para mayor dificultad).",
+        "Manteniendo la espalda cerca del banco, baja el cuerpo flexionando los codos hasta que formen un ángulo de 90 grados.",
+        "Empuja con los tríceps para volver a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["triceps_braquial", "deltoides_anterior", "pectoral_inferior"],
+      "equipamiento_necesario": ["banco_plano"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_fondos_banco.jpg",
+        "video_url": "url_video_fondos_banco.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["triceps", "fondos_banco", "bench_dips", "peso_corporal", "brazos"],
+      "advertencias": "Mantener la espalda cerca del banco para evitar tensión excesiva en los hombros. No bajar demasiado si se siente dolor."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_04",
+      "nombre": "Press de Banca con Agarre Estrecho",
+      "descripcion": "Ejercicio compuesto que pone gran énfasis en los tríceps, además de trabajar el pecho y los hombros.",
+      "instrucciones": [
+        "Acuéstate en un banco plano. Sujeta la barra con un agarre prono, manos separadas al ancho de los hombros o ligeramente menos.",
+        "Baja la barra de forma controlada hacia la parte inferior del pecho o superior del abdomen, manteniendo los codos relativamente pegados al cuerpo.",
+        "Empuja la barra hacia arriba hasta la extensión completa, contrayendo los tríceps."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["triceps_braquial", "pectoral_mayor_interno", "deltoides_anterior"],
+      "equipamiento_necesario": ["banco_plano", "barra_olimpica", "discos_peso", "soportes_barra"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_press_agarre_estrecho.jpg",
+        "video_url": "url_video_press_agarre_estrecho.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 35,
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["triceps", "press_cerrado", "close_grip_bench_press", "fuerza_brazos", "pecho"],
+      "advertencias": "Un agarre demasiado estrecho puede causar molestias en las muñecas. Mantener los codos controlados."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_05",
+      "nombre": "Extensión de Tríceps por Encima de la Cabeza con Mancuerna (a dos manos)",
+      "descripcion": "Excelente para trabajar la cabeza larga del tríceps debido al estiramiento del brazo por encima de la cabeza.",
+      "instrucciones": [
+        "De pie o sentado, sujeta una mancuerna con ambas manos por uno de sus extremos (forma de copa).",
+        "Levanta la mancuerna por encima de la cabeza con los brazos extendidos.",
+        "Manteniendo los codos relativamente fijos y apuntando hacia arriba, baja la mancuerna por detrás de la cabeza flexionando los codos.",
+        "Extiende los brazos para volver a la posición inicial, contrayendo los tríceps."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["triceps_braquial_cabeza_larga", "triceps_braquial_cabeza_medial", "triceps_braquial_cabeza_lateral"],
+      "equipamiento_necesario": ["mancuerna"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_extension_overhead_mancuerna.jpg",
+        "video_url": "url_video_extension_overhead_mancuerna.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 12,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["triceps", "extension_overhead", "cabeza_larga_triceps", "mancuerna", "brazos"],
+      "advertencias": "Mantener los codos lo más cerrados posible. Evitar arquear la espalda excesivamente."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_06",
+      "nombre": "Patada de Tríceps (Triceps Kickback)",
+      "descripcion": "Ejercicio de aislamiento que se enfoca en la contracción máxima del tríceps, especialmente la cabeza lateral.",
+      "instrucciones": [
+        "Sujeta una mancuerna con una mano. Inclina el torso hacia adelante hasta que esté casi paralelo al suelo, apoyando la otra mano en un banco o rodilla.",
+        "Mantén el brazo que trabaja pegado al torso, con el codo flexionado a 90 grados.",
+        "Extiende el antebrazo hacia atrás hasta que el brazo esté completamente recto, contrayendo el tríceps.",
+        "Baja lentamente la mancuerna a la posición inicial."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["triceps_braquial_cabeza_lateral", "triceps_braquial_cabeza_medial"],
+      "equipamiento_necesario": ["mancuernas", "banco_plano_opcional"],
+      "nivel_dificultad": "principiante",
+      "media": {
+        "imagen_url": "url_imagen_patada_triceps.jpg",
+        "video_url": "url_video_patada_triceps.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 6,
+        "repeticiones": 15,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["triceps", "patada_triceps", "kickback", "aislamiento", "brazos"],
+      "advertencias": "Usar un peso ligero-moderado para asegurar la técnica. Evitar el balanceo del brazo o el cuerpo."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_07",
+      "nombre": "Fondos en Paralelas (Triceps Dips)",
+      "descripcion": "Ejercicio de peso corporal muy efectivo para los tríceps. Mantener el torso erguido para mayor énfasis en tríceps.",
+      "instrucciones": [
+        "Sujétate de las barras paralelas con los brazos extendidos y el cuerpo suspendido.",
+        "Mantén el torso lo más vertical posible para enfocar los tríceps (inclinarse hacia adelante enfoca más el pecho).",
+        "Baja el cuerpo flexionando los codos hasta que formen un ángulo de aproximadamente 90 grados.",
+        "Empuja hacia arriba hasta la posición inicial, extendiendo los brazos y contrayendo los tríceps."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["triceps_braquial", "deltoides_anterior", "pectoral_inferior_secundario"],
+      "equipamiento_necesario": ["barras_paralelas"],
+      "nivel_dificultad": "avanzado",
+      "media": {
+        "imagen_url": "url_imagen_fondos_paralelas_triceps.jpg",
+        "video_url": "url_video_fondos_paralelas_triceps.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 75
+      },
+      "tags_busqueda": ["triceps", "dips", "fondos_paralelas", "peso_corporal", "brazos"],
+      "advertencias": "Requiere buena fuerza y estabilidad en hombros. No bajar en exceso si hay molestias."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_08",
+      "nombre": "Extensión de Tríceps en Polea Alta por Encima de la Cabeza con Cuerda",
+      "descripcion": "Similar a la extensión con mancuerna, pero con la tensión constante de la polea, enfocado en la cabeza larga.",
+      "instrucciones": [
+        "Colócate de espaldas a una polea alta con un agarre de cuerda.",
+        "Sujeta la cuerda con ambas manos y llévala por encima de tu cabeza, codos flexionados y apuntando hacia arriba.",
+        "Extiende los brazos completamente hacia arriba y ligeramente adelante, contrayendo los tríceps.",
+        "Baja lentamente la cuerda por detrás de la cabeza, manteniendo los codos relativamente fijos."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["triceps_braquial_cabeza_larga", "triceps_braquial_cabeza_medial"],
+      "equipamiento_necesario": ["maquina_poleas", "cuerda_triceps"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_extension_overhead_polea.jpg",
+        "video_url": "url_video_extension_overhead_polea.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 15,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["triceps", "extension_overhead_polea", "cabeza_larga_triceps", "cable_extension", "brazos"],
+      "advertencias": "Mantener los codos estables y no permitir que se abran excesivamente. Controlar el movimiento."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_09",
+      "nombre": "Flexiones Diamante (Diamond Push-ups)",
+      "descripcion": "Variación de flexión de brazos que pone un gran énfasis en los tríceps debido a la posición cerrada de las manos.",
+      "instrucciones": [
+        "Colócate en posición de flexión, pero con las manos juntas bajo el pecho, formando un diamante con los dedos índices y pulgares.",
+        "Mantén el cuerpo recto desde la cabeza hasta los talones.",
+        "Baja el cuerpo flexionando los codos, manteniéndolos cerca del cuerpo, hasta que el pecho casi toque las manos.",
+        "Empuja hacia arriba extendiendo los brazos para volver a la posición inicial, contrayendo los tríceps."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "compuesto",
+      "grupos_musculares": ["triceps_braquial", "pectoral_mayor_interno", "deltoides_anterior", "core"],
+      "equipamiento_necesario": ["ninguno"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_flexiones_diamante.jpg",
+        "video_url": "url_video_flexiones_diamante.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "repeticiones": 10,
+        "series": 3,
+        "descanso_entre_series_segundos": 60
+      },
+      "tags_busqueda": ["triceps", "flexiones_diamante", "diamond_pushups", "peso_corporal", "calistenia"],
+      "advertencias": "Puede ser intenso para las muñecas y codos. Asegurar una buena forma o empezar con las rodillas apoyadas."
+    },
+    {
+      "id_ejercicio": "uuid_tricep_10",
+      "nombre": "Extensión de Tríceps Unilateral en Polea (Agarre Inverso)",
+      "descripcion": "Aísla el tríceps de forma unilateral, permitiendo enfocarse en la contracción y corregir desequilibrios. El agarre inverso puede enfocar la cabeza medial.",
+      "instrucciones": [
+        "Colócate de pie junto a una polea alta con un agarre individual (estribo).",
+        "Sujeta el agarre con una mano, palma hacia arriba (agarre supino o inverso). Mantén el codo pegado al costado.",
+        "Extiende el brazo hacia abajo hasta la extensión completa, contrayendo el tríceps.",
+        "Regresa lentamente el agarre a la posición inicial, controlando la tensión. Completa las repeticiones y cambia de brazo."
+      ],
+      "tipo_ejercicio": "fuerza",
+      "modalidad": "aislamiento",
+      "grupos_musculares": ["triceps_braquial_cabeza_medial", "triceps_braquial_cabeza_lateral"],
+      "equipamiento_necesario": ["maquina_poleas", "agarre_estribo_individual"],
+      "nivel_dificultad": "intermedio",
+      "media": {
+        "imagen_url": "url_imagen_extension_unilateral_inverso.jpg",
+        "video_url": "url_video_extension_unilateral_inverso.mp4"
+      },
+      "metricas_configurables": [
+        { "metrica": "peso", "unidad": "kg", "tipo_input": "decimal" },
+        { "metrica": "repeticiones", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "series", "unidad": null, "tipo_input": "entero" },
+        { "metrica": "descanso_entre_series_segundos", "unidad": "segundos", "tipo_input": "entero"},
+        { "metrica": "duracion", "unidad": "segundos", "tipo_input": "tiempo" },
+        { "metrica": "distancia", "unidad": "km", "tipo_input": "decimal" }
+      ],
+      "valores_ejemplo": {
+        "peso_kg": 10,
+        "repeticiones": 12,
+        "series": 3,
+        "descanso_entre_series_segundos": 45
+      },
+      "tags_busqueda": ["triceps", "extension_polea_unilateral", "agarre_inverso", "aislamiento", "brazos"],
+      "advertencias": "Mantener el codo fijo y evitar usar el impulso del cuerpo. Concentrarse en la contracción del tríceps."
+    }
+  ]

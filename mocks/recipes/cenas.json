@@ -1,0 +1,232 @@
+[
+  {
+    "titulo": "Salmón al Papillote con Verduras y Limón",
+    "ingrediente_principal": "Salmón",
+    "preparacion": "1. Precalentar el horno a 200°C. 2. Cortar un trozo grande de papel de aluminio o papel de horno (suficiente para envolver el pescado y las verduras). 3. Lavar y cortar el calabacín y la zanahoria en juliana fina (tiras delgadas). Picar finamente el ajo. 4. Colocar las verduras en el centro del papel, formando una cama. 5. Poner el filete de salmón encima de las verduras. 6. Sazonar con sal, pimienta, eneldo y unas gotas de aceite de oliva. Colocar las rodajas de limón encima. 7. Cerrar el papillote, doblando y sellando bien los bordes para que no se escape el vapor durante la cocción. 8. Hornear durante 15-18 minutos (dependiendo del grosor del filete). 9. Servir directamente en el papillote, abriéndolo con cuidado (¡atención al vapor caliente!).",
+    "ingredientes": [
+      {
+        "item": "Filete de salmón (sin piel)",
+        "cantidad": "120-150g"
+      },
+      {
+        "item": "Calabacín",
+        "cantidad": "1/2 pequeño"
+      },
+      {
+        "item": "Zanahoria",
+        "cantidad": "1 pequeña"
+      },
+      {
+        "item": "Ajo",
+        "cantidad": "1 diente pequeño"
+      },
+      {
+        "item": "Limón",
+        "cantidad": "2-3 rodajas finas"
+      },
+      {
+        "item": "Eneldo fresco (o seco)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "250-300 kcal",
+    "tiempo_preparacion": "30 min",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Revuelto de Tofu con Espinacas y Champiñones",
+    "ingrediente_principal": "Tofu",
+    "preparacion": "1. Escurrir bien el tofu firme, envolviéndolo en papel absorbente y colocando un peso encima durante unos 15-20 minutos para eliminar el exceso de agua. 2. Desmenuzar el tofu con las manos o un tenedor hasta obtener una textura similar a los huevos revueltos. 3. Lavar y picar las espinacas. Limpiar y cortar los champiñones en láminas. 4. En una sartén antiadherente, calentar el aceite de oliva a fuego medio. Añadir los champiñones y cocinar durante 3-4 minutos hasta que empiecen a dorarse. 5. Incorporar las espinacas y cocinar hasta que se marchiten (1-2 minutos). 6. Añadir el tofu desmenuzado, la cúrcuma (que dará un color amarillento similar al huevo), el ajo en polvo, la sal, la pimienta y las hojuelas de levadura nutricional (opcional, pero aporta un sabor más intenso). 7. Cocinar todo junto durante 3-4 minutos más, removiendo frecuentemente. 8. Servir caliente, espolvoreado con cebollino picado si se desea.",
+    "ingredientes": [
+      {
+        "item": "Tofu firme",
+        "cantidad": "150g"
+      },
+      {
+        "item": "Espinacas frescas",
+        "cantidad": "Un puñado grande (50g aprox.)"
+      },
+      {
+        "item": "Champiñones",
+        "cantidad": "4-5 unidades medianas"
+      },
+      {
+        "item": "Cúrcuma en polvo",
+        "cantidad": "1/4 cucharadita"
+      },
+      {
+        "item": "Ajo en polvo",
+        "cantidad": "1/4 cucharadita"
+      },
+      {
+        "item": "Levadura nutricional en hojuelas (opcional)",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Cebollino fresco picado (opcional)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "200-250 kcal",
+    "tiempo_preparacion": "25 min",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Ensalada Tibia de Lentejas con Verduras Asadas y Queso Feta",
+    "ingrediente_principal": "Lentejas",
+    "preparacion": "1. Enjuagar las lentejas y cocerlas según las instrucciones del paquete (generalmente 20-25 minutos en agua con sal). Escurrir y reservar. 2. Precalentar el horno a 200°C. 3. Lavar y cortar el pimiento rojo, la berenjena y la cebolla roja en dados medianos. 4. Colocar las verduras en una bandeja de horno, rociar con aceite de oliva, añadir el tomillo, sal y pimienta. Mezclar bien. 5. Asar en el horno durante 20-25 minutos, removiendo a mitad de cocción, hasta que estén tiernas y ligeramente doradas. 6. En un bol grande, mezclar las lentejas cocidas con las verduras asadas. 7. Preparar el aliño mezclando el aceite de oliva, el vinagre balsámico, la mostaza, la miel, sal y pimienta. 8. Añadir el aliño a la ensalada y mezclar suavemente. 9. Desmenuzar el queso feta por encima y decorar con las hojas de rúcula. Servir tibio.",
+    "ingredientes": [
+      {
+        "item": "Lentejas (preferiblemente variedad pequeña, tipo pardina o beluga)",
+        "cantidad": "60g en crudo (equivale a unos 150g cocidas)"
+      },
+      {
+        "item": "Pimiento rojo",
+        "cantidad": "1/2 unidad"
+      },
+      {
+        "item": "Berenjena",
+        "cantidad": "1/4 unidad"
+      },
+      {
+        "item": "Cebolla roja",
+        "cantidad": "1/4 unidad"
+      },
+      {
+        "item": "Queso feta light",
+        "cantidad": "30g"
+      },
+      {
+        "item": "Rúcula",
+        "cantidad": "Un puñado pequeño"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharada (para asar) + 1 cucharadita (para el aliño)"
+      },
+      {
+        "item": "Vinagre balsámico",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Mostaza de Dijon",
+        "cantidad": "1/2 cucharadita"
+      },
+      {
+        "item": "Miel",
+        "cantidad": "1/4 cucharadita"
+      },
+      {
+        "item": "Tomillo fresco (o seco)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "350-400 kcal",
+    "tiempo_preparacion": "45 min",
+    "dificultad": "Medio"
+  },
+  {
+    "titulo": "Rollitos de Pavo y Aguacate con Salsa de Yogur",
+    "ingrediente_principal": "Pechuga de Pavo",
+    "preparacion": "1. Preparar la salsa mezclando el yogur griego con el zumo de limón, el ajo picado finamente, la menta picada, sal y pimienta. Reservar en la nevera. 2. Lavar y secar las hojas de lechuga. 3. Cortar el aguacate por la mitad, quitar el hueso, pelar y cortar en láminas finas. 4. Extender las lonchas de pavo y colocar en cada una: una hoja de lechuga, unas láminas de aguacate y unas tiras de pimiento rojo. 5. Enrollar cada loncha formando un rollito y asegurar con un palillo si es necesario. 6. Servir los rollitos acompañados de la salsa de yogur para mojar.",
+    "ingredientes": [
+      {
+        "item": "Lonchas finas de pechuga de pavo cocido (bajo en sal)",
+        "cantidad": "4-5 lonchas (80-100g)"
+      },
+      {
+        "item": "Aguacate",
+        "cantidad": "1/2 unidad"
+      },
+      {
+        "item": "Pimiento rojo",
+        "cantidad": "1/4 unidad, cortado en tiras finas"
+      },
+      {
+        "item": "Lechuga (variedad suave como romana o hoja de roble)",
+        "cantidad": "4-5 hojas"
+      },
+      {
+        "item": "Yogur griego natural 0% o 2%",
+        "cantidad": "3 cucharadas (60g)"
+      },
+      {
+        "item": "Zumo de limón",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Ajo",
+        "cantidad": "1/2 diente pequeño"
+      },
+      {
+        "item": "Menta fresca picada",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "250-300 kcal",
+    "tiempo_preparacion": "15 min",
+    "dificultad": "Muy Fácil"
+  },
+  {
+    "titulo": "Crema Fría de Pepino y Yogur con Menta (Tzatziki Ligero)",
+    "ingrediente_principal": "Pepino y Yogur",
+    "preparacion": "1. Pelar el pepino, cortarlo por la mitad a lo largo y retirar las semillas con una cucharilla. Rallar o picar muy finamente la pulpa. 2. Colocar el pepino rallado en un colador, añadir una pizca de sal y dejar escurrir durante 10-15 minutos para eliminar el exceso de agua. Luego, presionar suavemente con las manos o con papel absorbente. 3. En un bol, mezclar el yogur griego con el ajo picado muy finamente, el aceite de oliva, el vinagre o zumo de limón, y la menta picada. 4. Incorporar el pepino escurrido y mezclar bien. 5. Sazonar con sal y pimienta al gusto. 6. Refrigerar durante al menos 30 minutos antes de servir para que los sabores se integren. 7. Servir frío, decorado con unas hojas de menta fresca y, opcionalmente, un chorrito de aceite de oliva.",
+    "ingredientes": [
+      {
+        "item": "Pepino",
+        "cantidad": "1 mediano"
+      },
+      {
+        "item": "Yogur griego natural 0% o 2%",
+        "cantidad": "200g (1 envase individual)"
+      },
+      {
+        "item": "Ajo",
+        "cantidad": "1 diente pequeño"
+      },
+      {
+        "item": "Menta fresca",
+        "cantidad": "1 cucharada picada + unas hojas para decorar"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Vinagre de vino blanco o zumo de limón",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "150-180 kcal",
+    "tiempo_preparacion": "20 min (+ tiempo de reposo)",
+    "dificultad": "Fácil"
+  }
+]

@@ -1,0 +1,204 @@
+[
+  {
+    "titulo": "Tostadas de Aguacate y Huevo Duro",
+    "ingrediente_principal": "Aguacate",
+    "preparacion": "1. Cocer el huevo durante 8-10 minutos (para que quede duro). Enfriarlo bajo agua fría, pelarlo y cortarlo en rodajas. 2. Tostar el pan de centeno. 3. Cortar el aguacate por la mitad, quitar el hueso y extraer la pulpa con una cuchara. 4. Machacar el aguacate con un tenedor y añadir el zumo de limón, una pizca de sal y pimienta. 5. Untar el aguacate machacado sobre las tostadas. 6. Colocar las rodajas de huevo duro encima. 7. Espolvorear con semillas de sésamo y, si se desea, añadir unas hojitas de cilantro o perejil fresco.",
+    "ingredientes": [
+      {
+        "item": "Pan de centeno integral",
+        "cantidad": "2 rebanadas pequeñas (60g)"
+      },
+      {
+        "item": "Aguacate maduro",
+        "cantidad": "1/2 unidad"
+      },
+      {
+        "item": "Huevo",
+        "cantidad": "1 unidad"
+      },
+      {
+        "item": "Zumo de limón",
+        "cantidad": "Unas gotas"
+      },
+      {
+        "item": "Semillas de sésamo",
+        "cantidad": "1 cucharadita"
+      },
+      {
+        "item": "Cilantro o perejil fresco (opcional)",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "300-350 kcal",
+    "tiempo_preparacion": "15 min",
+    "dificultad": "Muy Fácil"
+  },
+  {
+    "titulo": "Batido Proteico de Frutos Rojos y Plátano",
+    "ingrediente_principal": "Frutos Rojos",
+    "preparacion": "1. Lavar los frutos rojos si son frescos. Si son congelados, usarlos directamente. 2. Pelar y cortar el plátano en trozos. 3. En el vaso de la batidora, añadir los frutos rojos, el plátano, el yogur griego, la proteína en polvo y la leche o bebida vegetal. 4. Batir todo hasta obtener una mezcla suave y homogénea. Si está muy espeso, añadir un poco más de líquido. 5. Servir inmediatamente.",
+    "ingredientes": [
+      {
+        "item": "Frutos rojos (frescos o congelados)",
+        "cantidad": "100g (1 taza aprox.)"
+      },
+      {
+        "item": "Plátano",
+        "cantidad": "1/2 unidad mediana"
+      },
+      {
+        "item": "Yogur griego natural 0% o 2%",
+        "cantidad": "100g (1/2 envase individual)"
+      },
+      {
+        "item": "Proteína en polvo (whey o vegetal)",
+        "cantidad": "1 cucharada (15-20g)"
+      },
+      {
+        "item": "Leche desnatada o bebida vegetal sin azúcar",
+        "cantidad": "100ml (1/2 taza aprox.)"
+      }
+    ],
+    "calorias": "250-300 kcal",
+    "tiempo_preparacion": "5 min",
+    "dificultad": "Muy Fácil"
+  },
+  {
+    "titulo": "Hummus de Remolacha con Palitos de Verduras",
+    "ingrediente_principal": "Garbanzos y Remolacha",
+    "preparacion": "1. Escurrir y enjuagar los garbanzos cocidos. 2. Pelar y cortar la remolacha cocida en trozos. 3. En un procesador de alimentos, añadir los garbanzos, la remolacha, el ajo, el zumo de limón, el tahini, el comino, la sal y la pimienta. 4. Procesar hasta obtener una mezcla suave, añadiendo un poco de agua si es necesario para ajustar la consistencia. 5. Mientras se procesa, añadir el aceite de oliva en un hilo fino. 6. Probar y ajustar los condimentos si es necesario. 7. Servir en un bol, decorado con un chorrito de aceite de oliva y, si se desea, unas semillas de sésamo o hierbas frescas picadas. 8. Acompañar con palitos de zanahoria, pepino, pimiento y apio.",
+    "ingredientes": [
+      {
+        "item": "Garbanzos cocidos",
+        "cantidad": "200g (1/2 lata)"
+      },
+      {
+        "item": "Remolacha cocida",
+        "cantidad": "1 pequeña (100g aprox.)"
+      },
+      {
+        "item": "Ajo",
+        "cantidad": "1 diente pequeño"
+      },
+      {
+        "item": "Zumo de limón",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Tahini (pasta de sésamo)",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Comino molido",
+        "cantidad": "1/4 cucharadita"
+      },
+      {
+        "item": "Aceite de oliva virgen extra",
+        "cantidad": "1 cucharada"
+      },
+      {
+        "item": "Sal y pimienta",
+        "cantidad": "Al gusto"
+      },
+      {
+        "item": "Verduras para acompañar (zanahoria, pepino, pimiento, apio)",
+        "cantidad": "1 de cada, cortadas en palitos"
+      }
+    ],
+    "calorias": "200-250 kcal (solo el hummus, sin contar las verduras)",
+    "tiempo_preparacion": "15 min",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Yogur con Granola Casera y Frutas",
+    "ingrediente_principal": "Yogur",
+    "preparacion": "1. Para la granola casera: Precalentar el horno a 160°C. Mezclar los copos de avena, las almendras fileteadas, las semillas de girasol y las semillas de chía. Añadir la canela, el aceite de coco derretido y la miel o sirope de arce. Mezclar bien para que todo quede impregnado. Extender sobre una bandeja de horno forrada con papel y hornear durante 15-20 minutos, removiendo a mitad de cocción, hasta que esté dorada. Dejar enfriar completamente. 2. Lavar y cortar las frutas en trozos pequeños. 3. En un bol o vaso, poner el yogur griego como base. 4. Añadir la fruta cortada encima. 5. Espolvorear con la granola casera. 6. Si se desea, añadir un chorrito de miel o sirope de arce.",
+    "ingredientes": [
+      {
+        "item": "Yogur griego natural 0% o 2%",
+        "cantidad": "200g (1 envase individual)"
+      },
+      {
+        "item": "Copos de avena integral",
+        "cantidad": "3 cucharadas (30g)"
+      },
+      {
+        "item": "Almendras fileteadas",
+        "cantidad": "1 cucharada (10g)"
+      },
+      {
+        "item": "Semillas de girasol",
+        "cantidad": "1 cucharadita (5g)"
+      },
+      {
+        "item": "Semillas de chía",
+        "cantidad": "1 cucharadita (5g)"
+      },
+      {
+        "item": "Canela en polvo",
+        "cantidad": "Una pizca"
+      },
+      {
+        "item": "Aceite de coco",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Miel o sirope de arce",
+        "cantidad": "1 cucharadita (5ml)"
+      },
+      {
+        "item": "Frutas variadas (fresas, arándanos, plátano, etc.)",
+        "cantidad": "100g en total"
+      }
+    ],
+    "calorias": "350-400 kcal",
+    "tiempo_preparacion": "25 min (incluyendo la preparación de la granola)",
+    "dificultad": "Fácil"
+  },
+  {
+    "titulo": "Tortitas de Avena y Plátano (Sin Harina)",
+    "ingrediente_principal": "Avena y Plátano",
+    "preparacion": "1. En un bol, machacar el plátano maduro con un tenedor hasta obtener un puré. 2. Añadir los huevos y batir bien. 3. Incorporar los copos de avena, la canela y una pizca de sal. Mezclar hasta obtener una masa homogénea. 4. Dejar reposar la masa durante 5 minutos para que la avena absorba parte del líquido. 5. Calentar una sartén antiadherente a fuego medio con unas gotas de aceite de coco. 6. Verter pequeñas porciones de masa (aproximadamente 2 cucharadas por tortita) en la sartén caliente. 7. Cocinar durante 2-3 minutos por cada lado, o hasta que estén doradas. 8. Servir calientes, acompañadas de yogur griego y frutas frescas.",
+    "ingredientes": [
+      {
+        "item": "Plátano maduro",
+        "cantidad": "1 unidad mediana"
+      },
+      {
+        "item": "Huevos",
+        "cantidad": "2 unidades"
+      },
+      {
+        "item": "Copos de avena integral",
+        "cantidad": "50g (1/2 taza aprox.)"
+      },
+      {
+        "item": "Canela en polvo",
+        "cantidad": "1/4 cucharadita"
+      },
+      {
+        "item": "Aceite de coco",
+        "cantidad": "Unas gotas"
+      },
+      {
+        "item": "Sal",
+        "cantidad": "Una pizca"
+      },
+      {
+        "item": "Yogur griego natural (para acompañar)",
+        "cantidad": "2 cucharadas (40g)"
+      },
+      {
+        "item": "Frutas frescas (para acompañar)",
+        "cantidad": "Al gusto"
+      }
+    ],
+    "calorias": "300-350 kcal (solo las tortitas, sin contar el yogur y las frutas)",
+    "tiempo_preparacion": "20 min",
+    "dificultad": "Fácil"
+  }
+]
