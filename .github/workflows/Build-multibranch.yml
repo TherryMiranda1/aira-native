@@ -58,6 +58,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Crear archivo .env
+        env:
+          EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+        run: |
+          echo "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=${EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}" >> .env
+
       - name: Setup Expo
         uses: expo/expo-github-action@v7
         with:
