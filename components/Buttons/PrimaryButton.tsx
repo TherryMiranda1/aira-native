@@ -1,15 +1,15 @@
 import React, { JSX } from "react";
-import { Colors } from "@/constants/Colors";
+import { AiraColors } from "@/constants/Colors";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useThemesContext } from "@/context/ThemeContext";
 import { PressableButton } from "./PressableButton";
 import { ICON_SIZES } from "@/constants/Icons";
 import { router } from "expo-router";
 import { StyleProp, ViewStyle } from "react-native";
 import { ThemedText } from "../ThemedText";
+import { AiraVariants } from "@/constants/Themes";
 
 interface Props {
   link?: string;
@@ -48,16 +48,14 @@ export const PrimaryButton: React.FC<Props> = ({
   style,
   iconSize = ICON_SIZES.MEDIUM,
 }) => {
-  const { theme, variants } = useThemesContext();
   const Component = IconComponents[iconComponent];
 
   return (
     <PressableButton
       style={[
-        variants.tag,
         {
-          borderColor: Colors[theme].border,
-          backgroundColor: Colors[theme].tabIconSelected,
+          backgroundColor: AiraColors.primary,
+          borderRadius: AiraVariants.cardRadius,
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
@@ -75,9 +73,20 @@ export const PrimaryButton: React.FC<Props> = ({
       }}
     >
       {children}
-      {text && <ThemedText type="defaultSemiBold">{text}</ThemedText>}
+      {text && (
+        <ThemedText
+          type="defaultSemiBold"
+          style={{ color: AiraColors.background }}
+        >
+          {text}
+        </ThemedText>
+      )}
       {icon && (
-        <Component name={icon} size={iconSize} color={Colors[theme].icon} />
+        <Component
+          name={icon}
+          size={iconSize}
+          color={AiraColors.mutedForeground}
+        />
       )}
     </PressableButton>
   );

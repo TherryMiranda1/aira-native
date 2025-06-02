@@ -19,6 +19,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PageView } from "@/components/ui/PageView";
+import * as AuthSession from "expo-auth-session";
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -60,6 +61,10 @@ export default function SignUpScreen() {
       await signUp.create({
         emailAddress,
         password,
+        redirectUrl: AuthSession.makeRedirectUri({
+          scheme: "aira-native",
+          path: "/",
+        }),
       });
 
       // Send user an email with verification code
@@ -103,7 +108,7 @@ export default function SignUpScreen() {
       // and redirect the user
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
-        router.replace("/");
+        router.push("/");
       } else {
         // If the status is not complete, check why. User may need to
         // complete further steps.

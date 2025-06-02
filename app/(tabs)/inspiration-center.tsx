@@ -1,8 +1,14 @@
-import React, { useState } from "react";
-import { View, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
+import React, { useState, useRef, useMemo } from "react";
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  ScrollView,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useCategoryScroll } from "@/hooks/useCategoryScroll";
+import PagerView from "react-native-pager-view";
 
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
@@ -39,6 +45,30 @@ interface Category {
 export default function InspirationCenterScreen() {
   const [selectedCategory, setSelectedCategory] = useState<string>("frases");
   const [currentQuote, setCurrentQuote] = useState(0);
+  const pagerRef = useRef<PagerView>(null);
+
+  // No necesitamos mantener un estado separado para la página actual
+  // ya que podemos derivarlo del selectedCategory
+
+  // Categorías
+  const categories: Category[] = useMemo(
+    () => [
+      { id: "frases", label: "Inspiración", icon: "heart-outline" },
+      { id: "retos", label: "Mini Retos", icon: "star-outline" },
+      { id: "rituales", label: "Rituales", icon: "sparkles-outline" },
+    ],
+    []
+  );
+
+  const currentIndex = useMemo(
+    () => categories.findIndex((cat) => cat.id === selectedCategory),
+    [selectedCategory, categories]
+  );
+
+  // Utilizamos el hook personalizado para manejar el scroll de categorías
+  const categoryScrollHook = useCategoryScroll(categories, currentIndex, {
+    itemVisiblePercentThreshold: 70,
+  });
 
   // Frases inspiradoras
   const inspirationalQuotes: Quote[] = [
@@ -130,12 +160,23 @@ export default function InspirationCenterScreen() {
     },
   ];
 
-  // Categorías
-  const categories: Category[] = [
-    { id: "frases", label: "Frases Amorosas", icon: "heart-outline" },
-    { id: "retos", label: "Mini Retos", icon: "star-outline" },
-    { id: "rituales", label: "Rituales Suaves", icon: "sparkles-outline" },
-  ];
+  // Función para cambiar de categoría
+  const handleCategoryChange = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    // Obtener el índice de la categoría seleccionada
+    const categoryIndex = categories.findIndex((cat) => cat.id === categoryId);
+    if (categoryIndex !== -1) {
+      pagerRef.current?.setPage(categoryIndex);
+    }
+  };
+
+  // Función para manejar el cambio de página en el PagerView
+  const handlePageChange = (e: { nativeEvent: { position: number } }) => {
+    const newIndex = e.nativeEvent.position;
+    if (categories[newIndex]) {
+      setSelectedCategory(categories[newIndex].id);
+    }
+  };
 
   // Función para avanzar a la siguiente frase
   const nextQuote = () => {
@@ -145,29 +186,29 @@ export default function InspirationCenterScreen() {
   return (
     <PageView>
       {/* Topbar */}
-      <Topbar title="Centro de Inspiración ✨" actions={<ProfileButton />} />
+      <Topbar title="Inspiración ✨" actions={<ProfileButton />} />
 
       {/* Selector de categorías */}
       <View style={styles.categoriesContainer}>
-        <ScrollView
+        <FlatList
+          ref={categoryScrollHook.categoriesListRef}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.categoriesContent}
-        >
-          {categories.map((category) => (
+          data={categories}
+          renderItem={({ item }) => (
             <TouchableOpacity
-              key={category.id}
+              key={item.id}
               style={[
                 styles.categoryButton,
-                selectedCategory === category.id && styles.categoryButtonActive,
+                selectedCategory === item.id && styles.categoryButtonActive,
               ]}
-              onPress={() => setSelectedCategory(category.id)}
+              onPress={() => handleCategoryChange(item.id)}
             >
               <Ionicons
-                name={category.icon}
+                name={item.icon}
                 size={18}
                 color={
-                  selectedCategory === category.id
+                  selectedCategory === item.id
                     ? AiraColors.background
                     : AiraColors.foreground
                 }
@@ -176,153 +217,207 @@ export default function InspirationCenterScreen() {
               <ThemedText
                 style={[
                   styles.categoryText,
-                  selectedCategory === category.id && styles.categoryTextActive,
+                  selectedCategory === item.id && styles.categoryTextActive,
                 ]}
               >
-                {category.label}
+                {item.label}
               </ThemedText>
             </TouchableOpacity>
-          ))}
-        </ScrollView>
+          )}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.categoriesContent}
+          onScrollToIndexFailed={categoryScrollHook.handleScrollToIndexFailed}
+          getItemLayout={(data, index) => ({
+            length: 120, // Aproximado del ancho del botón de categoría + margen
+            offset: 120 * index,
+            index,
+          })}
+        />
       </View>
 
       {/* Contenido según la categoría seleccionada */}
-      <ScrollView
-        style={styles.contentContainer}
-        contentContainerStyle={styles.contentInner}
-        showsVerticalScrollIndicator={false}
+      <PagerView
+        ref={pagerRef}
+        style={styles.pagerView}
+        initialPage={0}
+        onPageSelected={handlePageChange}
       >
-        {/* Frases Inspiradoras */}
-        {selectedCategory === "frases" && (
-          <View style={styles.quotesContainer}>
-            <View style={styles.quoteCard}>
-              <View style={styles.quoteIconContainer}>
-                <Ionicons
-                  name="heart"
-                  size={28}
-                  color={AiraColors.primary}
-                  style={styles.pulseIcon}
-                />
+        {/* Página 1: Frases Inspiradoras */}
+        <View key="frases" style={styles.pageContainer}>
+          <ScrollView
+            style={styles.contentContainer}
+            contentContainerStyle={styles.contentInner}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.quotesContainer}>
+              <View style={styles.quoteCard}>
+                <View style={styles.quoteIconContainer}>
+                  <Ionicons
+                    name="heart"
+                    size={28}
+                    color={AiraColors.primary}
+                    style={styles.pulseIcon}
+                  />
+                </View>
+                <ThemedText style={styles.quoteText}>
+                  &ldquo;{inspirationalQuotes[currentQuote].text}&rdquo;
+                </ThemedText>
+                <ThemedText style={styles.quoteAuthor}>
+                  — {inspirationalQuotes[currentQuote].author}
+                </ThemedText>
+                <TouchableOpacity
+                  style={styles.nextQuoteButton}
+                  onPress={nextQuote}
+                >
+                  <Ionicons
+                    name="sparkles-outline"
+                    size={16}
+                    color={AiraColors.background}
+                    style={styles.nextQuoteIcon}
+                  />
+                  <ThemedText style={styles.nextQuoteText}>
+                    Otra frase
+                  </ThemedText>
+                </TouchableOpacity>
               </View>
-              <ThemedText style={styles.quoteText}>
-                &ldquo;{inspirationalQuotes[currentQuote].text}&rdquo;
-              </ThemedText>
-              <ThemedText style={styles.quoteAuthor}>
-                — {inspirationalQuotes[currentQuote].author}
-              </ThemedText>
-              <TouchableOpacity
-                style={styles.nextQuoteButton}
-                onPress={nextQuote}
-              >
-                <Ionicons
-                  name="sparkles-outline"
-                  size={16}
-                  color={AiraColors.background}
-                  style={styles.nextQuoteIcon}
-                />
-                <ThemedText style={styles.nextQuoteText}>Otra frase</ThemedText>
-              </TouchableOpacity>
             </View>
-          </View>
-        )}
 
-        {/* Mini Retos */}
-        {selectedCategory === "retos" && (
-          <View style={styles.challengesContainer}>
-            {miniChallenges.map((challenge, index) => (
-              <View key={index} style={styles.challengeCard}>
-                <View style={styles.challengeHeader}>
-                  <View style={styles.challengeIconContainer}>
-                    <Ionicons
-                      name={challenge.icon}
-                      size={20}
-                      color={AiraColors.primary}
-                    />
+            {/* Recordatorio suave */}
+            <View style={styles.reminderCard}>
+              <ThemedText style={styles.reminderText}>
+                🌸 La inspiración no tiene que ser perfecta para ser poderosa.
+                {"\n"}
+                Elige lo que resuene contigo hoy.
+              </ThemedText>
+            </View>
+          </ScrollView>
+        </View>
+
+        {/* Página 2: Mini Retos */}
+        <View key="retos" style={styles.pageContainer}>
+          <ScrollView
+            style={styles.contentContainer}
+            contentContainerStyle={styles.contentInner}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.challengesContainer}>
+              {miniChallenges.map((challenge, index) => (
+                <View key={index} style={styles.challengeCard}>
+                  <View style={styles.challengeHeader}>
+                    <View style={styles.challengeIconContainer}>
+                      <Ionicons
+                        name={challenge.icon}
+                        size={20}
+                        color={AiraColors.primary}
+                      />
+                    </View>
+                    <View style={styles.challengeTitleContainer}>
+                      <ThemedText style={styles.challengeTitle}>
+                        {challenge.title}
+                      </ThemedText>
+                      <View style={styles.durationBadge}>
+                        <ThemedText style={styles.durationText}>
+                          {challenge.duration}
+                        </ThemedText>
+                      </View>
+                    </View>
                   </View>
-                  <View style={styles.challengeTitleContainer}>
-                    <ThemedText style={styles.challengeTitle}>
-                      {challenge.title}
+                  <ThemedText style={styles.challengeDescription}>
+                    {challenge.description}
+                  </ThemedText>
+                  <TouchableOpacity style={styles.tryButton}>
+                    <ThemedText style={styles.tryButtonText}>
+                      ¡Me apetece probarlo! ✨
                     </ThemedText>
-                    <View style={styles.durationBadge}>
-                      <ThemedText style={styles.durationText}>
-                        {challenge.duration}
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </View>
+
+            {/* Recordatorio suave */}
+            <View style={styles.reminderCard}>
+              <ThemedText style={styles.reminderText}>
+                🌸 La inspiración no tiene que ser perfecta para ser poderosa.
+                {"\n"}
+                Elige lo que resuene contigo hoy.
+              </ThemedText>
+            </View>
+          </ScrollView>
+        </View>
+
+        {/* Página 3: Rituales */}
+        <View key="rituales" style={styles.pageContainer}>
+          <ScrollView
+            style={styles.contentContainer}
+            contentContainerStyle={styles.contentInner}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.ritualsContainer}>
+              {rituals.map((ritual, index) => (
+                <View key={index} style={styles.ritualCard}>
+                  <View style={styles.ritualHeader}>
+                    <ThemedText style={styles.ritualTitle}>
+                      {ritual.title}
+                    </ThemedText>
+                    <View style={styles.timeBadge}>
+                      <ThemedText style={styles.timeText}>
+                        {ritual.time}
                       </ThemedText>
                     </View>
                   </View>
-                </View>
-                <ThemedText style={styles.challengeDescription}>
-                  {challenge.description}
-                </ThemedText>
-                <TouchableOpacity style={styles.tryButton}>
-                  <ThemedText style={styles.tryButtonText}>
-                    ¡Me apetece probarlo! ✨
-                  </ThemedText>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </View>
-        )}
+                  <ThemedText style={styles.moodText}>{ritual.mood}</ThemedText>
 
-        {/* Rituales */}
-        {selectedCategory === "rituales" && (
-          <View style={styles.ritualsContainer}>
-            {rituals.map((ritual, index) => (
-              <View key={index} style={styles.ritualCard}>
-                <View style={styles.ritualHeader}>
-                  <ThemedText style={styles.ritualTitle}>
-                    {ritual.title}
-                  </ThemedText>
-                  <View style={styles.timeBadge}>
-                    <ThemedText style={styles.timeText}>
-                      {ritual.time}
-                    </ThemedText>
-                  </View>
-                </View>
-                <ThemedText style={styles.moodText}>{ritual.mood}</ThemedText>
-
-                <View style={styles.stepsContainer}>
-                  {ritual.steps.map((step, stepIndex) => (
-                    <View key={stepIndex} style={styles.stepItem}>
-                      <View style={styles.stepNumber}>
-                        <ThemedText style={styles.stepNumberText}>
-                          {stepIndex + 1}
-                        </ThemedText>
+                  <View style={styles.stepsContainer}>
+                    {ritual.steps.map((step, stepIndex) => (
+                      <View key={stepIndex} style={styles.stepItem}>
+                        <View style={styles.stepNumber}>
+                          <ThemedText style={styles.stepNumberText}>
+                            {stepIndex + 1}
+                          </ThemedText>
+                        </View>
+                        <ThemedText style={styles.stepText}>{step}</ThemedText>
                       </View>
-                      <ThemedText style={styles.stepText}>{step}</ThemedText>
-                    </View>
-                  ))}
+                    ))}
+                  </View>
+
+                  <TouchableOpacity style={styles.startRitualButton}>
+                    <Ionicons
+                      name="heart-outline"
+                      size={16}
+                      color={AiraColors.background}
+                      style={styles.startRitualIcon}
+                    />
+                    <ThemedText style={styles.startRitualText}>
+                      Comenzar ritual
+                    </ThemedText>
+                  </TouchableOpacity>
                 </View>
+              ))}
+            </View>
 
-                <TouchableOpacity style={styles.startRitualButton}>
-                  <Ionicons
-                    name="heart-outline"
-                    size={16}
-                    color={AiraColors.background}
-                    style={styles.startRitualIcon}
-                  />
-                  <ThemedText style={styles.startRitualText}>
-                    Comenzar ritual
-                  </ThemedText>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </View>
-        )}
-
-        {/* Recordatorio suave */}
-        <View style={styles.reminderCard}>
-          <ThemedText style={styles.reminderText}>
-            🌸 La inspiración no tiene que ser perfecta para ser poderosa.
-            {"\n"}
-            Elige lo que resuene contigo hoy.
-          </ThemedText>
+            {/* Recordatorio suave */}
+            <View style={styles.reminderCard}>
+              <ThemedText style={styles.reminderText}>
+                🌸 La inspiración no tiene que ser perfecta para ser poderosa.
+                {"\n"}
+                Elige lo que resuene contigo hoy.
+              </ThemedText>
+            </View>
+          </ScrollView>
         </View>
-      </ScrollView>
+      </PagerView>
     </PageView>
   );
 }
 
 const styles = StyleSheet.create({
+  // PagerView styles
+  pagerView: {
+    flex: 1,
+  },
+  pageContainer: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: AiraColors.background,

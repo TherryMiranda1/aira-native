@@ -16,10 +16,9 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ionicons } from "@expo/vector-icons";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
 import GoogleAuthButton from "@/components/Buttons/GoogleAuthButton";
 import { PageView } from "@/components/ui/PageView";
+import * as AuthSession from "expo-auth-session";
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -54,6 +53,10 @@ export default function SignInScreen() {
       const signInAttempt = await signIn.create({
         identifier: emailAddress,
         password,
+        redirectUrl: AuthSession.makeRedirectUri({
+          scheme: "aira-native",
+          path: "/",
+        }),
       });
 
       // If sign-in process is complete, set the created session as active
@@ -122,7 +125,6 @@ export default function SignInScreen() {
               <ThemedText style={styles.errorText}>{error}</ThemedText>
             </View>
           ) : null}
-
 
           <View style={styles.formContainer}>
             <View style={styles.inputWrapper}>
@@ -217,6 +219,7 @@ const styles = StyleSheet.create({
   },
   keyboardAvoid: {
     flex: 1,
+    paddingBottom: 8,
   },
   scrollContent: {
     flexGrow: 1,

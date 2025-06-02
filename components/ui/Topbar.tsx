@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { ThemedText } from "../ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { StatusBar } from "expo-status-bar";
@@ -22,7 +22,7 @@ export const Topbar = ({
     <>
       <StatusBar style="auto" />
       <View style={styles.topbarContent}>
-        {showBackButton && (
+        {showBackButton ? (
           <TouchableOpacity onPress={() => router.back()}>
             <Ionicons
               name="arrow-back"
@@ -30,6 +30,11 @@ export const Topbar = ({
               color={AiraColors.foreground}
             />
           </TouchableOpacity>
+        ) : (
+          <Image
+            source={require("../../assets/images/aira-logo.png")}
+            style={styles.logo}
+          />
         )}
         <ThemedText style={styles.topbarTitle} type="title">
           {title}
@@ -57,5 +62,10 @@ const styles = StyleSheet.create({
   topbarActions: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 8,
+  },
+  logo: {
+    width: 40,
+    height: 40,
   },
 });

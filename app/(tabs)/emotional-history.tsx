@@ -65,7 +65,7 @@ export default function EmotionalHistoryScreen() {
 
   return (
     <PageView>
-      <Topbar title="Historial Emocional" actions={<ProfileButton />} />
+      <Topbar title="Historia" actions={<ProfileButton />} />
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}

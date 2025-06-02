@@ -242,13 +242,13 @@ export default function ChatScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   header: {
     paddingTop: 60,
     paddingHorizontal: 20,
     paddingBottom: 16,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   title: {
     marginBottom: 8,
