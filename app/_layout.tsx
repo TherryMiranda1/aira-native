@@ -8,6 +8,8 @@ import { Stack } from "expo-router";
 import { ClerkProvider } from "@clerk/clerk-expo";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
+import { NotesContainer } from "@/context/NotesContext";
+import { CategoriesContainer } from "@/context/CategoriesContext";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -30,16 +32,32 @@ export default function RootLayout() {
         "pk_test_dXByaWdodC1idXp6YXJkLTQ1LmNsZXJrLmFjY291bnRzLmRldiQ"
       }
     >
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="onboarding" options={{ headerShown: false }} />
-          <Stack.Screen name="recipe/[id]" options={{ headerShown: false }} />
-          <Stack.Screen name="exercise/[id]" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </ThemeProvider>
+      <NotesContainer>
+        <CategoriesContainer>
+          <ThemeProvider
+            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+          >
+            <Stack>
+              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="onboarding"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name="profile" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="recipe/[id]"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="exercise/[id]"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </ThemeProvider>
+        </CategoriesContainer>
+      </NotesContainer>
     </ClerkProvider>
   );
 }

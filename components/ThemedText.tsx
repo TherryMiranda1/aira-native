@@ -8,6 +8,7 @@ export type ThemedTextProps = TextProps & {
   darkColor?: string;
   type?:
     | "default"
+    | "small"
     | "title"
     | "defaultSemiBold"
     | "subtitle"
@@ -24,16 +25,12 @@ export function ThemedText({
 }: ThemedTextProps) {
   // const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
+  const typeStyle = styles[type] || styles.default;
   return (
     <Text
       style={[
         { color: AiraColors.foreground, fontFamily: "Montserrat" },
-        type === "default" ? styles.default : undefined,
-        type === "title" ? styles.title : undefined,
-        type === "defaultSemiBold" ? styles.defaultSemiBold : undefined,
-        type === "subtitle" ? styles.subtitle : undefined,
-        type === "link" ? styles.link : undefined,
-        type === "defaultItalic" ? styles.defaultItalic : undefined,
+        typeStyle,
         style,
       ]}
       {...rest}
@@ -42,6 +39,10 @@ export function ThemedText({
 }
 
 const styles = StyleSheet.create({
+  small: {
+    fontSize: 12,
+    lineHeight: 20,
+  },
   default: {
     fontSize: 16,
     lineHeight: 24,

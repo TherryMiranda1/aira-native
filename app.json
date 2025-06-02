@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "aira-native",
+    "name": "Aira",
     "slug": "aira-native",
     "version": "1.0.3",
     "orientation": "portrait",
-    "icon": "./assets/images/aira-logo.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "airanative",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,7 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/aira-logo.png",
+        "icon": "./assets/images/logo.png",
+        "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
@@ -22,14 +23,19 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/aira-logo.png"
+      "favicon": "./assets/images/logo.png"
+    },
+    "splash": {
+      "image": "./assets/images/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/aira-logo.png",
+          "image": "./assets/images/logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"

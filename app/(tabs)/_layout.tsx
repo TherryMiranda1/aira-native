@@ -4,14 +4,15 @@ import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
 import TabBarBackground from "@/components/ui/TabBarBackground";
-import { AiraColors } from "@/constants/Colors";
+import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/ui/TabBarIcon";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: AiraColors.primary,
+        tabBarActiveTintColor: AiraColors.foreground,
+        tabBarInactiveTintColor: AiraColorsWithAlpha.foregroundWithOpacity(0.4),
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -21,7 +22,7 @@ export default function TabLayout() {
             position: "absolute",
           },
           default: {
-            backgroundColor: AiraColors.background,
+            backgroundColor: AiraColors.card,
             borderTopWidth: 0,
           },
         }),
