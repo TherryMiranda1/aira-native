@@ -1,204 +1,734 @@
 [
-  {
-    "titulo": "Tostadas de Aguacate y Huevo Duro",
-    "ingrediente_principal": "Aguacate",
-    "preparacion": "1. Cocer el huevo durante 8-10 minutos (para que quede duro). Enfriarlo bajo agua fría, pelarlo y cortarlo en rodajas. 2. Tostar el pan de centeno. 3. Cortar el aguacate por la mitad, quitar el hueso y extraer la pulpa con una cuchara. 4. Machacar el aguacate con un tenedor y añadir el zumo de limón, una pizca de sal y pimienta. 5. Untar el aguacate machacado sobre las tostadas. 6. Colocar las rodajas de huevo duro encima. 7. Espolvorear con semillas de sésamo y, si se desea, añadir unas hojitas de cilantro o perejil fresco.",
-    "ingredientes": [
-      {
-        "item": "Pan de centeno integral",
-        "cantidad": "2 rebanadas pequeñas (60g)"
-      },
-      {
-        "item": "Aguacate maduro",
-        "cantidad": "1/2 unidad"
-      },
-      {
-        "item": "Huevo",
-        "cantidad": "1 unidad"
-      },
-      {
-        "item": "Zumo de limón",
-        "cantidad": "Unas gotas"
-      },
-      {
-        "item": "Semillas de sésamo",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Cilantro o perejil fresco (opcional)",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "300-350 kcal",
-    "tiempo_preparacion": "15 min",
-    "dificultad": "Muy Fácil"
-  },
-  {
-    "titulo": "Batido Proteico de Frutos Rojos y Plátano",
-    "ingrediente_principal": "Frutos Rojos",
-    "preparacion": "1. Lavar los frutos rojos si son frescos. Si son congelados, usarlos directamente. 2. Pelar y cortar el plátano en trozos. 3. En el vaso de la batidora, añadir los frutos rojos, el plátano, el yogur griego, la proteína en polvo y la leche o bebida vegetal. 4. Batir todo hasta obtener una mezcla suave y homogénea. Si está muy espeso, añadir un poco más de líquido. 5. Servir inmediatamente.",
-    "ingredientes": [
-      {
-        "item": "Frutos rojos (frescos o congelados)",
-        "cantidad": "100g (1 taza aprox.)"
-      },
-      {
-        "item": "Plátano",
-        "cantidad": "1/2 unidad mediana"
-      },
-      {
-        "item": "Yogur griego natural 0% o 2%",
-        "cantidad": "100g (1/2 envase individual)"
-      },
-      {
-        "item": "Proteína en polvo (whey o vegetal)",
-        "cantidad": "1 cucharada (15-20g)"
-      },
-      {
-        "item": "Leche desnatada o bebida vegetal sin azúcar",
-        "cantidad": "100ml (1/2 taza aprox.)"
-      }
-    ],
-    "calorias": "250-300 kcal",
-    "tiempo_preparacion": "5 min",
-    "dificultad": "Muy Fácil"
-  },
-  {
-    "titulo": "Hummus de Remolacha con Palitos de Verduras",
-    "ingrediente_principal": "Garbanzos y Remolacha",
-    "preparacion": "1. Escurrir y enjuagar los garbanzos cocidos. 2. Pelar y cortar la remolacha cocida en trozos. 3. En un procesador de alimentos, añadir los garbanzos, la remolacha, el ajo, el zumo de limón, el tahini, el comino, la sal y la pimienta. 4. Procesar hasta obtener una mezcla suave, añadiendo un poco de agua si es necesario para ajustar la consistencia. 5. Mientras se procesa, añadir el aceite de oliva en un hilo fino. 6. Probar y ajustar los condimentos si es necesario. 7. Servir en un bol, decorado con un chorrito de aceite de oliva y, si se desea, unas semillas de sésamo o hierbas frescas picadas. 8. Acompañar con palitos de zanahoria, pepino, pimiento y apio.",
-    "ingredientes": [
-      {
-        "item": "Garbanzos cocidos",
-        "cantidad": "200g (1/2 lata)"
-      },
-      {
-        "item": "Remolacha cocida",
-        "cantidad": "1 pequeña (100g aprox.)"
-      },
-      {
-        "item": "Ajo",
-        "cantidad": "1 diente pequeño"
-      },
-      {
-        "item": "Zumo de limón",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Tahini (pasta de sésamo)",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Comino molido",
-        "cantidad": "1/4 cucharadita"
-      },
-      {
-        "item": "Aceite de oliva virgen extra",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Verduras para acompañar (zanahoria, pepino, pimiento, apio)",
-        "cantidad": "1 de cada, cortadas en palitos"
-      }
-    ],
-    "calorias": "200-250 kcal (solo el hummus, sin contar las verduras)",
-    "tiempo_preparacion": "15 min",
-    "dificultad": "Fácil"
-  },
-  {
-    "titulo": "Yogur con Granola Casera y Frutas",
-    "ingrediente_principal": "Yogur",
-    "preparacion": "1. Para la granola casera: Precalentar el horno a 160°C. Mezclar los copos de avena, las almendras fileteadas, las semillas de girasol y las semillas de chía. Añadir la canela, el aceite de coco derretido y la miel o sirope de arce. Mezclar bien para que todo quede impregnado. Extender sobre una bandeja de horno forrada con papel y hornear durante 15-20 minutos, removiendo a mitad de cocción, hasta que esté dorada. Dejar enfriar completamente. 2. Lavar y cortar las frutas en trozos pequeños. 3. En un bol o vaso, poner el yogur griego como base. 4. Añadir la fruta cortada encima. 5. Espolvorear con la granola casera. 6. Si se desea, añadir un chorrito de miel o sirope de arce.",
-    "ingredientes": [
-      {
-        "item": "Yogur griego natural 0% o 2%",
-        "cantidad": "200g (1 envase individual)"
-      },
-      {
-        "item": "Copos de avena integral",
-        "cantidad": "3 cucharadas (30g)"
-      },
-      {
-        "item": "Almendras fileteadas",
-        "cantidad": "1 cucharada (10g)"
-      },
-      {
-        "item": "Semillas de girasol",
-        "cantidad": "1 cucharadita (5g)"
-      },
-      {
-        "item": "Semillas de chía",
-        "cantidad": "1 cucharadita (5g)"
-      },
-      {
-        "item": "Canela en polvo",
-        "cantidad": "Una pizca"
-      },
-      {
-        "item": "Aceite de coco",
-        "cantidad": "1 cucharadita (5ml)"
-      },
-      {
-        "item": "Miel o sirope de arce",
-        "cantidad": "1 cucharadita (5ml)"
-      },
-      {
-        "item": "Frutas variadas (fresas, arándanos, plátano, etc.)",
-        "cantidad": "100g en total"
-      }
-    ],
-    "calorias": "350-400 kcal",
-    "tiempo_preparacion": "25 min (incluyendo la preparación de la granola)",
-    "dificultad": "Fácil"
-  },
-  {
-    "titulo": "Tortitas de Avena y Plátano (Sin Harina)",
-    "ingrediente_principal": "Avena y Plátano",
-    "preparacion": "1. En un bol, machacar el plátano maduro con un tenedor hasta obtener un puré. 2. Añadir los huevos y batir bien. 3. Incorporar los copos de avena, la canela y una pizca de sal. Mezclar hasta obtener una masa homogénea. 4. Dejar reposar la masa durante 5 minutos para que la avena absorba parte del líquido. 5. Calentar una sartén antiadherente a fuego medio con unas gotas de aceite de coco. 6. Verter pequeñas porciones de masa (aproximadamente 2 cucharadas por tortita) en la sartén caliente. 7. Cocinar durante 2-3 minutos por cada lado, o hasta que estén doradas. 8. Servir calientes, acompañadas de yogur griego y frutas frescas.",
-    "ingredientes": [
-      {
-        "item": "Plátano maduro",
-        "cantidad": "1 unidad mediana"
-      },
-      {
-        "item": "Huevos",
-        "cantidad": "2 unidades"
-      },
-      {
-        "item": "Copos de avena integral",
-        "cantidad": "50g (1/2 taza aprox.)"
-      },
-      {
-        "item": "Canela en polvo",
-        "cantidad": "1/4 cucharadita"
-      },
-      {
-        "item": "Aceite de coco",
-        "cantidad": "Unas gotas"
-      },
-      {
-        "item": "Sal",
-        "cantidad": "Una pizca"
-      },
-      {
-        "item": "Yogur griego natural (para acompañar)",
-        "cantidad": "2 cucharadas (40g)"
-      },
-      {
-        "item": "Frutas frescas (para acompañar)",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "300-350 kcal (solo las tortitas, sin contar el yogur y las frutas)",
-    "tiempo_preparacion": "20 min",
-    "dificultad": "Fácil"
-  }
+    {
+        "titulo": "Garbanzos Tostados Especiados al Horno",
+        "ingrediente_principal": "Garbanzos Cocidos",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Enjuagar y escurrir muy bien los garbanzos cocidos (de bote o cocidos en casa). Secarlos lo máximo posible con papel de cocina. 3. En un bol, mezclar los garbanzos con 1 cucharadita de aceite de oliva, sal, pimentón dulce (o ahumado), comino en polvo, ajo en polvo y una pizca de cayena (opcional). Remover bien para que todos los garbanzos queden impregnados. 4. Extender los garbanzos en una sola capa sobre una bandeja de horno forrada con papel de hornear. 5. Hornear durante 20-30 minutos, removiendo a mitad de cocción, hasta que estén dorados y crujientes. El tiempo puede variar. Dejar enfriar un poco antes de consumir (se pondrán más crujientes al enfriar).",
+        "ingredientes": [
+            {
+                "item": "Garbanzos cocidos",
+                "cantidad": "100-150g (peso escurrido)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Pimentón dulce o ahumado",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Comino en polvo",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Ajo en polvo",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Cayena molida (opcional)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "180-250 kcal por ración",
+        "tiempo_preparacion": "25-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Rodajas de Boniato Asado con Canela y Pizca de Sal Marina",
+        "ingrediente_principal": "Boniato",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Pelar un boniato pequeño y cortarlo en rodajas de aproximadamente 0.5 - 1 cm de grosor. 3. En un bol, mezclar las rodajas de boniato con unas gotas de aceite de coco derretido (o aceite de oliva), una pizca de sal marina y canela en polvo al gusto. 4. Extender las rodajas en una sola capa sobre una bandeja de horno forrada con papel de hornear. 5. Hornear durante 15-20 minutos, dándoles la vuelta a mitad de cocción, hasta que estén tiernas y ligeramente caramelizadas en los bordes. Servir tibias.",
+        "ingredientes": [
+            {
+                "item": "Boniato",
+                "cantidad": "1 unidad pequeña-mediana (aprox. 150-200g)"
+            },
+            {
+                "item": "Aceite de coco derretido o aceite de oliva",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "1/2 cucharadita (o al gusto)"
+            },
+            {
+                "item": "Sal marina",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "130-180 kcal por ración",
+        "tiempo_preparacion": "25-30 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Pepinillos Grandes en Vinagre con Lonchas de Pavo Cocido Bajo en Grasa",
+        "ingrediente_principal": "Pepinillos en Vinagre y Pavo Cocido",
+        "preparacion": "1. Escurrir 1-2 pepinillos grandes en vinagre (tipo agridulce o encurtido, bajos en azúcar si es posible). 2. Envolver cada pepinillo (o trozos de pepinillo) con 1-2 lonchas de pavo cocido bajo en grasa. 3. Se puede asegurar con un palillo si es necesario. Consumir como un snack rápido y crujiente.",
+        "ingredientes": [
+            {
+                "item": "Pepinillos grandes en vinagre (bajos en azúcar)",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Lonchas de pavo cocido bajo en grasa y sal",
+                "cantidad": "2-4 lonchas (aprox. 40-60g)"
+            }
+        ],
+        "calorias": "60-100 kcal por ración",
+        "tiempo_preparacion": "3 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Altramuces Cocidos (Lupini Beans) - Porción Controlada",
+        "ingrediente_principal": "Altramuces",
+        "preparacion": "1. Si los altramuces vienen en salmuera, enjuagarlos ligeramente bajo agua fría para quitar el exceso de sal (opcional, según preferencia). 2. Medir una porción controlada. 3. Para consumirlos, se suele quitar la piel exterior (aunque es comestible y rica en fibra). Disfrutar.",
+        "ingredientes": [
+            {
+                "item": "Altramuces cocidos (en salmuera o listos para comer)",
+                "cantidad": "50-70g (peso escurrido, aprox. un puñado pequeño)"
+            }
+        ],
+        "calorias": "60-90 kcal por porción",
+        "tiempo_preparacion": "2 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Barquitas\" de Endibia con Queso Fresco Batido, Nueces Picadas y Arándanos Rojos Deshidratados (Sin Azúcar Añadido)",
+        "ingrediente_principal": "Endibias y Queso Fresco Batido",
+        "preparacion": "1. Separar con cuidado las hojas de las endibias. Lavarlas y secarlas. 2. En un bol pequeño, mezclar queso fresco batido 0% (o requesón light) con una pizca de sal y pimienta. 3. Picar finamente unas pocas nueces. 4. Rellenar la base de cada hoja de endibia (usándolas como \"barquitas\") con una pequeña cantidad de la mezcla de queso fresco. 5. Espolvorear con las nueces picadas y unos pocos arándanos rojos deshidratados sin azúcar añadido (usar con moderación por su contenido en fructosa).",
+        "ingredientes": [
+            {
+                "item": "Endibias",
+                "cantidad": "1-2 unidades (dependiendo del tamaño de las hojas)"
+            },
+            {
+                "item": "Queso fresco batido 0% o requesón light",
+                "cantidad": "2-3 cucharadas (40-60g)"
+            },
+            {
+                "item": "Nueces",
+                "cantidad": "1-2 unidades (5-10g picadas)"
+            },
+            {
+                "item": "Arándanos rojos deshidratados sin azúcar añadido",
+                "cantidad": "1 cucharadita (5-7g)"
+            },
+            {
+                "item": "Sal y pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "100-150 kcal por ración",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Té Chai Latte Casero Ligero (Con Leche Vegetal, Especias y Sin Azúcar Refinado)",
+        "ingrediente_principal": "Té Negro y Especias Chai",
+        "preparacion": "1. Preparar una infusión de té negro fuerte (1 bolsita o 1 cucharadita de hebras en 100-120 ml de agua caliente). 2. Mientras, calentar 100-120 ml de leche de almendras sin azúcar (u otra vegetal) con una mezcla de especias chai: 1/4 cucharadita de canela molida, pizca de cardamomo molido, pizca de jengibre molido, pizca de clavo molido (o usar una bolsita de infusión de chai directamente en la leche). No dejar que hierva. 3. Colar la leche especiada (si se usaron especias enteras o una bolsita). 4. Mezclar el té negro infusionado con la leche vegetal especiada. 5. Endulzar al gusto con edulcorante natural (stevia, eritritol) si se desea. Opcional: espumar un poco la leche antes de mezclar para una textura más de latte.",
+        "ingredientes": [
+            {
+                "item": "Té negro (bolsita o hebras)",
+                "cantidad": "1 unidad/cucharadita"
+            },
+            {
+                "item": "Leche de almendras sin azúcar (u otra vegetal)",
+                "cantidad": "100-120 ml"
+            },
+            {
+                "item": "Mezcla de especias chai (canela, cardamomo, jengibre, clavo)",
+                "cantidad": "1/2 cucharadita en total (o 1 bolsita de té chai)"
+            },
+            {
+                "item": "Agua (para el té)",
+                "cantidad": "100-120 ml"
+            },
+            {
+                "item": "Edulcorante natural (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "20-40 kcal por ración (dependiendo de la leche vegetal)",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Cuenco Pequeño de Sopa de Miso Instantánea (Baja en Sodio) con Dados de Tofu Sedoso",
+        "ingrediente_principal": "Pasta de Miso y Tofu Sedoso",
+        "preparacion": "1. Disolver una cucharadita de pasta de miso (preferiblemente una variedad más clara y baja en sodio como Shiro Miso) en un poco de agua tibia. 2. Añadir el resto del agua caliente (unos 150-200 ml en total, no hirviendo para no dañar los probióticos del miso). Remover bien. 3. Cortar unos dados pequeños de tofu sedoso (silken tofu). 4. Añadir los dados de tofu a la sopa de miso. 5. Opcional: añadir unas tiras muy finas de alga nori tostada o un poco de cebolleta verde picada.",
+        "ingredientes": [
+            {
+                "item": "Pasta de miso (Shiro Miso o baja en sodio)",
+                "cantidad": "1 cucharadita (aprox. 10-15g)"
+            },
+            {
+                "item": "Agua caliente (no hirviendo)",
+                "cantidad": "150-200 ml"
+            },
+            {
+                "item": "Tofu sedoso (silken tofu)",
+                "cantidad": "30-50g (en dados)"
+            },
+            {
+                "item": "Alga nori tostada o cebolleta verde (opcional)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "40-70 kcal por ración",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Nachos\" de Pimiento Dulce con Guacamole Casero Ligero (Porción Snack)",
+        "ingrediente_principal": "Pimiento Dulce y Aguacate",
+        "preparacion": "1. Lavar pimientos dulces de colores (rojo, amarillo, naranja) y cortarlos en triángulos o tiras anchas, simulando la forma de los nachos. Quitar las semillas y nervaduras blancas. 2. Para el guacamole ligero: Triturar 1/4 - 1/2 aguacate maduro con un poco de zumo de lima, cilantro fresco picado, un trocito muy pequeño de cebolla morada picada (opcional) y una pizca de sal. Se puede añadir un poco de tomate picado sin semillas. 3. Servir los \"nachos\" de pimiento con una porción del guacamole ligero para dipear.",
+        "ingredientes": [
+            {
+                "item": "Pimiento dulce de colores",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Aguacate maduro",
+                "cantidad": "1/4 - 1/2 unidad pequeña (para el guacamole)"
+            },
+            {
+                "item": "Zumo de lima",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Cilantro fresco picado",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Cebolla morada (opcional, para guacamole)",
+                "cantidad": "Un trocito muy pequeño"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "100-160 kcal por ración (dependiendo de la cantidad de aguacate)",
+        "tiempo_preparacion": "10-12 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mini Muffins de Huevo con Espinacas y Tomate Cherry (Hechos en Molde de Magdalena)",
+        "ingrediente_principal": "Huevo y Verduras",
+        "preparacion": "1. Precalentar el horno a 180°C. Engrasar ligeramente 2-3 huecos de un molde para magdalenas o usar cápsulas de silicona. 2. Batir 1-2 huevos con una pizca de sal, pimienta y las hierbas aromáticas que se deseen (orégano, albahaca). 3. Picar finamente unas hojas de espinacas frescas y unos tomates cherry por la mitad o en cuartos. 4. Repartir las verduras picadas en los huecos del molde preparados. 5. Verter la mezcla de huevo batido sobre las verduras, llenando cada hueco hasta 2/3 o 3/4 de su capacidad. 6. Hornear durante 12-15 minutos, o hasta que los mini muffins estén inflados, cuajados y ligeramente dorados. 7. Dejar enfriar unos minutos en el molde antes de desmoldar. Se pueden consumir tibios o fríos.",
+        "ingredientes": [
+            {
+                "item": "Huevos",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Espinacas frescas",
+                "cantidad": "Un puñado pequeño (20-30g)"
+            },
+            {
+                "item": "Tomates cherry",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Hierbas aromáticas (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "80-160 kcal por ración (dependiendo de la cantidad de huevos)",
+        "tiempo_preparacion": "20-25 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Requesón Light con Daditos de Piña en su Jugo (Sin Azúcar Añadido) y Canela",
+        "ingrediente_principal": "Requesón Light y Piña",
+        "preparacion": "1. Poner una porción de requesón light (o queso cottage bajo en grasa) en un cuenco pequeño. 2. Añadir unos daditos de piña en su jugo natural (sin azúcar añadido), bien escurrida. 3. Espolvorear con canela en polvo al gusto. Opcional: añadir unas pocas almendras fileteadas o semillas de cáñamo.",
+        "ingredientes": [
+            {
+                "item": "Requesón light o queso cottage bajo en grasa",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Piña en su jugo natural (sin azúcar añadido), en dados",
+                "cantidad": "2-3 cucharadas (unos 50-70g escurrida)"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Almendras fileteadas o semillas de cáñamo (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "100-150 kcal por ración",
+        "tiempo_preparacion": "3 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Palitos de Apio Crujiente con Fina Capa de Mantequilla de Cacahuete Natural",
+        "ingrediente_principal": "Apio y Mantequilla de Cacahuete",
+        "preparacion": "1. Lavar bien los tallos de apio y cortarlos en palitos de unos 8-10 cm de largo. 2. Untar una capa muy fina de mantequilla de cacahuete natural (sin azúcares añadidos ni aceites hidrogenados) en el hueco de cada palito de apio. 3. Opcional: espolvorear con unas pocas semillas de chía o pasas muy pequeñas (con moderación).",
+        "ingredientes": [
+            {
+                "item": "Apio (tallos)",
+                "cantidad": "1-2 tallos"
+            },
+            {
+                "item": "Mantequilla de cacahuete natural",
+                "cantidad": "1 cucharadita (aprox. 10-15g)"
+            }
+        ],
+        "calorias": "80-120 kcal por ración",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Chips\" de Manzana Deshidratada al Horno (Sin Azúcar Añadido)",
+        "ingrediente_principal": "Manzana",
+        "preparacion": "1. Precalentar el horno a temperatura muy baja (100-120°C). Forrar una o dos bandejas de horno con papel de hornear. 2. Lavar bien las manzanas y, opcionalmente, descorazonarlas. Cortarlas en rodajas muy finas (1-2 mm de grosor), idealmente con una mandolina. 3. Disponer las rodajas de manzana en una sola capa sobre las bandejas preparadas, sin que se superpongan. 4. Opcional: espolvorear muy ligeramente con canela en polvo. 5. Hornear durante 1.5 - 2.5 horas, dándoles la vuelta a mitad de cocción, hasta que estén secas y crujientes (o ligeramente flexibles si se prefieren así). El tiempo dependerá del grosor y la humedad de las manzanas. 6. Apagar el horno y dejar enfriar las chips de manzana dentro con la puerta entreabierta para que terminen de secarse y ponerse crujientes. Conservar en un recipiente hermético.",
+        "ingredientes": [
+            {
+                "item": "Manzana (cualquier variedad firme)",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Canela en polvo (opcional)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "70-100 kcal por manzana (dependiendo del tamaño)",
+        "tiempo_preparacion": "10 minutos (más 1.5-2.5 horas de horneado y enfriamiento)",
+        "dificultad": "Fácil (requiere paciencia)"
+    },
+    {
+        "titulo": "Tiras de Berenjena Asada (Estilo \"Fries\") con Dip de Yogur y Hierbabuena",
+        "ingrediente_principal": "Berenjena",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Lavar una berenjena y cortarla en tiras o bastones, como si fueran patatas fritas. 3. En un bol, mezclar las tiras de berenjena con 1 cucharadita de aceite de oliva, sal, pimienta y las especias deseadas (orégano, pimentón, ajo en polvo). 4. Extender las tiras de berenjena en una sola capa sobre una bandeja de horno forrada con papel de hornear. 5. Hornear durante 20-25 minutos, dándoles la vuelta a mitad de cocción, hasta que estén tiernas y doradas. 6. Para el dip: mezclar yogur natural desnatado con hojas de hierbabuena fresca muy picadas, unas gotas de zumo de limón y una pizca de sal.",
+        "ingredientes": [
+            {
+                "item": "Berenjena",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Especias (orégano, pimentón, ajo en polvo)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Sal y pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Para el dip:",
+                "cantidad": ""
+            },
+            {
+                "item": "Yogur natural desnatado",
+                "cantidad": "2-3 cucharadas"
+            },
+            {
+                "item": "Hierbabuena fresca picada",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "120-170 kcal por ración (incluyendo el dip)",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Porción de Aceitunas Verdes (Manzanilla o Gordal) Aliñadas Naturalmente",
+        "ingrediente_principal": "Aceitunas",
+        "preparacion": "1. Medir una porción controlada de aceitunas verdes (preferiblemente aliñadas de forma tradicional, bajas en sodio si es posible, y sin rellenos calóricos). 2. Escurrir bien el líquido de conservación. 3. Servir en un cuenco pequeño. Disfrutar como un snack sabroso.",
+        "ingredientes": [
+            {
+                "item": "Aceitunas verdes (Manzanilla, Gordal, etc.)",
+                "cantidad": "10-12 unidades (aprox. 30-40g escurridas)"
+            }
+        ],
+        "calorias": "50-80 kcal por porción (dependiendo del tipo y tamaño)",
+        "tiempo_preparacion": "2 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Batido de Kéfir Natural con Frambuesas Congeladas y Semillas de Cáñamo",
+        "ingrediente_principal": "Kéfir y Frambuesas",
+        "preparacion": "1. En el vaso de la batidora, poner el kéfir natural (preferiblemente bajo en grasa y sin azúcar añadido). 2. Añadir las frambuesas congeladas (le darán textura espesa y fría). 3. Incorporar las semillas de cáñamo peladas. 4. Opcional: añadir unas gotas de stevia o eritritol si se desea más dulce. 5. Batir todo bien hasta obtener una mezcla suave y homogénea. Servir inmediatamente.",
+        "ingredientes": [
+            {
+                "item": "Kéfir natural (bajo en grasa, sin azúcar)",
+                "cantidad": "150-200 ml"
+            },
+            {
+                "item": "Frambuesas congeladas",
+                "cantidad": "50-70g (un puñado)"
+            },
+            {
+                "item": "Semillas de cáñamo peladas",
+                "cantidad": "1 cucharadita (5g)"
+            },
+            {
+                "item": "Stevia o eritritol (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "100-150 kcal por ración",
+        "tiempo_preparacion": "3-5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Rodajas de Manzana Crujiente con Mantequilla de Almendras Natural y Pizca de Canela",
+        "ingrediente_principal": "Manzana y Mantequilla de Almendras",
+        "preparacion": "1. Lavar bien una manzana y cortarla en rodajas finas o gajos (se puede dejar la piel). 2. Untar una fina capa de mantequilla de almendras natural (sin azúcares añadidos ni aceites hidrogenados) sobre cada rodaja o gajo. 3. Espolvorear con una pizca de canela en polvo. Servir inmediatamente.",
+        "ingredientes": [
+            {
+                "item": "Manzana (tipo Fuji, Gala o Granny Smith)",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Mantequilla de almendras natural",
+                "cantidad": "1 cucharada (aprox. 15-20g)"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "180-220 kcal por ración",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Palitos de Zanahoria y Pepino con Porción de Hummus Casero",
+        "ingrediente_principal": "Zanahoria, Pepino y Hummus",
+        "preparacion": "1. Pelar y cortar la zanahoria en palitos. Lavar y cortar el pepino en palitos (se puede dejar la piel). 2. Servir los palitos de verdura con una porción de hummus casero (preferiblemente, para controlar ingredientes) o hummus comprado bajo en grasa. Para el hummus casero: triturar garbanzos cocidos con un poco de tahini, zumo de limón, ajo, comino y agua hasta obtener la consistencia deseada.",
+        "ingredientes": [
+            {
+                "item": "Zanahoria",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Pepino",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Hummus casero o bajo en grasa",
+                "cantidad": "2-3 cucharadas (aprox. 40-60g)"
+            }
+        ],
+        "calorias": "130-180 kcal por ración",
+        "tiempo_preparacion": "7-10 minutos (si el hummus está hecho)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Puñado de Almendras Crudas Naturales (Porción Controlada)",
+        "ingrediente_principal": "Almendras",
+        "preparacion": "1. Medir una porción de almendras crudas naturales (sin sal ni aceites añadidos). 2. Disfrutar como snack. Ideal para llevar.",
+        "ingredientes": [
+            {
+                "item": "Almendras crudas naturales",
+                "cantidad": "20-25g (aprox. 15-20 almendras)"
+            }
+        ],
+        "calorias": "120-150 kcal por porción",
+        "tiempo_preparacion": "1 minuto",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Yogur Natural Desnatado con Fresas Frescas Picadas y Semillas de Lino Molidas",
+        "ingrediente_principal": "Yogur Natural y Fresas",
+        "preparacion": "1. Poner el yogur natural desnatado (sin azúcar) en un cuenco. 2. Lavar y picar las fresas frescas. Añadirlas sobre el yogur. 3. Espolvorear con semillas de lino molidas. Opcional: añadir unas gotas de extracto de vainilla o una pizca de canela.",
+        "ingredientes": [
+            {
+                "item": "Yogur natural desnatado (sin azúcar)",
+                "cantidad": "1 unidad (125g)"
+            },
+            {
+                "item": "Fresas frescas",
+                "cantidad": "5-6 unidades medianas (unos 70-100g)"
+            },
+            {
+                "item": "Semillas de lino molidas",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "100-130 kcal por ración",
+        "tiempo_preparacion": "3 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Edamame al Vapor con un Toque de Flor de Sal y Chile en Escamas (Opcional)",
+        "ingrediente_principal": "Edamame (Soja en Vaina)",
+        "preparacion": "1. Cocinar las vainas de edamame (frescas o congeladas) al vapor durante 5-7 minutos, o hasta que estén tiernas. También se pueden hervir. 2. Escurrir bien. 3. Servir en un cuenco y espolvorear con una pizca de flor de sal (o sal marina gruesa) y, si se desea un toque picante, unas pocas escamas de chile seco.",
+        "ingredientes": [
+            {
+                "item": "Edamame en vaina (fresco o congelado)",
+                "cantidad": "100-150g"
+            },
+            {
+                "item": "Flor de sal (o sal marina gruesa)",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Chile en escamas (opcional)",
+                "cantidad": "Una pizca muy pequeña"
+            }
+        ],
+        "calorias": "120-180 kcal por ración",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mini Tostada de Pan de Centeno Crujiente con Queso Cottage Light y Rodajas de Rábano",
+        "ingrediente_principal": "Pan de Centeno y Queso Cottage",
+        "preparacion": "1. Tomar una o dos rebanadas finas de pan de centeno crujiente (tipo Wasa o similar). 2. Untar una capa de queso cottage light (o requesón bajo en grasa). 3. Lavar y cortar los rábanos en rodajas finas. Colocarlos sobre el queso cottage. 4. Espolvorear con una pizca de pimienta negra molida y/o cebollino fresco picado.",
+        "ingredientes": [
+            {
+                "item": "Pan de centeno crujiente (tipo Wasa)",
+                "cantidad": "1-2 rebanadas"
+            },
+            {
+                "item": "Queso cottage light o requesón bajo en grasa",
+                "cantidad": "2 cucharadas (aprox. 30-40g)"
+            },
+            {
+                "item": "Rábanos",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Cebollino fresco picado (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "90-140 kcal por ración",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Queso Fresco de Burgos 0% (Porción Individual) con Orégano Seco y Tomates Cherry partidos",
+        "ingrediente_principal": "Queso Fresco de Burgos 0%",
+        "preparacion": "1. Sacar una porción individual de queso fresco de Burgos 0% de su envase y colocarla en un plato pequeño. 2. Lavar y cortar por la mitad los tomates cherry. Disponerlos alrededor o encima del queso. 3. Espolvorear con orégano seco y, si se desea, una pizca de pimienta negra y un hilo muy fino de aceite de oliva virgen extra (opcional, añadir con moderación).",
+        "ingredientes": [
+            {
+                "item": "Queso fresco de Burgos 0% materia grasa",
+                "cantidad": "1 porción individual (aprox. 60-75g)"
+            },
+            {
+                "item": "Tomates cherry",
+                "cantidad": "4-5 unidades"
+            },
+            {
+                "item": "Orégano seco",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Pimienta negra molida (opcional)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Aceite de oliva virgen extra (opcional, muy poco)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "70-100 kcal por ración (sin aceite adicional significativo)",
+        "tiempo_preparacion": "3 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Huevo Duro Sazonado con Pimentón Dulce y una Pizca de Comino",
+        "ingrediente_principal": "Huevo",
+        "preparacion": "1. Cocer un huevo en agua hirviendo durante 10-12 minutos hasta que esté duro. 2. Enfriar rápidamente bajo agua fría, pelar y cortar por la mitad o en rodajas. 3. Espolvorear con pimentón dulce (o ahumado) y una pizca de comino en polvo. Añadir una pizca de sal si se desea.",
+        "ingredientes": [
+            {
+                "item": "Huevo",
+                "cantidad": "1 unidad mediana o grande"
+            },
+            {
+                "item": "Pimentón dulce (o ahumado)",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Comino molido",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Sal (opcional)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "70-90 kcal por ración",
+        "tiempo_preparacion": "12-15 minutos (incluye cocción del huevo)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Batido Rápido de Proteína Whey (Sabor Neutro o Vainilla) con Agua Fría y Hielo",
+        "ingrediente_principal": "Proteína Whey",
+        "preparacion": "1. En un shaker o vaso mezclador, añadir una medida (scoop) de proteína whey en polvo (sabor neutro, vainilla o chocolate bajo en azúcar). 2. Añadir agua fría. 3. Opcional: añadir unos cubitos de hielo. 4. Cerrar bien el shaker y agitar enérgicamente durante 20-30 segundos hasta que la proteína esté completamente disuelta y sin grumos. Consumir inmediatamente.",
+        "ingredientes": [
+            {
+                "item": "Proteína whey en polvo (baja en azúcar)",
+                "cantidad": "1 medida/scoop (aprox. 25-30g)"
+            },
+            {
+                "item": "Agua fría",
+                "cantidad": "200-250 ml"
+            },
+            {
+                "item": "Hielo (opcional)",
+                "cantidad": "2-3 cubitos"
+            }
+        ],
+        "calorias": "100-130 kcal por ración (dependiendo de la marca de proteína)",
+        "tiempo_preparacion": "2 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Rollitos de Jamón de Pavo Bajo en Grasa con Tira de Pimiento Rojo Asado y Hojas de Rúcula",
+        "ingrediente_principal": "Jamón de Pavo",
+        "preparacion": "1. Extender las lonchas de jamón de pavo bajo en grasa. 2. Colocar en el centro de cada loncha una tira de pimiento rojo asado (de bote, bien escurrido) y unas pocas hojas de rúcula fresca. 3. Opcional: untar una finísima capa de mostaza de Dijon o queso crema light en la loncha de pavo antes de añadir el relleno. 4. Enrollar las lonchas de pavo con cuidado. Hacer 2-3 rollitos.",
+        "ingredientes": [
+            {
+                "item": "Lonchas de jamón de pavo bajo en grasa y sal",
+                "cantidad": "2-3 lonchas (aprox. 40-60g)"
+            },
+            {
+                "item": "Pimiento rojo asado en tiras (de bote, escurrido)",
+                "cantidad": "2-3 tiras"
+            },
+            {
+                "item": "Rúcula fresca",
+                "cantidad": "Un puñadito"
+            },
+            {
+                "item": "Mostaza de Dijon o queso crema light (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "70-110 kcal por ración",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Vaso Pequeño de Salmorejo Cordobés Suave (Como Snack Refrescante)",
+        "ingrediente_principal": "Tomate y Pan Integral (mínimo)",
+        "preparacion": "1. Para un salmorejo suave y ligero (hacer cantidad y guardar): Triturar tomates maduros, un trocito muy pequeño de pan integral del día anterior (o sin pan para menos calorías), un poco de ajo (sin germen), aceite de oliva virgen extra (con moderación) y una pizca de sal. Ajustar la textura con un poco de agua si es necesario. 2. Servir una porción pequeña (un vaso de unos 150-200 ml) como snack refrescante. 3. Opcional: decorar con unas virutas muy pequeñas de huevo duro o jamón serrano (con mucha moderación, o evitar para mantenerlo más ligero).",
+        "ingredientes": [
+            {
+                "item": "Salmorejo casero ligero (ver preparación)",
+                "cantidad": "1 vaso pequeño (150-200 ml)"
+            }
+        ],
+        "calorias": "80-130 kcal por ración (dependiendo de la cantidad de pan y aceite en el salmorejo)",
+        "tiempo_preparacion": "5 minutos (si el salmorejo está hecho)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Chips de Calabacín al Horno con Hierbas Provenzales y Pizca de Sal Marina",
+        "ingrediente_principal": "Calabacín",
+        "preparacion": "1. Precalentar el horno a 180-200°C. Forrar una bandeja de horno con papel de hornear. 2. Lavar el calabacín y cortarlo en rodajas muy finas (idealmente con una mandolina, con cuidado). 3. En un bol, mezclar las rodajas de calabacín con unas gotas de aceite de oliva virgen extra (muy poca cantidad), una pizca de sal marina y hierbas provenzales secas (u orégano, tomillo). 4. Extender las rodajas de calabacín en una sola capa sobre la bandeja de horno, sin que se superpongan demasiado. 5. Hornear durante 10-15 minutos, o hasta que estén doradas y crujientes. Vigilar para que no se quemen (pueden necesitar darles la vuelta a mitad de cocción). Dejar enfriar ligeramente para que terminen de ponerse crujientes.",
+        "ingredientes": [
+            {
+                "item": "Calabacín",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1/2 - 1 cucharadita"
+            },
+            {
+                "item": "Hierbas provenzales secas",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal marina",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "70-100 kcal por ración (toda la bandeja de un calabacín)",
+        "tiempo_preparacion": "20-25 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Dátiles Medjool (1-2 Unidades) Rellenos de Media Nuez Pecana o Almendra",
+        "ingrediente_principal": "Dátiles Medjool y Nuez/Almendra",
+        "preparacion": "1. Tomar 1 o 2 dátiles Medjool. Hacer un corte longitudinal para retirar el hueso. 2. Insertar media nuez pecana o una almendra entera cruda en el hueco de cada dátil. 3. Disfrutar como un pequeño bocado dulce y energético.",
+        "ingredientes": [
+            {
+                "item": "Dátiles Medjool",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Nuez pecana (mitades) o almendras crudas",
+                "cantidad": "1-2 unidades"
+            }
+        ],
+        "calorias": "70-140 kcal por ración (dependiendo de la cantidad de dátiles y tipo de fruto seco)",
+        "tiempo_preparacion": "2 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mini Brocheta Refrescante de Bolitas de Melón Cantalupo con Hojas de Menta Fresca",
+        "ingrediente_principal": "Melón Cantalupo",
+        "preparacion": "1. Con un sacabolas pequeño (o una cucharita medidora redonda), hacer bolitas de melón Cantalupo (u otra variedad de melón). 2. Lavar unas hojas de menta fresca. 3. Ensartar en palitos de brocheta pequeños alternando 2-3 bolitas de melón con una hoja de menta. 4. Refrigerar hasta el momento de servir para un snack muy refrescante.",
+        "ingredientes": [
+            {
+                "item": "Melón Cantalupo (u otra variedad)",
+                "cantidad": "150-200g (pulpa en bolitas)"
+            },
+            {
+                "item": "Hojas de menta fresca",
+                "cantidad": "4-6 hojas"
+            }
+        ],
+        "calorias": "50-70 kcal por ración",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Gelatina de Naranja Natural Casera con Agar-Agar y Gajos de Mandarina Fresca",
+        "ingrediente_principal": "Zumo de Naranja Natural y Agar-Agar",
+        "preparacion": "1. Exprimir el zumo de naranjas naturales hasta obtener unos 400-500 ml. Colar si se prefiere sin pulpa. 2. Pelar una mandarina y separar los gajos, quitando las hebras blancas si es posible. Repartir los gajos en moldes individuales pequeños o en un molde más grande. 3. En un cazo pequeño, poner una pequeña parte del zumo de naranja (unos 50 ml) y espolvorear el agar-agar en polvo. Remover bien para disolver. 4. Llevar esta mezcla a ebullición, removiendo constantemente. Cocinar durante 1-2 minutos desde que hierve. 5. Retirar del fuego y añadir el resto del zumo de naranja. Mezclar bien. Si se desea más dulce, añadir unas gotas de stevia o eritritol al gusto. 6. Verter con cuidado la mezcla líquida sobre los gajos de mandarina en los moldes. 7. Dejar enfriar a temperatura ambiente y luego refrigerar durante al menos 2-3 horas, o hasta que la gelatina esté completamente firme.",
+        "ingredientes": [
+            {
+                "item": "Zumo de naranja natural recién exprimido",
+                "cantidad": "400-500 ml"
+            },
+            {
+                "item": "Agar-agar en polvo",
+                "cantidad": "2-3 gramos (aprox. 1 cucharadita rasa, seguir indicaciones del paquete)"
+            },
+            {
+                "item": "Mandarina (gajos)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Stevia o eritritol (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "70-100 kcal por ración (dependiendo de la cantidad de zumo y si se añade edulcorante)",
+        "tiempo_preparacion": "10 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    }
 ]

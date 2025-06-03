@@ -10,41 +10,41 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import { ThemedText } from "@/components/ThemedText";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 
 // Categorías de recetas - Sincronizadas con RecipesGallery
 const categories = [
   {
-    id: "desayunos",
+    id: "desayuno",
     name: "Desayunos",
     icon: "sunny-outline",
     color: "#f59e0b",
     image: require("@/assets/images/recipes/desayuno.jpg"),
   },
   {
-    id: "almuerzos",
+    id: "almuerzo",
     name: "Almuerzos",
     icon: "restaurant-outline",
     color: "#60a5fa",
     image: require("@/assets/images/recipes/almuerzo.jpg"),
   },
   {
-    id: "cenas",
+    id: "cena",
     name: "Cenas",
     icon: "moon-outline",
     color: "#a78bfa",
     image: require("@/assets/images/recipes/cena.jpg"),
   },
   {
-    id: "meriendas",
+    id: "merienda",
     name: "Meriendas",
     icon: "cafe-outline",
     color: "#34d399",
     image: require("@/assets/images/recipes/merienda.jpg"),
   },
   {
-    id: "postres",
+    id: "postre",
     name: "Postres",
     icon: "ice-cream-outline",
     color: "#f87171",
@@ -131,12 +131,24 @@ const RecipeCard = memo(
           <ThemedText style={styles.recipeTitle}>{recipe.title}</ThemedText>
           <View style={styles.recipeMetaInfo}>
             <View style={styles.recipeMetaItem}>
-              <Ionicons name="time-outline" size={14} color={AiraColors.mutedForeground} />
-              <ThemedText style={styles.recipeMetaText}>{recipe.time}</ThemedText>
+              <Ionicons
+                name="time-outline"
+                size={14}
+                color={AiraColors.mutedForeground}
+              />
+              <ThemedText style={styles.recipeMetaText}>
+                {recipe.time}
+              </ThemedText>
             </View>
             <View style={styles.recipeMetaItem}>
-              <Ionicons name="flame-outline" size={14} color={AiraColors.mutedForeground} />
-              <ThemedText style={styles.recipeMetaText}>{recipe.calories}</ThemedText>
+              <Ionicons
+                name="flame-outline"
+                size={14}
+                color={AiraColors.mutedForeground}
+              />
+              <ThemedText style={styles.recipeMetaText}>
+                {recipe.calories}
+              </ThemedText>
             </View>
           </View>
         </View>

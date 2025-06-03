@@ -1,232 +1,1362 @@
 [
-  {
-    "titulo": "Salmón al Papillote con Verduras y Limón",
-    "ingrediente_principal": "Salmón",
-    "preparacion": "1. Precalentar el horno a 200°C. 2. Cortar un trozo grande de papel de aluminio o papel de horno (suficiente para envolver el pescado y las verduras). 3. Lavar y cortar el calabacín y la zanahoria en juliana fina (tiras delgadas). Picar finamente el ajo. 4. Colocar las verduras en el centro del papel, formando una cama. 5. Poner el filete de salmón encima de las verduras. 6. Sazonar con sal, pimienta, eneldo y unas gotas de aceite de oliva. Colocar las rodajas de limón encima. 7. Cerrar el papillote, doblando y sellando bien los bordes para que no se escape el vapor durante la cocción. 8. Hornear durante 15-18 minutos (dependiendo del grosor del filete). 9. Servir directamente en el papillote, abriéndolo con cuidado (¡atención al vapor caliente!).",
-    "ingredientes": [
-      {
-        "item": "Filete de salmón (sin piel)",
-        "cantidad": "120-150g"
-      },
-      {
-        "item": "Calabacín",
-        "cantidad": "1/2 pequeño"
-      },
-      {
-        "item": "Zanahoria",
-        "cantidad": "1 pequeña"
-      },
-      {
-        "item": "Ajo",
-        "cantidad": "1 diente pequeño"
-      },
-      {
-        "item": "Limón",
-        "cantidad": "2-3 rodajas finas"
-      },
-      {
-        "item": "Eneldo fresco (o seco)",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Aceite de oliva virgen extra",
-        "cantidad": "1 cucharadita (5ml)"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "250-300 kcal",
-    "tiempo_preparacion": "30 min",
-    "dificultad": "Fácil"
-  },
-  {
-    "titulo": "Revuelto de Tofu con Espinacas y Champiñones",
-    "ingrediente_principal": "Tofu",
-    "preparacion": "1. Escurrir bien el tofu firme, envolviéndolo en papel absorbente y colocando un peso encima durante unos 15-20 minutos para eliminar el exceso de agua. 2. Desmenuzar el tofu con las manos o un tenedor hasta obtener una textura similar a los huevos revueltos. 3. Lavar y picar las espinacas. Limpiar y cortar los champiñones en láminas. 4. En una sartén antiadherente, calentar el aceite de oliva a fuego medio. Añadir los champiñones y cocinar durante 3-4 minutos hasta que empiecen a dorarse. 5. Incorporar las espinacas y cocinar hasta que se marchiten (1-2 minutos). 6. Añadir el tofu desmenuzado, la cúrcuma (que dará un color amarillento similar al huevo), el ajo en polvo, la sal, la pimienta y las hojuelas de levadura nutricional (opcional, pero aporta un sabor más intenso). 7. Cocinar todo junto durante 3-4 minutos más, removiendo frecuentemente. 8. Servir caliente, espolvoreado con cebollino picado si se desea.",
-    "ingredientes": [
-      {
-        "item": "Tofu firme",
-        "cantidad": "150g"
-      },
-      {
-        "item": "Espinacas frescas",
-        "cantidad": "Un puñado grande (50g aprox.)"
-      },
-      {
-        "item": "Champiñones",
-        "cantidad": "4-5 unidades medianas"
-      },
-      {
-        "item": "Cúrcuma en polvo",
-        "cantidad": "1/4 cucharadita"
-      },
-      {
-        "item": "Ajo en polvo",
-        "cantidad": "1/4 cucharadita"
-      },
-      {
-        "item": "Levadura nutricional en hojuelas (opcional)",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Aceite de oliva virgen extra",
-        "cantidad": "1 cucharadita (5ml)"
-      },
-      {
-        "item": "Cebollino fresco picado (opcional)",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "200-250 kcal",
-    "tiempo_preparacion": "25 min",
-    "dificultad": "Fácil"
-  },
-  {
-    "titulo": "Ensalada Tibia de Lentejas con Verduras Asadas y Queso Feta",
-    "ingrediente_principal": "Lentejas",
-    "preparacion": "1. Enjuagar las lentejas y cocerlas según las instrucciones del paquete (generalmente 20-25 minutos en agua con sal). Escurrir y reservar. 2. Precalentar el horno a 200°C. 3. Lavar y cortar el pimiento rojo, la berenjena y la cebolla roja en dados medianos. 4. Colocar las verduras en una bandeja de horno, rociar con aceite de oliva, añadir el tomillo, sal y pimienta. Mezclar bien. 5. Asar en el horno durante 20-25 minutos, removiendo a mitad de cocción, hasta que estén tiernas y ligeramente doradas. 6. En un bol grande, mezclar las lentejas cocidas con las verduras asadas. 7. Preparar el aliño mezclando el aceite de oliva, el vinagre balsámico, la mostaza, la miel, sal y pimienta. 8. Añadir el aliño a la ensalada y mezclar suavemente. 9. Desmenuzar el queso feta por encima y decorar con las hojas de rúcula. Servir tibio.",
-    "ingredientes": [
-      {
-        "item": "Lentejas (preferiblemente variedad pequeña, tipo pardina o beluga)",
-        "cantidad": "60g en crudo (equivale a unos 150g cocidas)"
-      },
-      {
-        "item": "Pimiento rojo",
-        "cantidad": "1/2 unidad"
-      },
-      {
-        "item": "Berenjena",
-        "cantidad": "1/4 unidad"
-      },
-      {
-        "item": "Cebolla roja",
-        "cantidad": "1/4 unidad"
-      },
-      {
-        "item": "Queso feta light",
-        "cantidad": "30g"
-      },
-      {
-        "item": "Rúcula",
-        "cantidad": "Un puñado pequeño"
-      },
-      {
-        "item": "Aceite de oliva virgen extra",
-        "cantidad": "1 cucharada (para asar) + 1 cucharadita (para el aliño)"
-      },
-      {
-        "item": "Vinagre balsámico",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Mostaza de Dijon",
-        "cantidad": "1/2 cucharadita"
-      },
-      {
-        "item": "Miel",
-        "cantidad": "1/4 cucharadita"
-      },
-      {
-        "item": "Tomillo fresco (o seco)",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "350-400 kcal",
-    "tiempo_preparacion": "45 min",
-    "dificultad": "Medio"
-  },
-  {
-    "titulo": "Rollitos de Pavo y Aguacate con Salsa de Yogur",
-    "ingrediente_principal": "Pechuga de Pavo",
-    "preparacion": "1. Preparar la salsa mezclando el yogur griego con el zumo de limón, el ajo picado finamente, la menta picada, sal y pimienta. Reservar en la nevera. 2. Lavar y secar las hojas de lechuga. 3. Cortar el aguacate por la mitad, quitar el hueso, pelar y cortar en láminas finas. 4. Extender las lonchas de pavo y colocar en cada una: una hoja de lechuga, unas láminas de aguacate y unas tiras de pimiento rojo. 5. Enrollar cada loncha formando un rollito y asegurar con un palillo si es necesario. 6. Servir los rollitos acompañados de la salsa de yogur para mojar.",
-    "ingredientes": [
-      {
-        "item": "Lonchas finas de pechuga de pavo cocido (bajo en sal)",
-        "cantidad": "4-5 lonchas (80-100g)"
-      },
-      {
-        "item": "Aguacate",
-        "cantidad": "1/2 unidad"
-      },
-      {
-        "item": "Pimiento rojo",
-        "cantidad": "1/4 unidad, cortado en tiras finas"
-      },
-      {
-        "item": "Lechuga (variedad suave como romana o hoja de roble)",
-        "cantidad": "4-5 hojas"
-      },
-      {
-        "item": "Yogur griego natural 0% o 2%",
-        "cantidad": "3 cucharadas (60g)"
-      },
-      {
-        "item": "Zumo de limón",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Ajo",
-        "cantidad": "1/2 diente pequeño"
-      },
-      {
-        "item": "Menta fresca picada",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "250-300 kcal",
-    "tiempo_preparacion": "15 min",
-    "dificultad": "Muy Fácil"
-  },
-  {
-    "titulo": "Crema Fría de Pepino y Yogur con Menta (Tzatziki Ligero)",
-    "ingrediente_principal": "Pepino y Yogur",
-    "preparacion": "1. Pelar el pepino, cortarlo por la mitad a lo largo y retirar las semillas con una cucharilla. Rallar o picar muy finamente la pulpa. 2. Colocar el pepino rallado en un colador, añadir una pizca de sal y dejar escurrir durante 10-15 minutos para eliminar el exceso de agua. Luego, presionar suavemente con las manos o con papel absorbente. 3. En un bol, mezclar el yogur griego con el ajo picado muy finamente, el aceite de oliva, el vinagre o zumo de limón, y la menta picada. 4. Incorporar el pepino escurrido y mezclar bien. 5. Sazonar con sal y pimienta al gusto. 6. Refrigerar durante al menos 30 minutos antes de servir para que los sabores se integren. 7. Servir frío, decorado con unas hojas de menta fresca y, opcionalmente, un chorrito de aceite de oliva.",
-    "ingredientes": [
-      {
-        "item": "Pepino",
-        "cantidad": "1 mediano"
-      },
-      {
-        "item": "Yogur griego natural 0% o 2%",
-        "cantidad": "200g (1 envase individual)"
-      },
-      {
-        "item": "Ajo",
-        "cantidad": "1 diente pequeño"
-      },
-      {
-        "item": "Menta fresca",
-        "cantidad": "1 cucharada picada + unas hojas para decorar"
-      },
-      {
-        "item": "Aceite de oliva virgen extra",
-        "cantidad": "1 cucharadita (5ml)"
-      },
-      {
-        "item": "Vinagre de vino blanco o zumo de limón",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Sal y pimienta",
-        "cantidad": "Al gusto"
-      }
-    ],
-    "calorias": "150-180 kcal",
-    "tiempo_preparacion": "20 min (+ tiempo de reposo)",
-    "dificultad": "Fácil"
-  }
+    {
+        "titulo": "Crema de Espárragos Trigueros Ligera con Huevo Mollet y Picatostes Integrales",
+        "ingrediente_principal": "Espárragos Trigueros",
+        "preparacion": "1. Lavar los espárragos trigueros, cortar y desechar la parte más dura del tallo. Trocear el resto. Pelar y picar la cebolla o puerro. Pelar la patata y cortarla en dados pequeños. 2. En una olla, calentar una cucharadita de aceite de oliva y rehogar la cebolla/puerro hasta que esté transparente. Añadir los espárragos (reservar algunas puntas para decorar) y la patata. Rehogar un par de minutos. 3. Cubrir con el caldo de verduras o agua. Salpimentar. Cocinar a fuego medio durante 15-20 minutos, o hasta que las verduras estén tiernas. 4. Mientras, cocer un huevo por persona: introducirlo en agua hirviendo y cocinar durante 5-6 minutos para que la yema quede líquida (huevo mollet). Enfriar rápidamente y pelar con cuidado. 5. Triturar la crema de espárragos con una batidora hasta obtener una textura fina. Si se desea más ligera, añadir un poco más de caldo o leche evaporada. Rectificar de sal. 6. Servir la crema caliente con el huevo mollet partido por la mitad en el centro, las puntas de espárragos reservadas (salteadas o cocidas) y unos pocos picatostes integrales.",
+        "ingredientes": [
+            {
+                "item": "Espárragos trigueros frescos",
+                "cantidad": "1 manojo (aprox. 250-300g)"
+            },
+            {
+                "item": "Cebolla pequeña o 1/2 puerro (parte blanca)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Patata pequeña (opcional, para espesar)",
+                "cantidad": "1/2 unidad (unos 50g)"
+            },
+            {
+                "item": "Caldo de verduras bajo en sodio o agua",
+                "cantidad": "400-500 ml"
+            },
+            {
+                "item": "Huevo",
+                "cantidad": "1 por persona"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Leche evaporada o bebida vegetal (opcional, para cremosidad)",
+                "cantidad": "2-3 cucharadas"
+            },
+            {
+                "item": "Picatostes de pan integral (pequeña cantidad)",
+                "cantidad": "5-10g"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "200-280 kcal por ración",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Salmón al Papillote con Julienne de Zanahoria, Calabacín y Puerro",
+        "ingrediente_principal": "Salmón",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Cortar la zanahoria, el calabacín y el puerro (la parte blanca) en julienne fina (tiras delgadas). 3. Preparar un trozo grande de papel de hornear o papel de aluminio por cada lomo de salmón. 4. Colocar una cama de verduras en julienne en el centro de cada papel. Poner el lomo de salmón encima de las verduras. 5. Salpimentar el salmón. Añadir unas rodajas finas de limón, una ramita de eneldo fresco (o una pizca de eneldo seco) y un chorrito muy pequeño de vino blanco o agua sobre cada lomo. 6. Cerrar bien los paquetes de papillote, doblando los bordes para que queden herméticos y el vapor no escape. 7. Colocar los paquetes en una bandeja de horno y hornear durante 12-15 minutos (dependiendo del grosor del salmón). 8. Servir caliente, abriendo el paquete en la mesa.",
+        "ingredientes": [
+            {
+                "item": "Lomo de salmón fresco sin piel",
+                "cantidad": "1 porción (120-150g)"
+            },
+            {
+                "item": "Zanahoria",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Calabacín",
+                "cantidad": "1/2 unidad pequeña"
+            },
+            {
+                "item": "Puerro (parte blanca)",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Limón",
+                "cantidad": "1-2 rodajas finas por papillote"
+            },
+            {
+                "item": "Eneldo fresco o seco",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Vino blanco seco o agua (opcional)",
+                "cantidad": "1 cucharadita por papillote"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "280-350 kcal por ración",
+        "tiempo_preparacion": "25-30 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Pechuga de Pollo Rellena de Espinacas y Queso Cottage al Horno",
+        "ingrediente_principal": "Pechuga de Pollo",
+        "preparacion": "1. Precalentar el horno a 190°C. 2. Saltear las espinacas frescas en una sartén con un ajo picado (opcional) hasta que se reduzcan. Escurrir bien el exceso de líquido y picarlas. 3. Mezclar las espinacas picadas con el queso cottage (o requesón bajo en grasa), sal, pimienta y una pizca de nuez moscada. 4. Hacer un corte longitudinal en cada pechuga de pollo sin llegar a abrirla del todo (formando un bolsillo). Salpimentar el interior y exterior del pollo. 5. Rellenar cada pechuga con la mezcla de espinacas y queso. Cerrar con palillos si es necesario. 6. Colocar las pechugas rellenas en una fuente de horno ligeramente engrasada. 7. Hornear durante 20-25 minutos, o hasta que el pollo esté bien cocido y dorado. Servir con una guarnición de ensalada verde o verduras al vapor.",
+        "ingredientes": [
+            {
+                "item": "Pechuga de pollo sin piel ni hueso",
+                "cantidad": "1 unidad (aprox. 150g)"
+            },
+            {
+                "item": "Espinacas frescas",
+                "cantidad": "50-70g"
+            },
+            {
+                "item": "Queso cottage bajo en grasa o requesón",
+                "cantidad": "2-3 cucharadas (40-50g)"
+            },
+            {
+                "item": "Ajo picado (opcional)",
+                "cantidad": "1/4 diente"
+            },
+            {
+                "item": "Nuez moscada molida",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Aceite de oliva (para engrasar)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "250-320 kcal por ración",
+        "tiempo_preparacion": "35-40 minutos",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Revuelto Ligero de Tofu Sedoso con Setas Shiitake y Pak Choi al Jengibre",
+        "ingrediente_principal": "Tofu Sedoso (Silken Tofu)",
+        "preparacion": "1. Limpiar las setas shiitake y cortarlas en láminas. Lavar el pak choi y separar las hojas de los tallos; picar los tallos. Picar finamente el ajo y el jengibre fresco. 2. En un wok o sartén grande, calentar una cucharadita de aceite de sésamo o de oliva. Saltear el ajo y el jengibre durante unos segundos. 3. Añadir los tallos de pak choi y las setas shiitake. Saltear durante 3-4 minutos hasta que las setas estén tiernas. 4. Incorporar las hojas de pak choi y cocinar 1-2 minutos más hasta que se ablanden ligeramente. 5. Escurrir con cuidado el tofu sedoso y añadirlo a la sartén, rompiéndolo suavemente con la espátula para que se mezcle con las verduras, sin que se deshaga por completo. 6. Aderezar con salsa de soja baja en sodio y unas gotas de vinagre de arroz (opcional). Cocinar un par de minutos más para que se integren los sabores. Servir caliente, espolvoreado con semillas de sésamo.",
+        "ingredientes": [
+            {
+                "item": "Tofu sedoso (silken tofu)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Setas shiitake frescas",
+                "cantidad": "3-4 unidades"
+            },
+            {
+                "item": "Pak choi (col china)",
+                "cantidad": "1-2 plantas pequeñas"
+            },
+            {
+                "item": "Diente de ajo",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Jengibre fresco rallado o picado fino",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Aceite de sésamo tostado o de oliva",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Salsa de soja baja en sodio",
+                "cantidad": "1-2 cucharaditas"
+            },
+            {
+                "item": "Vinagre de arroz (opcional)",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Semillas de sésamo tostado (para decorar)",
+                "cantidad": "1/2 cucharadita"
+            }
+        ],
+        "calorias": "180-240 kcal por ración",
+        "tiempo_preparacion": "15-20 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Merluza a la Plancha con Mojo Verde de Cilantro y Aguacate",
+        "ingrediente_principal": "Merluza",
+        "preparacion": "1. Para el mojo verde ligero: En una batidora pequeña o procesador, triturar 1/4 de aguacate maduro, un manojo pequeño de cilantro fresco (hojas y tallos tiernos), 1/4 de diente de ajo (opcional), el zumo de 1/4 de lima, 1 cucharadita de aceite de oliva, una pizca de comino y sal. Añadir un poco de agua si es necesario para obtener una consistencia de salsa ligera. 2. Salpimentar los filetes de merluza. 3. Calentar una plancha o sartén antiadherente con unas gotas de aceite de oliva a fuego medio-alto. 4. Cocinar los filetes de merluza 2-4 minutos por cada lado (dependiendo del grosor) hasta que estén dorados por fuera y bien hechos por dentro. 5. Servir la merluza caliente acompañada del mojo verde de cilantro y aguacate. Ideal con una guarnición de brócoli al vapor o espárragos verdes a la plancha.",
+        "ingredientes": [
+            {
+                "item": "Filete de merluza fresco (o lomo)",
+                "cantidad": "1 porción (150-180g)"
+            },
+            {
+                "item": "Aguacate maduro",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Cilantro fresco",
+                "cantidad": "Un manojo pequeño"
+            },
+            {
+                "item": "Zumo de lima",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita (para el mojo) + gotas para la plancha"
+            },
+            {
+                "item": "Ajo (opcional, para el mojo)",
+                "cantidad": "1/4 diente"
+            },
+            {
+                "item": "Comino molido",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "260-330 kcal por ración",
+        "tiempo_preparacion": "15-20 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Ensalada Templada de Lentejas Rojas con Hojas Verdes, Tomate Seco en Aceite (escurrido) y Vinagreta Balsámica",
+        "ingrediente_principal": "Lentejas Rojas",
+        "preparacion": "1. Cocer las lentejas rojas según las instrucciones del paquete (suelen tardar unos 10-15 minutos y no necesitan remojo previo). Escurrir bien. 2. Mientras se cuecen las lentejas, preparar la vinagreta: mezclar 1 cucharadita de aceite de oliva virgen extra, 1 cucharadita de vinagre balsámico, una pizca de mostaza de Dijon (opcional), sal y pimienta. 3. Picar los tomates secos en aceite (bien escurridos para quitar el exceso de grasa). 4. En un bol, colocar una base de hojas verdes variadas (rúcula, canónigos, espinacas baby). 5. Añadir las lentejas rojas cocidas (aún templadas) sobre las hojas verdes. 6. Incorporar los tomates secos picados. 7. Aliñar con la vinagreta balsámica justo antes de servir. Se puede añadir un poco de cebolla morada en juliana fina.",
+        "ingredientes": [
+            {
+                "item": "Lentejas rojas secas",
+                "cantidad": "60-70g"
+            },
+            {
+                "item": "Hojas verdes variadas (rúcula, canónigos, etc.)",
+                "cantidad": "Un buen puñado (aprox. 50-70g)"
+            },
+            {
+                "item": "Tomates secos en aceite (bien escurridos)",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Vinagre balsámico de Módena",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Mostaza de Dijon (opcional)",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Cebolla morada (opcional)",
+                "cantidad": "Unas tiras finas"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "280-340 kcal por ración",
+        "tiempo_preparacion": "20-25 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Sopa Minestrone Ligera de Verduras de Temporada (sin pasta)",
+        "ingrediente_principal": "Verduras Variadas",
+        "preparacion": "1. Picar finamente la cebolla, el apio y la zanahoria. Picar el ajo. 2. En una olla grande, calentar una cucharada de aceite de oliva. Sofreír la cebolla, el apio y la zanahoria hasta que estén tiernos. Añadir el ajo y cocinar 1 minuto más. 3. Incorporar el calabacín y el pimiento cortados en dados, y las judías verdes troceadas. Rehogar unos minutos. 4. Añadir el tomate triturado (o pelado y picado) y el caldo de verduras. Llevar a ebullición. 5. Añadir las hierbas aromáticas (laurel, orégano, tomillo). Salpimentar. 6. Reducir el fuego, tapar y cocinar a fuego lento durante 20-25 minutos, o hasta que todas las verduras estén tiernas. 7. Opcional: añadir un puñado de espinacas frescas o alubias blancas cocidas (enjuagadas y escurridas) los últimos 5 minutos. Retirar la hoja de laurel antes de servir. Espolvorear con perejil fresco picado o un poco de parmesano rallado (con moderación).",
+        "ingredientes": [
+            {
+                "item": "Cebolla",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Apio",
+                "cantidad": "1 tallo"
+            },
+            {
+                "item": "Zanahoria",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Calabacín",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Pimiento rojo o verde",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Judías verdes redondas",
+                "cantidad": "70-100g"
+            },
+            {
+                "item": "Tomate triturado natural",
+                "cantidad": "200g (1/2 lata)"
+            },
+            {
+                "item": "Caldo de verduras bajo en sodio",
+                "cantidad": "500-700 ml"
+            },
+            {
+                "item": "Diente de ajo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Hierbas aromáticas (laurel, orégano, tomillo)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "150-220 kcal por ración (sin queso ni alubias añadidas en gran cantidad)",
+        "tiempo_preparacion": "40-45 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Brochetas de Pavo Marinado en Cítricos y Hierbas con Pimiento y Cebolla",
+        "ingrediente_principal": "Pavo",
+        "preparacion": "1. Cortar la pechuga de pavo en dados de tamaño similar. 2. Preparar el marinado: mezclar el zumo de naranja y lima, una cucharadita de aceite de oliva, ajo picado, orégano, comino, sal y pimienta. Añadir los dados de pavo al marinado y dejar reposar al menos 15-20 minutos en la nevera. 3. Cortar el pimiento (rojo, verde o amarillo) y la cebolla morada en trozos cuadrados, de tamaño similar a los dados de pavo. 4. Ensartar en brochetas alternando dados de pavo marinado, trozos de pimiento y trozos de cebolla. 5. Cocinar las brochetas a la plancha, en una parrilla o en el horno (sobre una rejilla) durante 10-15 minutos, dándoles la vuelta ocasionalmente, hasta que el pavo esté bien cocido y las verduras ligeramente doradas. Servir con una pequeña guarnición de ensalada o quinoa.",
+        "ingredientes": [
+            {
+                "item": "Pechuga de pavo",
+                "cantidad": "150g"
+            },
+            {
+                "item": "Pimiento (rojo, verde o amarillo)",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Cebolla morada",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Zumo de naranja",
+                "cantidad": "2 cucharadas"
+            },
+            {
+                "item": "Zumo de lima",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Ajo picado",
+                "cantidad": "1/2 diente"
+            },
+            {
+                "item": "Orégano seco",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Comino molido",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "200-260 kcal por ración (sin guarnición de quinoa)",
+        "tiempo_preparacion": "30 minutos (incluyendo marinado corto)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Calabacines Luna Rellenos de Atún, Huevo Duro y Pimientos Asados (Gratinado Ligero)",
+        "ingrediente_principal": "Calabacín",
+        "preparacion": "1. Precalentar el horno a 190°C. Cortar los calabacines luna por la mitad horizontalmente (o calabacines normales en trozos gruesos y vaciarlos). Cocerlos al vapor o en el microondas unos minutos hasta que estén ligeramente tiernos pero firmes. Vaciar la pulpa con cuidado, dejando una pared de 1 cm aprox. Picar la pulpa. 2. Picar finamente la cebolla y los pimientos asados (de bote, bien escurridos). Cocer el huevo hasta que esté duro, pelarlo y picarlo. 3. En una sartén, sofreír la cebolla con una cucharadita de aceite. Añadir la pulpa de calabacín picada y los pimientos asados. Cocinar unos minutos. 4. Retirar del fuego y mezclar con el atún desmigado (escurrido) y el huevo duro picado. Sazonar con sal, pimienta y orégano. 5. Rellenar los calabacines con esta mezcla. Opcionalmente, espolvorear con una cantidad muy pequeña de queso rallado bajo en grasa o pan rallado integral. 6. Hornear durante 10-15 minutos, o hasta que estén calientes y ligeramente dorados por encima.",
+        "ingredientes": [
+            {
+                "item": "Calabacines redondos (tipo luna) o 1 calabacín grande",
+                "cantidad": "2 pequeños o 1 grande"
+            },
+            {
+                "item": "Atún al natural en conserva (escurrido)",
+                "cantidad": "1 lata pequeña (50-60g escurrido)"
+            },
+            {
+                "item": "Huevo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Pimientos rojos asados (de bote, escurridos)",
+                "cantidad": "50g"
+            },
+            {
+                "item": "Cebolla pequeña",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Orégano seco",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Queso rallado bajo en grasa o pan rallado integral (opcional)",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "230-300 kcal por ración",
+        "tiempo_preparacion": "40-45 minutos",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Bacalao Confitado a Baja Temperatura con Pisto Manchego Casero Ligero",
+        "ingrediente_principal": "Bacalao",
+        "preparacion": "1. Para el pisto ligero: Picar cebolla, pimiento verde, pimiento rojo y calabacín en dados. Sofreír en una sartén con 1-2 cucharadas de aceite de oliva hasta que estén tiernos. Añadir tomate triturado natural y cocinar a fuego lento hasta que espese. Sazonar. (Se puede hacer más cantidad y guardar). 2. Para el bacalao: Poner los lomos de bacalao desalado en un cazo pequeño cubiertos (justo) con aceite de oliva virgen extra a fuego muy, muy bajo (sin que hierva, unos 60-70°C). Añadir unos dientes de ajo enteros y una hoja de laurel si se desea. Confitar durante 10-15 minutos, o hasta que el bacalao se separe en lascas fácilmente. 3. Escurrir con mucho cuidado el bacalao del aceite (este aceite se puede reutilizar). 4. Servir una porción de pisto manchego ligero y colocar encima el lomo de bacalao confitado. Adornar con perejil fresco.",
+        "ingredientes": [
+            {
+                "item": "Lomo de bacalao desalado",
+                "cantidad": "1 porción (150g)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra (para confitar)",
+                "cantidad": "Suficiente para cubrir el bacalao (se reutiliza)"
+            },
+            {
+                "item": "Dientes de ajo (para confitar)",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Hoja de laurel (opcional)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Para el Pisto Ligero (porción de guarnición):",
+                "cantidad": ""
+            },
+            {
+                "item": "Cebolla",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Pimiento verde",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Pimiento rojo",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Calabacín",
+                "cantidad": "1/2 unidad pequeña"
+            },
+            {
+                "item": "Tomate triturado natural",
+                "cantidad": "150g"
+            },
+            {
+                "item": "Aceite de oliva virgen extra (para pisto)",
+                "cantidad": "1 cucharada"
+            }
+        ],
+        "calorias": "350-420 kcal por ración (el bacalao absorbe poco aceite al confitar correctamente)",
+        "tiempo_preparacion": "45-50 minutos (si el pisto se hace al momento)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Ensalada Griega Moderna con Base de Quinoa y Aderezo de Limón y Orégano",
+        "ingrediente_principal": "Quinoa y Verduras (Estilo Griego)",
+        "preparacion": "1. Cocer la quinoa según las instrucciones del paquete. Escurrir y dejar enfriar. 2. Cortar el pepino y los tomates en dados. Cortar la cebolla morada en juliana muy fina. 3. En un bol grande, mezclar la quinoa fría, el pepino, los tomates y la cebolla morada. 4. Añadir las aceitunas Kalamata (deshuesadas y partidas por la mitad si son grandes) y el queso feta light desmenuzado. 5. Preparar el aderezo: mezclar bien 1-2 cucharaditas de aceite de oliva virgen extra, el zumo de medio limón, orégano seco, sal y pimienta. 6. Verter el aderezo sobre la ensalada y mezclar con cuidado. Servir fría.",
+        "ingredientes": [
+            {
+                "item": "Quinoa cocida",
+                "cantidad": "80-100g (peso cocido, unos 40g en crudo)"
+            },
+            {
+                "item": "Pepino",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Tomate de ensalada",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Cebolla morada",
+                "cantidad": "1/4 unidad pequeña"
+            },
+            {
+                "item": "Aceitunas Kalamata (o negras de buena calidad)",
+                "cantidad": "6-8 unidades"
+            },
+            {
+                "item": "Queso feta light",
+                "cantidad": "30-40g"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1-2 cucharaditas"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Orégano seco",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto (cuidado con la sal del feta y aceitunas)"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "300-380 kcal por ración",
+        "tiempo_preparacion": "20 minutos (si la quinoa está cocida)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Sopa Fría de Remolacha Cocida y Yogur con Toque de Comino y Huevo Duro Picado",
+        "ingrediente_principal": "Remolacha Cocida",
+        "preparacion": "1. Pelar y trocear la remolacha cocida. 2. En el vaso de la batidora, poner la remolacha troceada, el yogur natural desnatado, un diente de ajo pequeño (opcional, para un toque más intenso), el comino molido, el vinagre de manzana y una pizca de sal. 3. Triturar todo hasta obtener una crema fina y homogénea. Si queda muy espesa, añadir un poco de agua fría o unos cubitos de hielo hasta obtener la consistencia deseada. 4. Probar y rectificar de sal o vinagre si es necesario. Enfriar bien en la nevera (al menos 30 minutos). 5. Servir la sopa fría en cuencos, decorada con el huevo duro picado, un chorrito de aceite de oliva (opcional) y unas hojas de eneldo o perejil fresco.",
+        "ingredientes": [
+            {
+                "item": "Remolacha cocida (envasada al vacío o cocida en casa)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Yogur natural desnatado (o kéfir)",
+                "cantidad": "100-125g"
+            },
+            {
+                "item": "Diente de ajo pequeño (opcional)",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Comino molido",
+                "cantidad": "1/4 - 1/2 cucharadita"
+            },
+            {
+                "item": "Vinagre de manzana o sidra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Huevo duro (para decorar)",
+                "cantidad": "1/2 - 1 unidad por persona"
+            },
+            {
+                "item": "Agua fría o hielo (opcional)",
+                "cantidad": "Según necesidad"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Aceite de oliva virgen extra (para decorar, opcional)",
+                "cantidad": "Un hilo"
+            }
+        ],
+        "calorias": "150-220 kcal por ración (con medio huevo)",
+        "tiempo_preparacion": "10 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Champiñones Portobello Rellenos de Soja Texturizada Guisada con Verduras",
+        "ingrediente_principal": "Champiñones Portobello y Soja Texturizada",
+        "preparacion": "1. Precalentar el horno a 190°C. Limpiar los champiñones Portobello y retirarles el tallo con cuidado. Picar los tallos. 2. Hidratar la soja texturizada fina según las instrucciones del fabricante (generalmente en agua caliente o caldo vegetal durante unos 10-15 minutos). Escurrir bien. 3. Picar finamente la cebolla, la zanahoria y el pimiento. 4. En una sartén, calentar una cucharadita de aceite de oliva. Sofreír la cebolla, la zanahoria, el pimiento y los tallos de champiñón picados hasta que estén tiernos. 5. Añadir la soja texturizada hidratada a la sartén. Incorporar tomate frito casero (o triturado natural y cocinar más tiempo), orégano, sal y pimienta. Cocinar unos minutos para que se mezclen los sabores. 6. Colocar los sombreros de los Portobello en una bandeja de horno. Rellenarlos con la mezcla de soja texturizada y verduras. 7. Hornear durante 15-20 minutos, hasta que los champiñones estén tiernos y el relleno caliente. Opcional: espolvorear con levadura nutricional o un poco de pan rallado integral antes de hornear.",
+        "ingredientes": [
+            {
+                "item": "Champiñones Portobello grandes",
+                "cantidad": "2 unidades"
+            },
+            {
+                "item": "Soja texturizada fina",
+                "cantidad": "30-40g (en seco)"
+            },
+            {
+                "item": "Cebolla pequeña",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Zanahoria pequeña",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Pimiento verde o rojo",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Tomate frito casero sin azúcares o triturado natural",
+                "cantidad": "2-3 cucharadas"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Orégano seco",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Levadura nutricional (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "200-280 kcal por ración (2 champiñones rellenos)",
+        "tiempo_preparacion": "40-45 minutos",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Filete de Dorada al Horno con Gajos de Boniato Asado y Romero",
+        "ingrediente_principal": "Dorada",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Pelar el boniato y cortarlo en gajos no muy gruesos. En un bol, mezclar los gajos de boniato con 1/2 cucharadita de aceite de oliva, sal, pimienta y romero fresco o seco. Extender en una capa sobre una bandeja de horno forrada con papel de hornear. Asar durante 10 minutos. 3. Mientras, salpimentar el filete de dorada (o la dorada entera limpia y con unos cortes en el lomo). Se pueden añadir unas rodajas de limón. 4. Pasados los 10 minutos del boniato, hacer un hueco en la bandeja y colocar el filete de dorada. Rociar el pescado con unas gotas de aceite de oliva. 5. Hornear todo junto durante 10-15 minutos más (dependiendo del grosor del pescado y del boniato), hasta que la dorada esté hecha y el boniato tierno y ligeramente dorado. 6. Servir inmediatamente.",
+        "ingredientes": [
+            {
+                "item": "Filete de dorada (o 1 dorada pequeña de ración)",
+                "cantidad": "1 porción (150-180g)"
+            },
+            {
+                "item": "Boniato",
+                "cantidad": "100-120g (1/2 unidad pequeña)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita (1/2 para boniato, 1/2 para pescado)"
+            },
+            {
+                "item": "Romero fresco o seco",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Limón (opcional)",
+                "cantidad": "1-2 rodajas"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "300-380 kcal por ración",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Consomé de Pollo Casero Depurativo con Fideos Finos de Calabacín y Menta",
+        "ingrediente_principal": "Caldo de Pollo Casero y Calabacín",
+        "preparacion": "1. Preparar un caldo de pollo casero ligero (con carcasas de pollo, puerro, zanahoria, apio, cebolla; desgrasar bien una vez frío). O usar un buen caldo comprado bajo en sal. 2. Con un espiralizador o un pelador de verduras, hacer fideos finos con el calabacín (usar la parte sin semillas). 3. Calentar el consomé de pollo en un cazo. 4. Justo antes de servir, añadir los fideos de calabacín al consomé caliente y cocinar durante solo 1-2 minutos para que se ablanden ligeramente pero queden al dente. No cocinar en exceso para que no se deshagan. 5. Servir el consomé caliente en un cuenco o taza, con los fideos de calabacín y unas hojas de menta fresca picada (o hierbabuena) para un toque refrescante. Se puede añadir una pizca de jengibre rallado al caldo para un punto picante.",
+        "ingredientes": [
+            {
+                "item": "Consomé de pollo casero desgrasado (o comprado bajo en sal)",
+                "cantidad": "300-400 ml"
+            },
+            {
+                "item": "Calabacín",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Hojas de menta fresca o hierbabuena",
+                "cantidad": "2-3 hojas"
+            },
+            {
+                "item": "Jengibre fresco rallado (opcional)",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Sal (si el caldo no tiene o es bajo en sal)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "60-100 kcal por ración (muy ligero)",
+        "tiempo_preparacion": "10 minutos (si el caldo está hecho)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Pimientos del Piquillo Rellenos de Brandada de Bacalao Ligera",
+        "ingrediente_principal": "Pimientos del Piquillo y Bacalao",
+        "preparacion": "1. Para la brandada ligera: Cocer al vapor o hervir 100g de bacalao desalado. Desmigarlo y mezclarlo con 1/2 patata pequeña cocida y machacada (o sin patata para menos carbohidratos, usando un poco de leche evaporada o bebida vegetal para cremosidad), 1/2 diente de ajo muy picado (o asado), un chorrito de aceite de oliva (1 cucharadita), perejil picado y pimienta. Triturar hasta obtener una crema. 2. Rellenar con cuidado los pimientos del piquillo (de lata, escurridos) con la brandada de bacalao ligera. 3. Opcional: Servir sobre una fina capa de salsa de tomate casera o calentar ligeramente al horno. Decorar con perejil fresco.",
+        "ingredientes": [
+            {
+                "item": "Pimientos del piquillo en conserva (escurridos)",
+                "cantidad": "6-8 unidades"
+            },
+            {
+                "item": "Bacalao desalado",
+                "cantidad": "100g (para la brandada)"
+            },
+            {
+                "item": "Patata pequeña (opcional, para la brandada)",
+                "cantidad": "1/2 unidad (aprox. 40g)"
+            },
+            {
+                "item": "Leche evaporada o bebida vegetal (si no se usa patata)",
+                "cantidad": "1-2 cucharadas"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Ajo",
+                "cantidad": "1/2 diente"
+            },
+            {
+                "item": "Perejil fresco picado",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "220-290 kcal por ración",
+        "tiempo_preparacion": "30 minutos (si el bacalao está desalado)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Tataki de Atún Ligero con Vinagreta de Sésamo y Ensalada de Wakame",
+        "ingrediente_principal": "Atún Rojo",
+        "preparacion": "1. Marinar un lomo de atún rojo fresco (unos 120-150g) durante 15-20 minutos en una mezcla de salsa de soja baja en sodio (2 cucharadas), vinagre de arroz (1 cucharada) y un poco de jengibre rallado. 2. Escurrir el atún y rebozar los lados con semillas de sésamo tostado. 3. Calentar una sartén antiadherente a fuego muy alto. Sellar el lomo de atún rápidamente por todos sus lados (unos 15-30 segundos por lado), de manera que el interior quede crudo. 4. Retirar y dejar enfriar. Cortar en filetes de medio centímetro de grosor. 5. Servir el tataki con una porción de ensalada de alga wakame (previamente hidratada y aliñada ligeramente con aceite de sésamo y vinagre de arroz) y la vinagreta del marinado o una adicional de sésamo y cítricos.",
+        "ingredientes": [
+            {
+                "item": "Lomo de atún rojo fresco (calidad para tataki)",
+                "cantidad": "120-150g"
+            },
+            {
+                "item": "Salsa de soja baja en sodio",
+                "cantidad": "2 cucharadas"
+            },
+            {
+                "item": "Vinagre de arroz",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Jengibre fresco rallado",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Semillas de sésamo tostado (blanco y/o negro)",
+                "cantidad": "1-2 cucharadas"
+            },
+            {
+                "item": "Alga wakame deshidratada (para ensalada)",
+                "cantidad": "5g (seco)"
+            },
+            {
+                "item": "Aceite de sésamo (para ensalada wakame)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "280-360 kcal por ración",
+        "tiempo_preparacion": "25 minutos (más tiempo de marinado)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Solomillo de Cerdo a la Plancha con Compota de Manzana Casera (sin azúcar) y Espárragos Verdes Salteados",
+        "ingrediente_principal": "Solomillo de Cerdo",
+        "preparacion": "1. Para la compota de manzana: Pelar y descorazonar 1-2 manzanas. Cortarlas en trozos y cocinarlas en un cazo con un poco de agua y una rama de canela (opcional) a fuego lento hasta que estén muy blandas. Retirar la canela y triturar (o dejar con trozos). No añadir azúcar. 2. Limpiar el solomillo de cerdo de posible exceso de grasa y cortarlo en medallones de 1.5-2 cm de grosor. Salpimentar. 3. Lavar los espárragos verdes y cortar la parte dura del tallo. 4. Calentar una plancha o sartén antiadherente con unas gotas de aceite de oliva. Cocinar los medallones de solomillo 3-4 minutos por cada lado, hasta que estén dorados por fuera y hechos por dentro pero jugosos. 5. En la misma plancha o en otra sartén, saltear los espárragos verdes con una pizca de sal hasta que estén tiernos pero crujientes. 6. Servir los medallones de solomillo con una porción de compota de manzana y los espárragos verdes.",
+        "ingredientes": [
+            {
+                "item": "Solomillo de cerdo",
+                "cantidad": "120-150g"
+            },
+            {
+                "item": "Manzana (para compota)",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Espárragos verdes frescos",
+                "cantidad": "100-150g (un manojo pequeño)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Rama de canela (opcional, para compota)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "300-380 kcal por ración",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Corazones de Alcachofa al Horno con Ajo Laminado, Limón y Hierbas Provenzales",
+        "ingrediente_principal": "Alcachofas",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Utilizar corazones de alcachofa en conserva (bien escurridos y partidos por la mitad) o corazones de alcachofa frescos (limpios, cocidos previamente hasta estar tiernos y partidos por la mitad). 3. En un bol, mezclar los corazones de alcachofa con ajo laminado, el zumo de medio limón, una cucharadita de aceite de oliva virgen extra, una pizca de sal, pimienta negra y hierbas provenzales al gusto. 4. Extender las alcachofas en una sola capa sobre una bandeja de horno forrada con papel de hornear. 5. Hornear durante 15-20 minutos, o hasta que estén ligeramente doradas y los bordes empiecen a caramelizar. Remover a mitad de cocción si es necesario. Servir calientes como plato principal ligero o guarnición.",
+        "ingredientes": [
+            {
+                "item": "Corazones de alcachofa (en conserva o frescos cocidos)",
+                "cantidad": "200-250g (peso escurrido/cocido)"
+            },
+            {
+                "item": "Dientes de ajo",
+                "cantidad": "1-2 unidades (laminados)"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Hierbas provenzales secas",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "120-180 kcal por ración",
+        "tiempo_preparacion": "20-25 minutos (si se usan alcachofas ya preparadas)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Sopa Juliana de Verduras Frescas con Huevo Escalfado y Cilantro",
+        "ingrediente_principal": "Verduras en Juliana",
+        "preparacion": "1. Cortar en juliana fina (tiras delgadas) una variedad de verduras: zanahoria, puerro (parte blanca), apio, nabo (opcional), calabacín. 2. En una olla, calentar una cucharadita de aceite de oliva. Rehogar ligeramente el puerro y el apio. 3. Añadir el resto de las verduras en juliana y cubrir con caldo de verduras bajo en sodio o agua. Salpimentar. 4. Cocinar a fuego medio durante 10-15 minutos, o hasta que las verduras estén tiernas pero aún conserven algo de textura (al dente). 5. Mientras tanto, escalfar un huevo por persona: llevar agua a ebullición suave en un cazo con un chorrito de vinagre. Cascar el huevo en un cuenco. Crear un remolino en el agua y verter el huevo. Cocinar 3-4 minutos. 6. Servir la sopa juliana caliente en un cuenco, colocar el huevo escalfado encima y espolvorear con cilantro fresco picado (o perejil).",
+        "ingredientes": [
+            {
+                "item": "Zanahoria",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Puerro (parte blanca)",
+                "cantidad": "1/2 tallo"
+            },
+            {
+                "item": "Apio",
+                "cantidad": "1/2 tallo"
+            },
+            {
+                "item": "Calabacín",
+                "cantidad": "1/2 unidad pequeña"
+            },
+            {
+                "item": "Caldo de verduras bajo en sodio o agua",
+                "cantidad": "400-500 ml"
+            },
+            {
+                "item": "Huevo",
+                "cantidad": "1 por persona"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Cilantro fresco picado",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta blanca molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "150-200 kcal por ración",
+        "tiempo_preparacion": "25-30 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Wrap de Hoja de Col Relleno de Pollo Desmenuzado con Curry y Aguacate",
+        "ingrediente_principal": "Hoja de Col y Pollo",
+        "preparacion": "1. Cocer o blanquear hojas grandes de col (berza, repollo rizado) en agua hirviendo durante 1-2 minutos hasta que estén flexibles pero no demasiado blandas. Enfriar rápidamente en agua con hielo y secar con cuidado. Retirar el nervio central grueso si es muy prominente para facilitar el enrollado. 2. Desmenuzar pollo cocido o asado (sobras o cocinado específicamente). 3. En un bol, mezclar el pollo desmenuzado con yogur natural (o mayonesa ligera), una pizca de curry en polvo, sal y pimienta. 4. Cortar aguacate en láminas finas y zanahoria en juliana fina. 5. Extender una hoja de col. Colocar en el centro una porción de la mezcla de pollo, unas láminas de aguacate y un poco de zanahoria en juliana. 6. Doblar los lados de la hoja de col hacia adentro y luego enrollar apretando para formar el wrap. Cortar por la mitad si se desea. Hacer 1-2 wraps por persona.",
+        "ingredientes": [
+            {
+                "item": "Hojas grandes de col (berza, repollo rizado)",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Pechuga de pollo cocida o asada, desmenuzada",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Yogur natural desnatado (o mayonesa ligera)",
+                "cantidad": "1-2 cucharadas"
+            },
+            {
+                "item": "Curry en polvo",
+                "cantidad": "1/4 - 1/2 cucharadita"
+            },
+            {
+                "item": "Aguacate",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Zanahoria pequeña (en juliana)",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "200-280 kcal por ración",
+        "tiempo_preparacion": "15-20 minutos (si el pollo está cocido)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Gambas al Ajillo con Champiñones Portobello Laminados y Guindilla",
+        "ingrediente_principal": "Gambas",
+        "preparacion": "1. Pelar las gambas (dejar la cola si se desea para presentación). Limpiar y laminar los champiñones Portobello (o champiñones comunes grandes). Laminar los dientes de ajo. Cortar la guindilla en aritos (opcional, y quitar semillas si se prefiere menos picante). 2. En una cazuela de barro o sartén ancha, calentar el aceite de oliva a fuego medio. Añadir los ajos laminados y la guindilla. Sofreír con cuidado hasta que los ajos empiecen a tomar un ligero color dorado (sin quemarse). 3. Incorporar los champiñones laminados y saltear durante 3-4 minutos hasta que estén tiernos y hayan soltado parte de su agua. 4. Subir un poco el fuego, añadir las gambas peladas y una pizca de sal. Cocinar durante 2-3 minutos, removiendo, hasta que las gambas cambien de color y estén hechas. 5. Espolvorear con perejil fresco picado abundante y servir inmediatamente, bien caliente. Ideal para mojar (con moderación) pan integral tostado.",
+        "ingredientes": [
+            {
+                "item": "Gambas o langostinos crudos pelados",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Champiñones Portobello (o comunes grandes)",
+                "cantidad": "2-3 unidades (unos 100-150g)"
+            },
+            {
+                "item": "Dientes de ajo",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1-2 cucharadas"
+            },
+            {
+                "item": "Guindilla cayena (opcional)",
+                "cantidad": "1 pequeña"
+            },
+            {
+                "item": "Perejil fresco picado",
+                "cantidad": "2-3 cucharadas"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "250-350 kcal por ración (sin pan)",
+        "tiempo_preparacion": "15 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Ensalada de Cogollos de Tudela a la Plancha con Anchoas del Cantábrico y Vinagreta de Tomate Cherry y Alcaparras",
+        "ingrediente_principal": "Cogollos de Tudela",
+        "preparacion": "1. Lavar los cogollos de Tudela y cortarlos por la mitad a lo largo. 2. Calentar una plancha o sartén grande con unas gotas de aceite de oliva a fuego medio-alto. Colocar los cogollos con el corte hacia abajo y cocinar durante 2-3 minutos por cada lado, hasta que estén marcados y ligeramente tiernos pero aún crujientes. 3. Para la vinagreta: Picar muy finamente los tomates cherry, las alcaparras (escurridas) y un poco de cebolleta. Mezclar con 1 cucharadita de aceite de oliva virgen extra, unas gotas de vinagre de Jerez, sal y pimienta. 4. Colocar los cogollos a la plancha en un plato. Disponer encima las anchoas del Cantábrico (bien escurridas de su aceite). 5. Aliñar con la vinagreta de tomate cherry y alcaparras. Servir templada o fría.",
+        "ingredientes": [
+            {
+                "item": "Cogollos de Tudela",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Anchoas del Cantábrico en aceite de oliva (escurridas)",
+                "cantidad": "4-6 filetes"
+            },
+            {
+                "item": "Tomates cherry",
+                "cantidad": "3-4 unidades"
+            },
+            {
+                "item": "Alcaparras",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Cebolleta fresca (opcional, para vinagreta)",
+                "cantidad": "Un trocito muy pequeño"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita (para vinagreta) + gotas para la plancha"
+            },
+            {
+                "item": "Vinagre de Jerez",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Sal (con precaución por las anchoas)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-250 kcal por ración",
+        "tiempo_preparacion": "15 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Pastel Ligero de Pescado Blanco y Brócoli al Microondas (Individual)",
+        "ingrediente_principal": "Pescado Blanco y Brócoli",
+        "preparacion": "1. Cocer al vapor o en el microondas un filete de pescado blanco (merluza, bacalao desalado, lenguado) hasta que esté hecho. Desmenuzarlo. 2. Cocer al vapor o en el microondas unos ramilletes de brócoli hasta que estén tiernos. Picarlos finamente. 3. En un bol, batir 1 huevo (o 2 claras) con una cucharada de leche evaporada o nata ligera para cocinar (opcional, para cremosidad), sal, pimienta y una pizca de eneldo o perejil picado. 4. Incorporar el pescado desmenuzado y el brócoli picado a la mezcla de huevo. Remover bien. 5. Verter la mezcla en un molde individual pequeño apto para microondas (tipo ramequín) previamente engrasado ligeramente. 6. Cocinar en el microondas a media-alta potencia (unos 600-700W) durante 3-5 minutos, o hasta que esté cuajado. El tiempo puede variar según el microondas. Comprobar introduciendo un palillo. 7. Dejar reposar un minuto antes de desmoldar (o consumir directamente del molde). Servir con una ensalada de hojas verdes.",
+        "ingredientes": [
+            {
+                "item": "Filete de pescado blanco (merluza, bacalao, etc.)",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Brócoli (ramilletes)",
+                "cantidad": "50-70g"
+            },
+            {
+                "item": "Huevo",
+                "cantidad": "1 unidad (o 2 claras)"
+            },
+            {
+                "item": "Leche evaporada o nata ligera para cocinar (opcional)",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Eneldo o perejil fresco picado",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta blanca molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-240 kcal por ración",
+        "tiempo_preparacion": "15-20 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Curry Rojo Ligero de Lentejas Coral con Leche de Coco Light, Calabaza y Espinacas",
+        "ingrediente_principal": "Lentejas Coral y Curry Rojo",
+        "preparacion": "1. Enjuagar bien las lentejas coral. Picar la cebolla, el ajo y el jengibre. Cortar la calabaza en dados pequeños. 2. En una olla, calentar una cucharadita de aceite de coco o de oliva. Sofreír la cebolla, el ajo y el jengibre hasta que estén fragantes. 3. Añadir la pasta de curry rojo (ajustar cantidad al gusto de picante) y cocinar 1 minuto, removiendo. 4. Incorporar los dados de calabaza y las lentejas coral enjuagadas. Remover bien. 5. Verter la leche de coco light y el caldo de verduras. Llevar a ebullición, luego reducir el fuego, tapar y cocinar a fuego lento durante 15-20 minutos, o hasta que las lentejas y la calabaza estén tiernas. 6. Añadir las espinacas frescas y cocinar 2-3 minutos más hasta que se ablanden. 7. Sazonar con una pizca de sal (si es necesario, ya que la pasta de curry puede ser salada) y unas gotas de zumo de lima. Servir caliente, decorado con cilantro fresco.",
+        "ingredientes": [
+            {
+                "item": "Lentejas coral (rojas partidas)",
+                "cantidad": "60-70g"
+            },
+            {
+                "item": "Leche de coco light",
+                "cantidad": "100 ml"
+            },
+            {
+                "item": "Caldo de verduras bajo en sodio",
+                "cantidad": "150-200 ml"
+            },
+            {
+                "item": "Calabaza (tipo cacahuete o butternut)",
+                "cantidad": "100g (en dados)"
+            },
+            {
+                "item": "Espinacas frescas",
+                "cantidad": "Un buen puñado (50-70g)"
+            },
+            {
+                "item": "Cebolla pequeña",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Diente de ajo",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Jengibre fresco rallado",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Pasta de curry rojo tailandés",
+                "cantidad": "1/2 - 1 cucharadita (al gusto)"
+            },
+            {
+                "item": "Aceite de coco o de oliva",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Zumo de lima",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Cilantro fresco picado (para decorar)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "280-350 kcal por ración",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Berberechos Frescos al Vapor con Limón, Ajo y un Toque de Vino Blanco Seco",
+        "ingrediente_principal": "Berberechos",
+        "preparacion": "1. Poner los berberechos en un bol grande con agua fría y sal durante al menos 30 minutos (o hasta 1-2 horas) para que suelten la arena. Cambiar el agua un par de veces. Enjuagarlos bien bajo el grifo. Descartar los que estén rotos o abiertos y no se cierren al golpearlos. 2. Picar muy finamente un diente de ajo. 3. En una cazuela ancha con tapa, calentar una cucharadita de aceite de oliva. Sofreír el ajo picado unos segundos, con cuidado de que no se queme. 4. Añadir los berberechos bien escurridos a la cazuela. Verter el vino blanco seco y el zumo de medio limón. 5. Tapar la cazuela y cocinar a fuego medio-alto durante 3-5 minutos, o hasta que todos los berberechos se hayan abierto. Agitar la cazuela de vez en cuando. 6. Retirar del fuego. Descartar los berberechos que no se hayan abierto. Espolvorear con perejil fresco picado y servir inmediatamente con su jugo.",
+        "ingredientes": [
+            {
+                "item": "Berberechos frescos",
+                "cantidad": "250-300g (con concha, para una ración)"
+            },
+            {
+                "item": "Vino blanco seco",
+                "cantidad": "2-3 cucharadas"
+            },
+            {
+                "item": "Limón",
+                "cantidad": "1/2 unidad (para zumo)"
+            },
+            {
+                "item": "Diente de ajo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Perejil fresco picado",
+                "cantidad": "1 cucharada"
+            }
+        ],
+        "calorias": "100-150 kcal por ración (muy ligero)",
+        "tiempo_preparacion": "15 minutos (más tiempo de remojo para los berberechos)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Rollitos Vietnamitas Frescos (Gỏi Cuốn) con Tofu Ahumado y Hortalizas Crujientes",
+        "ingrediente_principal": "Papel de Arroz y Tofu Ahumado",
+        "preparacion": "1. Preparar todos los ingredientes del relleno: cortar el tofu ahumado en tiras finas. Cortar en juliana fina la zanahoria, el pepino y el pimiento rojo. Lavar las hojas de lechuga y la menta/cilantro. Cocer fideos finos de arroz (vermicelli) según el paquete y enfriar. 2. Preparar un plato grande con agua tibia. Sumergir una hoja de papel de arroz en el agua durante unos 15-30 segundos, hasta que esté blanda y maleable. 3. Extender con cuidado la hoja de papel de arroz hidratada sobre una superficie limpia y ligeramente húmeda. 4. Colocar en el tercio inferior de la hoja una pequeña cantidad de fideos de arroz, unas tiras de tofu ahumado, zanahoria, pepino, pimiento, una hoja de lechuga y unas hojas de menta/cilantro. No sobrecargar. 5. Doblar los lados del papel de arroz hacia adentro, sobre el relleno. Luego, enrollar desde abajo hacia arriba, apretando firmemente pero con cuidado para no romper el papel. 6. Repetir con el resto de las hojas de papel de arroz e ingredientes. Hacer 2-3 rollitos por persona. Servir con una salsa ligera de cacahuete (ver nota) o salsa nuoc cham diluida.",
+        "ingredientes": [
+            {
+                "item": "Hojas de papel de arroz (Rice paper wrappers)",
+                "cantidad": "2-3 por persona"
+            },
+            {
+                "item": "Tofu ahumado (o gambas cocidas)",
+                "cantidad": "50-70g"
+            },
+            {
+                "item": "Fideos finos de arroz (vermicelli)",
+                "cantidad": "20-30g (peso seco)"
+            },
+            {
+                "item": "Zanahoria pequeña",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Pepino",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Pimiento rojo pequeño",
+                "cantidad": "1/4 unidad"
+            },
+            {
+                "item": "Hojas de lechuga (tipo Batavia o Romana tierna)",
+                "cantidad": "2-3 hojas"
+            },
+            {
+                "item": "Menta fresca y/o cilantro fresco",
+                "cantidad": "Unas ramitas"
+            },
+            {
+                "item": "Salsa ligera de cacahuete (opcional, con moderación): Mantequilla de cacahuete natural (1 cda), agua tibia, salsa de soja, chorrito de lima, pizca de jengibre.",
+                "cantidad": "1-2 cdas preparadas"
+            }
+        ],
+        "calorias": "200-280 kcal por ración (2-3 rollitos, sin incluir mucha salsa)",
+        "tiempo_preparacion": "25-30 minutos",
+        "dificultad": "Media (por el manejo del papel de arroz)"
+    },
+    {
+        "titulo": "Coliflor Entera Asada al Ras el Hanout con Salsa de Yogur y Tahini",
+        "ingrediente_principal": "Coliflor",
+        "preparacion": "1. Precalentar el horno a 200°C. 2. Lavar una coliflor pequeña-mediana y quitarle las hojas exteriores y la base del tallo, pero dejando el núcleo intacto para que no se desarme. 3. En un bol, mezclar 1-2 cucharadas de aceite de oliva con 1-2 cucharaditas de Ras el Hanout (o una mezcla de cúrcuma, comino, cilantro molido, pimentón), sal y pimienta. 4. Untar toda la superficie de la coliflor con esta mezcla de aceite y especias, masajeando bien para que penetre. 5. Colocar la coliflor en una fuente de horno. Añadir un dedo de agua en el fondo de la fuente para crear vapor y evitar que se seque demasiado. 6. Asar durante 40-60 minutos (dependiendo del tamaño), o hasta que esté tierna por dentro (se puede comprobar pinchando con un cuchillo) y dorada por fuera. Cubrir con papel de aluminio si se dora demasiado rápido. 7. Para la salsa: mezclar yogur natural desnatado (100g) con tahini (1 cucharadita), zumo de limón (1 cucharadita), un poco de agua para aligerar, sal y ajo en polvo (opcional). 8. Servir la coliflor asada entera o en gajos, con la salsa de yogur y tahini aparte o por encima. Espolvorear con perejil o cilantro fresco.",
+        "ingredientes": [
+            {
+                "item": "Coliflor entera",
+                "cantidad": "1 unidad pequeña-mediana (aprox. 400-500g para 1-2 personas)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1-2 cucharadas"
+            },
+            {
+                "item": "Ras el Hanout (u otras especias como cúrcuma, comino)",
+                "cantidad": "1-2 cucharaditas"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Para la salsa de yogur y tahini:",
+                "cantidad": ""
+            },
+            {
+                "item": "Yogur natural desnatado",
+                "cantidad": "100g"
+            },
+            {
+                "item": "Tahini (pasta de sésamo)",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "250-350 kcal por ración (considerando media coliflor pequeña y la salsa)",
+        "tiempo_preparacion": "50-70 minutos (mayormente horneado)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Sepia Fresca a la Plancha con Majo de Ajo, Perejil y Limón y Ensalada Crujiente de Hinojo y Naranja",
+        "ingrediente_principal": "Sepia",
+        "preparacion": "1. Limpiar bien la sepia fresca (quitar piel, pluma, interior) o pedirla limpia en la pescadería. Cortarla en trozos medianos o dejarla entera si es pequeña. Secar bien. 2. Para el majo: machacar en un mortero 1-2 dientes de ajo con un buen puñado de perejil fresco, una pizca de sal gorda y unas gotas de zumo de limón. Añadir una cucharadita de aceite de oliva y mezclar. 3. Para la ensalada: Cortar un bulbo de hinojo pequeño en láminas muy finas (idealmente con mandolina). Pelar una naranja y sacar los gajos sin piel. Mezclar el hinojo con los gajos de naranja y aliñar con unas gotas de aceite de oliva y vinagre de manzana o zumo de naranja. 4. Calentar una plancha o sartén grande a fuego alto con unas gotas de aceite. Cocinar la sepia 2-3 minutos por cada lado, hasta que esté dorada y tierna (no cocinar en exceso para que no quede gomosa). 5. Justo al final de la cocción, añadir el majo de ajo y perejil sobre la sepia y saltear unos segundos. 6. Servir la sepia inmediatamente con la ensalada de hinojo y naranja.",
+        "ingredientes": [
+            {
+                "item": "Sepia fresca limpia",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Dientes de ajo",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Perejil fresco",
+                "cantidad": "Un buen manojo"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "Unas gotas (para el majo)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita (para el majo) + gotas para la plancha y ensalada"
+            },
+            {
+                "item": "Bulbo de hinojo pequeño",
+                "cantidad": "1/2 - 1 unidad"
+            },
+            {
+                "item": "Naranja",
+                "cantidad": "1/2 - 1 unidad"
+            },
+            {
+                "item": "Sal gorda (para el majo)",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Sal fina y pimienta (para la sepia)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "280-360 kcal por ración",
+        "tiempo_preparacion": "25-30 minutos",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Tortilla Francesa Ligera Rellena de Champiñones Salteados, Espinacas Frescas y Finas Hierbas",
+        "ingrediente_principal": "Huevos",
+        "preparacion": "1. Limpiar y laminar los champiñones. Lavar las espinacas frescas. Picar finamente un poco de cebolleta (opcional) y las finas hierbas (perejil, cebollino, estragón). 2. En una sartén pequeña antiadherente, saltear la cebolleta (si se usa) y los champiñones laminados con unas gotas de aceite de oliva hasta que estén dorados y hayan soltado el agua. Añadir las espinacas y cocinar hasta que se reduzcan. Sazonar con sal y pimienta. Retirar y reservar el relleno. 3. Batir los huevos (o claras para una versión aún más ligera) con una pizca de sal, pimienta y las finas hierbas picadas. 4. Calentar la misma sartén (limpia si es necesario) con unas gotas de aceite de oliva a fuego medio. Verter los huevos batidos y cocinar, moviendo la sartén para extender la mezcla, hasta que los bordes empiecen a cuajar. 5. Colocar el relleno de champiñones y espinacas sobre una mitad de la tortilla. 6. Con la ayuda de una espátula, doblar la otra mitad de la tortilla sobre el relleno. Cocinar 30 segundos más o hasta que esté al punto deseado. Deslizar sobre un plato y servir caliente.",
+        "ingredientes": [
+            {
+                "item": "Huevos",
+                "cantidad": "2 unidades (o 1 huevo + 2 claras, o 3-4 claras)"
+            },
+            {
+                "item": "Champiñones frescos",
+                "cantidad": "50-70g (2-3 unidades medianas)"
+            },
+            {
+                "item": "Espinacas frescas",
+                "cantidad": "Un puñado (30-40g)"
+            },
+            {
+                "item": "Cebolleta fresca (opcional)",
+                "cantidad": "1 cucharada picada"
+            },
+            {
+                "item": "Finas hierbas frescas picadas (perejil, cebollino)",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1/2 - 1 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-250 kcal por ración (varía según si se usan huevos enteros o claras)",
+        "tiempo_preparacion": "15 minutos",
+        "dificultad": "Fácil"
+    }
 ]

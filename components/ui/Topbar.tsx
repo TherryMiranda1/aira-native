@@ -36,7 +36,7 @@ export const Topbar = ({
             style={styles.logo}
           />
         )}
-        <ThemedText style={styles.topbarTitle} type="title">
+        <ThemedText numberOfLines={1} style={styles.topbarTitle} type="title">
           {title}
         </ThemedText>
         <View style={styles.topbarActions}>{actions}</View>
@@ -57,7 +57,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   topbarTitle: {
-    fontSize: 22,
+    fontSize: 20,
+    padding: 4,
+    maxWidth: "80%",
   },
   topbarActions: {
     flexDirection: "row",

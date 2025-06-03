@@ -1,130 +1,87 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
-import { PageView } from "@/components/ui/PageView";
 import { ModalScreen } from "@/components/navigation/ModalScreen";
-
-// Importamos los datos de recetas
-import desayunos from "@/mocks/recipes/desayunos.json";
-import almuerzos from "@/mocks/recipes/almuerzos.json";
-import cenas from "@/mocks/recipes/cenas.json";
-import meriendas from "@/mocks/recipes/meriendas.json";
-import postres from "@/mocks/recipes/postres.json";
 import { AiraVariants } from "@/constants/Themes";
-
-interface Ingrediente {
-  item: string;
-  cantidad: string;
-}
-
-interface Recipe {
-  id?: string;
-  titulo: string;
-  ingrediente_principal: string;
-  preparacion: string;
-  ingredientes: Ingrediente[];
-  calorias: string;
-  tiempo_preparacion: string;
-  dificultad: string;
-  categoria?: string;
-}
-
-// Función para procesar las recetas y añadir id y categoría
-const processRecipes = (recipes: any[], categoria: string): Recipe[] => {
-  return recipes.map((recipe, index) => ({
-    ...recipe,
-    id: `${categoria}-${index + 1}`,
-    categoria,
-  }));
-};
-
-// Combinamos todas las recetas en un solo array
-const allRecipes: Recipe[] = [
-  ...processRecipes(desayunos, "desayunos"),
-  ...processRecipes(almuerzos, "almuerzos"),
-  ...processRecipes(cenas, "cenas"),
-  ...processRecipes(meriendas, "meriendas"),
-  ...processRecipes(postres, "postres"),
-];
-
-// Función para obtener el color según la dificultad
-const getDifficultyColor = (dificultad: string) => {
-  switch (dificultad.toLowerCase()) {
-    case "muy fácil":
-      return "#4ade80"; // verde
-    case "fácil":
-      return "#60a5fa"; // azul
-    case "medio":
-      return "#facc15"; // amarillo
-    case "difícil":
-      return "#f87171"; // rojo
-    default:
-      return AiraColors.mutedForeground; // gris
-  }
-};
+import { recipeService, Recipe } from "@/services/api/recipeService";
+import { EmptyState } from "@/components/States/EmptyState";
+import { LoadingState } from "@/components/States/LoadingState";
+import { getRecipeDifficultyColor } from "@/utils/colors";
 
 export default function RecipeDetailScreen() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Buscar la receta por ID cuando el componente se monte
-    const foundRecipe = allRecipes.find((r) => r.id === id);
-    setRecipe(foundRecipe || null);
-    setLoading(false);
+    async function fetchRecipe() {
+      if (!id) {
+        setError("ID de receta no proporcionado");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        setError(null);
+        const recipeData = await recipeService.getRecipeById(id as string);
+        setRecipe(recipeData);
+      } catch (err) {
+        console.error("Error al cargar la receta:", err);
+        setError("No pudimos cargar la receta. Por favor, intenta de nuevo.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchRecipe();
   }, [id]);
 
-  // Dividir los pasos de preparación
-  const preparationSteps =
-    recipe?.preparacion
-      .split(/\d+\./)
-      .filter((step) => step.trim().length > 0) || [];
+  // Dividir los pasos de preparación si no están ya divididos
+  const preparationSteps = recipe?.preparacion
+    ? recipe.preparacion.includes("\n")
+      ? recipe.preparacion
+          .split("\n\n")
+          .filter((step) => step.trim().length > 0)
+      : recipe.preparacion
+          .split(/\d+\./)
+          .filter((step) => step.trim().length > 0)
+    : [];
 
   if (loading) {
     return (
-      <PageView style={styles.loadingContainer}>
-        <View style={styles.loadingContent}>
-          <ActivityIndicator size="large" color={AiraColors.primary} />
-          <ThemedText style={styles.loadingTitle}>
-            Cargando receta...
-          </ThemedText>
-        </View>
-      </PageView>
+      <ModalScreen title="Cargando receta">
+        <LoadingState />
+      </ModalScreen>
     );
   }
 
-  if (!recipe) {
+  if (error || !recipe) {
     return (
       <ModalScreen title="Receta no encontrada">
-        <View style={styles.loadingCard}>
-          <ThemedText style={styles.loadingEmoji}>😔</ThemedText>
-          <ThemedText style={styles.loadingTitle}>
-            Receta no encontrada
-          </ThemedText>
-          <ThemedText style={styles.loadingSubtitle}>
-            Lo siento, no pudimos encontrar la receta que buscas.
-          </ThemedText>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => router.back()}
-          >
-            <ThemedText style={styles.backButtonText}>
-              Volver a Recetas
-            </ThemedText>
-          </TouchableOpacity>
-        </View>
+        <EmptyState
+          title="Receta no encontrada"
+          description="Lo siento, no pudimos encontrar la receta que buscas."
+          buttonText="Volver a Recetas"
+          onPress={() => router.back()}
+        />
       </ModalScreen>
     );
   }
 
   return (
     <ModalScreen title={recipe.titulo}>
-
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollViewContent}
@@ -132,21 +89,28 @@ export default function RecipeDetailScreen() {
       >
         {/* Recipe Header */}
         <View style={styles.recipeHeader}>
+          {recipe.imagen && (
+            <Image
+              source={{ uri: recipe.imagen }}
+              style={styles.recipeImage}
+              resizeMode="cover"
+            />
+          )}
           <View style={styles.headerTop}>
             <View
               style={[
                 styles.difficultyBadge,
                 {
                   backgroundColor:
-                    getDifficultyColor(recipe.dificultad) + "20",
-                  borderColor: getDifficultyColor(recipe.dificultad),
+                    getRecipeDifficultyColor(recipe.dificultad) + "20",
+                  borderColor: getRecipeDifficultyColor(recipe.dificultad),
                 },
               ]}
             >
               <ThemedText
                 style={[
                   styles.difficultyText,
-                  { color: getDifficultyColor(recipe.dificultad) },
+                  { color: getRecipeDifficultyColor(recipe.dificultad) },
                 ]}
               >
                 {recipe.dificultad}
@@ -171,8 +135,7 @@ export default function RecipeDetailScreen() {
               style={[
                 styles.statItem,
                 {
-                  backgroundColor:
-                    AiraColorsWithAlpha.primaryWithOpacity(0.1),
+                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
                 },
               ]}
             >
@@ -190,8 +153,7 @@ export default function RecipeDetailScreen() {
               style={[
                 styles.statItem,
                 {
-                  backgroundColor:
-                    AiraColorsWithAlpha.primaryWithOpacity(0.1),
+                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
                 },
               ]}
             >
@@ -209,8 +171,7 @@ export default function RecipeDetailScreen() {
               style={[
                 styles.statItem,
                 {
-                  backgroundColor:
-                    AiraColorsWithAlpha.primaryWithOpacity(0.1),
+                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
                 },
               ]}
             >
@@ -226,8 +187,7 @@ export default function RecipeDetailScreen() {
               style={[
                 styles.statItem,
                 {
-                  backgroundColor:
-                    AiraColorsWithAlpha.primaryWithOpacity(0.1),
+                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
                 },
               ]}
             >
@@ -296,6 +256,12 @@ export default function RecipeDetailScreen() {
 }
 
 const styles = StyleSheet.create({
+  recipeImage: {
+    width: "100%",
+    height: 200,
+    borderRadius: AiraVariants.cardRadius,
+    marginBottom: 16,
+  },
   loadingContainer: {
     flex: 1,
     backgroundColor: AiraColors.background,
