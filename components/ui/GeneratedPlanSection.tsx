@@ -15,7 +15,7 @@ import { AiraVariants } from "@/constants/Themes";
 import {
   PersonalizedPlanOutput,
   PersonalizedPlanInput,
-} from "@/ai/flows/personalized-plan-flow";
+} from "@/services/api/generatedPlan.service";
 
 interface GeneratedPlanSectionProps {
   plan: PersonalizedPlanOutput;
@@ -61,11 +61,9 @@ export const GeneratedPlanSection = ({
         [{ text: "Continuar", style: "default" }]
       );
     } catch (error) {
-      Alert.alert(
-        "Error",
-        "No se pudo guardar el plan. Inténtalo de nuevo.",
-        [{ text: "OK", style: "default" }]
-      );
+      Alert.alert("Error", "No se pudo guardar el plan. Inténtalo de nuevo.", [
+        { text: "OK", style: "default" },
+      ]);
     }
   };
 
@@ -151,7 +149,9 @@ export const GeneratedPlanSection = ({
             <Ionicons name="restaurant" size={24} color="white" />
           </LinearGradient>
           <View style={styles.sectionTitleContainer}>
-            <ThemedText style={styles.sectionTitle}>Plan Nutricional</ThemedText>
+            <ThemedText style={styles.sectionTitle}>
+              Plan Nutricional
+            </ThemedText>
             <ThemedText style={styles.sectionSubtitle}>
               Tu guía alimentaria personalizada
             </ThemedText>
@@ -191,7 +191,9 @@ export const GeneratedPlanSection = ({
                   </ThemedText>
                 </View>
                 <View style={styles.macroCard}>
-                  <ThemedText style={styles.macroLabel}>Carbohidratos</ThemedText>
+                  <ThemedText style={styles.macroLabel}>
+                    Carbohidratos
+                  </ThemedText>
                   <ThemedText style={styles.macroValue}>
                     {plan.planNutricional.desgloseMacros.carbohidratos}
                   </ThemedText>
@@ -400,7 +402,10 @@ export const GeneratedPlanSection = ({
                 Revisiones y Modificaciones
               </ThemedText>
               <ThemedText style={styles.subsectionText}>
-                {plan.sugerenciasSeguimientoAjustes.frecuenciaRevisionesModificaciones}
+                {
+                  plan.sugerenciasSeguimientoAjustes
+                    .frecuenciaRevisionesModificaciones
+                }
               </ThemedText>
             </View>
 
@@ -409,7 +414,10 @@ export const GeneratedPlanSection = ({
                 Estrategias de Motivación
               </ThemedText>
               <ThemedText style={styles.subsectionText}>
-                {plan.sugerenciasSeguimientoAjustes.estrategiasMotivacionAdherencia}
+                {
+                  plan.sugerenciasSeguimientoAjustes
+                    .estrategiasMotivacionAdherencia
+                }
               </ThemedText>
             </View>
 
@@ -443,10 +451,7 @@ export const GeneratedPlanSection = ({
                 Información usada para generar tu plan
               </ThemedText>
             </View>
-            <TouchableOpacity
-              style={styles.editButton}
-              onPress={onEditParams}
-            >
+            <TouchableOpacity style={styles.editButton} onPress={onEditParams}>
               <Ionicons name="create" size={16} color={AiraColors.primary} />
               <ThemedText style={styles.editButtonText}>Editar</ThemedText>
             </TouchableOpacity>
@@ -775,4 +780,4 @@ const styles = StyleSheet.create({
   bottomSpacing: {
     height: 40,
   },
-}); 
+});

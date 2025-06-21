@@ -13,7 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ThemedText } from "../ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
-import { PersonalizedPlanInput } from "@/ai/flows/personalized-plan-flow";
+import { PersonalizedPlanInput } from "@/services/api/generatedPlan.service";
 
 interface PlanConfigFormProps {
   onSubmit: (data: PersonalizedPlanInput) => void;
@@ -200,10 +200,7 @@ export const PlanConfigForm = ({
           {getFieldLabel(field)}
         </ThemedText>
         <TextInput
-          style={[
-            styles.textInput,
-            isMultiline && styles.multilineInput,
-          ]}
+          style={[styles.textInput, isMultiline && styles.multilineInput]}
           value={String(value || "")}
           onChangeText={(text) => {
             if (isNumeric) {
@@ -228,9 +225,7 @@ export const PlanConfigForm = ({
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <ThemedText style={styles.title}>
-            Personaliza tu Plan
-          </ThemedText>
+          <ThemedText style={styles.title}>Personaliza tu Plan</ThemedText>
           <ThemedText style={styles.subtitle}>
             Completa la información para generar un plan adaptado a ti
           </ThemedText>
@@ -278,7 +273,10 @@ export const PlanConfigForm = ({
         ))}
 
         <TouchableOpacity
-          style={[styles.submitButton, isLoading && styles.submitButtonDisabled]}
+          style={[
+            styles.submitButton,
+            isLoading && styles.submitButtonDisabled,
+          ]}
           onPress={handleSubmit}
           disabled={isLoading}
         >
@@ -418,4 +416,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "white",
   },
-}); 
+});

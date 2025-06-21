@@ -1,4 +1,4 @@
-import { PersonalizedPlanInput } from "@/ai/flows/personalized-plan-flow";
+import { PersonalizedPlanInput } from "@/services/api/generatedPlan.service";
 import { apiClient } from "./apiClient";
 
 class AIClientService {

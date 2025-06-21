@@ -2,7 +2,7 @@ import { aiClientService } from "@/services/api/aiClient.service";
 import {
   PersonalizedPlanInput,
   PersonalizedPlanOutput,
-} from "@/ai/flows/personalized-plan-flow";
+} from "@/services/api/generatedPlan.service";
 
 interface APIResponse {
   success: boolean;

@@ -22,7 +22,7 @@ import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
 import {
   PersonalizedPlanInput,
   PersonalizedPlanOutput,
-} from "@/ai/flows/personalized-plan-flow";
+} from "@/services/api/generatedPlan.service";
 
 type ViewState = "main" | "form" | "generated" | "loading" | "error";
 
@@ -117,7 +117,7 @@ export default function PlansScreen() {
         isFromCompleteProfile: false,
         tags: ["personalizado"],
       });
-      
+
       Alert.alert(
         "Plan Guardado",
         "Tu plan se ha guardado exitosamente en tu biblioteca",
@@ -125,11 +125,9 @@ export default function PlansScreen() {
       );
     } catch (error) {
       console.error("Error guardando plan:", error);
-      Alert.alert(
-        "Error",
-        "No se pudo guardar el plan. Inténtalo de nuevo.",
-        [{ text: "OK" }]
-      );
+      Alert.alert("Error", "No se pudo guardar el plan. Inténtalo de nuevo.", [
+        { text: "OK" },
+      ]);
       throw error;
     }
   };
@@ -282,7 +280,7 @@ export default function PlansScreen() {
 
       {!user && (
         <View style={styles.authWarning}>
-          <Ionicons name="warning" size={20} color={AiraColors.destructive} />  
+          <Ionicons name="warning" size={20} color={AiraColors.destructive} />
           <ThemedText style={styles.authWarningText}>
             Debes iniciar sesión para generar planes personalizados
           </ThemedText>
