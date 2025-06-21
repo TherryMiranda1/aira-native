@@ -4,8 +4,21 @@
 
 export const API_CONFIG = {
   BASE_URL: "https://aira-cms.vercel.app",
+  AI_API_URL: "https://aira-one.vercel.app",
   ENDPOINTS: {
-    RECIPES: "/api/recipes",
+    ARTICLES: "/api/articles",
+    ASSISTANT_PROFILES: "/api/assistant-profiles",
+    CHALLENGES: "/api/challenges",
+    DAILY_MEAL_PLANS: "/api/daily-meal-plans",
+    DAILY_WORKOUT_ROUTINES: "/api/daily-workout-routines",
+    EVENTS: "/api/events",
     EXERCISES: "/api/exercises",
+    GENERATED_PLANS: "/api/generated-plans",
+    PHRASES: "/api/phrases",
+    RECIPES: "/api/recipes",
+    REMINDERS: "/api/reminders",
+    RITUALS: "/api/rituals",
+    USER_FAVORITES: "/api/user-favorites",
+    USER_PROFILES: "/api/user-profiles",
   },
 };

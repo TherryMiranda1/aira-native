@@ -15,7 +15,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import {
   exerciseService,
   Exercise as ExerciseType,
-} from "@/services/api/exerciseService";
+} from "@/services/api/exercise.service";
 import { EmptyState } from "../../components/States/EmptyState";
 import { LoadingState } from "../../components/States/LoadingState";
 import { ErrorState } from "../../components/States/ErrorState";

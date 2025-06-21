@@ -53,6 +53,18 @@ export default function RootLayout() {
                 name="exercise/[id]"
                 options={{ headerShown: false }}
               />
+              <Stack.Screen
+                name="inspiration/frases"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="inspiration/mini-retos"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="inspiration/rituales"
+                options={{ headerShown: false }}
+              />
               <Stack.Screen name="+not-found" />
             </Stack>
           </ThemeProvider>

@@ -1,4 +1,6 @@
 import { API_CONFIG } from "./config";
+import { apiClient } from "./apiClient";
+import { stringify } from 'qs-esm';
 
 /**
  * Interface for recipe data from the CMS
@@ -130,39 +132,30 @@ export interface PaginationParams {
  * Recipe service for fetching recipe data from the CMS
  */
 export const recipeService = {
-  /**
-   * Fetches recipes from the CMS with pagination
-   */
   async getRecipes(params: PaginationParams = {}): Promise<{
     recipes: Recipe[];
     pagination: Omit<PaginatedResponse<any>, "docs">;
   }> {
     try {
-      // Default values
       const { page = 1, limit = 9, sort = "-createdAt", where = {} } = params;
 
-      // Build query string
-      const queryParams = new URLSearchParams();
-      queryParams.append("limit", limit.toString());
-      queryParams.append("page", page.toString());
-      queryParams.append("sort", sort);
+      const queryObj: any = {
+        limit: limit.toString(),
+        page: page.toString(),
+        sort,
+      };
 
-      const url = `${API_CONFIG.BASE_URL}${
-        API_CONFIG.ENDPOINTS.RECIPES
-      }?${queryParams.toString()}&where[tipo_plato][equals]=${
-        where.tipo_plato
-      }`;
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`Error fetching recipes: ${response.status}`);
+      if (Object.keys(where).length > 0) {
+        queryObj.where = where;
       }
 
-      const data: PaginatedResponse<RecipeFromCMS> = await response.json();
-      const recipes = (data.docs || []).map(transformRecipe);
+      const queryString = stringify(queryObj, { addQueryPrefix: true });
 
-      // Return both the recipes and pagination info
-      const { docs, ...paginationInfo } = data;
+      const response = await apiClient.get(`${API_CONFIG.ENDPOINTS.RECIPES}${queryString}`);
+
+      const recipes = (response.data.docs || []).map(transformRecipe);
+
+      const { docs, ...paginationInfo } = response.data;
       return {
         recipes,
         pagination: paginationInfo,
@@ -174,34 +167,13 @@ export const recipeService = {
   },
 
   /**
-   * Fetches all recipes from the CMS (legacy method, use getRecipes instead)
-   * @deprecated Use getRecipes instead
-   */
-  async getAllRecipes(): Promise<Recipe[]> {
-    try {
-      const { recipes } = await this.getRecipes({ limit: 100 });
-      return recipes;
-    } catch (error) {
-      console.error("Failed to fetch all recipes:", error);
-      return [];
-    }
-  },
-
-  /**
    * Fetches a single recipe by ID
    */
   async getRecipeById(id: string): Promise<Recipe | null> {
     try {
-      const response = await fetch(
-        `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.RECIPES}/${id}`
-      );
+      const response = await apiClient.get(`${API_CONFIG.ENDPOINTS.RECIPES}/${id}`);
 
-      if (!response.ok) {
-        throw new Error(`Error fetching recipe: ${response.status}`);
-      }
-
-      const recipe: RecipeFromCMS = await response.json();
-      return transformRecipe(recipe);
+      return transformRecipe(response.data);
     } catch (error) {
       console.error(`Failed to fetch recipe with ID ${id}:`, error);
       return null;

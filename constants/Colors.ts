@@ -59,10 +59,10 @@ export const Color_Pallete = {
   silver_storm: "#808080",
 };
 
-// Colores principales de Aira convertidos de HSL a HEX
+// Colores principales de Aira
 export const AiraColors = {
   // Colores base
-  background: "#F0F8FF", // 208 100% 97%
+  background: "#f5f5f5", // 0 0% 96.08%
   foreground: "#394959", // 210 20% 30%
 
   card: "#FFFFFF", // 0 0% 100%
@@ -110,6 +110,7 @@ export const AiraColorsWithAlpha = {
     `rgba(245, 250, 255, ${opacity})`,
   foregroundWithOpacity: (opacity: number) => `rgba(57, 73, 89, ${opacity})`,
   borderWithOpacity: (opacity: number) => `rgba(179, 217, 255, ${opacity})`,
+  accentWithOpacity: (opacity: number) => `rgba(169, 223, 191, ${opacity})`,
   lavenderWithOpacity: (opacity: number) => `rgba(245, 240, 255, ${opacity})`,
   sageWithOpacity: (opacity: number) => `rgba(217, 229, 214, ${opacity})`,
   coralWithOpacity: (opacity: number) => `rgba(255, 229, 217, ${opacity})`,

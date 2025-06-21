@@ -3,8 +3,7 @@ import {
   StyleSheet,
   View,
   ScrollView,
-  TouchableOpacity,
-  ActivityIndicator,
+  TouchableOpacity
 } from "react-native";
 import { Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,8 +18,6 @@ import WeeklyCalendar from "@/components/weeklyCalendar/WeeklyCalendar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useUser } from "@clerk/clerk-expo";
 import { useRealmNotes } from "@/infra/realm/services/useRealmNotes";
-import { AnimatedList } from "@/components/Lists/AnimatedList";
-import { useNotesContext } from "@/context/NotesContext";
 
 // Función para obtener un saludo basado en la hora del día
 const getTimeBasedGreeting = (currentTime: Date) => {
