@@ -48,3 +48,15 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+## Reset de versiones 
+
+   rm -rf node_modules android/.gradle android/app/build
+   npm ci                 # ó yarn install / pnpm i
+   npx expo install --fix # hace el ajuste de versiones sugerido por Expo
+
+## Regenera los nativos
+
+   npx expo prebuild --platform android --clean
+   npx expo run:android
