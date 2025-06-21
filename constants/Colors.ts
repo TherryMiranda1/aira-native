@@ -62,7 +62,7 @@ export const Color_Pallete = {
 // Colores principales de Aira convertidos de HSL a HEX
 export const AiraColors = {
   // Colores base
-  background: "#F0F8FF", // 208 100% 97%
+  background: "#f5f5f5", // 0 0% 96.08%
   foreground: "#394959", // 210 20% 30%
 
   card: "#FFFFFF", // 0 0% 100%

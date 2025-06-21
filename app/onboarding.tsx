@@ -131,7 +131,7 @@ export default function OnboardingScreen() {
     console.log("Datos del onboarding:", data);
 
     // Navegar de vuelta al perfil o a la pantalla principal
-    router.push("/profile");
+    router.push("/dashboard/profile");
   };
 
   const progress = ((currentStep + 1) / TOTAL_STEPS) * 100;

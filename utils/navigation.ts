@@ -1,8 +1,8 @@
-import { router, usePathname } from 'expo-router';
+import { router, usePathname } from "expo-router";
 
 /**
  * Navigation utility functions to standardize navigation across the app
- * 
+ *
  * This module provides a centralized place for all navigation-related functions
  * to ensure consistent navigation behavior across the app.
  */
@@ -12,10 +12,7 @@ import { router, usePathname } from 'expo-router';
  * @param href The route to navigate to
  * @param params Optional parameters to pass to the route
  */
-export const navigateTo = (
-  href: string, 
-  params?: Record<string, string>
-) => {
+export const navigateTo = (href: string, params?: Record<string, string>) => {
   router.push({
     pathname: href as any,
     params,
@@ -45,7 +42,7 @@ export const replaceTo = (href: string, params?: Record<string, string>) => {
  * Navigate to the onboarding flow
  */
 export const navigateToOnboarding = () => {
-  navigateTo('/onboarding');
+  navigateTo("/onboarding");
 };
 
 /**
@@ -53,7 +50,7 @@ export const navigateToOnboarding = () => {
  * @param id The recipe ID
  */
 export const navigateToRecipeDetail = (id: string) => {
-  navigateTo(`/recipe/${id}`);
+  navigateTo(`/dashboard/recipe/${id}`);
 };
 
 /**
@@ -61,7 +58,7 @@ export const navigateToRecipeDetail = (id: string) => {
  * @param id The exercise ID
  */
 export const navigateToExerciseDetail = (id: string) => {
-  navigateTo(`/exercise/${id}`);
+  navigateTo(`/dashboard/exercise/${id}`);
 };
 
 /**
@@ -100,48 +97,56 @@ export const useNavigationInfo = () => {
  * Navigate to the emotional history tab
  */
 export const navigateToEmotionalHistory = () => {
-  navigateToTab('emotional-history');
+  navigateToTab("emotional-history");
 };
 
 /**
  * Navigate to the inspiration center tab
  */
 export const navigateToInspirationCenter = () => {
-  navigateToTab('inspiration-center');
+  navigateToTab("inspiration-center");
 };
 
 /**
  * Navigate to the chat tab
  */
 export const navigateToChat = () => {
-  navigateToTab('chat');
+  navigateToTab("chat");
 };
 
 /**
  * Navigate to the profile screen
  */
 export const navigateToProfile = () => {
-  navigateTo('/profile');
+  navigateTo("/dashboard/profile");
 };
 
 /**
  * Navigate to the sign in screen
  */
 export const navigateToSignIn = () => {
-  navigateTo('/sign-in');
+  navigateTo("/sign-in");
 };
 
 /**
  * Navigate to the sign up screen
  */
 export const navigateToSignUp = () => {
-  navigateTo('/sign-up');
+  navigateTo("/sign-up");
 };
 
 /**
  * Navigate to a specific tab
  * @param tab The tab name to navigate to
  */
-export const navigateToTab = (tab: 'index' | 'exercises' | 'recipes' | 'emotional-history' | 'inspiration-center' | 'chat') => {
+export const navigateToTab = (
+  tab:
+    | "index"
+    | "exercises"
+    | "recipes"
+    | "emotional-history"
+    | "inspiration-center"
+    | "chat"
+) => {
   navigateTo(`/(tabs)/${tab}`);
 };

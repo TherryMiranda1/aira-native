@@ -2,7 +2,7 @@ import { memo } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { Ionicons } from "@expo/vector-icons";
-import { Recipe as RecipeType } from "@/services/api/recipeService";
+import { Recipe as RecipeType } from "@/services/api/recipe.service";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { getRecipeDifficultyColor } from "@/utils/colors";

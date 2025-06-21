@@ -38,6 +38,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="biblioteca"
+        options={{
+          title: "Biblioteca",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon size={28} name="library" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="exercises"
         options={{
           title: "Ejercicios",
@@ -52,24 +61,6 @@ export default function TabLayout() {
           title: "Recetas",
           tabBarIcon: ({ color }) => (
             <TabBarIcon size={28} name="book" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="emotional-history"
-        options={{
-          title: "Emociones",
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon size={28} name="heart" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="inspiration-center"
-        options={{
-          title: "Inspiración",
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon size={28} name="sparkles" color={color} />
           ),
         }}
       />

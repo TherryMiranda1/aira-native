@@ -15,7 +15,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import {
   exerciseService,
   Exercise as ExerciseType,
-} from "@/services/api/exerciseService";
+} from "@/services/api/exercise.service";
 import { EmptyState } from "../../components/States/EmptyState";
 import { LoadingState } from "../../components/States/LoadingState";
 import { ErrorState } from "../../components/States/ErrorState";
@@ -175,7 +175,7 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
   const handleExercisePress = useCallback(
     (exerciseId: string) => {
       // @ts-ignore - Ignoramos el error de tipado en la navegación
-      router.push(`/exercise/${exerciseId}`);
+      router.push(`/dashboard/exercise/${exerciseId}`);
     },
     [router]
   );

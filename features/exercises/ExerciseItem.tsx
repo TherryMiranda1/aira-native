@@ -1,6 +1,6 @@
 
 import { memo } from "react";
-import { Exercise } from "@/services/api/exerciseService";
+import { Exercise } from "@/services/api/exercise.service";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ThemedText } from "../../components/ThemedText";
 import { Ionicons } from "@expo/vector-icons";

@@ -18,7 +18,7 @@ export function AiraTopbar({
   const router = useRouter();
 
   const handleProfilePress = () => {
-    router.push("/profile");
+    router.push("/dashboard/profile");
   };
 
   return (
