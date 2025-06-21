@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { BlurView } from "expo-blur";
 
 import { ThemedText } from "../ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
@@ -128,7 +127,7 @@ export const ChallengeModal = ({
       presentationStyle="pageSheet"
       onRequestClose={onClose}
     >
-      <BlurView intensity={20} style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.content}>
           {/* Header */}
           <View style={styles.header}>
@@ -387,7 +386,7 @@ export const ChallengeModal = ({
             </View>
           </ScrollView>
         </View>
-      </BlurView>
+      </View>
     </Modal>
   );
 };

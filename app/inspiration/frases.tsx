@@ -8,7 +8,7 @@ import React, {
 import { View, StyleSheet, FlatList, Alert, Share } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
-import * as Clipboard from "expo-clipboard";
+
 import PagerView from "react-native-pager-view";
 
 import { PageView } from "@/components/ui/PageView";
@@ -267,7 +267,7 @@ export default function FrasesScreen() {
 
   const handleCopyPhrase = async (phrase: string, id: string) => {
     try {
-      await Clipboard.setStringAsync(phrase);
+      console.log("Nueva frase copiada", phrase);
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
       Alert.alert(
