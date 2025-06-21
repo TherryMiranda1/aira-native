@@ -105,6 +105,7 @@ export const AiraColors = {
 export const AiraColorsWithAlpha = {
   backgroundWithOpacity: (opacity: number) => `rgba(240, 248, 255, ${opacity})`,
   cardWithOpacity: (opacity: number) => `rgba(255, 255, 255, ${opacity})`,
+  accentWithOpacity: (opacity: number) => `rgba(169, 223, 191, ${opacity})`,
   primaryWithOpacity: (opacity: number) => `rgba(119, 181, 254, ${opacity})`,
   primaryForegroundWithOpacity: (opacity: number) =>
     `rgba(245, 250, 255, ${opacity})`,

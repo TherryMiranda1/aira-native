@@ -126,14 +126,14 @@ export const bibliotecaData: LibrarySection[] = [
     id: "mini-retos",
     title: "Mini Retos",
     description: "Pequeños pasos hacia grandes cambios",
-    href: "/inspiration/mini-retos",
+    href: "/dashboard/inspiration/mini-retos",
     gradient: "from-green-400 to-teal-400",
     icon: "sparkles",
     categories: [
       {
         id: "Mindfulness",
         title: "Mindfulness & Bienestar",
-        href: "/inspiration/mini-retos?category=Mindfulness",
+        href: "/dashboard/inspiration/mini-retos?category=Mindfulness",
         icon: "sparkles",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916741/R6_vxqlvt.jpg",
@@ -143,7 +143,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Pausas-Activas",
         title: "Pausas Activas & Energía Exprés",
-        href: "/inspiration/mini-retos?category=Pausas-Activas",
+        href: "/dashboard/inspiration/mini-retos?category=Pausas-Activas",
         icon: "flash",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916737/image_12_dycptu.png",
@@ -152,7 +152,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Movimiento-Diario",
         title: "Movimiento Diario",
-        href: "/inspiration/mini-retos?category=Movimiento-Diario",
+        href: "/dashboard/inspiration/mini-retos?category=Movimiento-Diario",
         icon: "walk",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916743/R9_ufcgsk.jpg",
@@ -161,7 +161,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Nutrición-Consciente",
         title: "Nutrición Consciente",
-        href: "/inspiration/mini-retos?category=Nutrición-Consciente",
+        href: "/dashboard/inspiration/mini-retos?category=Nutrición-Consciente",
         icon: "nutrition",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916735/image_4_zdqxxc.png",
@@ -170,7 +170,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Sueño-Reparador",
         title: "Sueño Reparador",
-        href: "/inspiration/mini-retos?category=Sueño-Reparador",
+        href: "/dashboard/inspiration/mini-retos?category=Sueño-Reparador",
         icon: "moon",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916734/image_5_pvlqwj.png",
@@ -179,7 +179,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Autocuidado",
         title: "Autocuidado",
-        href: "/inspiration/mini-retos?category=Autocuidado",
+        href: "/dashboard/inspiration/mini-retos?category=Autocuidado",
         icon: "heart",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916739/R2_uslemq.jpg",
@@ -191,14 +191,14 @@ export const bibliotecaData: LibrarySection[] = [
     id: "rituales",
     title: "Rituales de Bienestar",
     description: "Momentos sagrados para nutrir tu alma",
-    href: "/inspiration/rituales",
+    href: "/dashboard/inspiration/rituales",
     gradient: "from-purple-400 to-indigo-400",
     icon: "sparkles",
     categories: [
       {
         id: "despertar-energia",
         title: "Despertar Energía",
-        href: "/inspiration/rituales?category=despertar-energia",
+        href: "/dashboard/inspiration/rituales?category=despertar-energia",
         icon: "sunny",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988969/image_42_lhawbo.png",
@@ -207,7 +207,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "anti-estres",
         title: "Anti Estrés",
-        href: "/inspiration/rituales?category=anti-estres",
+        href: "/dashboard/inspiration/rituales?category=anti-estres",
         icon: "water",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988969/image_43_e1kd6t.png",
@@ -216,7 +216,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "creatividad-enfoque",
         title: "Creatividad & Enfoque",
-        href: "/inspiration/rituales?category=creatividad-enfoque",
+        href: "/dashboard/inspiration/rituales?category=creatividad-enfoque",
         icon: "bulb",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988970/image_44_j2xtzx.png",
@@ -225,7 +225,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "nutricion-consciente",
         title: "Nutrición Consciente",
-        href: "/inspiration/rituales?category=nutricion-consciente",
+        href: "/dashboard/inspiration/rituales?category=nutricion-consciente",
         icon: "nutrition",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988970/image_45_rgwmhh.png",
@@ -243,7 +243,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "productividad-suave",
         title: "Productividad Suave",
-        href: "/inspiration/rituales?category=productividad-suave",
+        href: "/dashboard/inspiration/rituales?category=productividad-suave",
         icon: "time",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988971/image_47_qmvltm.png",
@@ -252,7 +252,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "autoestima",
         title: "Autoestima",
-        href: "/inspiration/rituales?category=autoestima",
+        href: "/dashboard/inspiration/rituales?category=autoestima",
         icon: "heart",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988972/image_48_eco4bi.png",
@@ -261,7 +261,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "activacion-corporal",
         title: "Activación Corporal",
-        href: "/inspiration/rituales?category=activacion-corporal",
+        href: "/dashboard/inspiration/rituales?category=activacion-corporal",
         icon: "walk",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988973/image_49_reppas.png",
@@ -270,7 +270,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "juego-diversion",
         title: "Juego & Diversión",
-        href: "/inspiration/rituales?category=juego-diversion",
+        href: "/dashboard/inspiration/rituales?category=juego-diversion",
         icon: "game-controller",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988974/image_50_kmow8i.png",
@@ -279,7 +279,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "fortaleza-interior",
         title: "Fortaleza Interior",
-        href: "/inspiration/rituales?category=fortaleza-interior",
+        href: "/dashboard/inspiration/rituales?category=fortaleza-interior",
         icon: "shield",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988974/image_51_o4lh6e.png",
@@ -288,7 +288,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "bienestar-fisico",
         title: "Bienestar Físico",
-        href: "/inspiration/rituales?category=bienestar-fisico",
+        href: "/dashboard/inspiration/rituales?category=bienestar-fisico",
         icon: "fitness",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988975/image_52_kycjc3.png",
@@ -300,14 +300,14 @@ export const bibliotecaData: LibrarySection[] = [
     id: "inspiracion",
     title: "Inspiración",
     description: "Palabras que llegan al corazón",
-    href: "/inspiration/frases",
+    href: "/dashboard/inspiration/frases",
     gradient: "from-pink-400 to-rose-400",
     icon: "chatbox-ellipses",
     categories: [
       {
         id: "Inicio-del-Dia-General",
         title: "Inicio del Día",
-        href: "/inspiration/frases?category=Inicio-del-Dia-General",
+        href: "/dashboard/inspiration/frases?category=Inicio-del-Dia-General",
         icon: "sunny",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987230/image_36-2_zjogce.png",
@@ -316,7 +316,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Momentos-de-Desanimo-Falta-de-Motivacion",
         title: "Motivación",
-        href: "/inspiration/frases?category=Momentos-de-Desanimo-Falta-de-Motivacion",
+        href: "/dashboard/inspiration/frases?category=Momentos-de-Desanimo-Falta-de-Motivacion",
         icon: "flash",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987218/image_28_ppi6bn.png",
@@ -325,7 +325,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Despues-de-un-Esfuerzo-Pequenos-Logros",
         title: "Celebra tus Logros",
-        href: "/inspiration/frases?category=Despues-de-un-Esfuerzo-Pequenos-Logros",
+        href: "/dashboard/inspiration/frases?category=Despues-de-un-Esfuerzo-Pequenos-Logros",
         icon: "star",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987229/image_34-2_fnhmxr.png",
@@ -334,7 +334,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Recordatorios-de-Autocuidado-Compasion",
         title: "Autocuidado",
-        href: "/inspiration/frases?category=Recordatorios-de-Autocuidado-Compasion",
+        href: "/dashboard/inspiration/frases?category=Recordatorios-de-Autocuidado-Compasion",
         icon: "heart",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987211/image_20_kfiiqo.png",
@@ -343,7 +343,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Cuando-se-Falla-un-Objetivo-Flexibilidad",
         title: "Flexibilidad",
-        href: "/inspiration/frases?category=Cuando-se-Falla-un-Objetivo-Flexibilidad",
+        href: "/dashboard/inspiration/frases?category=Cuando-se-Falla-un-Objetivo-Flexibilidad",
         icon: "leaf",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749988107/i2_t8ixue.png",
@@ -352,7 +352,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Para-Empezar-Algo-Nuevo-Superar-la-Inercia",
         title: "Superar la Inercia",
-        href: "/inspiration/frases?category=Para-Empezar-Algo-Nuevo-Superar-la-Inercia",
+        href: "/dashboard/inspiration/frases?category=Para-Empezar-Algo-Nuevo-Superar-la-Inercia",
         icon: "arrow-forward",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987225/image_31_cgjjl0.png",
@@ -361,7 +361,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Manejo-del-Estres-Cansancio",
         title: "Manejo del Estres",
-        href: "/inspiration/frases?category=Manejo-del-Estres-Cansancio",
+        href: "/dashboard/inspiration/frases?category=Manejo-del-Estres-Cansancio",
         icon: "water",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987224/image_30_qgi5d9.png",
@@ -370,7 +370,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Fomentar-la-Constancia",
         title: "Fomentar la Constancia",
-        href: "/inspiration/frases?category=Fomentar-la-Constancia",
+        href: "/dashboard/inspiration/frases?category=Fomentar-la-Constancia",
         icon: "flame",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987222/image_29_e8iquq.png",
@@ -379,7 +379,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Reflexion-al-Final-del-Dia",
         title: "Reflexión al Final del Día",
-        href: "/inspiration/frases?category=Reflexion-al-Final-del-Dia",
+        href: "/dashboard/inspiration/frases?category=Reflexion-al-Final-del-Dia",
         icon: "moon",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987227/image_33_ldrqjr.png",
@@ -388,7 +388,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Conectando-con-el-Cuerpo-Ejercicio-Escucha",
         title: "Conectando con el Cuerpo",
-        href: "/inspiration/frases?category=Conectando-con-el-Cuerpo-Ejercicio-Escucha",
+        href: "/dashboard/inspiration/frases?category=Conectando-con-el-Cuerpo-Ejercicio-Escucha",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987226/image_32_nrhvyd.png",
@@ -397,7 +397,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Alimentacion-Consciente",
         title: "Alimentacion Consciente",
-        href: "/inspiration/frases?category=Alimentacion-Consciente",
+        href: "/dashboard/inspiration/frases?category=Alimentacion-Consciente",
         icon: "nutrition",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987221/image_26_fw7hdl.png",
@@ -406,7 +406,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "Celebrando-la-Resiliencia",
         title: "Resiliencia",
-        href: "/inspiration/frases?category=Celebrando-la-Resiliencia",
+        href: "/dashboard/inspiration/frases?category=Celebrando-la-Resiliencia",
         icon: "flame",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987218/image_27_qqvtbl.png",
@@ -418,14 +418,14 @@ export const bibliotecaData: LibrarySection[] = [
     id: "generadores",
     title: "Planes Personalizados",
     description: "Herramientas inteligentes para tu bienestar",
-    href: "/plans",
+    href: "/dashboard/plans",
     gradient: "from-indigo-400 to-purple-400",
     icon: "bulb",
     categories: [
       {
         id: "plan-completo",
         title: "Plan Completo",
-        href: "plans/complete-plan",
+        href: "/dashboard/plans/complete-plan",
         icon: "bulb",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987193/g_3_l1sbk6.png",
@@ -434,7 +434,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "rutinas",
         title: "Rutinas de Ejercicio",
-        href: "/plans/workout-routine",
+        href: "/dashboard/plans/workout-routine",
         icon: "fitness",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987194/g_voimfs.png",
@@ -443,7 +443,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "comidas",
         title: "Planes de Comida",
-        href: "/plans/daily-meal-plan",
+        href: "/dashboard/plans/daily-meal-plan",
         icon: "restaurant",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987194/g_2_dl5iq3.png",

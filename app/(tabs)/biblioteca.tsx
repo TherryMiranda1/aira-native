@@ -235,10 +235,9 @@ const styles = StyleSheet.create({
   },
   featuredGrid: {
     flexDirection: "column",
-    gap: 16,
+    gap: 8,
   },
   sectionsContainer: {
-    paddingHorizontal: 16,
     marginBottom: 32,
   },
   ctaSection: {

@@ -102,11 +102,9 @@ export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 24,
+    marginBottom: 8,
   },
   header: {
-    borderTopLeftRadius: AiraVariants.cardRadius,
-    borderTopRightRadius: AiraVariants.cardRadius,
     paddingHorizontal: 16,
     paddingVertical: 16,
   },
@@ -159,8 +157,7 @@ const styles = StyleSheet.create({
   },
   carouselContainer: {
     backgroundColor: AiraColors.card,
-    borderBottomLeftRadius: AiraVariants.cardRadius,
-    borderBottomRightRadius: AiraVariants.cardRadius,
+
     paddingVertical: 16,
     borderWidth: 1,
     borderTopWidth: 0,
