@@ -109,4 +109,5 @@ export const getThemeVariants = (theme: "light" | "dark") => ({
 export const AiraVariants = {
   cardRadius: 12,
   tagRadius: 50,
+  buttonRadius: 8,
 };

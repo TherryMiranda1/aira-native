@@ -1,0 +1,178 @@
+import React from "react";
+import {
+  View,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+  ColorValue,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+
+import { ThemedText } from "../ThemedText";
+import { CategoryCard } from "./CategoryCard";
+import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraVariants } from "@/constants/Themes";
+import { LibrarySection } from "@/types/biblioteca";
+
+interface HorizontalCarouselProps {
+  section: LibrarySection;
+}
+
+const { width } = Dimensions.get("window");
+const cardWidth = (width - 48) / 2;
+
+export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
+  const getGradientColors = (gradient: string) => {
+    const colorMap: { [key: string]: string[] } = {
+      "from-orange-400 to-pink-400": ["#FB923C", "#F472B6"],
+      "from-blue-400 to-purple-400": ["#60A5FA", "#A78BFA"],
+      "from-green-400 to-teal-400": ["#4ADE80", "#2DD4BF"],
+      "from-purple-400 to-indigo-400": ["#A78BFA", "#818CF8"],
+      "from-pink-400 to-rose-400": ["#F472B6", "#FB7185"],
+      "from-indigo-400 to-purple-400": ["#818CF8", "#A78BFA"],
+    };
+    return colorMap[gradient] || ["#60A5FA", "#A78BFA"];
+  };
+
+  const renderCategoryItem = ({ item }: { item: any }) => (
+    <View style={styles.categoryItem}>
+      <CategoryCard category={item} sectionGradient={section.gradient} />
+    </View>
+  );
+
+  return (
+    <View style={styles.container}>
+      <LinearGradient
+        colors={
+          getGradientColors(section.gradient) as [
+            ColorValue,
+            ColorValue,
+            ...ColorValue[]
+          ]
+        }
+        style={styles.header}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+      >
+        <View style={styles.headerContent}>
+          <View style={styles.headerLeft}>
+            <View style={styles.iconContainer}>
+              <Ionicons
+                name={section.icon}
+                size={24}
+                color={AiraColors.background}
+              />
+            </View>
+            <View style={styles.headerText}>
+              <ThemedText style={styles.sectionTitle}>
+                {section.title}
+              </ThemedText>
+              <ThemedText style={styles.sectionDescription}>
+                {section.description}
+              </ThemedText>
+            </View>
+          </View>
+          <TouchableOpacity style={styles.viewAllButton}>
+            <ThemedText style={styles.viewAllText}>Ver todo</ThemedText>
+            <Ionicons
+              name="chevron-forward"
+              size={16}
+              color={AiraColors.background}
+            />
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
+
+      <View style={styles.carouselContainer}>
+        <FlatList
+          data={section.categories}
+          renderItem={renderCategoryItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.carouselContent}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
+        />
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 24,
+  },
+  header: {
+    borderTopLeftRadius: AiraVariants.cardRadius,
+    borderTopRightRadius: AiraVariants.cardRadius,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+  },
+  headerContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  iconContainer: {
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.2),
+    borderRadius: 20,
+    width: 40,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+  headerText: {
+    flex: 1,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: AiraColors.background,
+    marginBottom: 2,
+  },
+  sectionDescription: {
+    fontSize: 12,
+    color: AiraColorsWithAlpha.backgroundWithOpacity(0.8),
+    lineHeight: 16,
+  },
+  viewAllButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.2),
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+  },
+  viewAllText: {
+    fontSize: 12,
+    color: AiraColors.background,
+    fontWeight: "500",
+    marginRight: 4,
+  },
+  carouselContainer: {
+    backgroundColor: AiraColors.card,
+    borderBottomLeftRadius: AiraVariants.cardRadius,
+    borderBottomRightRadius: AiraVariants.cardRadius,
+    paddingVertical: 16,
+    borderWidth: 1,
+    borderTopWidth: 0,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
+  },
+  carouselContent: {
+    paddingHorizontal: 16,
+  },
+  categoryItem: {
+    width: 280,
+  },
+  separator: {
+    width: 12,
+  },
+});

@@ -1,13 +1,11 @@
 import { startOfWeek } from "date-fns";
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { ThemedView } from "@/components/ThemedView";
 import {
   getTasksByDate,
   useRealmTasks,
 } from "@/infra/realm/services/useRealmTasks";
 import { Task } from "@/domain/Task";
-import { AiraColors } from "@/constants/Colors";
 import { WeekNavigation, TaskList, TaskForm } from "./components";
 
 const WeeklyCalendar: React.FC = () => {

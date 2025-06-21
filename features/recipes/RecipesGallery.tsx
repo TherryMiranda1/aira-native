@@ -16,7 +16,7 @@ import { AiraColors } from "@/constants/Colors";
 import {
   recipeService,
   Recipe as RecipeType,
-} from "@/services/api/recipeService";
+} from "@/services/api/recipe.service";
 import { EmptyState } from "../../components/States/EmptyState";
 import { LoadingState } from "../../components/States/LoadingState";
 import { ErrorState } from "../../components/States/ErrorState";

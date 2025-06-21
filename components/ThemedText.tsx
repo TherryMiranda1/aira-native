@@ -1,6 +1,5 @@
 import { StyleSheet, Text, type TextProps } from "react-native";
 
-import { useThemeColor } from "@/hooks/useThemeColor";
 import { AiraColors } from "@/constants/Colors";
 
 export type ThemedTextProps = TextProps & {
@@ -26,10 +25,14 @@ export function ThemedText({
   // const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
 
   const typeStyle = styles[type] || styles.default;
+
   return (
     <Text
       style={[
-        { color: AiraColors.foreground, fontFamily: "Montserrat" },
+        {
+          color: AiraColors.foreground,
+          fontFamily: "Montserrat",
+        },
         typeStyle,
         style,
       ]}

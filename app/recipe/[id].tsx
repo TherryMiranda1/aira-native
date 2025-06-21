@@ -12,7 +12,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { ModalScreen } from "@/components/navigation/ModalScreen";
 import { AiraVariants } from "@/constants/Themes";
-import { recipeService, Recipe } from "@/services/api/recipeService";
+import { recipeService, Recipe } from "@/services/api/recipe.service";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { getRecipeDifficultyColor } from "@/utils/colors";
