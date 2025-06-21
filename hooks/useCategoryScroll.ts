@@ -6,6 +6,12 @@ interface Category {
   [key: string]: any;
 }
 
+export interface ScrollToIndexFailedInfo {
+  index: number;
+  highestMeasuredFrameIndex: number;
+  averageItemLength: number;
+}
+
 /**
  * Hook personalizado para manejar el scroll sincronizado de categorías
  *
@@ -56,11 +62,7 @@ export function useCategoryScroll<T extends Category>(
   }, [currentIndex]);
 
   // Manejador para errores de scrollToIndex (por ejemplo, cuando el índice está fuera de rango)
-  const handleScrollToIndexFailed = (info: {
-    index: number;
-    highestMeasuredFrameIndex: number;
-    averageItemLength: number;
-  }) => {
+  const handleScrollToIndexFailed = (info: ScrollToIndexFailedInfo) => {
     // Si falla el scroll, intentamos primero desplazarnos a un elemento cercano visible
     // y luego volver a intentar con el elemento deseado
     const offset = info.averageItemLength * info.index;

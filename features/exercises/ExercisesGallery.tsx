@@ -2,266 +2,37 @@ import React, {
   useState,
   useRef,
   useCallback,
-  memo,
   useEffect,
   useMemo,
 } from "react";
-import { View, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useRouter } from "expo-router";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { Ionicons } from "@expo/vector-icons";
 import PagerView from "react-native-pager-view";
 
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { AiraVariants } from "@/constants/Themes";
-import { ThemedText } from "@/components/ThemedText";
 
-// Importamos los datos de ejercicios
-import biceps from "@/mocks/exercises/biceps.json";
-import espalda from "@/mocks/exercises/espalda.json";
-import hombros from "@/mocks/exercises/hombros.json";
-import pecho from "@/mocks/exercises/pecho.json";
-import piernas from "@/mocks/exercises/piernas.json";
-import triceps from "@/mocks/exercises/triceps.json";
+import {
+  exerciseService,
+  Exercise as ExerciseType,
+} from "@/services/api/exerciseService";
+import { EmptyState } from "../../components/States/EmptyState";
+import { LoadingState } from "../../components/States/LoadingState";
+import { ErrorState } from "../../components/States/ErrorState";
+import { ExerciseItem } from "./ExerciseItem";
+import { CategoriesList, Category } from "../../components/Categories";
 
-interface MetricaConfigurable {
-  metrica: string;
-  unidad: string | null;
-  tipo_input: string;
+interface ExercisesState {
+  data: ExerciseType[];
+  loading: boolean;
+  error: string | null;
 }
 
-interface ValoresEjemplo {
-  peso_kg?: number;
-  repeticiones?: number;
-  series?: number;
-  duracion_minutos?: number;
-  distancia_km?: number;
-  descanso_entre_series_segundos?: number;
-}
-
-interface Exercise {
-  id_ejercicio: string;
-  nombre: string;
-  descripcion: string;
-  instrucciones: string[];
-  tipo_ejercicio: string;
-  modalidad: string;
-  grupos_musculares: string[];
-  equipamiento_necesario: string[];
-  nivel_dificultad: string;
-  media: {
-    imagen_url: string;
-    video_url: string;
-  };
-  metricas_configurables?: MetricaConfigurable[];
-  valores_ejemplo_mujer_principiante: ValoresEjemplo;
-  tags_busqueda: string[];
-  advertencias: string;
-  categoria?: string;
-}
-
-interface Category {
-  id: string;
-  label: string;
-  icon: keyof typeof Ionicons.glyphMap;
-}
-
-// Función para procesar los ejercicios y añadir categoría
-const processExercises = (exercises: any[], categoria: string): Exercise[] => {
-  return exercises.map((exercise) => ({
-    ...exercise,
-    categoria,
-  }));
+const initialExercisesState: ExercisesState = {
+  data: [],
+  loading: false,
+  error: null,
 };
-
-// Procesamos los ejercicios por categoría
-const bicepsData = processExercises(biceps, "biceps");
-const espaldaData = processExercises(espalda, "espalda");
-const hombrosData = processExercises(hombros, "hombros");
-const pechoData = processExercises(pecho, "pecho");
-const piernasData = processExercises(piernas, "piernas");
-const tricepsData = processExercises(triceps, "triceps");
-
-// Función para obtener el color según la dificultad
-const getDifficultyColor = (dificultad: string) => {
-  switch (dificultad.toLowerCase()) {
-    case "principiante":
-      return "#4ade80"; // verde
-    case "intermedio":
-      return "#facc15"; // amarillo
-    case "avanzado":
-      return "#f87171"; // rojo
-    default:
-      return AiraColors.mutedForeground; // gris
-  }
-};
-
-// Función para obtener el color según el tipo de ejercicio
-const getTypeColor = (tipo: string) => {
-  switch (tipo.toLowerCase()) {
-    case "fuerza":
-      return AiraColors.primary; // morado
-    case "cardio":
-      return "#60a5fa"; // azul
-    case "flexibilidad":
-      return "#34d399"; // verde
-    default:
-      return AiraColors.mutedForeground; // gris
-  }
-};
-
-/**
- * Componente memoizado para renderizar cada tarjeta de ejercicio
- * Optimizado para evitar re-renderizados innecesarios
- */
-const ExerciseItem = memo(
-  ({
-    exercise,
-    onPress,
-  }: {
-    exercise: Exercise;
-    onPress: (id: string) => void;
-  }) => {
-    return (
-      <TouchableOpacity
-        onPress={() => onPress(exercise.id_ejercicio)}
-        style={styles.exerciseCard}
-      >
-        <View style={styles.cardHeader}>
-          <View
-            style={[
-              styles.difficultyBadge,
-              {
-                backgroundColor:
-                  getDifficultyColor(exercise.nivel_dificultad) + "20",
-                borderColor: getDifficultyColor(exercise.nivel_dificultad),
-              },
-            ]}
-          >
-            <ThemedText
-              type="small"
-              style={[
-                styles.difficultyText,
-                { color: getDifficultyColor(exercise.nivel_dificultad) },
-              ]}
-            >
-              {exercise.nivel_dificultad.charAt(0).toUpperCase() +
-                exercise.nivel_dificultad.slice(1)}
-            </ThemedText>
-          </View>
-          <View
-            style={[
-              styles.typeBadge,
-              {
-                backgroundColor: getTypeColor(exercise.tipo_ejercicio) + "20",
-                borderColor: getTypeColor(exercise.tipo_ejercicio),
-              },
-            ]}
-          >
-            <ThemedText
-              type="small"
-              style={[
-                styles.typeText,
-                { color: getTypeColor(exercise.tipo_ejercicio) },
-              ]}
-            >
-              {exercise.tipo_ejercicio.charAt(0).toUpperCase() +
-                exercise.tipo_ejercicio.slice(1)}
-            </ThemedText>
-          </View>
-        </View>
-
-        <ThemedText style={styles.exerciseTitle}>{exercise.nombre}</ThemedText>
-
-        <ThemedText style={styles.exerciseCategory}>
-          💪{" "}
-          {exercise.categoria &&
-            exercise.categoria.charAt(0).toUpperCase() +
-              exercise.categoria.slice(1)}
-        </ThemedText>
-
-        <View style={styles.exerciseDetails}>
-          <View style={styles.exerciseDetail}>
-            <Ionicons
-              name="barbell-outline"
-              size={16}
-              color={AiraColors.mutedForeground}
-            />
-            <ThemedText type="small" style={styles.exerciseDetailText}>
-              {exercise.modalidad.charAt(0).toUpperCase() +
-                exercise.modalidad.slice(1)}
-            </ThemedText>
-          </View>
-          {exercise.valores_ejemplo_mujer_principiante?.repeticiones && (
-            <View style={styles.exerciseDetail}>
-              <Ionicons
-                name="repeat-outline"
-                size={16}
-                color={AiraColors.mutedForeground}
-              />
-              <ThemedText type="small" style={styles.exerciseDetailText}>
-                {exercise.valores_ejemplo_mujer_principiante.repeticiones} reps
-              </ThemedText>
-            </View>
-          )}
-          {exercise.valores_ejemplo_mujer_principiante?.duracion_minutos && (
-            <View style={styles.exerciseDetail}>
-              <Ionicons
-                name="time-outline"
-                size={16}
-                color={AiraColors.mutedForeground}
-              />
-              <ThemedText type="small" style={styles.exerciseDetailText}>
-                {exercise.valores_ejemplo_mujer_principiante.duracion_minutos}{" "}
-                min
-              </ThemedText>
-            </View>
-          )}
-        </View>
-
-        <ThemedText style={styles.exerciseDescription} numberOfLines={3}>
-          {exercise.descripcion}
-        </ThemedText>
-
-        <View>
-          <ThemedText type="small">Equipamiento:</ThemedText>
-          <View style={styles.equipmentList}>
-            {exercise.equipamiento_necesario.map((equipo, index) => (
-              <View key={index} style={styles.equipmentItem}>
-                <ThemedText type="small">{equipo.replace("_", " ")}</ThemedText>
-              </View>
-            ))}
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  }
-);
-
-// Añadir displayName para resolver error de lint
-ExerciseItem.displayName = "ExerciseItem";
-
-/**
- * Componente para mostrar cuando no hay resultados de búsqueda
- */
-const EmptyResultsView = memo(() => (
-  <View style={styles.emptyContainer}>
-    <Ionicons
-      name="search-outline"
-      size={64}
-      color={AiraColors.mutedForeground}
-    />
-    <ThemedText style={styles.emptyText}>
-      No se encontraron ejercicios
-    </ThemedText>
-    <ThemedText style={styles.emptySubtext}>
-      Intenta con otros filtros o términos de búsqueda
-    </ThemedText>
-  </View>
-));
-
-// Añadir displayName para resolver error de lint
-EmptyResultsView.displayName = "EmptyResultsView";
 
 interface ExercisesGalleryProps {
   selectedCategory?: string;
@@ -273,8 +44,19 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
   setSelectedCategory,
 }) => {
   const router = useRouter();
-
   const pagerRef = useRef<PagerView>(null);
+
+  // Estado para cada categoría de ejercicios
+  const [exercisesState, setExercisesState] = useState<
+    Record<string, ExercisesState>
+  >({
+    biceps: initialExercisesState,
+    espalda: initialExercisesState,
+    hombros: initialExercisesState,
+    pecho: initialExercisesState,
+    piernas: initialExercisesState,
+    triceps: initialExercisesState,
+  });
 
   // Categorías de ejercicios memoizadas para evitar recreaciones en cada render
   const categories = useMemo<Category[]>(
@@ -294,6 +76,74 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
     [categories, selectedCategory]
   );
 
+  // Función para cargar ejercicios por categoría
+  const fetchExercisesByCategory = useCallback(
+    async (category: string) => {
+      // Verificar si ya tenemos datos cargados para evitar cargas innecesarias
+      const currentState = exercisesState[category];
+
+      if (currentState.data.length > 0 || currentState.loading) {
+        return;
+      }
+
+      try {
+        setExercisesState((prev) => ({
+          ...prev,
+          [category]: {
+            data: [],
+            loading: true,
+            error: null,
+          },
+        }));
+        const where = { categoria: category };
+
+        const { exercises } = await exerciseService.getExercises({
+          limit: 20,
+          where,
+        });
+
+        setExercisesState((prev) => ({
+          ...prev,
+          [category]: {
+            data: exercises,
+            loading: false,
+            error: null,
+          },
+        }));
+      } catch (error) {
+        console.error(`Error fetching ${category}:`, error);
+        setExercisesState((prev) => ({
+          ...prev,
+          [category]: {
+            data: [],
+            loading: false,
+            error: `Error al cargar los ejercicios de ${category}`,
+          },
+        }));
+      }
+    },
+    [exercisesState]
+  );
+
+  // Cargar ejercicios de la categoría inicial
+  useEffect(() => {
+    const categoryToLoad = selectedCategory;
+    fetchExercisesByCategory(categoryToLoad);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (selectedCategory && pagerRef.current) {
+      const categoryIndex = categories.findIndex(
+        (cat) => cat.id === selectedCategory
+      );
+      if (categoryIndex !== -1) {
+        pagerRef.current?.setPage(categoryIndex);
+        // Cargar los ejercicios de la categoría seleccionada si no están cargados
+        fetchExercisesByCategory(selectedCategory);
+      }
+    }
+  }, [selectedCategory]);
+
   // Utilizamos el hook personalizado para manejar el scroll de categorías
   const categoryScrollHook = useCategoryScroll(categories, currentIndex, {
     itemVisiblePercentThreshold: 70,
@@ -306,6 +156,8 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
     const categoryIndex = categories.findIndex((cat) => cat.id === categoryId);
     if (categoryIndex !== -1) {
       pagerRef.current?.setPage(categoryIndex);
+      // Cargar los ejercicios de la categoría seleccionada si no están cargados
+      fetchExercisesByCategory(categoryId);
     }
   };
 
@@ -314,6 +166,8 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
     const newIndex = e.nativeEvent.position;
     if (categories[newIndex]) {
       setSelectedCategory(categories[newIndex].id);
+      // Cargar los ejercicios de la nueva categoría si no están cargados
+      fetchExercisesByCategory(categories[newIndex].id);
     }
   };
 
@@ -328,55 +182,27 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
 
   // Renderizar cada item de la lista
   const renderExerciseItem = useCallback(
-    ({ item }: { item: Exercise }) => {
+    ({ item }: { item: ExerciseType }) => {
       return <ExerciseItem exercise={item} onPress={handleExercisePress} />;
     },
     [handleExercisePress]
   );
 
   // Key extractor para la FlatList
-  const keyExtractor = useCallback((item: Exercise) => item.id_ejercicio, []);
+  const keyExtractor = useCallback(
+    (item: ExerciseType) => item.id_ejercicio,
+    []
+  );
 
   return (
     <View style={{ flex: 1 }}>
       {/* Selector de categorías */}
-      <View style={styles.categoriesContainer}>
-        <FlatList
-          ref={categoryScrollHook.categoriesListRef}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={categories}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              key={item.id}
-              style={[
-                styles.categoryButton,
-                selectedCategory === item.id && styles.categoryButtonActive,
-              ]}
-              onPress={() => handleCategoryChange(item.id)}
-            >
-              <Ionicons
-                name={item.icon}
-                size={18}
-                color={AiraColors.foreground}
-                style={styles.categoryIcon}
-              />
-              <ThemedText style={[styles.categoryText]}>
-                {item.label}
-              </ThemedText>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.categoriesContent}
-          onScrollToIndexFailed={categoryScrollHook.handleScrollToIndexFailed}
-          scrollEventThrottle={16}
-          getItemLayout={(data, index) => ({
-            length: 120, // Aproximado del ancho del botón de categoría + margen
-            offset: 120 * index,
-            index,
-          })}
-        />
-      </View>
+      <CategoriesList
+        categories={categories}
+        selectedCategory={selectedCategory}
+        handleCategoryChange={handleCategoryChange}
+        categoryScrollHook={categoryScrollHook}
+      />
 
       {/* Contenido según la categoría seleccionada */}
       <PagerView
@@ -387,104 +213,158 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
       >
         {/* Página 1: Biceps */}
         <View key="biceps" style={styles.pageContainer}>
-          <FlatList
-            data={bicepsData}
-            renderItem={renderExerciseItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.exercisesContent}
-            style={styles.exercisesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+          {exercisesState.biceps.loading ? (
+            <LoadingState />
+          ) : exercisesState.biceps.error ? (
+            <ErrorState
+              title="Error al cargar los ejercicios"
+              onRetry={() => fetchExercisesByCategory("biceps")}
+            />
+          ) : (
+            <FlatList
+              data={exercisesState.biceps.data}
+              renderItem={renderExerciseItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.exercisesContent}
+              style={styles.exercisesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 2: Espalda */}
         <View key="espalda" style={styles.pageContainer}>
-          <FlatList
-            data={espaldaData}
-            renderItem={renderExerciseItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.exercisesContent}
-            style={styles.exercisesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+          {exercisesState.espalda.loading ? (
+            <LoadingState />
+          ) : exercisesState.espalda.error ? (
+            <ErrorState
+              title="Error al cargar los ejercicios"
+              onRetry={() => fetchExercisesByCategory("espalda")}
+            />
+          ) : (
+            <FlatList
+              data={exercisesState.espalda.data}
+              renderItem={renderExerciseItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.exercisesContent}
+              style={styles.exercisesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 3: Hombros */}
         <View key="hombros" style={styles.pageContainer}>
-          <FlatList
-            data={hombrosData}
-            renderItem={renderExerciseItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.exercisesContent}
-            style={styles.exercisesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+          {exercisesState.hombros.loading ? (
+            <LoadingState />
+          ) : exercisesState.hombros.error ? (
+            <ErrorState
+              title="Error al cargar los ejercicios"
+              onRetry={() => fetchExercisesByCategory("hombros")}
+            />
+          ) : (
+            <FlatList
+              data={exercisesState.hombros.data}
+              renderItem={renderExerciseItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.exercisesContent}
+              style={styles.exercisesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 4: Pecho */}
         <View key="pecho" style={styles.pageContainer}>
-          <FlatList
-            data={pechoData}
-            renderItem={renderExerciseItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.exercisesContent}
-            style={styles.exercisesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+          {exercisesState.pecho.loading ? (
+            <LoadingState />
+          ) : exercisesState.pecho.error ? (
+            <ErrorState
+              title="Error al cargar los ejercicios"
+              onRetry={() => fetchExercisesByCategory("pecho")}
+            />
+          ) : (
+            <FlatList
+              data={exercisesState.pecho.data}
+              renderItem={renderExerciseItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.exercisesContent}
+              style={styles.exercisesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 5: Piernas */}
         <View key="piernas" style={styles.pageContainer}>
-          <FlatList
-            data={piernasData}
-            renderItem={renderExerciseItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.exercisesContent}
-            style={styles.exercisesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+          {exercisesState.piernas.loading ? (
+            <LoadingState />
+          ) : exercisesState.piernas.error ? (
+            <ErrorState
+              title="Error al cargar los ejercicios"
+              onRetry={() => fetchExercisesByCategory("piernas")}
+            />
+          ) : (
+            <FlatList
+              data={exercisesState.piernas.data}
+              renderItem={renderExerciseItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.exercisesContent}
+              style={styles.exercisesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 6: Triceps */}
         <View key="triceps" style={styles.pageContainer}>
-          <FlatList
-            data={tricepsData}
-            renderItem={renderExerciseItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.exercisesContent}
-            style={styles.exercisesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+          {exercisesState.triceps.loading ? (
+            <LoadingState />
+          ) : exercisesState.triceps.error ? (
+            <ErrorState
+              title="Error al cargar los ejercicios"
+              onRetry={() => fetchExercisesByCategory("triceps")}
+            />
+          ) : (
+            <FlatList
+              data={exercisesState.triceps.data}
+              renderItem={renderExerciseItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.exercisesContent}
+              style={styles.exercisesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
       </PagerView>
     </View>
@@ -542,110 +422,7 @@ const styles = StyleSheet.create({
   exercisesContent: {
     padding: 8,
   },
-  exerciseCard: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
-    marginBottom: 16,
-    overflow: "hidden",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
-    padding: 16,
-  },
-  cardHeader: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  difficultyBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: AiraVariants.tagRadius,
-    borderWidth: 1,
-    marginRight: 8,
-  },
-  difficultyText: {
-    fontSize: 12,
-    fontWeight: "500",
-  },
-  typeBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: AiraVariants.tagRadius,
-    borderWidth: 1,
-  },
-  typeText: {
-    fontSize: 12,
-    fontWeight: "500",
-  },
-  exerciseTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    marginBottom: 8,
-  },
-  exerciseMuscles: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    marginBottom: 4,
-  },
-  exerciseCategory: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    marginBottom: 8,
-  },
-  exerciseDetails: {
-    flexDirection: "row",
-    marginBottom: 8,
-  },
-  exerciseDetail: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginRight: 16,
-  },
-  exerciseDetailText: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    marginLeft: 4,
-  },
-  exerciseDescription: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    lineHeight: 20,
-    marginBottom: 16,
-  },
 
-  equipmentTitle: {
-    fontSize: 14,
-    fontWeight: "500",
-    marginBottom: 4,
-  },
-  equipmentList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  equipmentItem: {
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: AiraVariants.tagRadius,
-    marginRight: 8,
-    marginBottom: 8,
-  },
-  equipmentText: {
-    fontSize: 12,
-    color: AiraColors.mutedForeground,
-  },
-  viewButton: {
-    backgroundColor: AiraColors.primary,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: AiraVariants.tagRadius,
-    alignItems: "center",
-  },
-  viewButtonText: {
-    color: AiraColors.background,
-    fontSize: 14,
-  },
   // Empty state styles
   emptyContainer: {
     flex: 1,

@@ -1,731 +1,403 @@
 [
-    {
-        "id_ejercicio": "uuid_chest_01",
-        "nombre": "Press de Banca con Barra",
-        "descripcion": "Ejercicio compuesto fundamental para el desarrollo del pectoral, tríceps y deltoides anterior.",
-        "instrucciones": [
-            "Acuéstate en un banco plano con los pies firmes en el suelo y los omóplatos retraídos.",
-            "Agarra la barra con un agarre ligeramente más ancho que los hombros, pulgares rodeando la barra.",
-            "Baja la barra de forma controlada hasta que toque la parte media o inferior de tu pecho.",
-            "Empuja la barra hacia arriba explosivamente hasta la posición inicial, extendiendo los codos sin bloquearlos."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "deltoides_anterior",
-            "triceps_braquial"
-        ],
-        "equipamiento_necesario": [
-            "barra_olimpica",
-            "banco_plano",
-            "discos_peso",
-            "soportes_barra"
-        ],
-        "nivel_dificultad": "intermedio",
-        "media": {
-            "imagen_url": "url_imagen_press_banca_barra.jpg",
-            "video_url": "url_video_press_banca_barra.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 40,
-            "repeticiones": 10,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "press",
-            "barra",
-            "fuerza_superior",
-            "pectoral_mayor"
-        ],
-        "advertencias": "Requiere buena técnica para evitar lesiones en hombros y muñecas. Usar un observador (spotter) si se levanta peso considerable."
+  {
+    "id_ejercicio": "uuid_chest_01",
+    "nombre": "Press de Banca con Barra",
+    "descripcion": "Ejercicio compuesto fundamental para el desarrollo del pectoral, tríceps y deltoides anterior.",
+    "instrucciones": [
+      "Acuéstate en un banco plano con los pies firmes en el suelo y los omóplatos retraídos.",
+      "Agarra la barra con un agarre ligeramente más ancho que los hombros, pulgares rodeando la barra.",
+      "Baja la barra de forma controlada hasta que toque la parte media o inferior de tu pecho.",
+      "Empuja la barra hacia arriba explosivamente hasta la posición inicial, extendiendo los codos sin bloquearlos."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "deltoides_anterior",
+      "triceps_braquial"
+    ],
+    "equipamiento_necesario": [
+      "barra_olimpica",
+      "banco_plano",
+      "discos_peso",
+      "soportes_barra"
+    ],
+    "nivel_dificultad": "intermedio",
+    "media": {
+      "imagen_url": "url_imagen_press_banca_barra.jpg",
+      "video_url": "url_video_press_banca_barra.mp4"
     },
-    {
-        "id_ejercicio": "uuid_chest_02",
-        "nombre": "Press de Banca con Mancuernas",
-        "descripcion": "Similar al press con barra, pero permite un mayor rango de movimiento y trabajo estabilizador.",
-        "instrucciones": [
-            "Acuéstate en un banco plano con una mancuerna en cada mano, apoyadas sobre tus muslos.",
-            "Lleva las mancuernas a la altura del pecho con las palmas enfrentadas o hacia adelante.",
-            "Empuja las mancuernas hacia arriba hasta que los brazos estén extendidos, sin que las mancuernas se toquen.",
-            "Baja las mancuernas de forma controlada a los lados del pecho, sintiendo el estiramiento."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "deltoides_anterior",
-            "triceps_braquial",
-            "musculos_estabilizadores_hombro"
-        ],
-        "equipamiento_necesario": [
-            "mancuernas",
-            "banco_plano"
-        ],
-        "nivel_dificultad": "intermedio",
-        "media": {
-            "imagen_url": "url_imagen_press_banca_mancuernas.jpg",
-            "video_url": "url_video_press_banca_mancuernas.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 15,
-            "repeticiones": 10,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "press",
-            "mancuernas",
-            "fuerza_superior",
-            "estabilizacion"
-        ],
-        "advertencias": "Controlar el movimiento para evitar lesiones. No dejar caer las mancuernas bruscamente."
+    "valores_ejemplo": {
+      "repeticiones": 10,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
     },
-    {
-        "id_ejercicio": "uuid_chest_03",
-        "nombre": "Press Inclinado con Barra",
-        "descripcion": "Enfatiza la porción superior (clavicular) del pectoral mayor.",
-        "instrucciones": [
-            "Ajusta un banco a una inclinación de 30-45 grados.",
-            "Acuéstate en el banco inclinado, agarra la barra con un agarre similar al press plano.",
-            "Baja la barra de forma controlada hasta la parte alta del pecho (clavículas).",
-            "Empuja la barra hacia arriba hasta la extensión completa de los brazos."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor_clavicular",
-            "deltoides_anterior",
-            "triceps_braquial"
-        ],
-        "equipamiento_necesario": [
-            "barra_olimpica",
-            "banco_inclinable",
-            "discos_peso",
-            "soportes_barra"
-        ],
-        "nivel_dificultad": "intermedio",
-        "media": {
-            "imagen_url": "url_imagen_press_inclinado_barra.jpg",
-            "video_url": "url_video_press_inclinado_barra.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 30,
-            "repeticiones": 10,
-            "series": 3,
-            "descanso_entre_series_segundos": 75
-        },
-        "tags_busqueda": [
-            "pecho_superior",
-            "press_inclinado",
-            "barra",
-            "fuerza_superior"
-        ],
-        "advertencias": "No usar una inclinación excesiva para proteger los hombros. El peso suele ser menor que en press plano."
+    "tags_busqueda": [
+      "pecho",
+      "press",
+      "barra",
+      "fuerza_superior",
+      "pectoral_mayor"
+    ],
+    "advertencias": "Requiere buena técnica para evitar lesiones en hombros y muñecas. Usar un observador (spotter) si se levanta peso considerable."
+  },
+  {
+    "id_ejercicio": "uuid_chest_02",
+    "nombre": "Press de Banca con Mancuernas",
+    "descripcion": "Similar al press con barra, pero permite un mayor rango de movimiento y trabajo estabilizador.",
+    "instrucciones": [
+      "Acuéstate en un banco plano con una mancuerna en cada mano, apoyadas sobre tus muslos.",
+      "Lleva las mancuernas a la altura del pecho con las palmas enfrentadas o hacia adelante.",
+      "Empuja las mancuernas hacia arriba hasta que los brazos estén extendidos, sin que las mancuernas se toquen.",
+      "Baja las mancuernas de forma controlada a los lados del pecho, sintiendo el estiramiento."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "deltoides_anterior",
+      "triceps_braquial",
+      "musculos_estabilizadores_hombro"
+    ],
+    "equipamiento_necesario": [
+      "mancuernas",
+      "banco_plano"
+    ],
+    "nivel_dificultad": "intermedio",
+    "media": {
+      "imagen_url": "url_imagen_press_banca_mancuernas.jpg",
+      "video_url": "url_video_press_banca_mancuernas.mp4"
     },
-    {
-        "id_ejercicio": "uuid_chest_04",
-        "nombre": "Flexiones de Brazos (Push-ups)",
-        "descripcion": "Ejercicio de peso corporal fundamental que trabaja el pecho, hombros y tríceps.",
-        "instrucciones": [
-            "Colócate boca abajo con las manos apoyadas en el suelo, ligeramente más anchas que los hombros.",
-            "Extiende las piernas hacia atrás, apoyándote en las puntas de los pies. Cuerpo recto desde la cabeza a los talones.",
-            "Baja el cuerpo flexionando los codos hasta que el pecho casi toque el suelo.",
-            "Empuja hacia arriba extendiendo los brazos para volver a la posición inicial."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "deltoides_anterior",
-            "triceps_braquial",
-            "serrato_anterior",
-            "core"
-        ],
-        "equipamiento_necesario": [
-            "ninguno"
-        ],
-        "nivel_dificultad": "principiante",
-        "media": {
-            "imagen_url": "url_imagen_flexiones.jpg",
-            "video_url": "url_video_flexiones.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "repeticiones": 12,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "peso_corporal",
-            "calistenia",
-            "flexiones",
-            "push_up"
-        ],
-        "advertencias": "Mantener el core activado para evitar que la cadera caiga. Variar la posición de las manos para diferentes enfoques."
+    "valores_ejemplo": {
+      "repeticiones": 10,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
     },
-    {
-        "id_ejercicio": "uuid_chest_05",
-        "nombre": "Fondos en Paralelas (Dips)",
-        "descripcion": "Ejercicio de peso corporal avanzado que enfoca el pectoral inferior y tríceps.",
-        "instrucciones": [
-            "Sujétate de las barras paralelas con los brazos extendidos y el cuerpo suspendido.",
-            "Inclina el torso ligeramente hacia adelante para enfocar más el pecho.",
-            "Baja el cuerpo flexionando los codos hasta que los hombros estén ligeramente por debajo de los codos.",
-            "Empuja hacia arriba hasta la posición inicial, extendiendo los brazos."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor_inferior",
-            "triceps_braquial",
-            "deltoides_anterior"
-        ],
-        "equipamiento_necesario": [
-            "barras_paralelas"
-        ],
-        "nivel_dificultad": "avanzado",
-        "media": {
-            "imagen_url": "url_imagen_fondos_paralelas.jpg",
-            "video_url": "url_video_fondos_paralelas.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "repeticiones": 8,
-            "series": 3,
-            "descanso_entre_series_segundos": 75
-        },
-        "tags_busqueda": [
-            "pecho_inferior",
-            "dips",
-            "fondos",
-            "peso_corporal",
-            "triceps"
-        ],
-        "advertencias": "Requiere fuerza y estabilidad en hombros. Bajar controladamente para evitar lesiones."
+    "tags_busqueda": [
+      "pecho",
+      "press",
+      "mancuernas",
+      "fuerza_superior",
+      "estabilizacion"
+    ],
+    "advertencias": "Controlar el movimiento para evitar lesiones. No dejar caer las mancuernas bruscamente."
+  },
+  {
+    "id_ejercicio": "uuid_chest_03",
+    "nombre": "Press Inclinado con Barra",
+    "descripcion": "Enfatiza la porción superior (clavicular) del pectoral mayor.",
+    "instrucciones": [
+      "Ajusta un banco a una inclinación de 30-45 grados.",
+      "Acuéstate en el banco inclinado, agarra la barra con un agarre similar al press plano.",
+      "Baja la barra de forma controlada hasta la parte alta del pecho (clavículas).",
+      "Empuja la barra hacia arriba hasta la extensión completa de los brazos."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor_clavicular",
+      "deltoides_anterior",
+      "triceps_braquial"
+    ],
+    "equipamiento_necesario": [
+      "barra_olimpica",
+      "banco_inclinable",
+      "discos_peso",
+      "soportes_barra"
+    ],
+    "nivel_dificultad": "intermedio",
+    "media": {
+      "imagen_url": "url_imagen_press_inclinado_barra.jpg",
+      "video_url": "url_video_press_inclinado_barra.mp4"
     },
-    {
-        "id_ejercicio": "uuid_chest_06",
-        "nombre": "Aperturas con Mancuernas en Banco Plano",
-        "descripcion": "Ejercicio de aislamiento que se enfoca en el estiramiento y aducción del pectoral.",
-        "instrucciones": [
-            "Acuéstate en un banco plano con una mancuerna en cada mano, brazos extendidos sobre el pecho, palmas enfrentadas.",
-            "Mantén una ligera flexión en los codos durante todo el movimiento.",
-            "Baja las mancuernas hacia los lados en un amplio arco, sintiendo el estiramiento en el pecho.",
-            "Vuelve a subir las mancuernas por el mismo arco hasta la posición inicial, apretando el pectoral."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "aislamiento",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "deltoides_anterior_ligero"
-        ],
-        "equipamiento_necesario": [
-            "mancuernas",
-            "banco_plano"
-        ],
-        "nivel_dificultad": "intermedio",
-        "media": {
-            "imagen_url": "url_imagen_aperturas_mancuernas.jpg",
-            "video_url": "url_video_aperturas_mancuernas.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 10,
-            "repeticiones": 12,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "aperturas",
-            "flyes",
-            "mancuernas",
-            "aislamiento"
-        ],
-        "advertencias": "No usar pesos excesivos que comprometan la forma o los hombros. Mantener codos ligeramente flexionados."
+    "valores_ejemplo": {
+      "repeticiones": 10,
+      "series": 3,
+      "descanso_entre_series_segundos": 75
     },
-    {
-        "id_ejercicio": "uuid_chest_07",
-        "nombre": "Cruces en Polea (Cable Crossover)",
-        "descripcion": "Ejercicio de aislamiento que proporciona tensión constante en el pectoral a través de diferentes ángulos.",
-        "instrucciones": [
-            "Colócate en el centro de una máquina de poleas con agarres altos.",
-            "Sujeta un agarre en cada mano, da un paso adelante para generar tensión.",
-            "Con los codos ligeramente flexionados, junta las manos al frente y debajo del pecho, apretando los pectorales.",
-            "Regresa lentamente a la posición inicial, controlando el movimiento."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "aislamiento",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "pectoral_menor",
-            "deltoides_anterior_ligero"
-        ],
-        "equipamiento_necesario": [
-            "maquina_poleas_doble",
-            "agarres_estribo"
-        ],
-        "nivel_dificultad": "intermedio",
-        "media": {
-            "imagen_url": "url_imagen_cruces_polea.jpg",
-            "video_url": "url_video_cruces_polea.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 15,
-            "repeticiones": 12,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "cruces_polea",
-            "cable_crossover",
-            "aislamiento",
-            "definicion"
-        ],
-        "advertencias": "Ajustar la altura de las poleas para enfocar diferentes partes del pecho. No usar impulso."
+    "tags_busqueda": [
+      "pecho_superior",
+      "press_inclinado",
+      "barra",
+      "fuerza_superior"
+    ],
+    "advertencias": "No usar una inclinación excesiva para proteger los hombros. El peso suele ser menor que en press plano."
+  },
+  {
+    "id_ejercicio": "uuid_chest_04",
+    "nombre": "Flexiones de Brazos (Push-ups)",
+    "descripcion": "Ejercicio de peso corporal fundamental que trabaja el pecho, hombros y tríceps.",
+    "instrucciones": [
+      "Colócate boca abajo con las manos apoyadas en el suelo, ligeramente más anchas que los hombros.",
+      "Extiende las piernas hacia atrás, apoyándote en las puntas de los pies. Cuerpo recto desde la cabeza a los talones.",
+      "Baja el cuerpo flexionando los codos hasta que el pecho casi toque el suelo.",
+      "Empuja hacia arriba extendiendo los brazos para volver a la posición inicial."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "deltoides_anterior",
+      "triceps_braquial",
+      "serrato_anterior",
+      "core"
+    ],
+    "equipamiento_necesario": [
+      "ninguno"
+    ],
+    "nivel_dificultad": "principiante",
+    "media": {
+      "imagen_url": "url_imagen_flexiones.jpg",
+      "video_url": "url_video_flexiones.mp4"
     },
-    {
-        "id_ejercicio": "uuid_chest_08",
-        "nombre": "Máquina Pec Deck (Contractora)",
-        "descripcion": "Ejercicio de aislamiento en máquina que simula el movimiento de las aperturas.",
-        "instrucciones": [
-            "Siéntate en la máquina con la espalda bien apoyada y ajusta el asiento para que los agarres queden a la altura del pecho.",
-            "Coloca los antebrazos en las almohadillas o sujeta los agarres.",
-            "Empuja lentamente los brazos hacia el centro hasta que se junten o casi se toquen.",
-            "Regresa de forma controlada a la posición inicial, sintiendo el estiramiento."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "aislamiento",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "pectoral_menor"
-        ],
-        "equipamiento_necesario": [
-            "maquina_pec_deck"
-        ],
-        "nivel_dificultad": "principiante",
-        "media": {
-            "imagen_url": "url_imagen_pec_deck.jpg",
-            "video_url": "url_video_pec_deck.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 25,
-            "repeticiones": 12,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "pec_deck",
-            "contractora",
-            "maquina",
-            "aislamiento"
-        ],
-        "advertencias": "Ajustar bien la máquina para evitar tensión en los hombros. Movimiento controlado."
+    "valores_ejemplo": {
+      "repeticiones": 12,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
     },
-    {
-        "id_ejercicio": "uuid_chest_09",
-        "nombre": "Press Declinado con Barra",
-        "descripcion": "Enfatiza la porción inferior (costal) del pectoral mayor.",
-        "instrucciones": [
-            "Ajusta un banco a una declinación de 15-30 grados y asegura tus piernas.",
-            "Acuéstate en el banco declinado, agarra la barra con un agarre similar al press plano.",
-            "Baja la barra de forma controlada hasta la parte baja del pecho.",
-            "Empuja la barra hacia arriba hasta la extensión completa de los brazos."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor_inferior",
-            "triceps_braquial",
-            "deltoides_anterior"
-        ],
-        "equipamiento_necesario": [
-            "barra_olimpica",
-            "banco_declinable",
-            "discos_peso",
-            "soportes_barra"
-        ],
-        "nivel_dificultad": "intermedio",
-        "media": {
-            "imagen_url": "url_imagen_press_declinado_barra.jpg",
-            "video_url": "url_video_press_declinado_barra.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 45,
-            "repeticiones": 10,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho_inferior",
-            "press_declinado",
-            "barra",
-            "fuerza_superior"
-        ],
-        "advertencias": "Asegurar bien las piernas. Cuidado al subir y bajar del banco. Usar observador si es necesario."
+    "tags_busqueda": [
+      "pecho",
+      "peso_corporal",
+      "calistenia",
+      "flexiones",
+      "push_up"
+    ],
+    "advertencias": "Mantener el core activado para evitar que la cadera caiga. Variar la posición de las manos para diferentes enfoques."
+  },
+  {
+    "id_ejercicio": "uuid_chest_05",
+    "nombre": "Fondos en Paralelas (Dips)",
+    "descripcion": "Ejercicio de peso corporal avanzado que enfoca el pectoral inferior y tríceps.",
+    "instrucciones": [
+      "Sujétate de las barras paralelas con los brazos extendidos y el cuerpo suspendido.",
+      "Inclina el torso ligeramente hacia adelante para enfocar más el pecho.",
+      "Baja el cuerpo flexionando los codos hasta que los hombros estén ligeramente por debajo de los codos.",
+      "Empuja hacia arriba hasta la posición inicial, extendiendo los brazos."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor_inferior",
+      "triceps_braquial",
+      "deltoides_anterior"
+    ],
+    "equipamiento_necesario": [
+      "barras_paralelas"
+    ],
+    "nivel_dificultad": "avanzado",
+    "media": {
+      "imagen_url": "url_imagen_fondos_paralelas.jpg",
+      "video_url": "url_video_fondos_paralelas.mp4"
     },
-    {
-        "id_ejercicio": "uuid_chest_10",
-        "nombre": "Press de Pecho en Máquina (Sentado)",
-        "descripcion": "Alternativa al press de banca libre, ofrece más estabilidad y es bueno para principiantes o para fatigar el músculo de forma segura.",
-        "instrucciones": [
-            "Siéntate en la máquina ajustando la altura del asiento para que los agarres estén a la altura media del pecho.",
-            "Selecciona el peso deseado. Sujeta los agarres con las palmas hacia abajo.",
-            "Empuja los agarres hacia adelante hasta que los brazos estén casi completamente extendidos, sin bloquear los codos.",
-            "Regresa lentamente a la posición inicial, controlando la resistencia."
-        ],
-        "tipo_ejercicio": "fuerza",
-        "modalidad": "compuesto",
-        "grupos_musculares": [
-            "pectoral_mayor",
-            "deltoides_anterior",
-            "triceps_braquial"
-        ],
-        "equipamiento_necesario": [
-            "maquina_press_pecho_sentado"
-        ],
-        "nivel_dificultad": "principiante",
-        "media": {
-            "imagen_url": "url_imagen_press_pecho_maquina.jpg",
-            "video_url": "url_video_press_pecho_maquina.mp4"
-        },
-        "metricas_configurables": [
-            {
-                "metrica": "peso",
-                "unidad": "kg",
-                "tipo_input": "decimal"
-            },
-            {
-                "metrica": "repeticiones",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "series",
-                "unidad": null,
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "descanso_entre_series_segundos",
-                "unidad": "segundos",
-                "tipo_input": "entero"
-            },
-            {
-                "metrica": "duracion",
-                "unidad": "segundos",
-                "tipo_input": "tiempo"
-            },
-            {
-                "metrica": "distancia",
-                "unidad": "km",
-                "tipo_input": "decimal"
-            }
-        ],
-        "valores_ejemplo": {
-            "peso_kg": 30,
-            "repeticiones": 12,
-            "series": 3,
-            "descanso_entre_series_segundos": 60
-        },
-        "tags_busqueda": [
-            "pecho",
-            "press_maquina",
-            "maquina",
-            "fuerza_superior",
-            "principiantes"
-        ],
-        "advertencias": "Ajustar correctamente la máquina para alinear con el pecho. Evitar que las pesas choquen bruscamente al final del recorrido."
-    }
+    "valores_ejemplo": {
+      "repeticiones": 8,
+      "series": 3,
+      "descanso_entre_series_segundos": 75
+    },
+    "tags_busqueda": [
+      "pecho_inferior",
+      "dips",
+      "fondos",
+      "peso_corporal",
+      "triceps"
+    ],
+    "advertencias": "Requiere fuerza y estabilidad en hombros. Bajar controladamente para evitar lesiones."
+  },
+  {
+    "id_ejercicio": "uuid_chest_06",
+    "nombre": "Aperturas con Mancuernas en Banco Plano",
+    "descripcion": "Ejercicio de aislamiento que se enfoca en el estiramiento y aducción del pectoral.",
+    "instrucciones": [
+      "Acuéstate en un banco plano con una mancuerna en cada mano, brazos extendidos sobre el pecho, palmas enfrentadas.",
+      "Mantén una ligera flexión en los codos durante todo el movimiento.",
+      "Baja las mancuernas hacia los lados en un amplio arco, sintiendo el estiramiento en el pecho.",
+      "Vuelve a subir las mancuernas por el mismo arco hasta la posición inicial, apretando el pectoral."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "aislamiento",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "deltoides_anterior_ligero"
+    ],
+    "equipamiento_necesario": [
+      "mancuernas",
+      "banco_plano"
+    ],
+    "nivel_dificultad": "intermedio",
+    "media": {
+      "imagen_url": "url_imagen_aperturas_mancuernas.jpg",
+      "video_url": "url_video_aperturas_mancuernas.mp4"
+    },
+    "valores_ejemplo": {
+      "repeticiones": 12,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
+    },
+    "tags_busqueda": [
+      "pecho",
+      "aperturas",
+      "flyes",
+      "mancuernas",
+      "aislamiento"
+    ],
+    "advertencias": "No usar pesos excesivos que comprometan la forma o los hombros. Mantener codos ligeramente flexionados."
+  },
+  {
+    "id_ejercicio": "uuid_chest_07",
+    "nombre": "Cruces en Polea (Cable Crossover)",
+    "descripcion": "Ejercicio de aislamiento que proporciona tensión constante en el pectoral a través de diferentes ángulos.",
+    "instrucciones": [
+      "Colócate en el centro de una máquina de poleas con agarres altos.",
+      "Sujeta un agarre en cada mano, da un paso adelante para generar tensión.",
+      "Con los codos ligeramente flexionados, junta las manos al frente y debajo del pecho, apretando los pectorales.",
+      "Regresa lentamente a la posición inicial, controlando el movimiento."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "aislamiento",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "pectoral_menor",
+      "deltoides_anterior_ligero"
+    ],
+    "equipamiento_necesario": [
+      "maquina_poleas_doble",
+      "agarres_estribo"
+    ],
+    "nivel_dificultad": "intermedio",
+    "media": {
+      "imagen_url": "url_imagen_cruces_polea.jpg",
+      "video_url": "url_video_cruces_polea.mp4"
+    },
+    "valores_ejemplo": {
+      "repeticiones": 12,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
+    },
+    "tags_busqueda": [
+      "pecho",
+      "cruces_polea",
+      "cable_crossover",
+      "aislamiento",
+      "definicion"
+    ],
+    "advertencias": "Ajustar la altura de las poleas para enfocar diferentes partes del pecho. No usar impulso."
+  },
+  {
+    "id_ejercicio": "uuid_chest_08",
+    "nombre": "Máquina Pec Deck (Contractora)",
+    "descripcion": "Ejercicio de aislamiento en máquina que simula el movimiento de las aperturas.",
+    "instrucciones": [
+      "Siéntate en la máquina con la espalda bien apoyada y ajusta el asiento para que los agarres queden a la altura del pecho.",
+      "Coloca los antebrazos en las almohadillas o sujeta los agarres.",
+      "Empuja lentamente los brazos hacia el centro hasta que se junten o casi se toquen.",
+      "Regresa de forma controlada a la posición inicial, sintiendo el estiramiento."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "aislamiento",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "pectoral_menor"
+    ],
+    "equipamiento_necesario": [
+      "maquina_pec_deck"
+    ],
+    "nivel_dificultad": "principiante",
+    "media": {
+      "imagen_url": "url_imagen_pec_deck.jpg",
+      "video_url": "url_video_pec_deck.mp4"
+    },
+    "valores_ejemplo": {
+      "repeticiones": 12,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
+    },
+    "tags_busqueda": [
+      "pecho",
+      "pec_deck",
+      "contractora",
+      "maquina",
+      "aislamiento"
+    ],
+    "advertencias": "Ajustar bien la máquina para evitar tensión en los hombros. Movimiento controlado."
+  },
+  {
+    "id_ejercicio": "uuid_chest_09",
+    "nombre": "Press Declinado con Barra",
+    "descripcion": "Enfatiza la porción inferior (costal) del pectoral mayor.",
+    "instrucciones": [
+      "Ajusta un banco a una declinación de 15-30 grados y asegura tus piernas.",
+      "Acuéstate en el banco declinado, agarra la barra con un agarre similar al press plano.",
+      "Baja la barra de forma controlada hasta la parte baja del pecho.",
+      "Empuja la barra hacia arriba hasta la extensión completa de los brazos."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor_inferior",
+      "triceps_braquial",
+      "deltoides_anterior"
+    ],
+    "equipamiento_necesario": [
+      "barra_olimpica",
+      "banco_declinable",
+      "discos_peso",
+      "soportes_barra"
+    ],
+    "nivel_dificultad": "intermedio",
+    "media": {
+      "imagen_url": "url_imagen_press_declinado_barra.jpg",
+      "video_url": "url_video_press_declinado_barra.mp4"
+    },
+    "valores_ejemplo": {
+      "repeticiones": 10,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
+    },
+    "tags_busqueda": [
+      "pecho_inferior",
+      "press_declinado",
+      "barra",
+      "fuerza_superior"
+    ],
+    "advertencias": "Asegurar bien las piernas. Cuidado al subir y bajar del banco. Usar observador si es necesario."
+  },
+  {
+    "id_ejercicio": "uuid_chest_10",
+    "nombre": "Press de Pecho en Máquina (Sentado)",
+    "descripcion": "Alternativa al press de banca libre, ofrece más estabilidad y es bueno para principiantes o para fatigar el músculo de forma segura.",
+    "instrucciones": [
+      "Siéntate en la máquina ajustando la altura del asiento para que los agarres estén a la altura media del pecho.",
+      "Selecciona el peso deseado. Sujeta los agarres con las palmas hacia abajo.",
+      "Empuja los agarres hacia adelante hasta que los brazos estén casi completamente extendidos, sin bloquear los codos.",
+      "Regresa lentamente a la posición inicial, controlando la resistencia."
+    ],
+    "tipo_ejercicio": "fuerza",
+    "modalidad": "compuesto",
+    "grupos_musculares": [
+      "pectoral_mayor",
+      "deltoides_anterior",
+      "triceps_braquial"
+    ],
+    "equipamiento_necesario": [
+      "maquina_press_pecho_sentado"
+    ],
+    "nivel_dificultad": "principiante",
+    "media": {
+      "imagen_url": "url_imagen_press_pecho_maquina.jpg",
+      "video_url": "url_video_press_pecho_maquina.mp4"
+    },
+    "valores_ejemplo": {
+      "repeticiones": 12,
+      "series": 3,
+      "descanso_entre_series_segundos": 60
+    },
+    "tags_busqueda": [
+      "pecho",
+      "press_maquina",
+      "maquina",
+      "fuerza_superior",
+      "principiantes"
+    ],
+    "advertencias": "Ajustar correctamente la máquina para alinear con el pecho. Evitar que las pesas choquen bruscamente al final del recorrido."
+  }
 ]

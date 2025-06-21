@@ -29,9 +29,47 @@
                 "cantidad": "5-10g"
             }
         ],
-        "calorias": "250-300 kcal",
-        "tiempo_preparacion": "10 min (+ tiempo de reposo)",
-        "dificultad": "Muy Fácil"
+        "calorias": "280-350 kcal (dependiendo de la leche y toppings)",
+        "tiempo_preparacion": "5 minutos (más 4h o toda la noche de reposo)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Revuelto de Claras con Espinacas Frescas y Champiñones Salteados",
+        "ingrediente_principal": "Claras de huevo",
+        "preparacion": "1. Lavar y picar las espinacas frescas. Limpiar y laminar los champiñones. Picar finamente un ajo (opcional). 2. En una sartén antiadherente con unas gotas de aceite de oliva, saltear el ajo (si se usa) y los champiñones laminados hasta que estén dorados y hayan soltado el agua. 3. Añadir las espinacas a la sartén y cocinar hasta que se reduzcan. Salpimentar las verduras. 4. Batir las claras de huevo con una pizca de sal y pimienta. 5. Verter las claras batidas sobre las verduras en la sartén. 6. Cocinar a fuego medio-bajo, removiendo suavemente con una espátula hasta que las claras estén cuajadas al gusto. Servir inmediatamente.",
+        "ingredientes": [
+            {
+                "item": "Claras de huevo",
+                "cantidad": "3-4 unidades (o 100-120 ml de claras pasteurizadas)"
+            },
+            {
+                "item": "Espinacas frescas",
+                "cantidad": "50-70g (un buen puñado)"
+            },
+            {
+                "item": "Champiñones frescos",
+                "cantidad": "50-70g (2-3 unidades medianas)"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "Unas gotas o 1/2 cucharadita"
+            },
+            {
+                "item": "Ajo (opcional)",
+                "cantidad": "1/4 diente"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "120-180 kcal",
+        "tiempo_preparacion": "10-15 minutos",
+        "dificultad": "Fácil"
     },
     {
         "titulo": "Yogur Griego Natural Light con Nueces Tostadas y Canela",
@@ -39,25 +77,67 @@
         "preparacion": "1. Tostar ligeramente las nueces en una sartén sin aceite durante 2-3 minutos, o en el horno, hasta que estén fragantes (opcional, pero realza el sabor). Dejar enfriar y picar groseramente. 2. En un bol, poner el yogur griego natural light. 3. Añadir las nueces picadas por encima. 4. Espolvorear con canela en polvo al gusto. 5. Si se desea un toque dulce, añadir unas gotas de extracto de vainilla o stevia (evitar miel o siropes si se busca bajo aporte calórico estricto, o usar una cantidad muy pequeña, ej. 1/2 cucharadita de miel cruda).",
         "ingredientes": [
             {
-                "item": "Yogur griego natural light (0% o 2% grasa)",
-                "cantidad": "200g (1 envase individual)"
+                "item": "Yogur griego natural light (sin azúcar añadido)",
+                "cantidad": "150-200g (1 unidad)"
             },
             {
-                "item": "Nueces (o almendras, avellanas)",
-                "cantidad": "10-15g (un puñadito pequeño)"
+                "item": "Nueces peladas",
+                "cantidad": "15-20g (unas 4-5 mitades)"
             },
             {
                 "item": "Canela en polvo",
                 "cantidad": "Al gusto"
             },
             {
-                "item": "Extracto de vainilla o edulcorante natural (opcional)",
-                "cantidad": "Unas gotas o al gusto"
+                "item": "Extracto de vainilla o stevia (opcional)",
+                "cantidad": "Unas gotas"
             }
         ],
-        "calorias": "180-220 kcal",
-        "tiempo_preparacion": "5 min",
-        "dificultad": "Muy Fácil"
+        "calorias": "200-280 kcal (dependiendo del yogur y cantidad de nueces)",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Tostada Integral con Aguacate, Huevo Pochado y Semillas de Sésamo",
+        "ingrediente_principal": "Pan Integral y Aguacate",
+        "preparacion": "1. Tostar la rebanada de pan integral hasta que esté dorada y crujiente. 2. Mientras, preparar el huevo pochado: llevar agua a ebullición suave en un cazo con un chorrito de vinagre. Cascar el huevo en un cuenco pequeño. Crear un remolino en el agua y verter el huevo con cuidado en el centro. Cocinar 3-4 minutos hasta que la clara esté cuajada y la yema líquida. Retirar con espumadera. 3. Cortar el aguacate por la mitad, retirar el hueso y extraer la pulpa. Machacar la pulpa de aguacate con un tenedor, añadiendo unas gotas de zumo de limón, sal y pimienta al gusto. 4. Untar el aguacate machacado sobre la tostada. 5. Colocar el huevo pochado encima del aguacate. 6. Espolvorear con semillas de sésamo y, opcionalmente, un poco de pimentón o chile en escamas.",
+        "ingredientes": [
+            {
+                "item": "Pan integral de buena calidad",
+                "cantidad": "1 rebanada gruesa (aprox. 40-50g)"
+            },
+            {
+                "item": "Aguacate pequeño",
+                "cantidad": "1/2 unidad (aprox. 50-60g de pulpa)"
+            },
+            {
+                "item": "Huevo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Vinagre (para pochar)",
+                "cantidad": "1 chorrito"
+            },
+            {
+                "item": "Semillas de sésamo tostado",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "280-340 kcal",
+        "tiempo_preparacion": "10-12 minutos",
+        "dificultad": "Media (por el huevo pochado)"
     },
     {
         "titulo": "Batido Verde Detox con Espinacas, Manzana Verde, Pepino y Jengibre",
@@ -65,32 +145,66 @@
         "preparacion": "1. Lavar bien todos los ingredientes. 2. Pelar la manzana verde (opcional) y el pepino, y cortarlos en trozos. Pelar un trocito de jengibre. 3. Poner en el vaso de la batidora las espinacas frescas, la manzana troceada, el pepino troceado, el jengibre, el zumo de medio limón y el agua o agua de coco. 4. Batir a alta velocidad durante 1-2 minutos hasta obtener una mezcla suave y homogénea. Si está muy espeso, añadir un poco más de agua. 5. Servir inmediatamente. Se puede añadir hielo si se desea más frío.",
         "ingredientes": [
             {
-                "item": "Espinacas frescas (baby o normales)",
-                "cantidad": "Un puñado grande (30-40g)"
+                "item": "Espinacas frescas",
+                "cantidad": "70-100g (un buen puñado grande)"
             },
             {
                 "item": "Manzana verde",
-                "cantidad": "1 mediana"
+                "cantidad": "1/2 unidad"
             },
             {
                 "item": "Pepino",
-                "cantidad": "1/2 mediano"
+                "cantidad": "1/4 unidad (trozo de unos 5 cm)"
             },
             {
-                "item": "Jengibre fresco",
-                "cantidad": "Un trocito pequeño (1-2 cm)"
+                "item": "Jengibre fresco pelado",
+                "cantidad": "Un trocito pequeño (1 cm aprox.)"
             },
             {
-                "item": "Limón",
-                "cantidad": "El zumo de 1/2 limón"
+                "item": "Zumo de limón",
+                "cantidad": "1/2 unidad"
             },
             {
-                "item": "Agua o agua de coco",
-                "cantidad": "150-200ml"
+                "item": "Agua filtrada o agua de coco sin azúcar",
+                "cantidad": "150-200 ml"
+            },
+            {
+                "item": "Hielo (opcional)",
+                "cantidad": "Algunos cubitos"
             }
         ],
-        "calorias": "100-130 kcal",
-        "tiempo_preparacion": "10 min",
+        "calorias": "100-150 kcal",
+        "tiempo_preparacion": "5-7 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Tortitas Saludables de Avena y Plátano (2 ingredientes base)",
+        "ingrediente_principal": "Avena y Plátano",
+        "preparacion": "1. Pelar el plátano maduro y machacarlo bien con un tenedor en un bol hasta obtener un puré. 2. Añadir los copos de avena (o harina de avena) y la canela (opcional) al puré de plátano. Mezclar bien hasta obtener una masa homogénea. Si se usa huevo, añadirlo batido en este punto. 3. Calentar una sartén antiadherente a fuego medio, pincelada con unas gotas de aceite de coco o de oliva. 4. Verter pequeñas porciones de la masa en la sartén caliente para formar las tortitas (2-3 cucharadas por tortita). 5. Cocinar durante 2-3 minutos por cada lado, o hasta que estén doradas y bien hechas por dentro. 6. Servir calientes, acompañadas de frutos rojos frescos, un hilo de sirope de agave (con moderación) o yogur natural.",
+        "ingredientes": [
+            {
+                "item": "Plátano maduro",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Copos de avena finos o harina de avena",
+                "cantidad": "30-40g (unas 3-4 cucharadas)"
+            },
+            {
+                "item": "Canela en polvo (opcional)",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Huevo pequeño (opcional, para mejor textura)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Aceite de coco o de oliva (para engrasar)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "200-280 kcal (sin toppings adicionales, varía si se añade huevo)",
+        "tiempo_preparacion": "10-15 minutos",
         "dificultad": "Fácil"
     },
     {
@@ -103,25 +217,81 @@
                 "cantidad": "2-3 cucharadas (20-30g)"
             },
             {
-                "item": "Leche de almendras sin azúcar",
-                "cantidad": "200-250ml (1 taza aprox.)"
+                "item": "Leche de almendras sin azúcar añadido",
+                "cantidad": "150-200 ml (aprox. 1 taza)"
             },
             {
-                "item": "Mango fresco",
-                "cantidad": "1/2 mango mediano"
+                "item": "Mango fresco maduro",
+                "cantidad": "1/2 unidad pequeña (o 70-100g en dados)"
             },
             {
                 "item": "Extracto de vainilla (opcional)",
-                "cantidad": "Unas gotas"
+                "cantidad": "1/4 cucharadita"
             },
             {
-                "item": "Coco rallado sin azúcar (opcional, para decorar)",
+                "item": "Coco rallado sin azúcar (opcional)",
                 "cantidad": "1 cucharadita"
             }
         ],
-        "calorias": "200-250 kcal",
-        "tiempo_preparacion": "10 min (+ tiempo de reposo)",
-        "dificultad": "Muy Fácil"
+        "calorias": "200-280 kcal",
+        "tiempo_preparacion": "5 minutos (más tiempo de reposo)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Macedonia de Frutas de Temporada con Toque de Lima y Semillas",
+        "ingrediente_principal": "Frutas Variadas",
+        "preparacion": "1. Lavar y picar una selección de frutas frescas de temporada en trozos de tamaño similar (ej. fresas, kiwi, naranja, manzana, pera, melón, sandía). 2. Poner todas las frutas picadas en un bol grande. 3. Exprimir el zumo de media lima (o limón) sobre las frutas para realzar el sabor y evitar la oxidación de algunas frutas. Remover con cuidado. 4. Espolvorear con semillas variadas (chía, lino molido, pipas de girasol o calabaza) al gusto. 5. Se puede añadir unas hojas de menta fresca picada para un toque aromático. Servir fría.",
+        "ingredientes": [
+            {
+                "item": "Frutas frescas de temporada variadas",
+                "cantidad": "250-300g en total (ej. 1 naranja, 1/2 manzana, 1 kiwi, 5 fresas)"
+            },
+            {
+                "item": "Zumo de lima o limón",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Semillas variadas (chía, lino, girasol, calabaza)",
+                "cantidad": "1 cucharada (10g)"
+            },
+            {
+                "item": "Hojas de menta fresca (opcional)",
+                "cantidad": "2-3 hojas"
+            }
+        ],
+        "calorias": "150-220 kcal (dependiendo de las frutas)",
+        "tiempo_preparacion": "10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Queso Fresco Batido 0% con Frutos Secos Tostados y Pizca de Cacao Puro",
+        "ingrediente_principal": "Queso Fresco Batido 0%",
+        "preparacion": "1. Poner el queso fresco batido 0% en un cuenco. 2. Picar groseramente los frutos secos variados (almendras, nueces, avellanas). Tostarlos ligeramente en una sartén sin aceite si se desea un extra de sabor. 3. Añadir los frutos secos picados sobre el queso fresco batido. 4. Espolvorear con una pizca de cacao puro en polvo sin azúcar y/o canela. 5. Si se necesita dulzor, añadir unas gotas de stevia o un edulcorante natural sin calorías.",
+        "ingredientes": [
+            {
+                "item": "Queso fresco batido 0% materia grasa",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Frutos secos crudos o tostados sin sal (almendras, nueces)",
+                "cantidad": "15-20g"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Canela en polvo (opcional)",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Stevia o edulcorante (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-250 kcal",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
     },
     {
         "titulo": "Tostada de Pan de Centeno con Hummus Casero y Rodajas de Pepino",
@@ -130,15 +300,15 @@
         "ingredientes": [
             {
                 "item": "Pan de centeno integral",
-                "cantidad": "1 rebanada mediana (30-40g)"
+                "cantidad": "1 rebanada (aprox. 40-50g)"
             },
             {
-                "item": "Hummus casero o comprado bajo en grasa",
-                "cantidad": "2-3 cucharadas (30-40g)"
+                "item": "Hummus casero (o comprado bajo en grasa)",
+                "cantidad": "2-3 cucharadas (40-60g)"
             },
             {
                 "item": "Pepino",
-                "cantidad": "1/4 - 1/3 de pepino mediano"
+                "cantidad": "1/4 unidad"
             },
             {
                 "item": "Pimienta negra molida",
@@ -146,12 +316,50 @@
             },
             {
                 "item": "Eneldo fresco (opcional)",
-                "cantidad": "Unas hojas"
+                "cantidad": "Unas ramitas"
             }
         ],
-        "calorias": "150-180 kcal",
-        "tiempo_preparacion": "5 min",
-        "dificultad": "Muy Fácil"
+        "calorias": "180-240 kcal",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mug Cake Saludable de Avena y Cacao (Hecho en Microondas)",
+        "ingrediente_principal": "Avena y Cacao",
+        "preparacion": "1. En una taza grande apta para microondas, mezclar la harina de avena (o copos triturados), el cacao puro, el edulcorante y la levadura en polvo. 2. Añadir el huevo (o clara), la leche y el aceite de coco derretido (o yogur). Batir bien con un tenedor hasta que no haya grumos. 3. Opcional: incorporar unos trocitos de chocolate negro (>70%) o frutos rojos. 4. Cocinar en el microondas a máxima potencia durante 1:30 - 2:00 minutos, o hasta que esté cocido pero aún un poco húmedo (el tiempo varía según el microondas). Vigilar para que no se desborde. 5. Dejar enfriar un minuto antes de desmoldar (opcional) o consumir directamente de la taza. Servir con frutos rojos o un poco de yogur si se desea.",
+        "ingredientes": [
+            {
+                "item": "Harina de avena o copos de avena triturados",
+                "cantidad": "3 cucharadas (30g)"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Edulcorante granulado (tipo eritritol o stevia)",
+                "cantidad": "1-2 cucharaditas (al gusto)"
+            },
+            {
+                "item": "Levadura en polvo (polvo de hornear)",
+                "cantidad": "1/4 cucharadita"
+            },
+            {
+                "item": "Huevo pequeño o 1 clara de huevo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal",
+                "cantidad": "2-3 cucharadas"
+            },
+            {
+                "item": "Aceite de coco derretido o yogur natural",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "180-250 kcal (dependiendo de si se usa huevo entero o clara)",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
     },
     {
         "titulo": "Gachas de Avena Calientes con Manzana Salteada y Canela",
@@ -160,19 +368,19 @@
         "ingredientes": [
             {
                 "item": "Copos de avena integral",
-                "cantidad": "40-50g (1/2 taza aprox.)"
+                "cantidad": "40-50g"
             },
             {
-                "item": "Leche desnatada o bebida vegetal sin azúcar",
-                "cantidad": "150-200ml (1 taza aprox.)"
+                "item": "Leche desnatada, bebida vegetal o agua",
+                "cantidad": "200-250 ml"
             },
             {
-                "item": "Manzana",
-                "cantidad": "1 pequeña o 1/2 grande"
+                "item": "Manzana pequeña",
+                "cantidad": "1/2 - 1 unidad"
             },
             {
                 "item": "Canela en polvo",
-                "cantidad": "Al gusto"
+                "cantidad": "1/2 cucharadita + pizca para saltear"
             },
             {
                 "item": "Edulcorante natural (opcional)",
@@ -183,8 +391,46 @@
                 "cantidad": "5-10g"
             }
         ],
-        "calorias": "220-270 kcal",
-        "tiempo_preparacion": "15 min",
+        "calorias": "250-320 kcal",
+        "tiempo_preparacion": "10-12 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mini Brochetas de Huevo Cocido, Tomate Cherry y Aguacate",
+        "ingrediente_principal": "Huevo y Aguacate",
+        "preparacion": "1. Cocer los huevos durante 10 minutos hasta que estén duros. Enfriar rápidamente bajo agua fría, pelar y cortar en cuartos o mitades (si son pequeños). 2. Lavar los tomates cherry. 3. Pelar el aguacate, retirar el hueso y cortarlo en dados de tamaño similar a los tomates cherry. Rociar con unas gotas de zumo de limón para evitar que se oxide. 4. Ensartar en palitos de brocheta pequeños: un trozo de huevo cocido, un tomate cherry y un dado de aguacate. Repetir la secuencia si el palito es más largo. 5. Aliñar ligeramente con una pizca de sal, pimienta negra molida y un hilo muy fino de aceite de oliva virgen extra (opcional).",
+        "ingredientes": [
+            {
+                "item": "Huevos",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Tomates cherry",
+                "cantidad": "6-8 unidades"
+            },
+            {
+                "item": "Aguacate",
+                "cantidad": "1/2 unidad pequeña"
+            },
+            {
+                "item": "Zumo de limón",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Aceite de oliva virgen extra (opcional)",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "180-280 kcal (dependiendo de la cantidad de huevo y aguacate)",
+        "tiempo_preparacion": "15 minutos (incluye cocción de huevos)",
         "dificultad": "Fácil"
     },
     {
@@ -194,27 +440,61 @@
         "ingredientes": [
             {
                 "item": "Copos de avena integral",
-                "cantidad": "40g (1/2 taza aprox.)"
+                "cantidad": "40g"
             },
             {
-                "item": "Proteína en polvo (whey o vegetal)",
-                "cantidad": "1 cucharada (15-20g)"
+                "item": "Leche desnatada, bebida vegetal o agua",
+                "cantidad": "200-250 ml"
             },
             {
-                "item": "Leche desnatada o bebida vegetal sin azúcar",
-                "cantidad": "200ml (1 taza aprox.)"
+                "item": "Proteína en polvo (whey, caseína, vegetal)",
+                "cantidad": "15-20g (medio scoop aprox.)"
             },
             {
-                "item": "Semillas de chía y/o lino molido",
-                "cantidad": "1 cucharadita (5g)"
+                "item": "Semillas de chía o lino molido",
+                "cantidad": "1 cucharadita"
             },
             {
-                "item": "Fruta fresca (bayas, plátano, manzana)",
-                "cantidad": "1 porción pequeña (80-100g)"
+                "item": "Fruta fresca troceada (plátano, fresas, arándanos)",
+                "cantidad": "50-70g"
+            },
+            {
+                "item": "Edulcorante (si la proteína no es dulce)",
+                "cantidad": "Opcional, al gusto"
             }
         ],
-        "calorias": "300-350 kcal",
-        "tiempo_preparacion": "15 min",
+        "calorias": "280-360 kcal (dependiendo de la proteína y toppings)",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Tostada de Pan Integral con Requesón Bajo en Grasa, Fresas y Miel de Agave",
+        "ingrediente_principal": "Pan Integral y Requesón",
+        "preparacion": "1. Tostar la rebanada de pan integral. 2. Untar una buena capa de requesón bajo en grasa sobre la tostada. 3. Lavar las fresas y cortarlas en láminas. Colocar las láminas de fresa sobre el requesón. 4. Rociar con un hilo muy fino de miel de agave o sirope de arce (usar con moderación). 5. Opcionalmente, espolvorear con unas semillas de amapola o almendras fileteadas.",
+        "ingredientes": [
+            {
+                "item": "Pan integral o de espelta",
+                "cantidad": "1 rebanada (40-50g)"
+            },
+            {
+                "item": "Requesón bajo en grasa (o cottage cheese light)",
+                "cantidad": "70-100g"
+            },
+            {
+                "item": "Fresas frescas",
+                "cantidad": "4-5 unidades medianas"
+            },
+            {
+                "item": "Miel de agave o sirope de arce (con moderación)",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Semillas de amapola o almendras fileteadas (opcional)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "200-260 kcal",
+        "tiempo_preparacion": "5 minutos",
         "dificultad": "Fácil"
     },
     {
@@ -224,32 +504,96 @@
         "ingredientes": [
             {
                 "item": "Huevo",
-                "cantidad": "1 unidad"
+                "cantidad": "1 unidad mediana"
             },
             {
                 "item": "Leche desnatada o bebida vegetal sin azúcar",
-                "cantidad": "60-80ml (1/3 taza aprox.)"
+                "cantidad": "50 ml"
             },
             {
                 "item": "Harina de almendras",
-                "cantidad": "2 cucharadas (20g aprox.)"
+                "cantidad": "2 cucharadas (20g)"
             },
             {
-                "item": "Frutos rojos (frescos o congelados)",
-                "cantidad": "70-80g (1/2 taza aprox.)"
+                "item": "Frutos rojos mixtos (frescos o congelados)",
+                "cantidad": "50-70g"
             },
             {
-                "item": "Edulcorante apto para hornear",
+                "item": "Edulcorante natural (eritritol, stevia)",
                 "cantidad": "Al gusto"
             },
             {
                 "item": "Extracto de vainilla",
                 "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Aceite de coco o mantequilla light (para engrasar)",
+                "cantidad": "Pizca"
             }
         ],
-        "calorias": "180-220 kcal",
-        "tiempo_preparacion": "30 min (incluyendo horneado)",
-        "dificultad": "Medio"
+        "calorias": "180-230 kcal",
+        "tiempo_preparacion": "30 minutos (5-10 min preparación, 20-25 min horneado)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Bowl de Kéfir con Granola Casera Baja en Azúcar y Kiwi",
+        "ingrediente_principal": "Kéfir y Granola Casera",
+        "preparacion": "1. Para la granola casera (hacer cantidad para varias porciones y guardar): Mezclar 100g de copos de avena, 25g de frutos secos picados (nueces, almendras), 15g de semillas (pipas de girasol, calabaza), 1 cucharada de aceite de coco derretido y 1-2 cucharadas de sirope de dátil o eritritol. Extender en una bandeja de horno y hornear a 160°C durante 15-20 min, removiendo a mitad, hasta dorar. Dejar enfriar completamente. 2. En un bol, verter el kéfir natural. 3. Añadir una porción de la granola casera (unos 30g). 4. Pelar y cortar el kiwi en rodajas o dados y añadirlo al bol. 5. Opcional: espolvorear con semillas de chía o coco rallado.",
+        "ingredientes": [
+            {
+                "item": "Kéfir natural (preferiblemente bajo en grasa)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Granola casera baja en azúcar",
+                "cantidad": "30g"
+            },
+            {
+                "item": "Kiwi",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Semillas de chía o coco rallado (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "250-320 kcal (dependiendo de la granola)",
+        "tiempo_preparacion": "5 minutos (más tiempo de preparación previa para la granola)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Tostada de Pan Wasa con Salmón Ahumado, Queso Crema Light y Eneldo Fresco",
+        "ingrediente_principal": "Salmón Ahumado y Pan Wasa",
+        "preparacion": "1. Tomar una o dos láminas de pan Wasa (o similar, tipo cracker integral). 2. Untar una fina capa de queso crema light sobre el pan. 3. Colocar encima las lonchas de salmón ahumado. 4. Espolvorear con eneldo fresco picado y, opcionalmente, un poco de pimienta negra recién molida o unas gotas de zumo de limón.",
+        "ingredientes": [
+            {
+                "item": "Pan Wasa integral (o similar)",
+                "cantidad": "2 láminas"
+            },
+            {
+                "item": "Salmón ahumado",
+                "cantidad": "40-50g"
+            },
+            {
+                "item": "Queso crema light",
+                "cantidad": "1-2 cucharadas (30-40g)"
+            },
+            {
+                "item": "Eneldo fresco picado",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Pimienta negra molida (opcional)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Zumo de limón (opcional)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "180-240 kcal",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
     },
     {
         "titulo": "Batido de Proteínas con Café Frío, Plátano Congelado y Cacao",
@@ -257,32 +601,74 @@
         "preparacion": "1. Preparar un café espresso o café filtrado y dejarlo enfriar (o usar café frío preparado). 2. En el vaso de la batidora, añadir el plátano congelado (cortado en trozos previamente), la proteína en polvo (sabor vainilla, chocolate o neutro), el café frío, la leche o bebida vegetal y el cacao puro en polvo. 3. Batir todo bien hasta obtener una consistencia cremosa y homogénea. Si está muy espeso, añadir un poco más de leche o agua. 4. Servir inmediatamente. Se puede decorar con unos nibs de cacao.",
         "ingredientes": [
             {
-                "item": "Plátano congelado",
-                "cantidad": "1/2 unidad mediana"
+                "item": "Proteína en polvo (whey, caseína o vegetal)",
+                "cantidad": "20-25g (1 scoop)"
             },
             {
-                "item": "Proteína en polvo (whey o vegetal)",
-                "cantidad": "1 cucharada (15-20g)"
+                "item": "Plátano pequeño congelado",
+                "cantidad": "1/2 - 1 unidad"
             },
             {
-                "item": "Café frío (espresso o filtrado)",
-                "cantidad": "60ml (1 shot espresso o 1/4 taza)"
+                "item": "Café espresso o filtrado frío",
+                "cantidad": "50-100 ml"
             },
             {
                 "item": "Leche desnatada o bebida vegetal sin azúcar",
-                "cantidad": "100-150ml (1/2 taza aprox.)"
+                "cantidad": "100-150 ml"
             },
             {
                 "item": "Cacao puro en polvo sin azúcar",
-                "cantidad": "1 cucharadita (5g)"
+                "cantidad": "1 cucharadita"
             },
             {
-                "item": "Hielo (opcional)",
-                "cantidad": "2-3 cubitos"
+                "item": "Nibs de cacao (opcional, para decorar)",
+                "cantidad": "1/2 cucharadita"
             }
         ],
-        "calorias": "200-250 kcal",
-        "tiempo_preparacion": "5 min",
+        "calorias": "220-300 kcal (dependiendo de la proteína y tamaño del plátano)",
+        "tiempo_preparacion": "5 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Migas\" de Coliflor con Huevo a la Plancha y Pimentón Ahumado",
+        "ingrediente_principal": "Coliflor y Huevo",
+        "preparacion": "1. Lavar la coliflor y rallarla (con un rallador grueso) o procesarla en un robot de cocina hasta obtener una textura similar a migas o cuscús. 2. Picar un diente de ajo finamente. 3. En una sartén grande, calentar una cucharadita de aceite de oliva. Sofreír el ajo hasta que esté fragante. Añadir la coliflor rallada y saltear durante 5-7 minutos a fuego medio, hasta que esté tierna pero ligeramente crujiente. Sazonar con sal, pimienta y pimentón ahumado. 4. Mientras se hace la coliflor, cocinar un huevo a la plancha en otra sartén con unas gotas de aceite. 5. Servir las \"migas\" de coliflor en un plato y colocar el huevo a la plancha encima. Espolvorear con un poco más de pimentón y perejil fresco picado (opcional).",
+        "ingredientes": [
+            {
+                "item": "Coliflor",
+                "cantidad": "200-250g (1/4 de coliflor mediana aprox.)"
+            },
+            {
+                "item": "Huevo",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Diente de ajo",
+                "cantidad": "1/2 - 1 unidad"
+            },
+            {
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1-2 cucharaditas"
+            },
+            {
+                "item": "Pimentón ahumado (dulce o picante)",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Perejil fresco picado (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "180-240 kcal",
+        "tiempo_preparacion": "15-20 minutos",
         "dificultad": "Fácil"
     },
     {
@@ -291,29 +677,63 @@
         "preparacion": "1. En un cazo, poner el arroz integral (preferiblemente enjuagado), la bebida de coco (u otra vegetal), la rama de canela y un trozo de piel de limón (sin la parte blanca). 2. Llevar a ebullición y luego cocinar a fuego muy bajo, tapado parcialmente, durante 30-40 minutos, o hasta que el arroz esté muy tierno y el líquido se haya absorbido y espesado. Remover de vez en cuando para evitar que se pegue. 3. Retirar la rama de canela y la piel de limón. 4. Añadir edulcorante al gusto si es necesario. 5. Servir caliente o frío, espolvoreado con un poco más de canela en polvo.",
         "ingredientes": [
             {
-                "item": "Arroz integral redondo",
-                "cantidad": "40-50g (1/4 taza aprox.)"
+                "item": "Arroz integral (de grano corto si es posible)",
+                "cantidad": "30-40g"
             },
             {
-                "item": "Bebida de coco sin azúcar (o leche de almendras)",
-                "cantidad": "250-300ml (1 1/4 taza aprox.)"
+                "item": "Bebida de coco sin azúcar (u otra bebida vegetal)",
+                "cantidad": "200-250 ml"
             },
             {
                 "item": "Rama de canela",
-                "cantidad": "1 unidad"
+                "cantidad": "1 unidad pequeña"
             },
             {
                 "item": "Piel de limón",
-                "cantidad": "1 trozo pequeño"
+                "cantidad": "Un trozo"
             },
             {
-                "item": "Edulcorante natural (opcional)",
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Canela en polvo (para espolvorear)",
                 "cantidad": "Al gusto"
             }
         ],
-        "calorias": "180-220 kcal",
-        "tiempo_preparacion": "45 min",
-        "dificultad": "Medio"
+        "calorias": "160-220 kcal",
+        "tiempo_preparacion": "40-50 minutos (mayormente cocción desatendida)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Rollitos de Pechuga de Pavo con Queso Fresco, Rúcula y Mostaza Antigua",
+        "ingrediente_principal": "Pechuga de Pavo y Queso Fresco",
+        "preparacion": "1. Extender las lonchas de pechuga de pavo sobre una superficie limpia. 2. Untar una fina capa de queso fresco (puede ser tipo Burgos 0% o requesón) sobre cada loncha. 3. Añadir una pizca de mostaza antigua (en grano) sobre el queso. 4. Colocar unas hojas de rúcula fresca (u otra hoja verde como espinacas baby) encima. 5. Enrollar las lonchas de pavo con cuidado y asegurar con un palillo si es necesario. Se pueden hacer 2-3 rollitos por persona.",
+        "ingredientes": [
+            {
+                "item": "Lonchas de pechuga de pavo cocida baja en grasa",
+                "cantidad": "3-4 lonchas (aprox. 60-80g)"
+            },
+            {
+                "item": "Queso fresco tipo Burgos 0% o requesón",
+                "cantidad": "40-50g"
+            },
+            {
+                "item": "Rúcula fresca",
+                "cantidad": "Un puñadito"
+            },
+            {
+                "item": "Mostaza antigua (en grano)",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Pimienta negra molida (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "130-180 kcal",
+        "tiempo_preparacion": "5-7 minutos",
+        "dificultad": "Fácil"
     },
     {
         "titulo": "\"Nubes\" de Huevo al Horno (Egg Clouds) con Cebollino",
@@ -322,28 +742,62 @@
         "ingredientes": [
             {
                 "item": "Huevos",
-                "cantidad": "1-2 unidades (según apetito)"
+                "cantidad": "1-2 unidades"
             },
             {
                 "item": "Sal",
                 "cantidad": "Una pizca"
             },
             {
-                "item": "Queso parmesano rallado fino (opcional)",
-                "cantidad": "1 cucharadita (5g)"
+                "item": "Queso Parmesano rallado fino (opcional)",
+                "cantidad": "1 cucharadita"
             },
             {
-                "item": "Cebollino fresco",
-                "cantidad": "Al gusto, para decorar"
+                "item": "Cebollino fresco picado",
+                "cantidad": "Al gusto"
             },
             {
                 "item": "Pimienta negra molida",
                 "cantidad": "Al gusto"
             }
         ],
-        "calorias": "70-140 kcal (dependiendo del número de huevos)",
-        "tiempo_preparacion": "15 min",
-        "dificultad": "Medio"
+        "calorias": "80-160 kcal (por huevo, ligero incremento con parmesano)",
+        "tiempo_preparacion": "15 minutos",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Manzana Asada al Microondas Rellena de Avena, Canela y Nueces",
+        "ingrediente_principal": "Manzana",
+        "preparacion": "1. Lavar la manzana y descorazonarla, dejando la base intacta para poder rellenarla. 2. En un bol pequeño, mezclar los copos de avena, las nueces picadas, la canela y el edulcorante (si se usa). Añadir una cucharadita de agua o zumo de limón para humedecer ligeramente la mezcla. 3. Rellenar el hueco de la manzana con esta mezcla. 4. Colocar la manzana en un recipiente apto para microondas con un poquito de agua en el fondo (1-2 cucharadas). 5. Cocinar en el microondas a máxima potencia durante 3-5 minutos, o hasta que la manzana esté tierna (el tiempo dependerá del tamaño de la manzana y la potencia del microondas). 6. Dejar reposar un minuto antes de consumir. Se puede servir con una cucharada de yogur natural si se desea.",
+        "ingredientes": [
+            {
+                "item": "Manzana (tipo Reineta o Golden)",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Copos de avena",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Nueces picadas",
+                "cantidad": "1-2 unidades (5-10g)"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Edulcorante natural (opcional)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Agua o zumo de limón (para la mezcla)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "120-180 kcal",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
     },
     {
         "titulo": "Barritas Energéticas Caseras Ligeras de Avena y Dátiles (Sin Horno)",
@@ -351,28 +805,62 @@
         "preparacion": "1. Remojar los dátiles Medjool (sin hueso) en agua caliente durante 10 minutos para ablandarlos. Escurrir bien. 2. En un procesador de alimentos, triturar los dátiles remojados hasta formar una pasta. 3. Añadir los copos de avena, los frutos secos (almendras, nueces) y las semillas (chía, lino) al procesador. Incorporar una pizca de canela o vainilla si se desea. Procesar hasta que todo esté bien mezclado y la masa sea pegajosa. 4. Forrar un molde pequeño rectangular o cuadrado con papel de hornear. Verter la mezcla en el molde y presionar firmemente con una espátula o el dorso de una cuchara para compactarla bien y obtener una capa uniforme. 5. Refrigerar durante al menos 1-2 horas para que se endurezca. 6. Desmoldar y cortar en barritas del tamaño deseado. Conservar en un recipiente hermético en la nevera. (La receta rinde para varias barritas, la información nutricional es por barrita de tamaño moderado).",
         "ingredientes": [
             {
-                "item": "Dátiles Medjool (sin hueso)",
-                "cantidad": "4-5 unidades (70-80g)"
+                "item": "Dátiles Medjool sin hueso",
+                "cantidad": "4-5 unidades (para una tanda pequeña, aprox. 80-100g)"
             },
             {
                 "item": "Copos de avena integral",
-                "cantidad": "50-60g (1/2 taza aprox.)"
+                "cantidad": "80-100g"
             },
             {
-                "item": "Frutos secos (almendras, nueces)",
-                "cantidad": "20g (un puñadito pequeño)"
+                "item": "Frutos secos variados (almendras, nueces)",
+                "cantidad": "30-40g"
             },
             {
-                "item": "Semillas (chía, lino)",
-                "cantidad": "1 cucharada (10g)"
+                "item": "Semillas de chía o lino",
+                "cantidad": "1 cucharada"
             },
             {
                 "item": "Canela o extracto de vainilla (opcional)",
                 "cantidad": "Al gusto"
             }
         ],
-        "calorias": "120-150 kcal por barrita",
-        "tiempo_preparacion": "20 min (+ tiempo de refrigeración)",
+        "calorias": "100-140 kcal por barrita (dependiendo del tamaño y cantidad total)",
+        "tiempo_preparacion": "15 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Batido Energético de Naranja, Zanahoria, Yogur y Jengibre",
+        "ingrediente_principal": "Naranja y Zanahoria",
+        "preparacion": "1. Pelar la naranja, quitando la mayor parte de la piel blanca, y trocearla. Pelar la zanahoria y cortarla en rodajas o trozos pequeños. Pelar un trocito de jengibre. 2. Poner en el vaso de la batidora la naranja troceada, la zanahoria, el jengibre, el yogur natural y el agua (o cubitos de hielo para una textura más frappé). 3. Batir a alta velocidad hasta obtener una mezcla suave y homogénea. Si está muy espeso, añadir un poco más de agua. 4. Servir inmediatamente.",
+        "ingredientes": [
+            {
+                "item": "Naranja (zumo y parte de la pulpa)",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Zanahoria",
+                "cantidad": "1/2 unidad mediana"
+            },
+            {
+                "item": "Yogur natural desnatado o kéfir",
+                "cantidad": "100g"
+            },
+            {
+                "item": "Jengibre fresco pelado",
+                "cantidad": "Un trocito (0.5 - 1 cm)"
+            },
+            {
+                "item": "Agua fría o cubitos de hielo",
+                "cantidad": "50-100 ml (opcional, según consistencia)"
+            },
+            {
+                "item": "Cúrcuma en polvo (opcional)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "130-180 kcal",
+        "tiempo_preparacion": "7-10 minutos",
         "dificultad": "Fácil"
     },
     {
@@ -381,28 +869,62 @@
         "preparacion": "1. Quitar la piel y las semillas del melón. Cortar la pulpa en trozos. 2. Poner el melón troceado en el vaso de la batidora junto con unas hojas de menta fresca y, si se desea, un chorrito de zumo de lima o limón. 3. Triturar hasta obtener una sopa fina y homogénea. Si es necesario, añadir un poco de agua fría para aligerar la textura. 4. Enfriar bien en la nevera (al menos 30 minutos). 5. Servir la sopa de melón bien fría en cuencos individuales. Decorar con unas virutas muy finas de jamón serrano (usar con moderación para controlar la sal y grasa) y unas hojas de menta fresca.",
         "ingredientes": [
             {
-                "item": "Melón cantalupo maduro",
-                "cantidad": "1/4 de melón mediano (200-250g de pulpa)"
+                "item": "Melón Cantalupo o Galia maduro",
+                "cantidad": "250-300g (pulpa limpia)"
             },
             {
                 "item": "Hojas de menta fresca",
-                "cantidad": "5-6 hojas + algunas para decorar"
+                "cantidad": "5-6 hojas"
+            },
+            {
+                "item": "Jamón serrano (en virutas muy finas)",
+                "cantidad": "10-15g"
             },
             {
                 "item": "Zumo de lima o limón (opcional)",
-                "cantidad": "Un chorrito"
-            },
-            {
-                "item": "Jamón serrano en lonchas muy finas",
-                "cantidad": "5-10g (una cantidad muy pequeña)"
+                "cantidad": "1 cucharadita"
             },
             {
                 "item": "Agua fría (opcional)",
-                "cantidad": "Un poco, si es necesario"
+                "cantidad": "Según necesidad"
             }
         ],
-        "calorias": "100-130 kcal",
-        "tiempo_preparacion": "10 min (+ tiempo de refrigeración)",
+        "calorias": "100-150 kcal",
+        "tiempo_preparacion": "10 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Polenta Cremosa Ligera con Bebida de Almendras y Compota de Frutos Rojos Casera",
+        "ingrediente_principal": "Polenta (Harina de Maíz)",
+        "preparacion": "1. Para la compota (opcional, se pueden usar frutos rojos frescos): cocinar 50g de frutos rojos con 1 cucharada de agua y edulcorante al gusto a fuego bajo hasta que se ablanden. 2. En un cazo, llevar a ebullición la bebida de almendras (u otra leche vegetal) con una pizca de sal. 3. Añadir la polenta instantánea (o de cocción rápida) en forma de lluvia, sin dejar de remover con unas varillas para evitar grumos. 4. Cocinar a fuego bajo, removiendo constantemente, durante 2-5 minutos (según las instrucciones del paquete) o hasta que espese y esté cremosa. 5. Retirar del fuego, añadir extracto de vainilla y edulcorante al gusto si es necesario. 6. Servir la polenta caliente en un bol, cubierta con la compota de frutos rojos casera o frutos rojos frescos.",
+        "ingredientes": [
+            {
+                "item": "Polenta instantánea o de cocción rápida",
+                "cantidad": "30-40g"
+            },
+            {
+                "item": "Bebida de almendras sin azúcar",
+                "cantidad": "200-250 ml"
+            },
+            {
+                "item": "Frutos rojos (para compota o frescos)",
+                "cantidad": "50-70g"
+            },
+            {
+                "item": "Extracto de vainilla",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "150-220 kcal",
+        "tiempo_preparacion": "10-15 minutos",
         "dificultad": "Fácil"
     },
     {
@@ -411,52 +933,102 @@
         "preparacion": "1. Escurrir bien el tofu firme y desmenuzarlo con las manos o un tenedor en un bol. 2. Picar finamente la cebolla, el pimiento verde y el pimiento rojo. Picar un diente de ajo. 3. En una sartén, calentar una cucharadita de aceite de oliva. Sofreír la cebolla, los pimientos y el ajo hasta que estén tiernos. 4. Añadir el tofu desmenuzado a la sartén. Espolvorear con cúrcuma, comino en polvo, sal y pimienta negra. Remover bien para que el tofu se impregne de las especias y tome un color amarillo. 5. Cocinar durante 5-7 minutos, removiendo ocasionalmente, hasta que el tofu esté caliente. 6. Opcional: añadir un poco de salsa de tomate natural o unos tomates cherry cortados por la mitad al final de la cocción. Servir caliente, espolvoreado con cilantro o perejil fresco.",
         "ingredientes": [
             {
-                "item": "Tofu firme",
-                "cantidad": "150g"
+                "item": "Tofu firme o extra firme",
+                "cantidad": "100-150g"
             },
             {
-                "item": "Cebolla",
-                "cantidad": "1/4 unidad pequeña"
+                "item": "Cebolla pequeña",
+                "cantidad": "1/4 unidad"
             },
             {
                 "item": "Pimiento verde",
-                "cantidad": "1/4 unidad pequeña"
+                "cantidad": "1/4 unidad"
             },
             {
-                "item": "Pimiento rojo",
-                "cantidad": "1/4 unidad pequeña"
+                "item": "Pimiento rojo (opcional)",
+                "cantidad": "1/4 unidad"
             },
             {
-                "item": "Ajo",
-                "cantidad": "1 diente pequeño"
-            },
-            {
-                "item": "Aceite de oliva virgen extra",
-                "cantidad": "1 cucharadita (5ml)"
+                "item": "Diente de ajo",
+                "cantidad": "1/2 unidad"
             },
             {
                 "item": "Cúrcuma en polvo",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Comino molido",
                 "cantidad": "1/4 cucharadita"
             },
             {
-                "item": "Comino en polvo",
-                "cantidad": "Una pizca"
+                "item": "Aceite de oliva virgen extra",
+                "cantidad": "1 cucharadita"
             },
             {
-                "item": "Sal y pimienta negra",
+                "item": "Sal",
                 "cantidad": "Al gusto"
             },
             {
-                "item": "Cilantro o perejil fresco (opcional)",
-                "cantidad": "Al gusto, para decorar"
+                "item": "Pimienta negra molida",
+                "cantidad": "Al gusto"
             },
             {
-                "item": "Tomates cherry o salsa de tomate natural (opcional)",
+                "item": "Cilantro o perejil fresco picado (para decorar)",
                 "cantidad": "Al gusto"
             }
         ],
-        "calorias": "180-220 kcal",
-        "tiempo_preparacion": "15 min",
+        "calorias": "180-250 kcal",
+        "tiempo_preparacion": "15-20 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mug Cake de Zanahoria y Nueces (Versión Saludable al Microondas)",
+        "ingrediente_principal": "Zanahoria y Harina de Avena",
+        "preparacion": "1. Rallar finamente la zanahoria. Picar las nueces. 2. En una taza grande apta para microondas, mezclar la harina de avena (o integral), el edulcorante, la canela, la nuez moscada y la levadura en polvo. 3. Añadir la zanahoria rallada, las nueces picadas, el huevo (o clara), la leche y el aceite de coco (o puré de manzana). Mezclar bien hasta integrar todos los ingredientes. 4. Cocinar en el microondas a máxima potencia durante 1:30 - 2:30 minutos, o hasta que esté cocido (al insertar un palillo, este debe salir limpio). El tiempo puede variar. 5. Dejar enfriar unos minutos. Se puede cubrir con un glaseado ligero de queso crema light mezclado con un poco de edulcorante y vainilla (opcional, no incluido en calorías base).",
+        "ingredientes": [
+            {
+                "item": "Zanahoria rallada fina",
+                "cantidad": "3-4 cucharadas (unos 40g)"
+            },
+            {
+                "item": "Harina de avena o integral",
+                "cantidad": "3 cucharadas (30g)"
+            },
+            {
+                "item": "Nueces picadas",
+                "cantidad": "1 cucharadita (5g)"
+            },
+            {
+                "item": "Huevo pequeño o 1 clara",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Leche desnatada o bebida vegetal",
+                "cantidad": "2 cucharadas"
+            },
+            {
+                "item": "Aceite de coco derretido o puré de manzana sin azúcar",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Edulcorante natural (eritritol, stevia)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Nuez moscada molida",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Levadura en polvo (polvo de hornear)",
+                "cantidad": "1/4 cucharadita"
+            }
+        ],
+        "calorias": "190-260 kcal",
+        "tiempo_preparacion": "7-10 minutos",
         "dificultad": "Fácil"
     }
 ]

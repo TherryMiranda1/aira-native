@@ -1,188 +1,942 @@
 [
-  {
-    "titulo": "Mousse de Chocolate Negro con Aguacate",
-    "ingrediente_principal": "Aguacate y Chocolate Negro",
-    "preparacion": "1. Pelar y quitar el hueso de los aguacates. Colocar la pulpa en un procesador de alimentos. 2. Derretir el chocolate negro al baño maría o en el microondas (a potencia baja, en intervalos de 30 segundos, removiendo cada vez). Dejar enfriar ligeramente. 3. Añadir el chocolate derretido, el cacao en polvo, la esencia de vainilla, el edulcorante y una pizca de sal al procesador con el aguacate. 4. Procesar hasta obtener una mezcla suave y homogénea, parando para raspar los lados si es necesario. 5. Si la mezcla está muy espesa, añadir un poco de leche o bebida vegetal para ajustar la consistencia. 6. Dividir la mousse en 4 recipientes individuales y refrigerar durante al menos 2 horas. 7. Antes de servir, decorar con unas frambuesas frescas y, si se desea, unas virutas de chocolate negro.",
-    "ingredientes": [
-      {
-        "item": "Aguacates maduros",
-        "cantidad": "2 pequeños (o 1 grande)"
-      },
-      {
-        "item": "Chocolate negro (mínimo 70% cacao)",
-        "cantidad": "100g"
-      },
-      {
-        "item": "Cacao puro en polvo sin azúcar",
-        "cantidad": "2 cucharadas"
-      },
-      {
-        "item": "Esencia de vainilla",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Edulcorante natural (stevia, eritritol)",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Leche o bebida vegetal sin azúcar (opcional)",
-        "cantidad": "1-2 cucharadas, si es necesario"
-      },
-      {
-        "item": "Sal",
-        "cantidad": "Una pizca"
-      },
-      {
-        "item": "Frambuesas frescas (para decorar)",
-        "cantidad": "8-12 unidades"
-      }
-    ],
-    "calorias": "250-300 kcal por ración",
-    "tiempo_preparacion": "15 min (+ tiempo de refrigeración)",
-    "dificultad": "Fácil"
-  },
-  {
-    "titulo": "Crumble de Manzana y Canela con Avena",
-    "ingrediente_principal": "Manzanas",
-    "preparacion": "1. Precalentar el horno a 180°C. 2. Pelar y cortar las manzanas en dados medianos. 3. En una sartén, cocinar las manzanas con la canela, el zumo de limón y una cucharadita de miel o sirope de arce durante 5-7 minutos, hasta que estén ligeramente blandas pero aún mantengan su forma. 4. Mientras tanto, preparar el crumble: mezclar los copos de avena, la harina de almendras, las nueces picadas y la canela en un bol. 5. Añadir el aceite de coco derretido y la miel o sirope de arce restante. Mezclar con los dedos hasta obtener una textura arenosa. 6. Repartir las manzanas cocinadas en 4 ramequines individuales o en una fuente pequeña apta para horno. 7. Cubrir con la mezcla de crumble. 8. Hornear durante 15-20 minutos, hasta que el crumble esté dorado y crujiente. 9. Servir caliente, acompañado de yogur griego natural si se desea.",
-    "ingredientes": [
-      {
-        "item": "Manzanas (preferiblemente variedad ácida como Granny Smith)",
-        "cantidad": "3 medianas"
-      },
-      {
-        "item": "Canela en polvo",
-        "cantidad": "1 cucharadita (para las manzanas) + 1/2 cucharadita (para el crumble)"
-      },
-      {
-        "item": "Zumo de limón",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Miel o sirope de arce",
-        "cantidad": "1 cucharadita (para las manzanas) + 1 cucharada (para el crumble)"
-      },
-      {
-        "item": "Copos de avena integral",
-        "cantidad": "100g (1 taza aprox.)"
-      },
-      {
-        "item": "Harina de almendras",
-        "cantidad": "50g (1/2 taza aprox.)"
-      },
-      {
-        "item": "Nueces picadas",
-        "cantidad": "30g (1/4 taza aprox.)"
-      },
-      {
-        "item": "Aceite de coco",
-        "cantidad": "2 cucharadas"
-      },
-      {
-        "item": "Yogur griego natural (opcional, para servir)",
-        "cantidad": "4 cucharadas"
-      }
-    ],
-    "calorias": "300-350 kcal por ración (sin contar el yogur)",
-    "tiempo_preparacion": "40 min",
-    "dificultad": "Medio"
-  },
-  {
-    "titulo": "Trufas Energéticas de Dátiles y Cacao",
-    "ingrediente_principal": "Dátiles",
-    "preparacion": "1. Remojar los dátiles en agua caliente durante 10 minutos para ablandarlos. Escurrir bien. 2. Quitar los huesos de los dátiles si no vienen ya deshuesados. 3. En un procesador de alimentos, triturar los dátiles junto con las almendras, el cacao en polvo, el aceite de coco derretido y la esencia de vainilla hasta obtener una pasta homogénea. 4. Si la mezcla está muy pegajosa, refrigerarla durante 15-20 minutos para que sea más fácil de manipular. 5. Con las manos ligeramente humedecidas, formar pequeñas bolas (del tamaño de una nuez) con la mezcla. 6. Rebozar las trufas en el cacao en polvo, las semillas de chía o el coco rallado. 7. Refrigerar durante al menos 1 hora antes de servir. Conservar en la nevera en un recipiente hermético.",
-    "ingredientes": [
-      {
-        "item": "Dátiles Medjool",
-        "cantidad": "200g (aproximadamente 10-12 unidades)"
-      },
-      {
-        "item": "Almendras crudas",
-        "cantidad": "100g (2/3 taza aprox.)"
-      },
-      {
-        "item": "Cacao puro en polvo sin azúcar",
-        "cantidad": "2 cucharadas (para la mezcla) + 1 cucharada (para rebozar)"
-      },
-      {
-        "item": "Aceite de coco",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Esencia de vainilla",
-        "cantidad": "1/2 cucharadita"
-      },
-      {
-        "item": "Semillas de chía (opcional, para rebozar)",
-        "cantidad": "1 cucharada"
-      },
-      {
-        "item": "Coco rallado sin azúcar (opcional, para rebozar)",
-        "cantidad": "1 cucharada"
-      }
-    ],
-    "calorias": "100-120 kcal por trufa",
-    "tiempo_preparacion": "25 min (+ tiempo de refrigeración)",
-    "dificultad": "Fácil"
-  },
-  {
-    "titulo": "Helado de Plátano y Frutos Rojos (Sin Azúcar Añadido)",
-    "ingrediente_principal": "Plátano y Frutos Rojos",
-    "preparacion": "1. Pelar los plátanos maduros y cortarlos en rodajas. Colocarlos en una bolsa o recipiente apto para congelador y congelar durante al menos 4 horas, o preferiblemente toda la noche. 2. Lavar los frutos rojos si son frescos. Si son congelados, usarlos directamente. 3. En un procesador de alimentos potente o una batidora de vaso, añadir los plátanos congelados y los frutos rojos. 4. Procesar hasta obtener una textura cremosa similar a la de un helado, parando para raspar los lados si es necesario. Si la mezcla está muy espesa, añadir un poco de leche o bebida vegetal para facilitar el procesado. 5. Servir inmediatamente como helado suave, o transferir a un recipiente y congelar durante 1-2 horas para una textura más firme.",
-    "ingredientes": [
-      {
-        "item": "Plátanos maduros",
-        "cantidad": "3 unidades medianas"
-      },
-      {
-        "item": "Frutos rojos (frescos o congelados)",
-        "cantidad": "200g (1 1/2 taza aprox.)"
-      },
-      {
-        "item": "Leche o bebida vegetal sin azúcar (opcional)",
-        "cantidad": "1-2 cucharadas, si es necesario"
-      }
-    ],
-    "calorias": "150-180 kcal por ración",
-    "tiempo_preparacion": "10 min (+ tiempo de congelación)",
-    "dificultad": "Muy Fácil"
-  },
-  {
-    "titulo": "Panna Cotta de Yogur con Coulis de Frutos Rojos",
-    "ingrediente_principal": "Yogur Griego",
-    "preparacion": "1. En un cazo pequeño, calentar la leche a fuego medio-bajo. Añadir la gelatina previamente hidratada en agua fría durante 5 minutos y disolverla completamente en la leche caliente (no hirviendo). 2. Retirar del fuego y dejar enfriar ligeramente. 3. En un bol, mezclar el yogur griego con la esencia de vainilla y el edulcorante. 4. Incorporar la mezcla de leche y gelatina al yogur, removiendo suavemente para que no queden grumos. 5. Verter la mezcla en 4 moldes individuales o vasos. 6. Refrigerar durante al menos 4 horas, o hasta que cuaje completamente. 7. Para el coulis: en un cazo pequeño, cocinar los frutos rojos con el edulcorante y el zumo de limón a fuego medio durante 5-7 minutos, hasta que las frutas se ablanden y suelten su jugo. 8. Triturar el coulis y pasarlo por un colador fino para eliminar las semillas (opcional). Dejar enfriar. 9. Servir la panna cotta fría, cubierta con el coulis de frutos rojos.",
-    "ingredientes": [
-      {
-        "item": "Yogur griego natural 0% o 2%",
-        "cantidad": "400g (2 envases individuales)"
-      },
-      {
-        "item": "Leche desnatada",
-        "cantidad": "100ml (1/2 taza aprox.)"
-      },
-      {
-        "item": "Gelatina en polvo sin sabor",
-        "cantidad": "7g (1 sobre)"
-      },
-      {
-        "item": "Esencia de vainilla",
-        "cantidad": "1 cucharadita"
-      },
-      {
-        "item": "Edulcorante natural (stevia, eritritol)",
-        "cantidad": "Al gusto"
-      },
-      {
-        "item": "Frutos rojos (frescos o congelados)",
-        "cantidad": "200g (1 1/2 taza aprox.)"
-      },
-      {
-        "item": "Zumo de limón",
-        "cantidad": "1 cucharadita"
-      }
-    ],
-    "calorias": "120-150 kcal por ración",
-    "tiempo_preparacion": "20 min (+ tiempo de refrigeración)",
-    "dificultad": "Medio"
-  }
+    {
+        "titulo": "Brochetas de Frutas Frescas con Dip de Yogur Griego Light y Menta",
+        "ingrediente_principal": "Frutas Variadas",
+        "preparacion": "1. Lavar y cortar una selección de frutas frescas de temporada en trozos de tamaño similar (fresas, kiwi, piña, melón, uvas, etc.). 2. Ensartar los trozos de fruta en palitos de brocheta, alternando colores y texturas. 3. Para el dip: Mezclar yogur griego natural light con unas hojas de menta fresca muy picadas y, opcionalmente, unas gotas de extracto de vainilla o un poco de edulcorante natural (stevia, eritritol). 4. Servir las brochetas de frutas acompañadas del dip de yogur y menta.",
+        "ingredientes": [
+            {
+                "item": "Frutas frescas variadas (fresas, kiwi, piña, melón, uvas)",
+                "cantidad": "200-250g en total por persona"
+            },
+            {
+                "item": "Yogur griego natural light (sin azúcar)",
+                "cantidad": "100g (para el dip)"
+            },
+            {
+                "item": "Hojas de menta fresca",
+                "cantidad": "4-5 hojas (para el dip)"
+            },
+            {
+                "item": "Extracto de vainilla o edulcorante (opcional, para el dip)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "120-180 kcal por ración (dependiendo de las frutas)",
+        "tiempo_preparacion": "10-15 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Manzanas Asadas al Horno con Canela y un Toque de Nuez Moscada (sin azúcar añadido)",
+        "ingrediente_principal": "Manzana",
+        "preparacion": "1. Precalentar el horno a 180°C. 2. Lavar las manzanas y descorazonarlas con un descorazonador, dejando la base intacta. 3. Colocar las manzanas en una fuente de horno pequeña. 4. Rellenar el hueco de cada manzana con una pizca de canela en polvo y nuez moscada. Se puede añadir un clavo de olor en el centro si se desea. 5. Añadir un par de cucharadas de agua en el fondo de la fuente para crear vapor. 6. Hornear durante 30-45 minutos (dependiendo del tamaño y tipo de manzana), o hasta que estén tiernas y la piel ligeramente arrugada. 7. Servir calientes o tibias. Opcional: añadir unas pocas pasas (con moderación) o una nuez picada en el relleno (ajustar calorías).",
+        "ingredientes": [
+            {
+                "item": "Manzana (tipo Reineta, Golden o Fuji)",
+                "cantidad": "1 unidad mediana por persona"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "1/2 cucharadita por manzana"
+            },
+            {
+                "item": "Nuez moscada molida",
+                "cantidad": "Una pizca por manzana"
+            },
+            {
+                "item": "Agua",
+                "cantidad": "2-3 cucharadas"
+            }
+        ],
+        "calorias": "80-120 kcal por manzana (dependiendo del tamaño)",
+        "tiempo_preparacion": "40-50 minutos (mayormente horneado)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mousse de Chocolate Negro y Aguacate (Vegano, Sin Azúcar Refinado)",
+        "ingrediente_principal": "Aguacate y Cacao",
+        "preparacion": "1. Pelar y deshuesar el aguacate maduro. 2. En un procesador de alimentos o batidora potente, poner la pulpa de aguacate, el cacao puro en polvo, la bebida vegetal, el sirope de agave o dátiles (para endulzar), el extracto de vainilla y una pizca de sal. 3. Triturar todo hasta obtener una crema muy fina, suave y homogénea, sin grumos de aguacate. Raspar los lados del procesador si es necesario. 4. Probar y ajustar el dulzor si es necesario. 5. Repartir la mousse en cuencos individuales y refrigerar durante al menos 1-2 horas para que tome consistencia y se enfríe. 6. Servir decorado con frutos rojos frescos, nibs de cacao o coco rallado.",
+        "ingredientes": [
+            {
+                "item": "Aguacate maduro",
+                "cantidad": "1 unidad mediana (aprox. 100-120g de pulpa)"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar",
+                "cantidad": "2-3 cucharadas (20-30g)"
+            },
+            {
+                "item": "Bebida vegetal (almendras, coco, avena)",
+                "cantidad": "60-80 ml (1/4 - 1/3 taza)"
+            },
+            {
+                "item": "Sirope de agave, arce o 2-3 dátiles Medjool remojados y sin hueso",
+                "cantidad": "1-2 cucharadas (o al gusto)"
+            },
+            {
+                "item": "Extracto de vainilla",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Frutos rojos o nibs de cacao (para decorar)",
+                "cantidad": "Opcional"
+            }
+        ],
+        "calorias": "250-320 kcal por ración (la ración es para 1-2 personas según tamaño)",
+        "tiempo_preparacion": "10 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Helado\" de Plátano Congelado (Nice Cream) con Frutos Rojos y Almendras Laminadas",
+        "ingrediente_principal": "Plátano Congelado",
+        "preparacion": "1. Pelar plátanos maduros, cortarlos en rodajas y congelarlos durante al menos 4-6 horas (o hasta que estén completamente sólidos). 2. Poner las rodajas de plátano congelado en un procesador de alimentos potente o una batidora de alta velocidad. 3. Triturar hasta que los plátanos se desmenucen y luego empiecen a adquirir una textura cremosa y suave, similar a un helado de máquina. Puede ser necesario parar y raspar los lados del procesador varias veces. Tener paciencia, ya que tarda unos minutos. 4. Una vez obtenida la textura deseada, servir inmediatamente. Se puede mezclar con frutos rojos congelados durante el procesado para un helado de frutos rojos, o servirlos por encima. 5. Decorar con almendras laminadas tostadas (opcional).",
+        "ingredientes": [
+            {
+                "item": "Plátanos maduros congelados en rodajas",
+                "cantidad": "1-2 unidades por persona"
+            },
+            {
+                "item": "Frutos rojos frescos o congelados (para mezclar o decorar)",
+                "cantidad": "50g"
+            },
+            {
+                "item": "Almendras laminadas tostadas (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "120-200 kcal por ración (dependiendo de la cantidad de plátano y toppings)",
+        "tiempo_preparacion": "5-7 minutos (más tiempo de congelación previa del plátano)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Peras Conferencia Cocidas en Zumo de Naranja Natural y Especias (Canela, Anís Estrellado)",
+        "ingrediente_principal": "Pera",
+        "preparacion": "1. Pelar las peras, dejándoles el rabito si se desea para presentación (o cortarlas por la mitad y descorazonarlas). 2. En un cazo, poner el zumo de naranja natural recién exprimido, la rama de canela, la estrella de anís y, opcionalmente, un trocito de piel de naranja (sin la parte blanca). 3. Colocar las peras en el cazo. El líquido debe cubrirlas al menos hasta la mitad; si no, añadir un poco de agua. 4. Llevar a ebullición suave y luego cocinar a fuego bajo, tapado, durante 20-30 minutos (dependiendo del tamaño y madurez de las peras), o hasta que estén tiernas al pincharlas con un cuchillo. Darles la vuelta a mitad de cocción si no están completamente sumergidas. 5. Retirar las peras del líquido. Si el líquido está muy ligero, se puede reducir un poco más a fuego medio hasta que espese ligeramente. 6. Servir las peras tibias o frías, regadas con un poco del almíbar de cocción.",
+        "ingredientes": [
+            {
+                "item": "Peras tipo Conferencia o Williams (no demasiado maduras)",
+                "cantidad": "1 unidad por persona"
+            },
+            {
+                "item": "Zumo de naranja natural",
+                "cantidad": "200-250 ml (aprox. el zumo de 2-3 naranjas)"
+            },
+            {
+                "item": "Rama de canela",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Anís estrellado",
+                "cantidad": "1 estrella"
+            },
+            {
+                "item": "Piel de naranja (opcional)",
+                "cantidad": "Un trozo"
+            }
+        ],
+        "calorias": "100-150 kcal por ración",
+        "tiempo_preparacion": "30-40 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Yogur Natural 0% con Compota Casera de Manzana, Pera y Jengibre (Sin Azúcar)",
+        "ingrediente_principal": "Yogur y Frutas (para compota)",
+        "preparacion": "1. Para la compota: Pelar, descorazonar y trocear la manzana y la pera. Rallar un trocito de jengibre fresco. 2. Poner la fruta troceada y el jengibre rallado en un cazo con 2-3 cucharadas de agua y una pizca de canela (opcional). 3. Cocinar a fuego lento, tapado, durante 15-20 minutos, o hasta que la fruta esté muy tierna y se deshaga. Remover de vez en cuando. Si se seca, añadir un poco más de agua. No añadir azúcar. Dejar enfriar. 4. Servir el yogur natural 0% en un cuenco y cubrir con una porción de la compota casera de manzana, pera y jengibre. Espolvorear con unas semillas de lino o chía si se desea.",
+        "ingredientes": [
+            {
+                "item": "Yogur natural 0% materia grasa (sin azúcar)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Manzana",
+                "cantidad": "1/2 unidad (para la compota)"
+            },
+            {
+                "item": "Pera",
+                "cantidad": "1/2 unidad (para la compota)"
+            },
+            {
+                "item": "Jengibre fresco rallado",
+                "cantidad": "1/2 cucharadita (o al gusto)"
+            },
+            {
+                "item": "Canela en polvo (opcional)",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Agua",
+                "cantidad": "2-3 cucharadas (para la compota)"
+            }
+        ],
+        "calorias": "130-190 kcal por ración",
+        "tiempo_preparacion": "25-30 minutos (para la compota)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Pudding de Chía con Leche de Coco Light, Cúrcuma (Leche Dorada) y Fruta de la Pasión",
+        "ingrediente_principal": "Semillas de Chía y Leche de Coco Light",
+        "preparacion": "1. En un tarro o bol, mezclar las semillas de chía con la leche de coco light. 2. Añadir la cúrcuma en polvo, una pizca de jengibre molido (opcional), una pizca de canela y pimienta negra (ayuda a la absorción de la cúrcuma). Endulzar con sirope de agave o eritritol al gusto. Remover muy bien para que no queden grumos y las especias se integren. 3. Dejar reposar en la nevera durante al menos 2-3 horas (o toda la noche) hasta que espese y adquiera una consistencia gelatinosa. Remover una o dos veces durante el reposo inicial. 4. Servir el pudding de chía en un cuenco o vaso. Cortar la fruta de la pasión por la mitad y verter la pulpa por encima del pudding. Decorar con unas lascas de coco si se desea.",
+        "ingredientes": [
+            {
+                "item": "Semillas de chía",
+                "cantidad": "2 cucharadas (20g)"
+            },
+            {
+                "item": "Leche de coco light (de lata o brick)",
+                "cantidad": "150 ml (aprox. 2/3 taza)"
+            },
+            {
+                "item": "Cúrcuma en polvo",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Jengibre molido (opcional)",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Pimienta negra molida",
+                "cantidad": "Una pizca muy pequeña"
+            },
+            {
+                "item": "Sirope de agave o eritritol",
+                "cantidad": "1 cucharadita (o al gusto)"
+            },
+            {
+                "item": "Fruta de la pasión (maracuyá)",
+                "cantidad": "1 unidad"
+            }
+        ],
+        "calorias": "180-240 kcal por ración",
+        "tiempo_preparacion": "5 minutos (más tiempo de reposo)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Gelatina Casera de Té Verde y Frutos Rojos con Agar-Agar (Sin Azúcar)",
+        "ingrediente_principal": "Té Verde y Agar-Agar",
+        "preparacion": "1. Preparar una infusión de té verde fuerte (2 bolsitas en 250 ml de agua caliente). Dejar infusionar 5 minutos y retirar las bolsitas. Endulzar con stevia o eritritol al gusto si se desea. 2. En un cazo pequeño, poner otros 250 ml de agua (o zumo de frutas natural sin azúcar diluido). Espolvorear el agar-agar en polvo y remover bien. 3. Llevar a ebullición, removiendo constantemente. Cocinar durante 1-2 minutos desde que hierve, sin dejar de remover. 4. Retirar del fuego y añadir la infusión de té verde. Mezclar bien. 5. Repartir unos frutos rojos frescos (arándanos, frambuesas) en moldes individuales pequeños o en un molde más grande. 6. Verter con cuidado la mezcla líquida de agar-agar y té sobre los frutos rojos. 7. Dejar enfriar a temperatura ambiente y luego refrigerar durante al menos 2-3 horas, o hasta que la gelatina esté completamente firme. Desmoldar con cuidado si se usan moldes individuales.",
+        "ingredientes": [
+            {
+                "item": "Té verde (en bolsitas o hebras)",
+                "cantidad": "2 bolsitas o 2 cucharaditas"
+            },
+            {
+                "item": "Agar-agar en polvo",
+                "cantidad": "2-3 gramos (aprox. 1 cucharadita rasa, seguir indicaciones del paquete)"
+            },
+            {
+                "item": "Agua",
+                "cantidad": "500 ml en total"
+            },
+            {
+                "item": "Frutos rojos frescos (arándanos, frambuesas)",
+                "cantidad": "50-70g"
+            },
+            {
+                "item": "Stevia o eritritol (opcional)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "20-40 kcal por ración (muy ligero)",
+        "tiempo_preparacion": "10 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Natillas\" Ligeras de Vainilla con Bebida de Almendras y Piel de Limón (Con Edulcorante)",
+        "ingrediente_principal": "Bebida de Almendras",
+        "preparacion": "1. En un cazo, calentar la mayor parte de la bebida de almendras (reservar un poco, unos 50 ml) con la piel de limón (sin parte blanca) y la vaina de vainilla abierta por la mitad (o extracto). Llevar a ebullición suave y luego retirar del fuego. Dejar infusionar unos 10-15 minutos. Colar. 2. En un cuenco, disolver la maicena en la bebida de almendras fría reservada. Añadir las yemas de huevo (opcional, para más cremosidad y color, o usar solo maicena para versión más ligera) y el edulcorante. Batir bien. 3. Verter la mezcla de yemas y maicena sobre la leche infusionada y colada, pasándola por un colador fino para evitar grumos. 4. Cocinar a fuego bajo-medio, sin dejar de remover con unas varillas, hasta que la mezcla espese y nape la cuchara (unos 5-8 minutos). No debe hervir fuerte una vez espesa. 5. Retirar del fuego y verter en cuencos individuales. Dejar enfriar a temperatura ambiente y luego refrigerar al menos 2 horas. 6. Servir frías, espolvoreadas con canela en polvo.",
+        "ingredientes": [
+            {
+                "item": "Bebida de almendras sin azúcar",
+                "cantidad": "400 ml"
+            },
+            {
+                "item": "Maicena (almidón de maíz)",
+                "cantidad": "20-25g (2-2.5 cucharadas rasas)"
+            },
+            {
+                "item": "Yemas de huevo (opcional)",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Edulcorante granulado (eritritol, stevia)",
+                "cantidad": "Al gusto (ej. 2-3 cucharadas de eritritol)"
+            },
+            {
+                "item": "Piel de limón",
+                "cantidad": "Un trozo"
+            },
+            {
+                "item": "Vaina de vainilla o extracto de vainilla puro",
+                "cantidad": "1/2 vaina o 1 cucharadita de extracto"
+            },
+            {
+                "item": "Canela en polvo (para decorar)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "80-150 kcal por ración (dependiendo de si se usan yemas y cantidad de maicena)",
+        "tiempo_preparacion": "20 minutos (más tiempo de refrigeración)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Bolitas Energéticas de Avena, Dátiles Medjool y Cacao Puro (Porción Pequeña)",
+        "ingrediente_principal": "Avena y Dátiles",
+        "preparacion": "1. Remojar los dátiles Medjool (sin hueso) en agua tibia durante 10 minutos si están algo secos. Escurrir bien. 2. En un procesador de alimentos, triturar los dátiles hasta formar una pasta pegajosa. 3. Añadir los copos de avena, el cacao puro en polvo, las semillas de chía (opcional) y una pizca de sal. Si se desea, añadir 1 cucharadita de mantequilla de almendras o cacahuete natural. 4. Procesar todo junto hasta que se forme una masa homogénea y maleable. Si la masa está muy seca, añadir 1 cucharadita de agua; si está muy pegajosa, un poco más de avena. 5. Tomar pequeñas porciones de la masa (unos 15-20g) y formar bolitas con las manos. 6. Opcional: rebozar las bolitas en coco rallado, más cacao en polvo o semillas de sésamo. 7. Refrigerar durante al menos 30 minutos para que se endurezcan un poco. Conservar en la nevera. Servir 1-2 bolitas como postre ligero.",
+        "ingredientes": [
+            {
+                "item": "Dátiles Medjool sin hueso",
+                "cantidad": "3-4 unidades (aprox. 60-80g)"
+            },
+            {
+                "item": "Copos de avena integral",
+                "cantidad": "40-50g (1/2 taza aprox.)"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar",
+                "cantidad": "1-2 cucharadas"
+            },
+            {
+                "item": "Semillas de chía (opcional)",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Mantequilla de almendras o cacahuete natural (opcional)",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "50-70 kcal por bolita (dependiendo del tamaño y si se añade mantequilla de frutos secos)",
+        "tiempo_preparacion": "15 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Carpaccio de Piña Fresca con Hierbabuena Picada y Escamas de Coco Sin Azúcar",
+        "ingrediente_principal": "Piña",
+        "preparacion": "1. Pelar la piña fresca y quitarle el corazón duro central. 2. Cortar la piña en rodajas muy finas, casi transparentes (idealmente con una mandolina, con mucho cuidado, o un cuchillo muy afilado). 3. Disponer las láminas de piña en un plato, superponiéndolas ligeramente para formar un carpaccio. 4. Picar finamente unas hojas de hierbabuena fresca. 5. Espolvorear la hierbabuena picada sobre el carpaccio de piña. 6. Adornar con unas pocas escamas de coco sin azúcar tostadas ligeramente (opcional). Se puede añadir un chorrito de zumo de lima si se desea un toque más ácido.",
+        "ingredientes": [
+            {
+                "item": "Piña fresca madura",
+                "cantidad": "1-2 rodajas gruesas por persona (unos 150g de pulpa)"
+            },
+            {
+                "item": "Hojas de hierbabuena fresca",
+                "cantidad": "4-5 hojas"
+            },
+            {
+                "item": "Escamas de coco sin azúcar (opcional)",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Zumo de lima (opcional)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "70-100 kcal por ración",
+        "tiempo_preparacion": "10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mini Vasitos de 'Cheesecake' Ligero con Base de Galleta Integral y Coulis de Frutos Rojos",
+        "ingrediente_principal": "Queso Fresco Batido y Yogur",
+        "preparacion": "1. Para la base: Triturar 1-2 galletas integrales sin azúcares añadidos por vasito. Mezclar con unas gotas de aceite de coco derretido o puré de manzana para compactar un poco (opcional). Presionar en el fondo de vasitos pequeños. 2. Para el relleno: En un bol, batir queso fresco batido 0% o queso crema light con yogur griego natural light, edulcorante al gusto y unas gotas de extracto de vainilla. Si se quiere más consistencia, se puede añadir 1/2 hoja de gelatina neutra hidratada y disuelta (opcional). 3. Verter la mezcla de queso sobre la base de galleta en los vasitos. Refrigerar al menos 1-2 horas para que tome cuerpo. 4. Para el coulis: Cocinar frutos rojos frescos o congelados (50g) con una cucharada de agua y unas gotas de zumo de limón a fuego bajo hasta que se ablanden y suelten jugo. Triturar si se desea una salsa fina o dejar con trozos. Enfriar. 5. Servir los mini cheesecakes con el coulis de frutos rojos por encima.",
+        "ingredientes": [
+            {
+                "item": "Galletas integrales sin azúcares añadidos",
+                "cantidad": "1-2 unidades por vasito"
+            },
+            {
+                "item": "Queso fresco batido 0% o queso crema light",
+                "cantidad": "100g (para 2 vasitos)"
+            },
+            {
+                "item": "Yogur griego natural light",
+                "cantidad": "50g (para 2 vasitos)"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Extracto de vainilla",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Frutos rojos (para el coulis)",
+                "cantidad": "50g"
+            },
+            {
+                "item": "Zumo de limón (para el coulis)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "120-180 kcal por vasito (dependiendo de la galleta y queso)",
+        "tiempo_preparacion": "20 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Crumble Individual de Manzana y Copos de Avena (Con Poca Grasa y Sin Azúcar Refinado)",
+        "ingrediente_principal": "Manzana y Avena",
+        "preparacion": "1. Precalentar el horno a 180°C. 2. Pelar, descorazonar y cortar una manzana en dados pequeños. Colocarla en un ramequín o molde individual apto para horno. Espolvorear con canela y una pizca de nuez moscada. 3. Para el crumble: En un bol pequeño, mezclar copos de avena integral, harina de almendras o integral (poca cantidad), una pizca de canela y edulcorante natural (eritritol o similar). Añadir una cucharadita de aceite de coco derretido o puré de manzana sin azúcar y mezclar con los dedos hasta obtener una textura de migas gruesas. Se pueden añadir unas pocas nueces picadas. 4. Cubrir la manzana en el ramequín con la mezcla del crumble. 5. Hornear durante 20-25 minutos, o hasta que la manzana esté burbujeante y el crumble dorado y crujiente. 6. Dejar enfriar unos minutos antes de consumir. Servir tibio.",
+        "ingredientes": [
+            {
+                "item": "Manzana",
+                "cantidad": "1 unidad mediana"
+            },
+            {
+                "item": "Copos de avena integral",
+                "cantidad": "2 cucharadas (20g)"
+            },
+            {
+                "item": "Harina de almendras o integral",
+                "cantidad": "1 cucharada (10g)"
+            },
+            {
+                "item": "Aceite de coco derretido o puré de manzana sin azúcar",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Edulcorante natural (eritritol)",
+                "cantidad": "1 cucharadita (o al gusto)"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Nuez moscada molida",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Nueces picadas (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "180-250 kcal por ración",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Sorbete Casero Refrescante de Limón y Menta (Con Edulcorante)",
+        "ingrediente_principal": "Limón",
+        "preparacion": "1. Exprimir el zumo de los limones. Rallar finamente la piel de uno de los limones (solo la parte amarilla). 2. En un cazo, calentar el agua con el edulcorante (eritritol o stevia al gusto) hasta que se disuelva por completo. No es necesario que hierva. Dejar enfriar. 3. Mezclar el sirope de edulcorante enfriado con el zumo de limón y la ralladura de limón. Añadir las hojas de menta fresca. 4. Verter la mezcla en un recipiente apto para congelador poco profundo. Congelar durante al menos 3-4 horas. 5. Cada 30-45 minutos durante las primeras 2-3 horas, raspar la mezcla con un tenedor para romper los cristales de hielo y obtener una textura de sorbete. 6. Alternativamente, si se tiene heladera, seguir las instrucciones del fabricante. 7. Servir bien frío. Si está muy duro, dejar unos minutos a temperatura ambiente antes de servir.",
+        "ingredientes": [
+            {
+                "item": "Limones (zumo y ralladura)",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Agua",
+                "cantidad": "250 ml (1 taza)"
+            },
+            {
+                "item": "Edulcorante granulado (eritritol o stevia líquida)",
+                "cantidad": "Al gusto (ej. 3-4 cucharadas de eritritol)"
+            },
+            {
+                "item": "Hojas de menta fresca",
+                "cantidad": "Unas 10-12 hojas"
+            }
+        ],
+        "calorias": "20-40 kcal por ración (muy bajo)",
+        "tiempo_preparacion": "10 minutos (más tiempo de congelación)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Trufas Ligeras de Zanahoria, Coco Rallado y Dátiles (Sin Horno)",
+        "ingrediente_principal": "Zanahoria y Dátiles",
+        "preparacion": "1. Remojar los dátiles Medjool (sin hueso) en agua tibia durante 10-15 minutos para ablandarlos. Escurrir bien. 2. Pelar y rallar muy finamente la zanahoria. 3. En un procesador de alimentos, triturar los dátiles escurridos hasta formar una pasta. 4. Añadir la zanahoria rallada, el coco rallado (reservar un poco para rebozar), las nueces picadas (opcional), la canela y el jengibre molido. 5. Procesar todo junto hasta obtener una masa homogénea y ligeramente pegajosa. Si está demasiado húmeda, añadir un poco más de coco rallado o harina de almendras. 6. Tomar pequeñas porciones de la masa y formar bolitas con las manos. 7. Rebozar las bolitas en el coco rallado reservado. 8. Refrigerar durante al menos 30 minutos para que se asienten y estén más firmes. Conservar en la nevera. Servir 1-2 trufas por persona.",
+        "ingredientes": [
+            {
+                "item": "Zanahoria",
+                "cantidad": "1 unidad mediana (unos 80-100g rallada)"
+            },
+            {
+                "item": "Dátiles Medjool sin hueso",
+                "cantidad": "3-4 unidades"
+            },
+            {
+                "item": "Coco rallado sin azúcar",
+                "cantidad": "3-4 cucharadas (más extra para rebozar)"
+            },
+            {
+                "item": "Nueces picadas muy finas (opcional)",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Jengibre molido",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "40-60 kcal por trufa (dependiendo del tamaño)",
+        "tiempo_preparacion": "20 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Sushi\" de Plátano con Mantequilla de Almendras y Semillas de Chía",
+        "ingrediente_principal": "Plátano",
+        "preparacion": "1. Pelar un plátano maduro pero firme. 2. Untar una fina capa de mantequilla de almendras natural (sin azúcares añadidos) por toda la superficie del plátano. 3. Espolvorear generosamente con semillas de chía (o sésamo, o cáñamo) para que se adhieran a la mantequilla de almendras. 4. Con un cuchillo afilado, cortar el plátano en rodajas de aproximadamente 1-1.5 cm de grosor, como si fueran piezas de sushi. 5. Disponer las piezas en un plato. Se puede servir inmediatamente o refrigerar unos minutos para que esté más firme. Opcional: decorar con una frambuesa o arándano encima de cada pieza.",
+        "ingredientes": [
+            {
+                "item": "Plátano maduro pero firme",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Mantequilla de almendras natural sin azúcar",
+                "cantidad": "1-2 cucharaditas"
+            },
+            {
+                "item": "Semillas de chía (o sésamo, cáñamo)",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Frutos rojos para decorar (opcional)",
+                "cantidad": "Algunos"
+            }
+        ],
+        "calorias": "180-240 kcal por ración (dependiendo de la cantidad de mantequilla de almendras)",
+        "tiempo_preparacion": "5-7 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mousse de Limón Refrescante con Claras a Punto de Nieve y Yogur Griego Light",
+        "ingrediente_principal": "Limón y Yogur",
+        "preparacion": "1. Rallar la piel fina de un limón (sin la parte blanca) y exprimir el zumo de 1-2 limones. 2. En un bol, mezclar el yogur griego natural light con la ralladura de limón, el zumo de limón y edulcorante natural al gusto (stevia, eritritol). 3. Opcional para más firmeza: hidratar 1-2 hojas de gelatina neutra en agua fría, escurrirlas y disolverlas en 2 cucharadas de leche caliente (o el propio zumo de limón calentado). Dejar templar y añadir a la mezcla de yogur. 4. Montar 1-2 claras de huevo a punto de nieve firme con una pizca de sal. 5. Incorporar las claras montadas a la mezcla de yogur y limón con movimientos envolventes y suaves para que no se bajen. 6. Repartir la mousse en cuencos individuales y refrigerar durante al menos 2-3 horas, o hasta que esté firme. 7. Servir fría, decorada con unas hojitas de menta o un poco más de ralladura de limón.",
+        "ingredientes": [
+            {
+                "item": "Yogur griego natural light (sin azúcar)",
+                "cantidad": "200g"
+            },
+            {
+                "item": "Limón (zumo y ralladura)",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Claras de huevo",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Hojas de gelatina neutra (opcional)",
+                "cantidad": "1-2 hojas"
+            },
+            {
+                "item": "Sal (para las claras)",
+                "cantidad": "Una pizca"
+            }
+        ],
+        "calorias": "100-150 kcal por ración (dependiendo de si se usa gelatina y cantidad de claras)",
+        "tiempo_preparacion": "20 minutos (más tiempo de refrigeración)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Gajos de Pomelo Rosado \"Brûlée\" con Canela (al Grill del Horno)",
+        "ingrediente_principal": "Pomelo",
+        "preparacion": "1. Cortar un pomelo rosado por la mitad horizontalmente. Con un cuchillo afilado, separar con cuidado los gajos de las membranas, sin sacarlos del todo de la cáscara (para facilitar comerlos después). 2. Espolvorear la superficie de cada mitad de pomelo con una fina capa de edulcorante granulado que caramelice bien (como eritritol o azúcar de coco en muy pequeña cantidad, si se permite) y una pizca de canela en polvo. 3. Colocar las mitades de pomelo en una bandeja apta para horno y llevarlas al grill del horno (posición alta) durante 3-5 minutos, vigilando constantemente, hasta que la superficie esté burbujeante y ligeramente caramelizada. 4. Retirar con cuidado y dejar enfriar unos minutos antes de servir, ya que el caramelo estará muy caliente. Se puede añadir unas hojas de menta para decorar.",
+        "ingredientes": [
+            {
+                "item": "Pomelo rosado",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Edulcorante granulado (eritritol o azúcar de coco en mínima cantidad)",
+                "cantidad": "1-2 cucharaditas"
+            },
+            {
+                "item": "Canela en polvo",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Menta fresca (opcional, para decorar)",
+                "cantidad": "Unas hojas"
+            }
+        ],
+        "calorias": "60-90 kcal por ración (media pomelo, depende del edulcorante)",
+        "tiempo_preparacion": "7-10 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Tiramisú\" Saludable en Vaso Individual (Con Bizcochos de Soletilla Integrales y Crema de Ricotta Light)",
+        "ingrediente_principal": "Queso Ricotta Light y Café",
+        "preparacion": "1. Preparar un café espresso o café solo fuerte y dejarlo enfriar. 2. Para la crema: En un bol, batir queso ricotta light (o queso fresco batido 0%) con yogur griego natural light, edulcorante natural al gusto y unas gotas de extracto de vainilla o almendra amarga (opcional). 3. Mojar brevemente 1-2 bizcochos de soletilla integrales (o sin azúcares añadidos) en el café frío y colocarlos en el fondo de un vaso o copa individual. 4. Cubrir con una capa de la crema de ricotta. 5. Alternar otra capa de bizcochos mojados en café (si cabe) y terminar con una capa de crema. 6. Refrigerar durante al menos 1-2 horas para que se asienten los sabores. 7. Justo antes de servir, espolvorear con cacao puro en polvo sin azúcar.",
+        "ingredientes": [
+            {
+                "item": "Queso ricotta light o queso fresco batido 0%",
+                "cantidad": "70-100g"
+            },
+            {
+                "item": "Yogur griego natural light",
+                "cantidad": "30-50g"
+            },
+            {
+                "item": "Bizcochos de soletilla integrales o sin azúcares añadidos",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Café espresso o café solo fuerte, frío",
+                "cantidad": "50 ml (aprox.)"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Extracto de vainilla o almendra amarga (opcional)",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar (para espolvorear)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "150-220 kcal por vasito",
+        "tiempo_preparacion": "15 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Polos Caseros Cremosos de Yogur Griego Light y Frutos del Bosque",
+        "ingrediente_principal": "Yogur Griego Light y Frutos del Bosque",
+        "preparacion": "1. En un bol, mezclar el yogur griego natural light con edulcorante natural al gusto (si el yogur no es ya dulce o si los frutos son ácidos). 2. Triturar ligeramente una parte de los frutos del bosque (frescos o congelados) para obtener un puré con algunos trozos, o dejarlos enteros si son pequeños (arándanos, frambuesas). 3. Mezclar el puré o los frutos enteros con el yogur. Si se desea un efecto marmoleado, no mezclar completamente. 4. Verter la mezcla en moldes para polos. Insertar los palitos. 5. Congelar durante al menos 4-6 horas, o hasta que estén completamente sólidos. 6. Para desmoldar, pasar el molde brevemente por agua tibia.",
+        "ingredientes": [
+            {
+                "item": "Yogur griego natural light (sin azúcar)",
+                "cantidad": "250-300g"
+            },
+            {
+                "item": "Frutos del bosque variados (frescos o congelados)",
+                "cantidad": "100-150g"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol, sirope de agave en mínima cantidad)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "50-80 kcal por polo (dependiendo del tamaño y cantidad de fruta/edulcorante)",
+        "tiempo_preparacion": "10 minutos (más tiempo de congelación)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Brownie\" Proteico de Alubias Negras y Cacao (Sin Harina, Individual)",
+        "ingrediente_principal": "Alubias Negras y Cacao",
+        "preparacion": "1. Precalentar el horno a 180°C. Engrasar ligeramente un molde individual pequeño (ramequín) o usar uno de silicona. 2. Enjuagar y escurrir muy bien las alubias negras cocidas (de bote). 3. En un procesador de alimentos o batidora potente, triturar las alubias negras con el huevo (o sustituto vegano como puré de manzana), el cacao puro en polvo, el edulcorante, el aceite de coco (o yogur), el extracto de vainilla y una pizca de sal, hasta obtener una masa lo más lisa posible. 4. Añadir los trocitos de chocolate negro (opcional) y mezclar con una espátula. 5. Verter la masa en el molde preparado. 6. Hornear durante 20-25 minutos, o hasta que al insertar un palillo este salga con algunas migas húmedas (no completamente seco, para que quede fudgy). 7. Dejar enfriar en el molde unos minutos antes de desmoldar o consumir tibio.",
+        "ingredientes": [
+            {
+                "item": "Alubias negras cocidas (de bote, bien enjuagadas)",
+                "cantidad": "100-120g (media lata pequeña)"
+            },
+            {
+                "item": "Huevo pequeño o 1 clara (o 2 cdas. puré de manzana para vegano)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Cacao puro en polvo sin azúcar",
+                "cantidad": "2 cucharadas"
+            },
+            {
+                "item": "Edulcorante granulado (eritritol) o sirope de dátil",
+                "cantidad": "2-3 cucharadas (al gusto)"
+            },
+            {
+                "item": "Aceite de coco derretido o yogur natural",
+                "cantidad": "1 cucharadita"
+            },
+            {
+                "item": "Extracto de vainilla",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Sal",
+                "cantidad": "Una pizca"
+            },
+            {
+                "item": "Trocitos de chocolate negro >70% (opcional)",
+                "cantidad": "10-15g"
+            }
+        ],
+        "calorias": "200-280 kcal por brownie individual",
+        "tiempo_preparacion": "30-35 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Compota Especiada de Ruibarbo y Fresas (Endulzada con Manzana)",
+        "ingrediente_principal": "Ruibarbo y Fresas",
+        "preparacion": "1. Lavar y cortar los tallos de ruibarbo en trozos de 1-2 cm. Lavar y quitar el pedúnculo a las fresas; cortarlas por la mitad o en cuartos si son grandes. Pelar y rallar una manzana pequeña (actuará como edulcorante natural). 2. En un cazo, poner el ruibarbo, las fresas, la manzana rallada, el jengibre fresco rallado (opcional) y una o dos cucharadas de agua. 3. Cocinar a fuego lento-medio, tapado, durante 15-20 minutos, removiendo ocasionalmente, hasta que el ruibarbo y las fresas estén muy tiernos y hayan soltado sus jugos, formando una compota. 4. Si se desea una textura más suave, se puede triturar ligeramente con un tenedor o pasar brevemente por la batidora. 5. Probar y, si es necesario, añadir unas gotas de stevia o una pizca de eritritol. Dejar enfriar. Servir sola, con yogur o queso fresco batido.",
+        "ingredientes": [
+            {
+                "item": "Ruibarbo fresco (tallos)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Fresas frescas",
+                "cantidad": "100-150g"
+            },
+            {
+                "item": "Manzana pequeña (tipo Golden o Fuji, para endulzar)",
+                "cantidad": "1 unidad"
+            },
+            {
+                "item": "Jengibre fresco rallado (opcional)",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Agua",
+                "cantidad": "1-2 cucharadas"
+            }
+        ],
+        "calorias": "70-100 kcal por ración (dependiendo del tamaño de la ración)",
+        "tiempo_preparacion": "25-30 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Flan de Huevo Ligero al Baño María (Con Leche Desnatada y Eritritol)",
+        "ingrediente_principal": "Huevo y Leche Desnatada",
+        "preparacion": "1. Precalentar el horno a 160-170°C. Preparar un caramelo líquido muy ligero con 1-2 cucharaditas de eritritol y unas gotas de agua directamente en el fondo de flaneras individuales (opcional, o omitir para menos calorías). 2. En un bol, batir los huevos con el eritritol (para el flan) y el extracto de vainilla. No batir en exceso, solo para mezclar. 3. Calentar ligeramente la leche desnatada (sin que hierva). Verterla poco a poco sobre la mezcla de huevos, removiendo constantemente. Colar la mezcla. 4. Repartir la mezcla en las flaneras individuales (sobre el caramelo, si se usó). 5. Colocar las flaneras en una fuente de horno más grande y añadir agua caliente en la fuente hasta cubrir aproximadamente la mitad de la altura de las flaneras (baño María). 6. Hornear durante 30-45 minutos (dependiendo del tamaño de las flaneras), o hasta que los flanes estén cuajados pero aún ligeramente temblorosos en el centro. 7. Dejar enfriar a temperatura ambiente y luego refrigerar varias horas antes de desmoldar y servir.",
+        "ingredientes": [
+            {
+                "item": "Huevos medianos",
+                "cantidad": "2 unidades (para 2-3 flanes pequeños)"
+            },
+            {
+                "item": "Leche desnatada",
+                "cantidad": "250 ml"
+            },
+            {
+                "item": "Eritritol (u otro edulcorante granulado apto para hornear)",
+                "cantidad": "30-40g (o al gusto)"
+            },
+            {
+                "item": "Extracto de vainilla puro",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Eritritol adicional (para caramelo, opcional)",
+                "cantidad": "1-2 cucharaditas"
+            }
+        ],
+        "calorias": "90-130 kcal por flan individual (sin caramelo o con caramelo muy ligero)",
+        "tiempo_preparacion": "50-60 minutos (más tiempo de refrigeración)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Fresas Frescas Rellenas de Crema de Queso Batido 0% y Esencia de Vainilla",
+        "ingrediente_principal": "Fresas y Queso Batido 0%",
+        "preparacion": "1. Lavar las fresas (preferiblemente grandes y firmes). Cortarles la parte del tallo y, con la punta de un cuchillo pequeño o un vaciador, ahuecar ligeramente el interior de cada fresa. 2. En un bol pequeño, mezclar el queso fresco batido 0% con edulcorante natural al gusto (stevia, eritritol) y unas gotas de esencia de vainilla pura. 3. Poner la mezcla de queso en una manga pastelera con boquilla fina (o en una bolsa de congelación pequeña a la que se le corta una esquina). 4. Rellenar cada fresa ahuecada con la crema de queso. 5. Disponer las fresas rellenas en un plato. Se pueden decorar con una pizca de ralladura de limón o unas virutas de chocolate negro >85% (con mucha moderación). Refrigerar hasta el momento de servir.",
+        "ingredientes": [
+            {
+                "item": "Fresas grandes y firmes",
+                "cantidad": "8-10 unidades por persona"
+            },
+            {
+                "item": "Queso fresco batido 0% materia grasa",
+                "cantidad": "100-120g"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Esencia de vainilla pura",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Ralladura de limón o virutas de chocolate negro (opcional)",
+                "cantidad": "Mínima cantidad para decorar"
+            }
+        ],
+        "calorias": "80-120 kcal por ración",
+        "tiempo_preparacion": "15-20 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Arroz con Leche\" de Coliflor (Con Bebida de Coco, Canela y Piel de Limón)",
+        "ingrediente_principal": "Coliflor",
+        "preparacion": "1. Lavar la coliflor y rallarla con un rallador grueso o procesarla en un robot de cocina hasta obtener una textura similar a granos de arroz. 2. En un cazo, poner la coliflor rallada, la bebida de coco (u otra vegetal), la rama de canela y un trozo de piel de limón (sin la parte blanca). 3. Llevar a ebullición y luego cocinar a fuego muy bajo, tapado, durante 15-20 minutos, removiendo de vez en cuando, hasta que la coliflor esté muy tierna y el líquido se haya reducido y espesado, adquiriendo una consistencia cremosa. 4. Retirar la rama de canela y la piel de limón. Añadir edulcorante natural (eritritol, stevia) al gusto y unas gotas de extracto de vainilla si se desea. 5. Dejar enfriar y luego refrigerar. Servir frío, espolvoreado con un poco más de canela en polvo.",
+        "ingredientes": [
+            {
+                "item": "Coliflor (rallada)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Bebida de coco sin azúcar (u otra bebida vegetal)",
+                "cantidad": "200-250 ml"
+            },
+            {
+                "item": "Rama de canela",
+                "cantidad": "1 unidad pequeña"
+            },
+            {
+                "item": "Piel de limón",
+                "cantidad": "Un trozo"
+            },
+            {
+                "item": "Edulcorante natural (eritritol, stevia)",
+                "cantidad": "Al gusto"
+            },
+            {
+                "item": "Extracto de vainilla (opcional)",
+                "cantidad": "Unas gotas"
+            },
+            {
+                "item": "Canela en polvo (para espolvorear)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "80-130 kcal por ración (depende de la bebida vegetal y edulcorante)",
+        "tiempo_preparacion": "25-30 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Galletas Saludables de Avena y Manzana (2 Ingredientes Base)",
+        "ingrediente_principal": "Avena y Manzana",
+        "preparacion": "1. Precalentar el horno a 180°C. Forrar una bandeja de horno con papel de hornear. 2. Pelar y rallar una manzana o hacerla puré (cocinándola unos minutos y triturándola, o usando puré de manzana sin azúcar comprado). Se necesitan unos 100-120g de puré. 3. En un bol, mezclar el puré de manzana con los copos de avena. Añadir canela en polvo al gusto (opcional). La masa debe ser húmeda pero manejable. Si está muy seca, añadir un poco más de puré de manzana o 1-2 cucharaditas de agua/leche vegetal. 4. Con una cuchara, tomar porciones de la masa y depositarlas en la bandeja de horno, dándoles forma de galleta (no se expanden mucho). 5. Hornear durante 12-15 minutos, o hasta que estén doradas y firmes al tacto. 6. Dejar enfriar completamente sobre una rejilla. Se pueden añadir pasas o nueces picadas (con moderación) a la masa antes de hornear (ajustar calorías).",
+        "ingredientes": [
+            {
+                "item": "Puré de manzana sin azúcar (o 1-2 manzanas ralladas/cocidas y trituradas)",
+                "cantidad": "100-120g"
+            },
+            {
+                "item": "Copos de avena integral (finos o normales)",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Canela en polvo (opcional)",
+                "cantidad": "1 cucharadita"
+            }
+        ],
+        "calorias": "40-60 kcal por galleta (dependiendo del tamaño y cantidad total)",
+        "tiempo_preparacion": "20-25 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "Mousse Ligera de Mango y Yogur con Semillas de Chía y Cardamomo",
+        "ingrediente_principal": "Mango y Yogur",
+        "preparacion": "1. Pelar un mango maduro y cortar la pulpa en trozos. Reservar algunos trocitos para decorar. 2. En el vaso de la batidora, poner la mayor parte de la pulpa de mango, el yogur natural desnatado (o kéfir), las semillas de chía, una pizca de cardamomo molido (o el interior de 1-2 vainas) y edulcorante natural al gusto. 3. Batir todo hasta obtener una mezcla suave y homogénea. 4. Verter la mousse en cuencos o vasos individuales. 5. Refrigerar durante al menos 1-2 horas para que las semillas de chía espesen la mousse y se enfríe bien. 6. Servir decorada con los trocitos de mango reservados y, opcionalmente, unas hojas de menta o coco rallado.",
+        "ingredientes": [
+            {
+                "item": "Mango maduro (pulpa)",
+                "cantidad": "150-200g"
+            },
+            {
+                "item": "Yogur natural desnatado (o kéfir)",
+                "cantidad": "100-120g"
+            },
+            {
+                "item": "Semillas de chía",
+                "cantidad": "1 cucharada"
+            },
+            {
+                "item": "Cardamomo molido (o semillas de 1-2 vainas)",
+                "cantidad": "Una pizca (al gusto)"
+            },
+            {
+                "item": "Edulcorante natural (stevia, eritritol)",
+                "cantidad": "Al gusto"
+            }
+        ],
+        "calorias": "150-200 kcal por ración",
+        "tiempo_preparacion": "10 minutos (más tiempo de refrigeración)",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Besos\" de Merengue Ligero al Horno (Con Edulcorante en Polvo)",
+        "ingrediente_principal": "Claras de Huevo",
+        "preparacion": "1. Precalentar el horno a temperatura muy baja (100-110°C). Forrar una bandeja de horno con papel de hornear. 2. En un bol muy limpio y seco, batir las claras de huevo con una pizca de sal (o unas gotas de zumo de limón) con una batidora de varillas eléctrica hasta que empiecen a montar y formar picos suaves. 3. Añadir gradualmente el edulcorante en polvo (eritritol glas o stevia en polvo apta para hornear), sin dejar de batir, hasta que el merengue esté muy firme, brillante y forme picos duros. Añadir unas gotas de extracto de vainilla si se desea. 4. Poner el merengue en una manga pastelera con boquilla lisa o rizada (o usar dos cucharas). Formar pequeños montoncitos o besos de merengue sobre la bandeja de horno preparada, dejando separación entre ellos. 5. Hornear durante 1 hora - 1 hora y 30 minutos (dependiendo del tamaño), o hasta que los merengues estén secos por fuera y se despeguen fácilmente del papel. Deben quedar blancos o apenas dorados. 6. Apagar el horno y dejar los merengues dentro con la puerta entreabierta hasta que se enfríen completamente. Conservar en un recipiente hermético.",
+        "ingredientes": [
+            {
+                "item": "Claras de huevo (a temperatura ambiente)",
+                "cantidad": "2-3 unidades"
+            },
+            {
+                "item": "Edulcorante en polvo (eritritol glas, stevia para hornear)",
+                "cantidad": "50-70g (o al gusto, ajustar según potencia del edulcorante)"
+            },
+            {
+                "item": "Sal o zumo de limón",
+                "cantidad": "Una pizca o unas gotas"
+            },
+            {
+                "item": "Extracto de vainilla (opcional)",
+                "cantidad": "Unas gotas"
+            }
+        ],
+        "calorias": "5-10 kcal por merengue pequeño (casi insignificante)",
+        "tiempo_preparacion": "15-20 minutos (más tiempo de horneado y enfriamiento)",
+        "dificultad": "Media"
+    },
+    {
+        "titulo": "Copa Refrescante de Frutas Tropicales (Mango, Papaya, Piña) con Lima y Chile en Polvo (Opcional)",
+        "ingrediente_principal": "Frutas Tropicales",
+        "preparacion": "1. Pelar y cortar en dados de tamaño similar el mango, la papaya y la piña fresca. 2. Poner toda la fruta picada en un bol. 3. Exprimir el zumo de media lima (o limón) sobre las frutas y remover con cuidado para que se impregnen. 4. Opcional para un toque diferente: espolvorear una pizca muy pequeña de chile en polvo suave (tipo Tajín o similar, si se tolera y gusta el contraste) o pimentón dulce. 5. Repartir la mezcla de frutas en copas o cuencos individuales. 6. Decorar con unas hojas de menta fresca o cilantro fresco (si se usó chile). Servir bien frío.",
+        "ingredientes": [
+            {
+                "item": "Mango maduro (pulpa)",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Papaya (pulpa)",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Piña fresca (pulpa)",
+                "cantidad": "80-100g"
+            },
+            {
+                "item": "Zumo de lima",
+                "cantidad": "1/2 unidad"
+            },
+            {
+                "item": "Chile en polvo suave (opcional)",
+                "cantidad": "Una pizca muy pequeña"
+            },
+            {
+                "item": "Menta o cilantro fresco (para decorar)",
+                "cantidad": "Unas hojas"
+            }
+        ],
+        "calorias": "100-150 kcal por ración",
+        "tiempo_preparacion": "10-15 minutos",
+        "dificultad": "Fácil"
+    },
+    {
+        "titulo": "\"Bombones\" Helados de Plátano Cubiertos de Chocolate Negro Fundido (Porción Controlada)",
+        "ingrediente_principal": "Plátano y Chocolate Negro",
+        "preparacion": "1. Pelar plátanos maduros pero firmes y cortarlos en rodajas de 1.5 - 2 cm de grosor. 2. Insertar un palillo pequeño (de brocheta o de helado partido) en cada rodaja de plátano si se desea manejarlos como mini-polos. Colocarlos sobre una bandeja forrada con papel de hornear y congelar durante al menos 1-2 horas, hasta que estén bien firmes. 3. Derretir el chocolate negro (>70% cacao) al baño María o en el microondas en intervalos cortos, con mucho cuidado de que no se queme. Si está muy espeso, se puede añadir 1/2 cucharadita de aceite de coco para hacerlo más fluido. 4. Sacar las rodajas de plátano congeladas. Sumergir rápidamente cada rodaja en el chocolate negro fundido, cubriéndolas total o parcialmente. El chocolate se endurecerá rápidamente al contacto con el plátano frío. 5. Opcional: antes de que el chocolate se seque por completo, espolvorear con coco rallado, almendras picadas o virutas de colores (con moderación). 6. Volver a colocar los bombones en la bandeja forrada y llevar de nuevo al congelador hasta el momento de consumir. Servir 2-3 bombones por persona.",
+        "ingredientes": [
+            {
+                "item": "Plátanos maduros pero firmes",
+                "cantidad": "1-2 unidades"
+            },
+            {
+                "item": "Chocolate negro (>70% cacao)",
+                "cantidad": "30-40g (para cubrir varios bombones)"
+            },
+            {
+                "item": "Aceite de coco (opcional, para el chocolate)",
+                "cantidad": "1/2 cucharadita"
+            },
+            {
+                "item": "Toppings opcionales (coco, almendras picadas)",
+                "cantidad": "Mínima cantidad"
+            }
+        ],
+        "calorias": "40-60 kcal por bombón (dependiendo del tamaño y cantidad de chocolate)",
+        "tiempo_preparacion": "15 minutos (más tiempo de congelación)",
+        "dificultad": "Fácil"
+    }
 ]

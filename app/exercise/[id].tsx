@@ -21,6 +21,10 @@ import pecho from "@/mocks/exercises/pecho.json";
 import piernas from "@/mocks/exercises/piernas.json";
 import triceps from "@/mocks/exercises/triceps.json";
 import { AiraVariants } from "@/constants/Themes";
+import {
+  getExerciseDifficultyColor,
+  getExerciseTypeColor,
+} from "@/utils/colors";
 
 interface MetricaConfigurable {
   metrica: string;
@@ -75,34 +79,6 @@ const allExercises: Exercise[] = [
   ...processExercises(piernas, "piernas"),
   ...processExercises(triceps, "triceps"),
 ];
-
-// Función para obtener el color según la dificultad
-const getDifficultyColor = (dificultad: string) => {
-  switch (dificultad.toLowerCase()) {
-    case "principiante":
-      return AiraColorsWithAlpha.primaryWithOpacity(0.2);
-    case "intermedio":
-      return "#facc15"; // amarillo
-    case "avanzado":
-      return "#f87171"; // rojo
-    default:
-      return AiraColorsWithAlpha.foregroundWithOpacity(0.2);
-  }
-};
-
-// Función para obtener el color según el tipo de ejercicio
-const getTypeColor = (tipo: string) => {
-  switch (tipo.toLowerCase()) {
-    case "fuerza":
-      return AiraColors.primary;
-    case "cardio":
-      return "#60a5fa"; // azul
-    case "flexibilidad":
-      return "#34d399"; // verde
-    default:
-      return AiraColorsWithAlpha.foregroundWithOpacity(0.2);
-  }
-};
 
 export default function ExerciseDetailScreen() {
   const router = useRouter();
@@ -169,8 +145,12 @@ export default function ExerciseDetailScreen() {
             style={[
               styles.badge,
               {
-                backgroundColor: getDifficultyColor(exercise.nivel_dificultad),
-                borderColor: getDifficultyColor(exercise.nivel_dificultad),
+                backgroundColor: getExerciseDifficultyColor(
+                  exercise.nivel_dificultad
+                ),
+                borderColor: getExerciseDifficultyColor(
+                  exercise.nivel_dificultad
+                ),
               },
             ]}
           >
@@ -184,8 +164,8 @@ export default function ExerciseDetailScreen() {
             style={[
               styles.badge,
               {
-                backgroundColor: getTypeColor(exercise.tipo_ejercicio),
-                borderColor: getTypeColor(exercise.tipo_ejercicio),
+                backgroundColor: getExerciseTypeColor(exercise.tipo_ejercicio),
+                borderColor: getExerciseTypeColor(exercise.tipo_ejercicio),
               },
             ]}
           >

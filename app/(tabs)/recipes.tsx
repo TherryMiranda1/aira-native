@@ -62,13 +62,17 @@ export default function RecipesScreen() {
       />
 
       {/* Renderizado condicional entre Dashboard y Gallery */}
-      {viewMode === "dashboard" ? (
+      {viewMode === "dashboard" && (
         <RecipesDashboard
           onViewAllRecipes={toggleViewMode}
           onSelectCategory={onSelectCategory}
         />
-      ) : (
-        <RecipesGallery initialCategory={selectedCategory} />
+      )}
+      {viewMode === "gallery" && (
+        <RecipesGallery
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       )}
     </PageView>
   );

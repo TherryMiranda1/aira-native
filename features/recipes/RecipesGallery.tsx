@@ -2,176 +2,73 @@ import React, {
   useState,
   useRef,
   useCallback,
-  memo,
   useEffect,
   useMemo,
 } from "react";
-import { View, TouchableOpacity, StyleSheet, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useRouter } from "expo-router";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { Ionicons } from "@expo/vector-icons";
 import PagerView from "react-native-pager-view";
 
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { AiraVariants } from "@/constants/Themes";
-import { ThemedText } from "@/components/ThemedText";
+import { AiraColors } from "@/constants/Colors";
 
-// Importamos los datos de recetas
-import desayunos from "@/mocks/recipes/desayunos.json";
-import almuerzos from "@/mocks/recipes/almuerzos.json";
-import cenas from "@/mocks/recipes/cenas.json";
-import meriendas from "@/mocks/recipes/meriendas.json";
-import postres from "@/mocks/recipes/postres.json";
+// Importamos el servicio de recetas
+import {
+  recipeService,
+  Recipe as RecipeType,
+} from "@/services/api/recipeService";
+import { EmptyState } from "../../components/States/EmptyState";
+import { LoadingState } from "../../components/States/LoadingState";
+import { ErrorState } from "../../components/States/ErrorState";
+import { RecipeItem } from "./RecipeItem";
+import { CategoriesList, Category } from "../../components/Categories";
 
-interface Ingrediente {
-  item: string;
-  cantidad: string;
+// Usamos el tipo Recipe del servicio
+
+interface RecipesState {
+  data: RecipeType[];
+  loading: boolean;
+  error: string | null;
 }
 
-interface Recipe {
-  id?: string;
-  titulo: string;
-  ingrediente_principal: string;
-  preparacion: string;
-  ingredientes: Ingrediente[];
-  calorias: string;
-  tiempo_preparacion: string;
-  dificultad: string;
-  categoria?: string;
-}
-
-interface Category {
-  id: string;
-  label: string;
-  icon: keyof typeof Ionicons.glyphMap;
-}
-
-// Función para procesar las recetas y añadir id y categoría
-const processRecipes = (recipes: any[], categoria: string): Recipe[] => {
-  return recipes.map((recipe, index) => ({
-    ...recipe,
-    id: `${categoria}-${index + 1}`,
-    categoria,
-  }));
+// Estado inicial para las recetas de cada categoría
+const initialRecipesState: RecipesState = {
+  data: [],
+  loading: false,
+  error: null,
 };
-
-// Procesamos las recetas por categoría
-const desayunosData = processRecipes(desayunos, "desayunos");
-const almuerzosData = processRecipes(almuerzos, "almuerzos");
-const cenasData = processRecipes(cenas, "cenas");
-const meriendasData = processRecipes(meriendas, "meriendas");
-const postresData = processRecipes(postres, "postres");
-
-// Función para obtener el color según la dificultad
-const getDifficultyColor = (dificultad: string) => {
-  switch (dificultad.toLowerCase()) {
-    case "muy fácil":
-      return "#4ade80"; // verde
-    case "fácil":
-      return "#60a5fa"; // azul
-    case "medio":
-      return "#facc15"; // amarillo
-    case "difícil":
-      return "#f87171"; // rojo
-    default:
-      return AiraColors.mutedForeground; // gris
-  }
-};
-
-/**
- * Componente memoizado para renderizar cada tarjeta de receta
- * Optimizado para evitar re-renderizados innecesarios
- */
-const RecipeItem = memo(
-  ({ recipe, onPress }: { recipe: Recipe; onPress: (id: string) => void }) => {
-    return (
-      <TouchableOpacity
-        style={styles.recipeCard}
-        onPress={() => onPress(recipe.id || "")}
-      >
-        <View style={styles.cardHeader}>
-          <View
-            style={[
-              styles.difficultyBadge,
-              {
-                backgroundColor: getDifficultyColor(recipe.dificultad) + "20",
-                borderColor: getDifficultyColor(recipe.dificultad),
-              },
-            ]}
-          >
-            <ThemedText
-              type="small"
-              style={[{ color: getDifficultyColor(recipe.dificultad) }]}
-            >
-              {recipe.dificultad}
-            </ThemedText>
-          </View>
-          <TouchableOpacity>
-            <Ionicons name="heart-outline" size={20} color="#9ca3af" />
-          </TouchableOpacity>
-        </View>
-
-        <ThemedText style={styles.recipeTitle}>{recipe.titulo}</ThemedText>
-
-        <ThemedText type="small">🥘 {recipe.ingrediente_principal}</ThemedText>
-
-        <View style={styles.recipeDetails}>
-          <View style={styles.recipeDetail}>
-            <Ionicons name="time-outline" size={16} color="#6b7280" />
-            <ThemedText type="small">{recipe.tiempo_preparacion}</ThemedText>
-          </View>
-          <View style={styles.recipeDetail}>
-            <Ionicons name="restaurant-outline" size={16} color="#6b7280" />
-            <ThemedText type="small">{recipe.calorias}</ThemedText>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  }
-);
-
-// Añadir displayName para resolver error de lint
-RecipeItem.displayName = "RecipeItem";
-
-/**
- * Componente para mostrar cuando no hay resultados de búsqueda
- */
-const EmptyResultsView = memo(() => (
-  <View style={styles.emptyContainer}>
-    <Ionicons
-      name="search-outline"
-      size={64}
-      color={AiraColors.mutedForeground}
-    />
-    <ThemedText style={styles.emptyText}>No se encontraron recetas</ThemedText>
-    <ThemedText style={styles.emptySubtext}>
-      Intenta con otros filtros o términos de búsqueda
-    </ThemedText>
-  </View>
-));
-
-// Añadir displayName para resolver error de lint
-EmptyResultsView.displayName = "EmptyResultsView";
 
 interface RecipesGalleryProps {
-  initialCategory?: string;
+  selectedCategory?: string;
+  setSelectedCategory: (category: string) => void;
 }
 
-const RecipesGallery = ({ initialCategory }: RecipesGalleryProps) => {
+const RecipesGallery = ({
+  selectedCategory = "desayuno",
+  setSelectedCategory,
+}: RecipesGalleryProps) => {
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    initialCategory || "desayunos"
-  );
   const pagerRef = useRef<PagerView>(null);
+
+  // Estado para cada categoría de recetas
+  const [recipesState, setRecipesState] = useState<
+    Record<string, RecipesState>
+  >({
+    desayuno: initialRecipesState,
+    almuerzo: initialRecipesState,
+    cena: initialRecipesState,
+    merienda: initialRecipesState,
+    postre: initialRecipesState,
+  });
 
   // Categorías de recetas
   const categories: Category[] = useMemo(
     () => [
-      { id: "desayunos", label: "Desayunos", icon: "sunny-outline" },
-      { id: "almuerzos", label: "Almuerzos", icon: "restaurant-outline" },
-      { id: "cenas", label: "Cenas", icon: "moon-outline" },
-      { id: "meriendas", label: "Meriendas", icon: "cafe-outline" },
-      { id: "postres", label: "Postres", icon: "ice-cream-outline" },
+      { id: "desayuno", label: "Desayunos", icon: "sunny-outline" },
+      { id: "almuerzo", label: "Almuerzos", icon: "restaurant-outline" },
+      { id: "cena", label: "Cenas", icon: "moon-outline" },
+      { id: "merienda", label: "Meriendas", icon: "cafe-outline" },
+      { id: "postre", label: "Postres", icon: "ice-cream-outline" },
     ],
     []
   );
@@ -181,24 +78,76 @@ const RecipesGallery = ({ initialCategory }: RecipesGalleryProps) => {
     [selectedCategory, categories]
   );
 
+  // Función para cargar recetas por categoría
+  const fetchRecipesByCategory = useCallback(
+    async (category: string) => {
+      // Verificar si ya tenemos datos cargados para evitar cargas innecesarias
+      const currentState = recipesState[category];
+
+      if (currentState.data.length > 0 || currentState.loading) {
+        return;
+      }
+
+      try {
+        setRecipesState((prev) => ({
+          ...prev,
+          [category]: {
+            data: [],
+            loading: true,
+            error: null,
+          },
+        }));
+        const where = { tipo_plato: category };
+
+        const { recipes } = await recipeService.getRecipes({
+          limit: 20,
+          where,
+        });
+
+        setRecipesState((prev) => ({
+          ...prev,
+          [category]: {
+            data: recipes,
+            loading: false,
+            error: null,
+          },
+        }));
+      } catch (error) {
+        console.error(`Error fetching ${category}:`, error);
+        setRecipesState((prev) => ({
+          ...prev,
+          [category]: {
+            data: [],
+            loading: false,
+            error: `Error al cargar las recetas de ${category}`,
+          },
+        }));
+      }
+    },
+    [recipesState]
+  );
+
+  // Cargar recetas de la categoría inicial
+  useEffect(() => {
+    const categoryToLoad = selectedCategory;
+    fetchRecipesByCategory(categoryToLoad);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (selectedCategory && pagerRef.current) {
+      const categoryIndex = categories.findIndex(
+        (cat) => cat.id === selectedCategory
+      );
+      if (categoryIndex !== -1) {
+        pagerRef.current?.setPage(categoryIndex);
+      }
+    }
+  }, [selectedCategory]);
+
   // Utilizamos el hook personalizado para manejar el scroll de categorías
   const categoryScrollHook = useCategoryScroll(categories, currentIndex, {
     itemVisiblePercentThreshold: 70,
   });
-
-  useEffect(() => {
-    if (initialCategory && pagerRef.current) {
-      const categoryIndex = categories.findIndex(
-        (cat) => cat.id === initialCategory
-      );
-      if (categoryIndex !== -1) {
-        // Pequeño timeout para asegurar que el PagerView esté listo
-        setTimeout(() => {
-          pagerRef.current?.setPage(categoryIndex);
-        }, 100);
-      }
-    }
-  }, [initialCategory, categories]);
 
   // Función para cambiar de categoría
   const handleCategoryChange = (categoryId: string) => {
@@ -207,6 +156,8 @@ const RecipesGallery = ({ initialCategory }: RecipesGalleryProps) => {
     const categoryIndex = categories.findIndex((cat) => cat.id === categoryId);
     if (categoryIndex !== -1) {
       pagerRef.current?.setPage(categoryIndex);
+      // Cargar las recetas de la categoría seleccionada si no están cargadas
+      fetchRecipesByCategory(categoryId);
     }
   };
 
@@ -215,6 +166,8 @@ const RecipesGallery = ({ initialCategory }: RecipesGalleryProps) => {
     const newIndex = e.nativeEvent.position;
     if (categories[newIndex]) {
       setSelectedCategory(categories[newIndex].id);
+      // Cargar las recetas de la nueva categoría si no están cargadas
+      fetchRecipesByCategory(categories[newIndex].id);
     }
   };
 
@@ -229,7 +182,7 @@ const RecipesGallery = ({ initialCategory }: RecipesGalleryProps) => {
 
   // Renderizar cada item de la lista
   const renderRecipeItem = useCallback(
-    ({ item }: { item: Recipe }) => {
+    ({ item }: { item: RecipeType }) => {
       return <RecipeItem recipe={item} onPress={handleRecipePress} />;
     },
     [handleRecipePress]
@@ -237,140 +190,160 @@ const RecipesGallery = ({ initialCategory }: RecipesGalleryProps) => {
 
   // Key extractor para la FlatList
   const keyExtractor = useCallback(
-    (item: Recipe) => item.id || Math.random().toString(),
+    (item: RecipeType) => item.id || Math.random().toString(),
     []
   );
 
   return (
     <View style={{ flex: 1 }}>
       {/* Selector de categorías */}
-      <View style={styles.categoriesContainer}>
-        <FlatList
-          ref={categoryScrollHook.categoriesListRef}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={categories}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              key={item.id}
-              style={[
-                styles.categoryButton,
-                selectedCategory === item.id && styles.categoryButtonActive,
-              ]}
-              onPress={() => handleCategoryChange(item.id)}
-            >
-              <Ionicons
-                name={item.icon}
-                size={18}
-                color={AiraColors.foreground}
-                style={styles.categoryIcon}
-              />
-              <ThemedText style={[styles.categoryText]}>
-                {item.label}
-              </ThemedText>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.categoriesContent}
-          onScrollToIndexFailed={categoryScrollHook.handleScrollToIndexFailed}
-          getItemLayout={(data, index) => ({
-            length: 120, // Aproximado del ancho del botón de categoría + margen
-            offset: 120 * index,
-            index,
-          })}
-        />
-      </View>
+      <CategoriesList
+        categories={categories}
+        selectedCategory={selectedCategory}
+        handleCategoryChange={handleCategoryChange}
+        categoryScrollHook={categoryScrollHook}
+      />
 
       {/* Contenido según la categoría seleccionada */}
       <PagerView
         ref={pagerRef}
         style={styles.pagerView}
-        initialPage={0}
+        initialPage={currentIndex}
         onPageSelected={handlePageChange}
       >
         {/* Página 1: Desayunos */}
-        <View key="desayunos" style={styles.pageContainer}>
-          <FlatList
-            data={desayunosData}
-            renderItem={renderRecipeItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.recipesContent}
-            style={styles.recipesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+        <View key="desayuno" style={styles.pageContainer}>
+          {recipesState.desayuno.loading ? (
+            <LoadingState />
+          ) : recipesState.desayuno.error ? (
+            <ErrorState
+              title="Error al cargar las recetas"
+              onRetry={() => fetchRecipesByCategory("desayuno")}
+            />
+          ) : (
+            <FlatList
+              data={recipesState.desayuno.data}
+              renderItem={renderRecipeItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.recipesContent}
+              style={styles.recipesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 2: Almuerzos */}
-        <View key="almuerzos" style={styles.pageContainer}>
-          <FlatList
-            data={almuerzosData}
-            renderItem={renderRecipeItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.recipesContent}
-            style={styles.recipesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+        <View key="almuerzo" style={styles.pageContainer}>
+          {recipesState.almuerzo.loading ? (
+            <LoadingState />
+          ) : recipesState.almuerzo.error ? (
+            <ErrorState
+              title="Error al cargar las recetas"
+              onRetry={() => fetchRecipesByCategory("almuerzo")}
+            />
+          ) : (
+            <FlatList
+              data={recipesState.almuerzo.data}
+              renderItem={renderRecipeItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.recipesContent}
+              style={styles.recipesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 3: Cenas */}
-        <View key="cenas" style={styles.pageContainer}>
-          <FlatList
-            data={cenasData}
-            renderItem={renderRecipeItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.recipesContent}
-            style={styles.recipesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+        <View key="cena" style={styles.pageContainer}>
+          {recipesState.cena.loading ? (
+            <LoadingState />
+          ) : recipesState.cena.error ? (
+            <ErrorState
+              title="Error al cargar las recetas"
+              onRetry={() => fetchRecipesByCategory("cena")}
+            />
+          ) : (
+            <FlatList
+              data={recipesState.cena.data}
+              renderItem={renderRecipeItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.recipesContent}
+              style={styles.recipesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 4: Meriendas */}
-        <View key="meriendas" style={styles.pageContainer}>
-          <FlatList
-            data={meriendasData}
-            renderItem={renderRecipeItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.recipesContent}
-            style={styles.recipesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+        <View key="merienda" style={styles.pageContainer}>
+          {recipesState.merienda.loading ? (
+            <LoadingState />
+          ) : recipesState.merienda.error ? (
+            <ErrorState
+              title="Error al cargar las recetas"
+              onRetry={() => fetchRecipesByCategory("merienda")}
+            />
+          ) : (
+            <FlatList
+              data={recipesState.merienda.data}
+              renderItem={renderRecipeItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.recipesContent}
+              style={styles.recipesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={<EmptyState />}
+            />
+          )}
         </View>
 
         {/* Página 5: Postres */}
-        <View key="postres" style={styles.pageContainer}>
-          <FlatList
-            data={postresData}
-            renderItem={renderRecipeItem}
-            keyExtractor={keyExtractor}
-            contentContainerStyle={styles.recipesContent}
-            style={styles.recipesContainer}
-            showsVerticalScrollIndicator={false}
-            initialNumToRender={5}
-            maxToRenderPerBatch={5}
-            windowSize={10}
-            removeClippedSubviews={true}
-            ListEmptyComponent={<EmptyResultsView />}
-          />
+        <View key="postre" style={styles.pageContainer}>
+          {recipesState.postre.loading ? (
+            <LoadingState />
+          ) : recipesState.postre.error ? (
+            <ErrorState
+              title="Error al cargar las recetas"
+              onRetry={() => fetchRecipesByCategory("postre")}
+            />
+          ) : (
+            <FlatList
+              data={recipesState.postre.data}
+              renderItem={renderRecipeItem}
+              keyExtractor={keyExtractor}
+              contentContainerStyle={styles.recipesContent}
+              style={styles.recipesContainer}
+              showsVerticalScrollIndicator={false}
+              initialNumToRender={5}
+              maxToRenderPerBatch={5}
+              windowSize={10}
+              removeClippedSubviews={true}
+              ListEmptyComponent={
+                <EmptyState
+                  title="No se encontraron recetas"
+                  description="Intenta con otros filtros o términos de búsqueda"
+                />
+              }
+            />
+          )}
         </View>
       </PagerView>
     </View>
@@ -385,123 +358,12 @@ const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
   },
-  // Categories styles
-  categoriesContainer: {
-    paddingTop: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-  },
-  categoriesContent: {
-    paddingHorizontal: 8,
-  },
-  categoryButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-    marginRight: 12,
-    borderBottomWidth: 2,
-    borderColor: "transparent",
-  },
-  categoryButtonActive: {
-    borderColor: AiraColors.foreground,
-  },
-  categoryIcon: {
-    marginRight: 8,
-  },
-  categoryText: {
-    fontSize: 14,
-    color: AiraColors.foreground,
-  },
-  categoryTextActive: {
-    color: AiraColors.background,
-    fontWeight: "500",
-  },
-  // Recipe list styles
   recipesContainer: {
     flex: 1,
     backgroundColor: AiraColors.background,
   },
   recipesContent: {
     padding: 8,
-  },
-  recipeCard: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
-    marginBottom: 16,
-    overflow: "hidden",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-    padding: 16,
-  },
-  cardHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  difficultyBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: AiraVariants.tagRadius,
-    borderWidth: 1,
-  },
-
-  recipeTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    marginBottom: 8,
-  },
-
-  recipeDetails: {
-    marginBottom: 4,
-  },
-  recipeDetail: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginRight: 16,
-  },
-  recipeDetailText: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    marginLeft: 4,
-  },
-  recipeDescription: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    lineHeight: 20,
-    marginBottom: 16,
-  },
-  viewButton: {
-    backgroundColor: AiraColors.primary,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: AiraVariants.tagRadius,
-    alignItems: "center",
-  },
-  viewButtonText: {
-    color: AiraColors.background,
-    fontSize: 14,
-  },
-  // Empty state styles
-  emptyContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 24,
-    minHeight: 300,
-  },
-  emptyText: {
-    fontSize: 18,
-    fontWeight: "600",
-    marginTop: 16,
-    textAlign: "center",
-  },
-  emptySubtext: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    marginTop: 8,
-    textAlign: "center",
   },
 });
 
