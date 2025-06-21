@@ -21,7 +21,6 @@
     "date-fns": "^4.1.0",
     "expo": "~53.0.9",
     "expo-blur": "~14.1.4",
-    "expo-clipboard": "^7.1.4",
     "expo-constants": "~17.1.6",
     "expo-dev-client": "~5.1.8",
     "expo-file-system": "^18.1.10",
@@ -50,7 +49,8 @@
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "realm": "^20.1.0",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "expo-clipboard": "~7.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
