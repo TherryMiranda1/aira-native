@@ -61,11 +61,11 @@ export function DailyMealPlanForm({
 
   const quickOptions = [
     {
-      label: "Plan saludable para hoy",
+      label: "Plan saludable",
       value: "Necesito un plan de comidas saludable y equilibrado para hoy",
     },
     {
-      label: "Comidas rápidas y nutritivas",
+      label: "Comidas rápidas",
       value:
         "Dame opciones de comidas rápidas de preparar pero nutritivas para todo el día",
     },
@@ -74,118 +74,138 @@ export function DailyMealPlanForm({
       value: "Quiero un plan de comidas vegetariano completo para hoy",
     },
     {
-      label: "Opciones bajas en carbohidratos",
+      label: "Bajo en carbohidratos",
       value: "Necesito un plan de comidas bajo en carbohidratos para hoy",
     },
   ];
 
   const handleQuickOption = (value: string) => {
     setFormData((prev) => ({ ...prev, userInput: value }));
+    setErrors((prev) => ({ ...prev, userInput: "" }));
   };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
         <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            ¿Qué tipo de plan de comidas necesitas? *
+          <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
+            ¿Qué tipo de plan necesitas?
           </ThemedText>
-          <TextInput
-            style={[styles.textArea, errors.userInput && styles.inputError]}
-            value={formData.userInput}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, userInput: text }))
-            }
-            placeholder="Ej: Necesito un plan de comidas saludable para hoy, con opciones vegetarianas..."
-            placeholderTextColor={AiraColors.mutedForeground}
-            multiline
-            numberOfLines={4}
-            textAlignVertical="top"
-          />
-          {errors.userInput && (
-            <ThemedText style={styles.errorText}>{errors.userInput}</ThemedText>
-          )}
-        </View>
-
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>Opciones rápidas</ThemedText>
+          <ThemedText type="small" style={styles.required}>
+            * Campo requerido
+          </ThemedText>
+          
           <View style={styles.quickOptionsGrid}>
             {quickOptions.map((option, index) => (
               <TouchableOpacity
                 key={index}
-                style={styles.quickOption}
+                style={[
+                  styles.quickOption,
+                  formData.userInput === option.value && styles.quickOptionSelected,
+                ]}
                 onPress={() => handleQuickOption(option.value)}
               >
-                <ThemedText style={styles.quickOptionText}>
+                <ThemedText
+                  type="small"
+                  style={[
+                    styles.quickOptionText,
+                    formData.userInput === option.value && styles.quickOptionTextSelected,
+                  ]}
+                >
                   {option.label}
                 </ThemedText>
               </TouchableOpacity>
             ))}
           </View>
+
+          <TextInput
+            style={[styles.textArea, errors.userInput && styles.inputError]}
+            value={formData.userInput}
+            onChangeText={(text) => {
+              setFormData((prev) => ({ ...prev, userInput: text }));
+              setErrors((prev) => ({ ...prev, userInput: "" }));
+            }}
+            placeholder="O describe tu plan personalizado..."
+            placeholderTextColor={AiraColors.mutedForeground}
+            multiline
+            numberOfLines={3}
+            textAlignVertical="top"
+          />
+          {errors.userInput && (
+            <ThemedText type="small" style={styles.errorText}>
+              {errors.userInput}
+            </ThemedText>
+          )}
         </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Preferencias alimentarias (opcional)
+        <View style={styles.optionalSection}>
+          <ThemedText type="defaultSemiBold" style={styles.optionalTitle}>
+            Información adicional (opcional)
           </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.dietaryPreferences}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, dietaryPreferences: text }))
-            }
-            placeholder="Ej: Vegetariana, vegana, keto, mediterránea..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
-        </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Alergias o intolerancias (opcional)
-          </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.allergies}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, allergies: text }))
-            }
-            placeholder="Ej: Frutos secos, lactosa, gluten..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
-        </View>
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Preferencias alimentarias
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.dietaryPreferences}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, dietaryPreferences: text }))
+              }
+              placeholder="Vegetariana, vegana, keto..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Alimentos que prefieres evitar (opcional)
-          </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.dislikedFoods}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, dislikedFoods: text }))
-            }
-            placeholder="Ej: Pescado, espinacas, comida muy picante..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
-        </View>
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Alergias o intolerancias
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.allergies}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, allergies: text }))
+              }
+              placeholder="Frutos secos, lactosa, gluten..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Objetivo principal (opcional)
-          </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.mainGoal}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, mainGoal: text }))
-            }
-            placeholder="Ej: Pérdida de peso, ganar energía, mejorar digestión..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Alimentos a evitar
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.dislikedFoods}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, dislikedFoods: text }))
+              }
+              placeholder="Pescado, espinacas, picante..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
+
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Objetivo principal
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.mainGoal}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, mainGoal: text }))
+              }
+              placeholder="Pérdida de peso, ganar energía..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
         </View>
 
         <TouchableOpacity
-          style={styles.submitButton}
+          style={[styles.submitButton, isLoading && styles.submitButtonDisabled]}
           onPress={handleSubmit}
           disabled={isLoading}
         >
@@ -194,14 +214,14 @@ export function DailyMealPlanForm({
             style={styles.submitGradient}
           >
             {isLoading ? (
-              <ThemedText style={styles.submitText}>
+              <ThemedText type="defaultSemiBold" style={styles.submitText}>
                 Generando plan...
               </ThemedText>
             ) : (
               <>
                 <Ionicons name="restaurant" size={20} color="white" />
-                <ThemedText style={styles.submitText}>
-                  Generar Plan de Comidas
+                <ThemedText type="defaultSemiBold" style={styles.submitText}>
+                  Generar Plan
                 </ThemedText>
               </>
             )}
@@ -218,69 +238,96 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.background,
   },
   content: {
-    padding: 20,
-    paddingBottom: 40,
+    padding: 16,
+    paddingBottom: 32,
   },
   section: {
     marginBottom: 24,
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.foreground,
-    marginBottom: 12,
+    marginBottom: 4,
   },
-  input: {
-    backgroundColor: AiraColors.card,
+  required: {
+    color: AiraColors.mutedForeground,
+    marginBottom: 16,
+  },
+  quickOptionsGrid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+    marginBottom: 16,
+  },
+  quickOption: {
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     borderWidth: 1,
-    borderColor: AiraColors.border,
-    borderRadius: AiraVariants.cardRadius,
-    padding: 16,
-    fontSize: 16,
-    color: AiraColors.foreground,
-    minHeight: 50,
+    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
+    borderRadius: 16,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  quickOptionSelected: {
+    backgroundColor: AiraColors.primary,
+    borderColor: AiraColors.primary,
+  },
+  quickOptionText: {
+    color: AiraColors.primary,
+  },
+  quickOptionTextSelected: {
+    color: "white",
   },
   textArea: {
     backgroundColor: AiraColors.card,
     borderWidth: 1,
     borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
-    padding: 16,
+    padding: 12,
     fontSize: 16,
     color: AiraColors.foreground,
-    minHeight: 100,
+    minHeight: 80,
   },
   inputError: {
     borderColor: AiraColors.destructive,
   },
   errorText: {
-    fontSize: 12,
     color: AiraColors.destructive,
     marginTop: 4,
   },
-  quickOptionsGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  quickOption: {
-    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+  optionalSection: {
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.05),
+    borderRadius: AiraVariants.cardRadius,
+    padding: 16,
+    marginBottom: 24,
     borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
-    borderRadius: 20,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    marginBottom: 8,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
-  quickOptionText: {
-    fontSize: 14,
-    color: AiraColors.primary,
-    fontWeight: "500",
+  optionalTitle: {
+    color: AiraColors.foreground,
+    marginBottom: 16,
+  },
+  inputGroup: {
+    marginBottom: 16,
+  },
+  inputLabel: {
+    color: AiraColors.mutedForeground,
+    marginBottom: 6,
+  },
+  input: {
+    backgroundColor: AiraColors.card,
+    borderWidth: 1,
+    borderColor: AiraColors.border,
+    borderRadius: AiraVariants.cardRadius,
+    padding: 12,
+    fontSize: 16,
+    color: AiraColors.foreground,
+    minHeight: 44,
   },
   submitButton: {
     borderRadius: AiraVariants.cardRadius,
     overflow: "hidden",
-    marginTop: 16,
+  },
+  submitButtonDisabled: {
+    opacity: 0.7,
   },
   submitGradient: {
     paddingVertical: 16,
@@ -291,8 +338,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   submitText: {
-    fontSize: 16,
-    fontWeight: "600",
     color: "white",
   },
 });

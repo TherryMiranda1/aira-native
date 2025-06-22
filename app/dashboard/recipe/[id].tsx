@@ -4,18 +4,16 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  Image,
+  Image
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { ModalScreen } from "@/components/navigation/ModalScreen";
-import { AiraVariants } from "@/constants/Themes";
 import { recipeService, Recipe } from "@/services/api/recipe.service";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
-import { getRecipeDifficultyColor } from "@/utils/colors";
 
 export default function RecipeDetailScreen() {
   const { id } = useLocalSearchParams();
@@ -23,6 +21,7 @@ export default function RecipeDetailScreen() {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     async function fetchRecipe() {
@@ -48,7 +47,6 @@ export default function RecipeDetailScreen() {
     fetchRecipe();
   }, [id]);
 
-  // Dividir los pasos de preparación si no están ya divididos
   const preparationSteps = recipe?.preparacion
     ? recipe.preparacion.includes("\n")
       ? recipe.preparacion
@@ -59,9 +57,13 @@ export default function RecipeDetailScreen() {
           .filter((step) => step.trim().length > 0)
     : [];
 
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
+
   if (loading) {
     return (
-      <ModalScreen title="Cargando receta">
+      <ModalScreen title="">
         <LoadingState />
       </ModalScreen>
     );
@@ -69,11 +71,11 @@ export default function RecipeDetailScreen() {
 
   if (error || !recipe) {
     return (
-      <ModalScreen title="Receta no encontrada">
+      <ModalScreen title="">
         <EmptyState
           title="Receta no encontrada"
           description="Lo siento, no pudimos encontrar la receta que buscas."
-          buttonText="Volver a Recetas"
+          buttonText="Volver"
           onPress={() => router.back()}
         />
       </ModalScreen>
@@ -81,174 +83,119 @@ export default function RecipeDetailScreen() {
   }
 
   return (
-    <ModalScreen title={recipe.titulo}>
+    <ModalScreen title="">
       <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollViewContent}
+        style={styles.container}
         showsVerticalScrollIndicator={false}
+        bounces={false}
       >
-        {/* Recipe Header */}
-        <View style={styles.recipeHeader}>
+        {/* Hero Image */}
+        <View style={styles.heroContainer}>
           {recipe.imagen && (
             <Image
               source={{ uri: recipe.imagen }}
-              style={styles.recipeImage}
+              style={styles.heroImage}
               resizeMode="cover"
             />
           )}
-          <View style={styles.headerTop}>
-            <View
-              style={[
-                styles.difficultyBadge,
-                {
-                  backgroundColor:
-                    getRecipeDifficultyColor(recipe.dificultad) + "20",
-                  borderColor: getRecipeDifficultyColor(recipe.dificultad),
-                },
-              ]}
+          <View style={styles.heroOverlay}>
+            <TouchableOpacity
+              style={styles.favoriteButton}
+              onPress={toggleFavorite}
+              activeOpacity={0.8}
             >
-              <ThemedText
-                style={[
-                  styles.difficultyText,
-                  { color: getRecipeDifficultyColor(recipe.dificultad) },
-                ]}
-              >
-                {recipe.dificultad}
-              </ThemedText>
-            </View>
-            <TouchableOpacity>
               <Ionicons
-                name="heart-outline"
+                name={isFavorite ? "heart" : "heart-outline"}
                 size={24}
-                color={AiraColors.mutedForeground}
+                color={isFavorite ? "#FF6B6B" : "#fff"}
               />
             </TouchableOpacity>
           </View>
+        </View>
 
-          <ThemedText style={styles.recipeTitle}>{recipe.titulo}</ThemedText>
-          <ThemedText style={styles.recipeIngredient}>
-            🥘 Ingrediente principal: {recipe.ingrediente_principal}
-          </ThemedText>
+        {/* Content */}
+        <View style={styles.content}>
+          {/* Title Section */}
+          <View style={styles.titleSection}>
+            <ThemedText style={styles.title}>{recipe.titulo}</ThemedText>
+            <ThemedText style={styles.subtitle}>
+              {recipe.ingrediente_principal}
+            </ThemedText>
+          </View>
 
-          <View style={styles.recipeStats}>
-            <View
-              style={[
-                styles.statItem,
-                {
-                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-                },
-              ]}
-            >
+          {/* Quick Stats */}
+          <View style={styles.statsContainer}>
+            <View style={styles.statItem}>
               <Ionicons
                 name="time-outline"
-                size={24}
-                color={AiraColors.primary}
+                size={16}
+                color={AiraColors.mutedForeground}
               />
-              <ThemedText style={styles.statLabel}>Tiempo</ThemedText>
-              <ThemedText style={styles.statValue}>
+              <ThemedText style={styles.statText}>
                 {recipe.tiempo_preparacion}
               </ThemedText>
             </View>
-            <View
-              style={[
-                styles.statItem,
-                {
-                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-                },
-              ]}
-            >
+            <View style={styles.statItem}>
               <Ionicons
-                name="restaurant-outline"
-                size={24}
-                color={AiraColors.primary}
+                name="flame-outline"
+                size={16}
+                color={AiraColors.mutedForeground}
               />
-              <ThemedText style={styles.statLabel}>Calorías</ThemedText>
-              <ThemedText style={styles.statValue}>
-                {recipe.calorias}
+              <ThemedText style={styles.statText}>
+                {recipe.calorias} cal
               </ThemedText>
             </View>
-            <View
-              style={[
-                styles.statItem,
-                {
-                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-                },
-              ]}
-            >
+            <View style={styles.statItem}>
               <Ionicons
-                name="people-outline"
-                size={24}
-                color={AiraColors.primary}
+                name="bar-chart-outline"
+                size={16}
+                color={AiraColors.mutedForeground}
               />
-              <ThemedText style={styles.statLabel}>Porciones</ThemedText>
-              <ThemedText style={styles.statValue}>1 persona</ThemedText>
-            </View>
-            <View
-              style={[
-                styles.statItem,
-                {
-                  backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-                },
-              ]}
-            >
-              <Ionicons
-                name="thermometer-outline"
-                size={24}
-                color={AiraColors.primary}
-              />
-              <ThemedText style={styles.statLabel}>Dificultad</ThemedText>
-              <ThemedText style={styles.statValue}>
+              <ThemedText style={styles.statText}>
                 {recipe.dificultad}
               </ThemedText>
             </View>
           </View>
-        </View>
 
-        {/* Ingredients */}
-        <View style={styles.sectionCard}>
-          <ThemedText style={styles.sectionTitle}>🛒 Ingredientes</ThemedText>
-          <View style={styles.ingredientsList}>
-            {recipe.ingredientes.map((ingrediente, index) => (
-              <View key={index} style={styles.ingredientItem}>
-                <ThemedText style={styles.ingredientName}>
-                  {ingrediente.item}
-                </ThemedText>
-                <ThemedText style={styles.ingredientAmount}>
-                  {ingrediente.cantidad}
-                </ThemedText>
-              </View>
-            ))}
-          </View>
-        </View>
-
-        {/* Preparation */}
-        <View style={styles.sectionCard}>
-          <ThemedText style={styles.sectionTitle}>👩‍🍳 Preparación</ThemedText>
-          <View style={styles.preparationList}>
-            {preparationSteps.map((step, index) => (
-              <View key={index} style={styles.preparationStep}>
-                <View style={styles.stepNumber}>
-                  <ThemedText style={styles.stepNumberText}>
-                    {index + 1}
-                  </ThemedText>
+          {/* Ingredients */}
+          <View style={styles.section}>
+            <ThemedText style={styles.sectionTitle}>Ingredientes</ThemedText>
+            <View style={styles.ingredientsList}>
+              {recipe.ingredientes.map((ingrediente, index) => (
+                <View key={index} style={styles.ingredientItem}>
+                  <View style={styles.ingredientDot} />
+                  <View style={styles.ingredientContent}>
+                    <ThemedText style={styles.ingredientName}>
+                      {ingrediente.item}
+                    </ThemedText>
+                    <ThemedText style={styles.ingredientAmount}>
+                      {ingrediente.cantidad}
+                    </ThemedText>
+                  </View>
                 </View>
-                <ThemedText style={styles.stepText}>{step.trim()}</ThemedText>
-              </View>
-            ))}
+              ))}
+            </View>
           </View>
-        </View>
 
-        {/* Encouragement Message */}
-        <View style={styles.encouragementCard}>
-          <ThemedText style={styles.encouragementEmoji}>✨</ThemedText>
-          <ThemedText style={styles.encouragementTitle}>
-            ¡Vas a crear algo delicioso!
-          </ThemedText>
-          <ThemedText style={styles.encouragementText}>
-            Recuerda que cocinar es un acto de amor hacia ti misma. No te
-            preocupes si no sale perfecto la primera vez, cada intento es un
-            paso más hacia cuidarte mejor. ¡Disfruta el proceso! 💕
-          </ThemedText>
+          {/* Preparation */}
+          <View style={styles.section}>
+            <ThemedText style={styles.sectionTitle}>Preparación</ThemedText>
+            <View style={styles.stepsList}>
+              {preparationSteps.map((step, index) => (
+                <View key={index} style={styles.stepItem}>
+                  <View style={styles.stepNumber}>
+                    <ThemedText style={styles.stepNumberText}>
+                      {index + 1}
+                    </ThemedText>
+                  </View>
+                  <ThemedText style={styles.stepText}>{step.trim()}</ThemedText>
+                </View>
+              ))}
+            </View>
+          </View>
+
+          {/* Bottom Spacing */}
+          <View style={styles.bottomSpacing} />
         </View>
       </ScrollView>
     </ModalScreen>
@@ -256,225 +203,149 @@ export default function RecipeDetailScreen() {
 }
 
 const styles = StyleSheet.create({
-  recipeImage: {
-    width: "100%",
-    height: 200,
-    borderRadius: AiraVariants.cardRadius,
-    marginBottom: 16,
-  },
-  loadingContainer: {
+  container: {
     flex: 1,
     backgroundColor: AiraColors.background,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 16,
   },
-  loadingContent: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  loadingCard: {
+  heroContainer: {
+    position: "relative",
+    height: 280,
     backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
-    padding: 24,
+  },
+  heroImage: {
+    width: "100%",
+    height: "100%",
+  },
+  heroOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    padding: 20,
+  },
+  favoriteButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    justifyContent: "center",
     alignItems: "center",
-    width: "90%",
-    maxWidth: 400,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
+    backdropFilter: "blur(10px)",
   },
-  loadingEmoji: {
-    fontSize: 48,
-    marginBottom: 16,
+  content: {
+    flex: 1,
+    backgroundColor: AiraColors.background,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    marginTop: -24,
+    paddingTop: 32,
+    paddingHorizontal: 24,
   },
-  loadingTitle: {
-    fontSize: 20,
-    color: AiraColors.foreground,
-    marginBottom: 8,
-    textAlign: "center",
-  },
-  loadingSubtitle: {
-    fontSize: 16,
-    color: AiraColors.mutedForeground,
-    textAlign: "center",
+  titleSection: {
     marginBottom: 24,
   },
-  backButton: {
-    backgroundColor: AiraColors.primary,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: AiraVariants.tagRadius,
-  },
-  backButtonText: {
-    color: AiraColors.primaryForeground,
-    fontSize: 16,
-  },
-  scrollView: {
-    flex: 1,
-    backgroundColor: AiraColors.background,
-  },
-  scrollViewContent: {
-    padding: 16,
-  },
-  backButtonContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  backButtonLabel: {
-    marginLeft: 8,
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-  },
-  recipeHeader: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
-    padding: 16,
-    marginBottom: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-  },
-  headerTop: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 12,
-  },
-  difficultyBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    borderRadius: AiraVariants.tagRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
-  },
-  difficultyText: {
-    fontSize: 12,
+  title: {
+    fontSize: 28,
+    fontWeight: "700",
     color: AiraColors.foreground,
-  },
-  recipeTitle: {
-    fontSize: 20,
-    color: AiraColors.foreground,
+    lineHeight: 34,
     marginBottom: 8,
   },
-  recipeIngredient: {
-    fontSize: 14,
-    color: AiraColors.primary,
-    marginBottom: 16,
+  subtitle: {
+    fontSize: 16,
+    color: AiraColors.mutedForeground,
+    fontWeight: "500",
   },
-  recipeStats: {
+  statsContainer: {
     flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    gap: 8,
+    justifyContent: "space-around",
+    backgroundColor: AiraColors.card,
+    borderRadius: 16,
+    paddingVertical: 20,
+    marginBottom: 32,
   },
   statItem: {
-    width: "48%",
-    borderRadius: AiraVariants.cardRadius,
-    padding: 12,
     alignItems: "center",
-    marginBottom: 8,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
+    gap: 8,
   },
-  statLabel: {
-    fontSize: 12,
-    color: AiraColors.mutedForeground,
-    marginTop: 4,
-  },
-  statValue: {
+  statText: {
     fontSize: 14,
     color: AiraColors.foreground,
-    marginTop: 2,
+    fontWeight: "600",
   },
-  sectionCard: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
-    padding: 16,
-    marginBottom: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+  section: {
+    marginBottom: 32,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: "700",
     color: AiraColors.foreground,
-    marginBottom: 16,
+    marginBottom: 20,
   },
   ingredientsList: {
-    marginBottom: 24,
+    gap: 16,
   },
   ingredientItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
+  },
+  ingredientDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: AiraColors.primary,
+  },
+  ingredientContent: {
+    flex: 1,
+    flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
+    alignItems: "center",
   },
   ingredientName: {
-    fontSize: 14,
+    fontSize: 16,
     color: AiraColors.foreground,
+    fontWeight: "500",
+    flex: 1,
   },
   ingredientAmount: {
     fontSize: 14,
     color: AiraColors.mutedForeground,
+    fontWeight: "600",
   },
-  preparationList: {
-    marginBottom: 16,
+  stepsList: {
+    gap: 20,
   },
-  preparationStep: {
+  stepItem: {
     flexDirection: "row",
-    marginBottom: 16,
+    gap: 16,
   },
   stepNumber: {
-    width: 24,
-    height: 24,
-    borderRadius: AiraVariants.tagRadius,
+    width: 32,
+    height: 32,
+    borderRadius: 16,
     backgroundColor: AiraColors.primary,
-    alignItems: "center",
     justifyContent: "center",
-    marginRight: 12,
+    alignItems: "center",
     marginTop: 2,
   },
   stepNumberText: {
+    fontSize: 14,
+    fontWeight: "700",
     color: AiraColors.primaryForeground,
-    fontSize: 12,
   },
   stepText: {
     flex: 1,
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    lineHeight: 20,
-  },
-  encouragementCard: {
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
-    borderRadius: AiraVariants.cardRadius,
-    padding: 16,
-    marginBottom: 16,
-    alignItems: "center",
-  },
-  encouragementEmoji: {
-    fontSize: 32,
-    marginBottom: 8,
-  },
-  encouragementTitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: AiraColors.foreground,
-    marginBottom: 8,
+    lineHeight: 24,
+    fontWeight: "400",
   },
-  encouragementText: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    textAlign: "center",
-    lineHeight: 22,
+  bottomSpacing: {
+    height: 40,
   },
 });

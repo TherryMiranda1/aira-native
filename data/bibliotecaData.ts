@@ -5,14 +5,14 @@ export const bibliotecaData: LibrarySection[] = [
     id: "recetas",
     title: "Recetas Saludables",
     description: "Transforma tu cocina en tu templo de bienestar",
-    href: "/recipes",
+    href: "/dashboard/recipes",
     gradient: "from-orange-400 to-pink-400",
     icon: "restaurant",
     categories: [
       {
         id: "desayuno",
         title: "Desayunos Nutritivos",
-        href: "/recipes?category=desayuno",
+        href: "/dashboard/recipes?category=desayuno",
         icon: "cafe",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/desayuno_dqof52.jpg",
@@ -22,7 +22,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "almuerzo",
         title: "Almuerzos Equilibrados",
-        href: "/recipes?category=almuerzo",
+        href: "/dashboard/recipes?category=almuerzo",
         icon: "restaurant",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916745/almuerzo_kzoujy.jpg",
@@ -31,7 +31,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "cena",
         title: "Cenas Ligeras",
-        href: "/recipes?category=cena",
+        href: "/dashboard/recipes?category=cena",
         icon: "restaurant",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916747/cena_foft5p.jpg",
@@ -40,7 +40,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "snacks",
         title: "Snacks",
-        href: "/recipes?category=snack",
+        href: "/dashboard/recipes?category=snack",
         icon: "fast-food",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/merienda_tvsh5o.jpg",
@@ -49,7 +49,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "postres",
         title: "Postres Conscientes",
-        href: "/recipes?category=postre",
+        href: "/dashboard/recipes?category=postre",
         icon: "ice-cream",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916754/postre_djqonz.jpg",
@@ -61,14 +61,14 @@ export const bibliotecaData: LibrarySection[] = [
     id: "ejercicios",
     title: "Ejercicios Personalizados",
     description: "Fortalece tu cuerpo con movimientos conscientes",
-    href: "/exercises",
+    href: "/dashboard/exercises",
     gradient: "from-blue-400 to-purple-400",
     icon: "fitness",
     categories: [
       {
         id: "pecho",
         title: "Pecho",
-        href: "/exercises?category=pecho",
+        href: "/dashboard/exercises?category=pecho",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916750/chest_mc5eyg.jpg",
@@ -78,7 +78,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "espalda",
         title: "Espalda",
-        href: "/exercises?category=espalda",
+        href: "/dashboard/exercises?category=espalda",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916746/back_vdw5to.jpg",
@@ -87,7 +87,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "piernas",
         title: "Piernas",
-        href: "/exercises?category=piernas",
+        href: "/dashboard/exercises?category=piernas",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/legs_edn2rt.jpg",
@@ -96,7 +96,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "hombros",
         title: "Hombros",
-        href: "/exercises?category=hombros",
+        href: "/dashboard/exercises?category=hombros",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916755/shoulders_mrjmx3.jpg",
@@ -105,7 +105,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "biceps",
         title: "Biceps",
-        href: "/exercises?category=biceps",
+        href: "/dashboard/exercises?category=biceps",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916747/biceps_eqo1rm.jpg",
@@ -114,7 +114,7 @@ export const bibliotecaData: LibrarySection[] = [
       {
         id: "triceps",
         title: "Tríceps",
-        href: "/exercises?category=triceps",
+        href: "/dashboard/exercises?category=triceps",
         icon: "body",
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916757/triceps_tdoqxx.jpg",
@@ -122,53 +122,7 @@ export const bibliotecaData: LibrarySection[] = [
       },
     ],
   },
-  {
-    id: "planes-ia",
-    title: "Planes con IA",
-    description: "Obtén sugerencias personalizadas de Aira",
-    href: "/dashboard/plans/complete-plan",
-    gradient: "from-cyan-400 to-blue-400",
-    icon: "sparkles",
-    categories: [
-      {
-        id: "exercise-suggestion",
-        title: "Sugerencias de Ejercicio",
-        href: "/dashboard/plans/exercise-suggestion",
-        icon: "bulb",
-        image:
-          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916750/chest_mc5eyg.jpg",
-        description: "Ejercicios personalizados para ti",
-        featured: true,
-      },
-      {
-        id: "daily-meal-plan",
-        title: "Plan de Comidas Diarias",
-        href: "/dashboard/plans/daily-meal-plan",
-        icon: "restaurant",
-        image:
-          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/desayuno_dqof52.jpg",
-        description: "Planifica tus comidas del día",
-      },
-      {
-        id: "workout-routine",
-        title: "Rutina de Ejercicio",
-        href: "/dashboard/plans/workout-routine",
-        icon: "fitness",
-        image:
-          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916746/back_vdw5to.jpg",
-        description: "Rutinas completas de entrenamiento",
-      },
-      {
-        id: "recipe-suggestion",
-        title: "Sugerencias de Recetas",
-        href: "/dashboard/plans/recipe-suggestion",
-        icon: "cafe",
-        image:
-          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/merienda_tvsh5o.jpg",
-        description: "Recetas adaptadas a tus gustos",
-      },
-    ],
-  },
+
   {
     id: "mini-retos",
     title: "Mini Retos",

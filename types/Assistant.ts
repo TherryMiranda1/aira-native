@@ -90,7 +90,39 @@ type ExerciseSuggestionOutput = {
     | undefined;
 };
 
-// Motivational Output
+// Motivational Input & Output
+export interface ProvideMotivationInput {
+  userInput: string;
+  history?: {
+    role: "user" | "model";
+    text: string;
+  }[];
+  assistantConfig?: {
+    personality?: {
+      communicationTone?: string;
+      energyLevel?: string;
+      motivationStyle?: string;
+      empathyLevel?: string;
+    };
+    communication?: {
+      responseLength?: string;
+      emojiUsage?: string;
+      languageStyle?: string;
+      questioningStyle?: string;
+    };
+    guidance?: {
+      adviceDepth?: string;
+      focusAreas?: string[];
+      suggestionStyle?: string;
+    };
+    customization?: {
+      preferredGreetings?: string[];
+      avoidTerms?: string[];
+      specialInstructions?: string;
+    };
+  };
+}
+
 type MotivationalOutput = {
   message: string;
   suggestedNextActions?:

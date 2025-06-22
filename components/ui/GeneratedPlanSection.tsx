@@ -80,63 +80,60 @@ export const GeneratedPlanSection = ({
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Header */}
       <View style={styles.header}>
         <LinearGradient
           colors={[AiraColors.primary, AiraColors.accent]}
           style={styles.headerGradient}
         >
-          <Ionicons name="sparkles" size={32} color="white" />
-          <ThemedText style={styles.headerTitle}>
+          <Ionicons name="sparkles" size={28} color="white" />
+          <ThemedText type="title" style={styles.headerTitle}>
             Tu Plan Personalizado
           </ThemedText>
-          <ThemedText style={styles.headerSubtitle}>
-            Diseñado especialmente para ti por Aira
+          <ThemedText type="default" style={styles.headerSubtitle}>
+            Diseñado especialmente para ti
           </ThemedText>
         </LinearGradient>
       </View>
 
-      {/* Action Buttons */}
-      <View style={styles.actionsContainer}>
-        <TouchableOpacity
-          style={[styles.actionButton, styles.saveButton]}
-          onPress={handleSave}
-          disabled={isSaving}
-        >
-          <LinearGradient
-            colors={["#10B981", "#059669"]}
-            style={styles.actionButtonGradient}
+      <View style={styles.controlsSection}>
+        <View style={styles.controlsRow}>
+          <TouchableOpacity
+            style={styles.regenerateButton}
+            onPress={handleRegenerate}
+            disabled={isRegenerating}
           >
             <Ionicons
-              name={isSaving ? "hourglass" : "bookmark"}
-              size={20}
-              color="white"
-            />
-            <ThemedText style={styles.actionButtonText}>
-              {isSaving ? "Guardando..." : "Guardar Plan"}
-            </ThemedText>
-          </LinearGradient>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={[styles.actionButton, styles.regenerateButton]}
-          onPress={handleRegenerate}
-          disabled={isRegenerating}
-        >
-          <View style={styles.outlineButton}>
-            <Ionicons
               name={isRegenerating ? "hourglass" : "refresh"}
-              size={20}
+              size={18}
               color={AiraColors.primary}
             />
-            <ThemedText style={styles.outlineButtonText}>
+            <ThemedText type="small" style={styles.regenerateButtonText}>
               {isRegenerating ? "Regenerando..." : "Regenerar"}
             </ThemedText>
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.saveButton}
+            onPress={handleSave}
+            disabled={isSaving}
+          >
+            <LinearGradient
+              colors={["#10B981", "#059669"]}
+              style={styles.saveGradient}
+            >
+              <Ionicons
+                name={isSaving ? "hourglass" : "bookmark"}
+                size={18}
+                color="white"
+              />
+              <ThemedText type="small" style={styles.saveButtonText}>
+                {isSaving ? "Guardando..." : "Guardar Plan"}
+              </ThemedText>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       </View>
 
-      {/* Plan Nutricional */}
       <View style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.sectionHeader}
@@ -146,109 +143,112 @@ export const GeneratedPlanSection = ({
             colors={["#10B981", "#059669"]}
             style={styles.sectionIcon}
           >
-            <Ionicons name="restaurant" size={24} color="white" />
+            <Ionicons name="restaurant" size={20} color="white" />
           </LinearGradient>
           <View style={styles.sectionTitleContainer}>
-            <ThemedText style={styles.sectionTitle}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
               Plan Nutricional
             </ThemedText>
-            <ThemedText style={styles.sectionSubtitle}>
+            <ThemedText type="small" style={styles.sectionSubtitle}>
               Tu guía alimentaria personalizada
             </ThemedText>
           </View>
           <Ionicons
             name={expandedSections.nutrition ? "chevron-up" : "chevron-down"}
-            size={20}
+            size={18}
             color={AiraColors.mutedForeground}
           />
         </TouchableOpacity>
 
         {expandedSections.nutrition && (
           <View style={styles.sectionContent}>
-            {/* Mensaje introductorio */}
             <View style={styles.messageContainer}>
-              <ThemedText style={styles.messageText}>
+              <ThemedText type="default" style={styles.messageText}>
                 {plan.planNutricional.mensajeIntroductorio}
               </ThemedText>
             </View>
 
-            {/* Macros */}
             <View style={styles.macrosContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Distribución de Macronutrientes
               </ThemedText>
               <View style={styles.macrosGrid}>
                 <View style={styles.macroCard}>
-                  <ThemedText style={styles.macroLabel}>Calorías</ThemedText>
-                  <ThemedText style={styles.macroValue}>
+                  <ThemedText type="small" style={styles.macroLabel}>
+                    Calorías
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.macroValue}>
                     {plan.planNutricional.desgloseMacros.caloriasTotales}
                   </ThemedText>
                 </View>
                 <View style={styles.macroCard}>
-                  <ThemedText style={styles.macroLabel}>Proteínas</ThemedText>
-                  <ThemedText style={styles.macroValue}>
+                  <ThemedText type="small" style={styles.macroLabel}>
+                    Proteínas
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.macroValue}>
                     {plan.planNutricional.desgloseMacros.proteinas}
                   </ThemedText>
                 </View>
                 <View style={styles.macroCard}>
-                  <ThemedText style={styles.macroLabel}>
+                  <ThemedText type="small" style={styles.macroLabel}>
                     Carbohidratos
                   </ThemedText>
-                  <ThemedText style={styles.macroValue}>
+                  <ThemedText type="small" style={styles.macroValue}>
                     {plan.planNutricional.desgloseMacros.carbohidratos}
                   </ThemedText>
                 </View>
                 <View style={styles.macroCard}>
-                  <ThemedText style={styles.macroLabel}>Grasas</ThemedText>
-                  <ThemedText style={styles.macroValue}>
+                  <ThemedText type="small" style={styles.macroLabel}>
+                    Grasas
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.macroValue}>
                     {plan.planNutricional.desgloseMacros.grasas}
                   </ThemedText>
                 </View>
               </View>
             </View>
 
-            {/* Distribución de comidas */}
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Distribución de Comidas
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {plan.planNutricional.distribucionComidas}
               </ThemedText>
             </View>
 
-            {/* Ejemplos de recetas */}
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Ideas de Comidas
               </ThemedText>
-              {plan.planNutricional.ejemplosRecetasPlatos.map((meal, index) => (
-                <View key={index} style={styles.mealContainer}>
-                  <ThemedText style={styles.mealTitle}>
-                    {meal.tipoComida}
-                  </ThemedText>
-                  {meal.opciones.map((option, optIndex) => (
-                    <View key={optIndex} style={styles.mealOption}>
-                      <Ionicons
-                        name="checkmark-circle"
-                        size={16}
-                        color={AiraColors.primary}
-                      />
-                      <ThemedText style={styles.mealOptionText}>
-                        {option}
-                      </ThemedText>
-                    </View>
-                  ))}
-                </View>
-              ))}
+              {plan.planNutricional.ejemplosRecetasPlatos
+                .slice(0, 3)
+                .map((meal, index) => (
+                  <View key={index} style={styles.mealContainer}>
+                    <ThemedText type="small" style={styles.mealTitle}>
+                      {meal.tipoComida}
+                    </ThemedText>
+                    {meal.opciones.slice(0, 2).map((option, optIndex) => (
+                      <View key={optIndex} style={styles.mealOption}>
+                        <Ionicons
+                          name="checkmark-circle"
+                          size={14}
+                          color={AiraColors.primary}
+                        />
+                        <ThemedText type="small" style={styles.mealOptionText}>
+                          {option}
+                        </ThemedText>
+                      </View>
+                    ))}
+                  </View>
+                ))}
             </View>
 
-            {/* Consejos de preparación */}
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Consejos de Preparación
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {plan.planNutricional.consejosPreparacionTiming}
               </ThemedText>
             </View>
@@ -256,101 +256,113 @@ export const GeneratedPlanSection = ({
         )}
       </View>
 
-      {/* Programa de Entrenamiento */}
       <View style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => toggleSection("workout")}
         >
           <LinearGradient
-            colors={["#3B82F6", "#1E40AF"]}
+            colors={["#EF4444", "#F97316"]}
             style={styles.sectionIcon}
           >
-            <Ionicons name="fitness" size={24} color="white" />
+            <Ionicons name="fitness" size={20} color="white" />
           </LinearGradient>
           <View style={styles.sectionTitleContainer}>
-            <ThemedText style={styles.sectionTitle}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
               Programa de Entrenamiento
             </ThemedText>
-            <ThemedText style={styles.sectionSubtitle}>
+            <ThemedText type="small" style={styles.sectionSubtitle}>
               Tu rutina de ejercicios personalizada
             </ThemedText>
           </View>
           <Ionicons
             name={expandedSections.workout ? "chevron-up" : "chevron-down"}
-            size={20}
+            size={18}
             color={AiraColors.mutedForeground}
           />
         </TouchableOpacity>
 
         {expandedSections.workout && (
           <View style={styles.sectionContent}>
-            {/* Tipo de ejercicio */}
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Tipo de Ejercicio
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {plan.programaEntrenamiento.tipoEjercicio}
               </ThemedText>
             </View>
 
-            {/* Frecuencia */}
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Frecuencia Semanal
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {plan.programaEntrenamiento.frecuenciaVolumenSemanal}
               </ThemedText>
             </View>
 
-            {/* Sesiones detalladas */}
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Sesiones de Entrenamiento
               </ThemedText>
-              {plan.programaEntrenamiento.ejerciciosDetalladosPorSesion.map(
-                (session, index) => (
+              {plan.programaEntrenamiento.ejerciciosDetalladosPorSesion
+                .slice(0, 2)
+                .map((session, index) => (
                   <View key={index} style={styles.sessionContainer}>
-                    <ThemedText style={styles.sessionTitle}>
+                    <ThemedText type="small" style={styles.sessionTitle}>
                       {session.nombreSesion}
                     </ThemedText>
                     {session.descripcionSesion && (
-                      <ThemedText style={styles.sessionDescription}>
+                      <ThemedText
+                        type="small"
+                        style={styles.sessionDescription}
+                      >
                         {session.descripcionSesion}
                       </ThemedText>
                     )}
                     <View style={styles.exercisesContainer}>
-                      {session.ejercicios.map((exercise, exIndex) => (
-                        <View key={exIndex} style={styles.exerciseCard}>
-                          <ThemedText style={styles.exerciseName}>
-                            {exercise.nombreEjercicio}
-                          </ThemedText>
-                          <ThemedText style={styles.exerciseDetails}>
-                            {exercise.seriesRepeticiones} • Descanso:{" "}
-                            {exercise.descanso}
-                          </ThemedText>
-                          {exercise.alternativaOpcional && (
-                            <ThemedText style={styles.exerciseAlternative}>
-                              Alternativa: {exercise.alternativaOpcional}
+                      {session.ejercicios
+                        .slice(0, 3)
+                        .map((exercise, exIndex) => (
+                          <View key={exIndex} style={styles.exerciseCard}>
+                            <ThemedText
+                              type="small"
+                              style={styles.exerciseName}
+                            >
+                              {exercise.nombreEjercicio}
                             </ThemedText>
-                          )}
-                        </View>
-                      ))}
+                            <ThemedText
+                              type="small"
+                              style={styles.exerciseDetails}
+                            >
+                              {exercise.seriesRepeticiones} • Descanso:{" "}
+                              {exercise.descanso}
+                            </ThemedText>
+                            {exercise.alternativaOpcional && (
+                              <ThemedText
+                                type="small"
+                                style={styles.exerciseAlternative}
+                              >
+                                Alternativa: {exercise.alternativaOpcional}
+                              </ThemedText>
+                            )}
+                          </View>
+                        ))}
                     </View>
                   </View>
-                )
-              )}
+                ))}
             </View>
 
-            {/* Opciones alternativas */}
             {plan.programaEntrenamiento.opcionesAlternativas && (
               <View style={styles.subsectionContainer}>
-                <ThemedText style={styles.subsectionTitle}>
+                <ThemedText
+                  type="defaultSemiBold"
+                  style={styles.subsectionTitle}
+                >
                   Opciones Alternativas
                 </ThemedText>
-                <ThemedText style={styles.subsectionText}>
+                <ThemedText type="small" style={styles.subsectionText}>
                   {plan.programaEntrenamiento.opcionesAlternativas}
                 </ThemedText>
               </View>
@@ -359,7 +371,6 @@ export const GeneratedPlanSection = ({
         )}
       </View>
 
-      {/* Seguimiento y Ajustes */}
       <View style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.sectionHeader}
@@ -369,19 +380,19 @@ export const GeneratedPlanSection = ({
             colors={["#F59E0B", "#D97706"]}
             style={styles.sectionIcon}
           >
-            <Ionicons name="analytics" size={24} color="white" />
+            <Ionicons name="analytics" size={20} color="white" />
           </LinearGradient>
           <View style={styles.sectionTitleContainer}>
-            <ThemedText style={styles.sectionTitle}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
               Seguimiento y Progreso
             </ThemedText>
-            <ThemedText style={styles.sectionSubtitle}>
+            <ThemedText type="small" style={styles.sectionSubtitle}>
               Cómo medir tu evolución
             </ThemedText>
           </View>
           <Ionicons
             name={expandedSections.tracking ? "chevron-up" : "chevron-down"}
-            size={20}
+            size={18}
             color={AiraColors.mutedForeground}
           />
         </TouchableOpacity>
@@ -389,19 +400,19 @@ export const GeneratedPlanSection = ({
         {expandedSections.tracking && (
           <View style={styles.sectionContent}>
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Indicadores de Progreso
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {plan.sugerenciasSeguimientoAjustes.indicadoresProgreso}
               </ThemedText>
             </View>
 
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Revisiones y Modificaciones
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {
                   plan.sugerenciasSeguimientoAjustes
                     .frecuenciaRevisionesModificaciones
@@ -410,10 +421,10 @@ export const GeneratedPlanSection = ({
             </View>
 
             <View style={styles.subsectionContainer}>
-              <ThemedText style={styles.subsectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Estrategias de Motivación
               </ThemedText>
-              <ThemedText style={styles.subsectionText}>
+              <ThemedText type="small" style={styles.subsectionText}>
                 {
                   plan.sugerenciasSeguimientoAjustes
                     .estrategiasMotivacionAdherencia
@@ -422,7 +433,7 @@ export const GeneratedPlanSection = ({
             </View>
 
             <View style={styles.finalMessageContainer}>
-              <ThemedText style={styles.finalMessage}>
+              <ThemedText type="default" style={styles.finalMessage}>
                 {plan.sugerenciasSeguimientoAjustes.mensajeFinalMotivador}
               </ThemedText>
             </View>
@@ -430,7 +441,6 @@ export const GeneratedPlanSection = ({
         )}
       </View>
 
-      {/* Parámetros utilizados */}
       {onEditParams && (
         <View style={styles.sectionContainer}>
           <TouchableOpacity
@@ -441,23 +451,25 @@ export const GeneratedPlanSection = ({
               colors={[AiraColors.mutedForeground, AiraColors.muted]}
               style={styles.sectionIcon}
             >
-              <Ionicons name="settings" size={24} color="white" />
+              <Ionicons name="settings" size={20} color="white" />
             </LinearGradient>
             <View style={styles.sectionTitleContainer}>
-              <ThemedText style={styles.sectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
                 Parámetros Utilizados
               </ThemedText>
-              <ThemedText style={styles.sectionSubtitle}>
+              <ThemedText type="small" style={styles.sectionSubtitle}>
                 Información usada para generar tu plan
               </ThemedText>
             </View>
             <TouchableOpacity style={styles.editButton} onPress={onEditParams}>
-              <Ionicons name="create" size={16} color={AiraColors.primary} />
-              <ThemedText style={styles.editButtonText}>Editar</ThemedText>
+              <Ionicons name="create" size={14} color={AiraColors.primary} />
+              <ThemedText type="small" style={styles.editButtonText}>
+                Editar
+              </ThemedText>
             </TouchableOpacity>
             <Ionicons
               name={expandedSections.params ? "chevron-up" : "chevron-down"}
-              size={20}
+              size={18}
               color={AiraColors.mutedForeground}
             />
           </TouchableOpacity>
@@ -466,26 +478,34 @@ export const GeneratedPlanSection = ({
             <View style={styles.sectionContent}>
               <View style={styles.paramsGrid}>
                 <View style={styles.paramItem}>
-                  <ThemedText style={styles.paramLabel}>Objetivo</ThemedText>
-                  <ThemedText style={styles.paramValue}>
+                  <ThemedText type="small" style={styles.paramLabel}>
+                    Objetivo
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.paramValue}>
                     {inputParams.objetivo}
                   </ThemedText>
                 </View>
                 <View style={styles.paramItem}>
-                  <ThemedText style={styles.paramLabel}>Plazo</ThemedText>
-                  <ThemedText style={styles.paramValue}>
+                  <ThemedText type="small" style={styles.paramLabel}>
+                    Plazo
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.paramValue}>
                     {inputParams.plazo || "Flexible"}
                   </ThemedText>
                 </View>
                 <View style={styles.paramItem}>
-                  <ThemedText style={styles.paramLabel}>Edad</ThemedText>
-                  <ThemedText style={styles.paramValue}>
+                  <ThemedText type="small" style={styles.paramLabel}>
+                    Edad
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.paramValue}>
                     {inputParams.age} años
                   </ThemedText>
                 </View>
                 <View style={styles.paramItem}>
-                  <ThemedText style={styles.paramLabel}>Experiencia</ThemedText>
-                  <ThemedText style={styles.paramValue}>
+                  <ThemedText type="small" style={styles.paramLabel}>
+                    Experiencia
+                  </ThemedText>
+                  <ThemedText type="small" style={styles.paramValue}>
                     {inputParams.nivel_entrenamiento || "No especificado"}
                   </ThemedText>
                 </View>
@@ -506,73 +526,67 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.background,
   },
   header: {
-    marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 24,
+    marginHorizontal: 16,
+    marginTop: 16,
+    marginBottom: 16,
     borderRadius: AiraVariants.cardRadius,
     overflow: "hidden",
   },
   headerGradient: {
-    padding: 24,
+    padding: 20,
     alignItems: "center",
     gap: 8,
   },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: "700",
     color: "white",
     textAlign: "center",
   },
   headerSubtitle: {
-    fontSize: 16,
     color: "rgba(255, 255, 255, 0.9)",
     textAlign: "center",
   },
-  actionsContainer: {
+  controlsSection: {
+    marginHorizontal: 16,
+    marginBottom: 16,
+  },
+  controlsRow: {
     flexDirection: "row",
     gap: 12,
-    marginHorizontal: 20,
-    marginBottom: 24,
   },
-  actionButton: {
+  regenerateButton: {
     flex: 1,
-    borderRadius: AiraVariants.cardRadius,
-    overflow: "hidden",
-  },
-  saveButton: {},
-  regenerateButton: {},
-  actionButtonGradient: {
     paddingVertical: 12,
     paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-  },
-  outlineButton: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
+    gap: 6,
     borderWidth: 1,
     borderColor: AiraColors.primary,
     backgroundColor: AiraColors.background,
     borderRadius: AiraVariants.cardRadius,
   },
-  actionButtonText: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "white",
-  },
-  outlineButtonText: {
-    fontSize: 14,
-    fontWeight: "600",
+  regenerateButtonText: {
     color: AiraColors.primary,
   },
+  saveButton: {
+    flex: 1,
+    borderRadius: AiraVariants.cardRadius,
+    overflow: "hidden",
+  },
+  saveGradient: {
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+  },
+  saveButtonText: {
+    color: "white",
+  },
   sectionContainer: {
-    marginHorizontal: 20,
+    marginHorizontal: 16,
     marginBottom: 16,
     backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
@@ -587,9 +601,9 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   sectionIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 12,
+    width: 40,
+    height: 40,
+    borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -597,13 +611,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
     color: AiraColors.foreground,
     marginBottom: 2,
   },
   sectionSubtitle: {
-    fontSize: 14,
     color: AiraColors.mutedForeground,
   },
   editButton: {
@@ -616,8 +627,6 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   editButtonText: {
-    fontSize: 12,
-    fontWeight: "500",
     color: AiraColors.primary,
   },
   sectionContent: {
@@ -633,9 +642,8 @@ const styles = StyleSheet.create({
     borderLeftColor: AiraColors.primary,
   },
   messageText: {
-    fontSize: 16,
     color: AiraColors.foreground,
-    lineHeight: 24,
+    lineHeight: 20,
   },
   macrosContainer: {
     gap: 12,
@@ -655,28 +663,21 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   macroLabel: {
-    fontSize: 12,
-    fontWeight: "500",
     color: AiraColors.mutedForeground,
     marginBottom: 4,
   },
   macroValue: {
-    fontSize: 14,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   subsectionContainer: {
     gap: 8,
   },
   subsectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   subsectionText: {
-    fontSize: 14,
     color: AiraColors.foreground,
-    lineHeight: 20,
+    lineHeight: 18,
   },
   mealContainer: {
     backgroundColor: AiraColors.background,
@@ -685,8 +686,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   mealTitle: {
-    fontSize: 14,
-    fontWeight: "600",
     color: AiraColors.primary,
   },
   mealOption: {
@@ -695,7 +694,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   mealOptionText: {
-    fontSize: 14,
     color: AiraColors.foreground,
     flex: 1,
   },
@@ -706,14 +704,11 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   sessionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   sessionDescription: {
-    fontSize: 14,
     color: AiraColors.mutedForeground,
-    lineHeight: 20,
+    lineHeight: 18,
   },
   exercisesContainer: {
     gap: 8,
@@ -727,16 +722,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   exerciseName: {
-    fontSize: 14,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   exerciseDetails: {
-    fontSize: 12,
     color: AiraColors.mutedForeground,
   },
   exerciseAlternative: {
-    fontSize: 12,
     color: AiraColors.primary,
     fontStyle: "italic",
   },
@@ -748,11 +739,9 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.accentWithOpacity(0.2),
   },
   finalMessage: {
-    fontSize: 16,
     color: AiraColors.foreground,
-    lineHeight: 24,
+    lineHeight: 20,
     textAlign: "center",
-    fontWeight: "500",
   },
   paramsGrid: {
     flexDirection: "row",
@@ -768,16 +757,12 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   paramLabel: {
-    fontSize: 12,
-    fontWeight: "500",
     color: AiraColors.mutedForeground,
   },
   paramValue: {
-    fontSize: 14,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   bottomSpacing: {
-    height: 40,
+    height: 32,
   },
 });

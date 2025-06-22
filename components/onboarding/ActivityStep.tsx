@@ -334,11 +334,7 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 5,
+
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },

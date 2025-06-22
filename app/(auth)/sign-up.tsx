@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   View,
   Image,
@@ -13,6 +12,7 @@ import {
 import { useSignUp } from "@clerk/clerk-expo";
 import { Link, Stack, useRouter } from "expo-router";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedInput } from "@/components/ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ionicons } from "@expo/vector-icons";
@@ -180,9 +180,8 @@ export default function SignUpScreen() {
                   color={AiraColors.mutedForeground}
                   style={styles.inputIcon}
                 />
-                <TextInput
-                  style={styles.input}
-                  placeholderTextColor={AiraColors.mutedForeground}
+                <ThemedInput
+                  variant="numeric"
                   value={code}
                   placeholder="Enter verification code"
                   onChangeText={setCode}
@@ -266,9 +265,7 @@ export default function SignUpScreen() {
                 color={AiraColors.mutedForeground}
                 style={styles.inputIcon}
               />
-              <TextInput
-                style={styles.input}
-                placeholderTextColor={AiraColors.mutedForeground}
+              <ThemedInput
                 autoCapitalize="none"
                 keyboardType="email-address"
                 value={emailAddress}
@@ -284,9 +281,8 @@ export default function SignUpScreen() {
                 color={AiraColors.mutedForeground}
                 style={styles.inputIcon}
               />
-              <TextInput
-                style={styles.input}
-                placeholderTextColor={AiraColors.mutedForeground}
+              <ThemedInput
+                variant="password"
                 value={password}
                 placeholder="Contraseña (min. 8 caracteres)"
                 secureTextEntry={!showPassword}
@@ -415,13 +411,7 @@ const styles = StyleSheet.create({
   inputIcon: {
     marginRight: 12,
   },
-  input: {
-    flex: 1,
-    height: "100%",
-    fontFamily: "Montserrat",
-    color: AiraColors.foreground,
-    fontSize: 16,
-  },
+
   passwordToggle: {
     padding: 8,
   },

@@ -42,7 +42,7 @@ export const ExistingPlansSection = ({
   const handleDeletePress = (plan: GeneratedPlan) => {
     Alert.alert(
       "Eliminar Plan",
-      `¿Estás segura de que quieres eliminar "${plan.title}"?`,
+      `¿Segura que quieres eliminar "${plan.title}"?`,
       [
         { text: "Cancelar", style: "cancel" },
         {
@@ -56,10 +56,17 @@ export const ExistingPlansSection = ({
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 1) return "Hoy";
+    if (diffDays === 2) return "Ayer";
+    if (diffDays <= 7) return `Hace ${diffDays - 1} días`;
+    
     return date.toLocaleDateString("es-ES", {
       day: "numeric",
-      month: "long",
-      year: "numeric",
+      month: "short",
     });
   };
 
@@ -93,6 +100,21 @@ export const ExistingPlansSection = ({
     }
   };
 
+  const getPlanTypeColor = (type: string) => {
+    switch (type) {
+      case "comprehensive":
+        return [AiraColors.primary, AiraColors.accent];
+      case "nutrition":
+        return [AiraColors.accent, "#10B981"];
+      case "workout":
+        return ["#EF4444", "#F97316"];
+      case "wellness":
+        return ["#8B5CF6", "#A855F7"];
+      default:
+        return [AiraColors.primary, AiraColors.accent];
+    }
+  };
+
   if (plans.length === 0) {
     return (
       <View style={styles.emptyContainer}>
@@ -102,12 +124,11 @@ export const ExistingPlansSection = ({
             size={48}
             color={AiraColors.mutedForeground}
           />
-          <ThemedText style={styles.emptyTitle}>
+          <ThemedText type="subtitle" style={styles.emptyTitle}>
             No tienes planes guardados
           </ThemedText>
-          <ThemedText style={styles.emptyDescription}>
-            Genera tu primer plan personalizado y se guardará aquí
-            automáticamente
+          <ThemedText type="small" style={styles.emptyDescription}>
+            Genera tu primer plan personalizado y aparecerá aquí
           </ThemedText>
         </View>
       </View>
@@ -117,11 +138,13 @@ export const ExistingPlansSection = ({
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <ThemedText style={styles.sectionTitle}>
-          Tus Planes Guardados
+        <ThemedText type="subtitle" style={styles.sectionTitle}>
+          Planes Guardados
         </ThemedText>
         <View style={styles.countBadge}>
-          <ThemedText style={styles.countText}>{plans.length}</ThemedText>
+          <ThemedText type="small" style={styles.countText}>
+            {plans.length}
+          </ThemedText>
         </View>
       </View>
 
@@ -138,12 +161,12 @@ export const ExistingPlansSection = ({
           >
             <View style={styles.planHeader}>
               <LinearGradient
-                colors={[AiraColors.primary, AiraColors.accent]}
+                colors={getPlanTypeColor(plan.planType) as [string, string]}
                 style={styles.planIcon}
               >
                 <Ionicons
                   name={getPlanTypeIcon(plan.planType)}
-                  size={20}
+                  size={18}
                   color="white"
                 />
               </LinearGradient>
@@ -155,7 +178,7 @@ export const ExistingPlansSection = ({
                 >
                   <Ionicons
                     name="close-circle"
-                    size={20}
+                    size={18}
                     color={AiraColors.mutedForeground}
                   />
                 </TouchableOpacity>
@@ -163,18 +186,17 @@ export const ExistingPlansSection = ({
             </View>
 
             <View style={styles.planContent}>
-              <ThemedText style={styles.planTitle} numberOfLines={2}>
+              <ThemedText type="defaultSemiBold" style={styles.planTitle} numberOfLines={2}>
                 {plan.title}
               </ThemedText>
 
               <View style={styles.planMeta}>
                 <View style={styles.planTypeContainer}>
-                  <ThemedText style={styles.planType}>
+                  <ThemedText type="small" style={styles.planType}>
                     {getPlanTypeLabel(plan.planType)}
                   </ThemedText>
                 </View>
-
-                <ThemedText style={styles.planDate}>
+                <ThemedText type="small" style={styles.planDate}>
                   {formatDate(plan.createdAt)}
                 </ThemedText>
               </View>
@@ -182,7 +204,7 @@ export const ExistingPlansSection = ({
               {plan.inputParameters?.objetivo && (
                 <View style={styles.planObjective}>
                   <Ionicons name="flag" size={12} color={AiraColors.primary} />
-                  <ThemedText style={styles.objectiveText} numberOfLines={1}>
+                  <ThemedText type="small" style={styles.objectiveText} numberOfLines={1}>
                     {plan.inputParameters.objetivo}
                   </ThemedText>
                 </View>
@@ -213,8 +235,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   countBadge: {
@@ -226,8 +246,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   countText: {
-    fontSize: 12,
-    fontWeight: "600",
     color: "white",
   },
   plansContainer: {
@@ -235,8 +253,8 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   planCard: {
-    width: 280,
-    height: 180,
+    width: 260,
+    height: 160,
     backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     borderWidth: 1,
@@ -250,8 +268,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   planIcon: {
-    width: 36,
-    height: 36,
+    width: 32,
+    height: 32,
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
@@ -268,14 +286,14 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   planMeta: {
-    gap: 6,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   planTypeContainer: {
     alignSelf: "flex-start",
   },
   planType: {
-    fontSize: 12,
-    fontWeight: "500",
     color: AiraColors.primary,
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     paddingHorizontal: 8,
@@ -283,7 +301,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   planDate: {
-    fontSize: 12,
     color: AiraColors.mutedForeground,
   },
   planObjective: {
@@ -292,7 +309,6 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   objectiveText: {
-    fontSize: 12,
     color: AiraColors.foreground,
     flex: 1,
   },
@@ -312,15 +328,12 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   emptyTitle: {
-    fontSize: 18,
-    fontWeight: "600",
     color: AiraColors.foreground,
     textAlign: "center",
   },
   emptyDescription: {
-    fontSize: 14,
     color: AiraColors.mutedForeground,
     textAlign: "center",
-    lineHeight: 20,
+    lineHeight: 18,
   },
 });

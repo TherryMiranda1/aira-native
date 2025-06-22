@@ -4,3 +4,6 @@ export * from './WeekNavigation';
 export * from './TaskItem';
 export * from './TaskList';
 export * from './TaskForm';
+export * from './EventItem';
+export * from './EventList';
+export * from './EventForm';

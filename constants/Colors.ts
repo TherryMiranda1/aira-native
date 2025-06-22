@@ -74,7 +74,7 @@ export const AiraColors = {
   primary: "#77B5FE", // 209 98% 73%
   primaryForeground: "#F5FAFF", // 210 60% 98%
 
-  secondary: "#D6EBFF", // 208 100% 92%
+  secondary: "#f5f5f5", // 0 0% 96.08%
   secondaryForeground: "#394959", // 210 20% 30%
 
   muted: "#CCE4FF", // 208 100% 90%

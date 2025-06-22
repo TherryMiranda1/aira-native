@@ -25,7 +25,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   onDeleteRecurring,
 }) => {
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
-  
+
   const handleDeletePress = () => {
     // Check if this is a recurring task
     if (task.recurrence && task.recurrence.type !== RecurrenceType.NONE) {
@@ -35,10 +35,10 @@ export const TaskItem: React.FC<TaskItemProps> = ({
       onDelete(task.id);
     }
   };
-  
+
   const handleDeleteConfirm = (deleteAll: boolean) => {
     setDeleteModalVisible(false);
-    
+
     if (onDeleteRecurring) {
       onDeleteRecurring(task.id, deleteAll);
     } else {
@@ -62,9 +62,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
         onPress={() => onToggleDone(task.id)}
       />
       <View style={styles.taskContent}>
-        <ThemedText
-          style={[styles.taskTitle, task.isDone && styles.taskDone]}
-        >
+        <ThemedText style={[styles.taskTitle, task.isDone && styles.taskDone]}>
           {task.title}
         </ThemedText>
         {task.description && (
@@ -96,7 +94,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
         >
           <ThemedText>🗑️</ThemedText>
         </TouchableOpacity>
-        
+
         {/* Delete confirmation modal for recurring tasks */}
         <Modal
           visible={deleteModalVisible}
@@ -105,28 +103,33 @@ export const TaskItem: React.FC<TaskItemProps> = ({
           onRequestClose={() => setDeleteModalVisible(false)}
         >
           <View style={styles.modalContainer}>
-            <ThemedView style={styles.modalContent} lightColor={AiraColors.card} darkColor={AiraColors.card}>
+            <ThemedView
+              style={styles.modalContent}
+              lightColor={AiraColors.card}
+              darkColor={AiraColors.card}
+            >
               <ThemedText style={styles.modalTitle} type="defaultSemiBold">
                 Eliminar tarea recurrente
               </ThemedText>
-              
+
               <ThemedText style={styles.modalText}>
-                ¿Deseas eliminar solo esta ocurrencia o todas las ocurrencias de esta tarea?
+                ¿Deseas eliminar solo esta ocurrencia o todas las ocurrencias de
+                esta tarea?
               </ThemedText>
-              
+
               <View style={styles.modalButtons}>
-                <PrimaryButton 
-                  text="Cancelar" 
-                  onPress={() => setDeleteModalVisible(false)} 
+                <PrimaryButton
+                  text="Cancelar"
+                  onPress={() => setDeleteModalVisible(false)}
                   style={styles.modalButton}
                 />
-                <PrimaryButton 
-                  text="Solo esta" 
+                <PrimaryButton
+                  text="Solo esta"
                   onPress={() => handleDeleteConfirm(false)}
                   style={styles.modalButton}
                 />
-                <PrimaryButton 
-                  text="Todas" 
+                <PrimaryButton
+                  text="Todas"
                   onPress={() => handleDeleteConfirm(true)}
                   style={styles.modalButton}
                 />
@@ -194,11 +197,6 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: AiraVariants.cardRadius,
     padding: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   modalTitle: {
     fontSize: 18,

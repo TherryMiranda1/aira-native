@@ -1,13 +1,8 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedInput } from "@/components/ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { OnboardingData } from "@/app/onboarding";
 import { AiraVariants } from "@/constants/Themes";
@@ -49,8 +44,7 @@ export default function PersonalInfoStep({
           {/* Nombre */}
           <View style={styles.inputGroup}>
             <ThemedText style={styles.label}>¿Cómo te llamas? 💕</ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={data.name}
               onChangeText={(value) => updateData({ name: value })}
               placeholder="Tu nombre"
@@ -63,8 +57,8 @@ export default function PersonalInfoStep({
           {/* Edad */}
           <View style={styles.inputGroup}>
             <ThemedText style={styles.label}>¿Cuál es tu edad?</ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
+              variant="numeric"
               value={data.age}
               onChangeText={(value) => updateData({ age: value })}
               placeholder="Tu edad"
@@ -136,8 +130,8 @@ export default function PersonalInfoStep({
           <View style={styles.row}>
             <View style={[styles.inputGroup, { flex: 1, marginRight: 8 }]}>
               <ThemedText style={styles.label}>Altura (cm)</ThemedText>
-              <TextInput
-                style={styles.input}
+              <ThemedInput
+                variant="numeric"
                 value={data.height}
                 onChangeText={(value) => updateData({ height: value })}
                 placeholder="Altura"
@@ -150,8 +144,8 @@ export default function PersonalInfoStep({
 
             <View style={[styles.inputGroup, { flex: 1, marginLeft: 8 }]}>
               <ThemedText style={styles.label}>Peso (kg)</ThemedText>
-              <TextInput
-                style={styles.input}
+              <ThemedInput
+                variant="numeric"
                 value={data.weight}
                 onChangeText={(value) => updateData({ weight: value })}
                 placeholder="Peso"
@@ -201,11 +195,6 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 24,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 12,
-    elevation: 5,
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
@@ -233,16 +222,6 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 8,
-    color: AiraColors.foreground,
-  },
-  input: {
-    backgroundColor: AiraColors.background,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
-    borderRadius: AiraVariants.tagRadius,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    fontSize: 16,
     color: AiraColors.foreground,
   },
   row: {

@@ -474,7 +474,7 @@ const styles = StyleSheet.create({
     gap: 8,
     padding: 16,
     backgroundColor: AiraColorsWithAlpha.destructiveWithOpacity(0.1),
-    borderRadius: 8,
+    borderRadius: AiraVariants.cardRadius,
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.destructiveWithOpacity(0.2),
   },

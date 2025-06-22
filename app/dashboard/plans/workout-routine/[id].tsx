@@ -518,7 +518,7 @@ const styles = StyleSheet.create({
   backButton: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: AiraVariants.cardRadius,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     alignItems: "center",
     justifyContent: "center",
@@ -544,7 +544,7 @@ const styles = StyleSheet.create({
   actionButton: {
     width: 40,
     height: 40,
-    borderRadius: 20,
+    borderRadius: AiraVariants.cardRadius,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     alignItems: "center",
     justifyContent: "center",
@@ -592,7 +592,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#3B82F6",
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 8,
+    borderRadius: AiraVariants.cardRadius,
     marginTop: 8,
   },
   retryButtonText: {
@@ -616,7 +616,7 @@ const styles = StyleSheet.create({
   summaryIcon: {
     width: 48,
     height: 48,
-    borderRadius: 24,
+    borderRadius: AiraVariants.cardRadius,
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     alignItems: "center",
     justifyContent: "center",
@@ -756,7 +756,7 @@ const styles = StyleSheet.create({
   },
   exerciseItem: {
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.02),
-    borderRadius: 8,
+    borderRadius: AiraVariants.cardRadius,
     padding: 12,
     marginBottom: 8,
     marginLeft: 24,
@@ -809,7 +809,7 @@ const styles = StyleSheet.create({
     gap: 6,
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.05),
     padding: 8,
-    borderRadius: 6,
+    borderRadius: AiraVariants.cardRadius,
     marginBottom: 4,
   },
   exerciseTipsText: {

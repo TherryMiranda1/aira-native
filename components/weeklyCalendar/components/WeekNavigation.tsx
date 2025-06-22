@@ -3,12 +3,14 @@ import React, { useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import PagerView from "react-native-pager-view";
 import { WeekView } from "./WeekView";
+import { Event } from "@/services/api/event.service";
 
 interface WeekNavigationProps {
   currentWeekStart: Date;
   selectedDate: Date;
   onWeekChange: (newWeekStart: Date) => void;
   onDateSelect: (date: Date) => void;
+  events?: Event[];
 }
 
 export const WeekNavigation: React.FC<WeekNavigationProps> = ({
@@ -16,6 +18,7 @@ export const WeekNavigation: React.FC<WeekNavigationProps> = ({
   selectedDate,
   onWeekChange,
   onDateSelect,
+  events = [],
 }) => {
   const pagerRef = useRef<PagerView>(null);
 
@@ -57,6 +60,7 @@ export const WeekNavigation: React.FC<WeekNavigationProps> = ({
           weekStart={addWeeks(currentWeekStart, -1)}
           selectedDate={selectedDate}
           onSelectDate={onDateSelect}
+          events={events}
         />
       </View>
       {/* Current week */}
@@ -65,6 +69,7 @@ export const WeekNavigation: React.FC<WeekNavigationProps> = ({
           weekStart={currentWeekStart}
           selectedDate={selectedDate}
           onSelectDate={onDateSelect}
+          events={events}
         />
       </View>
       {/* Next week */}
@@ -73,6 +78,7 @@ export const WeekNavigation: React.FC<WeekNavigationProps> = ({
           weekStart={addWeeks(currentWeekStart, 1)}
           selectedDate={selectedDate}
           onSelectDate={onDateSelect}
+          events={events}
         />
       </View>
     </PagerView>

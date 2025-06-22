@@ -3,7 +3,6 @@ import {
   View,
   ScrollView,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
@@ -11,34 +10,22 @@ import {
 import { Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedInput } from "@/components/ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import { PageView } from "@/components/ui/PageView";
-
-interface Message {
-  id: string;
-  text: string;
-  isUser: boolean;
-  timestamp: Date;
-}
+import { useHealthAgent } from "@/hooks/useHealthAgent";
 
 export default function ChatScreen() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      text: "¡Hola hermosa! 💜 Soy Aira y estoy aquí para acompañarte. ¿Cómo te sientes hoy? Puedes contarme lo que quieras, estoy aquí para escucharte sin juicios.",
-      isUser: false,
-      timestamp: new Date(),
-    },
-  ]);
   const [inputMessage, setInputMessage] = useState("");
-  const [isTyping, setIsTyping] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
+  const { messages, isLoading, processUserMessage, handleOptionClick } =
+    useHealthAgent();
+
   useEffect(() => {
-    // Scroll to bottom when messages change
     if (scrollViewRef.current) {
       setTimeout(() => {
         scrollViewRef.current?.scrollToEnd({ animated: true });
@@ -46,45 +33,175 @@ export default function ChatScreen() {
     }
   }, [messages]);
 
-  const getAiraResponse = (userMessage: string): string => {
-    const responses = [
-      "Te escucho con mucho cariño. Es completamente válido sentirse así, y quiero que sepas que estás siendo muy valiente al compartir esto conmigo 💕",
-      "Gracias por confiar en mí. Cada paso que das, por pequeño que sea, es importante. ¿Te apetece que exploremos esto juntas?",
-      "Me parece hermoso que te tomes el tiempo para reflexionar sobre esto. Tu bienestar es una prioridad, no un lujo 🌸",
-      "Estoy muy orgullosa de ti por dar este paso. Recuerda que el camino del cuidado personal es único para cada persona.",
-      "Tu honestidad me conmueve. ¿Sabes qué? Está perfecto no tener todas las respuestas. Estamos aquí para descubrirlas juntas ✨",
-      "Me alegra que hayamos podido hablar de esto. Siempre puedes volver cuando necesites, estaré aquí para ti 🤗",
-    ];
+  const handleSendMessage = () => {
+    if (!inputMessage.trim() || isLoading) return;
 
-    return responses[Math.floor(Math.random() * responses.length)];
+    processUserMessage(inputMessage);
+    setInputMessage("");
   };
 
-  const handleSendMessage = () => {
-    if (!inputMessage.trim()) return;
+  const handleQuickReply = (reply: string) => {
+    setInputMessage(reply);
+  };
 
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      text: inputMessage,
-      isUser: true,
-      timestamp: new Date(),
-    };
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
-    setMessages((prev) => [...prev, userMessage]);
-    setInputMessage("");
-    setIsTyping(true);
+  const renderMessageContent = (message: any) => {
+    if (message.isLoading) {
+      return (
+        <View style={styles.loadingContainer}>
+          <View style={styles.typingDots}>
+            <View style={[styles.typingDot, styles.typingDot1]} />
+            <View style={[styles.typingDot, styles.typingDot2]} />
+            <View style={[styles.typingDot, styles.typingDot3]} />
+          </View>
+        </View>
+      );
+    }
 
-    // Simulate Aira typing
-    setTimeout(() => {
-      const airaResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: getAiraResponse(inputMessage),
-        isUser: false,
-        timestamp: new Date(),
-      };
+    if (message.recipe) {
+      return (
+        <View style={styles.contentCard}>
+          <ThemedText style={styles.contentTitle}>
+            🍳 {message.recipe.recipeName || "Receta Sugerida"}
+          </ThemedText>
+          {message.recipe.reason && (
+            <ThemedText style={styles.contentDescription}>
+              {message.recipe.reason}
+            </ThemedText>
+          )}
+          {message.recipe.ingredients && (
+            <View style={styles.contentSection}>
+              <ThemedText style={styles.contentSectionTitle}>
+                Ingredientes:
+              </ThemedText>
+              <ThemedText style={styles.contentText}>
+                {message.recipe.ingredients}
+              </ThemedText>
+            </View>
+          )}
+          {message.recipe.instructions && (
+            <View style={styles.contentSection}>
+              <ThemedText style={styles.contentSectionTitle}>
+                Preparación:
+              </ThemedText>
+              <ThemedText style={styles.contentText}>
+                {message.recipe.instructions}
+              </ThemedText>
+            </View>
+          )}
+          {message.recipe.estimatedTime && (
+            <ThemedText style={styles.contentTime}>
+              ⏱️ Tiempo estimado: {message.recipe.estimatedTime}
+            </ThemedText>
+          )}
+        </View>
+      );
+    }
 
-      setMessages((prev) => [...prev, airaResponse]);
-      setIsTyping(false);
-    }, 1500);
+    if (message.exercise) {
+      return (
+        <View style={styles.contentCard}>
+          <ThemedText style={styles.contentTitle}>
+            💪 {message.exercise.exerciseName || "Ejercicio Sugerido"}
+          </ThemedText>
+          {message.exercise.benefits && (
+            <ThemedText style={styles.contentDescription}>
+              {message.exercise.benefits}
+            </ThemedText>
+          )}
+          {message.exercise.instructions && (
+            <View style={styles.contentSection}>
+              <ThemedText style={styles.contentSectionTitle}>
+                Instrucciones:
+              </ThemedText>
+              <ThemedText style={styles.contentText}>
+                {message.exercise.instructions}
+              </ThemedText>
+            </View>
+          )}
+        </View>
+      );
+    }
+
+    if (message.fullRoutine) {
+      return (
+        <View style={styles.contentCard}>
+          <ThemedText style={styles.contentTitle}>
+            🏋️‍♀️ {message.fullRoutine.nombreRutina}
+          </ThemedText>
+          <ThemedText style={styles.contentDescription}>
+            {message.fullRoutine.descripcionGeneral}
+          </ThemedText>
+          {message.fullRoutine.sesiones?.map((sesion: any, index: number) => (
+            <View key={index} style={styles.contentSection}>
+              <ThemedText style={styles.contentSectionTitle}>
+                {sesion.nombreSesion}
+              </ThemedText>
+              {sesion.ejercicios
+                ?.slice(0, 3)
+                .map((ejercicio: any, ejIndex: number) => (
+                  <ThemedText key={ejIndex} style={styles.contentText}>
+                    • {ejercicio.nombreEjercicio} -{" "}
+                    {ejercicio.seriesRepeticiones}
+                  </ThemedText>
+                ))}
+              {sesion.ejercicios?.length > 3 && (
+                <ThemedText style={styles.contentText}>
+                  ... y {sesion.ejercicios.length - 3} ejercicios más
+                </ThemedText>
+              )}
+            </View>
+          ))}
+        </View>
+      );
+    }
+
+    if (message.dailyMealPlan) {
+      return (
+        <View style={styles.contentCard}>
+          <ThemedText style={styles.contentTitle}>
+            🥗 {message.dailyMealPlan.planTitle}
+          </ThemedText>
+          {message.dailyMealPlan.introduction && (
+            <ThemedText style={styles.contentDescription}>
+              {message.dailyMealPlan.introduction}
+            </ThemedText>
+          )}
+          {message.dailyMealPlan.meals?.map((meal: any, index: number) => (
+            <View key={index} style={styles.contentSection}>
+              <ThemedText style={styles.contentSectionTitle}>
+                {meal.mealType}
+              </ThemedText>
+              {meal.options
+                ?.slice(0, 2)
+                .map((option: string, optIndex: number) => (
+                  <ThemedText key={optIndex} style={styles.contentText}>
+                    • {option}
+                  </ThemedText>
+                ))}
+            </View>
+          ))}
+          {message.dailyMealPlan.generalTips && (
+            <View style={styles.contentSection}>
+              <ThemedText style={styles.contentSectionTitle}>
+                Consejos:
+              </ThemedText>
+              <ThemedText style={styles.contentText}>
+                {message.dailyMealPlan.generalTips}
+              </ThemedText>
+            </View>
+          )}
+        </View>
+      );
+    }
+
+    return null;
   };
 
   const quickReplies = [
@@ -93,13 +210,6 @@ export default function ChatScreen() {
     "¿Cómo empiezo?",
     "Tengo un mal día",
   ];
-
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
 
   return (
     <PageView>
@@ -115,7 +225,6 @@ export default function ChatScreen() {
         />
         <Topbar title="Chat con Aira" actions={<ProfileButton />} />
 
-        {/* Messages Container */}
         <View style={styles.messagesContainer}>
           <ScrollView
             ref={scrollViewRef}
@@ -126,12 +235,13 @@ export default function ChatScreen() {
             <ThemedText style={styles.subtitle} type="subtitle">
               Un espacio seguro para compartir y crecer juntas
             </ThemedText>
+
             {messages.map((message) => (
               <View
                 key={message.id}
                 style={[
                   styles.messageRow,
-                  message.isUser
+                  message.sender === "user"
                     ? styles.userMessageRow
                     : styles.airaMessageRow,
                 ]}
@@ -139,25 +249,30 @@ export default function ChatScreen() {
                 <View
                   style={[
                     styles.messageBubble,
-                    message.isUser
+                    message.sender === "user"
                       ? styles.userMessageBubble
                       : styles.airaMessageBubble,
                   ]}
                 >
-                  <ThemedText
-                    style={[
-                      styles.messageText,
-                      message.isUser
-                        ? styles.userMessageText
-                        : styles.airaMessageText,
-                    ]}
-                  >
-                    {message.text}
-                  </ThemedText>
+                  {message.text && (
+                    <ThemedText
+                      style={[
+                        styles.messageText,
+                        message.sender === "user"
+                          ? styles.userMessageText
+                          : styles.airaMessageText,
+                      ]}
+                    >
+                      {message.text}
+                    </ThemedText>
+                  )}
+
+                  {renderMessageContent(message)}
+
                   <ThemedText
                     style={[
                       styles.messageTime,
-                      message.isUser
+                      message.sender === "user"
                         ? styles.userMessageTime
                         : styles.airaMessageTime,
                     ]}
@@ -168,66 +283,79 @@ export default function ChatScreen() {
               </View>
             ))}
 
-            {isTyping && (
-              <View style={styles.typingContainer}>
-                <View style={styles.typingBubble}>
-                  <View style={styles.typingDots}>
-                    <View style={[styles.typingDot, styles.typingDot1]} />
-                    <View style={[styles.typingDot, styles.typingDot2]} />
-                    <View style={[styles.typingDot, styles.typingDot3]} />
+            {(() => {
+              const lastMessage = messages[messages.length - 1];
+              const options = lastMessage?.options;
+              return (
+                options &&
+                options.length > 0 && (
+                  <View style={styles.optionsContainer}>
+                    <ThemedText style={styles.optionsTitle}>
+                      Puedes elegir:
+                    </ThemedText>
+                    {options.map((option, index) => (
+                      <TouchableOpacity
+                        key={option.id}
+                        style={styles.optionButton}
+                        onPress={() => handleOptionClick(option.action)}
+                      >
+                        <ThemedText style={styles.optionText}>
+                          {option.label}
+                        </ThemedText>
+                      </TouchableOpacity>
+                    ))}
                   </View>
-                </View>
-              </View>
-            )}
+                )
+              );
+            })()}
           </ScrollView>
         </View>
 
-        {/* Quick Replies */}
-        <View style={styles.quickRepliesContainer}>
-          <ThemedText style={styles.quickRepliesTitle}>
-            O puedes elegir:
-          </ThemedText>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.quickRepliesContent}
-          >
-            {quickReplies.map((reply, index) => (
-              <TouchableOpacity
-                key={index}
-                style={styles.quickReplyButton}
-                onPress={() => setInputMessage(reply)}
-              >
-                <ThemedText style={styles.quickReplyText}>{reply}</ThemedText>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
-        </View>
+        {messages.length === 0 && (
+          <View style={styles.quickRepliesContainer}>
+            <ThemedText style={styles.quickRepliesTitle}>
+              O puedes elegir:
+            </ThemedText>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.quickRepliesContent}
+            >
+              {quickReplies.map((reply, index) => (
+                <TouchableOpacity
+                  key={index}
+                  style={styles.quickReplyButton}
+                  onPress={() => handleQuickReply(reply)}
+                >
+                  <ThemedText style={styles.quickReplyText}>{reply}</ThemedText>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
 
-        {/* Message Input */}
         <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
+          <ThemedInput
+            variant="textarea"
             value={inputMessage}
             onChangeText={setInputMessage}
             placeholder="Escríbeme lo que sientes..."
-            placeholderTextColor={AiraColors.mutedForeground}
             multiline
             maxLength={500}
           />
           <TouchableOpacity
             style={[
               styles.sendButton,
-              (!inputMessage.trim() || isTyping) && styles.sendButtonDisabled,
+              (!inputMessage.trim() || isLoading) && styles.sendButtonDisabled,
             ]}
             onPress={handleSendMessage}
-            disabled={!inputMessage.trim() || isTyping}
+            disabled={!inputMessage.trim() || isLoading}
           >
             <Ionicons
               name="send"
               size={20}
               color={
-                !inputMessage.trim() || isTyping
+                !inputMessage.trim() || isLoading
                   ? AiraColors.mutedForeground
                   : "#fff"
               }
@@ -244,20 +372,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AiraColors.card,
   },
-  header: {
-    paddingTop: 60,
-    paddingHorizontal: 20,
-    paddingBottom: 16,
-    backgroundColor: AiraColors.card,
-  },
-  title: {
-    marginBottom: 8,
-  },
-  subtitle: {
-    color: AiraColors.mutedForeground,
-    fontSize: 16,
-    marginBottom: 8,
-  },
   messagesContainer: {
     flex: 1,
     paddingHorizontal: 16,
@@ -267,6 +381,11 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingVertical: 16,
+  },
+  subtitle: {
+    color: AiraColors.mutedForeground,
+    fontSize: 16,
+    marginBottom: 8,
   },
   messageRow: {
     marginBottom: 16,
@@ -282,11 +401,6 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 1,
   },
   userMessageBubble: {
     backgroundColor: AiraColors.primary,
@@ -319,17 +433,8 @@ const styles = StyleSheet.create({
   airaMessageTime: {
     color: AiraColorsWithAlpha.foregroundWithOpacity(0.6),
   },
-  typingContainer: {
-    flexDirection: "row",
-    marginBottom: 16,
-  },
-  typingBubble: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.tagRadius,
-    padding: 14,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.4),
-    borderBottomLeftRadius: 4,
+  loadingContainer: {
+    paddingVertical: 8,
   },
   typingDots: {
     flexDirection: "row",
@@ -350,6 +455,69 @@ const styles = StyleSheet.create({
   },
   typingDot3: {
     opacity: 1,
+  },
+  contentCard: {
+    marginTop: 8,
+    padding: 12,
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.5),
+    borderRadius: AiraVariants.tagRadius,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
+  },
+  contentTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: AiraColors.foreground,
+    marginBottom: 4,
+  },
+  contentDescription: {
+    fontSize: 14,
+    color: AiraColors.mutedForeground,
+    marginBottom: 8,
+    fontStyle: "italic",
+  },
+  contentSection: {
+    marginBottom: 8,
+  },
+  contentSectionTitle: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: AiraColors.foreground,
+    marginBottom: 4,
+  },
+  contentText: {
+    fontSize: 13,
+    color: AiraColors.foreground,
+    lineHeight: 18,
+  },
+  contentTime: {
+    fontSize: 12,
+    color: AiraColors.mutedForeground,
+    fontStyle: "italic",
+    marginTop: 4,
+  },
+  optionsContainer: {
+    marginTop: 16,
+    paddingHorizontal: 8,
+  },
+  optionsTitle: {
+    fontSize: 14,
+    color: AiraColors.mutedForeground,
+    marginBottom: 8,
+  },
+  optionButton: {
+    backgroundColor: AiraColors.card,
+    borderRadius: AiraVariants.tagRadius,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.4),
+  },
+  optionText: {
+    fontSize: 14,
+    color: AiraColors.foreground,
+    textAlign: "center",
   },
   quickRepliesContainer: {
     paddingHorizontal: 16,
@@ -386,18 +554,7 @@ const styles = StyleSheet.create({
     borderTopColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
     alignItems: "flex-end",
   },
-  input: {
-    flex: 1,
-    backgroundColor: AiraColors.background,
-    borderRadius: AiraVariants.cardRadius,
-    paddingHorizontal: 16,
-    paddingTop: 12,
-    paddingBottom: 12,
-    fontSize: 15,
-    maxHeight: 120,
-    color: AiraColors.foreground,
-    fontFamily: "Montserrat",
-  },
+
   sendButton: {
     backgroundColor: AiraColors.primary,
     width: 40,

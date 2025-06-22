@@ -235,11 +235,6 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    elevation: 2,
   },
   entryHeader: {
     flexDirection: "row",
@@ -290,11 +285,6 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    elevation: 2,
   },
   encouragementText: {
     fontSize: 14,

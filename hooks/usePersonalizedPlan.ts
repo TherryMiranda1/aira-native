@@ -9,6 +9,8 @@ import {
   PersonalizedPlanOutput,
   SuggestRecipeInput,
   SuggestRecipeOutput,
+  ProvideMotivationInput,
+  MotivationalOutput,
 } from "@/types/Assistant";
 
 interface APIResponse {
@@ -63,6 +65,18 @@ interface ExerciseSuggestionAPIResponse {
   success: boolean;
   exercise?: any;
   inputParams?: ExerciseSuggestionInput;
+  metadata?: {
+    userId: string;
+    generatedAt: string;
+  };
+  error?: string;
+  message?: string;
+}
+
+interface MotivationalSupportAPIResponse {
+  success: boolean;
+  motivation?: MotivationalOutput;
+  inputParams?: ProvideMotivationInput;
   metadata?: {
     userId: string;
     generatedAt: string;
@@ -173,11 +187,32 @@ export const usePersonalizedPlan = () => {
     }
   };
 
+  const generateMotivationalSupport = async (
+    input: ProvideMotivationInput
+  ): Promise<MotivationalOutput> => {
+    try {
+      const data: MotivationalSupportAPIResponse =
+        await aiClientService.generateMotivationalSupport(input);
+
+      if (!data.success || !data.motivation) {
+        throw new Error(
+          data.message || "No se pudo generar el apoyo motivacional"
+        );
+      }
+
+      return data.motivation;
+    } catch (error) {
+      console.error("Error al generar apoyo motivacional:", error);
+      throw error;
+    }
+  };
+
   return {
     generatePersonalizedPlan,
     generateDailyMealPlan,
     generateFullExerciseRoutine,
     generateRecipeSuggestion,
     generateExerciseSuggestion,
+    generateMotivationalSupport,
   };
 };

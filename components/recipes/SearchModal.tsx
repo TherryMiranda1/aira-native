@@ -2,13 +2,13 @@ import React from "react";
 import {
   View,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   Modal,
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "../ThemedText";
+import { ThemedInput } from "../ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 
@@ -56,9 +56,8 @@ export function SearchModal({
               color={AiraColors.mutedForeground}
               style={styles.searchIcon}
             />
-            <TextInput
-              style={styles.searchInput}
-              placeholderTextColor={AiraColors.mutedForeground}
+            <ThemedInput
+              variant="search"
               placeholder="Buscar recetas o ingredientes..."
               value={searchTerm}
               onChangeText={onChangeText}
@@ -182,12 +181,7 @@ const styles = StyleSheet.create({
   searchIcon: {
     marginRight: 8,
   },
-  searchInput: {
-    flex: 1,
-    height: 46,
-    color: AiraColors.foreground,
-    fontSize: 16,
-  },
+
   clearButton: {
     padding: 4,
   },

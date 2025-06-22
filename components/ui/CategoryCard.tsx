@@ -101,26 +101,32 @@ export const CategoryCard = ({
       // Navegación específica basada en la categoría
       if (category.href) {
         // Si es una categoría de frases inspiradoras y ya tiene parámetro de categoría
-        if (category.href.includes('/inspiration/frases')) {
+        if (category.href.includes("/inspiration/frases")) {
           // Si ya tiene parámetro category, usar la URL tal como está
-          if (category.href.includes('?category=')) {
-            router.push(category.href.replace('?category=', '?categoria=') as any);
+          if (category.href.includes("?category=")) {
+            router.push(
+              category.href.replace("?category=", "?categoria=") as any
+            );
           } else {
             // Si no tiene parámetro, navegar a la página general
             router.push(category.href as any);
           }
-        } else if (category.href.includes('/inspiration/mini-retos')) {
+        } else if (category.href.includes("/inspiration/mini-retos")) {
           // Si es una categoría de mini-retos y ya tiene parámetro de categoría
-          if (category.href.includes('?category=')) {
-            router.push(category.href.replace('?category=', '?categoria=') as any);
+          if (category.href.includes("?category=")) {
+            router.push(
+              category.href.replace("?category=", "?categoria=") as any
+            );
           } else {
             // Si no tiene parámetro, navegar a la página general
             router.push(category.href as any);
           }
-        } else if (category.href.includes('/inspiration/rituales')) {
+        } else if (category.href.includes("/inspiration/rituales")) {
           // Si es una categoría de rituales y ya tiene parámetro de categoría
-          if (category.href.includes('?category=')) {
-            router.push(category.href.replace('?category=', '?categoria=') as any);
+          if (category.href.includes("?category=")) {
+            router.push(
+              category.href.replace("?category=", "?categoria=") as any
+            );
           } else {
             // Si no tiene parámetro, navegar a la página general
             router.push(category.href as any);
@@ -296,14 +302,6 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 50,
     zIndex: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 4,
   },
   featuredBadgeText: {
     color: "white",
@@ -327,14 +325,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 4,
   },
   textContainer: {
     flex: 1,

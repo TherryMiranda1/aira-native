@@ -4,17 +4,20 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import React from "react";
 
 interface TopbarProps {
   title: string;
   actions?: React.ReactNode;
   showBackButton?: boolean;
+  onBack?: () => void;
 }
 
 export const Topbar = ({
   title,
   actions,
   showBackButton = false,
+  onBack,
 }: TopbarProps) => {
   const router = useRouter();
 
@@ -23,7 +26,7 @@ export const Topbar = ({
       <StatusBar style="auto" />
       <View style={styles.topbarContent}>
         {showBackButton ? (
-          <TouchableOpacity onPress={() => router.back()}>
+          <TouchableOpacity onPress={onBack ? onBack : () => router.back()}>
             <Ionicons
               name="arrow-back"
               size={24}

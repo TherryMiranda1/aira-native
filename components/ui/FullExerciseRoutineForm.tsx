@@ -35,6 +35,9 @@ export function FullExerciseRoutineForm({
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [selectedQuickOption, setSelectedQuickOption] = useState<string | null>(
+    null
+  );
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
@@ -61,15 +64,18 @@ export function FullExerciseRoutineForm({
 
   const quickOptions = [
     {
-      label: "Rutina en casa - Principiante",
-      value: "Necesito una rutina de ejercicios para hacer en casa, soy principiante",
+      label: "En casa - Principiante",
+      description: "30 min, 3 días",
+      value:
+        "Necesito una rutina de ejercicios para hacer en casa, soy principiante",
       fitnessLevel: "Principiante",
       availableEquipment: "Solo peso corporal",
       timePerSession: "30 minutos",
       daysPerWeek: "3 días",
     },
     {
-      label: "Rutina de fuerza - Gimnasio",
+      label: "Fuerza - Gimnasio",
+      description: "60 min, 4 días",
       value: "Quiero una rutina de fuerza para el gimnasio",
       fitnessLevel: "Intermedio",
       availableEquipment: "Acceso completo al gimnasio",
@@ -77,7 +83,8 @@ export function FullExerciseRoutineForm({
       daysPerWeek: "4 días",
     },
     {
-      label: "Rutina rápida - Oficina",
+      label: "Rápida - Oficina",
+      description: "15 min, 5 días",
       value: "Necesito ejercicios rápidos que pueda hacer en la oficina",
       fitnessLevel: "Cualquier nivel",
       availableEquipment: "Sin equipamiento",
@@ -85,7 +92,8 @@ export function FullExerciseRoutineForm({
       daysPerWeek: "5 días",
     },
     {
-      label: "Rutina de tonificación",
+      label: "Tonificación",
+      description: "45 min, 4 días",
       value: "Quiero una rutina para tonificar todo el cuerpo",
       fitnessLevel: "Intermedio",
       availableEquipment: "Mancuernas y bandas elásticas",
@@ -94,7 +102,8 @@ export function FullExerciseRoutineForm({
     },
   ];
 
-  const handleQuickOption = (option: typeof quickOptions[0]) => {
+  const handleQuickOption = (option: (typeof quickOptions)[0]) => {
+    setSelectedQuickOption(option.value);
     setFormData((prev) => ({
       ...prev,
       userInput: option.value,
@@ -103,127 +112,168 @@ export function FullExerciseRoutineForm({
       timePerSession: option.timePerSession,
       daysPerWeek: option.daysPerWeek,
     }));
+    setErrors((prev) => ({ ...prev, userInput: "" }));
   };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.content}>
         <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            ¿Qué tipo de rutina necesitas? *
+          <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
+            ¿Qué tipo de rutina necesitas?
           </ThemedText>
-          <TextInput
-            style={[styles.textArea, errors.userInput && styles.inputError]}
-            value={formData.userInput}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, userInput: text }))
-            }
-            placeholder="Ej: Necesito una rutina de fuerza para 3 días a la semana en el gimnasio..."
-            placeholderTextColor={AiraColors.mutedForeground}
-            multiline
-            numberOfLines={4}
-            textAlignVertical="top"
-          />
-          {errors.userInput && (
-            <ThemedText style={styles.errorText}>{errors.userInput}</ThemedText>
-          )}
-        </View>
+          <ThemedText type="small" style={styles.required}>
+            * Campo requerido
+          </ThemedText>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>Opciones rápidas</ThemedText>
           <View style={styles.quickOptionsGrid}>
             {quickOptions.map((option, index) => (
               <TouchableOpacity
                 key={index}
-                style={styles.quickOption}
+                style={[
+                  styles.quickOption,
+                  selectedQuickOption === option.value &&
+                    styles.quickOptionSelected,
+                ]}
                 onPress={() => handleQuickOption(option)}
               >
-                <ThemedText style={styles.quickOptionText}>
-                  {option.label}
-                </ThemedText>
+                <View style={styles.quickOptionContent}>
+                  <ThemedText
+                    type="small"
+                    style={[
+                      styles.quickOptionTitle,
+                      selectedQuickOption === option.value &&
+                        styles.quickOptionTitleSelected,
+                    ]}
+                  >
+                    {option.label}
+                  </ThemedText>
+                  <ThemedText
+                    type="small"
+                    style={[
+                      styles.quickOptionDescription,
+                      selectedQuickOption === option.value &&
+                        styles.quickOptionDescriptionSelected,
+                    ]}
+                  >
+                    {option.description}
+                  </ThemedText>
+                </View>
+                {selectedQuickOption === option.value && (
+                  <Ionicons name="checkmark-circle" size={20} color="white" />
+                )}
               </TouchableOpacity>
             ))}
           </View>
+
+          <TextInput
+            style={[styles.textArea, errors.userInput && styles.inputError]}
+            value={formData.userInput}
+            onChangeText={(text) => {
+              setFormData((prev) => ({ ...prev, userInput: text }));
+              setSelectedQuickOption(null);
+              setErrors((prev) => ({ ...prev, userInput: "" }));
+            }}
+            placeholder="O describe tu rutina personalizada..."
+            placeholderTextColor={AiraColors.mutedForeground}
+            multiline
+            numberOfLines={3}
+            textAlignVertical="top"
+          />
+          {errors.userInput && (
+            <ThemedText type="small" style={styles.errorText}>
+              {errors.userInput}
+            </ThemedText>
+          )}
         </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Nivel de condición física (opcional)
+        <View style={styles.optionalSection}>
+          <ThemedText type="defaultSemiBold" style={styles.optionalTitle}>
+            Información adicional (opcional)
           </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.fitnessLevel}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, fitnessLevel: text }))
-            }
-            placeholder="Ej: Principiante, Intermedio, Avanzado..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
-        </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Equipamiento disponible (opcional)
-          </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.availableEquipment}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, availableEquipment: text }))
-            }
-            placeholder="Ej: Solo peso corporal, mancuernas, acceso al gimnasio..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
-        </View>
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Nivel de condición física
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.fitnessLevel}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, fitnessLevel: text }))
+              }
+              placeholder="Principiante, Intermedio, Avanzado..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Tiempo por sesión (opcional)
-          </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.timePerSession}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, timePerSession: text }))
-            }
-            placeholder="Ej: 30 minutos, 1 hora, 45 minutos..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
-        </View>
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Equipamiento disponible
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.availableEquipment}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, availableEquipment: text }))
+              }
+              placeholder="Solo peso corporal, mancuernas, gimnasio..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
 
-        <View style={styles.section}>
-          <ThemedText style={styles.sectionTitle}>
-            Días por semana (opcional)
-          </ThemedText>
-          <TextInput
-            style={styles.input}
-            value={formData.daysPerWeek}
-            onChangeText={(text) =>
-              setFormData((prev) => ({ ...prev, daysPerWeek: text }))
-            }
-            placeholder="Ej: 3 días, 4-5 días, todos los días..."
-            placeholderTextColor={AiraColors.mutedForeground}
-          />
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Tiempo por sesión
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.timePerSession}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, timePerSession: text }))
+              }
+              placeholder="30 minutos, 1 hora, 45 minutos..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
+
+          <View style={styles.inputGroup}>
+            <ThemedText type="small" style={styles.inputLabel}>
+              Días por semana
+            </ThemedText>
+            <TextInput
+              style={styles.input}
+              value={formData.daysPerWeek}
+              onChangeText={(text) =>
+                setFormData((prev) => ({ ...prev, daysPerWeek: text }))
+              }
+              placeholder="3 días, 4-5 días, todos los días..."
+              placeholderTextColor={AiraColors.mutedForeground}
+            />
+          </View>
         </View>
 
         <TouchableOpacity
-          style={styles.submitButton}
+          style={[
+            styles.submitButton,
+            isLoading && styles.submitButtonDisabled,
+          ]}
           onPress={handleSubmit}
           disabled={isLoading}
         >
           <LinearGradient
-            colors={["#3B82F6", "#1D4ED8"]}
+            colors={["#EF4444", "#F97316"]}
             style={styles.submitGradient}
           >
             {isLoading ? (
-              <ThemedText style={styles.submitText}>
+              <ThemedText type="defaultSemiBold" style={styles.submitText}>
                 Generando rutina...
               </ThemedText>
             ) : (
               <>
                 <Ionicons name="fitness" size={20} color="white" />
-                <ThemedText style={styles.submitText}>
-                  Generar Rutina de Ejercicio
+                <ThemedText type="defaultSemiBold" style={styles.submitText}>
+                  Generar Rutina
                 </ThemedText>
               </>
             )}
@@ -240,69 +290,104 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.background,
   },
   content: {
-    padding: 20,
-    paddingBottom: 40,
+    padding: 16,
+    paddingBottom: 32,
   },
   section: {
     marginBottom: 24,
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.foreground,
-    marginBottom: 12,
+    marginBottom: 4,
   },
-  input: {
-    backgroundColor: AiraColors.card,
+  required: {
+    color: AiraColors.mutedForeground,
+    marginBottom: 16,
+  },
+  quickOptionsGrid: {
+    gap: 8,
+    marginBottom: 16,
+  },
+  quickOption: {
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     borderWidth: 1,
-    borderColor: AiraColors.border,
+    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
     borderRadius: AiraVariants.cardRadius,
-    padding: 16,
-    fontSize: 16,
-    color: AiraColors.foreground,
-    minHeight: 50,
+    padding: 12,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  quickOptionSelected: {
+    backgroundColor: "#EF4444",
+    borderColor: "#EF4444",
+  },
+  quickOptionContent: {
+    flex: 1,
+  },
+  quickOptionTitle: {
+    color: AiraColors.primary,
+    marginBottom: 2,
+  },
+  quickOptionTitleSelected: {
+    color: "white",
+  },
+  quickOptionDescription: {
+    color: AiraColors.mutedForeground,
+  },
+  quickOptionDescriptionSelected: {
+    color: "rgba(255, 255, 255, 0.8)",
   },
   textArea: {
     backgroundColor: AiraColors.card,
     borderWidth: 1,
     borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
-    padding: 16,
+    padding: 12,
     fontSize: 16,
     color: AiraColors.foreground,
-    minHeight: 100,
+    minHeight: 80,
   },
   inputError: {
     borderColor: AiraColors.destructive,
   },
   errorText: {
-    fontSize: 12,
     color: AiraColors.destructive,
     marginTop: 4,
   },
-  quickOptionsGrid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  quickOption: {
-    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+  optionalSection: {
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.05),
+    borderRadius: AiraVariants.cardRadius,
+    padding: 16,
+    marginBottom: 24,
     borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
-    borderRadius: 20,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    marginBottom: 8,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
-  quickOptionText: {
-    fontSize: 14,
-    color: "#3B82F6",
-    fontWeight: "500",
+  optionalTitle: {
+    color: AiraColors.foreground,
+    marginBottom: 16,
+  },
+  inputGroup: {
+    marginBottom: 16,
+  },
+  inputLabel: {
+    color: AiraColors.mutedForeground,
+    marginBottom: 6,
+  },
+  input: {
+    backgroundColor: AiraColors.card,
+    borderRadius: AiraVariants.cardRadius,
+    padding: 12,
+    fontSize: 16,
+    color: AiraColors.foreground,
+    minHeight: 44,
   },
   submitButton: {
     borderRadius: AiraVariants.cardRadius,
     overflow: "hidden",
-    marginTop: 16,
+  },
+  submitButtonDisabled: {
+    opacity: 0.7,
   },
   submitGradient: {
     paddingVertical: 16,
@@ -313,8 +398,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   submitText: {
-    fontSize: 16,
-    fontWeight: "600",
     color: "white",
   },
-}); 
+});

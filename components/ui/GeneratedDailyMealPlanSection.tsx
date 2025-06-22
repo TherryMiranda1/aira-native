@@ -50,10 +50,12 @@ export function GeneratedDailyMealPlanSection({
             colors={[AiraColors.primary, AiraColors.accent]}
             style={styles.headerGradient}
           >
-            <Ionicons name="restaurant" size={32} color="white" />
-            <ThemedText style={styles.planTitle}>{plan.planTitle}</ThemedText>
+            <Ionicons name="restaurant" size={28} color="white" />
+            <ThemedText type="title" style={styles.planTitle}>
+              {plan.planTitle}
+            </ThemedText>
             {plan.introduction && (
-              <ThemedText style={styles.introduction}>
+              <ThemedText type="default" style={styles.introduction}>
                 {plan.introduction}
               </ThemedText>
             )}
@@ -61,19 +63,23 @@ export function GeneratedDailyMealPlanSection({
         </View>
 
         <View style={styles.mealsSection}>
-          <ThemedText style={styles.sectionTitle}>
+          <ThemedText type="subtitle" style={styles.sectionTitle}>
             Tu Plan de Comidas
           </ThemedText>
           {plan.meals.map((meal, index) => (
             <View key={index} style={styles.mealCard}>
               <View style={styles.mealHeader}>
-                <ThemedText style={styles.mealType}>{meal.mealType}</ThemedText>
+                <ThemedText type="defaultSemiBold" style={styles.mealType}>
+                  {meal.mealType}
+                </ThemedText>
               </View>
               <View style={styles.mealOptions}>
                 {meal.options.map((option, optionIndex) => (
                   <View key={optionIndex} style={styles.optionItem}>
                     <View style={styles.optionBullet} />
-                    <ThemedText style={styles.optionText}>{option}</ThemedText>
+                    <ThemedText type="small" style={styles.optionText}>
+                      {option}
+                    </ThemedText>
                   </View>
                 ))}
               </View>
@@ -84,24 +90,26 @@ export function GeneratedDailyMealPlanSection({
         {plan.generalTips && (
           <View style={styles.tipsSection}>
             <View style={styles.tipsHeader}>
-              <Ionicons name="bulb" size={20} color={AiraColors.primary} />
-              <ThemedText style={styles.tipsTitle}>
+              <Ionicons name="bulb" size={18} color={AiraColors.primary} />
+              <ThemedText type="defaultSemiBold" style={styles.tipsTitle}>
                 Consejos Generales
               </ThemedText>
             </View>
-            <ThemedText style={styles.tipsText}>{plan.generalTips}</ThemedText>
+            <ThemedText type="small" style={styles.tipsText}>
+              {plan.generalTips}
+            </ThemedText>
           </View>
         )}
 
         {plan.suggestedNextActions && plan.suggestedNextActions.length > 0 && (
           <View style={styles.actionsSection}>
-            <ThemedText style={styles.sectionTitle}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
               ¿Qué te gustaría hacer ahora?
             </ThemedText>
             <View style={styles.actionsGrid}>
-              {plan.suggestedNextActions.map((action, index) => (
+              {plan.suggestedNextActions.slice(0, 3).map((action, index) => (
                 <TouchableOpacity key={index} style={styles.actionButton}>
-                  <ThemedText style={styles.actionText}>
+                  <ThemedText type="small" style={styles.actionText}>
                     {action.label}
                   </ThemedText>
                 </TouchableOpacity>
@@ -111,33 +119,32 @@ export function GeneratedDailyMealPlanSection({
         )}
 
         <View style={styles.controlsSection}>
-          <TouchableOpacity
-            style={[styles.controlButton, styles.editButton]}
-            onPress={onEditParams}
-          >
-            <Ionicons name="create" size={20} color={AiraColors.primary} />
-            <ThemedText style={styles.editButtonText}>
-              Editar Parámetros
-            </ThemedText>
-          </TouchableOpacity>
+          <View style={styles.controlsRow}>
+            <TouchableOpacity style={styles.editButton} onPress={onEditParams}>
+              <Ionicons name="create" size={18} color={AiraColors.primary} />
+              <ThemedText type="small" style={styles.editButtonText}>
+                Editar
+              </ThemedText>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.regenerateButton}
+              onPress={onRegenerate}
+              disabled={isRegenerating}
+            >
+              {isRegenerating ? (
+                <ActivityIndicator size="small" color="white" />
+              ) : (
+                <Ionicons name="refresh" size={18} color="white" />
+              )}
+              <ThemedText type="small" style={styles.regenerateButtonText}>
+                {isRegenerating ? "Regenerando..." : "Regenerar"}
+              </ThemedText>
+            </TouchableOpacity>
+          </View>
 
           <TouchableOpacity
-            style={[styles.controlButton, styles.regenerateButton]}
-            onPress={onRegenerate}
-            disabled={isRegenerating}
-          >
-            {isRegenerating ? (
-              <ActivityIndicator size="small" color="white" />
-            ) : (
-              <Ionicons name="refresh" size={20} color="white" />
-            )}
-            <ThemedText style={styles.regenerateButtonText}>
-              {isRegenerating ? "Regenerando..." : "Regenerar Plan"}
-            </ThemedText>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.controlButton, styles.saveButton]}
+            style={styles.saveButton}
             onPress={handleSave}
             disabled={isSaving}
           >
@@ -150,7 +157,7 @@ export function GeneratedDailyMealPlanSection({
               ) : (
                 <Ionicons name="bookmark" size={20} color="white" />
               )}
-              <ThemedText style={styles.saveButtonText}>
+              <ThemedText type="defaultSemiBold" style={styles.saveButtonText}>
                 {isSaving ? "Guardando..." : "Guardar Plan"}
               </ThemedText>
             </LinearGradient>
@@ -167,8 +174,8 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.background,
   },
   content: {
-    padding: 20,
-    paddingBottom: 40,
+    padding: 16,
+    paddingBottom: 32,
   },
   headerCard: {
     borderRadius: AiraVariants.cardRadius,
@@ -176,28 +183,23 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   headerGradient: {
-    padding: 24,
+    padding: 20,
     alignItems: "center",
-    gap: 12,
+    gap: 8,
   },
   planTitle: {
-    fontSize: 20,
-    fontWeight: "700",
     color: "white",
     textAlign: "center",
   },
   introduction: {
-    fontSize: 16,
     color: "rgba(255, 255, 255, 0.9)",
     textAlign: "center",
-    lineHeight: 22,
+    lineHeight: 20,
   },
   mealsSection: {
     marginBottom: 24,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
     color: AiraColors.foreground,
     marginBottom: 16,
   },
@@ -206,15 +208,11 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   mealHeader: {
     marginBottom: 12,
   },
   mealType: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.primary,
   },
   mealOptions: {
@@ -234,9 +232,8 @@ const styles = StyleSheet.create({
   },
   optionText: {
     flex: 1,
-    fontSize: 14,
     color: AiraColors.foreground,
-    lineHeight: 20,
+    lineHeight: 18,
   },
   tipsSection: {
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.05),
@@ -253,14 +250,11 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   tipsTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.primary,
   },
   tipsText: {
-    fontSize: 14,
     color: AiraColors.foreground,
-    lineHeight: 20,
+    lineHeight: 18,
   },
   actionsSection: {
     marginBottom: 24,
@@ -274,50 +268,48 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
-    borderRadius: 20,
+    borderRadius: 16,
     paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
   },
   actionText: {
-    fontSize: 14,
     color: AiraColors.primary,
-    fontWeight: "500",
   },
   controlsSection: {
     gap: 12,
   },
-  controlButton: {
-    borderRadius: AiraVariants.cardRadius,
-    overflow: "hidden",
+  controlsRow: {
+    flexDirection: "row",
+    gap: 12,
   },
   editButton: {
+    flex: 1,
     backgroundColor: AiraColors.card,
     borderWidth: 1,
     borderColor: AiraColors.border,
+    borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    gap: 6,
   },
   editButtonText: {
-    fontSize: 16,
-    fontWeight: "500",
     color: AiraColors.primary,
   },
   regenerateButton: {
+    flex: 1,
     backgroundColor: AiraColors.mutedForeground,
+    borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    gap: 6,
   },
   regenerateButtonText: {
-    fontSize: 16,
-    fontWeight: "500",
     color: "white",
   },
   saveButton: {
@@ -333,8 +325,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   saveButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
     color: "white",
   },
 });

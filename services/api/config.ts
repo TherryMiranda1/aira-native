@@ -20,5 +20,7 @@ export const API_CONFIG = {
     RITUALS: "/api/rituals",
     USER_FAVORITES: "/api/user-favorites",
     USER_PROFILES: "/api/user-profiles",
+    METRICS: "/api/metrics",
+    METRIC_RECORDS: "/api/metric-records",
   },
 };

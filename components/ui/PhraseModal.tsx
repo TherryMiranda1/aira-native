@@ -4,19 +4,12 @@ import {
   Modal,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
   ScrollView,
-  ColorValue,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
-
 import { ThemedText } from "../ThemedText";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { AiraVariants } from "@/constants/Themes";
+import { AiraColors } from "@/constants/Colors";
 import { Phrase } from "@/services/api/phrase.service";
-
-const { width, height } = Dimensions.get("window");
 
 interface PhraseModalProps {
   visible: boolean;
@@ -58,15 +51,15 @@ export const PhraseModal = ({
   const getMomentIcon = (moment?: string) => {
     switch (moment) {
       case "manana":
-        return "sunny";
+        return "sunny-outline";
       case "dia":
-        return "sunny";
+        return "sunny-outline";
       case "tarde":
-        return "partly-sunny";
+        return "partly-sunny-outline";
       case "noche":
-        return "moon";
+        return "moon-outline";
       default:
-        return "star";
+        return "star-outline";
     }
   };
 
@@ -85,6 +78,10 @@ export const PhraseModal = ({
     }
   };
 
+  const getDifficultyColor = () => {
+    return categoryColors[0] || AiraColors.primary;
+  };
+
   return (
     <Modal
       visible={visible}
@@ -93,194 +90,160 @@ export const PhraseModal = ({
       onRequestClose={onClose}
     >
       <View style={styles.container}>
-        <View style={styles.content}>
-          {/* Header */}
-          <View style={styles.header}>
-            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-              <Ionicons name="close" size={24} color={AiraColors.foreground} />
-            </TouchableOpacity>
-            <ThemedText style={styles.headerTitle}>
-              Frase Inspiradora
+        {/* Header */}
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <Ionicons name="close" size={24} color={AiraColors.foreground} />
+          </TouchableOpacity>
+          <View style={styles.navigationInfo}>
+            <ThemedText style={styles.navigationText}>
+              {currentIndex + 1} de {totalCount}
             </ThemedText>
-            <View style={styles.headerSpacer} />
+            <TouchableOpacity style={styles.shuffleButton} onPress={onRandom}>
+              <Ionicons name="shuffle" size={16} color={AiraColors.primary} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+          bounces={false}
+        >
+          {/* Quote Section */}
+          <View style={styles.quoteSection}>
+            <View
+              style={[
+                styles.quoteIcon,
+                { backgroundColor: getDifficultyColor() + "20" },
+              ]}
+            >
+              <Ionicons
+                name="chatbubble-ellipses-outline"
+                size={32}
+                color={getDifficultyColor()}
+              />
+            </View>
+
+            <ThemedText type="title" style={styles.quoteText}>
+              {phrase.frase}
+            </ThemedText>
           </View>
 
-          <ScrollView
-            style={styles.scrollView}
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
-          >
-            {/* Navigation Controls */}
-            <View style={styles.navigationContainer}>
-              <View style={styles.navigationLeft}>
-                <ThemedText style={styles.navigationText}>
-                  {currentIndex + 1} de {totalCount}
+          {/* Metadata */}
+          <View style={styles.metadataSection}>
+            <View
+              style={[
+                styles.categoryBadge,
+                { backgroundColor: getDifficultyColor() },
+              ]}
+            >
+              <ThemedText style={styles.categoryText}>
+                {categoryLabel}
+              </ThemedText>
+            </View>
+
+            {phrase.momento_recomendado && (
+              <View style={styles.momentBadge}>
+                <Ionicons
+                  name={getMomentIcon(phrase.momento_recomendado)}
+                  size={14}
+                  color={AiraColors.mutedForeground}
+                />
+                <ThemedText style={styles.momentText}>
+                  {getMomentLabel(phrase.momento_recomendado)}
                 </ThemedText>
-                <View style={styles.navigationButtons}>
-                  <TouchableOpacity
-                    style={[
-                      styles.navigationButton,
-                      totalCount <= 1 && styles.navigationButtonDisabled,
-                    ]}
-                    onPress={onPrevious}
-                    disabled={totalCount <= 1}
-                  >
-                    <Ionicons
-                      name="chevron-back"
-                      size={20}
-                      color={AiraColors.mutedForeground}
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={[
-                      styles.navigationButton,
-                      totalCount <= 1 && styles.navigationButtonDisabled,
-                    ]}
-                    onPress={onNext}
-                    disabled={totalCount <= 1}
-                  >
-                    <Ionicons
-                      name="chevron-forward"
-                      size={20}
-                      color={AiraColors.mutedForeground}
-                    />
-                  </TouchableOpacity>
-                </View>
               </View>
-              <TouchableOpacity style={styles.randomButton} onPress={onRandom}>
-                <Ionicons name="shuffle" size={16} color={AiraColors.primary} />
-                <ThemedText style={styles.randomButtonText}>
-                  Sorpréndeme
+            )}
+
+            {phrase.popularidad > 0 && (
+              <View style={styles.popularityBadge}>
+                <Ionicons name="heart" size={14} color="#FF6B6B" />
+                <ThemedText style={styles.popularityText}>
+                  {phrase.popularidad}
                 </ThemedText>
+              </View>
+            )}
+          </View>
+
+          {/* Actions */}
+          <View style={styles.actionsSection}>
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => onCopy(phrase.frase, phrase.id)}
+            >
+              <Ionicons
+                name={copiedId === phrase.id ? "checkmark" : "copy-outline"}
+                size={18}
+                color={AiraColors.primary}
+              />
+              <ThemedText style={styles.actionText} numberOfLines={1}>
+                {copiedId === phrase.id ? "Copiado" : "Copiar"}
+              </ThemedText>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[
+                styles.actionButton,
+                isLiked && styles.actionButtonActive,
+              ]}
+              onPress={() => onLike(phrase.id)}
+            >
+              <Ionicons
+                name={isLiked ? "heart" : "heart-outline"}
+                size={18}
+                color={isLiked ? "#FF6B6B" : AiraColors.primary}
+              />
+              <ThemedText
+                style={[styles.actionText, isLiked && styles.actionTextActive]}
+                numberOfLines={1}
+              >
+                Me gusta
+              </ThemedText>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => onShare(phrase.frase)}
+            >
+              <Ionicons
+                name="share-outline"
+                size={18}
+                color={AiraColors.primary}
+              />
+              <ThemedText style={styles.actionText} numberOfLines={1}>
+                Compartir
+              </ThemedText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Navigation */}
+          {totalCount > 1 && (
+            <View style={styles.navigationSection}>
+              <TouchableOpacity style={styles.navButton} onPress={onPrevious}>
+                <Ionicons
+                  name="chevron-back"
+                  size={24}
+                  color={AiraColors.primary}
+                />
+                <ThemedText style={styles.navButtonText}>Anterior</ThemedText>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.navButton} onPress={onNext}>
+                <ThemedText style={styles.navButtonText}>Siguiente</ThemedText>
+                <Ionicons
+                  name="chevron-forward"
+                  size={24}
+                  color={AiraColors.primary}
+                />
               </TouchableOpacity>
             </View>
+          )}
 
-            {/* Phrase Card */}
-            <View style={styles.phraseCard}>
-              <LinearGradient
-                colors={["rgba(0,0,0,0.02)", "rgba(0,0,0,0.05)"]}
-                style={styles.phraseCardGradient}
-              />
-
-              {/* Quote Icon */}
-              <LinearGradient
-                colors={categoryColors as [ColorValue, ColorValue]}
-                style={styles.quoteIcon}
-              >
-                <Ionicons name="sparkles" size={32} color="white" />
-              </LinearGradient>
-
-              {/* Phrase Text */}
-              <ThemedText style={styles.phraseText}>
-                &quot;{phrase.frase}&quot;
-              </ThemedText>
-
-              {/* Metadata */}
-              <View style={styles.metadataContainer}>
-                <LinearGradient
-                  colors={categoryColors as [ColorValue, ColorValue]}
-                  style={styles.categoryBadge}
-                >
-                  <ThemedText style={styles.categoryBadgeText}>
-                    {categoryLabel}
-                  </ThemedText>
-                </LinearGradient>
-
-                {phrase.momento_recomendado && (
-                  <View style={styles.momentBadge}>
-                    <Ionicons
-                      name={getMomentIcon(phrase.momento_recomendado)}
-                      size={14}
-                      color={AiraColors.mutedForeground}
-                    />
-                    <ThemedText style={styles.momentBadgeText}>
-                      {getMomentLabel(phrase.momento_recomendado)}
-                    </ThemedText>
-                  </View>
-                )}
-
-                {phrase.popularidad > 0 && (
-                  <View style={styles.popularityBadge}>
-                    <Ionicons
-                      name="heart"
-                      size={14}
-                      color={AiraColors.accent}
-                    />
-                    <ThemedText style={styles.popularityBadgeText}>
-                      {phrase.popularidad}
-                    </ThemedText>
-                  </View>
-                )}
-              </View>
-
-              {/* Actions */}
-              <View style={styles.actionsContainer}>
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={() => onCopy(phrase.frase, phrase.id)}
-                >
-                  <Ionicons
-                    name={copiedId === phrase.id ? "checkmark" : "copy"}
-                    size={18}
-                    color={AiraColors.primary}
-                  />
-                  <ThemedText style={styles.actionButtonText}>
-                    {copiedId === phrase.id ? "Copiado" : "Copiar"}
-                  </ThemedText>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={[
-                    styles.actionButton,
-                    isLiked && styles.actionButtonLiked,
-                  ]}
-                  onPress={() => onLike(phrase.id)}
-                >
-                  <Ionicons
-                    name={isLiked ? "heart" : "heart-outline"}
-                    size={18}
-                    color={isLiked ? AiraColors.accent : AiraColors.primary}
-                  />
-                  <ThemedText
-                    style={[
-                      styles.actionButtonText,
-                      isLiked && styles.actionButtonTextLiked,
-                    ]}
-                  >
-                    Me gusta
-                  </ThemedText>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={() => onShare(phrase.frase)}
-                >
-                  <Ionicons name="share" size={18} color={AiraColors.primary} />
-                  <ThemedText style={styles.actionButtonText}>
-                    Compartir
-                  </ThemedText>
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            {/* Inspirational Footer */}
-            <View style={styles.footer}>
-              <LinearGradient
-                colors={categoryColors as [ColorValue, ColorValue]}
-                style={styles.footerIcon}
-              >
-                <Ionicons name="heart" size={20} color="white" />
-              </LinearGradient>
-              <ThemedText style={styles.footerTitle}>
-                Momento de Reflexión
-              </ThemedText>
-              <ThemedText style={styles.footerDescription}>
-                Permite que estas palabras resuenen en tu corazón y te acompañen
-                en tu camino de crecimiento personal.
-              </ThemedText>
-            </View>
-          </ScrollView>
-        </View>
+          {/* Bottom Spacing */}
+          <View style={styles.bottomSpacing} />
+        </ScrollView>
       </View>
     </Modal>
   );
@@ -289,231 +252,162 @@ export const PhraseModal = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  content: {
-    flex: 1,
     backgroundColor: AiraColors.background,
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
+    borderBottomColor: AiraColors.border + "20",
   },
   closeButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
+    backgroundColor: AiraColors.card,
     alignItems: "center",
     justifyContent: "center",
   },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: AiraColors.foreground,
-  },
-  headerSpacer: {
-    width: 40,
-  },
-  scrollView: {
-    flex: 1,
-  },
-  scrollContent: {
-    paddingBottom: 32,
-  },
-  navigationContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-  },
-  navigationLeft: {
+  navigationInfo: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    gap: 16,
   },
   navigationText: {
     fontSize: 14,
     color: AiraColors.mutedForeground,
   },
-  navigationButtons: {
-    flexDirection: "row",
-    gap: 4,
-  },
-  navigationButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
+  shuffleButton: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: AiraColors.primary + "20",
     alignItems: "center",
     justifyContent: "center",
   },
-  navigationButtonDisabled: {
-    opacity: 0.3,
+  content: {
+    flex: 1,
   },
-  randomButton: {
-    flexDirection: "row",
+  contentContainer: {
+    paddingHorizontal: 24,
+    paddingTop: 32,
+  },
+  quoteSection: {
     alignItems: "center",
-    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 18,
-    gap: 6,
-  },
-  randomButtonText: {
-    fontSize: 14,
-    color: AiraColors.primary,
-    fontWeight: "500",
-  },
-  phraseCard: {
-    backgroundColor: AiraColors.card,
-    marginHorizontal: 16,
-    marginBottom: 32,
-    borderRadius: AiraVariants.cardRadius,
-    padding: 32,
-    alignItems: "center",
-
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-    position: "relative",
-    overflow: "hidden",
-  },
-  phraseCardGradient: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    marginBottom: 40,
   },
   quoteIcon: {
-    width: 64,
-    height: 64,
-    borderRadius: 16,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 24,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 8,
-    elevation: 6,
+    marginBottom: 32,
   },
-  phraseText: {
-    fontSize: 20,
-    fontWeight: "500",
+  quoteText: {
     color: AiraColors.foreground,
     textAlign: "center",
-    lineHeight: 30,
-    marginBottom: 24,
+    lineHeight: 32,
     paddingHorizontal: 8,
   },
-  metadataContainer: {
+  metadataSection: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
-    gap: 10,
-    marginBottom: 24,
+    gap: 12,
+    marginBottom: 40,
   },
   categoryBadge: {
-    paddingHorizontal: 14,
-    paddingVertical: 6,
-    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+    borderRadius: 20,
   },
-  categoryBadgeText: {
-    fontSize: 13,
-    color: "white",
-    fontWeight: "600",
+  categoryText: {
+    fontSize: 14,
+    color: "#fff",
   },
   momentBadge: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 10,
+    backgroundColor: AiraColors.card,
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 16,
     gap: 6,
   },
-  momentBadgeText: {
-    fontSize: 13,
+  momentText: {
+    fontSize: 14,
     color: AiraColors.mutedForeground,
   },
   popularityBadge: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColorsWithAlpha.accentWithOpacity(0.1),
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 10,
+    backgroundColor: "#FF6B6B" + "20",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 16,
     gap: 6,
   },
-  popularityBadgeText: {
-    fontSize: 13,
-    color: AiraColors.accent,
-    fontWeight: "500",
+  popularityText: {
+    fontSize: 14,
+    color: "#FF6B6B",
   },
-  actionsContainer: {
+  actionsSection: {
     flexDirection: "row",
-    gap: 16,
-    flexWrap: "wrap",
     justifyContent: "center",
+    gap: 8,
+    marginBottom: 40,
   },
   actionButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-    paddingHorizontal: 20,
+    backgroundColor: AiraColors.card,
+    paddingHorizontal: 8,
     paddingVertical: 12,
     borderRadius: 20,
-    gap: 8,
-    minWidth: 100,
+    gap: 6,
+    minWidth: 90,
+    maxWidth: 110,
     justifyContent: "center",
+    flex: 1,
   },
-  actionButtonLiked: {
-    backgroundColor: AiraColorsWithAlpha.accentWithOpacity(0.1),
+  actionButtonActive: {
+    backgroundColor: "#FF6B6B" + "20",
   },
-  actionButtonText: {
-    fontSize: 15,
+  actionText: {
+    fontSize: 13,
     color: AiraColors.primary,
-    fontWeight: "500",
-  },
-  actionButtonTextLiked: {
-    color: AiraColors.accent,
-  },
-  footer: {
-    alignItems: "center",
-    paddingHorizontal: 24,
-    paddingVertical: 24,
-    marginHorizontal: 16,
-    borderTopWidth: 1,
-    borderTopColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-  },
-  footerIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 16,
-  },
-  footerTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: AiraColors.foreground,
-    marginBottom: 12,
-  },
-  footerDescription: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
     textAlign: "center",
-    lineHeight: 22,
-    maxWidth: 300,
+  },
+  actionTextActive: {
+    color: "#FF6B6B",
+  },
+  navigationSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 32,
+    gap: 16,
+  },
+  navButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: AiraColors.card,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    borderRadius: 20,
+    gap: 8,
+    flex: 1,
+    justifyContent: "center",
+    maxWidth: 140,
+  },
+  navButtonText: {
+    fontSize: 16,
+    color: AiraColors.primary,
+  },
+  bottomSpacing: {
+    height: 40,
   },
 });

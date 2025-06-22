@@ -46,12 +46,14 @@ export function GeneratedFullExerciseRoutineSection({
       <View style={styles.content}>
         <View style={styles.headerCard}>
           <LinearGradient
-            colors={["#3B82F6", "#1D4ED8"]}
+            colors={["#EF4444", "#F97316"]}
             style={styles.headerGradient}
           >
-            <Ionicons name="fitness" size={32} color="white" />
-            <ThemedText style={styles.routineTitle}>{routine.nombreRutina}</ThemedText>
-            <ThemedText style={styles.description}>
+            <Ionicons name="fitness" size={28} color="white" />
+            <ThemedText type="title" style={styles.routineTitle}>
+              {routine.nombreRutina}
+            </ThemedText>
+            <ThemedText type="default" style={styles.description}>
               {routine.descripcionGeneral}
             </ThemedText>
           </LinearGradient>
@@ -60,26 +62,32 @@ export function GeneratedFullExerciseRoutineSection({
         {routine.advertencias && (
           <View style={styles.warningSection}>
             <View style={styles.warningHeader}>
-              <Ionicons name="warning" size={20} color={AiraColors.destructive} />
-              <ThemedText style={styles.warningTitle}>
+              <Ionicons name="warning" size={18} color={AiraColors.destructive} />
+              <ThemedText type="defaultSemiBold" style={styles.warningTitle}>
                 Advertencias Importantes
               </ThemedText>
             </View>
-            <ThemedText style={styles.warningText}>{routine.advertencias}</ThemedText>
+            <ThemedText type="small" style={styles.warningText}>
+              {routine.advertencias}
+            </ThemedText>
           </View>
         )}
 
         <View style={styles.sessionsSection}>
-          <ThemedText style={styles.sectionTitle}>
+          <ThemedText type="subtitle" style={styles.sectionTitle}>
             Sesiones de Entrenamiento
           </ThemedText>
           {routine.sesiones.map((session, index) => (
             <View key={index} style={styles.sessionCard}>
               <View style={styles.sessionHeader}>
-                <ThemedText style={styles.sessionName}>{session.nombreSesion}</ThemedText>
+                <ThemedText type="defaultSemiBold" style={styles.sessionName}>
+                  {session.nombreSesion}
+                </ThemedText>
                 {session.enfoque && (
                   <View style={styles.focusTag}>
-                    <ThemedText style={styles.focusText}>{session.enfoque}</ThemedText>
+                    <ThemedText type="small" style={styles.focusText}>
+                      {session.enfoque}
+                    </ThemedText>
                   </View>
                 )}
               </View>
@@ -87,46 +95,56 @@ export function GeneratedFullExerciseRoutineSection({
               {session.calentamiento && (
                 <View style={styles.warmupSection}>
                   <View style={styles.subsectionHeader}>
-                    <Ionicons name="flame" size={16} color="#F59E0B" />
-                    <ThemedText style={styles.subsectionTitle}>Calentamiento</ThemedText>
+                    <Ionicons name="flame" size={14} color="#F59E0B" />
+                    <ThemedText type="small" style={styles.subsectionTitle}>
+                      Calentamiento
+                    </ThemedText>
                   </View>
-                  <ThemedText style={styles.subsectionText}>{session.calentamiento}</ThemedText>
+                  <ThemedText type="small" style={styles.subsectionText}>
+                    {session.calentamiento}
+                  </ThemedText>
                 </View>
               )}
 
               <View style={styles.exercisesSection}>
                 <View style={styles.subsectionHeader}>
-                  <Ionicons name="barbell" size={16} color="#3B82F6" />
-                  <ThemedText style={styles.subsectionTitle}>Ejercicios</ThemedText>
+                  <Ionicons name="barbell" size={14} color="#EF4444" />
+                  <ThemedText type="small" style={styles.subsectionTitle}>
+                    Ejercicios
+                  </ThemedText>
                 </View>
                 {session.ejercicios.map((exercise, exerciseIndex) => (
                   <View key={exerciseIndex} style={styles.exerciseCard}>
                     <View style={styles.exerciseHeader}>
-                      <ThemedText style={styles.exerciseName}>
+                      <ThemedText type="small" style={styles.exerciseName}>
                         {exercise.nombreEjercicio}
                       </ThemedText>
-                      <ThemedText style={styles.exerciseSets}>
+                      <ThemedText type="small" style={styles.exerciseSets}>
                         {exercise.seriesRepeticiones}
                       </ThemedText>
                     </View>
                     
-                    <ThemedText style={styles.exerciseDescription}>
+                    <ThemedText type="small" style={styles.exerciseDescription}>
                       {exercise.descripcionDetallada}
                     </ThemedText>
                     
                     <View style={styles.exerciseDetails}>
                       <View style={styles.exerciseDetailRow}>
-                        <Ionicons name="body" size={14} color={AiraColors.mutedForeground} />
-                        <ThemedText style={styles.exerciseDetailLabel}>Músculos:</ThemedText>
-                        <ThemedText style={styles.exerciseDetailText}>
+                        <Ionicons name="body" size={12} color={AiraColors.mutedForeground} />
+                        <ThemedText type="small" style={styles.exerciseDetailLabel}>
+                          Músculos:
+                        </ThemedText>
+                        <ThemedText type="small" style={styles.exerciseDetailText}>
                           {exercise.musculosImplicados}
                         </ThemedText>
                       </View>
                       
                       <View style={styles.exerciseDetailRow}>
-                        <Ionicons name="time" size={14} color={AiraColors.mutedForeground} />
-                        <ThemedText style={styles.exerciseDetailLabel}>Descanso:</ThemedText>
-                        <ThemedText style={styles.exerciseDetailText}>
+                        <Ionicons name="time" size={12} color={AiraColors.mutedForeground} />
+                        <ThemedText type="small" style={styles.exerciseDetailLabel}>
+                          Descanso:
+                        </ThemedText>
+                        <ThemedText type="small" style={styles.exerciseDetailText}>
                           {exercise.descanso}
                         </ThemedText>
                       </View>
@@ -134,15 +152,17 @@ export function GeneratedFullExerciseRoutineSection({
 
                     {exercise.consejosEjecucion && (
                       <View style={styles.tipsSection}>
-                        <Ionicons name="checkmark-circle" size={14} color={AiraColors.primary} />
-                        <ThemedText style={styles.tipsText}>{exercise.consejosEjecucion}</ThemedText>
+                        <Ionicons name="checkmark-circle" size={12} color={AiraColors.primary} />
+                        <ThemedText type="small" style={styles.tipsText}>
+                          {exercise.consejosEjecucion}
+                        </ThemedText>
                       </View>
                     )}
 
                     {exercise.alternativaOpcional && (
                       <View style={styles.alternativeSection}>
-                        <Ionicons name="swap-horizontal" size={14} color={AiraColors.accent} />
-                        <ThemedText style={styles.alternativeText}>
+                        <Ionicons name="swap-horizontal" size={12} color={AiraColors.accent} />
+                        <ThemedText type="small" style={styles.alternativeText}>
                           Alternativa: {exercise.alternativaOpcional}
                         </ThemedText>
                       </View>
@@ -154,10 +174,14 @@ export function GeneratedFullExerciseRoutineSection({
               {session.enfriamiento && (
                 <View style={styles.cooldownSection}>
                   <View style={styles.subsectionHeader}>
-                    <Ionicons name="snow" size={16} color="#06B6D4" />
-                    <ThemedText style={styles.subsectionTitle}>Enfriamiento</ThemedText>
+                    <Ionicons name="snow" size={14} color="#06B6D4" />
+                    <ThemedText type="small" style={styles.subsectionTitle}>
+                      Enfriamiento
+                    </ThemedText>
                   </View>
-                  <ThemedText style={styles.subsectionText}>{session.enfriamiento}</ThemedText>
+                  <ThemedText type="small" style={styles.subsectionText}>
+                    {session.enfriamiento}
+                  </ThemedText>
                 </View>
               )}
             </View>
@@ -167,24 +191,26 @@ export function GeneratedFullExerciseRoutineSection({
         {routine.sugerenciasAdicionales && (
           <View style={styles.suggestionsSection}>
             <View style={styles.suggestionsHeader}>
-              <Ionicons name="bulb" size={20} color={AiraColors.primary} />
-              <ThemedText style={styles.suggestionsTitle}>
+              <Ionicons name="bulb" size={18} color={AiraColors.primary} />
+              <ThemedText type="defaultSemiBold" style={styles.suggestionsTitle}>
                 Sugerencias Adicionales
               </ThemedText>
             </View>
-            <ThemedText style={styles.suggestionsText}>{routine.sugerenciasAdicionales}</ThemedText>
+            <ThemedText type="small" style={styles.suggestionsText}>
+              {routine.sugerenciasAdicionales}
+            </ThemedText>
           </View>
         )}
 
         {routine.suggestedNextActions && routine.suggestedNextActions.length > 0 && (
           <View style={styles.actionsSection}>
-            <ThemedText style={styles.sectionTitle}>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
               ¿Qué te gustaría hacer ahora?
             </ThemedText>
             <View style={styles.actionsGrid}>
-              {routine.suggestedNextActions.map((action, index) => (
+              {routine.suggestedNextActions.slice(0, 3).map((action, index) => (
                 <TouchableOpacity key={index} style={styles.actionButton}>
-                  <ThemedText style={styles.actionText}>
+                  <ThemedText type="small" style={styles.actionText}>
                     {action.label}
                   </ThemedText>
                 </TouchableOpacity>
@@ -194,38 +220,40 @@ export function GeneratedFullExerciseRoutineSection({
         )}
 
         <View style={styles.controlsSection}>
-          <TouchableOpacity
-            style={[styles.controlButton, styles.editButton]}
-            onPress={onEditParams}
-          >
-            <Ionicons name="create" size={20} color="#3B82F6" />
-            <ThemedText style={styles.editButtonText}>
-              Editar Parámetros
-            </ThemedText>
-          </TouchableOpacity>
+          <View style={styles.controlsRow}>
+            <TouchableOpacity
+              style={styles.editButton}
+              onPress={onEditParams}
+            >
+              <Ionicons name="create" size={18} color={AiraColors.primary} />
+              <ThemedText type="small" style={styles.editButtonText}>
+                Editar
+              </ThemedText>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.regenerateButton}
+              onPress={onRegenerate}
+              disabled={isRegenerating}
+            >
+              {isRegenerating ? (
+                <ActivityIndicator size="small" color="white" />
+              ) : (
+                <Ionicons name="refresh" size={18} color="white" />
+              )}
+              <ThemedText type="small" style={styles.regenerateButtonText}>
+                {isRegenerating ? "Regenerando..." : "Regenerar"}
+              </ThemedText>
+            </TouchableOpacity>
+          </View>
 
           <TouchableOpacity
-            style={[styles.controlButton, styles.regenerateButton]}
-            onPress={onRegenerate}
-            disabled={isRegenerating}
-          >
-            {isRegenerating ? (
-              <ActivityIndicator size="small" color="white" />
-            ) : (
-              <Ionicons name="refresh" size={20} color="white" />
-            )}
-            <ThemedText style={styles.regenerateButtonText}>
-              {isRegenerating ? "Regenerando..." : "Regenerar Rutina"}
-            </ThemedText>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.controlButton, styles.saveButton]}
+            style={styles.saveButton}
             onPress={handleSave}
             disabled={isSaving}
           >
             <LinearGradient
-              colors={["#3B82F6", "#1D4ED8"]}
+              colors={["#EF4444", "#F97316"]}
               style={styles.saveGradient}
             >
               {isSaving ? (
@@ -233,7 +261,7 @@ export function GeneratedFullExerciseRoutineSection({
               ) : (
                 <Ionicons name="bookmark" size={20} color="white" />
               )}
-              <ThemedText style={styles.saveButtonText}>
+              <ThemedText type="defaultSemiBold" style={styles.saveButtonText}>
                 {isSaving ? "Guardando..." : "Guardar Rutina"}
               </ThemedText>
             </LinearGradient>
@@ -250,8 +278,8 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.background,
   },
   content: {
-    padding: 20,
-    paddingBottom: 40,
+    padding: 16,
+    paddingBottom: 32,
   },
   headerCard: {
     borderRadius: AiraVariants.cardRadius,
@@ -259,21 +287,18 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   headerGradient: {
-    padding: 24,
+    padding: 20,
     alignItems: "center",
-    gap: 12,
+    gap: 8,
   },
   routineTitle: {
-    fontSize: 20,
-    fontWeight: "700",
     color: "white",
     textAlign: "center",
   },
   description: {
-    fontSize: 16,
     color: "rgba(255, 255, 255, 0.9)",
     textAlign: "center",
-    lineHeight: 22,
+    lineHeight: 20,
   },
   warningSection: {
     backgroundColor: AiraColorsWithAlpha.destructiveWithOpacity(0.05),
@@ -290,21 +315,16 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   warningTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.destructive,
   },
   warningText: {
-    fontSize: 14,
     color: AiraColors.foreground,
-    lineHeight: 20,
+    lineHeight: 18,
   },
   sessionsSection: {
     marginBottom: 24,
   },
   sectionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
     color: AiraColors.foreground,
     marginBottom: 16,
   },
@@ -323,9 +343,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   sessionName: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#3B82F6",
+    color: "#EF4444",
     flex: 1,
   },
   focusTag: {
@@ -335,9 +353,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   focusText: {
-    fontSize: 12,
-    color: "#3B82F6",
-    fontWeight: "500",
+    color: "#EF4444",
   },
   warmupSection: {
     marginBottom: 16,
@@ -348,19 +364,16 @@ const styles = StyleSheet.create({
   subsectionHeader: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 6,
     marginBottom: 8,
   },
   subsectionTitle: {
-    fontSize: 14,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   subsectionText: {
-    fontSize: 14,
     color: AiraColors.foreground,
-    lineHeight: 20,
-    paddingLeft: 24,
+    lineHeight: 18,
+    paddingLeft: 20,
   },
   exercisesSection: {
     marginBottom: 16,
@@ -370,7 +383,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     marginBottom: 12,
-    marginLeft: 24,
+    marginLeft: 20,
   },
   exerciseHeader: {
     flexDirection: "row",
@@ -379,25 +392,20 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   exerciseName: {
-    fontSize: 14,
-    fontWeight: "600",
     color: AiraColors.foreground,
     flex: 1,
     marginRight: 8,
   },
   exerciseSets: {
-    fontSize: 12,
-    fontWeight: "500",
-    color: "#3B82F6",
+    color: "#EF4444",
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 4,
   },
   exerciseDescription: {
-    fontSize: 13,
     color: AiraColors.foreground,
-    lineHeight: 18,
+    lineHeight: 16,
     marginBottom: 8,
   },
   exerciseDetails: {
@@ -410,13 +418,10 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   exerciseDetailLabel: {
-    fontSize: 12,
-    fontWeight: "500",
     color: AiraColors.mutedForeground,
     minWidth: 60,
   },
   exerciseDetailText: {
-    fontSize: 12,
     color: AiraColors.foreground,
     flex: 1,
   },
@@ -430,10 +435,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   tipsText: {
-    fontSize: 12,
     color: AiraColors.foreground,
     flex: 1,
-    lineHeight: 16,
+    lineHeight: 14,
   },
   alternativeSection: {
     flexDirection: "row",
@@ -444,10 +448,9 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   alternativeText: {
-    fontSize: 12,
     color: AiraColors.foreground,
     flex: 1,
-    lineHeight: 16,
+    lineHeight: 14,
   },
   suggestionsSection: {
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.05),
@@ -464,14 +467,11 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   suggestionsTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.primary,
   },
   suggestionsText: {
-    fontSize: 14,
     color: AiraColors.foreground,
-    lineHeight: 20,
+    lineHeight: 18,
   },
   actionsSection: {
     marginBottom: 24,
@@ -485,50 +485,48 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
-    borderRadius: 20,
+    borderRadius: 16,
     paddingVertical: 8,
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
   },
   actionText: {
-    fontSize: 14,
-    color: "#3B82F6",
-    fontWeight: "500",
+    color: AiraColors.primary,
   },
   controlsSection: {
     gap: 12,
   },
-  controlButton: {
-    borderRadius: AiraVariants.cardRadius,
-    overflow: "hidden",
+  controlsRow: {
+    flexDirection: "row",
+    gap: 12,
   },
   editButton: {
+    flex: 1,
     backgroundColor: AiraColors.card,
     borderWidth: 1,
     borderColor: AiraColors.border,
+    borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    gap: 6,
   },
   editButtonText: {
-    fontSize: 16,
-    fontWeight: "500",
-    color: "#3B82F6",
+    color: AiraColors.primary,
   },
   regenerateButton: {
+    flex: 1,
     backgroundColor: AiraColors.mutedForeground,
+    borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
+    gap: 6,
   },
   regenerateButtonText: {
-    fontSize: 16,
-    fontWeight: "500",
     color: "white",
   },
   saveButton: {
@@ -544,8 +542,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   saveButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
     color: "white",
   },
 }); 

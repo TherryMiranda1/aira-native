@@ -4,7 +4,8 @@ import {
   DailyMealPlanInput,
   FullExerciseRoutineInput,
   SuggestRecipeInput,
-  ExerciseSuggestionInput
+  ExerciseSuggestionInput,
+  ProvideMotivationInput
 } from "@/types/Assistant";
 
 class AIClientService {
@@ -42,6 +43,13 @@ class AIClientService {
   async generateExerciseSuggestion(exerciseInput: ExerciseSuggestionInput): Promise<any> {
     const URL = `/api/ai/exercise-suggestion`;
     const response = await aiApiClient.post(URL, { exerciseInput });
+
+    return response.data;
+  }
+
+  async generateMotivationalSupport(motivationInput: ProvideMotivationInput): Promise<any> {
+    const URL = `/api/ai/motivational-support`;
+    const response = await aiApiClient.post(URL, { motivationInput });
 
     return response.data;
   }

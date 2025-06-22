@@ -5,13 +5,28 @@ export default function DashboardLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="profile" />
-      <Stack.Screen name="recipe/[id]" />
-      <Stack.Screen name="exercise/[id]" />
-      <Stack.Screen name="plans/complete-plan/[id]" />
+      <Stack.Screen
+        name="recipe/[id]"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
+      <Stack.Screen
+        name="exercise/[id]"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
+      <Stack.Screen
+        name="plans/complete-plan/[id]"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
       <Stack.Screen name="plans/complete-plan" />
-      <Stack.Screen name="plans/daily-meal-plan/[id]" />
+      <Stack.Screen
+        name="plans/daily-meal-plan/[id]"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
       <Stack.Screen name="plans/daily-meal-plan" />
-      <Stack.Screen name="plans/workout-routine/[id]" />
+      <Stack.Screen
+        name="plans/workout-routine/[id]"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
       <Stack.Screen name="plans/workout-routine" />
       <Stack.Screen name="plans/recipe-suggestion" />
       <Stack.Screen name="plans/exercise-suggestion" />

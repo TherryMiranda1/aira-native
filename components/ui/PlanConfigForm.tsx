@@ -76,9 +76,16 @@ export const PlanConfigForm = ({
       expanded: false,
     },
     {
-      title: "Salud y Condiciones",
-      icon: "medical",
-      fields: ["condiciones_medicas", "alergias", "estres", "sueno"],
+      title: "Actividad y Ejercicio",
+      icon: "fitness",
+      fields: [
+        "nivel_actividad_actual",
+        "nivel_entrenamiento",
+        "sesiones_semana",
+        "minutos_por_sesion",
+        "equipamiento_disponible",
+        "horario_entrenamiento",
+      ],
       expanded: false,
     },
     {
@@ -95,20 +102,13 @@ export const PlanConfigForm = ({
       expanded: false,
     },
     {
-      title: "Actividad y Ejercicio",
-      icon: "fitness",
-      fields: [
-        "nivel_actividad_actual",
-        "nivel_entrenamiento",
-        "sesiones_semana",
-        "minutos_por_sesion",
-        "equipamiento_disponible",
-        "horario_entrenamiento",
-      ],
+      title: "Salud y Condiciones",
+      icon: "medical",
+      fields: ["condiciones_medicas", "alergias", "estres", "sueno"],
       expanded: false,
     },
     {
-      title: "Motivación y Estilo de Vida",
+      title: "Motivación",
       icon: "heart",
       fields: ["motivadores"],
       expanded: false,
@@ -196,7 +196,7 @@ export const PlanConfigForm = ({
 
     return (
       <View key={field} style={styles.fieldContainer}>
-        <ThemedText style={styles.fieldLabel}>
+        <ThemedText type="small" style={styles.fieldLabel}>
           {getFieldLabel(field)}
         </ThemedText>
         <TextInput
@@ -225,8 +225,10 @@ export const PlanConfigForm = ({
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <ThemedText style={styles.title}>Personaliza tu Plan</ThemedText>
-          <ThemedText style={styles.subtitle}>
+          <ThemedText type="title" style={styles.title}>
+            Personaliza tu Plan
+          </ThemedText>
+          <ThemedText type="default" style={styles.subtitle}>
             Completa la información para generar un plan adaptado a ti
           </ThemedText>
         </View>
@@ -248,18 +250,18 @@ export const PlanConfigForm = ({
               >
                 <Ionicons
                   name={section.icon}
-                  size={20}
+                  size={18}
                   color={section.expanded ? "white" : AiraColors.primary}
                 />
               </LinearGradient>
               <View style={styles.sectionTitleContainer}>
-                <ThemedText style={styles.sectionTitle}>
+                <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
                   {section.title}
                 </ThemedText>
               </View>
               <Ionicons
                 name={section.expanded ? "chevron-up" : "chevron-down"}
-                size={20}
+                size={18}
                 color={AiraColors.mutedForeground}
               />
             </TouchableOpacity>
@@ -286,14 +288,14 @@ export const PlanConfigForm = ({
           >
             {isLoading ? (
               <View style={styles.loadingContainer}>
-                <ThemedText style={styles.submitButtonText}>
+                <ThemedText type="defaultSemiBold" style={styles.submitButtonText}>
                   Generando plan...
                 </ThemedText>
               </View>
             ) : (
               <View style={styles.submitContainer}>
                 <Ionicons name="sparkles" size={20} color="white" />
-                <ThemedText style={styles.submitButtonText}>
+                <ThemedText type="defaultSemiBold" style={styles.submitButtonText}>
                   Generar Mi Plan
                 </ThemedText>
               </View>
@@ -316,20 +318,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: 24,
-    fontWeight: "700",
     color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 16,
     color: AiraColors.mutedForeground,
     textAlign: "center",
     lineHeight: 22,
   },
   sectionContainer: {
-    marginHorizontal: 20,
+    marginHorizontal: 16,
     marginBottom: 16,
     backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
@@ -344,9 +343,9 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   sectionIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 10,
+    width: 36,
+    height: 36,
+    borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -354,8 +353,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.foreground,
   },
   sectionContent: {
@@ -367,8 +364,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   fieldLabel: {
-    fontSize: 14,
-    fontWeight: "500",
     color: AiraColors.foreground,
   },
   textInput: {
@@ -387,7 +382,7 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
   },
   submitButton: {
-    marginHorizontal: 20,
+    marginHorizontal: 16,
     marginVertical: 24,
     borderRadius: AiraVariants.cardRadius,
     overflow: "hidden",
@@ -412,8 +407,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   submitButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
     color: "white",
   },
 });

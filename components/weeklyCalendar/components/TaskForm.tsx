@@ -53,7 +53,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   const [isImportant, setIsImportant] = useState(
     initialTask?.isImportant || false
   );
-  
+
   // Recurrence state
   const [recurrenceType, setRecurrenceType] = useState<RecurrenceType>(
     initialTask?.recurrence?.type || RecurrenceType.NONE
@@ -64,7 +64,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
 
   const toggleDay = (dayId: number) => {
     if (selectedDays.includes(dayId)) {
-      setSelectedDays(selectedDays.filter(id => id !== dayId));
+      setSelectedDays(selectedDays.filter((id) => id !== dayId));
     } else {
       setSelectedDays([...selectedDays, dayId]);
     }
@@ -75,11 +75,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({
 
     // Prepare recurrence data if applicable
     let recurrence = undefined;
-    
+
     if (recurrenceType !== RecurrenceType.NONE) {
       recurrence = {
         type: recurrenceType,
-        days: recurrenceType === RecurrenceType.MULTIPLE_DAYS ? selectedDays : undefined
+        days:
+          recurrenceType === RecurrenceType.MULTIPLE_DAYS
+            ? selectedDays
+            : undefined,
       };
     }
 
@@ -159,38 +162,41 @@ export const TaskForm: React.FC<TaskFormProps> = ({
                 onPress={() => setIsImportant(!isImportant)}
               />
             </View>
-            
+
             {/* Recurrence options */}
             <View style={styles.recurrenceSection}>
               <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
                 Recurrencia
               </ThemedText>
-              
+
               <View style={styles.recurrenceOptions}>
                 <TouchableOpacity
                   style={[
                     styles.recurrenceOption,
-                    recurrenceType === RecurrenceType.NONE && styles.selectedRecurrenceOption,
+                    recurrenceType === RecurrenceType.NONE &&
+                      styles.selectedRecurrenceOption,
                   ]}
                   onPress={() => setRecurrenceType(RecurrenceType.NONE)}
                 >
                   <ThemedText>Ninguna</ThemedText>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity
                   style={[
                     styles.recurrenceOption,
-                    recurrenceType === RecurrenceType.DAILY && styles.selectedRecurrenceOption,
+                    recurrenceType === RecurrenceType.DAILY &&
+                      styles.selectedRecurrenceOption,
                   ]}
                   onPress={() => setRecurrenceType(RecurrenceType.DAILY)}
                 >
                   <ThemedText>Diaria</ThemedText>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity
                   style={[
                     styles.recurrenceOption,
-                    recurrenceType === RecurrenceType.WEEKLY && styles.selectedRecurrenceOption,
+                    recurrenceType === RecurrenceType.WEEKLY &&
+                      styles.selectedRecurrenceOption,
                   ]}
                   onPress={() => {
                     setRecurrenceType(RecurrenceType.WEEKLY);
@@ -199,18 +205,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({
                 >
                   <ThemedText>Semanal</ThemedText>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity
                   style={[
                     styles.recurrenceOption,
-                    recurrenceType === RecurrenceType.MULTIPLE_DAYS && styles.selectedRecurrenceOption,
+                    recurrenceType === RecurrenceType.MULTIPLE_DAYS &&
+                      styles.selectedRecurrenceOption,
                   ]}
-                  onPress={() => setRecurrenceType(RecurrenceType.MULTIPLE_DAYS)}
+                  onPress={() =>
+                    setRecurrenceType(RecurrenceType.MULTIPLE_DAYS)
+                  }
                 >
                   <ThemedText>Múltiples días</ThemedText>
                 </TouchableOpacity>
               </View>
-              
+
               {/* Day selector for multiple days recurrence */}
               {recurrenceType === RecurrenceType.MULTIPLE_DAYS && (
                 <View style={styles.daysContainer}>
@@ -223,14 +232,27 @@ export const TaskForm: React.FC<TaskFormProps> = ({
                         key={day.id}
                         style={[
                           styles.dayButton,
-                          selectedDays.includes(day.id) && styles.selectedDayButton,
+                          selectedDays.includes(day.id) &&
+                            styles.selectedDayButton,
                         ]}
                         onPress={() => toggleDay(day.id)}
                       >
-                        <ThemedText 
-                          style={selectedDays.includes(day.id) ? styles.selectedDayText : undefined}
-                          lightColor={selectedDays.includes(day.id) ? AiraColors.background : undefined}
-                          darkColor={selectedDays.includes(day.id) ? AiraColors.background : undefined}
+                        <ThemedText
+                          style={
+                            selectedDays.includes(day.id)
+                              ? styles.selectedDayText
+                              : undefined
+                          }
+                          lightColor={
+                            selectedDays.includes(day.id)
+                              ? AiraColors.background
+                              : undefined
+                          }
+                          darkColor={
+                            selectedDays.includes(day.id)
+                              ? AiraColors.background
+                              : undefined
+                          }
                         >
                           {day.shortName}
                         </ThemedText>
@@ -239,17 +261,28 @@ export const TaskForm: React.FC<TaskFormProps> = ({
                   </View>
                 </View>
               )}
-              
+
               {/* Display recurrence summary */}
               {recurrenceType !== RecurrenceType.NONE && (
                 <View style={styles.recurrenceSummary}>
-                  <ThemedText style={styles.summaryText} lightColor={AiraColors.secondary}>
-                    {recurrenceType === RecurrenceType.DAILY && "Esta tarea se repetirá todos los días"}
-                    {recurrenceType === RecurrenceType.WEEKLY && 
-                      `Esta tarea se repetirá todos los ${DAYS_OF_WEEK.find(d => d.id === getDay(selectedDate))?.name || "días"}`}
-                    {recurrenceType === RecurrenceType.MULTIPLE_DAYS && selectedDays.length > 0 && 
+                  <ThemedText
+                    style={styles.summaryText}
+                    lightColor={AiraColors.secondary}
+                  >
+                    {recurrenceType === RecurrenceType.DAILY &&
+                      "Esta tarea se repetirá todos los días"}
+                    {recurrenceType === RecurrenceType.WEEKLY &&
+                      `Esta tarea se repetirá todos los ${
+                        DAYS_OF_WEEK.find((d) => d.id === getDay(selectedDate))
+                          ?.name || "días"
+                      }`}
+                    {recurrenceType === RecurrenceType.MULTIPLE_DAYS &&
+                      selectedDays.length > 0 &&
                       `Esta tarea se repetirá los días: ${selectedDays
-                        .map(dayId => DAYS_OF_WEEK.find(d => d.id === dayId)?.name)
+                        .map(
+                          (dayId) =>
+                            DAYS_OF_WEEK.find((d) => d.id === dayId)?.name
+                        )
                         .join(", ")}`}
                   </ThemedText>
                 </View>
@@ -279,11 +312,6 @@ const styles = StyleSheet.create({
     maxHeight: "80%",
     borderRadius: AiraVariants.cardRadius,
     padding: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
   },
   modalTitle: {
     marginBottom: 15,
@@ -291,7 +319,6 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: "Montserrat",
-    borderWidth: 1,
     borderRadius: AiraVariants.cardRadius,
     padding: 10,
     marginBottom: 15,
@@ -338,8 +365,6 @@ const styles = StyleSheet.create({
   recurrenceOption: {
     padding: 8,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     marginBottom: 8,
     minWidth: "48%",
     alignItems: "center",
@@ -365,8 +390,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 18,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     margin: 4,
   },
   selectedDayButton: {
