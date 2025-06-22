@@ -10,6 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useUser } from "@clerk/clerk-expo";
+import { router } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
@@ -53,16 +54,16 @@ export default function PlansScreen() {
   const { plans, createPlan, loading: isSavingPlan } = useGeneratedPlans();
   const { createPlan: createDailyMealPlan, loading: isSavingDailyMealPlan } =
     useDailyMealPlans();
-  const { 
-    routines, 
-    createRoutine: createWorkoutRoutine, 
+  const {
+    routines,
+    createRoutine: createWorkoutRoutine,
     deleteRoutine,
-    loading: isSavingWorkoutRoutine 
+    loading: isSavingWorkoutRoutine,
   } = useDailyWorkoutRoutines();
-  const { 
-    generatePersonalizedPlan, 
+  const {
+    generatePersonalizedPlan,
     generateDailyMealPlan,
-    generateFullExerciseRoutine 
+    generateFullExerciseRoutine,
   } = usePersonalizedPlan();
 
   const [viewState, setViewState] = useState<ViewState>("main");
@@ -134,6 +135,10 @@ export default function PlansScreen() {
 
   const handleWorkoutRoutineGenerate = () => {
     setViewState("workout-routine-form");
+  };
+
+  const handleExerciseSuggestionGenerate = () => {
+    router.push("/(tabs)");
   };
 
   const handleFormSubmit = async (formData: PersonalizedPlanInput) => {
@@ -318,7 +323,9 @@ export default function PlansScreen() {
     setError(null);
 
     try {
-      const routine = await generateFullExerciseRoutine(workoutRoutineInputParams);
+      const routine = await generateFullExerciseRoutine(
+        workoutRoutineInputParams
+      );
       setGeneratedWorkoutRoutine(routine);
     } catch (error) {
       console.error("Error regenerando rutina de ejercicio:", error);
@@ -350,7 +357,11 @@ export default function PlansScreen() {
   };
 
   const handleGoBack = () => {
-    if (viewState === "form" || viewState === "daily-meal-form" || viewState === "workout-routine-form") {
+    if (
+      viewState === "form" ||
+      viewState === "daily-meal-form" ||
+      viewState === "workout-routine-form"
+    ) {
       setViewState("main");
     } else if (viewState === "generated") {
       setViewState("main");
@@ -542,6 +553,22 @@ export default function PlansScreen() {
             </ThemedText>
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.optionCard}
+          onPress={handleExerciseSuggestionGenerate}
+          disabled={isGenerating}
+        >
+          <View style={styles.optionOutline}>
+            <Ionicons name="bulb" size={32} color="#3B82F6" />
+            <ThemedText style={styles.optionTitleWorkout}>
+              Sugerencias de Ejercicio
+            </ThemedText>
+            <ThemedText style={styles.optionDescriptionOutline}>
+              Obtén sugerencias de ejercicio personalizadas
+            </ThemedText>
+          </View>
+        </TouchableOpacity>
       </View>
 
       {!user && (
@@ -552,12 +579,12 @@ export default function PlansScreen() {
           </ThemedText>
         </View>
       )}
-      
+
       {plans?.length > 0 && <ExistingPlansSection plans={plans} />}
-      
+
       {routines?.length > 0 && (
-        <ExistingWorkoutRoutinesSection 
-          routines={routines} 
+        <ExistingWorkoutRoutinesSection
+          routines={routines}
           onRoutineDelete={handleDeleteWorkoutRoutine}
         />
       )}

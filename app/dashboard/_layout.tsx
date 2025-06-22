@@ -13,6 +13,8 @@ export default function DashboardLayout() {
       <Stack.Screen name="plans/daily-meal-plan" />
       <Stack.Screen name="plans/workout-routine/[id]" />
       <Stack.Screen name="plans/workout-routine" />
+      <Stack.Screen name="plans/recipe-suggestion" />
+      <Stack.Screen name="plans/exercise-suggestion" />
     </Stack>
   );
 }

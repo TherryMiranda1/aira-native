@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
-    View,
-    StyleSheet,
-    ScrollView,
-    TouchableOpacity,
-    Alert,
-    ActivityIndicator,
-    Share,
+  View,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+  Share,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
@@ -513,8 +513,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   headerRow: {
-    flexDirection: "row",
-    alignItems: "center",
     gap: 12,
   },
   backButton: {
@@ -527,6 +525,7 @@ const styles = StyleSheet.create({
   },
   headerTextContainer: {
     flex: 1,
+    flexDirection: "column",
   },
   headerTitle: {
     fontSize: 20,

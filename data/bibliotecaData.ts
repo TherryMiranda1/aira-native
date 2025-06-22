@@ -123,6 +123,53 @@ export const bibliotecaData: LibrarySection[] = [
     ],
   },
   {
+    id: "planes-ia",
+    title: "Planes con IA",
+    description: "Obtén sugerencias personalizadas de Aira",
+    href: "/dashboard/plans/complete-plan",
+    gradient: "from-cyan-400 to-blue-400",
+    icon: "sparkles",
+    categories: [
+      {
+        id: "exercise-suggestion",
+        title: "Sugerencias de Ejercicio",
+        href: "/dashboard/plans/exercise-suggestion",
+        icon: "bulb",
+        image:
+          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916750/chest_mc5eyg.jpg",
+        description: "Ejercicios personalizados para ti",
+        featured: true,
+      },
+      {
+        id: "daily-meal-plan",
+        title: "Plan de Comidas Diarias",
+        href: "/dashboard/plans/daily-meal-plan",
+        icon: "restaurant",
+        image:
+          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/desayuno_dqof52.jpg",
+        description: "Planifica tus comidas del día",
+      },
+      {
+        id: "workout-routine",
+        title: "Rutina de Ejercicio",
+        href: "/dashboard/plans/workout-routine",
+        icon: "fitness",
+        image:
+          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916746/back_vdw5to.jpg",
+        description: "Rutinas completas de entrenamiento",
+      },
+      {
+        id: "recipe-suggestion",
+        title: "Sugerencias de Recetas",
+        href: "/dashboard/plans/recipe-suggestion",
+        icon: "cafe",
+        image:
+          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/merienda_tvsh5o.jpg",
+        description: "Recetas adaptadas a tus gustos",
+      },
+    ],
+  },
+  {
     id: "mini-retos",
     title: "Mini Retos",
     description: "Pequeños pasos hacia grandes cambios",
@@ -448,6 +495,24 @@ export const bibliotecaData: LibrarySection[] = [
         image:
           "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749987194/g_2_dl5iq3.png",
         description: "Menús nutritivos diarios",
+      },
+      {
+        id: "recetas",
+        title: "Sugerencias de Recetas",
+        href: "/dashboard/plans/recipe-suggestion",
+        icon: "restaurant",
+        image:
+          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/desayuno_dqof52.jpg",
+        description: "Recetas personalizadas para cada ocasión",
+      },
+      {
+        id: "ejercicios",
+        title: "Sugerencias de Ejercicios",
+        href: "/dashboard/plans/exercise-suggestion",
+        icon: "fitness",
+        image:
+          "https://res.cloudinary.com/dtlaxm8gi/image/upload/v1749916751/legs_edn2rt.jpg",
+        description: "Ejercicios personalizados para cada ocasión",
       },
     ],
   },

@@ -2,7 +2,9 @@ import { aiApiClient } from "./apiClient";
 import { 
   PersonalizedPlanInput, 
   DailyMealPlanInput,
-  FullExerciseRoutineInput 
+  FullExerciseRoutineInput,
+  SuggestRecipeInput,
+  ExerciseSuggestionInput
 } from "@/types/Assistant";
 
 class AIClientService {
@@ -26,6 +28,20 @@ class AIClientService {
   async generateFullExerciseRoutine(routineInput: FullExerciseRoutineInput): Promise<any> {
     const URL = `/api/ai/full-exercise-routine`;
     const response = await aiApiClient.post(URL, { routineInput });
+
+    return response.data;
+  }
+
+  async generateRecipeSuggestion(recipeInput: SuggestRecipeInput): Promise<any> {
+    const URL = `/api/ai/recipe-suggestion`;
+    const response = await aiApiClient.post(URL, { recipeInput });
+
+    return response.data;
+  }
+
+  async generateExerciseSuggestion(exerciseInput: ExerciseSuggestionInput): Promise<any> {
+    const URL = `/api/ai/exercise-suggestion`;
+    const response = await aiApiClient.post(URL, { exerciseInput });
 
     return response.data;
   }

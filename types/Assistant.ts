@@ -68,6 +68,15 @@ export interface PersonalizedPlanOutput {
 }
 
 // Exercise Suggestion
+export interface ExerciseSuggestionInput {
+  fitnessLevel: string;
+  userInput: string;
+  history?: {
+    role: "user" | "model";
+    text: string;
+  }[];
+}
+
 type ExerciseSuggestionOutput = {
   exerciseName: string;
   instructions: string;
@@ -188,6 +197,22 @@ export interface AgentOption {
 }
 
 // Suggest Recipe
+export interface SuggestRecipeInput {
+  userInput: string;
+  mealType?: string;
+  mainIngredients?: string[];
+  dietaryRestrictions?: string[];
+  cuisineType?: string;
+  cookingTime?: string;
+  userDietaryPreferences?: string;
+  userAllergies?: string;
+  userDislikedFoods?: string;
+  history?: {
+    role: "user" | "model";
+    text: string;
+  }[];
+}
+
 export interface SuggestRecipeOutput {
   recipeName?: string;
   ingredients?: string;

@@ -49,7 +49,7 @@ const addToRemoveQueue = (
     dispatch({ type: "REMOVE_TOAST", toastId });
   }, delay);
 
-  toastTimeouts.set(toastId, interval);
+  toastTimeouts.set(toastId, interval as unknown as number);
 };
 
 const toastReducer = (state: ToastState, action: ToastAction): ToastState => {
