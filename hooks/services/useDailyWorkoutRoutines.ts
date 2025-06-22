@@ -177,10 +177,19 @@ export const useDailyWorkoutRoutines = () => {
   const updateLastAccessed = async (routineId: string): Promise<void> => {
     try {
       await dailyWorkoutRoutineService.updateLastAccessed(routineId);
-      // Optionally update local state if needed
     } catch (err) {
-      // Silently fail - this is not critical
       console.warn("Failed to update last accessed time:", err);
+    }
+  };
+
+  const getRoutineById = async (
+    routineId: string
+  ): Promise<DailyWorkoutRoutine | null> => {
+    try {
+      return await dailyWorkoutRoutineService.getRoutineById(routineId);
+    } catch (err) {
+      console.error("Failed to get workout routine by id:", err);
+      return null;
     }
   };
 
@@ -205,6 +214,7 @@ export const useDailyWorkoutRoutines = () => {
     getFavoriteRoutines,
     getRoutinesByTag,
     updateLastAccessed,
+    getRoutineById,
     refetch: loadRoutines,
   };
 };

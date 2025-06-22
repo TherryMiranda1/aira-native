@@ -1,3 +1,73 @@
+// Personalized Plan
+export interface PersonalizedPlanInput {
+  fullName?: string;
+  age: number;
+  sexo: string;
+  altura: number;
+  peso: number;
+  imc?: number;
+  objetivo: string;
+  plazo?: string;
+  condiciones_medicas?: string;
+  alergias?: string;
+  preferencias_nutricionales?: string;
+  habitos_alimenticios?: string;
+  nivel_actividad_actual?: string;
+  nivel_entrenamiento?: string;
+  sesiones_semana?: string;
+  minutos_por_sesion?: string;
+  equipamiento_disponible?: string;
+  horario_entrenamiento?: string;
+  horario_comidas?: string;
+  presupuesto_semana?: string;
+  estres?: string;
+  sueno?: string;
+  motivadores?: string;
+  cookingAvailability?: string;
+  personalPriorities?: string;
+  nutritionKnowledge?: string;
+}
+
+export interface PersonalizedPlanOutput {
+  planNutricional: {
+    mensajeIntroductorio: string;
+    desgloseMacros: {
+      caloriasTotales: string;
+      proteinas: string;
+      carbohidratos: string;
+      grasas: string;
+    };
+    distribucionComidas: string;
+    ejemplosRecetasPlatos: {
+      tipoComida: string;
+      opciones: string[];
+    }[];
+    consejosPreparacionTiming: string;
+  };
+  programaEntrenamiento: {
+    tipoEjercicio: string;
+    frecuenciaVolumenSemanal: string;
+    ejerciciosDetalladosPorSesion: {
+      nombreSesion: string;
+      descripcionSesion?: string;
+      ejercicios: {
+        nombreEjercicio: string;
+        seriesRepeticiones: string;
+        descanso: string;
+        alternativaOpcional?: string;
+      }[];
+    }[];
+    opcionesAlternativas?: string;
+  };
+  sugerenciasSeguimientoAjustes: {
+    indicadoresProgreso: string;
+    frecuenciaRevisionesModificaciones: string;
+    estrategiasMotivacionAdherencia: string;
+    mensajeFinalMotivador: string;
+  };
+}
+
+// Exercise Suggestion
 type ExerciseSuggestionOutput = {
   exerciseName: string;
   instructions: string;
@@ -11,6 +81,7 @@ type ExerciseSuggestionOutput = {
     | undefined;
 };
 
+// Motivational Output
 type MotivationalOutput = {
   message: string;
   suggestedNextActions?:
@@ -21,7 +92,8 @@ type MotivationalOutput = {
     | undefined;
 };
 
-type FullExerciseRoutineInput = {
+// Full Exercise Routine
+export interface FullExerciseRoutineInput {
   userInput: string;
   fitnessLevel?: string | undefined;
   history?:
@@ -33,9 +105,9 @@ type FullExerciseRoutineInput = {
   availableEquipment?: string | undefined;
   timePerSession?: string | undefined;
   daysPerWeek?: string | undefined;
-};
+}
 
-type FullExerciseRoutineOutput = {
+export interface FullExerciseRoutineOutput {
   nombreRutina: string;
   descripcionGeneral: string;
   sesiones: {
@@ -62,9 +134,10 @@ type FullExerciseRoutineOutput = {
     | undefined;
   advertencias?: string | undefined;
   sugerenciasAdicionales?: string | undefined;
-};
+}
 
-type DailyMealPlanInput = {
+// Daily Meal Plan
+export interface DailyMealPlanInput {
   userInput: string;
   history?:
     | {
@@ -76,15 +149,21 @@ type DailyMealPlanInput = {
   allergies?: string | undefined;
   dislikedFoods?: string | undefined;
   mainGoal?: string | undefined;
-};
+}
 
-type DailyMealPlanOutputType = {
-  name: string;
-  description: string;
-  ingredients: string;
-  preparation: string;
-  estimatedTime?: string;
-};
+export interface DailyMealPlanOutput {
+  planTitle: string;
+  introduction?: string;
+  meals: {
+    mealType: string;
+    options: string[];
+  }[];
+  generalTips?: string;
+  suggestedNextActions?: {
+    label: string;
+    actionPrompt: string;
+  }[];
+}
 
 export interface AgentOptionAction {
   type:
@@ -108,7 +187,7 @@ export interface AgentOption {
   action: AgentOptionAction;
 }
 
-// Estructura para UNA receta.
+// Suggest Recipe
 export interface SuggestRecipeOutput {
   recipeName?: string;
   ingredients?: string;
@@ -119,9 +198,6 @@ export interface SuggestRecipeOutput {
   suggestedNextActions?: Array<{ label: string; actionPrompt: string }>;
 }
 
-export type DailyMealPlanOutput = DailyMealPlanOutputType;
-
-// Este tipo se usa internamente por DailyMealPlanOutput
 export interface DetailedMealOption {
   name: string;
   description?: string;
@@ -183,5 +259,4 @@ export interface Message {
 export type {
   ExerciseSuggestionOutput,
   MotivationalOutput,
-  FullExerciseRoutineOutput,
 };

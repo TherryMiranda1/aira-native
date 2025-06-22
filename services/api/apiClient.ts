@@ -106,3 +106,4 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient();
+export const aiApiClient = new ApiClient(API_CONFIG.AI_API_URL);
