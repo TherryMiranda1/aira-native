@@ -10,6 +10,7 @@ import { useColorScheme } from "@/hooks/useColorScheme";
 import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { NotesContainer } from "@/context/NotesContext";
 import { CategoriesContainer } from "@/context/CategoriesContext";
+import { SubscriptionProvider } from "@/context/SubscriptionContext";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -32,21 +33,23 @@ export default function RootLayout() {
         "pk_test_dXByaWdodC1idXp6YXJkLTQ1LmNsZXJrLmFjY291bnRzLmRldiQ"
       }
     >
-      <NotesContainer>
-        <CategoriesContainer>
-          <ThemeProvider
-            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-          >
-            <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="(auth)" />
-              <Stack.Screen name="(tabs)" />
-              <Stack.Screen name="dashboard" />
-              <Stack.Screen name="onboarding" />
-              <Stack.Screen name="+not-found" />
-            </Stack>
-          </ThemeProvider>
-        </CategoriesContainer>
-      </NotesContainer>
+      <SubscriptionProvider>
+        <NotesContainer>
+          <CategoriesContainer>
+            <ThemeProvider
+              value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+            >
+              <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(auth)" />
+                <Stack.Screen name="(tabs)" />
+                <Stack.Screen name="dashboard" />
+                <Stack.Screen name="onboarding" />
+                <Stack.Screen name="+not-found" />
+              </Stack>
+            </ThemeProvider>
+          </CategoriesContainer>
+        </NotesContainer>
+      </SubscriptionProvider>
     </ClerkProvider>
   );
 }
