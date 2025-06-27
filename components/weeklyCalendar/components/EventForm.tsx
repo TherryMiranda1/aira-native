@@ -23,6 +23,7 @@ import {
 } from "@/services/api/event.service";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { useUser } from "@clerk/clerk-expo";
+import { ThemedInput } from "@/components/ThemedInput";
 
 interface EventFormProps {
   visible: boolean;
@@ -190,8 +191,7 @@ export const EventForm: React.FC<EventFormProps> = ({
               <ThemedText style={styles.questionText}>
                 ¿Qué tienes planeado?
               </ThemedText>
-              <TextInput
-                style={styles.titleInput}
+              <ThemedInput
                 placeholder="Ej: Cita médica, ejercicio..."
                 value={title}
                 onChangeText={setTitle}
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 50 : 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   header: {
     flexDirection: "row",
@@ -425,14 +425,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   section: {
-    marginBottom: 32,
-    marginTop: 24,
+    marginTop: 16,
   },
   questionText: {
     fontSize: 20,
     fontWeight: "600",
     color: AiraColors.foreground,
-    marginBottom: 16,
+    marginBottom: 8,
   },
   titleInput: {
     fontSize: 16,

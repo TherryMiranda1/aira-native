@@ -28,15 +28,15 @@ import { ErrorState } from "@/components/States/ErrorState";
 const categoryLabels: Record<string, string> = {
   "Inicio-del-Dia-General": "Inicio del Día",
   "Momentos-de-Desanimo-Falta-de-Motivacion": "Motivación",
-  "Despues-de-un-Esfuerzo-Pequenos-Logros": "Pequeños Logros",
+  "Despues-de-un-Esfuerzo-Pequenos-Logros": "Logros",
   "Recordatorios-de-Autocuidado-Compasion": "Autocuidado",
   "Cuando-se-Falla-un-Objetivo-Flexibilidad": "Flexibilidad",
-  "Para-Empezar-Algo-Nuevo-Superar-la-Inercia": "Nuevos Comienzos",
-  "Manejo-del-Estres-Cansancio": "Manejo del Estrés",
+  "Para-Empezar-Algo-Nuevo-Superar-la-Inercia": "Comienzos",
+  "Manejo-del-Estres-Cansancio": "Estres",
   "Fomentar-la-Constancia": "Constancia",
   "Reflexion-al-Final-del-Dia": "Reflexión",
-  "Conectando-con-el-Cuerpo-Ejercicio-Escucha": "Conexión Corporal",
-  "Alimentacion-Consciente": "Alimentación Consciente",
+  "Conectando-con-el-Cuerpo-Ejercicio-Escucha": "Corporal",
+  "Alimentacion-Consciente": "Alimentación",
   "Celebrando-la-Resiliencia": "Resiliencia",
 };
 

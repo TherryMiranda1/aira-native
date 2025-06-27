@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     paddingHorizontal: 12,
     paddingVertical: 16,
+    flex: 1,
   },
   default: {
     // Estilo base ya incluido

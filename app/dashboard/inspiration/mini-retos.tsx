@@ -26,14 +26,17 @@ import { ErrorState } from "@/components/States/ErrorState";
 
 // Mapeo de categorías de la versión web
 const categoryLabels: Record<string, string> = {
-  "Mindfulness-y-Relajacion": "Mindfulness y Relajación",
-  "Ejercicio-y-Movimiento": "Ejercicio y Movimiento",
-  "Alimentacion-Saludable": "Alimentación Saludable",
-  "Productividad-y-Organizacion": "Productividad y Organización",
-  "Autocuidado-y-Bienestar": "Autocuidado y Bienestar",
-  "Relaciones-Sociales": "Relaciones Sociales",
-  "Creatividad-y-Aprendizaje": "Creatividad y Aprendizaje",
-  "Habitos-Positivos": "Hábitos Positivos",
+  "Autocuidado-&-Momentos-de-Belleza": "Autocuidado",
+  "Relaciones-Sociales": "Relaciones",
+  "Habitos-Positivos": "Hábitos",
+  "Conexión-Social-&-Apoyo": "Relaciones",
+  "Creatividad-&-Juego": "Creatividad",
+  "Mindfulness-&-Bienestar-Emocional": "Mindfulness",
+  "Movimiento-Diario-&-Fitness-Suave": "Ejercicio",
+  "Nutrición-Consciente-&-Snacks-Saludables": "Alimentación",
+  "Productividad-&-Enfoque": "Productividad",
+  "Sueño-Reparador-&-Rutinas-Nocturnas": "Sueño",
+  "Gestion-del-Estres-&-Relajacion": "Estres",
 };
 
 const categoryColors: Record<string, string[]> = {
@@ -99,6 +102,7 @@ export default function MiniRetosScreen() {
 
   const getCategoryLabel = (categoria?: string) => {
     if (!categoria) return "";
+
     return categoryLabels[categoria] || categoria.replace(/-/g, " ");
   };
 

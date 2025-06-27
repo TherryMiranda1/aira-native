@@ -40,7 +40,7 @@ interface ExercisesGalleryProps {
 }
 
 const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
-  selectedCategory = "biceps",
+  selectedCategory = "Biceps",
   setSelectedCategory,
 }) => {
   const router = useRouter();
@@ -92,7 +92,7 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
           },
         }));
 
-        const where = { categoria: category };
+        const where = { categoria: { equals: selectedCategory } };
         const { exercises } = await exerciseService.getExercises({
           limit: 20,
           where,
@@ -172,10 +172,7 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
     [handleExercisePress]
   );
 
-  const keyExtractor = useCallback(
-    (item: ExerciseType) => item.id_ejercicio,
-    []
-  );
+  const keyExtractor = useCallback((item: ExerciseType) => item.id, []);
 
   const renderCategoryPage = useCallback(
     (categoryId: string) => {

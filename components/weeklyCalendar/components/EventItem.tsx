@@ -213,7 +213,6 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: AiraVariants.cardRadius,
     marginBottom: 12,
-    marginHorizontal: 16,
     alignItems: "flex-start",
   },
   highPriorityEvent: {

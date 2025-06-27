@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { Stack } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "../../constants/Colors";
@@ -15,11 +11,11 @@ import WeeklyCalendar from "@/components/weeklyCalendar/WeeklyCalendar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useUser } from "@clerk/clerk-expo";
 import { useRealmNotes } from "@/infra/realm/services/useRealmNotes";
-import { 
-  DailyPhrase, 
-  MoodTracker, 
-  DailySuggestion, 
-  AchievementsSummary 
+import {
+  DailyPhrase,
+  MoodTracker,
+  DailySuggestion,
+  AchievementsSummary,
 } from "@/components/dashboard";
 
 // Función para obtener un saludo basado en la hora del día
@@ -30,7 +26,13 @@ const getTimeBasedGreeting = (currentTime: Date) => {
   return "Buenas noches";
 };
 
-type MoodType = "radiante" | "tranquila" | "reflexiva" | "cansada" | "sensible" | "neutral";
+type MoodType =
+  | "radiante"
+  | "tranquila"
+  | "reflexiva"
+  | "cansada"
+  | "sensible"
+  | "neutral";
 
 export default function HomeScreen() {
   const { user } = useUser();
@@ -57,13 +59,7 @@ export default function HomeScreen() {
 
   return (
     <PageView>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Topbar title="Inicio" actions={<ProfileButton />} />
-
+      <Topbar title="" actions={<ProfileButton />} />
       <LinearGradient
         colors={[
           AiraColors.airaLavenderSoft,
@@ -79,7 +75,7 @@ export default function HomeScreen() {
             showsVerticalScrollIndicator={false}
           >
             <WeeklyCalendar />
-            
+
             {/* Header con saludo personalizado */}
             <View style={styles.header}>
               <ThemedText type="defaultSemiBold" style={styles.greeting}>

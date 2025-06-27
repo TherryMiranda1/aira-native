@@ -4,7 +4,6 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
   ColorValue,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -13,15 +12,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ThemedText } from "../ThemedText";
 import { CategoryCard } from "./CategoryCard";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { AiraVariants } from "@/constants/Themes";
 import { LibrarySection } from "@/types/biblioteca";
+import { router } from "expo-router";
 
 interface HorizontalCarouselProps {
   section: LibrarySection;
 }
-
-const { width } = Dimensions.get("window");
-const cardWidth = (width - 48) / 2;
 
 export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
   const getGradientColors = (gradient: string) => {
@@ -66,7 +62,7 @@ export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
               />
             </View>
             <View style={styles.headerText}>
-              <ThemedText style={styles.sectionTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
                 {section.title}
               </ThemedText>
               <ThemedText style={styles.sectionDescription}>
@@ -74,7 +70,10 @@ export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
               </ThemedText>
             </View>
           </View>
-          <TouchableOpacity style={styles.viewAllButton}>
+          <TouchableOpacity
+            onPress={() => router.push(section.href as any)}
+            style={styles.viewAllButton}
+          >
             <ThemedText style={styles.viewAllText}>Ver todo</ThemedText>
             <Ionicons
               name="chevron-forward"
@@ -132,7 +131,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "700",
     color: AiraColors.background,
     marginBottom: 2,
   },
@@ -157,11 +155,7 @@ const styles = StyleSheet.create({
   },
   carouselContainer: {
     backgroundColor: AiraColors.card,
-
     paddingVertical: 16,
-    borderWidth: 1,
-    borderTopWidth: 0,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   carouselContent: {
     paddingHorizontal: 16,

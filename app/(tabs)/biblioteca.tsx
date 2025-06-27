@@ -60,6 +60,12 @@ export default function BibliotecaScreen() {
           </View>
         </LinearGradient>
 
+        <View style={styles.sectionsContainer}>
+          {bibliotecaData.map((section, index) => (
+            <HorizontalCarousel key={section.id} section={section} />
+          ))}
+        </View>
+
         {featuredItems.length > 0 && (
           <View style={styles.featuredSection}>
             <View style={styles.sectionHeader}>
@@ -75,7 +81,7 @@ export default function BibliotecaScreen() {
                   />
                 </LinearGradient>
                 <View>
-                  <ThemedText style={styles.sectionTitle}>
+                  <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
                     Destacados
                   </ThemedText>
                   <ThemedText style={styles.sectionSubtitle}>
@@ -98,12 +104,6 @@ export default function BibliotecaScreen() {
           </View>
         )}
 
-        <View style={styles.sectionsContainer}>
-          {bibliotecaData.map((section, index) => (
-            <HorizontalCarousel key={section.id} section={section} />
-          ))}
-        </View>
-
         <LinearGradient
           colors={[AiraColors.primary, AiraColors.accent]}
           style={styles.ctaSection}
@@ -112,7 +112,7 @@ export default function BibliotecaScreen() {
             <View style={styles.ctaIconContainer}>
               <Ionicons name="rocket" size={28} color={AiraColors.background} />
             </View>
-            <ThemedText style={styles.ctaTitle}>
+            <ThemedText type="defaultSemiBold" style={styles.ctaTitle}>
               ¿Lista para comenzar tu transformación? 🚀
             </ThemedText>
             <ThemedText style={styles.ctaDescription}>
@@ -164,7 +164,6 @@ export default function BibliotecaScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   scrollContent: {
     paddingBottom: 24,
@@ -194,7 +193,6 @@ const styles = StyleSheet.create({
   heroAccent: {
     fontSize: 14,
     color: AiraColors.primary,
-    fontWeight: "600",
     textAlign: "center",
   },
   statLabel: {
@@ -202,8 +200,8 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
   },
   featuredSection: {
-    paddingHorizontal: 16,
-    marginBottom: 32,
+    paddingHorizontal: 8,
+    marginVertical: 16,
   },
   sectionHeader: {
     flexDirection: "row",
@@ -225,7 +223,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: "700",
     color: AiraColors.foreground,
     marginBottom: 2,
   },
@@ -260,7 +257,6 @@ const styles = StyleSheet.create({
   },
   ctaTitle: {
     fontSize: 20,
-    fontWeight: "700",
     color: AiraColors.background,
     textAlign: "center",
     marginBottom: 12,
@@ -304,7 +300,6 @@ const styles = StyleSheet.create({
   },
   ctaSecondaryText: {
     fontSize: 16,
-    fontWeight: "600",
     color: AiraColors.background,
     marginLeft: 8,
   },

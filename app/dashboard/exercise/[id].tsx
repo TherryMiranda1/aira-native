@@ -13,78 +13,38 @@ import { ThemedText } from "@/components/ThemedText";
 import { ModalScreen } from "@/components/navigation/ModalScreen";
 import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
-
-// Importamos los datos de ejercicios
-import biceps from "@/mocks/exercises/biceps.json";
-import espalda from "@/mocks/exercises/espalda.json";
-import hombros from "@/mocks/exercises/hombros.json";
-import pecho from "@/mocks/exercises/pecho.json";
-import piernas from "@/mocks/exercises/piernas.json";
-import triceps from "@/mocks/exercises/triceps.json";
-
-interface MetricaConfigurable {
-  metrica: string;
-  unidad: string | null;
-  tipo_input: string;
-}
-
-interface ValoresEjemplo {
-  peso_kg?: number;
-  repeticiones?: number;
-  series?: number;
-  duracion_minutos?: number;
-  distancia_km?: number;
-  descanso_entre_series_segundos?: number;
-}
-
-interface Exercise {
-  id_ejercicio: string;
-  nombre: string;
-  descripcion: string;
-  instrucciones: string[];
-  tipo_ejercicio: string;
-  modalidad: string;
-  grupos_musculares: string[];
-  equipamiento_necesario: string[];
-  nivel_dificultad: string;
-  media: {
-    imagen_url: string;
-    video_url: string;
-  };
-  metricas_configurables?: MetricaConfigurable[];
-  valores_ejemplo_mujer_principiante: ValoresEjemplo;
-  tags_busqueda: string[];
-  advertencias: string;
-  categoria?: string;
-}
-
-const processExercises = (exercises: any[], categoria: string): Exercise[] => {
-  return exercises.map((exercise) => ({
-    ...exercise,
-    categoria,
-  }));
-};
-
-const allExercises: Exercise[] = [
-  ...processExercises(biceps, "biceps"),
-  ...processExercises(espalda, "espalda"),
-  ...processExercises(hombros, "hombros"),
-  ...processExercises(pecho, "pecho"),
-  ...processExercises(piernas, "piernas"),
-  ...processExercises(triceps, "triceps"),
-];
+import { exerciseService, Exercise } from "@/services/api/exercise.service";
 
 export default function ExerciseDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const [exercise, setExercise] = useState<Exercise | undefined>();
+  const [exercise, setExercise] = useState<Exercise | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const foundExercise = allExercises.find((e) => e.id_ejercicio === id);
-    setExercise(foundExercise || undefined);
-    setLoading(false);
+    async function fetchExercise() {
+      if (!id) {
+        setError("ID de ejercicio no proporcionado");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        setError(null);
+        const exerciseData = await exerciseService.getExerciseById(id as string);
+        setExercise(exerciseData);
+      } catch (err) {
+        console.error("Error al cargar el ejercicio:", err);
+        setError("No pudimos cargar el ejercicio. Por favor, intenta de nuevo.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchExercise();
   }, [id]);
 
   const toggleFavorite = () => {
@@ -112,7 +72,7 @@ export default function ExerciseDetailScreen() {
     );
   }
 
-  if (!exercise) {
+  if (error || !exercise) {
     return (
       <ModalScreen title="">
         <EmptyState
@@ -134,9 +94,9 @@ export default function ExerciseDetailScreen() {
       >
         {/* Hero Image */}
         <View style={styles.heroContainer}>
-          {exercise.media?.imagen_url && (
+          {exercise.imagen && (
             <Image
-              source={{ uri: exercise.media.imagen_url }}
+              source={{ uri: exercise.imagen }}
               style={styles.heroImage}
               resizeMode="cover"
             />
@@ -354,7 +314,7 @@ export default function ExerciseDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   heroContainer: {
     position: "relative",
@@ -386,7 +346,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: -24,
@@ -407,7 +367,7 @@ const styles = StyleSheet.create({
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColors.secondary,
     borderRadius: 16,
     paddingVertical: 20,
     marginBottom: 32,

@@ -85,11 +85,6 @@ export default function SignInScreen() {
 
   return (
     <PageView>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardAvoid}
@@ -197,11 +192,9 @@ export default function SignInScreen() {
             <ThemedText style={styles.footerText}>
               ¿No tienes una cuenta?
             </ThemedText>
-            <Link href="/sign-up" asChild>
-              <TouchableOpacity>
-                <ThemedText style={styles.signUpLink}>Registrarse</ThemedText>
-              </TouchableOpacity>
-            </Link>
+            <TouchableOpacity onPress={() => router.replace("/(auth)/sign-up")}>
+              <ThemedText style={styles.signUpLink}>Registrarse</ThemedText>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -264,7 +257,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
