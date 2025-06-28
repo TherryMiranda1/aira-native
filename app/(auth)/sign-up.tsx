@@ -219,8 +219,7 @@ export default function SignUpScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar style="light" />
+    <PageView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardAvoid}
@@ -284,7 +283,7 @@ export default function SignUpScreen() {
               <ThemedInput
                 variant="password"
                 value={password}
-                placeholder="Contraseña (min. 8 caracteres)"
+                placeholder="Contraseña"
                 secureTextEntry={!showPassword}
                 onChangeText={setPassword}
               />
@@ -333,17 +332,14 @@ export default function SignUpScreen() {
             <ThemedText style={styles.footerText}>
               ¿Ya tienes una cuenta?
             </ThemedText>
-            <Link href="/sign-in" asChild>
-              <TouchableOpacity>
-                <ThemedText style={styles.signUpLink}>
-                  Iniciar sesión
-                </ThemedText>
-              </TouchableOpacity>
-            </Link>
+
+            <TouchableOpacity onPress={() => router.replace("/(auth)/sign-in")}>
+              <ThemedText style={styles.signUpLink}>Iniciar sesión</ThemedText>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </PageView>
   );
 }
 
@@ -401,7 +397,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),

@@ -46,6 +46,6 @@ export const ModalScreen: React.FC<ModalScreenProps> = ({
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
 });

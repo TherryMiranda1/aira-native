@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 15,
-    paddingHorizontal: 16,
+    paddingHorizontal: 8,
   },
   addButton: {
     width: 30,

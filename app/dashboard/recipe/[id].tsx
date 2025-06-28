@@ -117,7 +117,7 @@ export default function RecipeDetailScreen() {
         <View style={styles.content}>
           {/* Title Section */}
           <View style={styles.titleSection}>
-            <ThemedText style={styles.title}>{recipe.titulo}</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.title}>{recipe.titulo}</ThemedText>
             <ThemedText style={styles.subtitle}>
               {recipe.ingrediente_principal}
             </ThemedText>
@@ -159,7 +159,7 @@ export default function RecipeDetailScreen() {
 
           {/* Ingredients */}
           <View style={styles.section}>
-            <ThemedText style={styles.sectionTitle}>Ingredientes</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Ingredientes</ThemedText>
             <View style={styles.ingredientsList}>
               {recipe.ingredientes.map((ingrediente, index) => (
                 <View key={index} style={styles.ingredientItem}>
@@ -179,7 +179,7 @@ export default function RecipeDetailScreen() {
 
           {/* Preparation */}
           <View style={styles.section}>
-            <ThemedText style={styles.sectionTitle}>Preparación</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Preparación</ThemedText>
             <View style={styles.stepsList}>
               {preparationSteps.map((step, index) => (
                 <View key={index} style={styles.stepItem}>
@@ -205,7 +205,6 @@ export default function RecipeDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   heroContainer: {
     position: "relative",
@@ -237,7 +236,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: -24,
@@ -262,7 +261,7 @@ const styles = StyleSheet.create({
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColors.secondary,
     borderRadius: 16,
     paddingVertical: 20,
     marginBottom: 32,
@@ -274,14 +273,12 @@ const styles = StyleSheet.create({
   statText: {
     fontSize: 14,
     color: AiraColors.foreground,
-    fontWeight: "600",
   },
   section: {
     marginBottom: 32,
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: "700",
     color: AiraColors.foreground,
     marginBottom: 20,
   },
@@ -308,13 +305,11 @@ const styles = StyleSheet.create({
   ingredientName: {
     fontSize: 16,
     color: AiraColors.foreground,
-    fontWeight: "500",
     flex: 1,
   },
   ingredientAmount: {
     fontSize: 14,
     color: AiraColors.mutedForeground,
-    fontWeight: "600",
   },
   stepsList: {
     gap: 20,
@@ -334,7 +329,6 @@ const styles = StyleSheet.create({
   },
   stepNumberText: {
     fontSize: 14,
-    fontWeight: "700",
     color: AiraColors.primaryForeground,
   },
   stepText: {
@@ -342,7 +336,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: AiraColors.foreground,
     lineHeight: 24,
-    fontWeight: "400",
   },
   bottomSpacing: {
     height: 40,

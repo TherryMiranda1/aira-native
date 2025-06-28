@@ -90,7 +90,7 @@ const RecipesGallery = ({
             error: null,
           },
         }));
-        const where = { tipo_plato: category };
+        const where = { tipo_plato: { equals: category } };
 
         const { recipes } = await recipeService.getRecipes({
           limit: 20,

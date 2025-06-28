@@ -211,7 +211,7 @@ export const CategoryCard = ({
 
               {/* Texto */}
               <View style={styles.textContainer}>
-                <ThemedText style={styles.title} numberOfLines={2}>
+                <ThemedText type="defaultSemiBold" style={styles.title} numberOfLines={2}>
                   {category.title}
                 </ThemedText>
                 {category.description && (
@@ -273,8 +273,8 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.5),
   },
   featuredCard: {
-    borderWidth: 2,
-    borderColor: "#A855F7",
+    borderWidth: 1,
+    borderColor: AiraColors.secondary,
   },
   imageContainer: {
     position: "relative",
@@ -306,7 +306,6 @@ const styles = StyleSheet.create({
   featuredBadgeText: {
     color: "white",
     fontSize: 12,
-    fontWeight: "700",
   },
   contentOverlay: {
     position: "absolute",
@@ -331,7 +330,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "700",
     color: "white",
     lineHeight: 22,
     textShadowColor: "rgba(0, 0, 0, 0.75)",

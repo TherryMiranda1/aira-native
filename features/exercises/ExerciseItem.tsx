@@ -20,7 +20,7 @@ export const ExerciseItem = memo(
   }) => {
     return (
       <TouchableOpacity
-        onPress={() => onPress(exercise.id_ejercicio)}
+        onPress={() => onPress(exercise.id)}
         style={styles.exerciseCard}
       >
         <View style={styles.cardHeader}>

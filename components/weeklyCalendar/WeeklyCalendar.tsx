@@ -2,7 +2,11 @@ import { startOfWeek, endOfWeek, isSameDay } from "date-fns";
 import React, { useState, useMemo, useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 import { useEvents } from "@/hooks/services/useEvents";
-import { Event, CreateEventData, UpdateEventData } from "@/services/api/event.service";
+import {
+  Event,
+  CreateEventData,
+  UpdateEventData,
+} from "@/services/api/event.service";
 import { WeekNavigation, EventList, EventForm } from "./components";
 
 const WeeklyCalendar: React.FC = () => {
@@ -45,8 +49,13 @@ const WeeklyCalendar: React.FC = () => {
       .filter((event) => {
         // Filtrar eventos de actividades completadas (mood, ritual, challenge)
         if (["mood", "ritual", "challenge"].includes(event.eventType)) {
-          const isActivityCompletion = event.metadata?.source && 
-            ["mood-tracker", "ritual-completion", "challenge-completion"].includes(event.metadata.source);
+          const isActivityCompletion =
+            event.metadata?.source &&
+            [
+              "mood-tracker",
+              "ritual-completion",
+              "challenge-completion",
+            ].includes(event.metadata.source);
           return !isActivityCompletion;
         }
         return true;
@@ -65,35 +74,44 @@ const WeeklyCalendar: React.FC = () => {
     setModalVisible(true);
   }, []);
 
-  const handleSaveEvent = useCallback(async (eventData: Partial<CreateEventData | UpdateEventData>) => {
-    try {
-      if (editingEvent) {
-        await updateEvent(editingEvent.id, eventData as UpdateEventData);
-      } else {
-        await createEvent(eventData as Omit<CreateEventData, "userId">);
+  const handleSaveEvent = useCallback(
+    async (eventData: Partial<CreateEventData | UpdateEventData>) => {
+      try {
+        if (editingEvent) {
+          await updateEvent(editingEvent.id, eventData as UpdateEventData);
+        } else {
+          await createEvent(eventData as Omit<CreateEventData, "userId">);
+        }
+        setModalVisible(false);
+        setEditingEvent(null);
+      } catch (error) {
+        console.error("Error saving event:", error);
       }
-      setModalVisible(false);
-      setEditingEvent(null);
-    } catch (error) {
-      console.error("Error saving event:", error);
-    }
-  }, [editingEvent, updateEvent, createEvent]);
+    },
+    [editingEvent, updateEvent, createEvent]
+  );
 
-  const handleToggleCompleted = useCallback(async (eventId: string, isCompleted: boolean) => {
-    try {
-      await toggleCompleted(eventId, isCompleted);
-    } catch (error) {
-      console.error("Error toggling event completion:", error);
-    }
-  }, [toggleCompleted]);
+  const handleToggleCompleted = useCallback(
+    async (eventId: string, isCompleted: boolean) => {
+      try {
+        await toggleCompleted(eventId, isCompleted);
+      } catch (error) {
+        console.error("Error toggling event completion:", error);
+      }
+    },
+    [toggleCompleted]
+  );
 
-  const handleDeleteEvent = useCallback(async (eventId: string) => {
-    try {
-      await deleteEvent(eventId);
-    } catch (error) {
-      console.error("Error deleting event:", error);
-    }
-  }, [deleteEvent]);
+  const handleDeleteEvent = useCallback(
+    async (eventId: string) => {
+      try {
+        await deleteEvent(eventId);
+      } catch (error) {
+        console.error("Error deleting event:", error);
+      }
+    },
+    [deleteEvent]
+  );
 
   const handleWeekChange = useCallback((newWeekStart: Date) => {
     setCurrentWeekStart(newWeekStart);

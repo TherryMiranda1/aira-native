@@ -350,12 +350,12 @@ class RitualService {
   getStepCategoryLabel(categoria: string): string {
     const categoryMap: { [key: string]: string } = {
       "mindfulness-bienestar": "Mindfulness",
-      "nutricion-snacks": "Nutrición",
+      "nutricion-consciente": "Nutrición",
       "pausas-activas": "Pausas Activas",
       "productividad-enfoque": "Productividad",
       "autocuidado-belleza": "Autocuidado",
       "gestion-estres": "Anti-Estrés",
-      "creatividad-juego": "Creatividad",
+      "creatividad-enfoque": "Creatividad",
       "sueno-rutinas": "Descanso",
       "movimiento-fitness": "Movimiento",
       "conexion-social": "Conexión",

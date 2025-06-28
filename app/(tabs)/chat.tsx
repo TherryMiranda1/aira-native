@@ -407,10 +407,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 4,
   },
   airaMessageBubble: {
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColors.secondary,
     borderBottomLeftRadius: 4,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.4),
   },
   messageText: {
     fontSize: 15,
@@ -459,10 +457,8 @@ const styles = StyleSheet.create({
   contentCard: {
     marginTop: 8,
     padding: 12,
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.5),
-    borderRadius: AiraVariants.tagRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
+    backgroundColor: AiraColors.secondary,
+    borderRadius: AiraVariants.cardRadius,
   },
   contentTitle: {
     fontSize: 16,
