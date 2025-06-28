@@ -1,15 +1,6 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  ActivityIndicator,
-  ScrollView,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, StyleSheet, Alert, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
 
@@ -18,11 +9,14 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { RecipeSuggestionForm } from "@/components/ui/RecipeSuggestionForm";
 import { GeneratedRecipeSection } from "@/components/ui/GeneratedRecipeSection";
+import { PlanHeader } from "@/components/ui/PlanHeader";
+import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
+import { PlanErrorView } from "@/components/ui/PlanErrorView";
+import { PlanOptionCard } from "@/components/ui/PlanOptionCard";
+import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
-import {
-  SuggestRecipeInput,
-  SuggestRecipeOutput,
-} from "@/types/Assistant";
+import { SuggestRecipeInput, SuggestRecipeOutput } from "@/types/Assistant";
+import { PageView } from "@/components/ui/PageView";
 
 type ViewState = "main" | "form" | "generated" | "loading" | "error";
 
@@ -150,113 +144,68 @@ export default function RecipeSuggestionScreen() {
     }
   };
 
-  const renderHeader = () => {
-    const getHeaderConfig = () => {
-      switch (viewState) {
-        case "form":
-          return {
-            title: "Configurar Receta",
-            subtitle: "Personaliza tu sugerencia",
-            showBack: true,
-          };
-        case "generated":
-          return {
-            title: "Tu Receta Sugerida",
-            subtitle: "Generado por Aira",
-            showBack: true,
-          };
-        case "loading":
-          return {
-            title: "Generando Receta",
-            subtitle: "Aira está creando tu receta personalizada...",
-            showBack: false,
-          };
-        case "error":
-          return {
-            title: "Error",
-            subtitle: "Hubo un problema generando tu receta",
-            showBack: true,
-          };
-        default:
-          return {
-            title: "Sugerencias de Recetas",
-            subtitle: "Cocina con recetas diseñadas para ti",
-            showBack: true,
-          };
-      }
-    };
-
-    const config = getHeaderConfig();
-
-    return (
-      <LinearGradient colors={["#F97316", "#EA580C"]} style={styles.header}>
-        <SafeAreaView edges={["top"]} style={styles.headerContent}>
-          <View style={styles.headerRow}>
-            <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
-              <Ionicons name="arrow-back" size={24} color="white" />
-            </TouchableOpacity>
-            <View style={styles.headerTextContainer}>
-              <ThemedText style={styles.headerTitle}>{config.title}</ThemedText>
-              <ThemedText style={styles.headerSubtitle}>
-                {config.subtitle}
-              </ThemedText>
-            </View>
-          </View>
-        </SafeAreaView>
-      </LinearGradient>
-    );
+  const getHeaderConfig = () => {
+    switch (viewState) {
+      case "form":
+        return {
+          title: "Configurar Receta",
+          subtitle: "Personaliza tu sugerencia",
+          showBack: true,
+        };
+      case "generated":
+        return {
+          title: "Tu Receta Sugerida",
+          subtitle: "Generado por Aira",
+          showBack: true,
+        };
+      case "loading":
+        return {
+          title: "Generando Receta",
+          subtitle: "Aira está creando tu receta personalizada...",
+          showBack: false,
+        };
+      case "error":
+        return {
+          title: "Error",
+          subtitle: "Hubo un problema generando tu receta",
+          showBack: true,
+        };
+      default:
+        return {
+          title: "Sugerencias de Recetas",
+          subtitle: "Cocina con recetas diseñadas para ti",
+          showBack: true,
+        };
+    }
   };
 
   const renderMainView = () => (
     <View style={styles.mainContainer}>
-      <View style={styles.welcomeSection}>
-        <View style={styles.iconContainer}>
-          <Ionicons name="restaurant" size={48} color="#F97316" />
-        </View>
-        <ThemedText style={styles.welcomeTitle}>
-          ¡Descubre tu próxima receta favorita! 🍽️
-        </ThemedText>
-        <ThemedText style={styles.welcomeDescription}>
-          Aira te ayudará a encontrar recetas deliciosas y saludables,
-          adaptadas a tus gustos, ingredientes disponibles y restricciones dietéticas.
-        </ThemedText>
-      </View>
+      <PlanWelcomeSection
+        title="¡Descubre tu próxima receta favorita! 🍽️"
+        description="Aira te ayudará a encontrar recetas deliciosas y saludables, adaptadas a tus gustos, ingredientes disponibles y restricciones dietéticas."
+        iconName="restaurant"
+        iconColor="#F97316"
+      />
 
       <View style={styles.optionsContainer}>
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Sugerencia Rápida"
+          description="Receta saludable y deliciosa automática"
+          iconName="flash"
           onPress={handleQuickGenerate}
           disabled={isGenerating}
-        >
-          <LinearGradient
-            colors={["#F97316", "#EA580C"]}
-            style={styles.optionGradient}
-          >
-            <Ionicons name="flash" size={32} color="white" />
-            <ThemedText style={styles.optionTitle}>
-              Sugerencia Rápida
-            </ThemedText>
-            <ThemedText style={styles.optionDescription}>
-              Receta saludable y deliciosa automática
-            </ThemedText>
-          </LinearGradient>
-        </TouchableOpacity>
+          variant="gradient"
+        />
 
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Personalización Completa"
+          description="Configura ingredientes, tipo de cocina y más"
+          iconName="create"
           onPress={handleCustomGenerate}
           disabled={isGenerating}
-        >
-          <View style={styles.optionOutline}>
-            <Ionicons name="create" size={32} color="#F97316" />
-            <ThemedText style={styles.optionTitleOutline}>
-              Personalización Completa
-            </ThemedText>
-            <ThemedText style={styles.optionDescriptionOutline}>
-              Configura ingredientes, tipo de cocina y más
-            </ThemedText>
-          </View>
-        </TouchableOpacity>
+          variant="outline"
+        />
       </View>
 
       {!user && (
@@ -271,49 +220,18 @@ export default function RecipeSuggestionScreen() {
   );
 
   const renderLoadingView = () => (
-    <View style={styles.loadingContainer}>
-      <LinearGradient
-        colors={["#F97316", "#EA580C"]}
-        style={styles.loadingGradient}
-      >
-        <ActivityIndicator size="large" color="white" />
-        <ThemedText style={styles.loadingTitle}>
-          Generando tu receta personalizada
-        </ThemedText>
-        <ThemedText style={styles.loadingSubtitle}>
-          Aira está creando una receta deliciosa especialmente para ti...
-        </ThemedText>
-      </LinearGradient>
-    </View>
+    <PlanLoadingView
+      title="Generando tu receta personalizada"
+      subtitle="Aira está creando una receta deliciosa especialmente para ti..."
+    />
   );
 
   const renderErrorView = () => (
-    <View style={styles.errorContainer}>
-      <View style={styles.errorCard}>
-        <Ionicons
-          name="alert-circle"
-          size={48}
-          color={AiraColors.destructive}
-        />
-        <ThemedText style={styles.errorTitle}>
-          Error al generar la receta
-        </ThemedText>
-        <ThemedText style={styles.errorMessage}>
-          {error || "Ocurrió un error inesperado"}
-        </ThemedText>
-        <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
-          <LinearGradient
-            colors={["#F97316", "#EA580C"]}
-            style={styles.retryButtonGradient}
-          >
-            <Ionicons name="refresh" size={20} color="white" />
-            <ThemedText style={styles.retryButtonText}>
-              Intentar de nuevo
-            </ThemedText>
-          </LinearGradient>
-        </TouchableOpacity>
-      </View>
-    </View>
+    <PlanErrorView
+      title="Error al generar la receta"
+      message={error || "Ocurrió un error inesperado"}
+      onRetry={handleRetry}
+    />
   );
 
   const renderContent = () => {
@@ -347,11 +265,23 @@ export default function RecipeSuggestionScreen() {
     }
   };
 
+  const headerConfig = getHeaderConfig();
+
   return (
-    <ScrollView style={styles.container}>
-      {renderHeader()}
-      {renderContent()}
-    </ScrollView>
+    <PageView>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
+        <PlanHeader
+          title={headerConfig.title}
+          subtitle={headerConfig.subtitle}
+          onBack={handleGoBack}
+          showBack={headerConfig.showBack}
+        />
+        {renderContent()}
+      </ScrollView>
+    </PageView>
   );
 }
 
@@ -384,7 +314,6 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "700",
     color: "white",
     marginBottom: 4,
   },
@@ -412,7 +341,6 @@ const styles = StyleSheet.create({
   },
   welcomeTitle: {
     fontSize: 20,
-    fontWeight: "700",
     color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 12,
@@ -549,4 +477,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "white",
   },
-}); 
+});

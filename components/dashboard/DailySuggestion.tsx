@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   suggestionType: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   difficultyBadge: {
     borderRadius: AiraVariants.cardRadius,
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
   },
   difficultyText: {
     fontSize: 10,
-    fontWeight: "500",
+     
   },
   suggestionTitle: {
     fontSize: 16,
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   suggestionButtonText: {
     color: "#4F46E5",
     fontSize: 14,
-    fontWeight: "500",
+     
   },
   subtitleText: {
     fontSize: 12,
@@ -318,6 +318,6 @@ const styles = StyleSheet.create({
   retryButtonText: {
     fontSize: 14,
     color: AiraColors.foreground,
-    fontWeight: "500",
+     
   },
 });

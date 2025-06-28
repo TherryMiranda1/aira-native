@@ -165,6 +165,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: AiraColors.accent,
     marginLeft: 4,
-    fontWeight: "500",
+     
   },
 }); 

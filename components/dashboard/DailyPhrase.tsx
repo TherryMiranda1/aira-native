@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   categoryText: {
     fontSize: 12,
     color: AiraColors.background,
-    fontWeight: "500",
+     
   },
   loadingMessage: {
     fontSize: 18,
@@ -214,6 +214,6 @@ const styles = StyleSheet.create({
   retryButtonText: {
     fontSize: 14,
     color: AiraColors.background,
-    fontWeight: "500",
+     
   },
 });

@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
   unitLabel: {
     fontSize: 16,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   dateButton: {
     flexDirection: "row",

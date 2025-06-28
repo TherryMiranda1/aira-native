@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   popularityText: {
     fontSize: 10,
     color: AiraColors.accent,
-    fontWeight: "500",
+     
   },
   arrowContainer: {
     padding: 4,

@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   viewAllText: {
     fontSize: 12,
     color: AiraColors.background,
-    fontWeight: "500",
+     
     marginRight: 4,
   },
   carouselContainer: {

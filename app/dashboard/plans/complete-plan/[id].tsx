@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   Share,
   ColorValue,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -19,6 +20,7 @@ import { AiraVariants } from "@/constants/Themes";
 import { GeneratedPlanSection } from "@/components/ui/GeneratedPlanSection";
 import { useGeneratedPlans } from "@/hooks/services/useGeneratedPlans";
 import { GeneratedPlan } from "@/services/api/generatedPlan.service";
+import { PageView } from "@/components/ui/PageView";
 
 type ViewState = "loading" | "loaded" | "error" | "not-found";
 
@@ -233,7 +235,7 @@ export default function PlanDetailScreen() {
                   color="white"
                   style={styles.headerIcon}
                 />
-                <ThemedText style={styles.headerTitle}>
+                <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
                   {config.title}
                 </ThemedText>
               </View>
@@ -395,10 +397,15 @@ export default function PlanDetailScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      {renderHeader()}
-      {renderContent()}
-    </View>
+    <PageView>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
+        {renderHeader()}
+        {renderContent()}
+      </ScrollView>
+    </PageView>
   );
 }
 
@@ -440,7 +447,6 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "700",
     color: "white",
   },
   headerSubtitle: {

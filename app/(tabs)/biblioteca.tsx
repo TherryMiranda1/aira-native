@@ -38,15 +38,14 @@ export default function BibliotecaScreen() {
   return (
     <PageView>
       <Topbar title="Tu Biblioteca ✨" actions={<ProfileButton />} />
-
-      <ScrollView
-        style={styles.container}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
+      <LinearGradient
+        colors={[AiraColors.airaLavenderSoft, AiraColors.background]}
+        style={styles.heroSection}
       >
-        <LinearGradient
-          colors={[AiraColors.airaLavenderSoft, AiraColors.background]}
-          style={styles.heroSection}
+        <ScrollView
+          style={styles.container}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
         >
           <View style={styles.heroHeader}>
             <View style={styles.heroText}>
@@ -58,105 +57,112 @@ export default function BibliotecaScreen() {
               </ThemedText>
             </View>
           </View>
-        </LinearGradient>
 
-        <View style={styles.sectionsContainer}>
-          {bibliotecaData.map((section, index) => (
-            <HorizontalCarousel key={section.id} section={section} />
-          ))}
-        </View>
+          <View style={styles.sectionsContainer}>
+            {bibliotecaData.map((section, index) => (
+              <HorizontalCarousel key={section.id} section={section} />
+            ))}
+          </View>
 
-        {featuredItems.length > 0 && (
-          <View style={styles.featuredSection}>
-            <View style={styles.sectionHeader}>
-              <View style={styles.sectionHeaderLeft}>
-                <LinearGradient
-                  colors={[AiraColors.primary, AiraColors.accent]}
-                  style={styles.sectionIcon}
-                >
-                  <Ionicons
-                    name="star"
-                    size={20}
-                    color={AiraColors.background}
-                  />
-                </LinearGradient>
-                <View>
-                  <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
-                    Destacados
-                  </ThemedText>
-                  <ThemedText style={styles.sectionSubtitle}>
-                    Contenido seleccionado especialmente para ti
-                  </ThemedText>
+          {featuredItems.length > 0 && (
+            <View style={styles.featuredSection}>
+              <View style={styles.sectionHeader}>
+                <View style={styles.sectionHeaderLeft}>
+                  <LinearGradient
+                    colors={[AiraColors.primary, AiraColors.accent]}
+                    style={styles.sectionIcon}
+                  >
+                    <Ionicons
+                      name="star"
+                      size={20}
+                      color={AiraColors.background}
+                    />
+                  </LinearGradient>
+                  <View>
+                    <ThemedText
+                      type="defaultSemiBold"
+                      style={styles.sectionTitle}
+                    >
+                      Destacados
+                    </ThemedText>
+                    <ThemedText style={styles.sectionSubtitle}>
+                      Contenido seleccionado especialmente para ti
+                    </ThemedText>
+                  </View>
                 </View>
               </View>
-            </View>
 
-            <View style={styles.featuredGrid}>
-              {featuredItems.map((item, index) => (
-                <CategoryCard
-                  key={`featured-${index}`}
-                  category={item.category}
-                  sectionGradient={item.sectionGradient}
-                  featured={true}
-                />
-              ))}
+              <View style={styles.featuredGrid}>
+                {featuredItems.map((item, index) => (
+                  <CategoryCard
+                    key={`featured-${index}`}
+                    category={item.category}
+                    sectionGradient={item.sectionGradient}
+                    featured={true}
+                  />
+                ))}
+              </View>
             </View>
-          </View>
-        )}
+          )}
 
-        <LinearGradient
-          colors={[AiraColors.primary, AiraColors.accent]}
-          style={styles.ctaSection}
-        >
-          <View style={styles.ctaContent}>
-            <View style={styles.ctaIconContainer}>
-              <Ionicons name="rocket" size={28} color={AiraColors.background} />
-            </View>
-            <ThemedText type="defaultSemiBold" style={styles.ctaTitle}>
-              ¿Lista para comenzar tu transformación? 🚀
-            </ThemedText>
-            <ThemedText style={styles.ctaDescription}>
-              Tu biblioteca está llena de herramientas poderosas. Comienza
-              explorando las secciones que más te llaman la atención y descubre
-              cómo cada una puede apoyarte en tu viaje hacia el bienestar
-              integral.
-            </ThemedText>
-
-            <View style={styles.ctaButtons}>
-              <TouchableOpacity style={styles.ctaPrimaryButton}>
+          <LinearGradient
+            colors={[AiraColors.primary, AiraColors.accent]}
+            style={styles.ctaSection}
+          >
+            <View style={styles.ctaContent}>
+              <View style={styles.ctaIconContainer}>
                 <Ionicons
-                  name="sparkles"
-                  size={18}
-                  color={AiraColors.primary}
-                />
-                <ThemedText style={styles.ctaPrimaryText}>
-                  Crear Mi Plan Personal
-                </ThemedText>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.ctaSecondaryButton}>
-                <Ionicons
-                  name="heart"
-                  size={18}
+                  name="rocket"
+                  size={28}
                   color={AiraColors.background}
                 />
-                <ThemedText style={styles.ctaSecondaryText}>
-                  Explorar Inspiración
-                </ThemedText>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </LinearGradient>
+              </View>
+              <ThemedText type="defaultSemiBold" style={styles.ctaTitle}>
+                ¿Lista para comenzar tu transformación? 🚀
+              </ThemedText>
+              <ThemedText style={styles.ctaDescription}>
+                Tu biblioteca está llena de herramientas poderosas. Comienza
+                explorando las secciones que más te llaman la atención y
+                descubre cómo cada una puede apoyarte en tu viaje hacia el
+                bienestar integral.
+              </ThemedText>
 
-        <View style={styles.footer}>
-          <ThemedText style={styles.footerText}>
-            Tu biblioteca se actualiza constantemente con nuevo contenido
-            personalizado.
-          </ThemedText>
-          <ThemedText style={styles.footerCredit}>
-            Creada con 💜 por el equipo de Aira para tu bienestar integral
-          </ThemedText>
-        </View>
-      </ScrollView>
+              <View style={styles.ctaButtons}>
+                <TouchableOpacity style={styles.ctaPrimaryButton}>
+                  <Ionicons
+                    name="sparkles"
+                    size={18}
+                    color={AiraColors.primary}
+                  />
+                  <ThemedText style={styles.ctaPrimaryText}>
+                    Crear Mi Plan Personal
+                  </ThemedText>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.ctaSecondaryButton}>
+                  <Ionicons
+                    name="heart"
+                    size={18}
+                    color={AiraColors.background}
+                  />
+                  <ThemedText style={styles.ctaSecondaryText}>
+                    Explorar Inspiración
+                  </ThemedText>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </LinearGradient>
+
+          <View style={styles.footer}>
+            <ThemedText style={styles.footerText}>
+              Tu biblioteca se actualiza constantemente con nuevo contenido
+              personalizado.
+            </ThemedText>
+            <ThemedText style={styles.footerCredit}>
+              Creada con 💜 por el equipo de Aira para tu bienestar integral
+            </ThemedText>
+          </View>
+        </ScrollView>
+      </LinearGradient>
     </PageView>
   );
 }
@@ -166,11 +172,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 24,
+    paddingVertical: 24,
   },
   heroSection: {
-    paddingHorizontal: 16,
-    paddingVertical: 24,
+    flex: 1,
   },
   heroContent: {
     alignItems: "center",

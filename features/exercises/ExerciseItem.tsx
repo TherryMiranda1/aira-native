@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   difficultyText: {
     fontSize: 12,
-    fontWeight: "500",
+     
   },
   typeBadge: {
     paddingHorizontal: 8,
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   typeText: {
     fontSize: 12,
-    fontWeight: "500",
+     
   },
   exerciseTitle: {
     fontSize: 18,
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
 
   equipmentTitle: {
     fontSize: 14,
-    fontWeight: "500",
+     
     marginBottom: 4,
   },
   equipmentList: {

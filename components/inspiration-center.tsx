@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
   },
   categoryTextActive: {
     color: AiraColors.background,
-    fontWeight: "500",
+     
   },
   // Content container
   contentContainer: {
@@ -501,7 +501,7 @@ const styles = StyleSheet.create({
   },
   quoteText: {
     fontSize: 18,
-    fontWeight: "500",
+     
     textAlign: "center",
     lineHeight: 26,
     marginBottom: 16,
@@ -525,7 +525,7 @@ const styles = StyleSheet.create({
   },
   nextQuoteText: {
     color: AiraColors.background,
-    fontWeight: "500",
+     
   },
   // Challenges styles
   challengesContainer: {
@@ -589,7 +589,7 @@ const styles = StyleSheet.create({
   tryButtonText: {
     color: AiraColors.background,
     fontSize: 14,
-    fontWeight: "500",
+     
   },
   // Rituals styles
   ritualsContainer: {
@@ -674,7 +674,7 @@ const styles = StyleSheet.create({
   startRitualText: {
     color: AiraColors.background,
     fontSize: 14,
-    fontWeight: "500",
+     
   },
   // Reminder card
   reminderCard: {

@@ -167,12 +167,21 @@ export default function MetricDetailScreen() {
                 </ThemedText>
               )}
             </View>
+            {/* Botón para agregar registro */}
+            <TouchableOpacity
+              style={styles.addRecordButton}
+              onPress={() => setShowCreateModal(true)}
+            >
+              <Ionicons
+                name="add-circle"
+                size={24}
+                color={AiraColors.primary}
+              />
+              <ThemedText style={styles.addRecordButtonText}>
+                Agregar registro
+              </ThemedText>
+            </TouchableOpacity>
           </View>
-
-          {/* Estadísticas */}
-          {statistics && (
-            <MetricStatistics statistics={statistics} metric={metric} />
-          )}
 
           {/* Gráfico de progreso */}
           <View style={styles.chartSection}>
@@ -180,52 +189,22 @@ export default function MetricDetailScreen() {
               <ThemedText type="defaultSemiBold" style={styles.chartTitle}>
                 Visualización del Progreso
               </ThemedText>
-              <TouchableOpacity
-                style={styles.chartToggle}
-                onPress={() => setShowInteractiveChart(!showInteractiveChart)}
-              >
-                <Ionicons
-                  name={showInteractiveChart ? "analytics" : "stats-chart"}
-                  size={20}
-                  color={AiraColors.primary}
-                />
-                <ThemedText style={styles.chartToggleText}>
-                  {showInteractiveChart ? "Simple" : "Interactivo"}
-                </ThemedText>
-              </TouchableOpacity>
             </View>
 
-            {showInteractiveChart ? (
-              <InteractiveMetricChart
-                records={records}
-                metric={metric}
-                height={320}
-                showDots={true}
-                showGrid={true}
-                showTarget={true}
-              />
-            ) : (
-              <MetricChart
-                records={records}
-                metric={metric}
-                height={220}
-                showDots={true}
-                showGrid={true}
-                showTarget={true}
-              />
-            )}
+            <InteractiveMetricChart
+              records={records}
+              metric={metric}
+              height={320}
+              showDots={true}
+              showGrid={true}
+              showTarget={true}
+            />
           </View>
 
-          {/* Botón para agregar registro */}
-          <TouchableOpacity
-            style={styles.addRecordButton}
-            onPress={() => setShowCreateModal(true)}
-          >
-            <Ionicons name="add-circle" size={24} color={AiraColors.primary} />
-            <ThemedText style={styles.addRecordButtonText}>
-              Agregar registro
-            </ThemedText>
-          </TouchableOpacity>
+          {/* Estadísticas */}
+          {statistics && (
+            <MetricStatistics statistics={statistics} metric={metric} />
+          )}
 
           {/* Lista de registros */}
           <View style={styles.recordsSection}>
@@ -310,8 +289,6 @@ const styles = StyleSheet.create({
   },
   metricTarget: {
     fontSize: 14,
-    color: AiraColors.secondary,
-    fontWeight: "600",
   },
   addRecordButton: {
     flexDirection: "row",
@@ -320,7 +297,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 16,
     borderRadius: 12,
-    marginBottom: 24,
   },
   addRecordButtonText: {
     marginLeft: 12,

@@ -122,6 +122,7 @@ export interface EventFromCMS {
   tags: { tag: string }[];
   notes?: string;
   color: EventColor;
+  icon?: string;
   metadata: {
     source: string;
     timezone: string;
@@ -175,6 +176,7 @@ export interface Event {
   tags: string[]; // Array simple de strings
   notes?: string;
   color: EventColor;
+  icon?: string;
   metadata: EventMetadata;
   createdAt: string;
   updatedAt: string;
@@ -202,6 +204,7 @@ export interface CreateEventData {
   tags?: string[];
   notes?: string;
   color?: EventColor;
+  icon?: string;
   metadata?: Partial<EventMetadata>;
 }
 
@@ -221,6 +224,7 @@ export interface UpdateEventData {
   tags?: string[];
   notes?: string;
   color?: EventColor;
+  icon?: string;
 }
 
 // Transformaciones entre CMS y App
@@ -262,6 +266,7 @@ const transformEvent = (cmsEvent: EventFromCMS): Event => {
     tags: cmsEvent.tags.map((t) => t.tag),
     notes: cmsEvent.notes,
     color: cmsEvent.color,
+    icon: cmsEvent.icon,
     metadata: cmsEvent.metadata,
     createdAt: cmsEvent.createdAt,
     updatedAt: cmsEvent.updatedAt,
@@ -297,6 +302,7 @@ const transformCreateData = (data: CreateEventData): any => {
     tags: data.tags?.map((tag) => ({ tag })) || [],
     notes: data.notes,
     color: data.color || "purple",
+    icon: data.icon,
     metadata: {
       source: data.metadata?.source || "mood-tracker",
       timezone: data.metadata?.timezone || "America/Mexico_City",
@@ -344,6 +350,7 @@ const transformUpdateData = (data: UpdateEventData): any => {
   if (data.location !== undefined) transformed.location = data.location;
   if (data.notes !== undefined) transformed.notes = data.notes;
   if (data.color !== undefined) transformed.color = data.color;
+  if (data.icon !== undefined) transformed.icon = data.icon;
 
   if (data.recurrence) {
     transformed.recurrence = {};
@@ -731,6 +738,7 @@ export const eventService = {
       category: "nutrition",
       priority: "medium",
       color: "orange",
+      icon: "nutrition-4",
       recurrence: options?.recurrence,
       location: options?.location || "Cocina",
       notes: options?.notes,
@@ -760,6 +768,7 @@ export const eventService = {
       category: "exercise",
       priority: "medium",
       color: "blue",
+      icon: "exercise-1",
       recurrence: options?.recurrence,
       location: options?.location || "Gimnasio",
       notes: options?.notes,
@@ -789,6 +798,7 @@ export const eventService = {
       category: "health",
       priority: "medium",
       color: "purple",
+      icon: "health-5",
       recurrence: options?.recurrence,
       location: options?.location || "Casa",
       notes: options?.notes,
@@ -818,6 +828,7 @@ export const eventService = {
       category: "health",
       priority: "medium",
       color: "purple",
+      icon: "selfcare-5",
       recurrence: options?.recurrence,
       location: options?.location || "Casa",
       notes: options?.notes,
@@ -865,6 +876,7 @@ export const eventService = {
       category: "selfcare",
       priority: "low",
       color: moodColors[moodType] as EventColor,
+      icon: "selfcare-1",
       notes,
       recurrence: { type: "none" },
       metadata: {
@@ -908,6 +920,7 @@ export const eventService = {
       category: "selfcare",
       priority: "low",
       color: "purple",
+      icon: "selfcare-5",
       notes,
       recurrence: { type: "none" },
       metadata: {
@@ -940,6 +953,7 @@ export const eventService = {
       category: "health",
       priority: "low",
       color: "blue",
+      icon: "health-5",
       notes,
       recurrence: { type: "none" },
       metadata: {

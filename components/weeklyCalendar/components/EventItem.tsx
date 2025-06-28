@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   },
   eventTime: {
     fontSize: 14,
-    fontWeight: "500",
+     
   },
   eventDescription: {
     fontSize: 14,
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   eventType: {
     fontSize: 12,
-    fontWeight: "500",
+     
   },
   eventLocation: {
     fontSize: 12,
