@@ -1,5 +1,11 @@
 import React, { useMemo, useState } from "react";
-import { StyleSheet, View, Dimensions, TouchableOpacity, Modal } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  TouchableOpacity,
+  Modal,
+} from "react-native";
 import Svg, {
   Path,
   Circle,
@@ -56,17 +62,25 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
   const innerWidth = chartWidth - padding.left - padding.right;
   const innerHeight = chartHeight - padding.top - padding.bottom;
 
-  const [tooltip, setTooltip] = useState<TooltipData>({ visible: false, x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState<TooltipData>({
+    visible: false,
+    x: 0,
+    y: 0,
+  });
 
   const chartData = useMemo(() => {
-    if (records.length === 0) return { points: [], minValue: 0, maxValue: 0, pathData: "" };
+    if (records.length === 0)
+      return { points: [], minValue: 0, maxValue: 0, pathData: "" };
 
-    const sortedRecords = [...records]
-      .sort((a, b) => new Date(a.recordDate).getTime() - new Date(b.recordDate).getTime());
+    const sortedRecords = [...records].sort(
+      (a, b) =>
+        new Date(a.recordDate).getTime() - new Date(b.recordDate).getTime()
+    );
 
-    if (sortedRecords.length === 0) return { points: [], minValue: 0, maxValue: 0, pathData: "" };
+    if (sortedRecords.length === 0)
+      return { points: [], minValue: 0, maxValue: 0, pathData: "" };
 
-    const values = sortedRecords.map(r => r.value);
+    const values = sortedRecords.map((r) => r.value);
     const minValue = Math.min(...values);
     const maxValue = Math.max(...values);
     const valueRange = maxValue - minValue;
@@ -78,8 +92,10 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
 
     const points: ChartPoint[] = sortedRecords.map((record, index) => {
       const x = (index / Math.max(sortedRecords.length - 1, 1)) * innerWidth;
-      const y = innerHeight - ((record.value - finalMin) / (finalMax - finalMin)) * innerHeight;
-      
+      const y =
+        innerHeight -
+        ((record.value - finalMin) / (finalMax - finalMin)) * innerHeight;
+
       return {
         x: x + padding.left,
         y: y + padding.top,
@@ -90,10 +106,14 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
       };
     });
 
-    const pathData = points.length > 0 
-      ? `M ${points[0].x} ${points[0].y} ` + 
-        points.slice(1).map(point => `L ${point.x} ${point.y}`).join(" ")
-      : "";
+    const pathData =
+      points.length > 0
+        ? `M ${points[0].x} ${points[0].y} ` +
+          points
+            .slice(1)
+            .map((point) => `L ${point.x} ${point.y}`)
+            .join(" ")
+        : "";
 
     return {
       points,
@@ -129,7 +149,13 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
 
   const getTargetY = () => {
     if (!metric.target || !showTarget) return null;
-    return innerHeight - ((metric.target - chartData.minValue) / (chartData.maxValue - chartData.minValue)) * innerHeight + padding.top;
+    return (
+      innerHeight -
+      ((metric.target - chartData.minValue) /
+        (chartData.maxValue - chartData.minValue)) *
+        innerHeight +
+      padding.top
+    );
   };
 
   const handlePointPress = (point: ChartPoint) => {
@@ -152,7 +178,11 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
   if (records.length === 0) {
     return (
       <View style={styles.emptyContainer}>
-        <Ionicons name="analytics-outline" size={48} color={AiraColors.mutedForeground} />
+        <Ionicons
+          name="analytics-outline"
+          size={48}
+          color={AiraColors.mutedForeground}
+        />
         <ThemedText style={styles.emptyText}>
           No hay datos suficientes para mostrar el gráfico
         </ThemedText>
@@ -167,9 +197,6 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.titleContainer}>
-          <ThemedText type="defaultSemiBold" style={styles.title}>
-            Progreso Detallado
-          </ThemedText>
           <ThemedText style={styles.subtitle}>
             {chartData.sortedRecords?.length || 0} registros • {metric.unit}
           </ThemedText>
@@ -179,34 +206,62 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
       <View style={styles.chartContainer}>
         <Svg width={chartWidth} height={chartHeight} style={styles.svg}>
           <Defs>
-            <SvgLinearGradient id="interactiveLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <Stop offset="0%" stopColor={AiraColors.primary} stopOpacity="1" />
-              <Stop offset="100%" stopColor={AiraColors.accent} stopOpacity="1" />
+            <SvgLinearGradient
+              id="interactiveLineGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <Stop
+                offset="0%"
+                stopColor={AiraColors.primary}
+                stopOpacity="1"
+              />
+              <Stop
+                offset="100%"
+                stopColor={AiraColors.accent}
+                stopOpacity="1"
+              />
             </SvgLinearGradient>
-            
-            <SvgLinearGradient id="interactiveAreaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <Stop offset="0%" stopColor={AiraColors.primary} stopOpacity="0.4" />
-              <Stop offset="100%" stopColor={AiraColors.primary} stopOpacity="0.1" />
+
+            <SvgLinearGradient
+              id="interactiveAreaGradient"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <Stop
+                offset="0%"
+                stopColor={AiraColors.primary}
+                stopOpacity="0.4"
+              />
+              <Stop
+                offset="100%"
+                stopColor={AiraColors.primary}
+                stopOpacity="0.1"
+              />
             </SvgLinearGradient>
           </Defs>
 
           {showGrid && (
             <>
-                          {[0, 0.25, 0.5, 0.75, 1].map((ratio, index) => {
-              const y = padding.top + ratio * innerHeight;
-              return (
-                <Line
-                  key={`h-grid-interactive-${index}-${ratio}`}
-                  x1={padding.left}
-                  y1={y}
-                  x2={padding.left + innerWidth}
-                  y2={y}
-                  stroke={AiraColors.border}
-                  strokeWidth="1"
-                  strokeOpacity="0.4"
-                />
-              );
-            })}
+              {[0, 0.25, 0.5, 0.75, 1].map((ratio, index) => {
+                const y = padding.top + ratio * innerHeight;
+                return (
+                  <Line
+                    key={`h-grid-interactive-${index}-${ratio}`}
+                    x1={padding.left}
+                    y1={y}
+                    x2={padding.left + innerWidth}
+                    y2={y}
+                    stroke={AiraColors.border}
+                    strokeWidth="1"
+                    strokeOpacity="0.4"
+                  />
+                );
+              })}
             </>
           )}
 
@@ -237,7 +292,11 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
 
           {chartData.pathData && (
             <Path
-              d={`${chartData.pathData} L ${chartData.points[chartData.points.length - 1].x} ${padding.top + innerHeight} L ${chartData.points[0].x} ${padding.top + innerHeight} Z`}
+              d={`${chartData.pathData} L ${
+                chartData.points[chartData.points.length - 1].x
+              } ${padding.top + innerHeight} L ${chartData.points[0].x} ${
+                padding.top + innerHeight
+              } Z`}
               fill="url(#interactiveAreaGradient)"
             />
           )}
@@ -253,19 +312,20 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
             />
           )}
 
-                      {showDots && chartData.points.map((point, index) => (
+          {showDots &&
+            chartData.points.map((point, index) => (
               <TouchableOpacity
                 key={`interactive-point-${point.record.id}-${index}`}
                 onPress={() => handlePointPress(point)}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   left: point.x - 12,
                   top: point.y - 12,
                   width: 24,
                   height: 24,
                   borderRadius: 12,
-                  justifyContent: 'center',
-                  alignItems: 'center',
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Circle
@@ -281,7 +341,9 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
 
           {[0, 0.5, 1].map((ratio, index) => {
             const y = padding.top + ratio * innerHeight;
-            const value = chartData.maxValue - ratio * (chartData.maxValue - chartData.minValue);
+            const value =
+              chartData.maxValue -
+              ratio * (chartData.maxValue - chartData.minValue);
             return (
               <SvgText
                 key={`y-label-interactive-${index}-${ratio}`}
@@ -297,24 +359,29 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
             );
           })}
 
-          {chartData.points.length > 1 && [0, Math.floor(chartData.points.length / 2), chartData.points.length - 1].map((pointIndex, labelIndex) => {
-            const point = chartData.points[pointIndex];
-            if (!point) return null;
-            
-            return (
-              <SvgText
-                key={`x-label-${labelIndex}-${pointIndex}`}
-                x={point.x}
-                y={padding.top + innerHeight + 25}
-                fontSize="10"
-                fill={AiraColors.mutedForeground}
-                textAnchor="middle"
-                fontWeight="500"
-              >
-                {formatDateShort(point.date)}
-              </SvgText>
-            );
-          })}
+          {chartData.points.length > 1 &&
+            [
+              0,
+              Math.floor(chartData.points.length / 2),
+              chartData.points.length - 1,
+            ].map((pointIndex, labelIndex) => {
+              const point = chartData.points[pointIndex];
+              if (!point) return null;
+
+              return (
+                <SvgText
+                  key={`x-label-${labelIndex}-${pointIndex}`}
+                  x={point.x}
+                  y={padding.top + innerHeight + 25}
+                  fontSize="10"
+                  fill={AiraColors.mutedForeground}
+                  textAnchor="middle"
+                  fontWeight="500"
+                >
+                  {formatDateShort(point.date)}
+                </SvgText>
+              );
+            })}
         </Svg>
       </View>
 
@@ -329,12 +396,17 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
               {(() => {
                 if (chartData.points.length < 2) return "Sin datos";
                 const firstValue = chartData.points[0]?.value || 0;
-                const lastValue = chartData.points[chartData.points.length - 1]?.value || 0;
+                const lastValue =
+                  chartData.points[chartData.points.length - 1]?.value || 0;
                 const trend = lastValue - firstValue;
                 const isPositive = trend > 0;
                 const isNeutral = Math.abs(trend) < 0.01;
-                
-                return isNeutral ? "Estable" : isPositive ? "Ascendente" : "Descendente";
+
+                return isNeutral
+                  ? "Estable"
+                  : isPositive
+                  ? "Ascendente"
+                  : "Descendente";
               })()}
             </ThemedText>
           </View>
@@ -349,12 +421,17 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
             <ThemedText type="defaultSemiBold" style={styles.insightValue}>
               {(() => {
                 if (chartData.points.length < 2) return "Sin datos";
-                const values = chartData.points.map(p => p.value);
+                const values = chartData.points.map((p) => p.value);
                 const range = Math.max(...values) - Math.min(...values);
-                const avg = values.reduce((sum, val) => sum + val, 0) / values.length;
+                const avg =
+                  values.reduce((sum, val) => sum + val, 0) / values.length;
                 const coefficient = range / avg;
-                
-                return coefficient < 0.1 ? "Baja" : coefficient < 0.3 ? "Media" : "Alta";
+
+                return coefficient < 0.1
+                  ? "Baja"
+                  : coefficient < 0.3
+                  ? "Media"
+                  : "Alta";
               })()}
             </ThemedText>
           </View>
@@ -372,13 +449,31 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
           activeOpacity={1}
           onPress={closeTooltip}
         >
-          <View style={[styles.tooltip, { left: Math.max(16, Math.min(tooltip.x - 100, screenWidth - 216)), top: Math.max(100, tooltip.y) }]}>
+          <View
+            style={[
+              styles.tooltip,
+              {
+                left: Math.max(
+                  16,
+                  Math.min(tooltip.x - 100, screenWidth - 216)
+                ),
+                top: Math.max(100, tooltip.y),
+              },
+            ]}
+          >
             <View style={styles.tooltipHeader}>
               <ThemedText type="defaultSemiBold" style={styles.tooltipValue}>
                 {formatValue(tooltip.value || 0)} {metric.unit}
               </ThemedText>
-              <TouchableOpacity onPress={closeTooltip} style={styles.tooltipClose}>
-                <Ionicons name="close" size={16} color={AiraColors.mutedForeground} />
+              <TouchableOpacity
+                onPress={closeTooltip}
+                style={styles.tooltipClose}
+              >
+                <Ionicons
+                  name="close"
+                  size={16}
+                  color={AiraColors.mutedForeground}
+                />
               </TouchableOpacity>
             </View>
             <ThemedText style={styles.tooltipDate}>
@@ -402,7 +497,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginVertical: 8,
-
   },
   header: {
     flexDirection: "row",
@@ -413,18 +507,13 @@ const styles = StyleSheet.create({
   titleContainer: {
     flex: 1,
   },
-  title: {
-    fontSize: 18,
-    color: AiraColors.foreground,
-    marginBottom: 4,
-  },
   subtitle: {
     fontSize: 13,
     color: AiraColors.mutedForeground,
   },
   chartContainer: {
     marginVertical: 8,
-    position: 'relative',
+    position: "relative",
   },
   svg: {
     backgroundColor: "transparent",
@@ -526,4 +615,4 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: AiraColors.border,
   },
-}); 
+});

@@ -37,7 +37,16 @@ export const MetricRecordCard: React.FC<MetricRecordCardProps> = ({
   const getProgressIndicator = () => {
     if (!metric.target) return null;
 
-    const progress = (record.value / metric.target) * 100;
+    let progress: number;
+    if (metric.direction === 'increase') {
+      progress = (record.value / metric.target) * 100;
+    } else {
+      const startValue = metric.target * 1.5;
+      const progressRange = startValue - metric.target;
+      const currentProgress = Math.max(0, startValue - record.value);
+      progress = Math.min(100, (currentProgress / progressRange) * 100);
+    }
+
     let color = AiraColors.mutedForeground;
     let icon = "remove-outline";
 
@@ -172,7 +181,7 @@ const styles = StyleSheet.create({
   unitText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   deleteButton: {
     padding: 4,
@@ -208,7 +217,7 @@ const styles = StyleSheet.create({
   milestoneText: {
     fontSize: 11,
     color: "#FFA726",
-    fontWeight: "500",
+     
   },
   notesContainer: {
     marginTop: 8,

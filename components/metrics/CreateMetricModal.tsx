@@ -37,6 +37,7 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [unit, setUnit] = useState("");
+  const [direction, setDirection] = useState<'increase' | 'decrease'>('increase');
   const [target, setTarget] = useState("");
   const [milestones, setMilestones] = useState<MilestoneInput[]>([]);
 
@@ -44,6 +45,7 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
     setTitle("");
     setDescription("");
     setUnit("");
+    setDirection('increase');
     setTarget("");
     setMilestones([]);
   };
@@ -87,6 +89,7 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
         title: title.trim(),
         description: description.trim() || undefined,
         unit: unit.trim(),
+        direction,
         target: target.trim() ? parseFloat(target) : undefined,
         milestones: milestones
           .filter((m) => m.value.trim())
@@ -224,6 +227,78 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
                   </TouchableOpacity>
                 ))}
               </View>
+            </View>
+          </View>
+
+          {/* Dirección */}
+          <View style={styles.section}>
+            <ThemedText style={styles.label}>
+              Dirección del progreso{" "}
+              <ThemedText style={styles.required}>*</ThemedText>
+            </ThemedText>
+            <ThemedText style={styles.directionDescription}>
+              ¿Quieres aumentar o disminuir esta métrica?
+            </ThemedText>
+            <View style={styles.directionContainer}>
+              <TouchableOpacity
+                style={[
+                  styles.directionOption,
+                  direction === 'increase' && styles.directionOptionSelected,
+                ]}
+                onPress={() => setDirection('increase')}
+              >
+                <Ionicons 
+                  name="trending-up" 
+                  size={20} 
+                  color={direction === 'increase' ? AiraColors.primaryForeground : AiraColors.foreground} 
+                />
+                <ThemedText
+                  style={[
+                    styles.directionText,
+                    direction === 'increase' && styles.directionTextSelected,
+                  ]}
+                >
+                  Subir
+                </ThemedText>
+                <ThemedText
+                  style={[
+                    styles.directionSubtext,
+                    direction === 'increase' && styles.directionSubtextSelected,
+                  ]}
+                >
+                  Aumentar valor
+                </ThemedText>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  styles.directionOption,
+                  direction === 'decrease' && styles.directionOptionSelected,
+                ]}
+                onPress={() => setDirection('decrease')}
+              >
+                <Ionicons 
+                  name="trending-down" 
+                  size={20} 
+                  color={direction === 'decrease' ? AiraColors.primaryForeground : AiraColors.foreground} 
+                />
+                <ThemedText
+                  style={[
+                    styles.directionText,
+                    direction === 'decrease' && styles.directionTextSelected,
+                  ]}
+                >
+                  Bajar
+                </ThemedText>
+                <ThemedText
+                  style={[
+                    styles.directionSubtext,
+                    direction === 'decrease' && styles.directionSubtextSelected,
+                  ]}
+                >
+                  Disminuir valor
+                </ThemedText>
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -416,5 +491,44 @@ const styles = StyleSheet.create({
   removeButton: {
     padding: 8,
     marginLeft: 8,
+  },
+  directionDescription: {
+    fontSize: 14,
+    color: AiraColors.mutedForeground,
+    marginBottom: 12,
+  },
+  directionContainer: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  directionOption: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 16,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: AiraColors.border,
+    backgroundColor: AiraColors.card,
+  },
+  directionOptionSelected: {
+    borderColor: AiraColors.primary,
+    backgroundColor: AiraColors.primary,
+  },
+  directionText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: AiraColors.foreground,
+    marginTop: 8,
+  },
+  directionTextSelected: {
+    color: AiraColors.primaryForeground,
+  },
+  directionSubtext: {
+    fontSize: 12,
+    color: AiraColors.mutedForeground,
+    marginTop: 2,
+  },
+  directionSubtextSelected: {
+    color: AiraColors.primaryForeground,
   },
 });

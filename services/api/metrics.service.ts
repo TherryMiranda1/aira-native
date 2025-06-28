@@ -8,6 +8,7 @@ export interface MetricFromCMS {
   title: string;
   description?: string;
   unit: string;
+  direction: 'increase' | 'decrease';
   target?: number;
   milestones?: {
     value: number;
@@ -24,6 +25,7 @@ export interface Metric {
   title: string;
   description?: string;
   unit: string;
+  direction: 'increase' | 'decrease';
   target?: number;
   milestones: {
     value: number;
@@ -61,6 +63,7 @@ export interface CreateMetricData {
   title: string;
   description?: string;
   unit: string;
+  direction: 'increase' | 'decrease';
   target?: number;
   milestones?: {
     value: number;
@@ -82,6 +85,7 @@ const transformMetric = (cmsMetric: MetricFromCMS): Metric => {
     title: cmsMetric.title,
     description: cmsMetric.description,
     unit: cmsMetric.unit,
+    direction: cmsMetric.direction,
     target: cmsMetric.target,
     milestones: cmsMetric.milestones || [],
     isActive: cmsMetric.isActive,
@@ -324,7 +328,14 @@ class MetricsService {
       let progressToTarget: number | undefined;
 
       if (metric?.target && latestValue !== undefined) {
-        progressToTarget = (latestValue / metric.target) * 100;
+        if (metric.direction === 'increase') {
+          progressToTarget = (latestValue / metric.target) * 100;
+        } else {
+          const startValue = metric.target * 1.5;
+          const progressRange = startValue - metric.target;
+          const currentProgress = Math.max(0, startValue - latestValue);
+          progressToTarget = Math.min(100, (currentProgress / progressRange) * 100);
+        }
       }
 
       return {

@@ -117,7 +117,9 @@ export default function RecipeDetailScreen() {
         <View style={styles.content}>
           {/* Title Section */}
           <View style={styles.titleSection}>
-            <ThemedText type="defaultSemiBold" style={styles.title}>{recipe.titulo}</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.title}>
+              {recipe.titulo}
+            </ThemedText>
             <ThemedText style={styles.subtitle}>
               {recipe.ingrediente_principal}
             </ThemedText>
@@ -159,7 +161,9 @@ export default function RecipeDetailScreen() {
 
           {/* Ingredients */}
           <View style={styles.section}>
-            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Ingredientes</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
+              Ingredientes
+            </ThemedText>
             <View style={styles.ingredientsList}>
               {recipe.ingredientes.map((ingrediente, index) => (
                 <View key={index} style={styles.ingredientItem}>
@@ -179,7 +183,9 @@ export default function RecipeDetailScreen() {
 
           {/* Preparation */}
           <View style={styles.section}>
-            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>Preparación</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
+              Preparación
+            </ThemedText>
             <View style={styles.stepsList}>
               {preparationSteps.map((step, index) => (
                 <View key={index} style={styles.stepItem}>
@@ -247,8 +253,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   title: {
-    fontSize: 28,
-    fontWeight: "700",
+    fontSize: 24,
     color: AiraColors.foreground,
     lineHeight: 34,
     marginBottom: 8,
@@ -256,7 +261,6 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
   },
   statsContainer: {
     flexDirection: "row",

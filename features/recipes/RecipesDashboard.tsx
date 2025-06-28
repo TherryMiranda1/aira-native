@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
   featuredButtonText: {
     color: "white",
     fontSize: 12,
-    fontWeight: "500",
+     
   },
 });
 

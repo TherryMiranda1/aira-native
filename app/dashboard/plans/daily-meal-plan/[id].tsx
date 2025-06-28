@@ -18,6 +18,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { useDailyMealPlans } from "@/hooks/services/useDailyMealPlans";
 import { DailyMealPlan } from "@/services/api/dailyMealPlan.service";
+import { PageView } from "@/components/ui/PageView";
 
 type ViewState = "loading" | "loaded" | "error" | "not-found";
 
@@ -68,7 +69,9 @@ export default function DailyMealPlanDetailScreen() {
     } catch (err) {
       console.error("Error loading daily meal plan:", err);
       setError(
-        err instanceof Error ? err.message : "Error al cargar el plan de comidas"
+        err instanceof Error
+          ? err.message
+          : "Error al cargar el plan de comidas"
       );
       setViewState("error");
     }
@@ -185,7 +188,7 @@ export default function DailyMealPlanDetailScreen() {
                 color="white"
                 style={styles.headerIcon}
               />
-              <ThemedText style={styles.headerTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
                 Plan de Comidas
               </ThemedText>
             </View>
@@ -268,13 +271,17 @@ export default function DailyMealPlanDetailScreen() {
             {plan.meals.map((meal, index) => (
               <View key={index} style={styles.mealCard}>
                 <View style={styles.mealHeader}>
-                  <ThemedText style={styles.mealType}>{meal.mealType}</ThemedText>
+                  <ThemedText style={styles.mealType}>
+                    {meal.mealType}
+                  </ThemedText>
                 </View>
                 <View style={styles.mealOptions}>
                   {meal.options.map((option, optionIndex) => (
                     <View key={optionIndex} style={styles.optionItem}>
                       <View style={styles.optionBullet} />
-                      <ThemedText style={styles.optionText}>{option}</ThemedText>
+                      <ThemedText style={styles.optionText}>
+                        {option}
+                      </ThemedText>
                     </View>
                   ))}
                 </View>
@@ -291,7 +298,9 @@ export default function DailyMealPlanDetailScreen() {
                 </ThemedText>
               </View>
               <View style={styles.tipsCard}>
-                <ThemedText style={styles.tipsText}>{plan.generalTips}</ThemedText>
+                <ThemedText style={styles.tipsText}>
+                  {plan.generalTips}
+                </ThemedText>
               </View>
             </View>
           )}
@@ -300,7 +309,11 @@ export default function DailyMealPlanDetailScreen() {
             plan.suggestedNextActions.length > 0 && (
               <View style={styles.actionsSection}>
                 <View style={styles.sectionHeader}>
-                  <Ionicons name="compass" size={20} color={AiraColors.accent} />
+                  <Ionicons
+                    name="compass"
+                    size={20}
+                    color={AiraColors.accent}
+                  />
                   <ThemedText style={styles.sectionTitle}>
                     Próximas Acciones
                   </ThemedText>
@@ -320,16 +333,24 @@ export default function DailyMealPlanDetailScreen() {
           <View style={styles.metadataSection}>
             <View style={styles.metadataCard}>
               <View style={styles.metadataRow}>
-                <Ionicons name="time" size={16} color={AiraColors.mutedForeground} />
+                <Ionicons
+                  name="time"
+                  size={16}
+                  color={AiraColors.mutedForeground}
+                />
                 <ThemedText style={styles.metadataLabel}>Creado:</ThemedText>
                 <ThemedText style={styles.metadataValue}>
                   {formatDate(plan.createdAt)}
                 </ThemedText>
               </View>
-              
+
               {plan.tags.length > 0 && (
                 <View style={styles.metadataRow}>
-                  <Ionicons name="pricetag" size={16} color={AiraColors.mutedForeground} />
+                  <Ionicons
+                    name="pricetag"
+                    size={16}
+                    color={AiraColors.mutedForeground}
+                  />
                   <ThemedText style={styles.metadataLabel}>Tags:</ThemedText>
                   <View style={styles.tagsContainer}>
                     {plan.tags.map((tag, index) => (
@@ -343,8 +364,14 @@ export default function DailyMealPlanDetailScreen() {
 
               {plan.inputParameters.dietaryPreferences && (
                 <View style={styles.metadataRow}>
-                  <Ionicons name="leaf" size={16} color={AiraColors.mutedForeground} />
-                  <ThemedText style={styles.metadataLabel}>Preferencias:</ThemedText>
+                  <Ionicons
+                    name="leaf"
+                    size={16}
+                    color={AiraColors.mutedForeground}
+                  />
+                  <ThemedText style={styles.metadataLabel}>
+                    Preferencias:
+                  </ThemedText>
                   <ThemedText style={styles.metadataValue}>
                     {plan.inputParameters.dietaryPreferences}
                   </ThemedText>
@@ -353,8 +380,14 @@ export default function DailyMealPlanDetailScreen() {
 
               {plan.inputParameters.mainGoal && (
                 <View style={styles.metadataRow}>
-                  <Ionicons name="flag" size={16} color={AiraColors.mutedForeground} />
-                  <ThemedText style={styles.metadataLabel}>Objetivo:</ThemedText>
+                  <Ionicons
+                    name="flag"
+                    size={16}
+                    color={AiraColors.mutedForeground}
+                  />
+                  <ThemedText style={styles.metadataLabel}>
+                    Objetivo:
+                  </ThemedText>
                   <ThemedText style={styles.metadataValue}>
                     {plan.inputParameters.mainGoal}
                   </ThemedText>
@@ -458,17 +491,21 @@ export default function DailyMealPlanDetailScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      {renderHeader()}
-      {renderContent()}
-    </View>
+    <PageView>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
+        {renderHeader()}
+        {renderContent()}
+      </ScrollView>
+    </PageView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     paddingBottom: 20,
@@ -503,7 +540,6 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: "700",
     color: "white",
   },
   headerSubtitle: {
@@ -537,7 +573,6 @@ const styles = StyleSheet.create({
   },
   planTitle: {
     fontSize: 20,
-    fontWeight: "700",
     color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 8,
@@ -637,7 +672,6 @@ const styles = StyleSheet.create({
   actionText: {
     fontSize: 14,
     color: AiraColors.accent,
-    fontWeight: "500",
   },
   metadataSection: {
     marginBottom: 40,
@@ -658,7 +692,7 @@ const styles = StyleSheet.create({
   },
   metadataLabel: {
     fontSize: 14,
-    fontWeight: "500",
+
     color: AiraColors.mutedForeground,
     minWidth: 80,
   },
@@ -682,7 +716,6 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 12,
     color: AiraColors.accent,
-    fontWeight: "500",
   },
   centerContainer: {
     flex: 1,
@@ -745,4 +778,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "white",
   },
-}); 
+});

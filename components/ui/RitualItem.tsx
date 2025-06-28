@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   energyText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   durationBadge: {
     flexDirection: "row",
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
   durationText: {
     fontSize: 10,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   momentBadge: {
     flexDirection: "row",
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   momentText: {
     fontSize: 10,
     color: AiraColors.accent,
-    fontWeight: "500",
+     
   },
   stepsBadge: {
     flexDirection: "row",
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
   stepsText: {
     fontSize: 10,
     color: AiraColors.primary,
-    fontWeight: "500",
+     
   },
   popularityBadge: {
     flexDirection: "row",
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
   popularityText: {
     fontSize: 10,
     color: AiraColors.accent,
-    fontWeight: "500",
+     
   },
   arrowContainer: {
     padding: 4,

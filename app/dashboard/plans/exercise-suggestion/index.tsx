@@ -1,21 +1,17 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  ActivityIndicator,
-  Alert,
-} from "react-native";
+import { StyleSheet, Alert, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 
-import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { ExerciseSuggestionForm } from "@/components/ui/ExerciseSuggestionForm";
 import { GeneratedExerciseSection } from "@/components/ui/GeneratedExerciseSection";
+import { SimpleHeader } from "@/components/ui/SimpleHeader";
+import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
+import { PlanErrorView } from "@/components/ui/PlanErrorView";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
 import { ExerciseSuggestionInput } from "@/types/Assistant";
+import { PageView } from "@/components/ui/PageView";
 
 type ViewState = "form" | "generated" | "loading" | "error";
 
@@ -86,82 +82,52 @@ export default function ExerciseSuggestionScreen() {
     setError(null);
   };
 
-  const renderHeader = () => {
-    const getHeaderConfig = () => {
-      switch (viewState) {
-        case "form":
-          return {
-            title: "Sugerencia de ejercicio",
-            showBack: true,
-          };
-        case "generated":
-          return {
-            title: "Ejercicio generado",
-            showBack: true,
-          };
-        case "loading":
-          return {
-            title: "Generando ejercicio...",
-            showBack: false,
-          };
-        case "error":
-          return {
-            title: "Error",
-            showBack: true,
-          };
-        default:
-          return {
-            title: "Sugerencia de ejercicio",
-            showBack: true,
-          };
-      }
-    };
-
-    const config = getHeaderConfig();
-
-    return (
-      <View style={styles.header}>
-        {config.showBack && (
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={handleGoBack}
-            disabled={isGenerating}
-          >
-            <Ionicons name="arrow-back" size={24} color={AiraColors.primary} />
-          </TouchableOpacity>
-        )}
-        <ThemedText style={styles.headerTitle}>{config.title}</ThemedText>
-      </View>
-    );
+  const getHeaderConfig = () => {
+    switch (viewState) {
+      case "form":
+        return {
+          title: "Sugerencia de ejercicio",
+          showBack: true,
+        };
+      case "generated":
+        return {
+          title: "Ejercicio generado",
+          showBack: true,
+        };
+      case "loading":
+        return {
+          title: "Generando ejercicio...",
+          showBack: false,
+        };
+      case "error":
+        return {
+          title: "Error",
+          showBack: true,
+        };
+      default:
+        return {
+          title: "Sugerencia de ejercicio",
+          showBack: true,
+        };
+    }
   };
 
   const renderLoadingView = () => (
-    <View style={styles.loadingContainer}>
-      <ActivityIndicator size="large" color={AiraColors.primary} />
-      <ThemedText style={styles.loadingText}>
-        Aira está generando tu ejercicio personalizado...
-      </ThemedText>
-      <ThemedText style={styles.loadingSubtext}>
-        Esto puede tomar unos segundos
-      </ThemedText>
-    </View>
+    <PlanLoadingView
+      title="Aira está generando tu ejercicio personalizado..."
+      subtitle="Esto puede tomar unos segundos"
+      useGradient={false}
+      indicatorColor={AiraColors.primary}
+    />
   );
 
   const renderErrorView = () => (
-    <View style={styles.errorContainer}>
-      <Ionicons name="alert-circle" size={48} color={AiraColors.primary} />
-      <ThemedText style={styles.errorTitle}>
-        Error al generar ejercicio
-      </ThemedText>
-      <ThemedText style={styles.errorMessage}>
-        {error || "Ha ocurrido un error inesperado"}
-      </ThemedText>
-      <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
-        <ThemedText style={styles.retryButtonText}>
-          Intentar de nuevo
-        </ThemedText>
-      </TouchableOpacity>
-    </View>
+    <PlanErrorView
+      title="Error al generar ejercicio"
+      message={error || "Ha ocurrido un error inesperado"}
+      onRetry={handleRetry}
+      useGradientButton={false}
+    />
   );
 
   const renderContent = () => {
@@ -192,82 +158,19 @@ export default function ExerciseSuggestionScreen() {
     }
   };
 
+  const headerConfig = getHeaderConfig();
+
   return (
-    <SafeAreaView style={styles.container}>
-      {renderHeader()}
-      {renderContent()}
-    </SafeAreaView>
+    <PageView>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+        <SimpleHeader
+          title={headerConfig.title}
+          onBack={handleGoBack}
+          showBack={headerConfig.showBack}
+          disabled={isGenerating}
+        />
+        {renderContent()}
+      </ScrollView>
+    </PageView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: AiraColors.background,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
-  },
-  backButton: {
-    marginRight: 16,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: AiraColors.foreground,
-  },
-  loadingContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 40,
-  },
-  loadingText: {
-    fontSize: 18,
-    fontWeight: "500",
-    color: AiraColors.foreground,
-    textAlign: "center",
-    marginTop: 20,
-  },
-  loadingSubtext: {
-    fontSize: 14,
-    color: AiraColors.foreground,
-    textAlign: "center",
-    marginTop: 8,
-  },
-  errorContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 40,
-  },
-  errorTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: AiraColors.foreground,
-    textAlign: "center",
-    marginTop: 16,
-  },
-  errorMessage: {
-    fontSize: 16,
-    color: AiraColors.foreground,
-    textAlign: "center",
-    marginTop: 8,
-    lineHeight: 24,
-  },
-  retryButton: {
-    backgroundColor: AiraColors.primary,
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    borderRadius: 8,
-    marginTop: 24,
-  },
-  retryButtonText: {
-    fontSize: 16,
-  },
-});

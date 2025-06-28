@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: AiraColors.foreground,
     marginBottom: 16,
-    fontWeight: "500",
+     
   },
   moodGrid: {
     flexDirection: "row",

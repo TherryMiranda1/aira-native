@@ -18,6 +18,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
 import { DailyWorkoutRoutine } from "@/services/api/dailyWorkoutRoutine.service";
+import { PageView } from "@/components/ui/PageView";
 
 export default function WorkoutRoutineDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -238,7 +239,7 @@ export default function WorkoutRoutineDetailScreen() {
               <Ionicons name="fitness" size={24} color="#3B82F6" />
             </View>
             <View style={styles.summaryInfo}>
-              <ThemedText style={styles.summaryTitle}>
+              <ThemedText type="defaultSemiBold" style={styles.summaryTitle}>
                 Resumen de la Rutina
               </ThemedText>
               <ThemedText style={styles.summarySubtitle}>
@@ -477,34 +478,38 @@ export default function WorkoutRoutineDetailScreen() {
 
   if (isLoading) {
     return (
-      <View style={styles.container}>
+      <PageView>
         {renderHeader()}
         {renderLoadingView()}
-      </View>
+      </PageView>
     );
   }
 
   if (error || !routine) {
     return (
-      <View style={styles.container}>
+      <PageView>
         {renderHeader()}
         {renderErrorView()}
-      </View>
+      </PageView>
     );
   }
 
   return (
-    <View style={styles.container}>
-      {renderHeader()}
-      {renderRoutineContent()}
-    </View>
+    <PageView>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
+        {renderHeader()}
+        {renderRoutineContent()}
+      </ScrollView>
+    </PageView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     paddingBottom: 20,
@@ -529,7 +534,6 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 20,
-    fontWeight: "700",
     color: "white",
     marginBottom: 4,
   },
@@ -649,7 +653,6 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
   },
   statValue: {
     fontSize: 12,
@@ -718,7 +721,6 @@ const styles = StyleSheet.create({
   sessionBadgeText: {
     fontSize: 12,
     color: "#3B82F6",
-    fontWeight: "500",
   },
   sessionFocus: {
     flexDirection: "row",
@@ -729,7 +731,6 @@ const styles = StyleSheet.create({
   sessionFocusText: {
     fontSize: 14,
     color: AiraColors.foreground,
-    fontWeight: "500",
   },
   sessionSection: {
     marginBottom: 16,
@@ -776,7 +777,7 @@ const styles = StyleSheet.create({
   },
   exerciseSets: {
     fontSize: 12,
-    fontWeight: "500",
+
     color: "#3B82F6",
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     paddingHorizontal: 8,
@@ -886,6 +887,5 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: 12,
     color: "#3B82F6",
-    fontWeight: "500",
   },
 });

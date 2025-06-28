@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   difficultyText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   durationBadge: {
     flexDirection: "row",
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   durationText: {
     fontSize: 10,
     color: AiraColors.mutedForeground,
-    fontWeight: "500",
+     
   },
   popularityBadge: {
     flexDirection: "row",
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
   popularityText: {
     fontSize: 10,
     color: AiraColors.accent,
-    fontWeight: "500",
+     
   },
   arrowContainer: {
     padding: 4,

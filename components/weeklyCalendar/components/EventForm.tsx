@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Modal,
-  View,
-  TextInput,
-  TouchableOpacity,
+  View, TouchableOpacity,
   ScrollView,
   ActivityIndicator,
-  Platform,
+  Platform
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format } from "date-fns";
@@ -24,6 +22,7 @@ import {
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { useUser } from "@clerk/clerk-expo";
 import { ThemedInput } from "@/components/ThemedInput";
+import { IconSelector, getIconById } from "@/components/ui/IconSelector";
 
 interface EventFormProps {
   visible: boolean;
@@ -73,6 +72,7 @@ export const EventForm: React.FC<EventFormProps> = ({
   const [eventTime, setEventTime] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState<string>("personal-1");
 
   // Initialize form with event data
   useEffect(() => {
@@ -80,6 +80,7 @@ export const EventForm: React.FC<EventFormProps> = ({
       setTitle(initialEvent.title);
       setCategory(initialEvent.category);
       setRecurrenceType(initialEvent.recurrence?.type || "none");
+      setSelectedIcon(initialEvent.icon || "personal-1");
       const initialDateTime = new Date(initialEvent.startTime);
       setEventDate(initialDateTime);
       setEventTime(initialDateTime);
@@ -88,6 +89,7 @@ export const EventForm: React.FC<EventFormProps> = ({
       setTitle("");
       setCategory("personal");
       setRecurrenceType("none");
+      setSelectedIcon("personal-1");
       setEventDate(selectedDate);
 
       // Set default time to 9:00 AM
@@ -112,6 +114,7 @@ export const EventForm: React.FC<EventFormProps> = ({
       priority: "medium" as const,
       eventType: "personal" as const,
       color: "purple" as const,
+      icon: selectedIcon,
       recurrence: {
         type: recurrenceType,
         interval: 1,
@@ -311,6 +314,18 @@ export const EventForm: React.FC<EventFormProps> = ({
               </View>
             </View>
 
+            {/* Icon Selection */}
+            {/* <View style={styles.section}>
+              <ThemedText style={styles.questionText}>Icono</ThemedText>
+              <View style={styles.iconSelectorContainer}>
+                <IconSelector
+                  selectedIcon={selectedIcon}
+                  onSelectIcon={setSelectedIcon}
+                  categoryFilter={category}
+                />
+              </View>
+            </View> */}
+
             {/* Recurrence Selection */}
             <View style={styles.section}>
               <ThemedText style={styles.questionText}>¿Se repite?</ThemedText>
@@ -348,7 +363,7 @@ export const EventForm: React.FC<EventFormProps> = ({
             {/* Summary Info */}
             <View style={styles.summaryInfo}>
               <ThemedText style={styles.summaryText}>
-                📝 Resumen: {title || "Sin título"} el{" "}
+                {getIconById(selectedIcon)?.emoji || "📝"} Resumen: {title || "Sin título"} el{" "}
                 {format(eventDate, "d 'de' MMMM", { locale: es })} a las{" "}
                 {format(eventTime, "HH:mm")}
                 {recurrenceType !== "none" && (
@@ -573,5 +588,12 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+  },
+  iconSelectorContainer: {
+    backgroundColor: AiraColors.card,
+    borderRadius: 12,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
 });

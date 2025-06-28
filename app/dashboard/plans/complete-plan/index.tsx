@@ -1,70 +1,33 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  ActivityIndicator,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, StyleSheet, Alert, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { AiraVariants } from "@/constants/Themes";
 import { PlanConfigForm } from "@/components/ui/PlanConfigForm";
 import { GeneratedPlanSection } from "@/components/ui/GeneratedPlanSection";
 import { ExistingPlansSection } from "@/components/ui/ExistingPlansSection";
-import { DailyMealPlanForm } from "@/components/ui/DailyMealPlanForm";
-import { GeneratedDailyMealPlanSection } from "@/components/ui/GeneratedDailyMealPlanSection";
-import { FullExerciseRoutineForm } from "@/components/ui/FullExerciseRoutineForm";
-import { GeneratedFullExerciseRoutineSection } from "@/components/ui/GeneratedFullExerciseRoutineSection";
-import { ExistingWorkoutRoutinesSection } from "@/components/ui/ExistingWorkoutRoutinesSection";
+import { PlanHeader } from "@/components/ui/PlanHeader";
+import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
+import { PlanErrorView } from "@/components/ui/PlanErrorView";
+import { PlanOptionCard } from "@/components/ui/PlanOptionCard";
+import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { useGeneratedPlans } from "@/hooks/services/useGeneratedPlans";
-import { useDailyMealPlans } from "@/hooks/services/useDailyMealPlans";
-import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
 import {
-  DailyMealPlanInput,
-  DailyMealPlanOutput,
-  FullExerciseRoutineInput,
-  FullExerciseRoutineOutput,
   PersonalizedPlanInput,
   PersonalizedPlanOutput,
 } from "@/types/Assistant";
+import { PageView } from "@/components/ui/PageView";
 
-type ViewState =
-  | "main"
-  | "form"
-  | "generated"
-  | "loading"
-  | "error"
-  | "daily-meal-form"
-  | "daily-meal-generated"
-  | "daily-meal-loading"
-  | "workout-routine-form"
-  | "workout-routine-generated"
-  | "workout-routine-loading";
+type ViewState = "main" | "form" | "generated" | "loading" | "error";
 
 export default function PlansScreen() {
   const { user } = useUser();
   const { plans, createPlan, loading: isSavingPlan } = useGeneratedPlans();
-  const { createPlan: createDailyMealPlan, loading: isSavingDailyMealPlan } =
-    useDailyMealPlans();
-  const {
-    routines,
-    createRoutine: createWorkoutRoutine,
-    deleteRoutine,
-    loading: isSavingWorkoutRoutine,
-  } = useDailyWorkoutRoutines();
-  const {
-    generatePersonalizedPlan,
-    generateDailyMealPlan,
-    generateFullExerciseRoutine,
-  } = usePersonalizedPlan();
+  const { generatePersonalizedPlan } = usePersonalizedPlan();
 
   const [viewState, setViewState] = useState<ViewState>("main");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -73,14 +36,6 @@ export default function PlansScreen() {
     useState<PersonalizedPlanOutput | null>(null);
   const [planInputParams, setPlanInputParams] =
     useState<PersonalizedPlanInput | null>(null);
-  const [generatedDailyMealPlan, setGeneratedDailyMealPlan] =
-    useState<DailyMealPlanOutput | null>(null);
-  const [dailyMealPlanInputParams, setDailyMealPlanInputParams] =
-    useState<DailyMealPlanInput | null>(null);
-  const [generatedWorkoutRoutine, setGeneratedWorkoutRoutine] =
-    useState<FullExerciseRoutineOutput | null>(null);
-  const [workoutRoutineInputParams, setWorkoutRoutineInputParams] =
-    useState<FullExerciseRoutineInput | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleQuickGenerate = async () => {
@@ -130,15 +85,15 @@ export default function PlansScreen() {
   };
 
   const handleDailyMealPlanGenerate = () => {
-    setViewState("daily-meal-form");
+    router.push("/dashboard/plans/daily-meal-plan");
   };
 
   const handleWorkoutRoutineGenerate = () => {
-    setViewState("workout-routine-form");
+    router.push("/dashboard/plans/workout-routine");
   };
 
   const handleExerciseSuggestionGenerate = () => {
-    router.push("/(tabs)");
+    router.push("/dashboard/plans/exercise-suggestion");
   };
 
   const handleFormSubmit = async (formData: PersonalizedPlanInput) => {
@@ -153,48 +108,6 @@ export default function PlansScreen() {
       setViewState("generated");
     } catch (error) {
       console.error("Error generando plan personalizado:", error);
-      setError(error instanceof Error ? error.message : "Error desconocido");
-      setViewState("error");
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
-  const handleDailyMealPlanFormSubmit = async (
-    formData: DailyMealPlanInput
-  ) => {
-    setIsGenerating(true);
-    setViewState("daily-meal-loading");
-    setError(null);
-
-    try {
-      const plan = await generateDailyMealPlan(formData);
-      setGeneratedDailyMealPlan(plan);
-      setDailyMealPlanInputParams(formData);
-      setViewState("daily-meal-generated");
-    } catch (error) {
-      console.error("Error generando plan de comidas diarias:", error);
-      setError(error instanceof Error ? error.message : "Error desconocido");
-      setViewState("error");
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
-  const handleWorkoutRoutineFormSubmit = async (
-    formData: FullExerciseRoutineInput
-  ) => {
-    setIsGenerating(true);
-    setViewState("workout-routine-loading");
-    setError(null);
-
-    try {
-      const routine = await generateFullExerciseRoutine(formData);
-      setGeneratedWorkoutRoutine(routine);
-      setWorkoutRoutineInputParams(formData);
-      setViewState("workout-routine-generated");
-    } catch (error) {
-      console.error("Error generando rutina de ejercicio:", error);
       setError(error instanceof Error ? error.message : "Error desconocido");
       setViewState("error");
     } finally {
@@ -229,59 +142,6 @@ export default function PlansScreen() {
     }
   };
 
-  const handleSaveDailyMealPlan = async () => {
-    if (!generatedDailyMealPlan || !dailyMealPlanInputParams) return;
-
-    try {
-      await createDailyMealPlan({
-        planTitle: generatedDailyMealPlan.planTitle,
-        planData: generatedDailyMealPlan,
-        inputParameters: dailyMealPlanInputParams,
-        tags: ["plan-diario", "comidas"],
-      });
-
-      Alert.alert(
-        "Plan de Comidas Guardado",
-        "Tu plan de comidas se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK" }]
-      );
-    } catch (error) {
-      console.error("Error guardando plan de comidas:", error);
-      Alert.alert(
-        "Error",
-        "No se pudo guardar el plan de comidas. Inténtalo de nuevo.",
-        [{ text: "OK" }]
-      );
-      throw error;
-    }
-  };
-
-  const handleSaveWorkoutRoutine = async () => {
-    if (!generatedWorkoutRoutine || !workoutRoutineInputParams) return;
-
-    try {
-      await createWorkoutRoutine({
-        routineData: generatedWorkoutRoutine,
-        inputParameters: workoutRoutineInputParams,
-        tags: ["rutina-ejercicio", "entrenamiento"],
-      });
-
-      Alert.alert(
-        "Rutina de Ejercicio Guardada",
-        "Tu rutina se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK" }]
-      );
-    } catch (error) {
-      console.error("Error guardando rutina de ejercicio:", error);
-      Alert.alert(
-        "Error",
-        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo.",
-        [{ text: "OK" }]
-      );
-      throw error;
-    }
-  };
-
   const handleRegenerate = async () => {
     if (!planInputParams) return;
 
@@ -299,82 +159,17 @@ export default function PlansScreen() {
     }
   };
 
-  const handleRegenerateDailyMealPlan = async () => {
-    if (!dailyMealPlanInputParams) return;
-
-    setIsRegenerating(true);
-    setError(null);
-
-    try {
-      const plan = await generateDailyMealPlan(dailyMealPlanInputParams);
-      setGeneratedDailyMealPlan(plan);
-    } catch (error) {
-      console.error("Error regenerando plan de comidas:", error);
-      setError(error instanceof Error ? error.message : "Error desconocido");
-    } finally {
-      setIsRegenerating(false);
-    }
-  };
-
-  const handleRegenerateWorkoutRoutine = async () => {
-    if (!workoutRoutineInputParams) return;
-
-    setIsRegenerating(true);
-    setError(null);
-
-    try {
-      const routine = await generateFullExerciseRoutine(
-        workoutRoutineInputParams
-      );
-      setGeneratedWorkoutRoutine(routine);
-    } catch (error) {
-      console.error("Error regenerando rutina de ejercicio:", error);
-      setError(error instanceof Error ? error.message : "Error desconocido");
-    } finally {
-      setIsRegenerating(false);
-    }
-  };
-
   const handleEditParams = () => {
     setViewState("form");
   };
 
-  const handleEditDailyMealPlanParams = () => {
-    setViewState("daily-meal-form");
-  };
-
-  const handleEditWorkoutRoutineParams = () => {
-    setViewState("workout-routine-form");
-  };
-
-  const handleDeleteWorkoutRoutine = async (routineId: string) => {
-    try {
-      await deleteRoutine(routineId);
-    } catch (error) {
-      console.error("Error eliminando rutina:", error);
-      Alert.alert("Error", "No se pudo eliminar la rutina.", [{ text: "OK" }]);
-    }
-  };
-
   const handleGoBack = () => {
-    if (
-      viewState === "form" ||
-      viewState === "daily-meal-form" ||
-      viewState === "workout-routine-form"
-    ) {
+    if (viewState === "form") {
       setViewState("main");
     } else if (viewState === "generated") {
       setViewState("main");
       setGeneratedPlan(null);
       setPlanInputParams(null);
-    } else if (viewState === "daily-meal-generated") {
-      setViewState("main");
-      setGeneratedDailyMealPlan(null);
-      setDailyMealPlanInputParams(null);
-    } else if (viewState === "workout-routine-generated") {
-      setViewState("main");
-      setGeneratedWorkoutRoutine(null);
-      setWorkoutRoutineInputParams(null);
     } else if (viewState === "error") {
       setViewState("main");
       setError(null);
@@ -384,191 +179,105 @@ export default function PlansScreen() {
   const handleRetry = () => {
     if (planInputParams) {
       handleFormSubmit(planInputParams);
-    } else if (dailyMealPlanInputParams) {
-      handleDailyMealPlanFormSubmit(dailyMealPlanInputParams);
-    } else if (workoutRoutineInputParams) {
-      handleWorkoutRoutineFormSubmit(workoutRoutineInputParams);
     } else {
       handleQuickGenerate();
     }
   };
 
-  const renderHeader = () => {
-    const getHeaderConfig = () => {
-      switch (viewState) {
-        case "form":
-          return {
-            title: "Personalizar Plan",
-            subtitle: "Completa tu información",
-            showBack: true,
-          };
-        case "generated":
-          return {
-            title: "Tu Plan Personalizado",
-            subtitle: "Generado por Aira",
-            showBack: true,
-          };
-        case "daily-meal-form":
-          return {
-            title: "Plan de Comidas Diarias",
-            subtitle: "Configura tu plan alimentario",
-            showBack: true,
-          };
-        case "daily-meal-generated":
-          return {
-            title: "Tu Plan de Comidas",
-            subtitle: "Generado por Aira",
-            showBack: true,
-          };
-        case "workout-routine-form":
-          return {
-            title: "Rutina de Ejercicio",
-            subtitle: "Configura tu entrenamiento",
-            showBack: true,
-          };
-        case "workout-routine-generated":
-          return {
-            title: "Tu Rutina de Ejercicio",
-            subtitle: "Generado por Aira",
-            showBack: true,
-          };
-        case "loading":
-        case "daily-meal-loading":
-        case "workout-routine-loading":
-          return {
-            title: "Generando Plan",
-            subtitle: "Aira está creando tu plan personalizado...",
-            showBack: false,
-          };
-        case "error":
-          return {
-            title: "Error",
-            subtitle: "Hubo un problema generando tu plan",
-            showBack: true,
-          };
-        default:
-          return {
-            title: "Planes Personalizados",
-            subtitle: "Genera tu plan de bienestar ideal",
-            showBack: false,
-          };
-      }
-    };
-
-    const config = getHeaderConfig();
-
-    return (
-      <LinearGradient
-        colors={[AiraColors.primary, AiraColors.accent]}
-        style={styles.header}
-      >
-        <SafeAreaView edges={["top"]} style={styles.headerContent}>
-          <View style={styles.headerRow}>
-            {config.showBack && (
-              <TouchableOpacity
-                style={styles.backButton}
-                onPress={handleGoBack}
-              >
-                <Ionicons name="arrow-back" size={24} color="white" />
-              </TouchableOpacity>
-            )}
-            <View style={styles.headerTextContainer}>
-              <ThemedText style={styles.headerTitle}>{config.title}</ThemedText>
-              <ThemedText style={styles.headerSubtitle}>
-                {config.subtitle}
-              </ThemedText>
-            </View>
-          </View>
-        </SafeAreaView>
-      </LinearGradient>
-    );
+  const getHeaderConfig = () => {
+    switch (viewState) {
+      case "form":
+        return {
+          title: "Personalizar Plan",
+          subtitle: "Completa tu información",
+          showBack: true,
+        };
+      case "generated":
+        return {
+          title: "Tu Plan Personalizado",
+          subtitle: "Generado por Aira",
+          showBack: true,
+        };
+      case "loading":
+        return {
+          title: "Generando Plan",
+          subtitle: "Aira está creando tu plan personalizado...",
+          showBack: false,
+        };
+      case "error":
+        return {
+          title: "Error",
+          subtitle: "Hubo un problema generando tu plan",
+          showBack: true,
+        };
+      default:
+        return {
+          title: "Plan Completo Personalizado",
+          subtitle: "Genera tu plan de bienestar integral",
+          showBack: false,
+        };
+    }
   };
 
   const renderMainView = () => (
     <View style={styles.mainContainer}>
+      <PlanWelcomeSection
+        title="¡Crea tu plan de bienestar ideal! ✨"
+        description="Aira te ayudará a generar planes personalizados adaptados a tus objetivos y estilo de vida."
+        iconName="star"
+        iconColor={AiraColors.primary}
+      />
+
       <View style={styles.optionsContainer}>
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Plan Completo Rápido"
+          description="Plan integral basado en tu perfil"
+          iconName="flash"
           onPress={handleQuickGenerate}
+          variant="gradient"
+          gradientColors={[AiraColors.primary, AiraColors.accent]}
           disabled={isGenerating}
-        >
-          <LinearGradient
-            colors={[AiraColors.primary, AiraColors.accent]}
-            style={styles.optionGradient}
-          >
-            <Ionicons name="flash" size={32} color="white" />
-            <ThemedText style={styles.optionTitle}>
-              Plan Completo Rápido
-            </ThemedText>
-            <ThemedText style={styles.optionDescription}>
-              Plan integral basado en tu perfil
-            </ThemedText>
-          </LinearGradient>
-        </TouchableOpacity>
+        />
 
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Plan Completo Personalizado"
+          description="Configura todos los detalles de tu plan"
+          iconName="create"
           onPress={handleCustomGenerate}
+          variant="outline"
+          gradientColors={[AiraColors.primary, AiraColors.accent]}
           disabled={isGenerating}
-        >
-          <View style={styles.optionOutline}>
-            <Ionicons name="create" size={32} color={AiraColors.primary} />
-            <ThemedText style={styles.optionTitleOutline}>
-              Plan Completo Personalizado
-            </ThemedText>
-            <ThemedText style={styles.optionDescriptionOutline}>
-              Configura todos los detalles de tu plan
-            </ThemedText>
-          </View>
-        </TouchableOpacity>
+        />
 
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Plan de Comidas Diarias"
+          description="Genera un menú completo para el día"
+          iconName="restaurant"
           onPress={handleDailyMealPlanGenerate}
+          variant="outline"
+          gradientColors={[AiraColors.accent, AiraColors.primary]}
           disabled={isGenerating}
-        >
-          <View style={styles.optionOutline}>
-            <Ionicons name="restaurant" size={32} color={AiraColors.accent} />
-            <ThemedText style={styles.optionTitleAccent}>
-              Plan de Comidas Diarias
-            </ThemedText>
-            <ThemedText style={styles.optionDescriptionOutline}>
-              Genera un menú completo para el día
-            </ThemedText>
-          </View>
-        </TouchableOpacity>
+        />
 
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Rutina de Ejercicio"
+          description="Crea tu rutina de entrenamiento personalizada"
+          iconName="fitness"
           onPress={handleWorkoutRoutineGenerate}
+          variant="outline"
+          gradientColors={["#3B82F6", "#1D4ED8"]}
           disabled={isGenerating}
-        >
-          <View style={styles.optionOutline}>
-            <Ionicons name="fitness" size={32} color="#3B82F6" />
-            <ThemedText style={styles.optionTitleWorkout}>
-              Rutina de Ejercicio
-            </ThemedText>
-            <ThemedText style={styles.optionDescriptionOutline}>
-              Crea tu rutina de entrenamiento personalizada
-            </ThemedText>
-          </View>
-        </TouchableOpacity>
+        />
 
-        <TouchableOpacity
-          style={styles.optionCard}
+        <PlanOptionCard
+          title="Sugerencias de Ejercicio"
+          description="Obtén sugerencias de ejercicio personalizadas"
+          iconName="bulb"
           onPress={handleExerciseSuggestionGenerate}
+          variant="outline"
+          gradientColors={["#3B82F6", "#1D4ED8"]}
           disabled={isGenerating}
-        >
-          <View style={styles.optionOutline}>
-            <Ionicons name="bulb" size={32} color="#3B82F6" />
-            <ThemedText style={styles.optionTitleWorkout}>
-              Sugerencias de Ejercicio
-            </ThemedText>
-            <ThemedText style={styles.optionDescriptionOutline}>
-              Obtén sugerencias de ejercicio personalizadas
-            </ThemedText>
-          </View>
-        </TouchableOpacity>
+        />
       </View>
 
       {!user && (
@@ -581,68 +290,29 @@ export default function PlansScreen() {
       )}
 
       {plans?.length > 0 && <ExistingPlansSection plans={plans} />}
-
-      {routines?.length > 0 && (
-        <ExistingWorkoutRoutinesSection
-          routines={routines}
-          onRoutineDelete={handleDeleteWorkoutRoutine}
-        />
-      )}
     </View>
   );
 
   const renderLoadingView = () => (
-    <View style={styles.loadingContainer}>
-      <LinearGradient
-        colors={[AiraColors.primary, AiraColors.accent]}
-        style={styles.loadingGradient}
-      >
-        <ActivityIndicator size="large" color="white" />
-        <ThemedText style={styles.loadingTitle}>
-          {viewState === "daily-meal-loading"
-            ? "Generando tu plan de comidas"
-            : viewState === "workout-routine-loading"
-            ? "Generando tu rutina de ejercicio"
-            : "Generando tu plan personalizado"}
-        </ThemedText>
-        <ThemedText style={styles.loadingSubtitle}>
-          {viewState === "daily-meal-loading"
-            ? "Aira está creando un menú delicioso y nutritivo para ti..."
-            : viewState === "workout-routine-loading"
-            ? "Aira está diseñando una rutina de ejercicio perfecta para ti..."
-            : "Aira está analizando tu información y creando el plan perfecto para ti..."}
-        </ThemedText>
-      </LinearGradient>
-    </View>
+    <PlanLoadingView
+      title="Generando tu plan personalizado"
+      subtitle="Aira está analizando tu información y creando el plan perfecto para ti..."
+      useGradient
+      gradientColors={[AiraColors.primary, AiraColors.accent]}
+      indicatorColor="white"
+    />
   );
 
   const renderErrorView = () => (
-    <View style={styles.errorContainer}>
-      <View style={styles.errorCard}>
-        <Ionicons
-          name="alert-circle"
-          size={48}
-          color={AiraColors.destructive}
-        />
-        <ThemedText style={styles.errorTitle}>
-          Error al generar el plan
-        </ThemedText>
-        <ThemedText style={styles.errorMessage}>
-          {error || "Ocurrió un error inesperado"}
-        </ThemedText>
-        <TouchableOpacity style={styles.retryButton} onPress={handleRetry}>
-          <LinearGradient
-            colors={[AiraColors.primary, AiraColors.accent]}
-            style={styles.retryButtonGradient}
-          >
-            <Ionicons name="refresh" size={20} color="white" />
-            <ThemedText style={styles.retryButtonText}>
-              Intentar de nuevo
-            </ThemedText>
-          </LinearGradient>
-        </TouchableOpacity>
-      </View>
-    </View>
+    <PlanErrorView
+      title="Error al generar el plan"
+      message={error || "Ocurrió un error inesperado"}
+      onRetry={handleRetry}
+      retryText="Intentar de nuevo"
+      iconName="alert-circle"
+      useGradientButton
+      gradientColors={[AiraColors.primary, AiraColors.accent]}
+    />
   );
 
   const renderContent = () => {
@@ -667,49 +337,7 @@ export default function PlansScreen() {
             isRegenerating={isRegenerating}
           />
         ) : null;
-      case "daily-meal-form":
-        return (
-          <DailyMealPlanForm
-            onSubmit={handleDailyMealPlanFormSubmit}
-            isLoading={isGenerating}
-            initialData={dailyMealPlanInputParams || undefined}
-          />
-        );
-      case "daily-meal-generated":
-        return generatedDailyMealPlan && dailyMealPlanInputParams ? (
-          <GeneratedDailyMealPlanSection
-            plan={generatedDailyMealPlan}
-            inputParams={dailyMealPlanInputParams}
-            onSave={handleSaveDailyMealPlan}
-            onRegenerate={handleRegenerateDailyMealPlan}
-            onEditParams={handleEditDailyMealPlanParams}
-            isSaving={isSavingDailyMealPlan}
-            isRegenerating={isRegenerating}
-          />
-        ) : null;
-      case "workout-routine-form":
-        return (
-          <FullExerciseRoutineForm
-            onSubmit={handleWorkoutRoutineFormSubmit}
-            isLoading={isGenerating}
-            initialData={workoutRoutineInputParams || undefined}
-          />
-        );
-      case "workout-routine-generated":
-        return generatedWorkoutRoutine && workoutRoutineInputParams ? (
-          <GeneratedFullExerciseRoutineSection
-            routine={generatedWorkoutRoutine}
-            inputParams={workoutRoutineInputParams}
-            onSave={handleSaveWorkoutRoutine}
-            onRegenerate={handleRegenerateWorkoutRoutine}
-            onEditParams={handleEditWorkoutRoutineParams}
-            isSaving={isSavingWorkoutRoutine}
-            isRegenerating={isRegenerating}
-          />
-        ) : null;
       case "loading":
-      case "daily-meal-loading":
-      case "workout-routine-loading":
         return renderLoadingView();
       case "error":
         return renderErrorView();
@@ -718,11 +346,25 @@ export default function PlansScreen() {
     }
   };
 
+  const config = getHeaderConfig();
+
   return (
-    <View style={styles.container}>
-      {renderHeader()}
-      {renderContent()}
-    </View>
+    <PageView>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
+        <PlanHeader
+          title={config.title}
+          subtitle={config.subtitle}
+          onBack={handleGoBack}
+          showBack={config.showBack}
+          gradientColors={[AiraColors.primary, AiraColors.accent]}
+          disabled={isGenerating}
+        />
+        {renderContent()}
+      </ScrollView>
+    </PageView>
   );
 }
 
@@ -731,38 +373,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: AiraColors.background,
   },
-  header: {
-    paddingBottom: 20,
-  },
-  headerContent: {
-    paddingHorizontal: 20,
-  },
-  headerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  backButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  headerTextContainer: {
-    flex: 1,
-  },
-  headerTitle: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: "white",
-    marginBottom: 4,
-  },
-  headerSubtitle: {
-    fontSize: 16,
-    color: "rgba(255, 255, 255, 0.9)",
-  },
+
   mainContainer: {
     flex: 1,
     padding: 20,
@@ -771,58 +382,7 @@ const styles = StyleSheet.create({
     gap: 16,
     marginBottom: 24,
   },
-  optionCard: {
-    borderRadius: AiraVariants.cardRadius,
-    overflow: "hidden",
-  },
-  optionGradient: {
-    padding: 24,
-    alignItems: "center",
-    gap: 8,
-  },
-  optionOutline: {
-    padding: 24,
-    alignItems: "center",
-    gap: 8,
-    borderWidth: 2,
-    borderColor: AiraColors.primary,
-    borderRadius: AiraVariants.cardRadius,
-    backgroundColor: AiraColors.background,
-  },
-  optionTitle: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: "white",
-    textAlign: "center",
-  },
-  optionTitleOutline: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: AiraColors.primary,
-    textAlign: "center",
-  },
-  optionTitleAccent: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: AiraColors.accent,
-    textAlign: "center",
-  },
-  optionTitleWorkout: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: "#3B82F6",
-    textAlign: "center",
-  },
-  optionDescription: {
-    fontSize: 14,
-    color: "rgba(255, 255, 255, 0.9)",
-    textAlign: "center",
-  },
-  optionDescriptionOutline: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-    textAlign: "center",
-  },
+
   authWarning: {
     flexDirection: "row",
     alignItems: "center",
@@ -838,71 +398,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AiraColors.destructive,
     flex: 1,
-  },
-  loadingContainer: {
-    flex: 1,
-    padding: 20,
-    justifyContent: "center",
-  },
-  loadingGradient: {
-    padding: 40,
-    borderRadius: AiraVariants.cardRadius,
-    alignItems: "center",
-    gap: 16,
-  },
-  loadingTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: "white",
-    textAlign: "center",
-  },
-  loadingSubtitle: {
-    fontSize: 16,
-    color: "rgba(255, 255, 255, 0.9)",
-    textAlign: "center",
-    lineHeight: 22,
-  },
-  errorContainer: {
-    flex: 1,
-    padding: 20,
-    justifyContent: "center",
-  },
-  errorCard: {
-    backgroundColor: AiraColors.card,
-    padding: 32,
-    borderRadius: AiraVariants.cardRadius,
-    alignItems: "center",
-    gap: 16,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-  },
-  errorTitle: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: AiraColors.foreground,
-    textAlign: "center",
-  },
-  errorMessage: {
-    fontSize: 16,
-    color: AiraColors.mutedForeground,
-    textAlign: "center",
-    lineHeight: 22,
-  },
-  retryButton: {
-    borderRadius: AiraVariants.cardRadius,
-    overflow: "hidden",
-    marginTop: 8,
-  },
-  retryButtonGradient: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  retryButtonText: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "white",
   },
 });
