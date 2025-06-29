@@ -8,7 +8,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Challenge } from "@/services/api/challenge.service";
@@ -18,6 +18,7 @@ interface ChallengeItemProps {
   categoryColors: string[];
   categoryLabel: string;
   onPress: (challenge: Challenge) => void;
+  onSchedule?: (challengeId: string, challengeTitle: string) => void;
 }
 
 export const ChallengeItem = ({
@@ -25,6 +26,7 @@ export const ChallengeItem = ({
   categoryColors,
   categoryLabel,
   onPress,
+  onSchedule,
 }: ChallengeItemProps) => {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -112,13 +114,30 @@ export const ChallengeItem = ({
           </View>
         </View>
 
-        {/* Arrow */}
-        <View style={styles.arrowContainer}>
-          <Ionicons
-            name="chevron-forward"
-            size={16}
-            color={AiraColors.mutedForeground}
-          />
+        {/* Actions */}
+        <View style={styles.actionsContainer}>
+          {onSchedule && (
+            <TouchableOpacity
+              style={styles.scheduleButton}
+              onPress={(e) => {
+                e.stopPropagation();
+                onSchedule(challenge.id, challenge.title);
+              }}
+            >
+              <Ionicons
+                name="calendar-outline"
+                size={16}
+                color={AiraColors.primary}
+              />
+            </TouchableOpacity>
+          )}
+          <View style={styles.arrowContainer}>
+            <Ionicons
+              name="chevron-forward"
+              size={16}
+              color={AiraColors.mutedForeground}
+            />
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -214,6 +233,16 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: AiraColors.accent,
      
+  },
+  actionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  scheduleButton: {
+    padding: 8,
+    borderRadius: 8,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   arrowContainer: {
     padding: 4,

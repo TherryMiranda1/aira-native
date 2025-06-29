@@ -16,7 +16,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Topbar } from "@/components/ui/Topbar";
-import { GeneratedPlanSection } from "@/components/ui/GeneratedPlanSection";
+import { GeneratedPlanSection } from "@/features/complete-plan/GeneratedPlanSection";
 import { useGeneratedPlans } from "@/hooks/services/useGeneratedPlans";
 import { GeneratedPlan } from "@/services/api/generatedPlan.service";
 import { PageView } from "@/components/ui/PageView";

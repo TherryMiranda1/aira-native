@@ -8,7 +8,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ritual } from "@/services/api/ritual.service";
@@ -18,6 +18,7 @@ interface RitualItemProps {
   categoryColors: string[];
   categoryLabel: string;
   onPress: (ritual: Ritual) => void;
+  onSchedule?: (ritualId: string, ritualTitle: string) => void;
 }
 
 export const RitualItem = ({
@@ -25,6 +26,7 @@ export const RitualItem = ({
   categoryColors,
   categoryLabel,
   onPress,
+  onSchedule,
 }: RitualItemProps) => {
   const getEnergyColor = (energy: string) => {
     switch (energy) {
@@ -172,8 +174,24 @@ export const RitualItem = ({
           </View>
         </View>
 
-        {/* Arrow */}
-        <View style={styles.arrowContainer}>
+        {/* Actions */}
+        <View style={styles.actionsContainer}>
+          {onSchedule && (
+            <TouchableOpacity
+              style={styles.scheduleButton}
+              onPress={(e) => {
+                e.stopPropagation();
+                onSchedule(ritual.id, ritual.titulo);
+              }}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
+              <Ionicons
+                name="calendar-outline"
+                size={18}
+                color={AiraColors.primary}
+              />
+            </TouchableOpacity>
+          )}
           <Ionicons
             name="chevron-forward"
             size={16}
@@ -303,7 +321,14 @@ const styles = StyleSheet.create({
     color: AiraColors.accent,
      
   },
-  arrowContainer: {
-    padding: 4,
+  actionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  scheduleButton: {
+    padding: 8,
+    borderRadius: AiraVariants.tagRadius,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
 }); 

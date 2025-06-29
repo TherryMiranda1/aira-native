@@ -8,6 +8,7 @@ import { ActionButton } from "@/components/Buttons/ActionButton";
 import RecipesDashboard from "@/features/recipes/RecipesDashboard";
 import RecipesGallery from "@/features/recipes/RecipesGallery";
 import { ProfileButton } from "@/components/ui/ProfileButton";
+import { ScheduleEventModal } from "@/components/ScheduleEventModal";
 
 interface Ingrediente {
   item: string;
@@ -35,6 +36,11 @@ export default function RecipesScreen() {
   const [viewMode, setViewMode] = useState<"dashboard" | "gallery">(
     "dashboard"
   );
+  const [scheduleModal, setScheduleModal] = useState({
+    visible: false,
+    recipeId: "",
+    recipeTitle: "",
+  });
 
   // Función para alternar entre el dashboard y la galería
   const toggleViewMode = () => {
@@ -44,6 +50,22 @@ export default function RecipesScreen() {
   const onSelectCategory = (categoryId: string) => {
     setSelectedCategory(categoryId);
     toggleViewMode();
+  };
+
+  const handleScheduleRecipe = (recipeId: string, recipeTitle: string) => {
+    setScheduleModal({
+      visible: true,
+      recipeId,
+      recipeTitle,
+    });
+  };
+
+  const handleCloseScheduleModal = () => {
+    setScheduleModal({
+      visible: false,
+      recipeId: "",
+      recipeTitle: "",
+    });
   };
 
   return (
@@ -66,14 +88,25 @@ export default function RecipesScreen() {
         <RecipesDashboard
           onViewAllRecipes={toggleViewMode}
           onSelectCategory={onSelectCategory}
+          onScheduleRecipe={handleScheduleRecipe}
         />
       )}
       {viewMode === "gallery" && (
         <RecipesGallery
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          onScheduleRecipe={handleScheduleRecipe}
         />
       )}
+
+      {/* Modal de programación */}
+      <ScheduleEventModal
+        visible={scheduleModal.visible}
+        onClose={handleCloseScheduleModal}
+        type="recipe"
+        itemId={scheduleModal.recipeId}
+        itemTitle={scheduleModal.recipeTitle}
+      />
     </PageView>
   );
 }

@@ -14,6 +14,7 @@ import { ModalScreen } from "@/components/navigation/ModalScreen";
 import { recipeService, Recipe } from "@/services/api/recipe.service";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
+import { ScheduleEventModal } from "@/components/ScheduleEventModal";
 
 export default function RecipeDetailScreen() {
   const { id } = useLocalSearchParams();
@@ -22,6 +23,11 @@ export default function RecipeDetailScreen() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [scheduleModal, setScheduleModal] = useState({
+    visible: false,
+    recipeId: "",
+    recipeTitle: "",
+  });
 
   useEffect(() => {
     async function fetchRecipe() {
@@ -59,6 +65,24 @@ export default function RecipeDetailScreen() {
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+  };
+
+  const handleScheduleRecipe = () => {
+    if (recipe) {
+      setScheduleModal({
+        visible: true,
+        recipeId: recipe.id,
+        recipeTitle: recipe.titulo,
+      });
+    }
+  };
+
+  const handleCloseScheduleModal = () => {
+    setScheduleModal({
+      visible: false,
+      recipeId: "",
+      recipeTitle: "",
+    });
   };
 
   if (loading) {
@@ -99,17 +123,30 @@ export default function RecipeDetailScreen() {
             />
           )}
           <View style={styles.heroOverlay}>
-            <TouchableOpacity
-              style={styles.favoriteButton}
-              onPress={toggleFavorite}
-              activeOpacity={0.8}
-            >
-              <Ionicons
-                name={isFavorite ? "heart" : "heart-outline"}
-                size={24}
-                color={isFavorite ? "#FF6B6B" : "#fff"}
-              />
-            </TouchableOpacity>
+            <View style={styles.heroActions}>
+              <TouchableOpacity
+                style={styles.scheduleButton}
+                onPress={handleScheduleRecipe}
+                activeOpacity={0.8}
+              >
+                <Ionicons
+                  name="calendar-outline"
+                  size={24}
+                  color="#fff"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.favoriteButton}
+                onPress={toggleFavorite}
+                activeOpacity={0.8}
+              >
+                <Ionicons
+                  name={isFavorite ? "heart" : "heart-outline"}
+                  size={24}
+                  color={isFavorite ? "#FF6B6B" : "#fff"}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
 
@@ -204,6 +241,15 @@ export default function RecipeDetailScreen() {
           <View style={styles.bottomSpacing} />
         </View>
       </ScrollView>
+
+      {/* Schedule Modal */}
+      <ScheduleEventModal
+        visible={scheduleModal.visible}
+        onClose={handleCloseScheduleModal}
+        type="recipe"
+        itemId={scheduleModal.recipeId}
+        itemTitle={scheduleModal.recipeTitle}
+      />
     </ModalScreen>
   );
 }
@@ -231,6 +277,18 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "flex-end",
     padding: 20,
+  },
+  heroActions: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  scheduleButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    justifyContent: "center",
+    alignItems: "center",
   },
   favoriteButton: {
     width: 48,

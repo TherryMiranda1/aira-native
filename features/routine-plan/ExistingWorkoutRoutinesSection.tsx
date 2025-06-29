@@ -10,7 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyWorkoutRoutine } from "@/services/api/dailyWorkoutRoutine.service";

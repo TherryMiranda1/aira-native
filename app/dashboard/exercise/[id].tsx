@@ -14,6 +14,7 @@ import { ModalScreen } from "@/components/navigation/ModalScreen";
 import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
 import { exerciseService, Exercise } from "@/services/api/exercise.service";
+import { ScheduleEventModal } from "@/components/ScheduleEventModal";
 
 export default function ExerciseDetailScreen() {
   const router = useRouter();
@@ -22,6 +23,11 @@ export default function ExerciseDetailScreen() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [scheduleModal, setScheduleModal] = useState({
+    visible: false,
+    exerciseId: "",
+    exerciseTitle: "",
+  });
 
   useEffect(() => {
     async function fetchExercise() {
@@ -49,6 +55,24 @@ export default function ExerciseDetailScreen() {
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+  };
+
+  const handleScheduleExercise = () => {
+    if (exercise) {
+      setScheduleModal({
+        visible: true,
+        exerciseId: exercise.id,
+        exerciseTitle: exercise.nombre,
+      });
+    }
+  };
+
+  const handleCloseScheduleModal = () => {
+    setScheduleModal({
+      visible: false,
+      exerciseId: "",
+      exerciseTitle: "",
+    });
   };
 
   const getDifficultyColor = (difficulty: string) => {
@@ -102,17 +126,30 @@ export default function ExerciseDetailScreen() {
             />
           )}
           <View style={styles.heroOverlay}>
-            <TouchableOpacity
-              style={styles.favoriteButton}
-              onPress={toggleFavorite}
-              activeOpacity={0.8}
-            >
-              <Ionicons
-                name={isFavorite ? "heart" : "heart-outline"}
-                size={24}
-                color={isFavorite ? "#FF6B6B" : "#fff"}
-              />
-            </TouchableOpacity>
+            <View style={styles.heroActions}>
+              <TouchableOpacity
+                style={styles.scheduleButton}
+                onPress={handleScheduleExercise}
+                activeOpacity={0.8}
+              >
+                <Ionicons
+                  name="calendar-outline"
+                  size={24}
+                  color="#fff"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.favoriteButton}
+                onPress={toggleFavorite}
+                activeOpacity={0.8}
+              >
+                <Ionicons
+                  name={isFavorite ? "heart" : "heart-outline"}
+                  size={24}
+                  color={isFavorite ? "#FF6B6B" : "#fff"}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
 
@@ -307,6 +344,15 @@ export default function ExerciseDetailScreen() {
           <View style={styles.bottomSpacing} />
         </View>
       </ScrollView>
+
+      {/* Schedule Modal */}
+      <ScheduleEventModal
+        visible={scheduleModal.visible}
+        onClose={handleCloseScheduleModal}
+        type="exercise"
+        itemId={scheduleModal.exerciseId}
+        itemTitle={scheduleModal.exerciseTitle}
+      />
     </ModalScreen>
   );
 }
@@ -335,6 +381,18 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "flex-end",
     padding: 20,
+  },
+  heroActions: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  scheduleButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    justifyContent: "center",
+    alignItems: "center",
   },
   favoriteButton: {
     width: 48,

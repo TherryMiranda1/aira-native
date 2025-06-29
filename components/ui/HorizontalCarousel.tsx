@@ -90,10 +90,9 @@ export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
           renderItem={renderCategoryItem}
           keyExtractor={(item) => item.id}
           horizontal
-          showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.carouselContent}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
-          initialNumToRender={1}
+          initialNumToRender={2}
         />
       </View>
     </View>

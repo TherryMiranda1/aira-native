@@ -163,11 +163,13 @@ RecipeCard.displayName = "RecipeCard";
 interface RecipesDashboardProps {
   onViewAllRecipes: () => void;
   onSelectCategory: (categoryId: string) => void;
+  onScheduleRecipe?: (recipeId: string, recipeTitle: string) => void;
 }
 
 const RecipesDashboard: React.FC<RecipesDashboardProps> = ({
   onViewAllRecipes,
   onSelectCategory,
+  onScheduleRecipe,
 }) => {
   // Función para navegar a la receta seleccionada
   const handleRecipePress = (recipeId: string) => {
