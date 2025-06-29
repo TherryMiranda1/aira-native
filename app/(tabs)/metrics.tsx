@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Alert,
-} from "react-native";
+import { StyleSheet, View, ScrollView, Alert } from "react-native";
 import { Stack, router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
@@ -117,8 +112,6 @@ export default function MetricsScreen() {
             </ThemedText>
           </View>
 
-
-
           {/* Lista de métricas */}
           {metrics.length === 0 ? (
             <EmptyState
@@ -156,8 +149,7 @@ export default function MetricsScreen() {
       <FloatingActionButton
         onPress={() => setShowCreateModal(true)}
         iconName="add"
-        text="Métrica"
-        showText={showText}
+        variant="primary"
       />
     </PageView>
   );

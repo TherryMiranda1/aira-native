@@ -15,7 +15,6 @@ import { ThemedInput } from "@/components/ThemedInput";
 import { Ionicons } from "@expo/vector-icons";
 import { useMetrics } from "@/hooks/services/useMetrics";
 import { CreateMetricData } from "@/services/api/metrics.service";
-import { AiraVariants } from "@/constants/Themes";
 
 interface CreateMetricModalProps {
   visible: boolean;

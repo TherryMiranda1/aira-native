@@ -384,7 +384,6 @@ export default function RitualesScreen() {
       </PageView>
     );
   }
-
   // Error State inicial
   if (categoriesError) {
     return (
@@ -518,3 +517,4 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
+
