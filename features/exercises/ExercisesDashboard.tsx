@@ -162,11 +162,13 @@ WorkoutCard.displayName = "WorkoutCard";
 interface ExercisesDashboardProps {
   onViewAllExercises: () => void;
   onSelectCategory: (categoryId: string) => void;
+  onScheduleExercise?: (exerciseId: string, exerciseTitle: string) => void;
 }
 
 const ExercisesDashboard: React.FC<ExercisesDashboardProps> = ({
   onViewAllExercises,
   onSelectCategory,
+  onScheduleExercise,
 }) => {
   // Función para navegar al entrenamiento seleccionado
   const handleWorkoutPress = (workoutId: string) => {

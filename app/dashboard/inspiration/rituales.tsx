@@ -18,11 +18,12 @@ import { useRituals } from "@/hooks/services/useRituals";
 import { ritualService, Ritual } from "@/services/api/ritual.service";
 import { CategoriesList, Category } from "@/components/Categories";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { RitualModal } from "@/components/ui/RitualModal";
-import { RitualItem } from "@/components/ui/RitualItem";
+import { RitualModal } from "@/features/rituals/RitualModal";
+import { RitualItem } from "@/features/rituals/RitualItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
+import { ScheduleEventModal } from "@/components/ScheduleEventModal";
 
 // Mapeo de categorías basado en el servicio de rituales
 const categoryLabels: Record<string, string> = {
@@ -93,6 +94,11 @@ export default function RitualesScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedRitual, setSelectedRitual] = useState<Ritual | null>(null);
   const [modalRitualIndex, setModalRitualIndex] = useState(0);
+  const [scheduleModal, setScheduleModal] = useState({
+    visible: false,
+    ritualId: "",
+    ritualTitle: "",
+  });
 
   // Usar el hook de rituales para obtener categorías disponibles
   const {
@@ -308,6 +314,22 @@ export default function RitualesScreen() {
     }
   };
 
+  const handleScheduleRitual = (ritualId: string, ritualTitle: string) => {
+    setScheduleModal({
+      visible: true,
+      ritualId,
+      ritualTitle,
+    });
+  };
+
+  const handleCloseScheduleModal = () => {
+    setScheduleModal({
+      visible: false,
+      ritualId: "",
+      ritualTitle: "",
+    });
+  };
+
   // Renderizar cada item de la lista
   const renderRitualItem = useCallback(
     ({ item }: { item: Ritual }) => {
@@ -317,10 +339,11 @@ export default function RitualesScreen() {
           categoryColors={getCategoryColors(selectedCategory)}
           categoryLabel={getCategoryLabel(selectedCategory) || ""}
           onPress={handleRitualPress}
+          onSchedule={handleScheduleRitual}
         />
       );
     },
-    [selectedCategory, handleRitualPress]
+    [selectedCategory, handleRitualPress, handleScheduleRitual]
   );
 
   // Key extractor para la FlatList
@@ -459,8 +482,18 @@ export default function RitualesScreen() {
             onPrevious={handleModalPrevious}
             onRandom={handleModalRandom}
             onComplete={handleCompleteRitual}
+            onSchedule={handleScheduleRitual}
           />
         )}
+
+        {/* Schedule Modal */}
+        <ScheduleEventModal
+          visible={scheduleModal.visible}
+          onClose={handleCloseScheduleModal}
+          type="ritual"
+          itemId={scheduleModal.ritualId}
+          itemTitle={scheduleModal.ritualTitle}
+        />
       </View>
     </PageView>
   );

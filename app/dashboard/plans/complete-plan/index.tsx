@@ -6,9 +6,9 @@ import { router } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { PlanConfigForm } from "@/components/ui/PlanConfigForm";
-import { GeneratedPlanSection } from "@/components/ui/GeneratedPlanSection";
-import { ExistingPlansSection } from "@/components/ui/ExistingPlansSection";
+import { PlanConfigForm } from "@/features/complete-plan/PlanConfigForm";
+import { GeneratedPlanSection } from "@/features/complete-plan/GeneratedPlanSection";
+import { ExistingPlansSection } from "@/features/complete-plan/ExistingPlansSection";
 import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";

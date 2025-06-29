@@ -10,66 +10,90 @@ import {
 } from "@/utils/colors";
 import { AiraVariants } from "@/constants/Themes";
 
+interface ExerciseItemProps {
+  exercise: Exercise;
+  onPress: (id: string) => void;
+  onSchedule?: (exerciseId: string, exerciseTitle: string) => void;
+}
+
 export const ExerciseItem = memo(
   ({
     exercise,
     onPress,
-  }: {
-    exercise: Exercise;
-    onPress: (id: string) => void;
-  }) => {
+    onSchedule,
+  }: ExerciseItemProps) => {
     return (
       <TouchableOpacity
         onPress={() => onPress(exercise.id)}
         style={styles.exerciseCard}
       >
         <View style={styles.cardHeader}>
-          <View
-            style={[
-              styles.difficultyBadge,
-              {
-                backgroundColor:
-                  getExerciseDifficultyColor(exercise.nivel_dificultad) + "20",
-                borderColor: getExerciseDifficultyColor(
-                  exercise.nivel_dificultad
-                ),
-              },
-            ]}
-          >
-            <ThemedText
-              type="small"
+          <View style={styles.badgesContainer}>
+            <View
               style={[
-                styles.difficultyText,
+                styles.difficultyBadge,
                 {
-                  color: getExerciseDifficultyColor(exercise.nivel_dificultad),
+                  backgroundColor:
+                    getExerciseDifficultyColor(exercise.nivel_dificultad) + "20",
+                  borderColor: getExerciseDifficultyColor(
+                    exercise.nivel_dificultad
+                  ),
                 },
               ]}
             >
-              {exercise.nivel_dificultad.charAt(0).toUpperCase() +
-                exercise.nivel_dificultad.slice(1)}
-            </ThemedText>
-          </View>
-          <View
-            style={[
-              styles.typeBadge,
-              {
-                backgroundColor:
-                  getExerciseTypeColor(exercise.tipo_ejercicio) + "20",
-                borderColor: getExerciseTypeColor(exercise.tipo_ejercicio),
-              },
-            ]}
-          >
-            <ThemedText
-              type="small"
+              <ThemedText
+                type="small"
+                style={[
+                  styles.difficultyText,
+                  {
+                    color: getExerciseDifficultyColor(exercise.nivel_dificultad),
+                  },
+                ]}
+              >
+                {exercise.nivel_dificultad.charAt(0).toUpperCase() +
+                  exercise.nivel_dificultad.slice(1)}
+              </ThemedText>
+            </View>
+            <View
               style={[
-                styles.typeText,
-                { color: getExerciseTypeColor(exercise.tipo_ejercicio) },
+                styles.typeBadge,
+                {
+                  backgroundColor:
+                    getExerciseTypeColor(exercise.tipo_ejercicio) + "20",
+                  borderColor: getExerciseTypeColor(exercise.tipo_ejercicio),
+                },
               ]}
             >
-              {exercise.tipo_ejercicio.charAt(0).toUpperCase() +
-                exercise.tipo_ejercicio.slice(1)}
-            </ThemedText>
+              <ThemedText
+                type="small"
+                style={[
+                  styles.typeText,
+                  { color: getExerciseTypeColor(exercise.tipo_ejercicio) },
+                ]}
+              >
+                {exercise.tipo_ejercicio.charAt(0).toUpperCase() +
+                  exercise.tipo_ejercicio.slice(1)}
+              </ThemedText>
+            </View>
           </View>
+          {onSchedule && (
+            <View style={styles.actionsContainer}>
+              <TouchableOpacity
+                style={styles.scheduleButton}
+                onPress={(e) => {
+                  e.stopPropagation();
+                  onSchedule(exercise.id, exercise.nombre);
+                }}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              >
+                <Ionicons
+                  name="calendar-outline"
+                  size={20}
+                  color={AiraColors.primary}
+                />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
 
         <ThemedText style={styles.exerciseTitle}>{exercise.nombre}</ThemedText>
@@ -154,9 +178,22 @@ const styles = StyleSheet.create({
   },
   cardHeader: {
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 8,
+  },
+  badgesContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  actionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  scheduleButton: {
+    padding: 8,
+    borderRadius: AiraVariants.tagRadius,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   difficultyBadge: {
     paddingHorizontal: 8,

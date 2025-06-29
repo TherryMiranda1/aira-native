@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { Phrase } from "@/services/api/phrase.service";
 

@@ -11,9 +11,11 @@ export const RecipeItem = memo(
   ({
     recipe,
     onPress,
+    onSchedule,
   }: {
     recipe: RecipeType;
     onPress: (id: string) => void;
+    onSchedule?: (recipeId: string, recipeTitle: string) => void;
   }) => {
     return (
       <TouchableOpacity
@@ -38,9 +40,26 @@ export const RecipeItem = memo(
               {recipe.dificultad}
             </ThemedText>
           </View>
-          <TouchableOpacity>
-            <Ionicons name="heart-outline" size={20} color="#9ca3af" />
-          </TouchableOpacity>
+          <View style={styles.actionsContainer}>
+            {onSchedule && (
+              <TouchableOpacity
+                style={styles.scheduleButton}
+                onPress={(e) => {
+                  e.stopPropagation();
+                  onSchedule(recipe.id || "", recipe.titulo);
+                }}
+              >
+                <Ionicons
+                  name="calendar-outline"
+                  size={16}
+                  color={AiraColors.primary}
+                />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity>
+              <Ionicons name="heart-outline" size={20} color="#9ca3af" />
+            </TouchableOpacity>
+          </View>
         </View>
 
         <ThemedText style={styles.recipeTitle}>{recipe.titulo}</ThemedText>
@@ -87,7 +106,16 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.tagRadius,
     borderWidth: 1,
   },
-
+  actionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  scheduleButton: {
+    padding: 6,
+    borderRadius: 6,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+  },
   recipeTitle: {
     fontSize: 18,
      

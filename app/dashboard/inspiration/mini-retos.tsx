@@ -18,11 +18,12 @@ import { useChallenges } from "@/hooks/services/useChallenges";
 import { challengeService, Challenge } from "@/services/api/challenge.service";
 import { CategoriesList, Category } from "@/components/Categories";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { ChallengeModal } from "@/components/ui/ChallengeModal";
-import { ChallengeItem } from "@/components/ui/ChallengeItem";
+import { ChallengeModal } from "@/features/challenges/ChallengeModal";
+import { ChallengeItem } from "@/features/challenges/ChallengeItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
+import { ScheduleEventModal } from "@/components/ScheduleEventModal";
 
 // Mapeo de categorías de la versión web
 const categoryLabels: Record<string, string> = {
@@ -83,6 +84,11 @@ export default function MiniRetosScreen() {
     null
   );
   const [modalChallengeIndex, setModalChallengeIndex] = useState(0);
+  const [scheduleModal, setScheduleModal] = useState({
+    visible: false,
+    challengeId: "",
+    challengeTitle: "",
+  });
 
   // Usar el hook de challenges para obtener categorías disponibles
   const {
@@ -273,6 +279,22 @@ export default function MiniRetosScreen() {
     }
   };
 
+  const handleScheduleChallenge = (challengeId: string, challengeTitle: string) => {
+    setScheduleModal({
+      visible: true,
+      challengeId,
+      challengeTitle,
+    });
+  };
+
+  const handleCloseScheduleModal = () => {
+    setScheduleModal({
+      visible: false,
+      challengeId: "",
+      challengeTitle: "",
+    });
+  };
+
   // Renderizar cada item de la lista
   const renderChallengeItem = useCallback(
     ({ item }: { item: Challenge }) => {
@@ -282,10 +304,11 @@ export default function MiniRetosScreen() {
           categoryColors={getCategoryColors(selectedCategory)}
           categoryLabel={getCategoryLabel(selectedCategory) || ""}
           onPress={handleChallengePress}
+          onSchedule={handleScheduleChallenge}
         />
       );
     },
-    [selectedCategory, handleChallengePress]
+    [selectedCategory, handleChallengePress, handleScheduleChallenge]
   );
 
   // Key extractor para la FlatList
@@ -424,8 +447,18 @@ export default function MiniRetosScreen() {
             onPrevious={handleModalPrevious}
             onRandom={handleModalRandom}
             onComplete={handleCompleteChallenge}
+            onSchedule={handleScheduleChallenge}
           />
         )}
+
+        {/* Modal de programación */}
+        <ScheduleEventModal
+          visible={scheduleModal.visible}
+          onClose={handleCloseScheduleModal}
+          type="challenge"
+          itemId={scheduleModal.challengeId}
+          itemTitle={scheduleModal.challengeTitle}
+        />
       </View>
     </PageView>
   );

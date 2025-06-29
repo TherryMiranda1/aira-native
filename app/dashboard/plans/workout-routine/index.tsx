@@ -7,9 +7,9 @@ import { router } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { FullExerciseRoutineForm } from "@/components/ui/FullExerciseRoutineForm";
-import { GeneratedFullExerciseRoutineSection } from "@/components/ui/GeneratedFullExerciseRoutineSection";
-import { ExistingWorkoutRoutinesSection } from "@/components/ui/ExistingWorkoutRoutinesSection";
+import { FullExerciseRoutineForm } from "@/features/routine-plan/FullExerciseRoutineForm";
+import { GeneratedFullExerciseRoutineSection } from "@/features/routine-plan/GeneratedFullExerciseRoutineSection";
+import { ExistingWorkoutRoutinesSection } from "@/features/routine-plan/ExistingWorkoutRoutinesSection";
 import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";

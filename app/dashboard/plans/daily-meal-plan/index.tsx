@@ -6,9 +6,9 @@ import { router } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
-import { DailyMealPlanForm } from "@/components/ui/DailyMealPlanForm";
-import { GeneratedDailyMealPlanSection } from "@/components/ui/GeneratedDailyMealPlanSection";
-import { ExistingDailyMealPlansSection } from "@/components/ui/ExistingDailyMealPlansSection";
+import { DailyMealPlanForm } from "@/features/meal-plan/DailyMealPlanForm";
+import { GeneratedDailyMealPlanSection } from "@/features/meal-plan/GeneratedDailyMealPlanSection";
+import { ExistingDailyMealPlansSection } from "@/features/meal-plan/ExistingDailyMealPlansSection";
 import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";

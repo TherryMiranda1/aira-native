@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  ColorValue,
-} from "react-native";
+import { View, TouchableOpacity, StyleSheet, ColorValue } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Phrase } from "@/services/api/phrase.service";
@@ -61,7 +56,7 @@ export const PhraseItem = ({
           <ThemedText style={styles.phraseText} numberOfLines={2}>
             &quot;{phrase.frase}&quot;
           </ThemedText>
-          
+
           <View style={styles.metadataContainer}>
             {phrase.momento_recomendado && (
               <View style={styles.momentBadge}>
@@ -72,7 +67,7 @@ export const PhraseItem = ({
                 />
               </View>
             )}
-            
+
             {phrase.popularidad > 0 && (
               <View style={styles.popularityBadge}>
                 <Ionicons name="heart" size={10} color={AiraColors.accent} />
@@ -156,9 +151,8 @@ const styles = StyleSheet.create({
   popularityText: {
     fontSize: 10,
     color: AiraColors.accent,
-     
   },
   arrowContainer: {
     padding: 4,
   },
-}); 
+});

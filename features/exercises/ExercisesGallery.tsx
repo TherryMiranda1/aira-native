@@ -37,11 +37,13 @@ const initialExercisesState: ExercisesState = {
 interface ExercisesGalleryProps {
   selectedCategory?: string;
   setSelectedCategory: (category: string) => void;
+  onScheduleExercise?: (exerciseId: string, exerciseTitle: string) => void;
 }
 
 const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
   selectedCategory = "Biceps",
   setSelectedCategory,
+  onScheduleExercise,
 }) => {
   const router = useRouter();
   const pagerRef = useRef<PagerView>(null);
@@ -167,9 +169,15 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
 
   const renderExerciseItem = useCallback(
     ({ item }: { item: ExerciseType }) => {
-      return <ExerciseItem exercise={item} onPress={handleExercisePress} />;
+      return (
+        <ExerciseItem
+          exercise={item}
+          onPress={handleExercisePress}
+          onSchedule={onScheduleExercise}
+        />
+      );
     },
-    [handleExercisePress]
+    [handleExercisePress, onScheduleExercise]
   );
 
   const keyExtractor = useCallback((item: ExerciseType) => item.id, []);

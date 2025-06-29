@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ritual } from "@/services/api/ritual.service";
@@ -27,6 +27,7 @@ interface RitualModalProps {
   onPrevious: () => void;
   onRandom: () => void;
   onComplete: (ritualId: string) => void;
+  onSchedule?: (ritualId: string, ritualTitle: string) => void;
 }
 
 export const RitualModal = ({
@@ -41,6 +42,7 @@ export const RitualModal = ({
   onPrevious,
   onRandom,
   onComplete,
+  onSchedule,
 }: RitualModalProps) => {
   const [ritualStarted, setRitualStarted] = useState(false);
   const [ritualCompleted, setRitualCompleted] = useState(false);
@@ -284,18 +286,38 @@ export const RitualModal = ({
             {/* Botones de acción simplificados */}
             <View style={styles.actionsContainer}>
               {!ritualStarted ? (
-                <TouchableOpacity
-                  style={styles.startButton}
-                  onPress={startRitual}
-                >
-                  <Ionicons name="play" size={20} color="white" />
-                  <ThemedText
-                    type="defaultSemiBold"
-                    style={styles.startButtonText}
+                <View style={styles.primaryActions}>
+                  <TouchableOpacity
+                    style={styles.startButton}
+                    onPress={startRitual}
                   >
-                    Comenzar
-                  </ThemedText>
-                </TouchableOpacity>
+                    <Ionicons name="play" size={20} color="white" />
+                    <ThemedText
+                      type="defaultSemiBold"
+                      style={styles.startButtonText}
+                    >
+                      Comenzar
+                    </ThemedText>
+                  </TouchableOpacity>
+                  {onSchedule && (
+                    <TouchableOpacity
+                      style={styles.scheduleButton}
+                      onPress={() => onSchedule(ritual.id, ritual.titulo)}
+                    >
+                      <Ionicons
+                        name="calendar-outline"
+                        size={20}
+                        color={AiraColors.primary}
+                      />
+                      <ThemedText
+                        type="defaultSemiBold"
+                        style={styles.scheduleButtonText}
+                      >
+                        Programar
+                      </ThemedText>
+                    </TouchableOpacity>
+                  )}
+                </View>
               ) : (
                 <View style={styles.ritualActions}>
                   {!ritualCompleted && (
@@ -612,6 +634,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   startButton: {
+    flex: 1,
     backgroundColor: AiraColors.primary,
     flexDirection: "row",
     alignItems: "center",
@@ -744,5 +767,25 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingVertical: 12,
     paddingHorizontal: 16,
+  },
+  primaryActions: {
+    flexDirection: "row",
+    gap: 12,
+    width: "100%",
+  },
+  scheduleButton: {
+    flex: 1,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 16,
+    borderRadius: 16,
+    gap: 8,
+    borderWidth: 1,
+    borderColor: AiraColors.primary,
+  },
+  scheduleButtonText: {
+    color: AiraColors.primary,
   },
 });

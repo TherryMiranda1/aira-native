@@ -14,7 +14,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { FullExerciseRoutineInput } from "@/types/Assistant";
-import { ThemedInput } from "../ThemedInput";
+import { ThemedInput } from "../../components/ThemedInput";
 
 interface FullExerciseRoutineFormProps {
   onSubmit: (formData: FullExerciseRoutineInput) => void;

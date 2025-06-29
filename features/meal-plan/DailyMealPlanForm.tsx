@@ -14,7 +14,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyMealPlanInput } from "@/types/Assistant";
-import { ThemedInput } from "../ThemedInput";
+import { ThemedInput } from "../../components/ThemedInput";
 
 interface DailyMealPlanFormProps {
   onSubmit: (formData: DailyMealPlanInput) => void;

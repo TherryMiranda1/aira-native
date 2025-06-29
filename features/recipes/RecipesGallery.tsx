@@ -37,11 +37,13 @@ const initialRecipesState: RecipesState = {
 interface RecipesGalleryProps {
   selectedCategory?: string;
   setSelectedCategory: (category: string) => void;
+  onScheduleRecipe?: (recipeId: string, recipeTitle: string) => void;
 }
 
 const RecipesGallery = ({
   selectedCategory = "desayuno",
   setSelectedCategory,
+  onScheduleRecipe,
 }: RecipesGalleryProps) => {
   const router = useRouter();
   const pagerRef = useRef<PagerView>(null);
@@ -165,9 +167,15 @@ const RecipesGallery = ({
 
   const renderRecipeItem = useCallback(
     ({ item }: { item: RecipeType }) => {
-      return <RecipeItem recipe={item} onPress={handleRecipePress} />;
+      return (
+        <RecipeItem
+          recipe={item}
+          onPress={handleRecipePress}
+          onSchedule={onScheduleRecipe}
+        />
+      );
     },
-    [handleRecipePress]
+    [handleRecipePress, onScheduleRecipe]
   );
 
   const keyExtractor = useCallback(

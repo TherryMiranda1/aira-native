@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Challenge } from "@/services/api/challenge.service";
@@ -27,6 +27,7 @@ interface ChallengeModalProps {
   onPrevious: () => void;
   onRandom: () => void;
   onComplete: (challengeId: string) => void;
+  onSchedule?: (challengeId: string, challengeTitle: string) => void;
 }
 
 export const ChallengeModal = ({
@@ -41,6 +42,7 @@ export const ChallengeModal = ({
   onPrevious,
   onRandom,
   onComplete,
+  onSchedule,
 }: ChallengeModalProps) => {
   const [challengeStarted, setChallengeStarted] = useState(false);
   const [challengeCompleted, setChallengeCompleted] = useState(false);
@@ -224,18 +226,41 @@ export const ChallengeModal = ({
 
               <View style={styles.actionsContainer}>
                 {!challengeStarted ? (
-                  <TouchableOpacity
-                    style={styles.startButton}
-                    onPress={startChallenge}
-                  >
-                    <Ionicons name="play" size={18} color="white" />
-                    <ThemedText
-                      type="defaultSemiBold"
-                      style={styles.startButtonText}
+                  <View style={styles.primaryActions}>
+                    <TouchableOpacity
+                      style={styles.startButton}
+                      onPress={startChallenge}
                     >
-                      Comenzar
-                    </ThemedText>
-                  </TouchableOpacity>
+                      <Ionicons name="play" size={18} color="white" />
+                      <ThemedText
+                        type="defaultSemiBold"
+                        style={styles.startButtonText}
+                      >
+                        Comenzar
+                      </ThemedText>
+                    </TouchableOpacity>
+
+                    {onSchedule && (
+                      <TouchableOpacity
+                        style={styles.scheduleButton}
+                        onPress={() =>
+                          onSchedule(challenge.id, challenge.title)
+                        }
+                      >
+                        <Ionicons
+                          name="calendar-outline"
+                          size={16}
+                          color={AiraColors.primary}
+                        />
+                        <ThemedText
+                          type="small"
+                          style={styles.scheduleButtonText}
+                        >
+                          Programar
+                        </ThemedText>
+                      </TouchableOpacity>
+                    )}
+                  </View>
                 ) : (
                   <View style={styles.challengeActions}>
                     <TouchableOpacity
@@ -480,6 +505,11 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
   },
+  primaryActions: {
+    width: "100%",
+    alignItems: "center",
+    gap: 12,
+  },
   challengeActions: {
     flexDirection: "row",
     gap: 8,
@@ -497,6 +527,20 @@ const styles = StyleSheet.create({
   },
   startButtonText: {
     color: "white",
+  },
+  scheduleButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 16,
+    gap: 8,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
+  },
+  scheduleButtonText: {
+    color: AiraColors.primary,
   },
   pauseButton: {
     flexDirection: "row",

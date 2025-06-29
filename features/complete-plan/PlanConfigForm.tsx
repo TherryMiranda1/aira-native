@@ -1,20 +1,13 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-  Alert,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { ThemedText } from "../ThemedText";
+import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { PersonalizedPlanInput } from "@/types/Assistant";
-import { ThemedInput } from "../ThemedInput";
+import { ThemedInput } from "@/components/ThemedInput";
 
 interface PlanConfigFormProps {
   onSubmit: (data: PersonalizedPlanInput) => void;
