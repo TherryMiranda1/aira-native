@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   ScrollView,
-  TouchableOpacity,
   Alert,
 } from "react-native";
 import { Stack, router } from "expo-router";
@@ -17,13 +16,15 @@ import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
 import { ErrorState } from "@/components/States/ErrorState";
 import { useMetrics } from "@/hooks/services/useMetrics";
-import { Ionicons } from "@expo/vector-icons";
 import { CreateMetricModal } from "@/components/metrics/CreateMetricModal";
 import { MetricCard } from "@/components/metrics/MetricCard";
+import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
 
 export default function MetricsScreen() {
   const { metrics, loading, error, deleteMetric, refetch } = useMetrics();
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const { showText, handleScroll } = useScrollDirection();
 
   const handleDeleteMetric = (metricId: string, metricTitle: string) => {
     Alert.alert(
@@ -103,6 +104,8 @@ export default function MetricsScreen() {
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
         >
           {/* Header */}
           <View style={styles.header}>
@@ -114,16 +117,7 @@ export default function MetricsScreen() {
             </ThemedText>
           </View>
 
-          {/* Botón para crear nueva métrica */}
-          <TouchableOpacity
-            style={styles.createButton}
-            onPress={() => setShowCreateModal(true)}
-          >
-            <Ionicons name="add-circle" size={24} color={AiraColors.primary} />
-            <ThemedText style={styles.createButtonText}>
-              Crear nueva métrica
-            </ThemedText>
-          </TouchableOpacity>
+
 
           {/* Lista de métricas */}
           {metrics.length === 0 ? (
@@ -157,6 +151,14 @@ export default function MetricsScreen() {
           refetch();
         }}
       />
+
+      {/* Floating Action Button */}
+      <FloatingActionButton
+        onPress={() => setShowCreateModal(true)}
+        iconName="add"
+        text="Métrica"
+        showText={showText}
+      />
     </PageView>
   );
 }
@@ -184,21 +186,7 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
     lineHeight: 22,
   },
-  createButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: AiraColors.card,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderRadius: 12,
-    marginBottom: 24,
-  },
-  createButtonText: {
-    marginLeft: 12,
-    fontSize: 16,
-    fontWeight: "600",
-    color: AiraColors.primary,
-  },
+
   metricsContainer: {
     gap: 16,
   },

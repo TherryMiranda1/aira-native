@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   seeAllText: {
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
   },
   recipeTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     marginBottom: 8,
   },
   recipeMetaInfo: {

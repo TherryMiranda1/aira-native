@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { StyleSheet, View, ScrollView, Alert } from "react-native";
 import { Stack, useLocalSearchParams, router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
@@ -20,13 +14,13 @@ import {
   useMetricRecords,
   useMetricStatistics,
 } from "@/hooks/services/useMetrics";
-import { Ionicons } from "@expo/vector-icons";
 import { CreateRecordModal } from "@/components/metrics/CreateRecordModal";
 import { MetricRecordCard } from "@/components/metrics/MetricRecordCard";
 import { Metric } from "@/services/api/metrics.service";
 import { MetricStatistics } from "@/components/metrics/MetricStatistics";
-import { MetricChart } from "@/components/metrics/MetricChart";
 import { InteractiveMetricChart } from "@/components/metrics/InteractiveMetricChart";
+import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
 
 export default function MetricDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -42,6 +36,7 @@ export default function MetricDetailScreen() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showInteractiveChart, setShowInteractiveChart] = useState(false);
   const [metric, setMetric] = useState<Metric | null>(null);
+  const { showText, handleScroll } = useScrollDirection();
 
   useEffect(() => {
     if (metrics.length > 0 && id) {
@@ -127,11 +122,6 @@ export default function MetricDetailScreen() {
 
   return (
     <PageView>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
       <Topbar title={metric.title} showBackButton onBack={handleBack} />
 
       <LinearGradient
@@ -146,6 +136,8 @@ export default function MetricDetailScreen() {
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
         >
           {/* Información de la métrica */}
           <View style={styles.metricInfo}>
@@ -167,20 +159,6 @@ export default function MetricDetailScreen() {
                 </ThemedText>
               )}
             </View>
-            {/* Botón para agregar registro */}
-            <TouchableOpacity
-              style={styles.addRecordButton}
-              onPress={() => setShowCreateModal(true)}
-            >
-              <Ionicons
-                name="add-circle"
-                size={24}
-                color={AiraColors.primary}
-              />
-              <ThemedText style={styles.addRecordButtonText}>
-                Agregar registro
-              </ThemedText>
-            </TouchableOpacity>
           </View>
 
           {/* Gráfico de progreso */}
@@ -247,6 +225,15 @@ export default function MetricDetailScreen() {
           refetch();
         }}
       />
+
+      {/* Floating Action Button */}
+      <FloatingActionButton
+        onPress={() => setShowCreateModal(true)}
+        iconName="add"
+        text="Registro"
+        showText={showText}
+        bottomPadding={48}
+      />
     </PageView>
   );
 }
@@ -290,20 +277,7 @@ const styles = StyleSheet.create({
   metricTarget: {
     fontSize: 14,
   },
-  addRecordButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: AiraColors.card,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderRadius: 12,
-  },
-  addRecordButtonText: {
-    marginLeft: 12,
-    fontSize: 16,
-    fontWeight: "600",
-    color: AiraColors.primary,
-  },
+
   recordsSection: {
     marginBottom: 20,
   },
@@ -341,6 +315,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: AiraColors.primary,
     marginLeft: 6,
-    fontWeight: "600",
+     
   },
 });

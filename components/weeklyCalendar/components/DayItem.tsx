@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   dayNumber: {
     fontSize: 16,
-    fontWeight: "600",
+     
   },
   weekday: {
     fontSize: 12,

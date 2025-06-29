@@ -6,21 +6,21 @@ import {
   Alert,
   ActivityIndicator,
   Share,
-  ColorValue,
   ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { Topbar } from "@/components/ui/Topbar";
 import { GeneratedPlanSection } from "@/components/ui/GeneratedPlanSection";
 import { useGeneratedPlans } from "@/hooks/services/useGeneratedPlans";
 import { GeneratedPlan } from "@/services/api/generatedPlan.service";
 import { PageView } from "@/components/ui/PageView";
+import { LinearGradient } from "expo-linear-gradient";
 
 type ViewState = "loading" | "loaded" | "error" | "not-found";
 
@@ -207,70 +207,30 @@ export default function PlanDetailScreen() {
     }
   };
 
-  const renderHeader = () => {
-    const config = plan
-      ? getPlanTypeConfig(plan.planType)
-      : {
-          title: "Plan",
-          icon: "document",
-          colors: [AiraColors.primary, AiraColors.accent],
-        };
+  const renderActions = () => {
+    if (!plan) return null;
 
     return (
-      <LinearGradient
-        colors={config.colors as [ColorValue, ColorValue, ...ColorValue[]]}
-        style={styles.header}
-      >
-        <SafeAreaView edges={["top"]} style={styles.headerContent}>
-          <View style={styles.headerRow}>
-            <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
-              <Ionicons name="arrow-back" size={24} color="white" />
-            </TouchableOpacity>
+      <View style={styles.headerActions}>
+        <TouchableOpacity
+          style={styles.headerActionButton}
+          onPress={handleSharePlan}
+        >
+          <Ionicons name="share" size={20} color={AiraColors.foreground} />
+        </TouchableOpacity>
 
-            <View style={styles.headerTextContainer}>
-              <View style={styles.headerTitleRow}>
-                <Ionicons
-                  name={config.icon as any}
-                  size={24}
-                  color="white"
-                  style={styles.headerIcon}
-                />
-                <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
-                  {config.title}
-                </ThemedText>
-              </View>
-              {plan && (
-                <ThemedText style={styles.headerSubtitle}>
-                  Creado el {formatDate(plan.createdAt)}
-                </ThemedText>
-              )}
-            </View>
-
-            {plan && (
-              <View style={styles.headerActions}>
-                <TouchableOpacity
-                  style={styles.headerActionButton}
-                  onPress={handleSharePlan}
-                >
-                  <Ionicons name="share" size={20} color="white" />
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={styles.headerActionButton}
-                  onPress={handleDeletePlan}
-                  disabled={isDeleting}
-                >
-                  {isDeleting ? (
-                    <ActivityIndicator size="small" color="white" />
-                  ) : (
-                    <Ionicons name="trash" size={20} color="white" />
-                  )}
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
-        </SafeAreaView>
-      </LinearGradient>
+        <TouchableOpacity
+          style={styles.headerActionButton}
+          onPress={handleDeletePlan}
+          disabled={isDeleting}
+        >
+          {isDeleting ? (
+            <ActivityIndicator size="small" color={AiraColors.foreground} />
+          ) : (
+            <Ionicons name="trash" size={20} color={AiraColors.foreground} />
+          )}
+        </TouchableOpacity>
+      </View>
     );
   };
 
@@ -396,15 +356,28 @@ export default function PlanDetailScreen() {
     }
   };
 
+  const getTitle = () => {
+    if (!plan) return "Plan";
+    const config = getPlanTypeConfig(plan.planType);
+    return plan.title || config.title;
+  };
+
   return (
     <PageView>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: 40 }}
-      >
-        {renderHeader()}
-        {renderContent()}
-      </ScrollView>
+      <SafeAreaView style={{ flex: 1 }}>
+        <Topbar
+          title={getTitle()}
+          showBackButton={true}
+          onBack={handleGoBack}
+          actions={renderActions()}
+        />
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={{ paddingBottom: 40 }}
+        >
+          {renderContent()}
+        </ScrollView>
+      </SafeAreaView>
     </PageView>
   );
 }
@@ -478,7 +451,7 @@ const styles = StyleSheet.create({
   },
   loadingTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: "white",
     textAlign: "center",
   },
@@ -499,7 +472,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     textAlign: "center",
   },
@@ -523,7 +496,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: "white",
   },
 });

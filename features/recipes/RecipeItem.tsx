@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
 
   recipeTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     marginBottom: 8,
   },
 

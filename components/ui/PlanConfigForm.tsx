@@ -14,6 +14,7 @@ import { ThemedText } from "../ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { PersonalizedPlanInput } from "@/types/Assistant";
+import { ThemedInput } from "../ThemedInput";
 
 interface PlanConfigFormProps {
   onSubmit: (data: PersonalizedPlanInput) => void;
@@ -199,8 +200,8 @@ export const PlanConfigForm = ({
         <ThemedText type="small" style={styles.fieldLabel}>
           {getFieldLabel(field)}
         </ThemedText>
-        <TextInput
-          style={[styles.textInput, isMultiline && styles.multilineInput]}
+        <ThemedInput
+          style={[isMultiline && styles.multilineInput]}
           value={String(value || "")}
           onChangeText={(text) => {
             if (isNumeric) {
@@ -223,94 +224,94 @@ export const PlanConfigForm = ({
 
   return (
     <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <ThemedText type="title" style={styles.title}>
-            Personaliza tu Plan
-          </ThemedText>
-          <ThemedText type="default" style={styles.subtitle}>
-            Completa la información para generar un plan adaptado a ti
-          </ThemedText>
-        </View>
+      <View style={styles.header}>
+        <ThemedText type="title" style={styles.title}>
+          Personaliza tu Plan
+        </ThemedText>
+        <ThemedText type="default" style={styles.subtitle}>
+          Completa la información para generar un plan adaptado a ti
+        </ThemedText>
+      </View>
 
-        {sections.map((section, index) => (
-          <View key={index} style={styles.sectionContainer}>
-            <TouchableOpacity
-              style={styles.sectionHeader}
-              onPress={() => toggleSection(index)}
-              disabled={isLoading}
-            >
-              <LinearGradient
-                colors={
-                  section.expanded
-                    ? [AiraColors.primary, AiraColors.accent]
-                    : [AiraColors.card, AiraColors.card]
-                }
-                style={styles.sectionIconContainer}
-              >
-                <Ionicons
-                  name={section.icon}
-                  size={18}
-                  color={section.expanded ? "white" : AiraColors.primary}
-                />
-              </LinearGradient>
-              <View style={styles.sectionTitleContainer}>
-                <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
-                  {section.title}
-                </ThemedText>
-              </View>
-              <Ionicons
-                name={section.expanded ? "chevron-up" : "chevron-down"}
-                size={18}
-                color={AiraColors.mutedForeground}
-              />
-            </TouchableOpacity>
-
-            {section.expanded && (
-              <View style={styles.sectionContent}>
-                {section.fields.map((field) => renderField(field))}
-              </View>
-            )}
-          </View>
-        ))}
-
-        <TouchableOpacity
-          style={[
-            styles.submitButton,
-            isLoading && styles.submitButtonDisabled,
-          ]}
-          onPress={handleSubmit}
-          disabled={isLoading}
-        >
-          <LinearGradient
-            colors={[AiraColors.primary, AiraColors.accent]}
-            style={styles.submitButtonGradient}
+      {sections.map((section, index) => (
+        <View key={index} style={styles.sectionContainer}>
+          <TouchableOpacity
+            style={styles.sectionHeader}
+            onPress={() => toggleSection(index)}
+            disabled={isLoading}
           >
-            {isLoading ? (
-              <View style={styles.loadingContainer}>
-                <ThemedText type="defaultSemiBold" style={styles.submitButtonText}>
-                  Generando plan...
-                </ThemedText>
-              </View>
-            ) : (
-              <View style={styles.submitContainer}>
-                <Ionicons name="sparkles" size={20} color="white" />
-                <ThemedText type="defaultSemiBold" style={styles.submitButtonText}>
-                  Generar Mi Plan
-                </ThemedText>
-              </View>
-            )}
-          </LinearGradient>
-        </TouchableOpacity>
-      </ScrollView>
+            <LinearGradient
+              colors={
+                section.expanded
+                  ? [AiraColors.primary, AiraColors.accent]
+                  : [AiraColors.card, AiraColors.card]
+              }
+              style={styles.sectionIconContainer}
+            >
+              <Ionicons
+                name={section.icon}
+                size={18}
+                color={section.expanded ? "white" : AiraColors.primary}
+              />
+            </LinearGradient>
+            <View style={styles.sectionTitleContainer}>
+              <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
+                {section.title}
+              </ThemedText>
+            </View>
+            <Ionicons
+              name={section.expanded ? "chevron-up" : "chevron-down"}
+              size={18}
+              color={AiraColors.mutedForeground}
+            />
+          </TouchableOpacity>
+
+          {section.expanded && (
+            <View style={styles.sectionContent}>
+              {section.fields.map((field) => renderField(field))}
+            </View>
+          )}
+        </View>
+      ))}
+
+      <TouchableOpacity
+        style={[styles.submitButton, isLoading && styles.submitButtonDisabled]}
+        onPress={handleSubmit}
+        disabled={isLoading}
+      >
+        <LinearGradient
+          colors={[AiraColors.primary, AiraColors.primary]}
+          style={styles.submitButtonGradient}
+        >
+          {isLoading ? (
+            <View style={styles.loadingContainer}>
+              <ThemedText
+                type="defaultSemiBold"
+                style={styles.submitButtonText}
+              >
+                Generando plan...
+              </ThemedText>
+            </View>
+          ) : (
+            <View style={styles.submitContainer}>
+              <Ionicons name="sparkles" size={20} color="white" />
+              <ThemedText
+                type="defaultSemiBold"
+                style={styles.submitButtonText}
+              >
+                Generar Mi Plan
+              </ThemedText>
+            </View>
+          )}
+        </LinearGradient>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.secondary,
   },
   header: {
     paddingHorizontal: 20,
@@ -367,7 +368,7 @@ const styles = StyleSheet.create({
     color: AiraColors.foreground,
   },
   textInput: {
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.secondary,
     borderWidth: 1,
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
     borderRadius: 8,

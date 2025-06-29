@@ -90,13 +90,13 @@ const styles = StyleSheet.create({
   },
   optionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: "white",
     textAlign: "center",
   },
   optionTitleOutline: {
     fontSize: 18,
-    fontWeight: "600",
+     
     textAlign: "center",
   },
   optionDescription: {

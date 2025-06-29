@@ -9,10 +9,10 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { PlanConfigForm } from "@/components/ui/PlanConfigForm";
 import { GeneratedPlanSection } from "@/components/ui/GeneratedPlanSection";
 import { ExistingPlansSection } from "@/components/ui/ExistingPlansSection";
-import { PlanHeader } from "@/components/ui/PlanHeader";
+import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";
-import { PlanOptionCard } from "@/components/ui/PlanOptionCard";
+import { Button } from "@/components/ui/Button";
 import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { useGeneratedPlans } from "@/hooks/services/useGeneratedPlans";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
@@ -82,18 +82,6 @@ export default function PlansScreen() {
 
   const handleCustomGenerate = () => {
     setViewState("form");
-  };
-
-  const handleDailyMealPlanGenerate = () => {
-    router.push("/dashboard/plans/daily-meal-plan");
-  };
-
-  const handleWorkoutRoutineGenerate = () => {
-    router.push("/dashboard/plans/workout-routine");
-  };
-
-  const handleExerciseSuggestionGenerate = () => {
-    router.push("/dashboard/plans/exercise-suggestion");
   };
 
   const handleFormSubmit = async (formData: PersonalizedPlanInput) => {
@@ -173,6 +161,8 @@ export default function PlansScreen() {
     } else if (viewState === "error") {
       setViewState("main");
       setError(null);
+    } else {
+      router.back();
     }
   };
 
@@ -214,7 +204,7 @@ export default function PlansScreen() {
         return {
           title: "Plan Completo Personalizado",
           subtitle: "Genera tu plan de bienestar integral",
-          showBack: false,
+          showBack: true,
         };
     }
   };
@@ -229,53 +219,25 @@ export default function PlansScreen() {
       />
 
       <View style={styles.optionsContainer}>
-        <PlanOptionCard
-          title="Plan Completo Rápido"
-          description="Plan integral basado en tu perfil"
-          iconName="flash"
+        <Button
+          variant="default"
+          text="Plan Completo Rápido"
+          leftIcon={<Ionicons name="flash" size={20} color={AiraColors.card} />}
+          size="lg"
+          fullWidth
           onPress={handleQuickGenerate}
-          variant="gradient"
-          gradientColors={[AiraColors.primary, AiraColors.accent]}
           disabled={isGenerating}
         />
 
-        <PlanOptionCard
-          title="Plan Completo Personalizado"
-          description="Configura todos los detalles de tu plan"
-          iconName="create"
+        <Button
+          variant="border"
+          text="Plan Completo Personalizado"
+          leftIcon={
+            <Ionicons name="create" size={20} color={AiraColors.foreground} />
+          }
+          size="lg"
+          fullWidth
           onPress={handleCustomGenerate}
-          variant="outline"
-          gradientColors={[AiraColors.primary, AiraColors.accent]}
-          disabled={isGenerating}
-        />
-
-        <PlanOptionCard
-          title="Plan de Comidas Diarias"
-          description="Genera un menú completo para el día"
-          iconName="restaurant"
-          onPress={handleDailyMealPlanGenerate}
-          variant="outline"
-          gradientColors={[AiraColors.accent, AiraColors.primary]}
-          disabled={isGenerating}
-        />
-
-        <PlanOptionCard
-          title="Rutina de Ejercicio"
-          description="Crea tu rutina de entrenamiento personalizada"
-          iconName="fitness"
-          onPress={handleWorkoutRoutineGenerate}
-          variant="outline"
-          gradientColors={["#3B82F6", "#1D4ED8"]}
-          disabled={isGenerating}
-        />
-
-        <PlanOptionCard
-          title="Sugerencias de Ejercicio"
-          description="Obtén sugerencias de ejercicio personalizadas"
-          iconName="bulb"
-          onPress={handleExerciseSuggestionGenerate}
-          variant="outline"
-          gradientColors={["#3B82F6", "#1D4ED8"]}
           disabled={isGenerating}
         />
       </View>
@@ -297,8 +259,6 @@ export default function PlansScreen() {
     <PlanLoadingView
       title="Generando tu plan personalizado"
       subtitle="Aira está analizando tu información y creando el plan perfecto para ti..."
-      useGradient
-      gradientColors={[AiraColors.primary, AiraColors.accent]}
       indicatorColor="white"
     />
   );
@@ -346,22 +306,16 @@ export default function PlansScreen() {
     }
   };
 
-  const config = getHeaderConfig();
+  const headerConfig = getHeaderConfig();
 
   return (
     <PageView>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: 40 }}
-      >
-        <PlanHeader
-          title={config.title}
-          subtitle={config.subtitle}
-          onBack={handleGoBack}
-          showBack={config.showBack}
-          gradientColors={[AiraColors.primary, AiraColors.accent]}
-          disabled={isGenerating}
-        />
+      <Topbar
+        title={headerConfig.title}
+        showBackButton={headerConfig.showBack}
+        onBack={handleGoBack}
+      />
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {renderContent()}
       </ScrollView>
     </PageView>

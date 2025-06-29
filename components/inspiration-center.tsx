@@ -437,7 +437,7 @@ const styles = StyleSheet.create({
   },
   topbarTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
   },
   // Categories styles
   categoriesContainer: {
@@ -560,7 +560,7 @@ const styles = StyleSheet.create({
   },
   challengeTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   durationBadge: {
@@ -611,7 +611,7 @@ const styles = StyleSheet.create({
   },
   ritualTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   timeBadge: {

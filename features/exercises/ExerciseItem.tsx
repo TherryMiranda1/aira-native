@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
   },
   exerciseTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     marginBottom: 8,
   },
   exerciseMuscles: {

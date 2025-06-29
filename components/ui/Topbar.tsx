@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   topbarTitle: {
-    fontSize: 20,
+    fontSize: 18,
     padding: 4,
-    maxWidth: "80%",
+    maxWidth: "60%",
   },
   topbarActions: {
     flexDirection: "row",

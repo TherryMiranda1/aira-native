@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   },
   challengeTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     lineHeight: 20,
     marginBottom: 4,

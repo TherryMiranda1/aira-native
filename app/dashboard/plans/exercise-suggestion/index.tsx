@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Alert, ScrollView } from "react-native";
+import { Alert, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 
 import { AiraColors } from "@/constants/Colors";
 import { ExerciseSuggestionForm } from "@/components/ui/ExerciseSuggestionForm";
 import { GeneratedExerciseSection } from "@/components/ui/GeneratedExerciseSection";
-import { SimpleHeader } from "@/components/ui/SimpleHeader";
+import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
@@ -116,7 +116,6 @@ export default function ExerciseSuggestionScreen() {
     <PlanLoadingView
       title="Aira está generando tu ejercicio personalizado..."
       subtitle="Esto puede tomar unos segundos"
-      useGradient={false}
       indicatorColor={AiraColors.primary}
     />
   );
@@ -162,13 +161,12 @@ export default function ExerciseSuggestionScreen() {
 
   return (
     <PageView>
+      <Topbar
+        title={headerConfig.title}
+        showBackButton={headerConfig.showBack}
+        onBack={handleGoBack}
+      />
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
-        <SimpleHeader
-          title={headerConfig.title}
-          onBack={handleGoBack}
-          showBack={headerConfig.showBack}
-          disabled={isGenerating}
-        />
         {renderContent()}
       </ScrollView>
     </PageView>

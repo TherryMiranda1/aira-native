@@ -93,6 +93,7 @@ export const HorizontalCarousel = ({ section }: HorizontalCarouselProps) => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.carouselContent}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
+          initialNumToRender={1}
         />
       </View>
     </View>
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   viewAllText: {
     fontSize: 12,
     color: AiraColors.background,
-     
+
     marginRight: 4,
   },
   carouselContainer: {

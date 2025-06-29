@@ -10,12 +10,12 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, router } from "expo-router";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { Topbar } from "@/components/ui/Topbar";
 import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
 import { DailyWorkoutRoutine } from "@/services/api/dailyWorkoutRoutine.service";
 import { PageView } from "@/components/ui/PageView";
@@ -149,56 +149,30 @@ export default function WorkoutRoutineDetailScreen() {
     );
   };
 
-  const renderHeader = () => (
-    <LinearGradient colors={["#3B82F6", "#1D4ED8"]} style={styles.header}>
-      <SafeAreaView edges={["top"]} style={styles.headerContent}>
-        <View style={styles.headerRow}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => router.back()}
-          >
-            <Ionicons name="arrow-back" size={24} color="white" />
-          </TouchableOpacity>
-          <View style={styles.headerTextContainer}>
-            <ThemedText style={styles.headerTitle}>
-              {routine?.routineName || "Rutina de Ejercicio"}
-            </ThemedText>
-            <ThemedText style={styles.headerSubtitle}>
-              {routine ? formatDate(routine.createdAt) : "Cargando..."}
-            </ThemedText>
-          </View>
-          <View style={styles.headerActions}>
-            {routine && (
-              <>
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={handleToggleFavorite}
-                >
-                  <Ionicons
-                    name={routine.isFavorite ? "heart" : "heart-outline"}
-                    size={24}
-                    color="white"
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={handleShare}
-                >
-                  <Ionicons name="share" size={24} color="white" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.actionButton}
-                  onPress={handleDelete}
-                >
-                  <Ionicons name="trash" size={24} color="white" />
-                </TouchableOpacity>
-              </>
-            )}
-          </View>
-        </View>
-      </SafeAreaView>
-    </LinearGradient>
-  );
+  const renderActions = () => {
+    if (!routine) return null;
+
+    return (
+      <View style={styles.headerActions}>
+        <TouchableOpacity
+          style={styles.actionButton}
+          onPress={handleToggleFavorite}
+        >
+          <Ionicons
+            name={routine.isFavorite ? "heart" : "heart-outline"}
+            size={24}
+            color={AiraColors.foreground}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.actionButton} onPress={handleShare}>
+          <Ionicons name="share" size={24} color={AiraColors.foreground} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.actionButton} onPress={handleDelete}>
+          <Ionicons name="trash" size={24} color={AiraColors.foreground} />
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   const renderLoadingView = () => (
     <View style={styles.loadingContainer}>
@@ -479,7 +453,11 @@ export default function WorkoutRoutineDetailScreen() {
   if (isLoading) {
     return (
       <PageView>
-        {renderHeader()}
+        <Topbar
+          title="Rutina de Ejercicio"
+          showBackButton={true}
+          onBack={() => router.back()}
+        />
         {renderLoadingView()}
       </PageView>
     );
@@ -488,7 +466,11 @@ export default function WorkoutRoutineDetailScreen() {
   if (error || !routine) {
     return (
       <PageView>
-        {renderHeader()}
+        <Topbar
+          title="Rutina de Ejercicio"
+          showBackButton={true}
+          onBack={() => router.back()}
+        />
         {renderErrorView()}
       </PageView>
     );
@@ -496,11 +478,13 @@ export default function WorkoutRoutineDetailScreen() {
 
   return (
     <PageView>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: 40 }}
-      >
-        {renderHeader()}
+      <Topbar
+        title={routine?.routineName || "Rutina de Ejercicio"}
+        showBackButton={true}
+        onBack={() => router.back()}
+        actions={renderActions()}
+      />
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {renderRoutineContent()}
       </ScrollView>
     </PageView>
@@ -511,36 +495,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  header: {
-    paddingBottom: 20,
-  },
-  headerContent: {
-    paddingHorizontal: 20,
-  },
-  headerRow: {
-    gap: 12,
-  },
-  backButton: {
-    width: 40,
-    height: 40,
-    borderRadius: AiraVariants.cardRadius,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  headerTextContainer: {
-    flex: 1,
-    flexDirection: "column",
-  },
-  headerTitle: {
-    fontSize: 20,
-    color: "white",
-    marginBottom: 4,
-  },
-  headerSubtitle: {
-    fontSize: 14,
-    color: "rgba(255, 255, 255, 0.9)",
-  },
   headerActions: {
     flexDirection: "row",
     gap: 8,
@@ -549,7 +503,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: AiraVariants.cardRadius,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     alignItems: "center",
     justifyContent: "center",
   },
@@ -584,7 +538,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   errorMessage: {
@@ -601,7 +555,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     color: "white",
-    fontWeight: "600",
+     
   },
   summaryCard: {
     backgroundColor: AiraColors.card,
@@ -630,7 +584,7 @@ const styles = StyleSheet.create({
   },
   summaryTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 4,
   },
@@ -657,7 +611,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 12,
     color: AiraColors.foreground,
-    fontWeight: "600",
+     
   },
   equipmentCard: {
     backgroundColor: AiraColors.card,
@@ -675,7 +629,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   equipmentText: {
@@ -688,7 +642,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 16,
   },
@@ -708,7 +662,7 @@ const styles = StyleSheet.create({
   },
   sessionName: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: "#3B82F6",
     flex: 1,
   },
@@ -743,7 +697,7 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 14,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   sectionText: {
@@ -770,7 +724,7 @@ const styles = StyleSheet.create({
   },
   exerciseName: {
     fontSize: 14,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     flex: 1,
     marginRight: 8,
@@ -843,7 +797,7 @@ const styles = StyleSheet.create({
   },
   warningTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.destructive,
   },
   warningText: {
@@ -869,7 +823,7 @@ const styles = StyleSheet.create({
   },
   tagsTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 12,
   },

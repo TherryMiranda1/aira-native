@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   categoryTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 12,
   },

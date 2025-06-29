@@ -9,10 +9,10 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { DailyMealPlanForm } from "@/components/ui/DailyMealPlanForm";
 import { GeneratedDailyMealPlanSection } from "@/components/ui/GeneratedDailyMealPlanSection";
 import { ExistingDailyMealPlansSection } from "@/components/ui/ExistingDailyMealPlansSection";
-import { PlanHeader } from "@/components/ui/PlanHeader";
+import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";
-import { PlanOptionCard } from "@/components/ui/PlanOptionCard";
+import { Button } from "@/components/ui/Button";
 import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { useDailyMealPlans } from "@/hooks/services/useDailyMealPlans";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
@@ -221,23 +221,25 @@ export default function DailyMealPlanScreen() {
       />
 
       <View style={styles.optionsContainer}>
-        <PlanOptionCard
-          title="Generación Rápida"
-          description="Plan saludable y equilibrado automático"
-          iconName="flash"
+        <Button
+          variant="default"
+          text="Generación Rápida"
+          leftIcon={<Ionicons name="flash" size={20} color={AiraColors.card} />}
+          size="lg"
+          fullWidth
           onPress={handleQuickGenerate}
-          variant="gradient"
-          gradientColors={[AiraColors.accent, AiraColors.primary]}
           disabled={isGenerating}
         />
 
-        <PlanOptionCard
-          title="Personalización Completa"
-          description="Configura preferencias, alergias y objetivos"
-          iconName="create"
+        <Button
+          variant="border"
+          text="Personalización Completa"
+          leftIcon={
+            <Ionicons name="create" size={20} color={AiraColors.foreground} />
+          }
+          size="lg"
+          fullWidth
           onPress={handleCustomGenerate}
-          variant="outline"
-          gradientColors={[AiraColors.accent, AiraColors.primary]}
           disabled={isGenerating}
         />
       </View>
@@ -264,8 +266,6 @@ export default function DailyMealPlanScreen() {
     <PlanLoadingView
       title="Generando tu plan de comidas"
       subtitle="Aira está creando un menú delicioso y nutritivo especialmente para ti..."
-      useGradient
-      gradientColors={[AiraColors.accent, AiraColors.primary]}
       indicatorColor="white"
     />
   );
@@ -313,22 +313,16 @@ export default function DailyMealPlanScreen() {
     }
   };
 
-  const config = getHeaderConfig();
+  const headerConfig = getHeaderConfig();
 
   return (
     <PageView>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: 40 }}
-      >
-        <PlanHeader
-          title={config.title}
-          subtitle={config.subtitle}
-          onBack={handleGoBack}
-          showBack={config.showBack}
-          gradientColors={[AiraColors.accent, AiraColors.primary]}
-          disabled={isGenerating}
-        />
+      <Topbar
+        title={headerConfig.title}
+        showBackButton={headerConfig.showBack}
+        onBack={handleGoBack}
+      />
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {renderContent()}
       </ScrollView>
     </PageView>

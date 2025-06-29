@@ -70,7 +70,10 @@ export function RecipeSuggestionForm({
     if (ingredientInput.trim()) {
       setFormData((prev) => ({
         ...prev,
-        mainIngredients: [...(prev.mainIngredients || []), ingredientInput.trim()],
+        mainIngredients: [
+          ...(prev.mainIngredients || []),
+          ingredientInput.trim(),
+        ],
       }));
       setIngredientInput("");
     }
@@ -79,7 +82,8 @@ export function RecipeSuggestionForm({
   const removeIngredient = (index: number) => {
     setFormData((prev) => ({
       ...prev,
-      mainIngredients: prev.mainIngredients?.filter((_, i) => i !== index) || [],
+      mainIngredients:
+        prev.mainIngredients?.filter((_, i) => i !== index) || [],
     }));
   };
 
@@ -87,7 +91,10 @@ export function RecipeSuggestionForm({
     if (restrictionInput.trim()) {
       setFormData((prev) => ({
         ...prev,
-        dietaryRestrictions: [...(prev.dietaryRestrictions || []), restrictionInput.trim()],
+        dietaryRestrictions: [
+          ...(prev.dietaryRestrictions || []),
+          restrictionInput.trim(),
+        ],
       }));
       setRestrictionInput("");
     }
@@ -96,7 +103,8 @@ export function RecipeSuggestionForm({
   const removeRestriction = (index: number) => {
     setFormData((prev) => ({
       ...prev,
-      dietaryRestrictions: prev.dietaryRestrictions?.filter((_, i) => i !== index) || [],
+      dietaryRestrictions:
+        prev.dietaryRestrictions?.filter((_, i) => i !== index) || [],
     }));
   };
 
@@ -139,7 +147,7 @@ export function RecipeSuggestionForm({
     },
   ];
 
-  const handleQuickOption = (option: typeof quickOptions[0]) => {
+  const handleQuickOption = (option: (typeof quickOptions)[0]) => {
     setSelectedQuickOption(option.id);
     setFormData((prev) => ({
       ...prev,
@@ -148,7 +156,7 @@ export function RecipeSuggestionForm({
       cookingTime: option.cookingTime,
     }));
     if (errors.userInput) {
-      setErrors(prev => ({ ...prev, userInput: "" }));
+      setErrors((prev) => ({ ...prev, userInput: "" }));
     }
   };
 
@@ -156,7 +164,7 @@ export function RecipeSuggestionForm({
     setFormData((prev) => ({ ...prev, userInput: text }));
     setSelectedQuickOption("");
     if (errors.userInput && text.trim()) {
-      setErrors(prev => ({ ...prev, userInput: "" }));
+      setErrors((prev) => ({ ...prev, userInput: "" }));
     }
   };
 
@@ -173,34 +181,39 @@ export function RecipeSuggestionForm({
                 key={option.id}
                 style={[
                   styles.quickOption,
-                  selectedQuickOption === option.id && styles.quickOptionSelected,
+                  selectedQuickOption === option.id &&
+                    styles.quickOptionSelected,
                 ]}
                 onPress={() => handleQuickOption(option)}
               >
                 <View style={styles.quickOptionHeader}>
-                  <Ionicons 
-                    name={option.icon} 
-                    size={18} 
-                    color={selectedQuickOption === option.id ? "white" : "#F97316"} 
+                  <Ionicons
+                    name={option.icon}
+                    size={18}
+                    color={
+                      selectedQuickOption === option.id ? "white" : "#F97316"
+                    }
                   />
                   {selectedQuickOption === option.id && (
                     <Ionicons name="checkmark-circle" size={16} color="white" />
                   )}
                 </View>
-                <ThemedText 
-                  type="small" 
+                <ThemedText
+                  type="small"
                   style={[
                     styles.quickOptionText,
-                    selectedQuickOption === option.id && styles.quickOptionTextSelected,
+                    selectedQuickOption === option.id &&
+                      styles.quickOptionTextSelected,
                   ]}
                 >
                   {option.label}
                 </ThemedText>
-                <ThemedText 
-                  type="small" 
+                <ThemedText
+                  type="small"
                   style={[
                     styles.quickOptionDescription,
-                    selectedQuickOption === option.id && styles.quickOptionDescriptionSelected,
+                    selectedQuickOption === option.id &&
+                      styles.quickOptionDescriptionSelected,
                   ]}
                 >
                   {option.description}
@@ -215,8 +228,8 @@ export function RecipeSuggestionForm({
             ¿Qué tipo de receta necesitas? *
           </ThemedText>
           <ThemedInput
-            style={[styles.textArea, errors.userInput && styles.inputError]}
             variant="textarea"
+            style={[errors.userInput && styles.inputError]}
             value={formData.userInput}
             onChangeText={handleUserInputChange}
             placeholder="Ej: Necesito una receta vegetariana para la cena que sea rápida y nutritiva..."
@@ -261,29 +274,37 @@ export function RecipeSuggestionForm({
                 placeholder="Ej: Pollo, arroz, brócoli..."
                 onSubmitEditing={addIngredient}
               />
-              <TouchableOpacity style={styles.addButton} onPress={addIngredient}>
+              <TouchableOpacity
+                style={styles.addButton}
+                onPress={addIngredient}
+              >
                 <Ionicons name="add" size={18} color="white" />
               </TouchableOpacity>
             </View>
-            {formData.mainIngredients && formData.mainIngredients.length > 0 && (
-              <View style={styles.tagsContainer}>
-                {formData.mainIngredients.slice(0, 6).map((ingredient, index) => (
-                  <View key={index} style={styles.tag}>
-                    <ThemedText type="small" style={styles.tagText}>
-                      {ingredient}
+            {formData.mainIngredients &&
+              formData.mainIngredients.length > 0 && (
+                <View style={styles.tagsContainer}>
+                  {formData.mainIngredients
+                    .slice(0, 6)
+                    .map((ingredient, index) => (
+                      <View key={index} style={styles.tag}>
+                        <ThemedText type="small" style={styles.tagText}>
+                          {ingredient}
+                        </ThemedText>
+                        <TouchableOpacity
+                          onPress={() => removeIngredient(index)}
+                        >
+                          <Ionicons name="close" size={14} color="#F97316" />
+                        </TouchableOpacity>
+                      </View>
+                    ))}
+                  {formData.mainIngredients.length > 6 && (
+                    <ThemedText type="small" style={styles.moreItemsText}>
+                      +{formData.mainIngredients.length - 6} más
                     </ThemedText>
-                    <TouchableOpacity onPress={() => removeIngredient(index)}>
-                      <Ionicons name="close" size={14} color="#F97316" />
-                    </TouchableOpacity>
-                  </View>
-                ))}
-                {formData.mainIngredients.length > 6 && (
-                  <ThemedText type="small" style={styles.moreItemsText}>
-                    +{formData.mainIngredients.length - 6} más
-                  </ThemedText>
-                )}
-              </View>
-            )}
+                  )}
+                </View>
+              )}
           </View>
 
           <View style={styles.section}>
@@ -298,29 +319,37 @@ export function RecipeSuggestionForm({
                 placeholder="Ej: Sin gluten, vegetariana, sin lactosa..."
                 onSubmitEditing={addRestriction}
               />
-              <TouchableOpacity style={styles.addButton} onPress={addRestriction}>
+              <TouchableOpacity
+                style={styles.addButton}
+                onPress={addRestriction}
+              >
                 <Ionicons name="add" size={18} color="white" />
               </TouchableOpacity>
             </View>
-            {formData.dietaryRestrictions && formData.dietaryRestrictions.length > 0 && (
-              <View style={styles.tagsContainer}>
-                {formData.dietaryRestrictions.slice(0, 4).map((restriction, index) => (
-                  <View key={index} style={styles.tag}>
-                    <ThemedText type="small" style={styles.tagText}>
-                      {restriction}
+            {formData.dietaryRestrictions &&
+              formData.dietaryRestrictions.length > 0 && (
+                <View style={styles.tagsContainer}>
+                  {formData.dietaryRestrictions
+                    .slice(0, 4)
+                    .map((restriction, index) => (
+                      <View key={index} style={styles.tag}>
+                        <ThemedText type="small" style={styles.tagText}>
+                          {restriction}
+                        </ThemedText>
+                        <TouchableOpacity
+                          onPress={() => removeRestriction(index)}
+                        >
+                          <Ionicons name="close" size={14} color="#F97316" />
+                        </TouchableOpacity>
+                      </View>
+                    ))}
+                  {formData.dietaryRestrictions.length > 4 && (
+                    <ThemedText type="small" style={styles.moreItemsText}>
+                      +{formData.dietaryRestrictions.length - 4} más
                     </ThemedText>
-                    <TouchableOpacity onPress={() => removeRestriction(index)}>
-                      <Ionicons name="close" size={14} color="#F97316" />
-                    </TouchableOpacity>
-                  </View>
-                ))}
-                {formData.dietaryRestrictions.length > 4 && (
-                  <ThemedText type="small" style={styles.moreItemsText}>
-                    +{formData.dietaryRestrictions.length - 4} más
-                  </ThemedText>
-                )}
-              </View>
-            )}
+                  )}
+                </View>
+              )}
           </View>
 
           <View style={styles.fieldsRow}>
@@ -383,7 +412,7 @@ export function RecipeSuggestionForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,
@@ -541,4 +570,4 @@ const styles = StyleSheet.create({
   submitText: {
     color: "white",
   },
-}); 
+});

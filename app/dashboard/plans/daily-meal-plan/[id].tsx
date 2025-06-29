@@ -16,6 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { Topbar } from "@/components/ui/Topbar";
 import { useDailyMealPlans } from "@/hooks/services/useDailyMealPlans";
 import { DailyMealPlan } from "@/services/api/dailyMealPlan.service";
 import { PageView } from "@/components/ui/PageView";
@@ -28,7 +29,6 @@ export default function DailyMealPlanDetailScreen() {
   const {
     plans,
     deletePlan,
-    updatePlan,
     toggleFavorite,
     loading: plansLoading,
   } = useDailyMealPlans();
@@ -37,7 +37,6 @@ export default function DailyMealPlanDetailScreen() {
   const [plan, setPlan] = useState<DailyMealPlan | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
     if (!plansLoading) {
@@ -169,73 +168,43 @@ export default function DailyMealPlanDetailScreen() {
     });
   };
 
-  const renderHeader = () => (
-    <LinearGradient
-      colors={[AiraColors.accent, AiraColors.primary]}
-      style={styles.header}
-    >
-      <SafeAreaView edges={["top"]} style={styles.headerContent}>
-        <View style={styles.headerRow}>
-          <TouchableOpacity style={styles.backButton} onPress={handleGoBack}>
-            <Ionicons name="arrow-back" size={24} color="white" />
-          </TouchableOpacity>
+  const renderActions = () => {
+    if (!plan) return null;
 
-          <View style={styles.headerTextContainer}>
-            <View style={styles.headerTitleRow}>
-              <Ionicons
-                name="restaurant"
-                size={24}
-                color="white"
-                style={styles.headerIcon}
-              />
-              <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
-                Plan de Comidas
-              </ThemedText>
-            </View>
-            {plan && (
-              <ThemedText style={styles.headerSubtitle}>
-                Creado el {formatDate(plan.createdAt)}
-              </ThemedText>
-            )}
-          </View>
+    return (
+      <View style={styles.headerActions}>
+        <TouchableOpacity
+          style={styles.headerActionButton}
+          onPress={handleToggleFavorite}
+        >
+          <Ionicons
+            name={plan.isFavorite ? "heart" : "heart-outline"}
+            size={20}
+            color={AiraColors.foreground}
+          />
+        </TouchableOpacity>
 
-          {plan && (
-            <View style={styles.headerActions}>
-              <TouchableOpacity
-                style={styles.headerActionButton}
-                onPress={handleToggleFavorite}
-              >
-                <Ionicons
-                  name={plan.isFavorite ? "heart" : "heart-outline"}
-                  size={20}
-                  color="white"
-                />
-              </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.headerActionButton}
+          onPress={handleSharePlan}
+        >
+          <Ionicons name="share" size={20} color={AiraColors.foreground} />
+        </TouchableOpacity>
 
-              <TouchableOpacity
-                style={styles.headerActionButton}
-                onPress={handleSharePlan}
-              >
-                <Ionicons name="share" size={20} color="white" />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.headerActionButton}
-                onPress={handleDeletePlan}
-                disabled={isDeleting}
-              >
-                {isDeleting ? (
-                  <ActivityIndicator size="small" color="white" />
-                ) : (
-                  <Ionicons name="trash" size={20} color="white" />
-                )}
-              </TouchableOpacity>
-            </View>
+        <TouchableOpacity
+          style={styles.headerActionButton}
+          onPress={handleDeletePlan}
+          disabled={isDeleting}
+        >
+          {isDeleting ? (
+            <ActivityIndicator size="small" color={AiraColors.foreground} />
+          ) : (
+            <Ionicons name="trash" size={20} color={AiraColors.foreground} />
           )}
-        </View>
-      </SafeAreaView>
-    </LinearGradient>
-  );
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   const renderPlanContent = () => {
     if (!plan) return null;
@@ -492,11 +461,16 @@ export default function DailyMealPlanDetailScreen() {
 
   return (
     <PageView>
+      <Topbar
+        title={plan?.planTitle || "Plan de Comidas"}
+        showBackButton={true}
+        onBack={handleGoBack}
+        actions={renderActions()}
+      />
       <ScrollView
         style={styles.container}
         contentContainerStyle={{ paddingBottom: 40 }}
       >
-        {renderHeader()}
         {renderContent()}
       </ScrollView>
     </PageView>
@@ -592,7 +566,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+
     color: AiraColors.foreground,
   },
   mealsSection: {
@@ -612,7 +586,7 @@ const styles = StyleSheet.create({
   },
   mealType: {
     fontSize: 16,
-    fontWeight: "600",
+
     color: AiraColors.accent,
   },
   mealOptions: {
@@ -730,7 +704,7 @@ const styles = StyleSheet.create({
   },
   loadingTitle: {
     fontSize: 20,
-    fontWeight: "600",
+
     color: "white",
     textAlign: "center",
   },
@@ -751,7 +725,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-    fontWeight: "600",
+
     color: AiraColors.foreground,
     textAlign: "center",
   },
@@ -775,7 +749,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-    fontWeight: "600",
+
     color: "white",
   },
 });

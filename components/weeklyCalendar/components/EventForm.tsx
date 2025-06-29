@@ -416,7 +416,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
   },
   saveButton: {
@@ -433,7 +433,7 @@ const styles = StyleSheet.create({
   saveButtonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "600",
+     
   },
   content: {
     flex: 1,
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 8,
   },
@@ -508,7 +508,7 @@ const styles = StyleSheet.create({
   },
   optionLabelSelected: {
     color: AiraColors.primary,
-    fontWeight: "600",
+     
   },
   recurrenceContainer: {
     gap: 8,
@@ -538,7 +538,7 @@ const styles = StyleSheet.create({
   },
   recurrenceLabelSelected: {
     color: AiraColors.primary,
-    fontWeight: "600",
+     
   },
   selectedIndicator: {
     width: 8,
@@ -587,7 +587,7 @@ const styles = StyleSheet.create({
   pickerButtonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "600",
+     
   },
   iconSelectorContainer: {
     backgroundColor: AiraColors.card,

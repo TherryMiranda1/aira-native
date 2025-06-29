@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   eventTitle: {
-    fontWeight: "600",
+     
     fontSize: 16,
     flex: 1,
     marginRight: 8,

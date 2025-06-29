@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   },
   progressPercentage: {
     fontSize: 14,
-    fontWeight: "600",
+     
   },
   progressBar: {
     height: 6,
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AiraColors.foreground,
     marginBottom: 8,
-    fontWeight: "600",
+     
   },
   milestonesList: {
     gap: 6,

@@ -14,6 +14,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyMealPlanInput } from "@/types/Assistant";
+import { ThemedInput } from "../ThemedInput";
 
 interface DailyMealPlanFormProps {
   onSubmit: (formData: DailyMealPlanInput) => void;
@@ -94,14 +95,15 @@ export function DailyMealPlanForm({
           <ThemedText type="small" style={styles.required}>
             * Campo requerido
           </ThemedText>
-          
+
           <View style={styles.quickOptionsGrid}>
             {quickOptions.map((option, index) => (
               <TouchableOpacity
                 key={index}
                 style={[
                   styles.quickOption,
-                  formData.userInput === option.value && styles.quickOptionSelected,
+                  formData.userInput === option.value &&
+                    styles.quickOptionSelected,
                 ]}
                 onPress={() => handleQuickOption(option.value)}
               >
@@ -109,7 +111,8 @@ export function DailyMealPlanForm({
                   type="small"
                   style={[
                     styles.quickOptionText,
-                    formData.userInput === option.value && styles.quickOptionTextSelected,
+                    formData.userInput === option.value &&
+                      styles.quickOptionTextSelected,
                   ]}
                 >
                   {option.label}
@@ -118,18 +121,16 @@ export function DailyMealPlanForm({
             ))}
           </View>
 
-          <TextInput
-            style={[styles.textArea, errors.userInput && styles.inputError]}
+          <ThemedInput
+            variant="textarea"
+            style={[errors.userInput && styles.inputError]}
             value={formData.userInput}
             onChangeText={(text) => {
               setFormData((prev) => ({ ...prev, userInput: text }));
               setErrors((prev) => ({ ...prev, userInput: "" }));
             }}
             placeholder="O describe tu plan personalizado..."
-            placeholderTextColor={AiraColors.mutedForeground}
-            multiline
-            numberOfLines={3}
-            textAlignVertical="top"
+            hasError={!!errors.userInput}
           />
           {errors.userInput && (
             <ThemedText type="small" style={styles.errorText}>
@@ -147,14 +148,13 @@ export function DailyMealPlanForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Preferencias alimentarias
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.dietaryPreferences}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, dietaryPreferences: text }))
               }
               placeholder="Vegetariana, vegana, keto..."
-              placeholderTextColor={AiraColors.mutedForeground}
+              hasError={!!errors.dietaryPreferences}
             />
           </View>
 
@@ -162,14 +162,13 @@ export function DailyMealPlanForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Alergias o intolerancias
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.allergies}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, allergies: text }))
               }
               placeholder="Frutos secos, lactosa, gluten..."
-              placeholderTextColor={AiraColors.mutedForeground}
+              hasError={!!errors.allergies}
             />
           </View>
 
@@ -177,14 +176,13 @@ export function DailyMealPlanForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Alimentos a evitar
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.dislikedFoods}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, dislikedFoods: text }))
               }
               placeholder="Pescado, espinacas, picante..."
-              placeholderTextColor={AiraColors.mutedForeground}
+              hasError={!!errors.dislikedFoods}
             />
           </View>
 
@@ -192,25 +190,27 @@ export function DailyMealPlanForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Objetivo principal
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.mainGoal}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, mainGoal: text }))
               }
               placeholder="Pérdida de peso, ganar energía..."
-              placeholderTextColor={AiraColors.mutedForeground}
+              hasError={!!errors.mainGoal}
             />
           </View>
         </View>
 
         <TouchableOpacity
-          style={[styles.submitButton, isLoading && styles.submitButtonDisabled]}
+          style={[
+            styles.submitButton,
+            isLoading && styles.submitButtonDisabled,
+          ]}
           onPress={handleSubmit}
           disabled={isLoading}
         >
           <LinearGradient
-            colors={[AiraColors.primary, AiraColors.accent]}
+            colors={[AiraColors.primary, AiraColors.primary]}
             style={styles.submitGradient}
           >
             {isLoading ? (
@@ -235,7 +235,7 @@ export function DailyMealPlanForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,

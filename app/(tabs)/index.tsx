@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "../../constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
@@ -35,7 +35,7 @@ type MoodType =
   | "neutral";
 
 export default function HomeScreen() {
-  const { user } = useUser();
+  const { user, isLoaded: isUserLoaded } = useUser();
   const { getNotes } = useRealmNotes();
 
   const [currentTime] = useState(new Date());
@@ -52,6 +52,12 @@ export default function HomeScreen() {
       isLoaded.current = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (isUserLoaded && !user) {
+      router.replace("/(auth)/sign-in");
+    }
+  }, [isUserLoaded, user]);
 
   const handleMoodSaved = (mood: MoodType) => {
     console.log(`Estado emocional registrado: ${mood}`);
