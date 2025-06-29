@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     textAlign: "center",
     marginTop: 16,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: "white",
   },
   retryButtonPlain: {
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   retryButtonTextPlain: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.primary,
   },
 }); 

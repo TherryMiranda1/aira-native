@@ -8,6 +8,10 @@ import {
   UpdateEventData,
 } from "@/services/api/event.service";
 import { WeekNavigation, EventList, EventForm } from "./components";
+import { Button } from "../ui/Button";
+import { ThemedText } from "../ThemedText";
+import { AiraColors } from "@/constants/Colors";
+import { Ionicons } from "@expo/vector-icons";
 
 const WeeklyCalendar: React.FC = () => {
   const today = new Date();
@@ -137,10 +141,14 @@ const WeeklyCalendar: React.FC = () => {
         selectedDate={selectedDate}
         events={selectedDayEvents}
         loading={loading}
-        onAddEvent={handleAddEvent}
         onToggleCompleted={handleToggleCompleted}
         onEditEvent={handleEditEvent}
         onDeleteEvent={handleDeleteEvent}
+      />
+      <Button
+        onPress={handleAddEvent}
+        text="Nuevo"
+        leftIcon={<Ionicons name="add" size={24} color={AiraColors.card} />}
       />
 
       {/* Event form modal */}
@@ -155,6 +163,8 @@ const WeeklyCalendar: React.FC = () => {
         initialEvent={editingEvent || undefined}
         selectedDate={selectedDate}
       />
+
+      {/* Floating Action Button */}
     </View>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Alert, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
@@ -9,10 +10,10 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { RecipeSuggestionForm } from "@/components/ui/RecipeSuggestionForm";
 import { GeneratedRecipeSection } from "@/components/ui/GeneratedRecipeSection";
-import { PlanHeader } from "@/components/ui/PlanHeader";
+import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";
-import { PlanOptionCard } from "@/components/ui/PlanOptionCard";
+import { Button } from "@/components/ui/Button";
 import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
 import { SuggestRecipeInput, SuggestRecipeOutput } from "@/types/Assistant";
@@ -189,22 +190,26 @@ export default function RecipeSuggestionScreen() {
       />
 
       <View style={styles.optionsContainer}>
-        <PlanOptionCard
-          title="Sugerencia Rápida"
-          description="Receta saludable y deliciosa automática"
-          iconName="flash"
+        <Button
+          variant="default"
+          text="Sugerencia Rápida"
+          leftIcon={<Ionicons name="flash" size={20} color={AiraColors.card} />}
+          size="lg"
+          fullWidth
           onPress={handleQuickGenerate}
           disabled={isGenerating}
-          variant="gradient"
         />
 
-        <PlanOptionCard
-          title="Personalización Completa"
-          description="Configura ingredientes, tipo de cocina y más"
-          iconName="create"
+        <Button
+          variant="border"
+          text="Personalización Completa"
+          leftIcon={
+            <Ionicons name="create" size={20} color={AiraColors.foreground} />
+          }
+          size="lg"
+          fullWidth
           onPress={handleCustomGenerate}
           disabled={isGenerating}
-          variant="outline"
         />
       </View>
 
@@ -269,16 +274,12 @@ export default function RecipeSuggestionScreen() {
 
   return (
     <PageView>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: 40 }}
-      >
-        <PlanHeader
-          title={headerConfig.title}
-          subtitle={headerConfig.subtitle}
-          onBack={handleGoBack}
-          showBack={headerConfig.showBack}
-        />
+      <Topbar
+        title={headerConfig.title}
+        showBackButton={headerConfig.showBack}
+        onBack={handleGoBack}
+      />
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {renderContent()}
       </ScrollView>
     </PageView>
@@ -376,13 +377,13 @@ const styles = StyleSheet.create({
   },
   optionTitle: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: "white",
     textAlign: "center",
   },
   optionTitleOutline: {
     fontSize: 18,
-    fontWeight: "600",
+     
     color: "#F97316",
     textAlign: "center",
   },
@@ -424,7 +425,7 @@ const styles = StyleSheet.create({
   },
   loadingTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: "white",
     textAlign: "center",
   },
@@ -450,7 +451,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     textAlign: "center",
   },
@@ -474,7 +475,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: "white",
   },
 });

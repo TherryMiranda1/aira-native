@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   welcomeTitle: {
     fontSize: 20,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 12,

@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   initialText: {
     fontSize: 14,
-    fontWeight: "600",
+     
     color: AiraColors.primary,
   },
 });

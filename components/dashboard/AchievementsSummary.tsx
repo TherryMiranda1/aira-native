@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   achievementValue: {
     fontSize: 14,
     color: AiraColors.foreground,
-    fontWeight: "600",
+     
   },
   achievementFooter: {
     alignItems: "center",

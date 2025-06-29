@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   numeric: {
     textAlign: "center",
     fontSize: 18,
-    fontWeight: "600",
+     
   },
   password: {
     // Mismo que default, se puede personalizar si es necesario

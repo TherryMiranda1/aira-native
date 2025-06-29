@@ -4,8 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Alert,
-  TextInput,
+  Alert
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -14,6 +13,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { ExerciseSuggestionInput } from "@/types/Assistant";
+import { ThemedInput } from "../ThemedInput";
 
 interface ExerciseSuggestionFormProps {
   onSubmit: (data: ExerciseSuggestionInput) => void;
@@ -48,7 +48,8 @@ const QUICK_OPTIONS = [
   {
     label: "Sin equipamiento",
     description: "Solo con mi cuerpo",
-    input: "Necesito un ejercicio que pueda hacer sin ningún equipamiento especial",
+    input:
+      "Necesito un ejercicio que pueda hacer sin ningún equipamiento especial",
     fitnessLevel: "principiante",
   },
 ];
@@ -57,9 +58,12 @@ export function ExerciseSuggestionForm({
   onSubmit,
   isLoading = false,
 }: ExerciseSuggestionFormProps) {
-  const [selectedFitnessLevel, setSelectedFitnessLevel] = useState("principiante");
+  const [selectedFitnessLevel, setSelectedFitnessLevel] =
+    useState("principiante");
   const [userInput, setUserInput] = useState("");
-  const [selectedQuickOption, setSelectedQuickOption] = useState<string | null>(null);
+  const [selectedQuickOption, setSelectedQuickOption] = useState<string | null>(
+    null
+  );
 
   const handleQuickOption = (option: (typeof QUICK_OPTIONS)[0]) => {
     setSelectedQuickOption(option.input);
@@ -90,14 +94,15 @@ export function ExerciseSuggestionForm({
           <ThemedText type="defaultSemiBold" style={styles.sectionTitle}>
             ¿Qué tipo de ejercicio buscas?
           </ThemedText>
-          
+
           <View style={styles.quickOptionsGrid}>
             {QUICK_OPTIONS.map((option, index) => (
               <TouchableOpacity
                 key={index}
                 style={[
                   styles.quickOption,
-                  selectedQuickOption === option.input && styles.quickOptionSelected,
+                  selectedQuickOption === option.input &&
+                    styles.quickOptionSelected,
                 ]}
                 onPress={() => handleQuickOption(option)}
                 disabled={isLoading}
@@ -107,7 +112,8 @@ export function ExerciseSuggestionForm({
                     type="small"
                     style={[
                       styles.quickOptionTitle,
-                      selectedQuickOption === option.input && styles.quickOptionTitleSelected,
+                      selectedQuickOption === option.input &&
+                        styles.quickOptionTitleSelected,
                     ]}
                   >
                     {option.label}
@@ -116,7 +122,8 @@ export function ExerciseSuggestionForm({
                     type="small"
                     style={[
                       styles.quickOptionDescription,
-                      selectedQuickOption === option.input && styles.quickOptionDescriptionSelected,
+                      selectedQuickOption === option.input &&
+                        styles.quickOptionDescriptionSelected,
                     ]}
                   >
                     {option.description}
@@ -129,12 +136,9 @@ export function ExerciseSuggestionForm({
             ))}
           </View>
 
-          <TextInput
-            style={styles.textInput}
-            multiline
-            numberOfLines={3}
+          <ThemedInput
+            variant="textarea"
             placeholder="O describe tu ejercicio personalizado..."
-            placeholderTextColor={AiraColors.mutedForeground}
             value={userInput}
             onChangeText={(text) => {
               setUserInput(text);
@@ -155,7 +159,8 @@ export function ExerciseSuggestionForm({
                 key={level.value}
                 style={[
                   styles.fitnessLevel,
-                  selectedFitnessLevel === level.value && styles.fitnessLevelSelected,
+                  selectedFitnessLevel === level.value &&
+                    styles.fitnessLevelSelected,
                 ]}
                 onPress={() => setSelectedFitnessLevel(level.value)}
                 disabled={isLoading}
@@ -164,7 +169,8 @@ export function ExerciseSuggestionForm({
                   type="small"
                   style={[
                     styles.fitnessLevelText,
-                    selectedFitnessLevel === level.value && styles.fitnessLevelTextSelected,
+                    selectedFitnessLevel === level.value &&
+                      styles.fitnessLevelTextSelected,
                   ]}
                 >
                   {level.label}
@@ -175,7 +181,10 @@ export function ExerciseSuggestionForm({
         </View>
 
         <TouchableOpacity
-          style={[styles.submitButton, isLoading && styles.submitButtonDisabled]}
+          style={[
+            styles.submitButton,
+            isLoading && styles.submitButtonDisabled,
+          ]}
           onPress={handleSubmit}
           disabled={isLoading || !userInput.trim()}
         >
@@ -205,7 +214,7 @@ export function ExerciseSuggestionForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,

@@ -462,7 +462,7 @@ const styles = StyleSheet.create({
   },
   contentTitle: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 4,
   },
@@ -477,7 +477,7 @@ const styles = StyleSheet.create({
   },
   contentSectionTitle: {
     fontSize: 14,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 4,
   },

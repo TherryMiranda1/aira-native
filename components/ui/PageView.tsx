@@ -18,6 +18,7 @@ export const PageView = ({ children, style }: PageViewProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
     backgroundColor: AiraColors.card,
   },
 });

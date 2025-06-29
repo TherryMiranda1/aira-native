@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
   },
   ctaPrimaryText: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.primary,
     marginLeft: 8,
   },

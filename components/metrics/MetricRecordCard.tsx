@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontSize: 12,
-    fontWeight: "600",
+     
   },
   milestoneIndicator: {
     flexDirection: "row",

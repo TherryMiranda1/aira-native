@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedScrollView } from "../../Views/ThemedScrollView";
 import { Event } from "@/services/api/event.service";
@@ -12,20 +12,20 @@ interface EventListProps {
   selectedDate: Date;
   events: Event[];
   loading?: boolean;
-  onAddEvent: () => void;
   onToggleCompleted: (eventId: string, isCompleted: boolean) => void;
   onEditEvent: (event: Event) => void;
   onDeleteEvent: (eventId: string) => void;
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }
 
 export const EventList: React.FC<EventListProps> = ({
   selectedDate,
   events,
   loading = false,
-  onAddEvent,
   onToggleCompleted,
   onEditEvent,
   onDeleteEvent,
+  onScroll,
 }) => {
   return (
     <View style={styles.contentContainer}>
@@ -33,21 +33,13 @@ export const EventList: React.FC<EventListProps> = ({
         <ThemedText type="small">
           {format(selectedDate, "dd 'de' MMMM yyyy", { locale: es })}
         </ThemedText>
-        <TouchableOpacity
-          style={[styles.addButton, { backgroundColor: AiraColors.primary }]}
-          onPress={onAddEvent}
-        >
-          <ThemedText
-            style={styles.addButtonText}
-            lightColor={AiraColors.background}
-            darkColor={AiraColors.background}
-          >
-            +
-          </ThemedText>
-        </TouchableOpacity>
       </View>
 
-      <ThemedScrollView style={styles.eventList}>
+      <ThemedScrollView 
+        style={styles.eventList}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+      >
         {loading ? (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color={AiraColors.primary} />
@@ -64,14 +56,6 @@ export const EventList: React.FC<EventListProps> = ({
             >
               No hay eventos para este día.
             </ThemedText>
-            <TouchableOpacity
-              style={styles.createEventButton}
-              onPress={onAddEvent}
-            >
-              <ThemedText style={styles.createEventText}>
-                Crear evento
-              </ThemedText>
-            </TouchableOpacity>
           </View>
         ) : (
           events.map((event) => (
@@ -94,22 +78,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contentHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
     marginBottom: 15,
     paddingHorizontal: 8,
-  },
-  addButton: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  addButtonText: {
-    fontSize: 20,
-    fontWeight: "bold",
   },
   eventList: {
     flex: 1,
@@ -135,16 +105,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
     fontSize: 16,
-  },
-  createEventButton: {
-    backgroundColor: AiraColors.primary,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 8,
-  },
-  createEventText: {
-    color: AiraColors.background,
-    fontSize: 14,
-    fontWeight: "600",
   },
 }); 

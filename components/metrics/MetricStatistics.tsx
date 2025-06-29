@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
   },
   progressPercentage: {
     fontSize: 16,
-    fontWeight: "600",
+     
   },
   progressBar: {
     height: 8,

@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
   },
   saveButtonText: {
     color: AiraColors.primaryForeground,
-    fontWeight: "600",
+     
   },
   saveButtonTextDisabled: {
     color: AiraColors.mutedForeground,
@@ -417,7 +417,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-    fontWeight: "600",
+     
     color: AiraColors.foreground,
     marginBottom: 8,
   },
@@ -470,7 +470,7 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     fontSize: 14,
     color: AiraColors.primary,
-    fontWeight: "600",
+     
   },
   milestoneContainer: {
     flexDirection: "row",

@@ -14,6 +14,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { FullExerciseRoutineInput } from "@/types/Assistant";
+import { ThemedInput } from "../ThemedInput";
 
 interface FullExerciseRoutineFormProps {
   onSubmit: (formData: FullExerciseRoutineInput) => void;
@@ -166,8 +167,9 @@ export function FullExerciseRoutineForm({
             ))}
           </View>
 
-          <TextInput
-            style={[styles.textArea, errors.userInput && styles.inputError]}
+          <ThemedInput
+            variant="textarea"
+            style={[errors.userInput && styles.inputError]}
             value={formData.userInput}
             onChangeText={(text) => {
               setFormData((prev) => ({ ...prev, userInput: text }));
@@ -175,7 +177,6 @@ export function FullExerciseRoutineForm({
               setErrors((prev) => ({ ...prev, userInput: "" }));
             }}
             placeholder="O describe tu rutina personalizada..."
-            placeholderTextColor={AiraColors.mutedForeground}
             multiline
             numberOfLines={3}
             textAlignVertical="top"
@@ -196,14 +197,12 @@ export function FullExerciseRoutineForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Nivel de condición física
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.fitnessLevel}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, fitnessLevel: text }))
               }
               placeholder="Principiante, Intermedio, Avanzado..."
-              placeholderTextColor={AiraColors.mutedForeground}
             />
           </View>
 
@@ -211,14 +210,12 @@ export function FullExerciseRoutineForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Equipamiento disponible
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.availableEquipment}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, availableEquipment: text }))
               }
               placeholder="Solo peso corporal, mancuernas, gimnasio..."
-              placeholderTextColor={AiraColors.mutedForeground}
             />
           </View>
 
@@ -226,14 +223,12 @@ export function FullExerciseRoutineForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Tiempo por sesión
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.timePerSession}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, timePerSession: text }))
               }
               placeholder="30 minutos, 1 hora, 45 minutos..."
-              placeholderTextColor={AiraColors.mutedForeground}
             />
           </View>
 
@@ -241,14 +236,12 @@ export function FullExerciseRoutineForm({
             <ThemedText type="small" style={styles.inputLabel}>
               Días por semana
             </ThemedText>
-            <TextInput
-              style={styles.input}
+            <ThemedInput
               value={formData.daysPerWeek}
               onChangeText={(text) =>
                 setFormData((prev) => ({ ...prev, daysPerWeek: text }))
               }
               placeholder="3 días, 4-5 días, todos los días..."
-              placeholderTextColor={AiraColors.mutedForeground}
             />
           </View>
         </View>
@@ -287,7 +280,7 @@ export function FullExerciseRoutineForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
+    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,

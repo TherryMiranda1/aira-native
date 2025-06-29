@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Alert, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
@@ -9,10 +10,10 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { FullExerciseRoutineForm } from "@/components/ui/FullExerciseRoutineForm";
 import { GeneratedFullExerciseRoutineSection } from "@/components/ui/GeneratedFullExerciseRoutineSection";
 import { ExistingWorkoutRoutinesSection } from "@/components/ui/ExistingWorkoutRoutinesSection";
-import { PlanHeader } from "@/components/ui/PlanHeader";
+import { Topbar } from "@/components/ui/Topbar";
 import { PlanLoadingView } from "@/components/ui/PlanLoadingView";
 import { PlanErrorView } from "@/components/ui/PlanErrorView";
-import { PlanOptionCard } from "@/components/ui/PlanOptionCard";
+import { Button } from "@/components/ui/Button";
 import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
@@ -227,23 +228,25 @@ export default function WorkoutRoutineScreen() {
       />
 
       <View style={styles.optionsContainer}>
-        <PlanOptionCard
-          title="Generación Rápida"
-          description="Rutina equilibrada y completa automática"
-          iconName="flash"
+        <Button
+          variant="default"
+          text="Generación Rápida"
+          leftIcon={<Ionicons name="flash" size={20} color={AiraColors.card} />}
+          size="lg"
+          fullWidth
           onPress={handleQuickGenerate}
-          variant="gradient"
-          gradientColors={["#3B82F6", "#1D4ED8"]}
           disabled={isGenerating}
         />
 
-        <PlanOptionCard
-          title="Personalización Completa"
-          description="Configura nivel, equipamiento y objetivos"
-          iconName="create"
+        <Button
+          variant="border"
+          text="Personalización Completa"
+          leftIcon={
+            <Ionicons name="create" size={20} color={AiraColors.foreground} />
+          }
+          size="lg"
+          fullWidth
           onPress={handleCustomGenerate}
-          variant="outline"
-          gradientColors={["#3B82F6", "#1D4ED8"]}
           disabled={isGenerating}
         />
       </View>
@@ -270,8 +273,6 @@ export default function WorkoutRoutineScreen() {
     <PlanLoadingView
       title="Generando tu rutina de ejercicio"
       subtitle="Aira está diseñando una rutina de entrenamiento perfecta especialmente para ti..."
-      useGradient
-      gradientColors={["#3B82F6", "#1D4ED8"]}
       indicatorColor="white"
     />
   );
@@ -319,22 +320,16 @@ export default function WorkoutRoutineScreen() {
     }
   };
 
-  const config = getHeaderConfig();
+  const headerConfig = getHeaderConfig();
 
   return (
     <PageView>
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingBottom: 40 }}
-      >
-        <PlanHeader
-          title={config.title}
-          subtitle={config.subtitle}
-          onBack={handleGoBack}
-          showBack={config.showBack}
-          gradientColors={["#3B82F6", "#1D4ED8"]}
-          disabled={isGenerating}
-        />
+      <Topbar
+        title={headerConfig.title}
+        showBackButton={headerConfig.showBack}
+        onBack={handleGoBack}
+      />
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         {renderContent()}
       </ScrollView>
     </PageView>
