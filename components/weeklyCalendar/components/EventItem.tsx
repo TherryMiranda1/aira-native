@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { StyleSheet, TouchableOpacity, View, Modal } from "react-native";
 import { format } from "date-fns";
+import { useRouter } from "expo-router";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Event } from "@/services/api/event.service";
@@ -46,28 +47,149 @@ export const EventItem: React.FC<EventItemProps> = ({
   onEdit,
   onDelete,
 }) => {
+  const router = useRouter();
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
   const handleDeletePress = () => {
-    // Check if this is a recurring event
     if (event.recurrence && event.recurrence.type !== "none") {
       setDeleteModalVisible(true);
     } else {
-      // Regular event deletion
       onDelete(event.id);
     }
   };
 
   const handleDeleteConfirm = (deleteAll: boolean) => {
     setDeleteModalVisible(false);
-    // For now, just delete the single event
-    // TODO: Implement series deletion for recurring events
     onDelete(event.id);
   };
+
+  const getNavigationPath = useCallback(() => {
+    if (event.eventType === "recipe" && event.recipeReference?.id) {
+      return `/dashboard/recipe/${event.recipeReference.id}`;
+    }
+    if (event.eventType === "exercise" && event.exerciseReference?.id) {
+      return `/dashboard/exercise/${event.exerciseReference.id}`;
+    }
+    return null;
+  }, [event]);
+
+  const handleEventPress = useCallback(() => {
+    const navigationPath = getNavigationPath();
+    if (navigationPath) {
+      router.push(navigationPath as any);
+    }
+  }, [getNavigationPath, router]);
+
+  const getAdditionalInfo = useCallback(() => {
+    if (event.eventType === "recipe" && event.recipeReference) {
+      return event.recipeReference.ingrediente_principal || event.recipeReference.categoria;
+    }
+    if (event.eventType === "exercise" && event.exerciseReference) {
+      return event.exerciseReference.tipo_ejercicio || event.exerciseReference.nivel_dificultad;
+    }
+    if (event.eventType === "challenge" && event.challengeReference) {
+      return event.challengeReference.categoria || "Mini Reto";
+    }
+    if (event.eventType === "ritual" && event.ritualReference) {
+      return event.ritualReference.categoria || "Ritual";
+    }
+    return null;
+  }, [event]);
+
+  const getRecurrenceInfo = useCallback(() => {
+    if (!event.recurrence || event.recurrence.type === "none") return null;
+    
+    const recurrenceLabels = {
+      daily: "🔄 Diario",
+      weekly: "📅 Semanal",
+      monthly: "🗓️ Mensual",
+      custom: "⚙️ Personalizado",
+    };
+    
+    return recurrenceLabels[event.recurrence.type] || "🔄 Se repite";
+  }, [event.recurrence]);
 
   const eventIcon = eventTypeIcons[event.eventType] || "📅";
   const eventLabel = eventTypeLabels[event.eventType] || "Evento";
   const priorityColor = priorityColors[event.priority] || AiraColors.primary;
+  const additionalInfo = getAdditionalInfo();
+  const recurrenceInfo = getRecurrenceInfo();
+  const navigationPath = getNavigationPath();
+
+  const EventContent = () => (
+    <View style={styles.eventContent}>
+      <View style={styles.eventHeader}>
+        <View style={styles.titleContainer}>
+          <ThemedText
+            style={[
+              styles.eventTitle,
+              event.isCompleted && styles.eventCompleted,
+            ]}
+            numberOfLines={2}
+            ellipsizeMode="tail"
+          >
+            {eventIcon} {event.title}
+          </ThemedText>
+          {recurrenceInfo && (
+            <ThemedText style={styles.recurrenceIndicator}>
+              {recurrenceInfo}
+            </ThemedText>
+          )}
+        </View>
+        
+        <View style={styles.timeContainer}>
+          {event.startTime && (
+            <ThemedText
+              style={[
+                styles.eventTime,
+                event.isCompleted && styles.eventCompleted,
+              ]}
+              lightColor={AiraColors.mutedForeground}
+              darkColor={AiraColors.mutedForeground}
+            >
+              {format(new Date(event.startTime), "HH:mm")}
+            </ThemedText>
+          )}
+        </View>
+      </View>
+
+      <View style={styles.eventMeta}>
+        <ThemedText
+          style={styles.eventType}
+          lightColor={AiraColors.mutedForeground}
+          darkColor={AiraColors.mutedForeground}
+        >
+          {eventLabel}
+        </ThemedText>
+        
+        {additionalInfo && (
+          <>
+            <ThemedText style={styles.metaSeparator}>•</ThemedText>
+            <ThemedText
+              style={styles.additionalInfo}
+              lightColor={AiraColors.mutedForeground}
+              darkColor={AiraColors.mutedForeground}
+            >
+              {additionalInfo}
+            </ThemedText>
+          </>
+        )}
+        
+        {event.location && (
+          <>
+            <ThemedText style={styles.metaSeparator}>•</ThemedText>
+            <ThemedText
+              style={styles.eventLocation}
+              lightColor={AiraColors.mutedForeground}
+              darkColor={AiraColors.mutedForeground}
+            >
+              📍 {event.location}
+            </ThemedText>
+          </>
+        )}
+      </View>
+    </View>
+  );
 
   return (
     <ThemedView
@@ -75,6 +197,7 @@ export const EventItem: React.FC<EventItemProps> = ({
         styles.eventItem,
         event.priority === "high" && styles.highPriorityEvent,
         event.priority === "urgent" && styles.urgentEvent,
+        navigationPath && styles.clickableEvent,
       ]}
       lightColor={AiraColors.card}
       darkColor={AiraColors.card}
@@ -89,78 +212,32 @@ export const EventItem: React.FC<EventItemProps> = ({
         onPress={() => onToggleCompleted(event.id, !event.isCompleted)}
       />
 
-      <View style={styles.eventContent}>
-        <View style={styles.eventHeader}>
-          <ThemedText
-            style={[
-              styles.eventTitle,
-              event.isCompleted && styles.eventCompleted,
-            ]}
-          >
-            {eventIcon} {event.title}
-          </ThemedText>
-          {event.startTime && (
-            <ThemedText
-              style={[
-                styles.eventTime,
-                event.isCompleted && styles.eventCompleted,
-              ]}
-              lightColor={AiraColors.mutedForeground}
-              darkColor={AiraColors.mutedForeground}
-            >
-              {format(new Date(event.startTime), "HH:mm")}
-            </ThemedText>
-          )}
-        </View>
-
-        {event.description && (
-          <ThemedText
-            style={[
-              styles.eventDescription,
-              event.isCompleted && styles.eventCompleted,
-            ]}
-            lightColor={AiraColors.mutedForeground}
-            darkColor={AiraColors.mutedForeground}
-          >
-            {event.description}
-          </ThemedText>
-        )}
-
-        <View style={styles.eventMeta}>
-          <ThemedText
-            style={styles.eventType}
-            lightColor={AiraColors.mutedForeground}
-            darkColor={AiraColors.mutedForeground}
-          >
-            {eventLabel}
-          </ThemedText>
-          {event.location && (
-            <ThemedText
-              style={styles.eventLocation}
-              lightColor={AiraColors.mutedForeground}
-              darkColor={AiraColors.mutedForeground}
-            >
-              📍 {event.location}
-            </ThemedText>
-          )}
-        </View>
-      </View>
+      {navigationPath ? (
+        <TouchableOpacity 
+          style={styles.contentTouchable}
+          onPress={handleEventPress}
+          activeOpacity={0.7}
+        >
+          <EventContent />
+        </TouchableOpacity>
+      ) : (
+        <EventContent />
+      )}
 
       <View style={styles.eventActions}>
         <TouchableOpacity
           style={styles.actionButton}
           onPress={() => onEdit(event)}
         >
-          <ThemedText>✏️</ThemedText>
+          <ThemedText style={styles.actionIcon}>✏️</ThemedText>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.actionButton}
           onPress={handleDeletePress}
         >
-          <ThemedText>🗑️</ThemedText>
+          <ThemedText style={styles.actionIcon}>🗑️</ThemedText>
         </TouchableOpacity>
 
-        {/* Delete confirmation modal for recurring events */}
         <Modal
           visible={deleteModalVisible}
           transparent={true}
@@ -215,6 +292,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     alignItems: "flex-start",
   },
+  clickableEvent: {
+    borderWidth: 1,
+    borderColor: AiraColors.border + "40",
+  },
   highPriorityEvent: {
     borderLeftWidth: 4,
     borderLeftColor: AiraColors.destructive,
@@ -231,42 +312,64 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     marginRight: 12,
     marginTop: 2,
+    flexShrink: 0,
   },
   checkboxChecked: {
     // backgroundColor is handled dynamically
   },
+  contentTouchable: {
+    flex: 1,
+  },
   eventContent: {
     flex: 1,
+    minWidth: 0,
   },
   eventHeader: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "flex-start",
-    marginBottom: 4,
+    marginBottom: 6,
   },
-  eventTitle: {
-     
-    fontSize: 16,
+  titleContainer: {
     flex: 1,
     marginRight: 8,
+    minWidth: 0,
+  },
+  eventTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    lineHeight: 20,
+    marginBottom: 2,
+  },
+  recurrenceIndicator: {
+    fontSize: 11,
+    color: AiraColors.primary,
+    fontWeight: "500",
+  },
+  timeContainer: {
+    flexShrink: 0,
+    alignItems: "flex-end",
   },
   eventTime: {
     fontSize: 14,
-     
-  },
-  eventDescription: {
-    fontSize: 14,
-    marginBottom: 6,
-    lineHeight: 20,
+    fontWeight: "500",
   },
   eventMeta: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 12,
+    flexWrap: "wrap",
   },
   eventType: {
     fontSize: 12,
-     
+    fontWeight: "500",
+  },
+  metaSeparator: {
+    fontSize: 12,
+    color: AiraColors.mutedForeground,
+    marginHorizontal: 6,
+  },
+  additionalInfo: {
+    fontSize: 12,
+    fontStyle: "italic",
   },
   eventLocation: {
     fontSize: 12,
@@ -276,12 +379,17 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   eventActions: {
-    flexDirection: "row",
+    flexDirection: "column",
     marginLeft: 8,
+    flexShrink: 0,
   },
   actionButton: {
-    padding: 6,
-    marginLeft: 4,
+    padding: 8,
+    marginBottom: 4,
+    borderRadius: 6,
+  },
+  actionIcon: {
+    fontSize: 16,
   },
   // Modal styles
   modalContainer: {
@@ -291,7 +399,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.5)",
   },
   modalContent: {
-    width: "80%",
+    width: "85%",
     borderRadius: AiraVariants.cardRadius,
     padding: 20,
   },

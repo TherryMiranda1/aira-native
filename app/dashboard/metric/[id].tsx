@@ -230,8 +230,7 @@ export default function MetricDetailScreen() {
       <FloatingActionButton
         onPress={() => setShowCreateModal(true)}
         iconName="add"
-        text="Registro"
-        showText={showText}
+        variant="primary"
         bottomPadding={48}
       />
     </PageView>
@@ -315,6 +314,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: AiraColors.primary,
     marginLeft: 6,
-     
   },
 });

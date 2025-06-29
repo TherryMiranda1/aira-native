@@ -62,6 +62,51 @@ export const navigateToExerciseDetail = (id: string) => {
 };
 
 /**
+ * Navigate to frases index page
+ */
+export const navigateToFrases = () => {
+  navigateTo("/dashboard/inspiration/frases/");
+};
+
+/**
+ * Navigate to a specific frases category
+ * @param categoryId The category ID
+ */
+export const navigateToFrasesCategory = (categoryId: string) => {
+  navigateTo(`/dashboard/inspiration/frases/${categoryId}`);
+};
+
+/**
+ * Navigate to mini-retos index page
+ */
+export const navigateToMiniRetos = () => {
+  navigateTo("/dashboard/inspiration/mini-retos/");
+};
+
+/**
+ * Navigate to a specific mini-retos category
+ * @param categoryId The category ID
+ */
+export const navigateToMiniRetosCategory = (categoryId: string) => {
+  navigateTo(`/dashboard/inspiration/mini-retos/${categoryId}`);
+};
+
+/**
+ * Navigate to rituales index page
+ */
+export const navigateToRituales = () => {
+  navigateTo("/dashboard/inspiration/rituales/");
+};
+
+/**
+ * Navigate to a specific rituales category
+ * @param categoryId The category ID
+ */
+export const navigateToRitualesCategory = (categoryId: string) => {
+  navigateTo(`/dashboard/inspiration/rituales/${categoryId}`);
+};
+
+/**
  * Custom hook to get navigation information
  * @returns Object with navigation helper functions
  */

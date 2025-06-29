@@ -349,7 +349,6 @@ export default function MiniRetosScreen() {
       </PageView>
     );
   }
-
   // Error State inicial
   if (categoriesError) {
     return (
@@ -483,3 +482,4 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
+

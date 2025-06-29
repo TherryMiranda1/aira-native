@@ -376,7 +376,6 @@ export default function FrasesScreen() {
       </PageView>
     );
   }
-
   return (
     <PageView>
       <Topbar
@@ -485,3 +484,4 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
+

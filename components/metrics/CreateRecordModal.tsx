@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -16,6 +16,7 @@ import { ThemedInput } from "@/components/ThemedInput";
 import { Ionicons } from "@expo/vector-icons";
 import { useMetricRecords } from "@/hooks/services/useMetrics";
 import { CreateMetricRecordData, Metric } from "@/services/api/metrics.service";
+import { AiraVariants } from "@/constants/Themes";
 
 interface CreateRecordModalProps {
   visible: boolean;
@@ -34,27 +35,55 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
   const [value, setValue] = useState("");
   const [notes, setNotes] = useState("");
   const [recordDate, setRecordDate] = useState(new Date());
+  const [recordTime, setRecordTime] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
-  const resetForm = () => {
+  useEffect(() => {
+    if (!visible) {
+      setShowDatePicker(false);
+      setShowTimePicker(false);
+    }
+  }, [visible]);
+
+  useEffect(() => {
+    if (visible && !recordDate) {
+      const now = new Date();
+      setRecordDate(now);
+      setRecordTime(now);
+    }
+  }, [visible, recordDate]);
+
+  const resetForm = useCallback(() => {
     setValue("");
     setNotes("");
-    setRecordDate(new Date());
-  };
+    const now = new Date();
+    setRecordDate(now);
+    setRecordTime(now);
+    setShowDatePicker(false);
+    setShowTimePicker(false);
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     resetForm();
     onClose();
-  };
+  }, [resetForm, onClose]);
 
-  const handleDateChange = (event: any, selectedDate?: Date) => {
+  const onDateChange = useCallback((event: any, selectedDate?: Date) => {
     setShowDatePicker(false);
     if (selectedDate) {
       setRecordDate(selectedDate);
     }
-  };
+  }, []);
 
-  const handleSubmit = async () => {
+  const onTimeChange = useCallback((event: any, selectedTime?: Date) => {
+    setShowTimePicker(false);
+    if (selectedTime) {
+      setRecordTime(selectedTime);
+    }
+  }, []);
+
+  const handleSubmit = useCallback(async () => {
     if (!value.trim()) {
       Alert.alert("Error", "El valor es obligatorio");
       return;
@@ -67,10 +96,14 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
     }
 
     try {
+      // Combine date and time
+      const finalDateTime = new Date(recordDate);
+      finalDateTime.setHours(recordTime.getHours(), recordTime.getMinutes(), 0, 0);
+
       const recordData: CreateMetricRecordData = {
         metricId: metric.id,
         value: numericValue,
-        recordDate: recordDate.toISOString(),
+        recordDate: finalDateTime.toISOString(),
         notes: notes.trim() || undefined,
       };
 
@@ -80,7 +113,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
     } catch (error) {
       Alert.alert("Error", "No se pudo crear el registro. Inténtalo de nuevo.");
     }
-  };
+  }, [value, recordDate, recordTime, notes, metric.id, createRecord, onSuccess, resetForm]);
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("es-ES", {
@@ -170,20 +203,50 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
           {/* Fecha y hora */}
           <View style={styles.section}>
             <ThemedText style={styles.label}>Fecha y hora</ThemedText>
+            
+            {/* Fecha */}
             <TouchableOpacity
               style={styles.dateButton}
-              onPress={() => setShowDatePicker(true)}
+              onPress={() => {
+                try {
+                  setShowDatePicker(true);
+                } catch (error) {
+                  console.error("Error opening date picker:", error);
+                  Alert.alert("Error", "No se pudo abrir el selector de fecha");
+                }
+              }}
             >
               <View style={styles.dateInfo}>
                 <ThemedText style={styles.dateText}>
-                  {formatDate(recordDate)}
-                </ThemedText>
-                <ThemedText style={styles.timeText}>
-                  {formatTime(recordDate)}
+                  📅 {formatDate(recordDate)}
                 </ThemedText>
               </View>
               <Ionicons
                 name="calendar-outline"
+                size={20}
+                color={AiraColors.primary}
+              />
+            </TouchableOpacity>
+
+            {/* Hora */}
+            <TouchableOpacity
+              style={[styles.dateButton, { marginTop: 8 }]}
+              onPress={() => {
+                try {
+                  setShowTimePicker(true);
+                } catch (error) {
+                  console.error("Error opening time picker:", error);
+                  Alert.alert("Error", "No se pudo abrir el selector de hora");
+                }
+              }}
+            >
+              <View style={styles.dateInfo}>
+                <ThemedText style={styles.dateText}>
+                  🕐 {formatTime(recordTime)}
+                </ThemedText>
+              </View>
+              <Ionicons
+                name="time-outline"
                 size={20}
                 color={AiraColors.primary}
               />
@@ -199,7 +262,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
               onChangeText={setNotes}
               placeholder="Agrega cualquier observación sobre este registro"
               multiline
-              numberOfLines={4}
+              numberOfLines={2}
               maxLength={300}
             />
           </View>
@@ -237,12 +300,55 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
 
         {/* Date Picker */}
         {showDatePicker && (
-          <DateTimePicker
-            value={recordDate}
-            mode="datetime"
-            display="default"
-            onChange={handleDateChange}
-          />
+          <View style={styles.pickerContainer}>
+            {Platform.OS === "ios" && (
+              <View style={styles.pickerHeader}>
+                <TouchableOpacity
+                  onPress={() => setShowDatePicker(false)}
+                  style={styles.pickerButton}
+                >
+                  <ThemedText style={styles.pickerButtonText}>
+                    Listo
+                  </ThemedText>
+                </TouchableOpacity>
+              </View>
+            )}
+            <DateTimePicker
+              value={recordDate}
+              mode="date"
+              display={Platform.OS === "ios" ? "spinner" : "default"}
+              onChange={onDateChange}
+              locale="es-ES"
+              minimumDate={new Date(2020, 0, 1)}
+              maximumDate={new Date(2030, 11, 31)}
+            />
+          </View>
+        )}
+
+        {/* Time Picker */}
+        {showTimePicker && (
+          <View style={styles.pickerContainer}>
+            {Platform.OS === "ios" && (
+              <View style={styles.pickerHeader}>
+                <TouchableOpacity
+                  onPress={() => setShowTimePicker(false)}
+                  style={styles.pickerButton}
+                >
+                  <ThemedText style={styles.pickerButtonText}>
+                    Listo
+                  </ThemedText>
+                </TouchableOpacity>
+              </View>
+            )}
+            <DateTimePicker
+              value={recordTime}
+              mode="time"
+              display={Platform.OS === "ios" ? "spinner" : "default"}
+              onChange={onTimeChange}
+              locale="es-ES"
+              is24Hour={true}
+            />
+          </View>
         )}
       </KeyboardAvoidingView>
     </Modal>
@@ -282,7 +388,6 @@ const styles = StyleSheet.create({
   },
   saveButtonText: {
     color: AiraColors.primaryForeground,
-     
   },
   saveButtonTextDisabled: {
     color: AiraColors.mutedForeground,
@@ -316,7 +421,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-     
     color: AiraColors.foreground,
     marginBottom: 8,
   },
@@ -326,16 +430,13 @@ const styles = StyleSheet.create({
   valueInputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: AiraColors.border,
-    borderRadius: 8,
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColors.secondary,
+    borderRadius: AiraVariants.cardRadius,
     paddingRight: 16,
   },
   unitLabel: {
     fontSize: 16,
     color: AiraColors.mutedForeground,
-     
   },
   dateButton: {
     flexDirection: "row",
@@ -356,10 +457,6 @@ const styles = StyleSheet.create({
     color: AiraColors.foreground,
     marginBottom: 2,
   },
-  timeText: {
-    fontSize: 14,
-    color: AiraColors.mutedForeground,
-  },
   input: {
     borderWidth: 1,
     borderColor: AiraColors.border,
@@ -369,10 +466,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: AiraColors.foreground,
     backgroundColor: AiraColors.card,
-  },
-  textArea: {
-    height: 100,
-    textAlignVertical: "top",
   },
   referenceItem: {
     flexDirection: "row",
@@ -388,5 +481,27 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AiraColors.foreground,
     flex: 1,
+  },
+  pickerContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  pickerHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 12,
+    backgroundColor: AiraColors.card,
+  },
+  pickerButton: {
+    padding: 8,
+  },
+  pickerButtonText: {
+    fontSize: 16,
+    color: AiraColors.primary,
   },
 });
