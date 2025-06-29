@@ -161,7 +161,7 @@ export const AchievementsSummary = ({
       show: achievements.ritualsCompleted > 0,
     },
     {
-      icon: "target-outline",
+      icon: "sparkles-outline",
       label: "Mini retos completados",
       value: achievements.challengesCompleted,
       style: styles.achievementGreen,
