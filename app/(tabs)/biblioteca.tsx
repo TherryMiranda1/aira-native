@@ -13,6 +13,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { LibraryCategory } from "@/types/biblioteca";
 import { bibliotecaData } from "@/data/bibliotecaData";
+import { router } from "expo-router";
 
 export default function BibliotecaScreen() {
   const featuredItems = useMemo(() => {
@@ -128,7 +129,10 @@ export default function BibliotecaScreen() {
               </ThemedText>
 
               <View style={styles.ctaButtons}>
-                <TouchableOpacity style={styles.ctaPrimaryButton}>
+                <TouchableOpacity
+                  onPress={() => router.push("/dashboard/plans/complete-plan")}
+                  style={styles.ctaPrimaryButton}
+                >
                   <Ionicons
                     name="sparkles"
                     size={18}
@@ -138,7 +142,10 @@ export default function BibliotecaScreen() {
                     Crear Mi Plan Personal
                   </ThemedText>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.ctaSecondaryButton}>
+                <TouchableOpacity
+                  onPress={() => router.push("/dashboard/inspiration/frases")}
+                  style={styles.ctaSecondaryButton}
+                >
                   <Ionicons
                     name="heart"
                     size={18}
@@ -289,7 +296,7 @@ const styles = StyleSheet.create({
   },
   ctaPrimaryText: {
     fontSize: 16,
-     
+
     color: AiraColors.primary,
     marginLeft: 8,
   },
