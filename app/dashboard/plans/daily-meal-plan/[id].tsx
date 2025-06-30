@@ -3,12 +3,10 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Alert,
   ActivityIndicator,
   Share,
   ScrollView,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -20,6 +18,8 @@ import { Topbar } from "@/components/ui/Topbar";
 import { useDailyMealPlans } from "@/hooks/services/useDailyMealPlans";
 import { DailyMealPlan } from "@/services/api/dailyMealPlan.service";
 import { PageView } from "@/components/ui/PageView";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 type ViewState = "loading" | "loaded" | "error" | "not-found";
 
@@ -32,6 +32,8 @@ export default function DailyMealPlanDetailScreen() {
     toggleFavorite,
     loading: plansLoading,
   } = useDailyMealPlans();
+  const { showConfirm } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("loading");
   const [plan, setPlan] = useState<DailyMealPlan | null>(null);
@@ -79,17 +81,13 @@ export default function DailyMealPlanDetailScreen() {
   const handleDeletePlan = async () => {
     if (!plan) return;
 
-    Alert.alert(
+    showConfirm(
       "Eliminar Plan de Comidas",
       `¿Estás segura de que quieres eliminar "${plan.planTitle}"? Esta acción no se puede deshacer.`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: confirmDeletePlan,
-        },
-      ]
+      confirmDeletePlan,
+      undefined,
+      "Eliminar",
+      "Cancelar"
     );
   };
 
@@ -100,22 +98,16 @@ export default function DailyMealPlanDetailScreen() {
       setIsDeleting(true);
       await deletePlan(plan.id);
 
-      Alert.alert(
-        "Plan Eliminado",
-        "El plan de comidas se ha eliminado correctamente",
-        [
-          {
-            text: "OK",
-            onPress: () => router.back(),
-          },
-        ]
+      showSuccessToast(
+        "Plan eliminado",
+        "El plan de comidas se ha eliminado correctamente"
       );
+      router.back();
     } catch (error) {
       console.error("Error deleting daily meal plan:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
-        "No se pudo eliminar el plan de comidas. Inténtalo de nuevo.",
-        [{ text: "OK" }]
+        "No se pudo eliminar el plan de comidas. Inténtalo de nuevo."
       );
     } finally {
       setIsDeleting(false);
@@ -130,9 +122,7 @@ export default function DailyMealPlanDetailScreen() {
       setPlan(updatedPlan);
     } catch (error) {
       console.error("Error toggling favorite:", error);
-      Alert.alert("Error", "No se pudo actualizar el favorito.", [
-        { text: "OK" },
-      ]);
+      showErrorToast("Error", "No se pudo actualizar el favorito.");
     }
   };
 

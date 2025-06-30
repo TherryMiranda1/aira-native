@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
@@ -21,6 +21,7 @@ import {
   PersonalizedPlanOutput,
 } from "@/types/Assistant";
 import { PageView } from "@/components/ui/PageView";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 type ViewState = "main" | "form" | "generated" | "loading" | "error";
 
@@ -28,6 +29,7 @@ export default function PlansScreen() {
   const { user } = useUser();
   const { plans, createPlan, loading: isSavingPlan } = useGeneratedPlans();
   const { generatePersonalizedPlan } = usePersonalizedPlan();
+  const { showError, showSuccess } = useAlertHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("main");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -40,7 +42,7 @@ export default function PlansScreen() {
 
   const handleQuickGenerate = async () => {
     if (!user) {
-      Alert.alert("Error", "Debes iniciar sesión para generar un plan");
+      showError("Error", "Debes iniciar sesión para generar un plan");
       return;
     }
 
@@ -116,16 +118,13 @@ export default function PlansScreen() {
         tags: ["personalizado"],
       });
 
-      Alert.alert(
+      showSuccess(
         "Plan Guardado",
-        "Tu plan se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK" }]
+        "Tu plan se ha guardado exitosamente en tu biblioteca"
       );
     } catch (error) {
       console.error("Error guardando plan:", error);
-      Alert.alert("Error", "No se pudo guardar el plan. Inténtalo de nuevo.", [
-        { text: "OK" },
-      ]);
+      showError("Error", "No se pudo guardar el plan. Inténtalo de nuevo.");
       throw error;
     }
   };

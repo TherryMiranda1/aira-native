@@ -3,8 +3,7 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
-  Alert
+  ScrollView
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -14,6 +13,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { ExerciseSuggestionInput } from "@/types/Assistant";
 import { ThemedInput } from "../ThemedInput";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 interface ExerciseSuggestionFormProps {
   onSubmit: (data: ExerciseSuggestionInput) => void;
@@ -58,6 +58,7 @@ export function ExerciseSuggestionForm({
   onSubmit,
   isLoading = false,
 }: ExerciseSuggestionFormProps) {
+  const { showError } = useAlertHelpers();
   const [selectedFitnessLevel, setSelectedFitnessLevel] =
     useState("principiante");
   const [userInput, setUserInput] = useState("");
@@ -73,7 +74,7 @@ export function ExerciseSuggestionForm({
 
   const handleSubmit = () => {
     if (!userInput.trim()) {
-      Alert.alert(
+      showError(
         "Campo requerido",
         "Por favor describe qué tipo de ejercicio buscas"
       );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, FlatList, Alert } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 
 import { PageView } from "@/components/ui/PageView";
@@ -13,6 +13,7 @@ import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
 import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 const categoryLabels: Record<string, string> = {
   "Autocuidado-&-Momentos-de-Belleza": "Autocuidado",
@@ -42,6 +43,7 @@ const categoryColors: Record<string, string[]> = {
 export default function ChallengeCategoryScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
   
   const [challenges, setChallenges] = useState<Challenge[]>([]);
   const [loading, setLoading] = useState(true);
@@ -109,13 +111,13 @@ export default function ChallengeCategoryScreen() {
   const handleCompleteChallenge = async (challengeId: string) => {
     try {
       await challengeService.incrementPopularity(challengeId);
-      Alert.alert(
+      showSuccessToast(
         "¡Reto completado! 🎉",
         "¡Increíble trabajo! Has dado un paso más hacia tu bienestar."
       );
     } catch (error) {
       console.error("Error completing challenge:", error);
-      Alert.alert("Error", "No se pudo registrar la finalización del reto");
+      showErrorToast("Error", "No se pudo registrar la finalización del reto");
     }
   };
 

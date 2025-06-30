@@ -5,7 +5,6 @@ import {
   Modal,
   ScrollView,
   TouchableOpacity,
-  Alert,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -17,6 +16,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useMetricRecords } from "@/hooks/services/useMetrics";
 import { CreateMetricRecordData, Metric } from "@/services/api/metrics.service";
 import { AiraVariants } from "@/constants/Themes";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface CreateRecordModalProps {
   visible: boolean;
@@ -32,6 +33,8 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
   onSuccess,
 }) => {
   const { createRecord, saving } = useMetricRecords();
+  const { showError } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
   const [value, setValue] = useState("");
   const [notes, setNotes] = useState("");
   const [recordDate, setRecordDate] = useState(new Date());
@@ -85,20 +88,25 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
 
   const handleSubmit = useCallback(async () => {
     if (!value.trim()) {
-      Alert.alert("Error", "El valor es obligatorio");
+      showError("Error", "El valor es obligatorio");
       return;
     }
 
     const numericValue = parseFloat(value);
     if (isNaN(numericValue)) {
-      Alert.alert("Error", "Ingresa un valor numérico válido");
+      showError("Error", "Ingresa un valor numérico válido");
       return;
     }
 
     try {
       // Combine date and time
       const finalDateTime = new Date(recordDate);
-      finalDateTime.setHours(recordTime.getHours(), recordTime.getMinutes(), 0, 0);
+      finalDateTime.setHours(
+        recordTime.getHours(),
+        recordTime.getMinutes(),
+        0,
+        0
+      );
 
       const recordData: CreateMetricRecordData = {
         metricId: metric.id,
@@ -108,12 +116,31 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
       };
 
       await createRecord(recordData);
+      showSuccessToast(
+        "Registro creado",
+        `${numericValue} ${metric.unit} registrado exitosamente`
+      );
       onSuccess();
       resetForm();
     } catch (error) {
-      Alert.alert("Error", "No se pudo crear el registro. Inténtalo de nuevo.");
+      showErrorToast(
+        "Error",
+        "No se pudo crear el registro. Inténtalo de nuevo."
+      );
     }
-  }, [value, recordDate, recordTime, notes, metric.id, createRecord, onSuccess, resetForm]);
+  }, [
+    value,
+    recordDate,
+    recordTime,
+    notes,
+    metric.id,
+    createRecord,
+    onSuccess,
+    resetForm,
+    showError,
+    showSuccessToast,
+    showErrorToast,
+  ]);
 
   const formatDate = (date: Date) => {
     return date.toLocaleDateString("es-ES", {
@@ -203,7 +230,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
           {/* Fecha y hora */}
           <View style={styles.section}>
             <ThemedText style={styles.label}>Fecha y hora</ThemedText>
-            
+
             {/* Fecha */}
             <TouchableOpacity
               style={styles.dateButton}
@@ -212,7 +239,10 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
                   setShowDatePicker(true);
                 } catch (error) {
                   console.error("Error opening date picker:", error);
-                  Alert.alert("Error", "No se pudo abrir el selector de fecha");
+                  showErrorToast(
+                    "Error",
+                    "No se pudo abrir el selector de fecha"
+                  );
                 }
               }}
             >
@@ -236,7 +266,10 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
                   setShowTimePicker(true);
                 } catch (error) {
                   console.error("Error opening time picker:", error);
-                  Alert.alert("Error", "No se pudo abrir el selector de hora");
+                  showErrorToast(
+                    "Error",
+                    "No se pudo abrir el selector de hora"
+                  );
                 }
               }}
             >
@@ -307,9 +340,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
                   onPress={() => setShowDatePicker(false)}
                   style={styles.pickerButton}
                 >
-                  <ThemedText style={styles.pickerButtonText}>
-                    Listo
-                  </ThemedText>
+                  <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
                 </TouchableOpacity>
               </View>
             )}
@@ -334,9 +365,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
                   onPress={() => setShowTimePicker(false)}
                   style={styles.pickerButton}
                 >
-                  <ThemedText style={styles.pickerButtonText}>
-                    Listo
-                  </ThemedText>
+                  <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
                 </TouchableOpacity>
               </View>
             )}

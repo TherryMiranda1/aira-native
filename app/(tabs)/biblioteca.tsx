@@ -157,7 +157,7 @@ export default function BibliotecaScreen() {
               Tu biblioteca se actualiza constantemente con nuevo contenido
               personalizado.
             </ThemedText>
-            <ThemedText style={styles.footerCredit}>
+            <ThemedText type="defaultItalic" style={styles.footerCredit}>
               Creada con 💜 por el equipo de Aira para tu bienestar integral
             </ThemedText>
           </View>
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
   },
   ctaPrimaryText: {
     fontSize: 16,
-     
+
     color: AiraColors.primary,
     marginLeft: 8,
   },
@@ -323,6 +323,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: AiraColors.mutedForeground,
     textAlign: "center",
-    fontStyle: "italic",
   },
 });

@@ -4,7 +4,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -14,6 +13,7 @@ import { ThemedInput } from "@/components/ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { SuggestRecipeInput } from "@/types/Assistant";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 interface RecipeSuggestionFormProps {
   onSubmit: (formData: SuggestRecipeInput) => void;
@@ -26,6 +26,7 @@ export function RecipeSuggestionForm({
   isLoading,
   initialData,
 }: RecipeSuggestionFormProps) {
+  const { showError } = useAlertHelpers();
   const [formData, setFormData] = useState<SuggestRecipeInput>({
     userInput: initialData?.userInput || "",
     mealType: initialData?.mealType || "",
@@ -56,7 +57,7 @@ export function RecipeSuggestionForm({
 
   const handleSubmit = () => {
     if (!validateForm()) {
-      Alert.alert(
+      showError(
         "Formulario incompleto",
         "Por favor completa los campos requeridos"
       );

@@ -4,11 +4,9 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Alert,
   ActivityIndicator,
   Share,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, router } from "expo-router";
 
@@ -19,11 +17,15 @@ import { Topbar } from "@/components/ui/Topbar";
 import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
 import { DailyWorkoutRoutine } from "@/services/api/dailyWorkoutRoutine.service";
 import { PageView } from "@/components/ui/PageView";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 export default function WorkoutRoutineDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { getRoutineById, deleteRoutine, updateRoutine, loading } =
+  const { getRoutineById, deleteRoutine, updateRoutine } =
     useDailyWorkoutRoutines();
+  const { showConfirm } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [routine, setRoutine] = useState<DailyWorkoutRoutine | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -62,29 +64,25 @@ export default function WorkoutRoutineDetailScreen() {
   const handleDelete = async () => {
     if (!routine) return;
 
-    Alert.alert(
+    showConfirm(
       "Eliminar Rutina",
       `¿Estás segura de que quieres eliminar "${routine.routineName}"?`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: async () => {
-            try {
-              await deleteRoutine(routine.id);
-              Alert.alert(
-                "Rutina Eliminada",
-                "La rutina se ha eliminado exitosamente",
-                [{ text: "OK", onPress: () => router.back() }]
-              );
-            } catch (error) {
-              console.error("Error eliminando rutina:", error);
-              Alert.alert("Error", "No se pudo eliminar la rutina");
-            }
-          },
-        },
-      ]
+      async () => {
+        try {
+          await deleteRoutine(routine.id);
+          showSuccessToast(
+            "Rutina eliminada",
+            "La rutina se ha eliminado exitosamente"
+          );
+          router.back();
+        } catch (error) {
+          console.error("Error eliminando rutina:", error);
+          showErrorToast("Error", "No se pudo eliminar la rutina");
+        }
+      },
+      undefined,
+      "Eliminar",
+      "Cancelar"
     );
   };
 
@@ -101,7 +99,7 @@ export default function WorkoutRoutineDetailScreen() {
       setRoutine(updatedRoutine);
     } catch (error) {
       console.error("Error actualizando favorito:", error);
-      Alert.alert("Error", "No se pudo actualizar la rutina");
+      showErrorToast("Error", "No se pudo actualizar la rutina");
     }
   };
 
@@ -538,7 +536,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-     
+
     color: AiraColors.foreground,
   },
   errorMessage: {
@@ -555,7 +553,6 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     color: "white",
-     
   },
   summaryCard: {
     backgroundColor: AiraColors.card,
@@ -584,7 +581,7 @@ const styles = StyleSheet.create({
   },
   summaryTitle: {
     fontSize: 18,
-     
+
     color: AiraColors.foreground,
     marginBottom: 4,
   },
@@ -611,7 +608,6 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 12,
     color: AiraColors.foreground,
-     
   },
   equipmentCard: {
     backgroundColor: AiraColors.card,
@@ -629,7 +625,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 16,
-     
+
     color: AiraColors.foreground,
   },
   equipmentText: {
@@ -642,7 +638,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-     
+
     color: AiraColors.foreground,
     marginBottom: 16,
   },
@@ -662,7 +658,7 @@ const styles = StyleSheet.create({
   },
   sessionName: {
     fontSize: 16,
-     
+
     color: "#3B82F6",
     flex: 1,
   },
@@ -697,7 +693,7 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 14,
-     
+
     color: AiraColors.foreground,
   },
   sectionText: {
@@ -724,7 +720,7 @@ const styles = StyleSheet.create({
   },
   exerciseName: {
     fontSize: 14,
-     
+
     color: AiraColors.foreground,
     flex: 1,
     marginRight: 8,
@@ -797,7 +793,7 @@ const styles = StyleSheet.create({
   },
   warningTitle: {
     fontSize: 16,
-     
+
     color: AiraColors.destructive,
   },
   warningText: {
@@ -823,7 +819,7 @@ const styles = StyleSheet.create({
   },
   tagsTitle: {
     fontSize: 16,
-     
+
     color: AiraColors.foreground,
     marginBottom: 12,
   },

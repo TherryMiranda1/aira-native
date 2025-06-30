@@ -5,7 +5,6 @@ import {
   Modal,
   ScrollView,
   TouchableOpacity,
-  Alert,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
@@ -15,6 +14,8 @@ import { ThemedInput } from "@/components/ThemedInput";
 import { Ionicons } from "@expo/vector-icons";
 import { useMetrics } from "@/hooks/services/useMetrics";
 import { CreateMetricData } from "@/services/api/metrics.service";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface CreateMetricModalProps {
   visible: boolean;
@@ -33,6 +34,8 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
   onSuccess,
 }) => {
   const { createMetric, saving } = useMetrics();
+  const { showError } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [unit, setUnit] = useState("");
@@ -74,12 +77,12 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
 
   const handleSubmit = async () => {
     if (!title.trim()) {
-      Alert.alert("Error", "El título es obligatorio");
+      showError("Error", "El título es obligatorio");
       return;
     }
 
     if (!unit.trim()) {
-      Alert.alert("Error", "La unidad de medida es obligatoria");
+      showError("Error", "La unidad de medida es obligatoria");
       return;
     }
 
@@ -99,10 +102,14 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
       };
 
       await createMetric(metricData);
+      showSuccessToast(
+        "Métrica creada",
+        `${title.trim()} se añadió a tu seguimiento`
+      );
       onSuccess();
       resetForm();
     } catch (error) {
-      Alert.alert("Error", "No se pudo crear la métrica. Inténtalo de nuevo.");
+      showErrorToast("Error", "No se pudo crear la métrica. Inténtalo de nuevo.");
     }
   };
 

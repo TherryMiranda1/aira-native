@@ -5,7 +5,7 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { View, StyleSheet, FlatList, Alert, Share } from "react-native";
+import { View, StyleSheet, FlatList, Share } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
 
@@ -24,6 +24,7 @@ import { PhraseItem } from "@/features/quotes/PhraseItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 const categoryLabels: Record<string, string> = {
   "Inicio-del-Dia-General": "Inicio del Día",
@@ -86,6 +87,7 @@ export default function FrasesScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ categoria?: string }>();
   const pagerRef = useRef<PagerView>(null);
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [likedPhrases, setLikedPhrases] = useState<Set<string>>(new Set());
@@ -270,12 +272,12 @@ export default function FrasesScreen() {
       console.log("Nueva frase copiada", phrase);
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
-      Alert.alert(
+      showSuccessToast(
         "Frase copiada",
         "La frase ha sido copiada al portapapeles 💕"
       );
     } catch (error) {
-      Alert.alert("Error", "No se pudo copiar la frase");
+      showErrorToast("Error", "No se pudo copiar la frase");
     }
   };
 
@@ -289,10 +291,10 @@ export default function FrasesScreen() {
         newLikedPhrases.add(id);
       }
       setLikedPhrases(newLikedPhrases);
-      Alert.alert("¡Gracias!", "Tu corazón ha sido registrado 💖");
+      showSuccessToast("¡Gracias!", "Tu corazón ha sido registrado 💖");
     } catch (error) {
       console.error("Error liking phrase:", error);
-      Alert.alert("Error", "No se pudo registrar tu like");
+      showErrorToast("Error", "No se pudo registrar tu like");
     }
   };
 

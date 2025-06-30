@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, FlatList, Alert, Share } from "react-native";
+import { View, StyleSheet, FlatList, Share } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 
 import { PageView } from "@/components/ui/PageView";
@@ -12,6 +12,7 @@ import { PhraseItem } from "@/features/quotes/PhraseItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 const categoryLabels: Record<string, string> = {
   "Inicio-del-Dia-General": "Inicio del Día",
@@ -46,7 +47,8 @@ const categoryColors: Record<string, string[]> = {
 export default function FraseCategoryScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
+
   const [phrases, setPhrases] = useState<Phrase[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -57,8 +59,12 @@ export default function FraseCategoryScreen() {
   const [modalPhraseIndex, setModalPhraseIndex] = useState(0);
 
   const categoryId = id as string;
-  const categoryLabel = categoryLabels[categoryId] || categoryId?.replace(/-/g, " ") || "Frases";
-  const categoryColorPair = categoryColors[categoryId] || ["#60A5FA", "#3B82F6"];
+  const categoryLabel =
+    categoryLabels[categoryId] || categoryId?.replace(/-/g, " ") || "Frases";
+  const categoryColorPair = categoryColors[categoryId] || [
+    "#60A5FA",
+    "#3B82F6",
+  ];
 
   const fetchPhrases = useCallback(async () => {
     if (!categoryId) return;
@@ -112,12 +118,12 @@ export default function FraseCategoryScreen() {
       console.log("Nueva frase copiada", phrase);
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
-      Alert.alert(
+      showSuccessToast(
         "Frase copiada",
         "La frase ha sido copiada al portapapeles 💕"
       );
     } catch (error) {
-      Alert.alert("Error", "No se pudo copiar la frase");
+      showErrorToast("Error", "No se pudo copiar la frase");
     }
   };
 
@@ -131,10 +137,10 @@ export default function FraseCategoryScreen() {
         newLikedPhrases.add(id);
       }
       setLikedPhrases(newLikedPhrases);
-      Alert.alert("¡Gracias!", "Tu corazón ha sido registrado 💖");
+      showSuccessToast("¡Gracias!", "Tu corazón ha sido registrado 💖");
     } catch (error) {
       console.error("Error liking phrase:", error);
-      Alert.alert("Error", "No se pudo registrar tu like");
+      showErrorToast("Error", "No se pudo registrar tu like");
     }
   };
 
@@ -192,10 +198,7 @@ export default function FraseCategoryScreen() {
           actions={<ProfileButton />}
           showBackButton={true}
         />
-        <ErrorState
-          title="Error al cargar las frases"
-          onRetry={fetchPhrases}
-        />
+        <ErrorState title="Error al cargar las frases" onRetry={fetchPhrases} />
       </PageView>
     );
   }
@@ -262,4 +265,4 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-}); 
+});

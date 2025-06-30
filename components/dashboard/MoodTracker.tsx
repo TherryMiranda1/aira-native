@@ -6,6 +6,7 @@ import { ThemedText } from "../ThemedText";
 import { AiraColors } from "../../constants/Colors";
 import { AiraVariants } from "../../constants/Themes";
 import { useEvents } from "../../hooks/services/useEvents";
+import { useToastHelpers } from "../ui/ToastSystem";
 
 type MoodType =
   | "radiante"
@@ -93,13 +94,17 @@ export const MoodTracker = ({
 }: MoodTrackerProps) => {
   const { user } = useUser();
   const { createEvent } = useEvents();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
   const [selectedMood, setSelectedMood] = useState<string>("");
   const [savingMood, setSavingMood] = useState(false);
 
   const handleMoodSelection = useCallback(
     async (moodId: MoodType) => {
       if (!user?.id) {
-        console.error("Usuario no autenticado");
+        showErrorToast(
+          "Error",
+          "Debes estar autenticada para registrar tu estado emocional"
+        );
         return;
       }
 
@@ -143,15 +148,26 @@ export const MoodTracker = ({
           },
         });
 
+        showSuccessToast(
+          "Estado emocional registrado",
+          `Te sientes ${moodLabels[
+            moodId
+          ].toLowerCase()}. Gracias por compartir conmigo 💕`
+        );
+
         onMoodSaved?.(moodId);
       } catch (error) {
         console.error("Error saving mood:", error);
+        showErrorToast(
+          "Error al registrar",
+          "No pudimos guardar tu estado emocional. Inténtalo de nuevo."
+        );
         setSelectedMood("");
       } finally {
         setSavingMood(false);
       }
     },
-    [user?.id, createEvent, onMoodSaved]
+    [user?.id, createEvent, onMoodSaved, showSuccessToast, showErrorToast]
   );
 
   return (
@@ -199,7 +215,7 @@ export const MoodTracker = ({
 
       {selectedMood && !savingMood && (
         <View style={styles.moodFeedback}>
-          <ThemedText style={styles.moodFeedbackText}>
+          <ThemedText type="defaultItalic" style={styles.moodFeedbackText}>
             Gracias por compartir conmigo. Es válido sentirse así, y estoy aquí
             para apoyarte 💕
           </ThemedText>
@@ -228,7 +244,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: AiraColors.foreground,
     marginBottom: 16,
-     
   },
   moodGrid: {
     flexDirection: "row",
@@ -261,7 +276,6 @@ const styles = StyleSheet.create({
   moodFeedbackText: {
     fontSize: 14,
     color: AiraColors.foreground,
-    fontStyle: "italic",
     textAlign: "center",
   },
 });

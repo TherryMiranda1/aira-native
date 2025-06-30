@@ -71,7 +71,7 @@ export default function ChatScreen() {
             🍳 {message.recipe.recipeName || "Receta Sugerida"}
           </ThemedText>
           {message.recipe.reason && (
-            <ThemedText style={styles.contentDescription}>
+            <ThemedText type="defaultItalic" style={styles.contentDescription}>
               {message.recipe.reason}
             </ThemedText>
           )}
@@ -96,7 +96,7 @@ export default function ChatScreen() {
             </View>
           )}
           {message.recipe.estimatedTime && (
-            <ThemedText style={styles.contentTime}>
+            <ThemedText type="defaultItalic" style={styles.contentTime}>
               ⏱️ Tiempo estimado: {message.recipe.estimatedTime}
             </ThemedText>
           )}
@@ -111,7 +111,7 @@ export default function ChatScreen() {
             💪 {message.exercise.exerciseName || "Ejercicio Sugerido"}
           </ThemedText>
           {message.exercise.benefits && (
-            <ThemedText style={styles.contentDescription}>
+            <ThemedText type="defaultItalic" style={styles.contentDescription}>
               {message.exercise.benefits}
             </ThemedText>
           )}
@@ -135,7 +135,7 @@ export default function ChatScreen() {
           <ThemedText style={styles.contentTitle}>
             🏋️‍♀️ {message.fullRoutine.nombreRutina}
           </ThemedText>
-          <ThemedText style={styles.contentDescription}>
+          <ThemedText type="defaultItalic" style={styles.contentDescription}>
             {message.fullRoutine.descripcionGeneral}
           </ThemedText>
           {message.fullRoutine.sesiones?.map((sesion: any, index: number) => (
@@ -169,7 +169,7 @@ export default function ChatScreen() {
             🥗 {message.dailyMealPlan.planTitle}
           </ThemedText>
           {message.dailyMealPlan.introduction && (
-            <ThemedText style={styles.contentDescription}>
+            <ThemedText type="defaultItalic" style={styles.contentDescription}>
               {message.dailyMealPlan.introduction}
             </ThemedText>
           )}
@@ -462,7 +462,7 @@ const styles = StyleSheet.create({
   },
   contentTitle: {
     fontSize: 16,
-     
+
     color: AiraColors.foreground,
     marginBottom: 4,
   },
@@ -470,14 +470,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AiraColors.mutedForeground,
     marginBottom: 8,
-    fontStyle: "italic",
   },
   contentSection: {
     marginBottom: 8,
   },
   contentSectionTitle: {
     fontSize: 14,
-     
+
     color: AiraColors.foreground,
     marginBottom: 4,
   },
@@ -489,7 +488,6 @@ const styles = StyleSheet.create({
   contentTime: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontStyle: "italic",
     marginTop: 4,
   },
   optionsContainer: {

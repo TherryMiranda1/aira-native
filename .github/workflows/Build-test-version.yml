@@ -1,0 +1,168 @@
+name: Build Test Version
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        type: choice
+        description: Build profile to use
+        options:
+          - development
+          - preview
+          - preview2
+          - preview3
+          - preview4
+        default: preview
+      environment:
+        type: choice
+        description: Environment to deploy to
+        options:
+          - main
+          - qa
+          - stg
+        default: qa
+      test_suffix:
+        type: string
+        description: Suffix for test version (e.g., 'beta', 'alpha', 'test')
+        default: 'test'
+        required: true
+
+jobs:
+  build-and-test:
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - platform: "android"
+            os: "ubuntu-latest"
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.environment }}
+
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.cache-npm.outputs.cache-hit == 'false' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm list
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Get package version
+        id: get-version
+        run: |
+          VERSION=$(jq -r '.version' package.json)
+          TEST_VERSION="${VERSION}-${{ github.event.inputs.test_suffix }}"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "TEST_VERSION=$TEST_VERSION" >> $GITHUB_ENV
+          echo "Test version will be: $TEST_VERSION"
+
+      - name: Modify app.json for test version
+        run: |
+          # Crear una copia de respaldo
+          cp app.json app.json.backup
+          
+          # Modificar app.json para versión de prueba
+          jq --arg test_suffix "${{ github.event.inputs.test_suffix }}" \
+             --arg test_version "${{ env.TEST_VERSION }}" \
+             '.expo.name = "Aira (" + ($test_suffix | ascii_upcase) + ")" |
+              .expo.slug = "aira-native-" + $test_suffix |
+              .expo.version = $test_version |
+              .expo.android.package = "com.therrydzk.airanative." + $test_suffix' \
+             app.json > app.json.tmp && mv app.json.tmp app.json
+          
+          echo "Modified app.json:"
+          cat app.json
+
+      - name: Modify Android build.gradle for test version
+        run: |
+          # Crear una copia de respaldo
+          cp android/app/build.gradle android/app/build.gradle.backup
+          
+          # Modificar applicationId en build.gradle
+          sed -i "s/applicationId 'com\.therrydzk\.airanative'/applicationId 'com.therrydzk.airanative.${{ github.event.inputs.test_suffix }}'/" android/app/build.gradle
+          sed -i "s/namespace 'com\.therrydzk\.airanative'/namespace 'com.therrydzk.airanative.${{ github.event.inputs.test_suffix }}'/" android/app/build.gradle
+          sed -i "s/versionName \"1\.0\.0\"/versionName \"${{ env.TEST_VERSION }}\"/" android/app/build.gradle
+          
+          echo "Modified build.gradle applicationId section:"
+          grep -A 10 "defaultConfig" android/app/build.gradle
+
+      - name: Crear archivo .env
+        env:
+          EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY }}
+        run: |
+          echo "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=${EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}" >> .env
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Setup Java SDK
+        if: ${{ matrix.platform == 'android' }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: 17
+
+      - name: Build Test Version
+        run: |
+          eas build --local \
+            --non-interactive \
+            --output=./aira-native-${{ github.event.inputs.test_suffix }}-${{ env.VERSION }}.apk \
+            --platform=${{ matrix.platform }} \
+            --profile=${{ github.event.inputs.profile }}
+
+      - name: Restore original files
+        if: always()
+        run: |
+          # Restaurar archivos originales
+          if [ -f "app.json.backup" ]; then
+            mv app.json.backup app.json
+          fi
+          if [ -f "android/app/build.gradle.backup" ]; then
+            mv android/app/build.gradle.backup android/app/build.gradle
+          fi
+
+      - name: Upload test binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: aira-native-${{ github.event.inputs.test_suffix }}-${{ matrix.platform }}-${{ env.VERSION }}
+          path: aira-native-${{ github.event.inputs.test_suffix }}-${{ env.VERSION }}.apk
+
+      - name: Create release summary
+        run: |
+          echo "## 🧪 Test Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Platform**: ${{ matrix.platform }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Profile**: ${{ github.event.inputs.profile }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Environment**: ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test Suffix**: ${{ github.event.inputs.test_suffix }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ env.TEST_VERSION }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Package ID**: com.therrydzk.airanative.${{ github.event.inputs.test_suffix }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **App Name**: Aira (${{ github.event.inputs.test_suffix | upper }})" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ **Esta es una versión de prueba** - NO instalar en dispositivos de producción" >> $GITHUB_STEP_SUMMARY 

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
@@ -18,12 +17,16 @@ import { PlanWelcomeSection } from "@/components/ui/PlanWelcomeSection";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
 import { SuggestRecipeInput, SuggestRecipeOutput } from "@/types/Assistant";
 import { PageView } from "@/components/ui/PageView";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 type ViewState = "main" | "form" | "generated" | "loading" | "error";
 
 export default function RecipeSuggestionScreen() {
   const { user } = useUser();
   const { generateRecipeSuggestion } = usePersonalizedPlan();
+  const { showError } = useAlertHelpers();
+  const { showInfoToast } = useToastHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("main");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -36,7 +39,7 @@ export default function RecipeSuggestionScreen() {
 
   const handleQuickGenerate = async () => {
     if (!user) {
-      Alert.alert(
+      showError(
         "Error",
         "Debes iniciar sesión para generar sugerencias de recetas"
       );
@@ -94,10 +97,9 @@ export default function RecipeSuggestionScreen() {
     if (!generatedRecipe || !recipeInputParams) return;
 
     // TODO: Implementar guardado de recetas cuando tengamos el servicio
-    Alert.alert(
+    showInfoToast(
       "Funcionalidad próximamente",
-      "La funcionalidad de guardar recetas estará disponible pronto",
-      [{ text: "OK" }]
+      "La funcionalidad de guardar recetas estará disponible pronto"
     );
   };
 

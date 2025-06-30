@@ -158,7 +158,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
                 </View>
               ))}
               {metric.milestones.length > 3 && (
-                <ThemedText style={styles.moreText}>
+                <ThemedText type="defaultItalic" style={styles.moreText}>
                   +{metric.milestones.length - 3} más
                 </ThemedText>
               )}
@@ -249,7 +249,6 @@ const styles = StyleSheet.create({
   },
   progressPercentage: {
     fontSize: 14,
-     
   },
   progressBar: {
     height: 6,
@@ -268,7 +267,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AiraColors.foreground,
     marginBottom: 8,
-     
   },
   milestonesList: {
     gap: 6,
@@ -292,7 +290,7 @@ const styles = StyleSheet.create({
   moreText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontStyle: "italic",
+
     marginLeft: 14,
   },
   footer: {

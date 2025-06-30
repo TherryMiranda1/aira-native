@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, ScrollView, Alert } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { Stack, useLocalSearchParams, router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
@@ -21,6 +21,7 @@ import { MetricStatistics } from "@/components/metrics/MetricStatistics";
 import { InteractiveMetricChart } from "@/components/metrics/InteractiveMetricChart";
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 export default function MetricDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -33,6 +34,7 @@ export default function MetricDetailScreen() {
     refetch,
   } = useMetricRecords(id);
   const { statistics } = useMetricStatistics(id);
+  const { showConfirm } = useAlertHelpers();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showInteractiveChart, setShowInteractiveChart] = useState(false);
   const [metric, setMetric] = useState<Metric | null>(null);
@@ -46,22 +48,15 @@ export default function MetricDetailScreen() {
   }, [metrics, id]);
 
   const handleDeleteRecord = (recordId: string, recordDate: string) => {
-    Alert.alert(
+    showConfirm(
       "Eliminar registro",
       `¿Estás segura de que quieres eliminar el registro del ${new Date(
         recordDate
       ).toLocaleDateString()}?`,
-      [
-        {
-          text: "Cancelar",
-          style: "cancel",
-        },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: () => deleteRecord(recordId),
-        },
-      ]
+      () => deleteRecord(recordId),
+      undefined,
+      "Eliminar",
+      "Cancelar"
     );
   };
 

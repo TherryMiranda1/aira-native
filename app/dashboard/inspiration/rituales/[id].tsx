@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, FlatList, Alert } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 
 import { PageView } from "@/components/ui/PageView";
@@ -13,6 +13,7 @@ import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
 import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 const categoryLabels: Record<string, string> = {
   autocuidado: "Autocuidado",
@@ -49,7 +50,8 @@ const categoryColors: Record<string, string[]> = {
 export default function RitualCategoryScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
-  
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
+
   const [rituals, setRituals] = useState<Ritual[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -63,8 +65,12 @@ export default function RitualCategoryScreen() {
   });
 
   const categoryId = id as string;
-  const categoryLabel = categoryLabels[categoryId] || categoryId?.replace(/-/g, " ") || "Rituales";
-  const categoryColorPair = categoryColors[categoryId] || ["#8B5CF6", "#A855F7"];
+  const categoryLabel =
+    categoryLabels[categoryId] || categoryId?.replace(/-/g, " ") || "Rituales";
+  const categoryColorPair = categoryColors[categoryId] || [
+    "#8B5CF6",
+    "#A855F7",
+  ];
 
   const fetchRituals = useCallback(async () => {
     if (!categoryId) return;
@@ -72,16 +78,31 @@ export default function RitualCategoryScreen() {
     try {
       setLoading(true);
       setError(null);
-      
+
       let response;
       // Determinar si es categoría o momento basado en las claves disponibles
-      const isCategory = ['autocuidado', 'meditacion', 'relajacion', 'energia', 'conexion', 'gratitud', 'respiracion', 'movimiento'].includes(categoryId);
-      const isMoment = ['manana', 'mediodia', 'tarde', 'noche', 'cualquier-momento'].includes(categoryId);
+      const isCategory = [
+        "autocuidado",
+        "meditacion",
+        "relajacion",
+        "energia",
+        "conexion",
+        "gratitud",
+        "respiracion",
+        "movimiento",
+      ].includes(categoryId);
+      const isMoment = [
+        "manana",
+        "mediodia",
+        "tarde",
+        "noche",
+        "cualquier-momento",
+      ].includes(categoryId);
 
       if (isCategory) {
-        response = await ritualService.getRitualsByCategory(categoryId);
+        response = (await ritualService.getRitualsByCategory(categoryId)).docs;
       } else if (isMoment) {
-        response = await ritualService.getRitualsByMoment(categoryId);
+        response = (await ritualService.getRitualsByMoment(categoryId)).docs;
       } else {
         // Fallback a búsqueda general
         const result = await ritualService.getRituals({
@@ -135,13 +156,16 @@ export default function RitualCategoryScreen() {
   const handleCompleteRitual = async (ritualId: string) => {
     try {
       await ritualService.incrementPopularity(ritualId);
-      Alert.alert(
+      showSuccessToast(
         "¡Ritual completado! 🌟",
         "¡Hermoso trabajo! Has creado un momento sagrado para tu bienestar."
       );
     } catch (error) {
       console.error("Error completing ritual:", error);
-      Alert.alert("Error", "No se pudo registrar la finalización del ritual");
+      showErrorToast(
+        "Error",
+        "No se pudo registrar la finalización del ritual"
+      );
     }
   };
 
@@ -283,4 +307,4 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
   },
-}); 
+});

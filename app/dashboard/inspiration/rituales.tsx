@@ -5,7 +5,7 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { View, StyleSheet, FlatList, Alert } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import PagerView from "react-native-pager-view";
@@ -24,6 +24,7 @@ import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
 import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 // Mapeo de categorías basado en el servicio de rituales
 const categoryLabels: Record<string, string> = {
@@ -90,6 +91,7 @@ export default function RitualesScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ categoria?: string }>();
   const pagerRef = useRef<PagerView>(null);
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedRitual, setSelectedRitual] = useState<Ritual | null>(null);
@@ -304,13 +306,13 @@ export default function RitualesScreen() {
   const handleCompleteRitual = async (ritualId: string) => {
     try {
       await ritualService.incrementPopularity(ritualId);
-      Alert.alert(
+      showSuccessToast(
         "¡Ritual completado! 🌟",
         "¡Hermoso trabajo! Has creado un momento sagrado para tu bienestar."
       );
     } catch (error) {
       console.error("Error completing ritual:", error);
-      Alert.alert("Error", "No se pudo registrar la finalización del ritual");
+      showErrorToast("Error", "No se pudo registrar la finalización del ritual");
     }
   };
 

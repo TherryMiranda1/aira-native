@@ -4,11 +4,11 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { useAlertHelpers } from "@/components/ui/notifications";
 
 import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
@@ -27,6 +27,7 @@ export const ExistingWorkoutRoutinesSection = ({
   onRoutineDelete,
 }: ExistingWorkoutRoutinesSectionProps) => {
   const router = useRouter();
+  const { showConfirm } = useAlertHelpers();
 
   const handleRoutinePress = (routine: DailyWorkoutRoutine) => {
     if (onRoutineSelect) {
@@ -37,17 +38,13 @@ export const ExistingWorkoutRoutinesSection = ({
   };
 
   const handleDeletePress = (routine: DailyWorkoutRoutine) => {
-    Alert.alert(
+    showConfirm(
       "Eliminar Rutina",
       `¿Segura que quieres eliminar "${routine.routineName}"?`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: () => onRoutineDelete?.(routine.id),
-        },
-      ]
+      () => onRoutineDelete?.(routine.id),
+      undefined,
+      "Eliminar",
+      "Cancelar"
     );
   };
 
