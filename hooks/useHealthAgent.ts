@@ -508,6 +508,28 @@ export function useHealthAgent() {
 
           agentResponse = `¡Aquí tienes tu rutina personalizada! 💪✨`;
           agentOptions = getDefaultOptions();
+
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === loadingMsgId
+                ? {
+                    ...m,
+                    sender: "agent",
+                    text: agentResponse,
+                    fullRoutine: fullRoutineData,
+                    fullRoutineInputParams: routineInputParams,
+                    isLoading: false,
+                    isError: false,
+                    options: agentOptions,
+                    timestamp: new Date(),
+                  }
+                : m
+            )
+          );
+
+          setAwaitingInputFor(null);
+          AiraLogger.info("Routine message processed successfully");
+          return;
         } else if (isMealPlanRequest) {
           const mealPlanInputParams: DailyMealPlanInput = {
             userInput: userText,
@@ -520,6 +542,28 @@ export function useHealthAgent() {
 
           agentResponse = `¡Tu plan de comidas está listo! 🥗✨`;
           agentOptions = getDefaultOptions();
+
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === loadingMsgId
+                ? {
+                    ...m,
+                    sender: "agent",
+                    text: agentResponse,
+                    dailyMealPlan: dailyMealPlanData,
+                    dailyMealPlanInputParams: mealPlanInputParams,
+                    isLoading: false,
+                    isError: false,
+                    options: agentOptions,
+                    timestamp: new Date(),
+                  }
+                : m
+            )
+          );
+
+          setAwaitingInputFor(null);
+          AiraLogger.info("Meal plan message processed successfully");
+          return;
         } else if (
           awaitingInputFor === "motivation_topic" ||
           isMotivationRequest

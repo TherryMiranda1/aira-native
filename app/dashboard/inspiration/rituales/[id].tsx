@@ -113,7 +113,9 @@ export default function RitualCategoryScreen() {
         response = result.docs;
       }
 
-      setRituals(response);
+      // Manejar diferentes tipos de respuesta
+      const ritualsArray = Array.isArray(response) ? response : response.docs || [];
+      setRituals(ritualsArray);
     } catch (err) {
       console.error(`Error fetching rituals for ${categoryId}:`, err);
       setError(`Error al cargar los rituales de ${categoryLabel}`);
