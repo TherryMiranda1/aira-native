@@ -4,7 +4,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -16,6 +15,8 @@ import {
   PersonalizedPlanInput,
   PersonalizedPlanOutput,
 } from "@/types/Assistant";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface GeneratedPlanSectionProps {
   plan: PersonalizedPlanOutput;
@@ -38,6 +39,8 @@ export const GeneratedPlanSection = ({
   isRegenerating = false,
   isFromCompleteProfile = false,
 }: GeneratedPlanSectionProps) => {
+  const { showConfirm } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
   const [expandedSections, setExpandedSections] = useState({
     nutrition: true,
     workout: false,
@@ -55,26 +58,20 @@ export const GeneratedPlanSection = ({
   const handleSave = async () => {
     try {
       await onSave();
-      Alert.alert(
+      showSuccessToast(
         "¡Éxito!",
-        "Tu plan personalizado se ha guardado correctamente",
-        [{ text: "Continuar", style: "default" }]
+        "Tu plan personalizado se ha guardado correctamente"
       );
     } catch (error) {
-      Alert.alert("Error", "No se pudo guardar el plan. Inténtalo de nuevo.", [
-        { text: "OK", style: "default" },
-      ]);
+      showErrorToast("Error", "No se pudo guardar el plan. Inténtalo de nuevo.");
     }
   };
 
   const handleRegenerate = () => {
-    Alert.alert(
+    showConfirm(
       "Regenerar Plan",
       "¿Estás segura de que quieres generar un nuevo plan? Se perderá el plan actual.",
-      [
-        { text: "Cancelar", style: "cancel" },
-        { text: "Regenerar", style: "destructive", onPress: onRegenerate },
-      ]
+      onRegenerate
     );
   };
 
@@ -341,7 +338,7 @@ export const GeneratedPlanSection = ({
                             </ThemedText>
                             {exercise.alternativaOpcional && (
                               <ThemedText
-                                type="small"
+                                type="defaultItalic"
                                 style={styles.exerciseAlternative}
                               >
                                 Alternativa: {exercise.alternativaOpcional}
@@ -729,7 +726,6 @@ const styles = StyleSheet.create({
   },
   exerciseAlternative: {
     color: AiraColors.primary,
-    fontStyle: "italic",
   },
   finalMessageContainer: {
     backgroundColor: AiraColorsWithAlpha.accentWithOpacity(0.1),

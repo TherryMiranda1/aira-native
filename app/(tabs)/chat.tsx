@@ -13,12 +13,12 @@ import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import { PageView } from "@/components/ui/PageView";
 import { useHealthAgent } from "@/hooks/useHealthAgent";
-import { 
-  MessageBubble, 
-  MessageContent, 
-  ChatOptions, 
-  QuickReplies, 
-  ChatInput 
+import {
+  MessageBubble,
+  MessageContent,
+  ChatOptions,
+  QuickReplies,
+  ChatInput,
 } from "@/components/chat";
 
 export default function ChatScreen() {

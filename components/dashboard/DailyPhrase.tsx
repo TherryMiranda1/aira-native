@@ -127,7 +127,7 @@ export const DailyPhrase = ({ showRefreshButton = true }: DailyPhraseProps) => {
       </ThemedText>
 
       {currentPhrase.autor && (
-        <ThemedText style={styles.authorText}>
+        <ThemedText type="defaultItalic" style={styles.authorText}>
           — {currentPhrase.autor}
         </ThemedText>
       )}
@@ -172,7 +172,6 @@ const styles = StyleSheet.create({
   authorText: {
     fontSize: 14,
     color: AiraColors.background,
-    fontStyle: "italic",
     marginTop: 8,
     opacity: 0.8,
   },
@@ -189,7 +188,6 @@ const styles = StyleSheet.create({
   categoryText: {
     fontSize: 12,
     color: AiraColors.background,
-     
   },
   loadingMessage: {
     fontSize: 18,
@@ -214,6 +212,5 @@ const styles = StyleSheet.create({
   retryButtonText: {
     fontSize: 14,
     color: AiraColors.background,
-     
   },
 });

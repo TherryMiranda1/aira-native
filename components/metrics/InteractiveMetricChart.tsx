@@ -609,7 +609,7 @@ const styles = StyleSheet.create({
   tooltipNotes: {
     fontSize: 12,
     color: AiraColors.foreground,
-    fontStyle: "italic",
+
     marginTop: 8,
     paddingTop: 8,
     borderTopWidth: 1,

@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Alert,
   ActivityIndicator,
   Share,
   ScrollView,
@@ -21,6 +20,8 @@ import { useGeneratedPlans } from "@/hooks/services/useGeneratedPlans";
 import { GeneratedPlan } from "@/services/api/generatedPlan.service";
 import { PageView } from "@/components/ui/PageView";
 import { LinearGradient } from "expo-linear-gradient";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 type ViewState = "loading" | "loaded" | "error" | "not-found";
 
@@ -33,6 +34,8 @@ export default function PlanDetailScreen() {
     updatePlan,
     loading: plansLoading,
   } = useGeneratedPlans();
+  const { showConfirm, showError } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("loading");
   const [plan, setPlan] = useState<GeneratedPlan | null>(null);
@@ -78,17 +81,13 @@ export default function PlanDetailScreen() {
   const handleDeletePlan = async () => {
     if (!plan) return;
 
-    Alert.alert(
+    showConfirm(
       "Eliminar Plan",
       `¿Estás segura de que quieres eliminar "${plan.title}"? Esta acción no se puede deshacer.`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: confirmDeletePlan,
-        },
-      ]
+      confirmDeletePlan,
+      undefined,
+      "Eliminar",
+      "Cancelar"
     );
   };
 
@@ -99,17 +98,14 @@ export default function PlanDetailScreen() {
       setIsDeleting(true);
       await deletePlan(plan.id);
 
-      Alert.alert("Plan Eliminado", "El plan se ha eliminado correctamente", [
-        {
-          text: "OK",
-          onPress: () => router.back(),
-        },
-      ]);
+      showSuccessToast(
+        "Plan eliminado",
+        "El plan se ha eliminado correctamente"
+      );
+      router.back();
     } catch (error) {
       console.error("Error deleting plan:", error);
-      Alert.alert("Error", "No se pudo eliminar el plan. Inténtalo de nuevo.", [
-        { text: "OK" },
-      ]);
+      showErrorToast("Error", "No se pudo eliminar el plan. Inténtalo de nuevo.");
     } finally {
       setIsDeleting(false);
     }
@@ -130,10 +126,9 @@ export default function PlanDetailScreen() {
       setPlan((prev) => (prev ? { ...prev, ...updates } : null));
     } catch (error) {
       console.error("Error updating plan:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
-        "No se pudo actualizar el plan. Inténtalo de nuevo.",
-        [{ text: "OK" }]
+        "No se pudo actualizar el plan. Inténtalo de nuevo."
       );
     } finally {
       setIsUpdating(false);
@@ -321,17 +316,15 @@ export default function PlanDetailScreen() {
           }
         }
         onSave={async () => {
-          Alert.alert(
-            "Plan Guardado",
-            "Este plan ya está guardado en tu biblioteca",
-            [{ text: "OK" }]
+          showSuccessToast(
+            "Plan guardado",
+            "Este plan ya está guardado en tu biblioteca"
           );
         }}
         onRegenerate={() => {
-          Alert.alert(
+          showSuccessToast(
             "Regenerar Plan",
-            "Para regenerar este plan, ve a la sección de generación de planes",
-            [{ text: "OK" }]
+            "Para regenerar este plan, ve a la sección de generación de planes"
           );
         }}
         isSaving={false}

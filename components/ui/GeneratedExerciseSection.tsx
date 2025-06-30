@@ -4,7 +4,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -13,6 +12,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { ExerciseSuggestionInput } from "@/types/Assistant";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 interface GeneratedExerciseSectionProps {
   exercise: any;
@@ -29,17 +29,15 @@ export function GeneratedExerciseSection({
   onEditParams,
   isRegenerating = false,
 }: GeneratedExerciseSectionProps) {
+  const { showConfirm } = useAlertHelpers();
+
   const handleSuggestedAction = (actionPrompt: string) => {
-    Alert.alert(
+    showConfirm(
       "Acción sugerida",
       `¿Te gustaría continuar con: "${actionPrompt}"?`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Continuar",
-          onPress: () => console.log("Continuar con:", actionPrompt),
-        },
-      ]
+      () => {
+        console.log("Continuar con:", actionPrompt);
+      }
     );
   };
 

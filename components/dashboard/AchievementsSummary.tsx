@@ -161,7 +161,7 @@ export const AchievementsSummary = ({
       show: achievements.ritualsCompleted > 0,
     },
     {
-      icon: "sparkles-outline",
+      icon: "bookmark-outline",
       label: "Mini retos completados",
       value: achievements.challengesCompleted,
       style: styles.achievementGreen,
@@ -237,7 +237,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: AiraColors.foreground,
     marginBottom: 16,
-     
   },
   achievementsContainer: {
     marginBottom: 12,
@@ -273,7 +272,6 @@ const styles = StyleSheet.create({
   achievementValue: {
     fontSize: 14,
     color: AiraColors.foreground,
-     
   },
   achievementFooter: {
     alignItems: "center",

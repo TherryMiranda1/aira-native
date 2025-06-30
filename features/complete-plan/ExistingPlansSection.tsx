@@ -4,7 +4,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -14,6 +13,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { GeneratedPlan } from "@/services/api/generatedPlan.service";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 interface ExistingPlansSectionProps {
   plans: GeneratedPlan[];
@@ -26,6 +26,7 @@ export const ExistingPlansSection = ({
   onPlanSelect,
   onPlanDelete,
 }: ExistingPlansSectionProps) => {
+  const { showConfirm } = useAlertHelpers();
   const router = useRouter();
 
   const handlePlanPress = (plan: GeneratedPlan) => {
@@ -40,17 +41,10 @@ export const ExistingPlansSection = ({
   };
 
   const handleDeletePress = (plan: GeneratedPlan) => {
-    Alert.alert(
+    showConfirm(
       "Eliminar Plan",
       `¿Segura que quieres eliminar "${plan.title}"?`,
-      [
-        { text: "Cancelar", style: "cancel" },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: () => onPlanDelete?.(plan.id),
-        },
-      ]
+      () => onPlanDelete?.(plan.id)
     );
   };
 

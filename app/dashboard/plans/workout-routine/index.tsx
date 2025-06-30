@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
@@ -34,6 +35,8 @@ export default function WorkoutRoutineScreen() {
     loading: isSavingWorkoutRoutine,
   } = useDailyWorkoutRoutines();
   const { generateFullExerciseRoutine } = usePersonalizedPlan();
+  const { showError } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("main");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -46,7 +49,7 @@ export default function WorkoutRoutineScreen() {
 
   const handleQuickGenerate = async () => {
     if (!user) {
-      Alert.alert(
+      showError(
         "Error",
         "Debes iniciar sesión para generar una rutina de ejercicio"
       );
@@ -112,17 +115,16 @@ export default function WorkoutRoutineScreen() {
         tags: ["rutina-ejercicio", "entrenamiento"],
       });
 
-      Alert.alert(
-        "Rutina de Ejercicio Guardada",
-        "Tu rutina se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK", onPress: () => router.back() }]
+      showSuccessToast(
+        "Rutina guardada",
+        "Tu rutina se ha guardado exitosamente en tu biblioteca"
       );
+      router.back();
     } catch (error) {
       console.error("Error guardando rutina de ejercicio:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
-        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo.",
-        [{ text: "OK" }]
+        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo."
       );
       throw error;
     }
@@ -179,7 +181,7 @@ export default function WorkoutRoutineScreen() {
       await deleteRoutine(routineId);
     } catch (error) {
       console.error("Error eliminando rutina:", error);
-      Alert.alert("Error", "No se pudo eliminar la rutina.", [{ text: "OK" }]);
+      showErrorToast("Error", "No se pudo eliminar la rutina.");
     }
   };
 

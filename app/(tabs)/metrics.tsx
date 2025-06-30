@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, ScrollView, Alert } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { Stack, router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
@@ -15,27 +15,22 @@ import { CreateMetricModal } from "@/components/metrics/CreateMetricModal";
 import { MetricCard } from "@/components/metrics/MetricCard";
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 export default function MetricsScreen() {
   const { metrics, loading, error, deleteMetric, refetch } = useMetrics();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const { showText, handleScroll } = useScrollDirection();
+  const { showConfirm } = useAlertHelpers();
 
   const handleDeleteMetric = (metricId: string, metricTitle: string) => {
-    Alert.alert(
+    showConfirm(
       "Eliminar métrica",
       `¿Estás segura de que quieres eliminar "${metricTitle}"? Esta acción no se puede deshacer.`,
-      [
-        {
-          text: "Cancelar",
-          style: "cancel",
-        },
-        {
-          text: "Eliminar",
-          style: "destructive",
-          onPress: () => deleteMetric(metricId),
-        },
-      ]
+      () => deleteMetric(metricId),
+      undefined,
+      "Eliminar",
+      "Cancelar"
     );
   };
 

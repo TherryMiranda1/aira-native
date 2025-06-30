@@ -5,7 +5,7 @@ import React, {
   useRef,
   useCallback,
 } from "react";
-import { View, StyleSheet, FlatList, Alert } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import PagerView from "react-native-pager-view";
@@ -24,6 +24,7 @@ import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
 import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 // Mapeo de categorías de la versión web
 const categoryLabels: Record<string, string> = {
@@ -78,6 +79,7 @@ export default function MiniRetosScreen() {
   const router = useRouter();
   const params = useLocalSearchParams<{ categoria?: string }>();
   const pagerRef = useRef<PagerView>(null);
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(
@@ -269,13 +271,13 @@ export default function MiniRetosScreen() {
   const handleCompleteChallenge = async (challengeId: string) => {
     try {
       await challengeService.incrementPopularity(challengeId);
-      Alert.alert(
+      showSuccessToast(
         "¡Reto completado! 🎉",
         "¡Increíble trabajo! Has dado un paso más hacia tu bienestar."
       );
     } catch (error) {
       console.error("Error completing challenge:", error);
-      Alert.alert("Error", "No se pudo registrar la finalización del reto");
+      showErrorToast("Error", "No se pudo registrar la finalización del reto");
     }
   };
 

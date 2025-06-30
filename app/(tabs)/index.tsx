@@ -59,10 +59,6 @@ export default function HomeScreen() {
     }
   }, [isUserLoaded, user]);
 
-  const handleMoodSaved = (mood: MoodType) => {
-    console.log(`Estado emocional registrado: ${mood}`);
-  };
-
   return (
     <PageView>
       <Topbar title="" actions={<ProfileButton />} />
@@ -96,7 +92,7 @@ export default function HomeScreen() {
             <DailyPhrase />
 
             {/* Mood Tracker Component */}
-            <MoodTracker onMoodSaved={handleMoodSaved} />
+            <MoodTracker />
 
             {/* Daily Suggestion Component */}
             <DailySuggestion

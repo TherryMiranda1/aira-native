@@ -7,7 +7,6 @@ import {
   ScrollView,
   ActivityIndicator,
   Platform,
-  Alert,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format, addHours } from "date-fns";
@@ -20,6 +19,8 @@ import { ThemedView } from "@/components/ThemedView";
 import { ThemedInput } from "@/components/ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { eventService, RecurrenceType } from "@/services/api/event.service";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface ScheduleEventModalProps {
   visible: boolean;
@@ -50,6 +51,8 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
   onSuccess,
 }) => {
   const { user } = useUser();
+  const { showError } = useAlertHelpers();
+  const { showSuccessToast, showErrorToast } = useToastHelpers();
 
   const [loading, setLoading] = useState(false);
   const [startTime, setStartTime] = useState(addHours(new Date(), 1));
@@ -151,7 +154,7 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
 
   const handleSchedule = async () => {
     if (!user?.id) {
-      Alert.alert("Error", "Debes estar autenticada para programar eventos");
+      showError("Error", "Debes estar autenticada para programar eventos");
       return;
     }
 
@@ -199,18 +202,12 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
         );
       }
 
-      Alert.alert("¡Evento programado! ✨", getSuccessMessage(), [
-        {
-          text: "OK",
-          onPress: () => {
-            onSuccess?.();
-            handleClose();
-          },
-        },
-      ]);
+      showSuccessToast("¡Evento programado! ✨", getSuccessMessage());
+      onSuccess?.();
+      handleClose();
     } catch (error) {
       console.error("Error scheduling event:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
         "No se pudo programar el evento. Inténtalo de nuevo."
       );
@@ -381,7 +378,10 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
                 {format(startTime, "d 'de' MMMM", { locale: es })} a las{" "}
                 {format(startTime, "HH:mm")}
                 {recurrenceType !== "none" && (
-                  <ThemedText style={styles.recurrenceNote}>
+                  <ThemedText
+                    type="defaultItalic"
+                    style={styles.recurrenceNote}
+                  >
                     {" "}
                     (
                     {recurrenceOptions
@@ -621,7 +621,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   recurrenceNote: {
-    fontStyle: "italic",
     color: AiraColors.mutedForeground,
   },
   pickerContainer: {

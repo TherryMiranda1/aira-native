@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Modal,
-  View, TouchableOpacity,
+  View,
+  TouchableOpacity,
   ScrollView,
   ActivityIndicator,
-  Platform
+  Platform,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format } from "date-fns";
@@ -363,11 +364,12 @@ export const EventForm: React.FC<EventFormProps> = ({
             {/* Summary Info */}
             <View style={styles.summaryInfo}>
               <ThemedText style={styles.summaryText}>
-                {getIconById(selectedIcon)?.emoji || "📝"} Resumen: {title || "Sin título"} el{" "}
+                {getIconById(selectedIcon)?.emoji || "📝"} Resumen:{" "}
+                {title || "Sin título"} el{" "}
                 {format(eventDate, "d 'de' MMMM", { locale: es })} a las{" "}
                 {format(eventTime, "HH:mm")}
                 {recurrenceType !== "none" && (
-                  <ThemedText style={styles.recurrenceNote}>
+                  <ThemedText type="defaultItalic" style={styles.recurrenceNote}>
                     {" "}
                     (
                     {recurrenceOptions
@@ -416,7 +418,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-     
+
     color: AiraColors.foreground,
   },
   saveButton: {
@@ -433,7 +435,6 @@ const styles = StyleSheet.create({
   saveButtonText: {
     color: "#fff",
     fontSize: 16,
-     
   },
   content: {
     flex: 1,
@@ -444,7 +445,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 20,
-     
+
     color: AiraColors.foreground,
     marginBottom: 8,
   },
@@ -508,7 +509,6 @@ const styles = StyleSheet.create({
   },
   optionLabelSelected: {
     color: AiraColors.primary,
-     
   },
   recurrenceContainer: {
     gap: 8,
@@ -538,7 +538,6 @@ const styles = StyleSheet.create({
   },
   recurrenceLabelSelected: {
     color: AiraColors.primary,
-     
   },
   selectedIndicator: {
     width: 8,
@@ -560,7 +559,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   recurrenceNote: {
-    fontStyle: "italic",
     color: AiraColors.primary,
   },
   pickerContainer: {
@@ -587,7 +585,6 @@ const styles = StyleSheet.create({
   pickerButtonText: {
     color: "#fff",
     fontSize: 16,
-     
   },
   iconSelectorContainer: {
     backgroundColor: AiraColors.card,

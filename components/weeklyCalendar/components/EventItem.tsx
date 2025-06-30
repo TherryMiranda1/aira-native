@@ -82,10 +82,16 @@ export const EventItem: React.FC<EventItemProps> = ({
 
   const getAdditionalInfo = useCallback(() => {
     if (event.eventType === "recipe" && event.recipeReference) {
-      return event.recipeReference.ingrediente_principal || event.recipeReference.categoria;
+      return (
+        event.recipeReference.ingrediente_principal ||
+        event.recipeReference.categoria
+      );
     }
     if (event.eventType === "exercise" && event.exerciseReference) {
-      return event.exerciseReference.tipo_ejercicio || event.exerciseReference.nivel_dificultad;
+      return (
+        event.exerciseReference.tipo_ejercicio ||
+        event.exerciseReference.nivel_dificultad
+      );
     }
     if (event.eventType === "challenge" && event.challengeReference) {
       return event.challengeReference.categoria || "Mini Reto";
@@ -98,14 +104,14 @@ export const EventItem: React.FC<EventItemProps> = ({
 
   const getRecurrenceInfo = useCallback(() => {
     if (!event.recurrence || event.recurrence.type === "none") return null;
-    
+
     const recurrenceLabels = {
       daily: "🔄 Diario",
       weekly: "📅 Semanal",
       monthly: "🗓️ Mensual",
       custom: "⚙️ Personalizado",
     };
-    
+
     return recurrenceLabels[event.recurrence.type] || "🔄 Se repite";
   }, [event.recurrence]);
 
@@ -136,7 +142,7 @@ export const EventItem: React.FC<EventItemProps> = ({
             </ThemedText>
           )}
         </View>
-        
+
         <View style={styles.timeContainer}>
           {event.startTime && (
             <ThemedText
@@ -161,7 +167,7 @@ export const EventItem: React.FC<EventItemProps> = ({
         >
           {eventLabel}
         </ThemedText>
-        
+
         {additionalInfo && (
           <>
             <ThemedText style={styles.metaSeparator}>•</ThemedText>
@@ -174,7 +180,7 @@ export const EventItem: React.FC<EventItemProps> = ({
             </ThemedText>
           </>
         )}
-        
+
         {event.location && (
           <>
             <ThemedText style={styles.metaSeparator}>•</ThemedText>
@@ -213,7 +219,7 @@ export const EventItem: React.FC<EventItemProps> = ({
       />
 
       {navigationPath ? (
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.contentTouchable}
           onPress={handleEventPress}
           activeOpacity={0.7}
@@ -369,7 +375,6 @@ const styles = StyleSheet.create({
   },
   additionalInfo: {
     fontSize: 12,
-    fontStyle: "italic",
   },
   eventLocation: {
     fontSize: 12,

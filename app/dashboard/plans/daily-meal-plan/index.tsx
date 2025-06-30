@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { router } from "expo-router";
+import { useAlertHelpers, useToastHelpers } from "@/components/ui/notifications";
 
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
@@ -30,6 +31,8 @@ export default function DailyMealPlanScreen() {
     loading: isSavingDailyMealPlan,
   } = useDailyMealPlans();
   const { generateDailyMealPlan } = usePersonalizedPlan();
+  const { showError, showSuccess } = useAlertHelpers();
+  const { showErrorToast } = useToastHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("main");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -42,7 +45,7 @@ export default function DailyMealPlanScreen() {
 
   const handleQuickGenerate = async () => {
     if (!user) {
-      Alert.alert(
+      showError(
         "Error",
         "Debes iniciar sesión para generar un plan de comidas"
       );
@@ -107,17 +110,16 @@ export default function DailyMealPlanScreen() {
         tags: ["plan-diario", "comidas"],
       });
 
-      Alert.alert(
+      showSuccess(
         "Plan de Comidas Guardado",
         "Tu plan de comidas se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK", onPress: () => router.back() }]
+        () => router.back()
       );
     } catch (error) {
       console.error("Error guardando plan de comidas:", error);
-      Alert.alert(
+      showError(
         "Error",
-        "No se pudo guardar el plan de comidas. Inténtalo de nuevo.",
-        [{ text: "OK" }]
+        "No se pudo guardar el plan de comidas. Inténtalo de nuevo."
       );
       throw error;
     }
@@ -172,7 +174,7 @@ export default function DailyMealPlanScreen() {
       await deletePlan(planId);
     } catch (error) {
       console.error("Error eliminando plan:", error);
-      Alert.alert("Error", "No se pudo eliminar el plan.", [{ text: "OK" }]);
+      showErrorToast("Error", "No se pudo eliminar el plan.");
     }
   };
 

@@ -3,9 +3,7 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Alert,
-  TextInput,
+  TouchableOpacity
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -15,6 +13,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyMealPlanInput } from "@/types/Assistant";
 import { ThemedInput } from "../../components/ThemedInput";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 interface DailyMealPlanFormProps {
   onSubmit: (formData: DailyMealPlanInput) => void;
@@ -27,6 +26,7 @@ export function DailyMealPlanForm({
   isLoading,
   initialData,
 }: DailyMealPlanFormProps) {
+  const { showError } = useAlertHelpers();
   const [formData, setFormData] = useState<DailyMealPlanInput>({
     userInput: initialData?.userInput || "",
     dietaryPreferences: initialData?.dietaryPreferences || "",
@@ -50,7 +50,7 @@ export function DailyMealPlanForm({
 
   const handleSubmit = () => {
     if (!validateForm()) {
-      Alert.alert(
+      showError(
         "Formulario incompleto",
         "Por favor completa los campos requeridos"
       );

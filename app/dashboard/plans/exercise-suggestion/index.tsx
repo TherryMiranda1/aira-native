@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Alert, ScrollView } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView } from "react-native";
 import { router } from "expo-router";
 
 import { AiraColors } from "@/constants/Colors";
@@ -12,11 +11,13 @@ import { PlanErrorView } from "@/components/ui/PlanErrorView";
 import { usePersonalizedPlan } from "@/hooks/usePersonalizedPlan";
 import { ExerciseSuggestionInput } from "@/types/Assistant";
 import { PageView } from "@/components/ui/PageView";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 type ViewState = "form" | "generated" | "loading" | "error";
 
 export default function ExerciseSuggestionScreen() {
   const { generateExerciseSuggestion } = usePersonalizedPlan();
+  const { showErrorToast } = useToastHelpers();
 
   const [viewState, setViewState] = useState<ViewState>("form");
   const [isGenerating, setIsGenerating] = useState(false);
@@ -56,7 +57,7 @@ export default function ExerciseSuggestionScreen() {
       setGeneratedExercise(exercise);
     } catch (error) {
       console.error("Error regenerando ejercicio:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
         error instanceof Error ? error.message : "Error desconocido"
       );

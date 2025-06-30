@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -8,6 +8,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { PersonalizedPlanInput } from "@/types/Assistant";
 import { ThemedInput } from "@/components/ThemedInput";
+import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 interface PlanConfigFormProps {
   onSubmit: (data: PersonalizedPlanInput) => void;
@@ -27,6 +28,7 @@ export const PlanConfigForm = ({
   isLoading = false,
   initialData = {},
 }: PlanConfigFormProps) => {
+  const { showError } = useAlertHelpers();
   const [formData, setFormData] = useState<PersonalizedPlanInput>({
     fullName: initialData.fullName || "",
     age: initialData.age || 30,
@@ -171,12 +173,12 @@ export const PlanConfigForm = ({
 
   const handleSubmit = () => {
     if (!formData.fullName?.trim()) {
-      Alert.alert("Error", "Por favor ingresa tu nombre");
+      showError("Error", "Por favor ingresa tu nombre");
       return;
     }
 
     if (formData.age < 16 || formData.age > 100) {
-      Alert.alert("Error", "Por favor ingresa una edad válida (16-100 años)");
+      showError("Error", "Por favor ingresa una edad válida (16-100 años)");
       return;
     }
 

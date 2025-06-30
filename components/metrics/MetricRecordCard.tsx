@@ -38,7 +38,7 @@ export const MetricRecordCard: React.FC<MetricRecordCardProps> = ({
     if (!metric.target) return null;
 
     let progress: number;
-    if (metric.direction === 'increase') {
+    if (metric.direction === "increase") {
       progress = (record.value / metric.target) * 100;
     } else {
       const startValue = metric.target * 1.5;
@@ -138,7 +138,9 @@ export const MetricRecordCard: React.FC<MetricRecordCardProps> = ({
       {/* Notes */}
       {record.notes && (
         <View style={styles.notesContainer}>
-          <ThemedText style={styles.notesText}>{record.notes}</ThemedText>
+          <ThemedText type="defaultItalic" style={styles.notesText}>
+            {record.notes}
+          </ThemedText>
         </View>
       )}
     </View>
@@ -181,7 +183,6 @@ const styles = StyleSheet.create({
   unitText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-     
   },
   deleteButton: {
     padding: 4,
@@ -203,7 +204,6 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontSize: 12,
-     
   },
   milestoneIndicator: {
     flexDirection: "row",
@@ -217,7 +217,6 @@ const styles = StyleSheet.create({
   milestoneText: {
     fontSize: 11,
     color: "#FFA726",
-     
   },
   notesContainer: {
     marginTop: 8,
@@ -229,6 +228,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: AiraColors.mutedForeground,
     lineHeight: 20,
-    fontStyle: "italic",
   },
 });

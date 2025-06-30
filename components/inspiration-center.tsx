@@ -437,7 +437,6 @@ const styles = StyleSheet.create({
   },
   topbarTitle: {
     fontSize: 20,
-     
   },
   // Categories styles
   categoriesContainer: {
@@ -472,7 +471,6 @@ const styles = StyleSheet.create({
   },
   categoryTextActive: {
     color: AiraColors.background,
-     
   },
   // Content container
   contentContainer: {
@@ -501,7 +499,7 @@ const styles = StyleSheet.create({
   },
   quoteText: {
     fontSize: 18,
-     
+
     textAlign: "center",
     lineHeight: 26,
     marginBottom: 16,
@@ -525,7 +523,6 @@ const styles = StyleSheet.create({
   },
   nextQuoteText: {
     color: AiraColors.background,
-     
   },
   // Challenges styles
   challengesContainer: {
@@ -560,7 +557,7 @@ const styles = StyleSheet.create({
   },
   challengeTitle: {
     fontSize: 16,
-     
+
     color: AiraColors.foreground,
   },
   durationBadge: {
@@ -589,7 +586,6 @@ const styles = StyleSheet.create({
   tryButtonText: {
     color: AiraColors.background,
     fontSize: 14,
-     
   },
   // Rituals styles
   ritualsContainer: {
@@ -611,7 +607,7 @@ const styles = StyleSheet.create({
   },
   ritualTitle: {
     fontSize: 16,
-     
+
     color: AiraColors.foreground,
   },
   timeBadge: {
@@ -627,7 +623,6 @@ const styles = StyleSheet.create({
   moodText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-    fontStyle: "italic",
     marginBottom: 16,
   },
   stepsContainer: {
@@ -674,7 +669,6 @@ const styles = StyleSheet.create({
   startRitualText: {
     color: AiraColors.background,
     fontSize: 14,
-     
   },
   // Reminder card
   reminderCard: {
