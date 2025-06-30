@@ -114,7 +114,7 @@ export default function RitualCategoryScreen() {
       }
 
       // Manejar diferentes tipos de respuesta
-      const ritualsArray = Array.isArray(response) ? response : response.docs || [];
+      const ritualsArray = Array.isArray(response) ? response : response || [];
       setRituals(ritualsArray);
     } catch (err) {
       console.error(`Error fetching rituals for ${categoryId}:`, err);
