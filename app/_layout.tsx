@@ -3,6 +3,8 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { Alert, Platform } from "react-native";
+import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { ClerkProvider } from "@clerk/clerk-expo";
@@ -11,6 +13,8 @@ import { tokenCache } from "@clerk/clerk-expo/token-cache";
 import { NotesContainer } from "@/context/NotesContext";
 import { CategoriesContainer } from "@/context/CategoriesContext";
 import { NotificationProvider } from "@/components/ui/notifications";
+import Purchases from "react-native-purchases";
+Purchases.setLogLevel(Purchases.LOG_LEVEL.VERBOSE);
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -21,8 +25,25 @@ export default function RootLayout() {
     CormorantSemiBold: require("../assets/fonts/CormorantGaramond-SemiBold.ttf"),
   });
 
+  useEffect(() => {
+    Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
+
+    if (Platform.OS === "ios") {
+      if (!process.env.EXPO_PUBLIC_RC_IOS) {
+        Alert.alert("Error", "EXPO_PUBLIC_RC_IOS is not set");
+        return;
+      }
+      Purchases.configure({ apiKey: process.env.EXPO_PUBLIC_RC_IOS });
+    } else if (Platform.OS === "android") {
+      if (!process.env.EXPO_PUBLIC_RC_ANDROID) {
+        Alert.alert("Error", "EXPO_PUBLIC_RC_ANDROID is not set");
+        return;
+      }
+      Purchases.configure({ apiKey: "goog_YGbPRMuuRtsvhNqQeCuzOZbifIv" });
+    }
+  }, []);
+
   if (!loaded) {
-    // Async font loading only occurs in development.
     return null;
   }
 
@@ -44,6 +65,7 @@ export default function RootLayout() {
                 <Stack.Screen name="(tabs)" />
                 <Stack.Screen name="dashboard" />
                 <Stack.Screen name="onboarding" />
+                <Stack.Screen name="default-paywall" />
                 <Stack.Screen name="+not-found" />
               </Stack>
             </ThemeProvider>

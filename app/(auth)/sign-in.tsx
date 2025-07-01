@@ -54,7 +54,7 @@ export default function SignInScreen() {
         identifier: emailAddress,
         password,
         redirectUrl: AuthSession.makeRedirectUri({
-          scheme: "aira-native",
+          scheme: "airanative",
           path: "/",
         }),
       });

@@ -34,7 +34,6 @@ export default function DashboardLayout() {
       <Stack.Screen name="inspiration/frases/[id]" />
 
       <Stack.Screen name="inspiration/mini-retos/[id]" />
-
       <Stack.Screen name="inspiration/rituales/[id]" />
     </Stack>
   );
