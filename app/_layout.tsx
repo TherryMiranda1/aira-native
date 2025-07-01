@@ -27,18 +27,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
-
-    if (Platform.OS === "ios") {
-      if (!process.env.EXPO_PUBLIC_RC_IOS) {
-        Alert.alert("Error", "EXPO_PUBLIC_RC_IOS is not set");
-        return;
-      }
-      Purchases.configure({ apiKey: process.env.EXPO_PUBLIC_RC_IOS });
-    } else if (Platform.OS === "android") {
-      if (!process.env.EXPO_PUBLIC_RC_ANDROID) {
-        Alert.alert("Error", "EXPO_PUBLIC_RC_ANDROID is not set");
-        return;
-      }
+    if (Platform.OS === "android") {
       Purchases.configure({ apiKey: "goog_YGbPRMuuRtsvhNqQeCuzOZbifIv" });
     }
   }, []);
