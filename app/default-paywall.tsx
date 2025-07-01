@@ -6,11 +6,6 @@ export default function DefaultPaywall() {
   return (
     <PageView>
       <RevenueCatUI.Paywall
-        options={{
-          offering: {
-            identifier: "default",
-          },
-        }}
         onDismiss={() =>
           router.canGoBack() ? router.back() : router.replace("/")
         }
