@@ -20,6 +20,7 @@ import {
   QuickReplies,
   ChatInput,
 } from "@/components/chat";
+import { isProUser } from "@/utils/payments";
 
 export default function ChatScreen() {
   const [inputMessage, setInputMessage] = useState("");
@@ -36,7 +37,11 @@ export default function ChatScreen() {
     }
   }, [messages]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
+    if (!(await isProUser())) {
+      return;
+    }
+
     if (!inputMessage.trim() || isLoading) return;
 
     processUserMessage(inputMessage);

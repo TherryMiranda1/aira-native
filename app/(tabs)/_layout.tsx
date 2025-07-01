@@ -64,6 +64,17 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="default-paywall"
+        options={{
+          title: "Paywals",
+          href: null,
+
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon size={28} name="wallet" color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

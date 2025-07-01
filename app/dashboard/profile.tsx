@@ -9,6 +9,7 @@ import { useUser } from "@clerk/clerk-expo";
 import { SignOutButton } from "@/components/Buttons/SignOutButton";
 import { PageView } from "@/components/ui/PageView";
 import { Topbar } from "@/components/ui/Topbar";
+import { AiraProCTA } from "@/components/ui/AiraProCTA";
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -102,6 +103,9 @@ export default function ProfileScreen() {
             color={AiraColors.primary}
           />
         </TouchableOpacity>
+
+        <AiraProCTA />
+
         <SignOutButton />
       </ScrollView>
     </PageView>

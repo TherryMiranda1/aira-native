@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
-import { router, Stack } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "../../constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
@@ -26,14 +26,6 @@ const getTimeBasedGreeting = (currentTime: Date) => {
   return "Buenas noches";
 };
 
-type MoodType =
-  | "radiante"
-  | "tranquila"
-  | "reflexiva"
-  | "cansada"
-  | "sensible"
-  | "neutral";
-
 export default function HomeScreen() {
   const { user, isLoaded: isUserLoaded } = useUser();
   const { getNotes } = useRealmNotes();
@@ -42,9 +34,11 @@ export default function HomeScreen() {
   const greeting = getTimeBasedGreeting(currentTime);
 
   const isLoaded = useRef(false);
+  const isPaywallShown = useRef(false);
 
   useEffect(() => {
     getNotes();
+
     if (!isLoaded.current) {
       isLoaded.current = true;
     }
@@ -52,6 +46,15 @@ export default function HomeScreen() {
       isLoaded.current = false;
     };
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!isPaywallShown.current) {
+        isPaywallShown.current = true;
+        router.push("/default-paywall");
+      }
+    }, [])
+  );
 
   useEffect(() => {
     if (isUserLoaded && !user) {
