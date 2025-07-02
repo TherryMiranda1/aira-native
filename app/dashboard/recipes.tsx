@@ -8,7 +8,7 @@ import { ActionButton } from "@/components/Buttons/ActionButton";
 import RecipesDashboard from "@/features/recipes/RecipesDashboard";
 import RecipesGallery from "@/features/recipes/RecipesGallery";
 import { ProfileButton } from "@/components/ui/ProfileButton";
-import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
 
 interface Ingrediente {
   item: string;

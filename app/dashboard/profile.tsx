@@ -23,7 +23,7 @@ export default function ProfileScreen() {
         }}
       />
 
-      <Topbar title="Mi Perfil" showBackButton />
+      <Topbar title="Mi Perfil" showBackButton showThemeSelector />
 
       <ScrollView
         style={styles.scrollView}

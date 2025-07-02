@@ -21,6 +21,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { eventService, RecurrenceType } from "@/services/api/event.service";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
+import { ModalView } from "./ModalView";
 
 interface ScheduleEventModalProps {
   visible: boolean;
@@ -217,301 +218,194 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
   };
 
   return (
-    <Modal
+    <ModalView
       visible={visible}
-      animationType="slide"
-      onRequestClose={handleClose}
-      presentationStyle="pageSheet"
+      submitButtonText="Añadir"
+      closeButtonText="Cancelar"
+      onClose={handleClose}
+      onSubmit={handleSchedule}
+      title={getTitle()}
     >
-      <View style={styles.modalContainer}>
-        <ThemedView style={styles.modalContent}>
-          {/* Header */}
-          <View style={styles.header}>
-            <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
-              <ThemedText style={styles.closeButtonText}>Cancelar</ThemedText>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={handleSchedule}
-              disabled={loading}
-              style={[styles.saveButton, loading && styles.saveButtonDisabled]}
-            >
-              {loading ? (
-                <ActivityIndicator size="small" color="#fff" />
-              ) : (
-                <>
-                  <Ionicons name="calendar" size={16} color="#fff" />
-                  <ThemedText style={styles.saveButtonText}>Añadir</ThemedText>
-                </>
-              )}
-            </TouchableOpacity>
-          </View>
-
-          <ScrollView
-            style={styles.content}
-            showsVerticalScrollIndicator={false}
-          >
-            <View style={styles.titleContainer}>
-              <Ionicons
-                name={getIcon() as any}
-                size={20}
-                color={AiraColors.primary}
-                style={styles.titleIcon}
-              />
-              <ThemedText style={styles.title}>{getTitle()}</ThemedText>
-            </View>
-            {/* Item Info */}
-            <View style={styles.itemInfo}>
-              <ThemedText style={styles.itemTypeLabel}>
-                {getItemTypeLabel()}
-              </ThemedText>
-              <ThemedText style={styles.itemTitle}>{itemTitle}</ThemedText>
-            </View>
-
-            {/* Date Selection */}
-            <View style={styles.section}>
-              <ThemedText style={styles.label}>
-                ¿Cuándo quieres realizarlo?
-              </ThemedText>
-
-              <TouchableOpacity
-                style={styles.dateTimeButton}
-                onPress={() => setShowDatePicker(true)}
-              >
-                <View style={styles.dateTimeContent}>
-                  <Ionicons
-                    name="calendar-outline"
-                    size={20}
-                    color={AiraColors.primary}
-                  />
-                  <ThemedText style={styles.dateTimeText}>
-                    {format(startTime, "EEEE, d 'de' MMMM", { locale: es })}
-                  </ThemedText>
-                </View>
-                <Ionicons
-                  name="chevron-forward"
-                  size={16}
-                  color={AiraColors.mutedForeground}
-                />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.dateTimeButton}
-                onPress={() => setShowTimePicker(true)}
-              >
-                <View style={styles.dateTimeContent}>
-                  <Ionicons
-                    name="time-outline"
-                    size={20}
-                    color={AiraColors.primary}
-                  />
-                  <ThemedText style={styles.dateTimeText}>
-                    {format(startTime, "HH:mm")}
-                  </ThemedText>
-                </View>
-                <Ionicons
-                  name="chevron-forward"
-                  size={16}
-                  color={AiraColors.mutedForeground}
-                />
-              </TouchableOpacity>
-            </View>
-
-            {/* Recurrence Selection */}
-            <View style={styles.section}>
-              <ThemedText style={styles.label}>¿Se repite?</ThemedText>
-              <View style={styles.recurrenceGrid}>
-                {recurrenceOptions.map((option) => (
-                  <TouchableOpacity
-                    key={option.value}
-                    style={[
-                      styles.recurrenceOption,
-                      recurrenceType === option.value &&
-                        styles.recurrenceOptionSelected,
-                    ]}
-                    onPress={() => setRecurrenceType(option.value)}
-                  >
-                    <ThemedText style={styles.recurrenceIcon}>
-                      {option.icon}
-                    </ThemedText>
-                    <ThemedText
-                      style={[
-                        styles.recurrenceLabel,
-                        recurrenceType === option.value &&
-                          styles.recurrenceLabelSelected,
-                      ]}
-                    >
-                      {option.label}
-                    </ThemedText>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-
-            {/* Location */}
-            <View style={styles.section}>
-              <ThemedText style={styles.label}>Ubicación (opcional)</ThemedText>
-              <ThemedInput
-                value={location}
-                onChangeText={setLocation}
-                placeholder={getDefaultLocation()}
-              />
-            </View>
-
-            {/* Notes */}
-            <View style={styles.section}>
-              <ThemedText style={styles.label}>Notas (opcional)</ThemedText>
-              <ThemedInput
-                variant="textarea"
-                value={notes}
-                onChangeText={setNotes}
-                placeholder="Notas adicionales..."
-                multiline
-                numberOfLines={3}
-              />
-            </View>
-
-            {/* Summary */}
-            <View style={styles.summary}>
-              <ThemedText style={styles.summaryText}>
-                📅 Resumen: {itemTitle} el{" "}
-                {format(startTime, "d 'de' MMMM", { locale: es })} a las{" "}
-                {format(startTime, "HH:mm")}
-                {recurrenceType !== "none" && (
-                  <ThemedText
-                    type="defaultItalic"
-                    style={styles.recurrenceNote}
-                  >
-                    {" "}
-                    (
-                    {recurrenceOptions
-                      .find((opt) => opt.value === recurrenceType)
-                      ?.label.toLowerCase()}
-                    )
-                  </ThemedText>
-                )}
-              </ThemedText>
-            </View>
-          </ScrollView>
-
-          {/* Date/Time Pickers */}
-          {showDatePicker && (
-            <View style={styles.pickerContainer}>
-              {Platform.OS === "ios" && (
-                <View style={styles.pickerHeader}>
-                  <TouchableOpacity
-                    onPress={() => setShowDatePicker(false)}
-                    style={styles.pickerButton}
-                  >
-                    <ThemedText style={styles.pickerButtonText}>
-                      Listo
-                    </ThemedText>
-                  </TouchableOpacity>
-                </View>
-              )}
-              <DateTimePicker
-                value={startTime}
-                mode="date"
-                display={Platform.OS === "ios" ? "spinner" : "default"}
-                onChange={handleDateChange}
-                locale="es-ES"
-                minimumDate={new Date()}
-              />
-            </View>
-          )}
-
-          {showTimePicker && (
-            <View style={styles.pickerContainer}>
-              {Platform.OS === "ios" && (
-                <View style={styles.pickerHeader}>
-                  <TouchableOpacity
-                    onPress={() => setShowTimePicker(false)}
-                    style={styles.pickerButton}
-                  >
-                    <ThemedText style={styles.pickerButtonText}>
-                      Listo
-                    </ThemedText>
-                  </TouchableOpacity>
-                </View>
-              )}
-              <DateTimePicker
-                value={startTime}
-                mode="time"
-                display={Platform.OS === "ios" ? "spinner" : "default"}
-                onChange={handleTimeChange}
-                locale="es-ES"
-                is24Hour={true}
-              />
-            </View>
-          )}
-        </ThemedView>
+      <View style={styles.itemInfo}>
+        <ThemedText style={styles.itemTypeLabel}>
+          {getItemTypeLabel()}
+        </ThemedText>
+        <ThemedText style={styles.itemTitle}>{itemTitle}</ThemedText>
       </View>
-    </Modal>
+
+      {/* Date Selection */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>
+          ¿Cuándo quieres realizarlo?
+        </ThemedText>
+
+        <TouchableOpacity
+          style={styles.dateTimeButton}
+          onPress={() => setShowDatePicker(true)}
+        >
+          <View style={styles.dateTimeContent}>
+            <Ionicons
+              name="calendar-outline"
+              size={20}
+              color={AiraColors.primary}
+            />
+            <ThemedText style={styles.dateTimeText}>
+              {format(startTime, "EEEE, d 'de' MMMM", { locale: es })}
+            </ThemedText>
+          </View>
+          <Ionicons
+            name="chevron-forward"
+            size={16}
+            color={AiraColors.mutedForeground}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.dateTimeButton}
+          onPress={() => setShowTimePicker(true)}
+        >
+          <View style={styles.dateTimeContent}>
+            <Ionicons
+              name="time-outline"
+              size={20}
+              color={AiraColors.primary}
+            />
+            <ThemedText style={styles.dateTimeText}>
+              {format(startTime, "HH:mm")}
+            </ThemedText>
+          </View>
+          <Ionicons
+            name="chevron-forward"
+            size={16}
+            color={AiraColors.mutedForeground}
+          />
+        </TouchableOpacity>
+      </View>
+
+      {/* Recurrence Selection */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>¿Se repite?</ThemedText>
+        <View style={styles.recurrenceGrid}>
+          {recurrenceOptions.map((option) => (
+            <TouchableOpacity
+              key={option.value}
+              style={[
+                styles.recurrenceOption,
+                recurrenceType === option.value &&
+                  styles.recurrenceOptionSelected,
+              ]}
+              onPress={() => setRecurrenceType(option.value)}
+            >
+              <ThemedText style={styles.recurrenceIcon}>
+                {option.icon}
+              </ThemedText>
+              <ThemedText
+                style={[
+                  styles.recurrenceLabel,
+                  recurrenceType === option.value &&
+                    styles.recurrenceLabelSelected,
+                ]}
+              >
+                {option.label}
+              </ThemedText>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+
+      {/* Location */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>Ubicación (opcional)</ThemedText>
+        <ThemedInput
+          value={location}
+          onChangeText={setLocation}
+          placeholder={getDefaultLocation()}
+        />
+      </View>
+
+      {/* Notes */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>Notas (opcional)</ThemedText>
+        <ThemedInput
+          variant="textarea"
+          value={notes}
+          onChangeText={setNotes}
+          placeholder="Notas adicionales..."
+          multiline
+          numberOfLines={3}
+        />
+      </View>
+
+      {/* Summary */}
+      <View style={styles.summary}>
+        <ThemedText style={styles.summaryText}>
+          📅 Resumen: {itemTitle} el{" "}
+          {format(startTime, "d 'de' MMMM", { locale: es })} a las{" "}
+          {format(startTime, "HH:mm")}
+          {recurrenceType !== "none" && (
+            <ThemedText type="defaultItalic" style={styles.recurrenceNote}>
+              {" "}
+              (
+              {recurrenceOptions
+                .find((opt) => opt.value === recurrenceType)
+                ?.label.toLowerCase()}
+              )
+            </ThemedText>
+          )}
+        </ThemedText>
+      </View>
+
+      {/* Date/Time Pickers */}
+      {showDatePicker && (
+        <View style={styles.pickerContainer}>
+          {Platform.OS === "ios" && (
+            <View style={styles.pickerHeader}>
+              <TouchableOpacity
+                onPress={() => setShowDatePicker(false)}
+                style={styles.pickerButton}
+              >
+                <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
+              </TouchableOpacity>
+            </View>
+          )}
+          <DateTimePicker
+            value={startTime}
+            mode="date"
+            display={Platform.OS === "ios" ? "spinner" : "default"}
+            onChange={handleDateChange}
+            locale="es-ES"
+            minimumDate={new Date()}
+          />
+        </View>
+      )}
+
+      {showTimePicker && (
+        <View style={styles.pickerContainer}>
+          {Platform.OS === "ios" && (
+            <View style={styles.pickerHeader}>
+              <TouchableOpacity
+                onPress={() => setShowTimePicker(false)}
+                style={styles.pickerButton}
+              >
+                <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
+              </TouchableOpacity>
+            </View>
+          )}
+          <DateTimePicker
+            value={startTime}
+            mode="time"
+            display={Platform.OS === "ios" ? "spinner" : "default"}
+            onChange={handleTimeChange}
+            locale="es-ES"
+            is24Hour={true}
+          />
+        </View>
+      )}
+    </ModalView>
   );
 };
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.5)",
-  },
-  modalContent: {
-    flex: 1,
-    marginTop: Platform.OS === "ios" ? 50 : 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    backgroundColor: AiraColors.card,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
-  },
-  closeButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 4,
-  },
-  closeButtonText: {
-    fontSize: 16,
-    color: AiraColors.mutedForeground,
-  },
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  titleIcon: {
-    marginRight: 8,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "600",
-    color: AiraColors.foreground,
-  },
-  saveButton: {
-    backgroundColor: AiraColors.primary,
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 16,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-  },
-  saveButtonDisabled: {
-    opacity: 0.5,
-  },
-  saveButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  content: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
   itemInfo: {
     backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
     padding: 16,

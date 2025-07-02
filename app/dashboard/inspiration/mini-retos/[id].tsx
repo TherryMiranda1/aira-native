@@ -7,12 +7,12 @@ import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import { AiraColors } from "@/constants/Colors";
 import { challengeService, Challenge } from "@/services/api/challenge.service";
-import { ChallengeModal } from "@/features/challenges/ChallengeModal";
+import { ChallengeModal } from "@/components/modals/ChallengeModal";
 import { ChallengeItem } from "@/features/challenges/ChallengeItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
-import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 const categoryLabels: Record<string, string> = {

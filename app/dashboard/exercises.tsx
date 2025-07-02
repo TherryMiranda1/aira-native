@@ -7,7 +7,7 @@
   import ExercisesDashboard from "@/features/exercises/ExercisesDashboard";
   import ExercisesGallery from "@/features/exercises/ExercisesGallery";
   import { ProfileButton } from "@/components/ui/ProfileButton";
-  import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+  import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
 
   export default function ExercisesScreen() {
     const [selectedCategory, setSelectedCategory] = useState<string | undefined>(

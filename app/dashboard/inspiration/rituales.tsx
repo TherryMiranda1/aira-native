@@ -18,12 +18,12 @@ import { useRituals } from "@/hooks/services/useRituals";
 import { ritualService, Ritual } from "@/services/api/ritual.service";
 import { CategoriesList, Category } from "@/components/Categories";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { RitualModal } from "@/features/rituals/RitualModal";
+import { RitualModal } from "@/components/modals/RitualModal";
 import { RitualItem } from "@/features/rituals/RitualItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
-import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 // Mapeo de categorías basado en el servicio de rituales
@@ -312,7 +312,10 @@ export default function RitualesScreen() {
       );
     } catch (error) {
       console.error("Error completing ritual:", error);
-      showErrorToast("Error", "No se pudo registrar la finalización del ritual");
+      showErrorToast(
+        "Error",
+        "No se pudo registrar la finalización del ritual"
+      );
     }
   };
 
@@ -519,4 +522,3 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
-

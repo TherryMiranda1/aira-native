@@ -5,12 +5,14 @@ import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
+import { ThemeSelector } from "./ThemeSelector";
 
 interface TopbarProps {
   title: string;
   actions?: React.ReactNode;
   showBackButton?: boolean;
   onBack?: () => void;
+  showThemeSelector?: boolean;
 }
 
 export const Topbar = ({
@@ -18,6 +20,7 @@ export const Topbar = ({
   actions,
   showBackButton = false,
   onBack,
+  showThemeSelector = false,
 }: TopbarProps) => {
   const router = useRouter();
 
@@ -44,7 +47,10 @@ export const Topbar = ({
         <ThemedText numberOfLines={1} style={styles.topbarTitle} type="title">
           {title}
         </ThemedText>
-        <View style={styles.topbarActions}>{actions}</View>
+        <View style={styles.topbarActions}>
+          {showThemeSelector && <ThemeSelector />}
+          {actions}
+        </View>
       </View>
     </>
   );

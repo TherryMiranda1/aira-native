@@ -24,6 +24,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { useUser } from "@clerk/clerk-expo";
 import { ThemedInput } from "@/components/ThemedInput";
 import { IconSelector, getIconById } from "@/components/ui/IconSelector";
+import { ModalView } from "@/components/modals/ModalView";
 
 interface EventFormProps {
   visible: boolean;
@@ -150,173 +151,137 @@ export const EventForm: React.FC<EventFormProps> = ({
   };
 
   return (
-    <Modal
+    <ModalView
+      title=""
       visible={visible}
-      animationType="slide"
-      onRequestClose={handleClose}
-      presentationStyle="pageSheet"
+      onClose={handleClose}
+      onSubmit={handleSave}
+      submitButtonText="Crear"
+      closeButtonText="Cancelar"
+      submitButtonIcon="calendar"
+      loading={saving}
     >
-      <View style={styles.modalContainer}>
-        <ThemedView style={styles.modalContent}>
-          {/* Header */}
-          <View style={styles.header}>
-            <TouchableOpacity onPress={handleClose} style={styles.closeButton}>
-              <ThemedText style={styles.closeButtonText}>Cancelar</ThemedText>
-            </TouchableOpacity>
+      {/* Title Input */}
+      <View style={styles.section}>
+        <ThemedText style={styles.questionText}>
+          ¿Qué tienes planeado?
+        </ThemedText>
+        <ThemedInput
+          placeholder="Ej: Cita médica, ejercicio..."
+          value={title}
+          onChangeText={setTitle}
+          placeholderTextColor={AiraColors.mutedForeground}
+          autoFocus={!initialEvent}
+          multiline
+          maxLength={100}
+        />
+      </View>
 
-            <ThemedText style={styles.title}>
-              {initialEvent ? "Editar Plan" : "Nuevo Plan"}
-            </ThemedText>
+      {/* Date Selection */}
+      <View style={styles.section}>
+        <ThemedText style={styles.questionText}>¿Qué día?</ThemedText>
 
-            <TouchableOpacity
-              onPress={handleSave}
-              disabled={!title.trim() || saving}
-              style={[
-                styles.saveButton,
-                (!title.trim() || saving) && styles.saveButtonDisabled,
-              ]}
-            >
-              {saving ? (
-                <ActivityIndicator size="small" color="#fff" />
-              ) : (
-                <ThemedText style={styles.saveButtonText}>
-                  {initialEvent ? "Actualizar" : "Crear"}
-                </ThemedText>
-              )}
-            </TouchableOpacity>
-          </View>
+        <TouchableOpacity
+          style={styles.dateTimeButton}
+          onPress={() => setShowDatePicker(true)}
+        >
+          <ThemedText style={styles.dateTimeButtonText}>
+            📅 {format(eventDate, "EEEE, d 'de' MMMM", { locale: es })}
+          </ThemedText>
+          <ThemedText style={styles.chevron}>›</ThemedText>
+        </TouchableOpacity>
 
-          <ScrollView
-            style={styles.content}
-            showsVerticalScrollIndicator={false}
-          >
-            {/* Title Input */}
-            <View style={styles.section}>
-              <ThemedText style={styles.questionText}>
-                ¿Qué tienes planeado?
-              </ThemedText>
-              <ThemedInput
-                placeholder="Ej: Cita médica, ejercicio..."
-                value={title}
-                onChangeText={setTitle}
-                placeholderTextColor={AiraColors.mutedForeground}
-                autoFocus={!initialEvent}
-                multiline
-                maxLength={100}
-              />
-            </View>
-
-            {/* Date Selection */}
-            <View style={styles.section}>
-              <ThemedText style={styles.questionText}>¿Qué día?</ThemedText>
-
-              <TouchableOpacity
-                style={styles.dateTimeButton}
-                onPress={() => setShowDatePicker(true)}
-              >
-                <ThemedText style={styles.dateTimeButtonText}>
-                  📅 {format(eventDate, "EEEE, d 'de' MMMM", { locale: es })}
-                </ThemedText>
-                <ThemedText style={styles.chevron}>›</ThemedText>
-              </TouchableOpacity>
-
-              {showDatePicker && (
-                <View style={styles.pickerContainer}>
-                  {Platform.OS === "ios" && (
-                    <View style={styles.pickerHeader}>
-                      <TouchableOpacity
-                        onPress={() => setShowDatePicker(false)}
-                        style={styles.pickerButton}
-                      >
-                        <ThemedText style={styles.pickerButtonText}>
-                          Listo
-                        </ThemedText>
-                      </TouchableOpacity>
-                    </View>
-                  )}
-                  <DateTimePicker
-                    value={eventDate}
-                    mode="date"
-                    display={Platform.OS === "ios" ? "spinner" : "default"}
-                    onChange={onDateChange}
-                    locale="es-ES"
-                    minimumDate={new Date()}
-                  />
-                </View>
-              )}
-            </View>
-
-            {/* Time Selection */}
-            <View style={styles.section}>
-              <ThemedText style={styles.questionText}>¿A qué hora?</ThemedText>
-
-              <TouchableOpacity
-                style={styles.dateTimeButton}
-                onPress={() => setShowTimePicker(true)}
-              >
-                <ThemedText style={styles.dateTimeButtonText}>
-                  🕐 {format(eventTime, "HH:mm")}
-                </ThemedText>
-                <ThemedText style={styles.chevron}>›</ThemedText>
-              </TouchableOpacity>
-
-              {showTimePicker && (
-                <View style={styles.pickerContainer}>
-                  {Platform.OS === "ios" && (
-                    <View style={styles.pickerHeader}>
-                      <TouchableOpacity
-                        onPress={() => setShowTimePicker(false)}
-                        style={styles.pickerButton}
-                      >
-                        <ThemedText style={styles.pickerButtonText}>
-                          Listo
-                        </ThemedText>
-                      </TouchableOpacity>
-                    </View>
-                  )}
-                  <DateTimePicker
-                    value={eventTime}
-                    mode="time"
-                    display={Platform.OS === "ios" ? "spinner" : "default"}
-                    onChange={onTimeChange}
-                    locale="es-ES"
-                    is24Hour={true}
-                  />
-                </View>
-              )}
-            </View>
-
-            {/* Category Selection */}
-            <View style={styles.section}>
-              <ThemedText style={styles.questionText}>Categoría</ThemedText>
-              <View style={styles.optionsGrid}>
-                {categoryOptions.map((option) => (
-                  <TouchableOpacity
-                    key={option.value}
-                    style={[
-                      styles.optionCard,
-                      category === option.value && styles.optionCardSelected,
-                    ]}
-                    onPress={() => setCategory(option.value)}
-                  >
-                    <ThemedText style={styles.optionIcon}>
-                      {option.icon}
-                    </ThemedText>
-                    <ThemedText
-                      style={[
-                        styles.optionLabel,
-                        category === option.value && styles.optionLabelSelected,
-                      ]}
-                    >
-                      {option.label}
-                    </ThemedText>
-                  </TouchableOpacity>
-                ))}
+        {showDatePicker && (
+          <View style={styles.pickerContainer}>
+            {Platform.OS === "ios" && (
+              <View style={styles.pickerHeader}>
+                <TouchableOpacity
+                  onPress={() => setShowDatePicker(false)}
+                  style={styles.pickerButton}
+                >
+                  <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
+                </TouchableOpacity>
               </View>
-            </View>
+            )}
+            <DateTimePicker
+              value={eventDate}
+              mode="date"
+              display={Platform.OS === "ios" ? "spinner" : "default"}
+              onChange={onDateChange}
+              locale="es-ES"
+              minimumDate={new Date()}
+            />
+          </View>
+        )}
+      </View>
 
-            {/* Icon Selection */}
-            {/* <View style={styles.section}>
+      {/* Time Selection */}
+      <View style={styles.section}>
+        <ThemedText style={styles.questionText}>¿A qué hora?</ThemedText>
+
+        <TouchableOpacity
+          style={styles.dateTimeButton}
+          onPress={() => setShowTimePicker(true)}
+        >
+          <ThemedText style={styles.dateTimeButtonText}>
+            🕐 {format(eventTime, "HH:mm")}
+          </ThemedText>
+          <ThemedText style={styles.chevron}>›</ThemedText>
+        </TouchableOpacity>
+
+        {showTimePicker && (
+          <View style={styles.pickerContainer}>
+            {Platform.OS === "ios" && (
+              <View style={styles.pickerHeader}>
+                <TouchableOpacity
+                  onPress={() => setShowTimePicker(false)}
+                  style={styles.pickerButton}
+                >
+                  <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
+                </TouchableOpacity>
+              </View>
+            )}
+            <DateTimePicker
+              value={eventTime}
+              mode="time"
+              display={Platform.OS === "ios" ? "spinner" : "default"}
+              onChange={onTimeChange}
+              locale="es-ES"
+              is24Hour={true}
+            />
+          </View>
+        )}
+      </View>
+
+      {/* Category Selection */}
+      <View style={styles.section}>
+        <ThemedText style={styles.questionText}>Categoría</ThemedText>
+        <View style={styles.optionsGrid}>
+          {categoryOptions.map((option) => (
+            <TouchableOpacity
+              key={option.value}
+              style={[
+                styles.optionCard,
+                category === option.value && styles.optionCardSelected,
+              ]}
+              onPress={() => setCategory(option.value)}
+            >
+              <ThemedText style={styles.optionIcon}>{option.icon}</ThemedText>
+              <ThemedText
+                style={[
+                  styles.optionLabel,
+                  category === option.value && styles.optionLabelSelected,
+                ]}
+              >
+                {option.label}
+              </ThemedText>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+
+      {/* Icon Selection */}
+      {/* <View style={styles.section}>
               <ThemedText style={styles.questionText}>Icono</ThemedText>
               <View style={styles.iconSelectorContainer}>
                 <IconSelector
@@ -327,63 +292,60 @@ export const EventForm: React.FC<EventFormProps> = ({
               </View>
             </View> */}
 
-            {/* Recurrence Selection */}
-            <View style={styles.section}>
-              <ThemedText style={styles.questionText}>¿Se repite?</ThemedText>
-              <View style={styles.recurrenceContainer}>
-                {recurrenceOptions.map((option) => (
-                  <TouchableOpacity
-                    key={option.value}
-                    style={[
-                      styles.recurrenceOption,
-                      recurrenceType === option.value &&
-                        styles.recurrenceOptionSelected,
-                    ]}
-                    onPress={() => setRecurrenceType(option.value)}
-                  >
-                    <ThemedText style={styles.recurrenceIcon}>
-                      {option.icon}
-                    </ThemedText>
-                    <ThemedText
-                      style={[
-                        styles.recurrenceLabel,
-                        recurrenceType === option.value &&
-                          styles.recurrenceLabelSelected,
-                      ]}
-                    >
-                      {option.label}
-                    </ThemedText>
-                    {recurrenceType === option.value && (
-                      <View style={styles.selectedIndicator} />
-                    )}
-                  </TouchableOpacity>
-                ))}
-              </View>
-            </View>
-
-            {/* Summary Info */}
-            <View style={styles.summaryInfo}>
-              <ThemedText style={styles.summaryText}>
-                {getIconById(selectedIcon)?.emoji || "📝"} Resumen:{" "}
-                {title || "Sin título"} el{" "}
-                {format(eventDate, "d 'de' MMMM", { locale: es })} a las{" "}
-                {format(eventTime, "HH:mm")}
-                {recurrenceType !== "none" && (
-                  <ThemedText type="defaultItalic" style={styles.recurrenceNote}>
-                    {" "}
-                    (
-                    {recurrenceOptions
-                      .find((opt) => opt.value === recurrenceType)
-                      ?.label.toLowerCase()}
-                    )
-                  </ThemedText>
-                )}
+      {/* Recurrence Selection */}
+      <View style={styles.section}>
+        <ThemedText style={styles.questionText}>¿Se repite?</ThemedText>
+        <View style={styles.recurrenceContainer}>
+          {recurrenceOptions.map((option) => (
+            <TouchableOpacity
+              key={option.value}
+              style={[
+                styles.recurrenceOption,
+                recurrenceType === option.value &&
+                  styles.recurrenceOptionSelected,
+              ]}
+              onPress={() => setRecurrenceType(option.value)}
+            >
+              <ThemedText style={styles.recurrenceIcon}>
+                {option.icon}
               </ThemedText>
-            </View>
-          </ScrollView>
-        </ThemedView>
+              <ThemedText
+                style={[
+                  styles.recurrenceLabel,
+                  recurrenceType === option.value &&
+                    styles.recurrenceLabelSelected,
+                ]}
+              >
+                {option.label}
+              </ThemedText>
+              {recurrenceType === option.value && (
+                <View style={styles.selectedIndicator} />
+              )}
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
-    </Modal>
+
+      {/* Summary Info */}
+      <View style={styles.summaryInfo}>
+        <ThemedText style={styles.summaryText}>
+          {getIconById(selectedIcon)?.emoji || "📝"} Resumen:{" "}
+          {title || "Sin título"} el{" "}
+          {format(eventDate, "d 'de' MMMM", { locale: es })} a las{" "}
+          {format(eventTime, "HH:mm")}
+          {recurrenceType !== "none" && (
+            <ThemedText type="defaultItalic" style={styles.recurrenceNote}>
+              {" "}
+              (
+              {recurrenceOptions
+                .find((opt) => opt.value === recurrenceType)
+                ?.label.toLowerCase()}
+              )
+            </ThemedText>
+          )}
+        </ThemedText>
+      </View>
+    </ModalView>
   );
 };
 

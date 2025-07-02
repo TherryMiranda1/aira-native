@@ -7,7 +7,7 @@ import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import { AiraColors } from "@/constants/Colors";
 import { phraseService, Phrase } from "@/services/api/phrase.service";
-import { PhraseModal } from "@/features/quotes/PhraseModal";
+import { PhraseModal } from "@/components/modals/PhraseModal";
 import { PhraseItem } from "@/features/quotes/PhraseItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";

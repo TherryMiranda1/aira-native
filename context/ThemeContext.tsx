@@ -1,12 +1,12 @@
 import React, { createContext, JSX, useContext, useEffect, useState } from "react";
 
 import { getThemeVariants, ThemeVariantType } from "@/constants/Themes";
-import { useColorScheme } from "react-native";
 import {
   buildThemeVariants,
   ThemeVariants,
 } from "@/utils/styles/buildThemeVariants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useThemePreference } from "./ThemePreferenceContext";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -25,12 +25,12 @@ const ThemesContext = createContext<ThemesReturnType>({} as ThemesReturnType);
 export const useThemesContext = () => useContext(ThemesContext);
 
 export const ThemesContainer = ({ children, localVariant }: Props) => {
-  const theme = useColorScheme() ?? "light";
+  const { actualTheme } = useThemePreference();
 
   const [currentThemeVariant, setCurrentThemeVariant] =
     useState<ThemeVariantType>(localVariant);
   const [variants, setVariants] = useState<ThemeVariants>(
-    buildThemeVariants(getThemeVariants(theme)[currentThemeVariant])
+    buildThemeVariants(getThemeVariants(actualTheme)[currentThemeVariant])
   );
 
   const changeVariant = async (variant: ThemeVariantType) => {
@@ -40,14 +40,14 @@ export const ThemesContainer = ({ children, localVariant }: Props) => {
 
   useEffect(() => {
     setVariants(
-      buildThemeVariants(getThemeVariants(theme)[currentThemeVariant])
+      buildThemeVariants(getThemeVariants(actualTheme)[currentThemeVariant])
     );
-  }, [theme, currentThemeVariant]);
+  }, [actualTheme, currentThemeVariant]);
 
   return (
     <ThemesContext.Provider
       value={{
-        theme,
+        theme: actualTheme,
         variants,
         currentThemeVariant,
         setCurrentThemeVariant: changeVariant,

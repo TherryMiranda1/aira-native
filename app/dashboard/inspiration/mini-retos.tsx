@@ -18,12 +18,12 @@ import { useChallenges } from "@/hooks/services/useChallenges";
 import { challengeService, Challenge } from "@/services/api/challenge.service";
 import { CategoriesList, Category } from "@/components/Categories";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { ChallengeModal } from "@/features/challenges/ChallengeModal";
+import { ChallengeModal } from "@/components/modals/ChallengeModal";
 import { ChallengeItem } from "@/features/challenges/ChallengeItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
 import { ErrorState } from "@/components/States/ErrorState";
-import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 // Mapeo de categorías de la versión web

@@ -19,7 +19,7 @@ import { usePhrases } from "@/hooks/services/usePhrases";
 import { phraseService, Phrase } from "@/services/api/phrase.service";
 import { CategoriesList, Category } from "@/components/Categories";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
-import { PhraseModal } from "@/features/quotes/PhraseModal";
+import { PhraseModal } from "@/components/modals/PhraseModal";
 import { PhraseItem } from "@/features/quotes/PhraseItem";
 import { EmptyState } from "@/components/States/EmptyState";
 import { LoadingState } from "@/components/States/LoadingState";
