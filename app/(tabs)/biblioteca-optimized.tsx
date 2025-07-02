@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useCallback } from "react";
 import { 
   View, 
   StyleSheet, 
@@ -19,7 +19,6 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { LibraryCategory, LibrarySection } from "@/types/biblioteca";
 import { bibliotecaData } from "@/data/bibliotecaData";
-import { useImageOptimization } from "@/hooks/useImageOptimization";
 
 const SECTION_HEIGHT = 300;
 const FEATURED_SECTION_HEIGHT = 400;
@@ -32,9 +31,7 @@ interface FeedItem {
   data?: LibrarySection | LibraryCategory[];
 }
 
-export default function BibliotecaScreen() {
-  const { prefetchImages } = useImageOptimization();
-  
+export default function BibliotecaOptimizedScreen() {
   const featuredItems = useMemo(() => {
     const items: Array<{
       category: LibraryCategory;
@@ -81,42 +78,11 @@ export default function BibliotecaScreen() {
     return items;
   }, [featuredItems]);
 
-  const allImageUris = useMemo(() => {
-    const uris: string[] = [];
-    bibliotecaData.forEach(section => {
-      section.categories.forEach(category => {
-        if (category.image) {
-          uris.push(category.image);
-        }
-      });
-    });
-    return uris;
-  }, []);
 
-  useEffect(() => {
-    prefetchImages(allImageUris.slice(0, 6));
-  }, [prefetchImages, allImageUris]);
 
-  const getEstimatedItemSize = (item: FeedItem) => {
-    switch (item.type) {
-      case 'hero':
-        return HERO_SECTION_HEIGHT;
-      case 'section':
-        return SECTION_HEIGHT;
-      case 'featured':
-        return FEATURED_SECTION_HEIGHT;
-      case 'cta':
-        return CTA_SECTION_HEIGHT;
-      case 'footer':
-        return 100;
-      default:
-        return SECTION_HEIGHT;
-    }
-  };
+  const keyExtractor = useCallback((item: FeedItem) => item.id, []);
 
-  const keyExtractor = (item: FeedItem) => item.id;
-
-  const renderHeroSection = () => (
+  const renderHeroSection = useCallback(() => (
     <View style={styles.heroSection}>
       <View style={styles.heroHeader}>
         <View style={styles.heroText}>
@@ -129,9 +95,9 @@ export default function BibliotecaScreen() {
         </View>
       </View>
     </View>
-  );
+  ), []);
 
-  const renderFeaturedSection = (categories: LibraryCategory[]) => (
+  const renderFeaturedSection = useCallback((categories: LibraryCategory[]) => (
     <View style={styles.featuredSection}>
       <View style={styles.sectionHeader}>
         <View style={styles.sectionHeaderLeft}>
@@ -170,9 +136,9 @@ export default function BibliotecaScreen() {
         ))}
       </View>
     </View>
-  );
+  ), [featuredItems]);
 
-  const renderCTASection = () => (
+  const renderCTASection = useCallback(() => (
     <LinearGradient
       colors={[AiraColors.primary, AiraColors.accent]}
       style={styles.ctaSection}
@@ -225,9 +191,9 @@ export default function BibliotecaScreen() {
         </View>
       </View>
     </LinearGradient>
-  );
+  ), []);
 
-  const renderFooterSection = () => (
+  const renderFooterSection = useCallback(() => (
     <View style={styles.footer}>
       <ThemedText style={styles.footerText}>
         Tu biblioteca se actualiza constantemente con nuevo contenido
@@ -237,9 +203,9 @@ export default function BibliotecaScreen() {
         Creada con 💜 por el equipo de Aira para tu bienestar integral
       </ThemedText>
     </View>
-  );
+  ), []);
 
-  const renderFeedItem: ListRenderItem<FeedItem> = ({ item }) => {
+  const renderFeedItem: ListRenderItem<FeedItem> = useCallback(({ item }) => {
     switch (item.type) {
       case 'hero':
         return renderHeroSection();
@@ -254,7 +220,7 @@ export default function BibliotecaScreen() {
       default:
         return null;
     }
-  };
+  }, [renderHeroSection, renderFeaturedSection, renderCTASection, renderFooterSection]);
 
   return (
     <PageView>
@@ -428,4 +394,4 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
     textAlign: "center",
   },
-});
+}); 
