@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "../../constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
-import { PageView } from "@/components/ui/PageView";
+import { RefreshablePageView } from "@/components/ui/RefreshablePageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import WeeklyCalendar from "@/components/weeklyCalendar/WeeklyCalendar";
@@ -36,6 +36,10 @@ export default function HomeScreen() {
   const isLoaded = useRef(false);
   const isPaywallShown = useRef(false);
 
+  const handleRefresh = useCallback(() => {
+    getNotes();
+  }, [getNotes]);
+
   useEffect(() => {
     getNotes();
 
@@ -63,7 +67,12 @@ export default function HomeScreen() {
   }, [isUserLoaded, user]);
 
   return (
-    <PageView>
+    <RefreshablePageView
+      onRefresh={handleRefresh}
+      onEndReach={handleRefresh}
+      contentContainerStyle={styles.scrollContent}
+      endReachText="Desliza hacia abajo para actualizar"
+    >
       <Topbar title="" actions={<ProfileButton />} />
       <LinearGradient
         colors={[
@@ -74,60 +83,51 @@ export default function HomeScreen() {
         style={[styles.gradientBackground]}
       >
         <GestureHandlerRootView>
-          <ScrollView
-            style={styles.scrollView}
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
-          >
-            <WeeklyCalendar />
+          <WeeklyCalendar />
 
-            {/* Header con saludo personalizado */}
-            <View style={styles.header}>
-              <ThemedText type="defaultSemiBold" style={styles.greeting}>
-                {greeting}, {user?.fullName}
-              </ThemedText>
-              <ThemedText style={styles.subGreeting}>
-                Soy Aira, y estoy aquí para acompañarte hoy
-              </ThemedText>
-            </View>
+          {/* Header con saludo personalizado */}
+          <View style={styles.header}>
+            <ThemedText type="defaultSemiBold" style={styles.greeting}>
+              {greeting}, {user?.fullName}
+            </ThemedText>
+            <ThemedText style={styles.subGreeting}>
+              Soy Aira, y estoy aquí para acompañarte hoy
+            </ThemedText>
+          </View>
 
-            {/* Frase diaria inspiradora */}
-            <DailyPhrase />
+          {/* Frase diaria inspiradora */}
+          <DailyPhrase />
 
-            {/* Mood Tracker Component */}
-            <MoodTracker />
+          {/* Mood Tracker Component */}
+          <MoodTracker />
 
-            {/* Daily Suggestion Component */}
-            <DailySuggestion
-              title="Tu mini reto del día"
-              subtitle="Un pequeño paso hacia tu bienestar"
-            />
+          {/* Daily Suggestion Component */}
+          <DailySuggestion
+            title="Tu mini reto del día"
+            subtitle="Un pequeño paso hacia tu bienestar"
+          />
 
-            {/* Logros reales basados en el historial */}
-            <AchievementsSummary />
+          {/* Logros reales basados en el historial */}
+          <AchievementsSummary />
 
-            {/* Footer cálido */}
-            <View style={styles.footer}>
-              <ThemedText style={styles.footerText}>
-                Recuerda: el cambio es un proceso, no una carrera
-              </ThemedText>
-            </View>
-          </ScrollView>
+          {/* Footer cálido */}
+          <View style={styles.footer}>
+            <ThemedText style={styles.footerText}>
+              Recuerda: el cambio es un proceso, no una carrera
+            </ThemedText>
+          </View>
         </GestureHandlerRootView>
       </LinearGradient>
-    </PageView>
+    </RefreshablePageView>
   );
 }
 
 const styles = StyleSheet.create({
   gradientBackground: {
     flex: 1,
-  },
-  scrollView: {
-    flex: 1,
+    padding: 16,
   },
   scrollContent: {
-    padding: 16,
     paddingBottom: 40,
   },
   header: {

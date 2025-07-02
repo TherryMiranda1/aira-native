@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Stack, router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
-import { PageView } from "@/components/ui/PageView";
+import { RefreshablePageView } from "@/components/ui/RefreshablePageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import { LoadingState } from "@/components/States/LoadingState";
@@ -14,13 +14,12 @@ import { useMetrics } from "@/hooks/services/useMetrics";
 import { CreateMetricModal } from "@/components/metrics/CreateMetricModal";
 import { MetricCard } from "@/components/metrics/MetricCard";
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
-import { useScrollDirection } from "@/hooks/useScrollDirection";
+
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 
 export default function MetricsScreen() {
   const { metrics, loading, error, deleteMetric, refetch } = useMetrics();
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const { showText, handleScroll } = useScrollDirection();
   const { showConfirm } = useAlertHelpers();
 
   const handleDeleteMetric = (metricId: string, metricTitle: string) => {
@@ -43,7 +42,7 @@ export default function MetricsScreen() {
 
   if (loading) {
     return (
-      <PageView>
+      <RefreshablePageView>
         <Stack.Screen
           options={{
             headerShown: false,
@@ -51,13 +50,13 @@ export default function MetricsScreen() {
         />
         <Topbar title="Mis Métricas" actions={<ProfileButton />} />
         <LoadingState title="Cargando tus métricas..." />
-      </PageView>
+      </RefreshablePageView>
     );
   }
 
   if (error) {
     return (
-      <PageView>
+      <RefreshablePageView>
         <Stack.Screen
           options={{
             headerShown: false,
@@ -69,12 +68,18 @@ export default function MetricsScreen() {
           description="Error al cargar métricas"
           onRetry={refetch}
         />
-      </PageView>
+      </RefreshablePageView>
     );
   }
 
   return (
-    <PageView>
+    <RefreshablePageView
+      onRefresh={refetch}
+      onEndReach={refetch}
+      refreshing={loading}
+      contentContainerStyle={styles.scrollContent}
+      endReachText="Desliza hacia abajo para actualizar métricas"
+    >
       <Stack.Screen
         options={{
           headerShown: false,
@@ -90,44 +95,36 @@ export default function MetricsScreen() {
         ]}
         style={styles.gradientBackground}
       >
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
-        >
-          {/* Header */}
-          <View style={styles.header}>
-            <ThemedText type="title" style={styles.title}>
-              Seguimiento Personal
-            </ThemedText>
-            <ThemedText style={styles.subtitle}>
-              Registra y visualiza tu progreso de manera sencilla
-            </ThemedText>
-          </View>
+        {/* Header */}
+        <View style={styles.header}>
+          <ThemedText type="title" style={styles.title}>
+            Seguimiento Personal
+          </ThemedText>
+          <ThemedText style={styles.subtitle}>
+            Registra y visualiza tu progreso de manera sencilla
+          </ThemedText>
+        </View>
 
-          {/* Lista de métricas */}
-          {metrics.length === 0 ? (
-            <EmptyState
-              title="Sin métricas aún"
-              description="Crea tu primera métrica para comenzar a hacer seguimiento de tu progreso"
-              buttonText="Crear métrica"
-              onPress={() => setShowCreateModal(true)}
-            />
-          ) : (
-            <View style={styles.metricsContainer}>
-              {metrics.map((metric) => (
-                <MetricCard
-                  key={metric.id}
-                  metric={metric}
-                  onPress={() => handleMetricPress(metric.id)}
-                  onDelete={() => handleDeleteMetric(metric.id, metric.title)}
-                />
-              ))}
-            </View>
-          )}
-        </ScrollView>
+        {/* Lista de métricas */}
+        {metrics.length === 0 ? (
+          <EmptyState
+            title="Sin métricas aún"
+            description="Crea tu primera métrica para comenzar a hacer seguimiento de tu progreso"
+            buttonText="Crear métrica"
+            onPress={() => setShowCreateModal(true)}
+          />
+        ) : (
+          <View style={styles.metricsContainer}>
+            {metrics.map((metric) => (
+              <MetricCard
+                key={metric.id}
+                metric={metric}
+                onPress={() => handleMetricPress(metric.id)}
+                onDelete={() => handleDeleteMetric(metric.id, metric.title)}
+              />
+            ))}
+          </View>
+        )}
       </LinearGradient>
 
       {/* Modal para crear métrica */}
@@ -146,19 +143,16 @@ export default function MetricsScreen() {
         iconName="add"
         variant="primary"
       />
-    </PageView>
+    </RefreshablePageView>
   );
 }
 
 const styles = StyleSheet.create({
   gradientBackground: {
     flex: 1,
-  },
-  scrollView: {
-    flex: 1,
+    padding: 16,
   },
   scrollContent: {
-    padding: 16,
     paddingBottom: 40,
   },
   header: {
@@ -173,7 +167,6 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
     lineHeight: 22,
   },
-
   metricsContainer: {
     gap: 16,
   },
