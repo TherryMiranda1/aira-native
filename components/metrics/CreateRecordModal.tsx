@@ -18,6 +18,7 @@ import { CreateMetricRecordData, Metric } from "@/services/api/metrics.service";
 import { AiraVariants } from "@/constants/Themes";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
+import { ModalView } from "../modals/ModalView";
 
 interface CreateRecordModalProps {
   visible: boolean;
@@ -159,228 +160,183 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
   };
 
   return (
-    <Modal
+    <ModalView
+      title="Crear registro"
       visible={visible}
-      animationType="slide"
-      presentationStyle="pageSheet"
+      onClose={handleClose}
+      onSubmit={handleSubmit}
+      submitButtonText="Crear"
+      closeButtonText="Cancelar"
+      submitButtonIcon="add"
+      loading={saving}
     >
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
-        {/* Header */}
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
-            <Ionicons name="close" size={24} color={AiraColors.foreground} />
-          </TouchableOpacity>
-          <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
-            Nuevo Registro
-          </ThemedText>
-          <TouchableOpacity
-            style={[
-              styles.saveButton,
-              (!value.trim() || saving) && styles.saveButtonDisabled,
-            ]}
-            onPress={handleSubmit}
-            disabled={!value.trim() || saving}
-          >
-            <ThemedText
-              style={[
-                styles.saveButtonText,
-                (!value.trim() || saving) && styles.saveButtonTextDisabled,
-              ]}
-            >
-              {saving ? "Guardando..." : "Guardar"}
-            </ThemedText>
-          </TouchableOpacity>
+      {/* Información de la métrica */}
+      <View style={styles.metricInfo}>
+        <ThemedText type="defaultSemiBold" style={styles.metricTitle}>
+          {metric.title}
+        </ThemedText>
+        <ThemedText style={styles.metricUnit}>Unidad: {metric.unit}</ThemedText>
+      </View>
+
+      {/* Valor */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>
+          Valor <ThemedText style={styles.required}>*</ThemedText>
+        </ThemedText>
+        <View style={styles.valueInputContainer}>
+          <ThemedInput
+            variant="numeric"
+            value={value}
+            onChangeText={setValue}
+            placeholder="0"
+            keyboardType="numeric"
+          />
+          <ThemedText style={styles.unitLabel}>{metric.unit}</ThemedText>
         </View>
+      </View>
 
-        <ScrollView
-          style={styles.content}
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}
+      {/* Fecha y hora */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>Fecha y hora</ThemedText>
+
+        {/* Fecha */}
+        <TouchableOpacity
+          style={styles.dateButton}
+          onPress={() => {
+            try {
+              setShowDatePicker(true);
+            } catch (error) {
+              console.error("Error opening date picker:", error);
+              showErrorToast("Error", "No se pudo abrir el selector de fecha");
+            }
+          }}
         >
-          {/* Información de la métrica */}
-          <View style={styles.metricInfo}>
-            <ThemedText type="defaultSemiBold" style={styles.metricTitle}>
-              {metric.title}
-            </ThemedText>
-            <ThemedText style={styles.metricUnit}>
-              Unidad: {metric.unit}
+          <View style={styles.dateInfo}>
+            <ThemedText style={styles.dateText}>
+              📅 {formatDate(recordDate)}
             </ThemedText>
           </View>
+          <Ionicons
+            name="calendar-outline"
+            size={20}
+            color={AiraColors.primary}
+          />
+        </TouchableOpacity>
 
-          {/* Valor */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>
-              Valor <ThemedText style={styles.required}>*</ThemedText>
+        {/* Hora */}
+        <TouchableOpacity
+          style={[styles.dateButton, { marginTop: 8 }]}
+          onPress={() => {
+            try {
+              setShowTimePicker(true);
+            } catch (error) {
+              console.error("Error opening time picker:", error);
+              showErrorToast("Error", "No se pudo abrir el selector de hora");
+            }
+          }}
+        >
+          <View style={styles.dateInfo}>
+            <ThemedText style={styles.dateText}>
+              🕐 {formatTime(recordTime)}
             </ThemedText>
-            <View style={styles.valueInputContainer}>
-              <ThemedInput
-                variant="numeric"
-                value={value}
-                onChangeText={setValue}
-                placeholder="0"
-                keyboardType="numeric"
-              />
-              <ThemedText style={styles.unitLabel}>{metric.unit}</ThemedText>
-            </View>
           </View>
+          <Ionicons name="time-outline" size={20} color={AiraColors.primary} />
+        </TouchableOpacity>
+      </View>
 
-          {/* Fecha y hora */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>Fecha y hora</ThemedText>
+      {/* Notas */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>Notas (opcional)</ThemedText>
+        <ThemedInput
+          variant="textarea"
+          value={notes}
+          onChangeText={setNotes}
+          placeholder="Agrega cualquier observación sobre este registro"
+          multiline
+          numberOfLines={2}
+          maxLength={300}
+        />
+      </View>
 
-            {/* Fecha */}
-            <TouchableOpacity
-              style={styles.dateButton}
-              onPress={() => {
-                try {
-                  setShowDatePicker(true);
-                } catch (error) {
-                  console.error("Error opening date picker:", error);
-                  showErrorToast(
-                    "Error",
-                    "No se pudo abrir el selector de fecha"
-                  );
-                }
-              }}
-            >
-              <View style={styles.dateInfo}>
-                <ThemedText style={styles.dateText}>
-                  📅 {formatDate(recordDate)}
-                </ThemedText>
-              </View>
+      {/* Objetivos y milestones */}
+      {(metric.target || metric.milestones.length > 0) && (
+        <View style={styles.section}>
+          <ThemedText style={styles.label}>Referencias</ThemedText>
+
+          {metric.target && (
+            <View style={styles.referenceItem}>
               <Ionicons
-                name="calendar-outline"
-                size={20}
+                name="flag-outline"
+                size={16}
                 color={AiraColors.primary}
               />
-            </TouchableOpacity>
-
-            {/* Hora */}
-            <TouchableOpacity
-              style={[styles.dateButton, { marginTop: 8 }]}
-              onPress={() => {
-                try {
-                  setShowTimePicker(true);
-                } catch (error) {
-                  console.error("Error opening time picker:", error);
-                  showErrorToast(
-                    "Error",
-                    "No se pudo abrir el selector de hora"
-                  );
-                }
-              }}
-            >
-              <View style={styles.dateInfo}>
-                <ThemedText style={styles.dateText}>
-                  🕐 {formatTime(recordTime)}
-                </ThemedText>
-              </View>
-              <Ionicons
-                name="time-outline"
-                size={20}
-                color={AiraColors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-
-          {/* Notas */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>Notas (opcional)</ThemedText>
-            <ThemedInput
-              variant="textarea"
-              value={notes}
-              onChangeText={setNotes}
-              placeholder="Agrega cualquier observación sobre este registro"
-              multiline
-              numberOfLines={2}
-              maxLength={300}
-            />
-          </View>
-
-          {/* Objetivos y milestones */}
-          {(metric.target || metric.milestones.length > 0) && (
-            <View style={styles.section}>
-              <ThemedText style={styles.label}>Referencias</ThemedText>
-
-              {metric.target && (
-                <View style={styles.referenceItem}>
-                  <Ionicons
-                    name="flag-outline"
-                    size={16}
-                    color={AiraColors.primary}
-                  />
-                  <ThemedText style={styles.referenceText}>
-                    Objetivo: {metric.target} {metric.unit}
-                  </ThemedText>
-                </View>
-              )}
-
-              {metric.milestones.slice(0, 3).map((milestone, index) => (
-                <View key={index} style={styles.referenceItem}>
-                  <Ionicons name="star-outline" size={16} color="#FFA726" />
-                  <ThemedText style={styles.referenceText}>
-                    Milestone: {milestone.value} {metric.unit}
-                    {milestone.description && ` - ${milestone.description}`}
-                  </ThemedText>
-                </View>
-              ))}
+              <ThemedText style={styles.referenceText}>
+                Objetivo: {metric.target} {metric.unit}
+              </ThemedText>
             </View>
           )}
-        </ScrollView>
 
-        {/* Date Picker */}
-        {showDatePicker && (
-          <View style={styles.pickerContainer}>
-            {Platform.OS === "ios" && (
-              <View style={styles.pickerHeader}>
-                <TouchableOpacity
-                  onPress={() => setShowDatePicker(false)}
-                  style={styles.pickerButton}
-                >
-                  <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
-                </TouchableOpacity>
-              </View>
-            )}
-            <DateTimePicker
-              value={recordDate}
-              mode="date"
-              display={Platform.OS === "ios" ? "spinner" : "default"}
-              onChange={onDateChange}
-              locale="es-ES"
-              minimumDate={new Date(2020, 0, 1)}
-              maximumDate={new Date(2030, 11, 31)}
-            />
-          </View>
-        )}
+          {metric.milestones.slice(0, 3).map((milestone, index) => (
+            <View key={index} style={styles.referenceItem}>
+              <Ionicons name="star-outline" size={16} color="#FFA726" />
+              <ThemedText style={styles.referenceText}>
+                Milestone: {milestone.value} {metric.unit}
+                {milestone.description && ` - ${milestone.description}`}
+              </ThemedText>
+            </View>
+          ))}
+        </View>
+      )}
 
-        {/* Time Picker */}
-        {showTimePicker && (
-          <View style={styles.pickerContainer}>
-            {Platform.OS === "ios" && (
-              <View style={styles.pickerHeader}>
-                <TouchableOpacity
-                  onPress={() => setShowTimePicker(false)}
-                  style={styles.pickerButton}
-                >
-                  <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
-                </TouchableOpacity>
-              </View>
-            )}
-            <DateTimePicker
-              value={recordTime}
-              mode="time"
-              display={Platform.OS === "ios" ? "spinner" : "default"}
-              onChange={onTimeChange}
-              locale="es-ES"
-              is24Hour={true}
-            />
-          </View>
-        )}
-      </KeyboardAvoidingView>
-    </Modal>
+      {/* Date Picker */}
+      {showDatePicker && (
+        <View style={styles.pickerContainer}>
+          {Platform.OS === "ios" && (
+            <View style={styles.pickerHeader}>
+              <TouchableOpacity
+                onPress={() => setShowDatePicker(false)}
+                style={styles.pickerButton}
+              >
+                <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
+              </TouchableOpacity>
+            </View>
+          )}
+          <DateTimePicker
+            value={recordDate}
+            mode="date"
+            display={Platform.OS === "ios" ? "spinner" : "default"}
+            onChange={onDateChange}
+            locale="es-ES"
+            minimumDate={new Date(2020, 0, 1)}
+            maximumDate={new Date(2030, 11, 31)}
+          />
+        </View>
+      )}
+
+      {/* Time Picker */}
+      {showTimePicker && (
+        <View style={styles.pickerContainer}>
+          {Platform.OS === "ios" && (
+            <View style={styles.pickerHeader}>
+              <TouchableOpacity
+                onPress={() => setShowTimePicker(false)}
+                style={styles.pickerButton}
+              >
+                <ThemedText style={styles.pickerButtonText}>Listo</ThemedText>
+              </TouchableOpacity>
+            </View>
+          )}
+          <DateTimePicker
+            value={recordTime}
+            mode="time"
+            display={Platform.OS === "ios" ? "spinner" : "default"}
+            onChange={onTimeChange}
+            locale="es-ES"
+            is24Hour={true}
+          />
+        </View>
+      )}
+    </ModalView>
   );
 };
 

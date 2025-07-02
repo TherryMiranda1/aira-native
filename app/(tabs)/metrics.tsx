@@ -62,7 +62,11 @@ export default function MetricsScreen() {
             headerShown: false,
           }}
         />
-        <Topbar title="Mis Métricas" actions={<ProfileButton />} />
+        <Topbar
+          title="Mis Métricas"
+          actions={<ProfileButton />}
+          showThemeSelector
+        />
         <ErrorState
           title="Error al cargar métricas"
           description="Error al cargar métricas"

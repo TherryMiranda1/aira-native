@@ -383,6 +383,7 @@ const styles = StyleSheet.create({
   featuredSection: {
     paddingHorizontal: 8,
     minHeight: FEATURED_SECTION_HEIGHT,
+    marginBottom: 16,
   },
   sectionHeader: {
     flexDirection: "row",

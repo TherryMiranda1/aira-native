@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Modal,
-  ScrollView,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedInput } from "@/components/ThemedInput";
@@ -16,6 +8,7 @@ import { useMetrics } from "@/hooks/services/useMetrics";
 import { CreateMetricData } from "@/services/api/metrics.service";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
+import { ModalView } from "../modals/ModalView";
 
 interface CreateMetricModalProps {
   visible: boolean;
@@ -39,7 +32,9 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [unit, setUnit] = useState("");
-  const [direction, setDirection] = useState<'increase' | 'decrease'>('increase');
+  const [direction, setDirection] = useState<"increase" | "decrease">(
+    "increase"
+  );
   const [target, setTarget] = useState("");
   const [milestones, setMilestones] = useState<MilestoneInput[]>([]);
 
@@ -47,7 +42,7 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
     setTitle("");
     setDescription("");
     setUnit("");
-    setDirection('increase');
+    setDirection("increase");
     setTarget("");
     setMilestones([]);
   };
@@ -109,7 +104,10 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
       onSuccess();
       resetForm();
     } catch (error) {
-      showErrorToast("Error", "No se pudo crear la métrica. Inténtalo de nuevo.");
+      showErrorToast(
+        "Error",
+        "No se pudo crear la métrica. Inténtalo de nuevo."
+      );
     }
   };
 
@@ -134,242 +132,210 @@ export const CreateMetricModal: React.FC<CreateMetricModalProps> = ({
   ];
 
   return (
-    <Modal
+    <ModalView
+      title="Crear métrica"
       visible={visible}
-      animationType="slide"
-      presentationStyle="pageSheet"
+      onClose={handleClose}
+      onSubmit={handleSubmit}
+      submitButtonText="Crear"
+      closeButtonText="Cancelar"
+      submitButtonIcon="add"
+      loading={saving}
     >
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
-        {/* Header */}
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
-            <Ionicons name="close" size={24} color={AiraColors.foreground} />
-          </TouchableOpacity>
-          <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
-            Nueva Métrica
+      {/* Título */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>
+          Título <ThemedText style={styles.required}>*</ThemedText>
+        </ThemedText>
+        <ThemedInput
+          value={title}
+          onChangeText={setTitle}
+          placeholder="Ej: Peso corporal, Pasos diarios, Horas de sueño"
+          maxLength={50}
+        />
+      </View>
+
+      {/* Descripción */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>Descripción</ThemedText>
+        <ThemedInput
+          variant="textarea"
+          value={description}
+          onChangeText={setDescription}
+          placeholder="Descripción opcional de tu métrica"
+          multiline
+          numberOfLines={3}
+          maxLength={200}
+        />
+      </View>
+
+      {/* Unidad */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>
+          Unidad de medida <ThemedText style={styles.required}>*</ThemedText>
+        </ThemedText>
+        <ThemedInput
+          value={unit}
+          onChangeText={setUnit}
+          placeholder="Ej: kg, pasos, horas"
+          maxLength={20}
+        />
+        <View style={styles.suggestedUnits}>
+          <ThemedText style={styles.suggestedLabel}>
+            Unidades comunes:
           </ThemedText>
+          <View style={styles.unitsContainer}>
+            {suggestedUnits.map((suggestedUnit) => (
+              <TouchableOpacity
+                key={suggestedUnit}
+                style={styles.unitChip}
+                onPress={() => setUnit(suggestedUnit)}
+              >
+                <ThemedText style={styles.unitChipText}>
+                  {suggestedUnit}
+                </ThemedText>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </View>
+
+      {/* Dirección */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>
+          Dirección del progreso{" "}
+          <ThemedText style={styles.required}>*</ThemedText>
+        </ThemedText>
+        <ThemedText style={styles.directionDescription}>
+          ¿Quieres aumentar o disminuir esta métrica?
+        </ThemedText>
+        <View style={styles.directionContainer}>
           <TouchableOpacity
             style={[
-              styles.saveButton,
-              (!title.trim() || !unit.trim() || saving) &&
-                styles.saveButtonDisabled,
+              styles.directionOption,
+              direction === "increase" && styles.directionOptionSelected,
             ]}
-            onPress={handleSubmit}
-            disabled={!title.trim() || !unit.trim() || saving}
+            onPress={() => setDirection("increase")}
           >
+            <Ionicons
+              name="trending-up"
+              size={20}
+              color={
+                direction === "increase"
+                  ? AiraColors.primaryForeground
+                  : AiraColors.foreground
+              }
+            />
             <ThemedText
               style={[
-                styles.saveButtonText,
-                (!title.trim() || !unit.trim() || saving) &&
-                  styles.saveButtonTextDisabled,
+                styles.directionText,
+                direction === "increase" && styles.directionTextSelected,
               ]}
             >
-              {saving ? "Guardando..." : "Guardar"}
+              Subir
+            </ThemedText>
+            <ThemedText
+              style={[
+                styles.directionSubtext,
+                direction === "increase" && styles.directionSubtextSelected,
+              ]}
+            >
+              Aumentar valor
+            </ThemedText>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.directionOption,
+              direction === "decrease" && styles.directionOptionSelected,
+            ]}
+            onPress={() => setDirection("decrease")}
+          >
+            <Ionicons
+              name="trending-down"
+              size={20}
+              color={
+                direction === "decrease"
+                  ? AiraColors.primaryForeground
+                  : AiraColors.foreground
+              }
+            />
+            <ThemedText
+              style={[
+                styles.directionText,
+                direction === "decrease" && styles.directionTextSelected,
+              ]}
+            >
+              Bajar
+            </ThemedText>
+            <ThemedText
+              style={[
+                styles.directionSubtext,
+                direction === "decrease" && styles.directionSubtextSelected,
+              ]}
+            >
+              Disminuir valor
             </ThemedText>
           </TouchableOpacity>
         </View>
+      </View>
 
-        <ScrollView
-          style={styles.content}
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}
-        >
-          {/* Título */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>
-              Título <ThemedText style={styles.required}>*</ThemedText>
-            </ThemedText>
-            <ThemedInput
-              value={title}
-              onChangeText={setTitle}
-              placeholder="Ej: Peso corporal, Pasos diarios, Horas de sueño"
-              maxLength={50}
-            />
-          </View>
+      {/* Objetivo */}
+      <View style={styles.section}>
+        <ThemedText style={styles.label}>Objetivo (opcional)</ThemedText>
+        <ThemedInput
+          variant="numeric"
+          value={target}
+          onChangeText={setTarget}
+          placeholder="Valor numérico de tu objetivo"
+          keyboardType="numeric"
+        />
+      </View>
 
-          {/* Descripción */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>Descripción</ThemedText>
-            <ThemedInput
-              variant="textarea"
-              value={description}
-              onChangeText={setDescription}
-              placeholder="Descripción opcional de tu métrica"
-              multiline
-              numberOfLines={3}
-              maxLength={200}
-            />
-          </View>
+      {/* Milestones */}
+      <View style={styles.section}>
+        <View style={styles.milestonesHeader}>
+          <ThemedText style={styles.label}>Milestones (opcional)</ThemedText>
+          <TouchableOpacity style={styles.addButton} onPress={addMilestone}>
+            <Ionicons name="add" size={20} color={AiraColors.primary} />
+            <ThemedText style={styles.addButtonText}>Agregar</ThemedText>
+          </TouchableOpacity>
+        </View>
 
-          {/* Unidad */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>
-              Unidad de medida{" "}
-              <ThemedText style={styles.required}>*</ThemedText>
-            </ThemedText>
-            <ThemedInput
-              value={unit}
-              onChangeText={setUnit}
-              placeholder="Ej: kg, pasos, horas"
-              maxLength={20}
-            />
-            <View style={styles.suggestedUnits}>
-              <ThemedText style={styles.suggestedLabel}>
-                Unidades comunes:
-              </ThemedText>
-              <View style={styles.unitsContainer}>
-                {suggestedUnits.map((suggestedUnit) => (
-                  <TouchableOpacity
-                    key={suggestedUnit}
-                    style={styles.unitChip}
-                    onPress={() => setUnit(suggestedUnit)}
-                  >
-                    <ThemedText style={styles.unitChipText}>
-                      {suggestedUnit}
-                    </ThemedText>
-                  </TouchableOpacity>
-                ))}
-              </View>
+        {milestones.map((milestone, index) => (
+          <View key={index} style={styles.milestoneContainer}>
+            <View style={styles.milestoneInputs}>
+              <ThemedInput
+                style={styles.milestoneValueInput}
+                variant="numeric"
+                value={milestone.value}
+                onChangeText={(value) => updateMilestone(index, "value", value)}
+                placeholder="Valor"
+                keyboardType="numeric"
+              />
+              <ThemedInput
+                style={styles.milestoneDescInput}
+                value={milestone.description}
+                onChangeText={(value) =>
+                  updateMilestone(index, "description", value)
+                }
+                placeholder="Descripción (opcional)"
+              />
             </View>
+            <TouchableOpacity
+              style={styles.removeButton}
+              onPress={() => removeMilestone(index)}
+            >
+              <Ionicons
+                name="trash-outline"
+                size={18}
+                color={AiraColors.destructive}
+              />
+            </TouchableOpacity>
           </View>
-
-          {/* Dirección */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>
-              Dirección del progreso{" "}
-              <ThemedText style={styles.required}>*</ThemedText>
-            </ThemedText>
-            <ThemedText style={styles.directionDescription}>
-              ¿Quieres aumentar o disminuir esta métrica?
-            </ThemedText>
-            <View style={styles.directionContainer}>
-              <TouchableOpacity
-                style={[
-                  styles.directionOption,
-                  direction === 'increase' && styles.directionOptionSelected,
-                ]}
-                onPress={() => setDirection('increase')}
-              >
-                <Ionicons 
-                  name="trending-up" 
-                  size={20} 
-                  color={direction === 'increase' ? AiraColors.primaryForeground : AiraColors.foreground} 
-                />
-                <ThemedText
-                  style={[
-                    styles.directionText,
-                    direction === 'increase' && styles.directionTextSelected,
-                  ]}
-                >
-                  Subir
-                </ThemedText>
-                <ThemedText
-                  style={[
-                    styles.directionSubtext,
-                    direction === 'increase' && styles.directionSubtextSelected,
-                  ]}
-                >
-                  Aumentar valor
-                </ThemedText>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={[
-                  styles.directionOption,
-                  direction === 'decrease' && styles.directionOptionSelected,
-                ]}
-                onPress={() => setDirection('decrease')}
-              >
-                <Ionicons 
-                  name="trending-down" 
-                  size={20} 
-                  color={direction === 'decrease' ? AiraColors.primaryForeground : AiraColors.foreground} 
-                />
-                <ThemedText
-                  style={[
-                    styles.directionText,
-                    direction === 'decrease' && styles.directionTextSelected,
-                  ]}
-                >
-                  Bajar
-                </ThemedText>
-                <ThemedText
-                  style={[
-                    styles.directionSubtext,
-                    direction === 'decrease' && styles.directionSubtextSelected,
-                  ]}
-                >
-                  Disminuir valor
-                </ThemedText>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          {/* Objetivo */}
-          <View style={styles.section}>
-            <ThemedText style={styles.label}>Objetivo (opcional)</ThemedText>
-            <ThemedInput
-              variant="numeric"
-              value={target}
-              onChangeText={setTarget}
-              placeholder="Valor numérico de tu objetivo"
-              keyboardType="numeric"
-            />
-          </View>
-
-          {/* Milestones */}
-          <View style={styles.section}>
-            <View style={styles.milestonesHeader}>
-              <ThemedText style={styles.label}>
-                Milestones (opcional)
-              </ThemedText>
-              <TouchableOpacity style={styles.addButton} onPress={addMilestone}>
-                <Ionicons name="add" size={20} color={AiraColors.primary} />
-                <ThemedText style={styles.addButtonText}>Agregar</ThemedText>
-              </TouchableOpacity>
-            </View>
-
-            {milestones.map((milestone, index) => (
-              <View key={index} style={styles.milestoneContainer}>
-                <View style={styles.milestoneInputs}>
-                  <ThemedInput
-                    style={styles.milestoneValueInput}
-                    variant="numeric"
-                    value={milestone.value}
-                    onChangeText={(value) =>
-                      updateMilestone(index, "value", value)
-                    }
-                    placeholder="Valor"
-                    keyboardType="numeric"
-                  />
-                  <ThemedInput
-                    style={styles.milestoneDescInput}
-                    value={milestone.description}
-                    onChangeText={(value) =>
-                      updateMilestone(index, "description", value)
-                    }
-                    placeholder="Descripción (opcional)"
-                  />
-                </View>
-                <TouchableOpacity
-                  style={styles.removeButton}
-                  onPress={() => removeMilestone(index)}
-                >
-                  <Ionicons
-                    name="trash-outline"
-                    size={18}
-                    color={AiraColors.destructive}
-                  />
-                </TouchableOpacity>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </Modal>
+        ))}
+      </View>
+    </ModalView>
   );
 };
 
@@ -406,7 +372,6 @@ const styles = StyleSheet.create({
   },
   saveButtonText: {
     color: AiraColors.primaryForeground,
-     
   },
   saveButtonTextDisabled: {
     color: AiraColors.mutedForeground,
@@ -423,7 +388,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-     
+
     color: AiraColors.foreground,
     marginBottom: 8,
   },
@@ -476,7 +441,6 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     fontSize: 14,
     color: AiraColors.primary,
-     
   },
   milestoneContainer: {
     flexDirection: "row",
@@ -504,12 +468,12 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   directionContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 12,
   },
   directionOption: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     padding: 16,
     borderRadius: 12,
     borderWidth: 2,
@@ -522,7 +486,7 @@ const styles = StyleSheet.create({
   },
   directionText: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: "600",
     color: AiraColors.foreground,
     marginTop: 8,
   },

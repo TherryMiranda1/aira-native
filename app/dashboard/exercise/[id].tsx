@@ -14,7 +14,7 @@ import { ModalScreen } from "@/components/navigation/ModalScreen";
 import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
 import { exerciseService, Exercise } from "@/services/api/exercise.service";
-import { ScheduleEventModal } from "@/components/ScheduleEventModal";
+import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
 
 export default function ExerciseDetailScreen() {
   const router = useRouter();
