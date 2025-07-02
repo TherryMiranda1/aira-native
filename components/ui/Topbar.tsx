@@ -34,10 +34,12 @@ export const Topbar = ({
             />
           </TouchableOpacity>
         ) : (
-          <Image
-            source={require("../../assets/images/aira-logo.png")}
-            style={styles.logo}
-          />
+          <TouchableOpacity onPress={() => router.replace("/")}>
+            <Image
+              source={require("../../assets/images/aira-logo.png")}
+              style={styles.logo}
+            />
+          </TouchableOpacity>
         )}
         <ThemedText numberOfLines={1} style={styles.topbarTitle} type="title">
           {title}

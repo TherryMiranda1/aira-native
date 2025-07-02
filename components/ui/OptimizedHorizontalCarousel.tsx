@@ -113,13 +113,14 @@ export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouse
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.carouselContent}
             ItemSeparatorComponent={ItemSeparator}
-            initialNumToRender={3}
-            maxToRenderPerBatch={3}
-            windowSize={5}
+            initialNumToRender={1}
+            maxToRenderPerBatch={2}
+            windowSize={3}
+            updateCellsBatchingPeriod={100}
             removeClippedSubviews={true}
-            updateCellsBatchingPeriod={50}
-            decelerationRate="fast"
-            bounces={false}
+            scrollEventThrottle={16}
+            decelerationRate={0.98}
+            disableIntervalMomentum={true}
           />
         </View>
       </View>

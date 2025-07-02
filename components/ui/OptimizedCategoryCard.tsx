@@ -48,10 +48,10 @@ export const OptimizedCategoryCard = React.memo<OptimizedCategoryCardProps>(
 
     const handlePressIn = useCallback(() => {
       Animated.spring(scaleAnim, {
-        toValue: 0.95,
+        toValue: 0.98,
         useNativeDriver: true,
-        tension: 100,
-        friction: 8,
+        tension: 150,
+        friction: 10,
       }).start();
     }, [scaleAnim]);
 
@@ -59,8 +59,8 @@ export const OptimizedCategoryCard = React.memo<OptimizedCategoryCardProps>(
       Animated.spring(scaleAnim, {
         toValue: 1,
         useNativeDriver: true,
-        tension: 100,
-        friction: 8,
+        tension: 150,
+        friction: 10,
       }).start();
     }, [scaleAnim]);
 

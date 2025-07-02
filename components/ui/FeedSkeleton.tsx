@@ -1,0 +1,284 @@
+import React from "react";
+import { View, StyleSheet, Animated } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraVariants } from "@/constants/Themes";
+
+const HERO_SECTION_HEIGHT = 150;
+const FEATURED_SECTION_HEIGHT = 400;
+
+interface FeedSkeletonProps {
+  sectionsCount?: number;
+}
+
+const SkeletonPulse = ({
+  style,
+  children,
+}: {
+  style?: any;
+  children?: React.ReactNode;
+}) => {
+  const pulseAnim = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    const pulse = Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, {
+          toValue: 1,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pulseAnim, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }),
+      ])
+    );
+    pulse.start();
+    return () => pulse.stop();
+  }, [pulseAnim]);
+
+  const opacity = pulseAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0.3, 0.7],
+  });
+
+  return <Animated.View style={[style, { opacity }]}>{children}</Animated.View>;
+};
+
+const HeroSkeleton = () => (
+  <View style={styles.heroSkeleton}>
+    <SkeletonPulse style={styles.heroTextSkeleton} />
+    <SkeletonPulse style={styles.heroAccentSkeleton} />
+  </View>
+);
+
+const SectionSkeleton = () => (
+  <View style={styles.sectionSkeleton}>
+    <LinearGradient
+      colors={[
+        AiraColorsWithAlpha.foregroundWithOpacity(0.1),
+        AiraColorsWithAlpha.foregroundWithOpacity(0.05),
+      ]}
+      style={styles.sectionHeader}
+    >
+      <View style={styles.sectionHeaderContent}>
+        <View style={styles.sectionHeaderLeft}>
+          <SkeletonPulse style={styles.iconSkeleton} />
+          <View style={styles.headerTextSkeleton}>
+            <SkeletonPulse style={styles.titleSkeleton} />
+            <SkeletonPulse style={styles.subtitleSkeleton} />
+          </View>
+        </View>
+        <SkeletonPulse style={styles.buttonSkeleton} />
+      </View>
+    </LinearGradient>
+
+    <View style={styles.carouselSkeleton}>
+      <View style={styles.cardsContainer}>
+        {[1, 2, 3].map((index) => (
+          <View key={index} style={styles.cardSkeleton}>
+            <SkeletonPulse style={styles.cardImageSkeleton} />
+            <View style={styles.cardContent}>
+              <SkeletonPulse style={styles.cardTitleSkeleton} />
+              <SkeletonPulse style={styles.cardDescriptionSkeleton} />
+            </View>
+          </View>
+        ))}
+      </View>
+    </View>
+  </View>
+);
+
+const FeaturedSkeleton = () => (
+  <View style={styles.featuredSkeleton}>
+    <View style={styles.featuredHeader}>
+      <View style={styles.sectionHeaderLeft}>
+        <SkeletonPulse style={styles.iconSkeleton} />
+        <View style={styles.headerTextSkeleton}>
+          <SkeletonPulse style={styles.titleSkeleton} />
+          <SkeletonPulse style={styles.subtitleSkeleton} />
+        </View>
+      </View>
+    </View>
+
+    <View style={styles.featuredGrid}>
+      {[1, 2].map((index) => (
+        <View key={index} style={styles.featuredCardSkeleton}>
+          <SkeletonPulse style={styles.featuredCardImageSkeleton} />
+          <View style={styles.cardContent}>
+            <SkeletonPulse style={styles.cardTitleSkeleton} />
+            <SkeletonPulse style={styles.cardDescriptionSkeleton} />
+          </View>
+        </View>
+      ))}
+    </View>
+  </View>
+);
+
+export const FeedSkeleton: React.FC<FeedSkeletonProps> = ({
+  sectionsCount = 5,
+}) => {
+  return (
+    <View style={styles.container}>
+      <HeroSkeleton />
+
+      {Array.from({ length: sectionsCount }, (_, index) => (
+        <SectionSkeleton key={`section-skeleton-${index}`} />
+      ))}
+
+      <FeaturedSkeleton />
+
+      <View style={styles.ctaSkeleton}>
+        <SkeletonPulse style={styles.ctaContentSkeleton} />
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 24,
+  },
+  heroSkeleton: {
+    height: HERO_SECTION_HEIGHT,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 16,
+  },
+  heroTextSkeleton: {
+    width: "80%",
+    height: 20,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
+    borderRadius: AiraVariants.cardRadius,
+    marginBottom: 8,
+  },
+  heroAccentSkeleton: {
+    width: "60%",
+    height: 16,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+    borderRadius: AiraVariants.cardRadius,
+  },
+  sectionSkeleton: {
+    marginBottom: 8,
+  },
+  sectionHeader: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+  },
+  sectionHeaderContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  sectionHeaderLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  iconSkeleton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.2),
+    marginRight: 12,
+  },
+  headerTextSkeleton: {
+    flex: 1,
+  },
+  titleSkeleton: {
+    width: "70%",
+    height: 18,
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.3),
+    borderRadius: 9,
+    marginBottom: 4,
+  },
+  subtitleSkeleton: {
+    width: "50%",
+    height: 12,
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.2),
+    borderRadius: 6,
+  },
+  buttonSkeleton: {
+    width: 80,
+    height: 32,
+    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.2),
+    borderRadius: 16,
+  },
+  carouselSkeleton: {
+    backgroundColor: AiraColors.card,
+    paddingVertical: 16,
+  },
+  cardsContainer: {
+    flexDirection: "row",
+    paddingHorizontal: 16,
+    gap: 12,
+  },
+  cardSkeleton: {
+    width: 280,
+    borderRadius: AiraVariants.cardRadius,
+    backgroundColor: AiraColors.background,
+    overflow: "hidden",
+  },
+  cardImageSkeleton: {
+    width: "100%",
+    height: 140,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
+  },
+  cardContent: {
+    padding: 12,
+  },
+  cardTitleSkeleton: {
+    width: "80%",
+    height: 16,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  cardDescriptionSkeleton: {
+    width: "60%",
+    height: 12,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.08),
+    borderRadius: 6,
+  },
+  featuredSkeleton: {
+    paddingHorizontal: 16,
+    minHeight: FEATURED_SECTION_HEIGHT,
+    marginBottom: 16,
+  },
+  featuredHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 16,
+  },
+  featuredGrid: {
+    flexDirection: "column",
+    gap: 12,
+  },
+  featuredCardSkeleton: {
+    borderRadius: AiraVariants.cardRadius,
+    backgroundColor: AiraColors.card,
+    overflow: "hidden",
+  },
+  featuredCardImageSkeleton: {
+    width: "100%",
+    height: 120,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
+  },
+  ctaSkeleton: {
+    marginHorizontal: 16,
+    borderRadius: AiraVariants.cardRadius,
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
+    padding: 24,
+    height: 200,
+    justifyContent: "center",
+  },
+  ctaContentSkeleton: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.05),
+    borderRadius: AiraVariants.cardRadius,
+  },
+});

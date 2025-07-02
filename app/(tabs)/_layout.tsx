@@ -22,6 +22,7 @@ export default function TabLayout() {
             position: "absolute",
           },
           default: {
+            height: 60,
             backgroundColor: AiraColors.card,
             borderTopWidth: 0,
           },
