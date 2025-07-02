@@ -1,10 +1,11 @@
 import React, { useMemo, useEffect } from "react";
 import { 
   View, 
+  FlatList,
   StyleSheet, 
-  TouchableOpacity 
+  TouchableOpacity,
+  ListRenderItem 
 } from "react-native";
-import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -263,15 +264,17 @@ export default function BibliotecaScreen() {
         colors={[AiraColors.airaLavenderSoft, AiraColors.background]}
         style={styles.container}
       >
-        <FlashList
+        <FlatList
           data={feedData}
           renderItem={renderFeedItem}
           keyExtractor={keyExtractor}
           showsVerticalScrollIndicator={false}
-          estimatedItemSize={SECTION_HEIGHT}
-          getItemType={(item) => item.type}
-          drawDistance={SECTION_HEIGHT * 2}
           removeClippedSubviews={true}
+          windowSize={5}
+          initialNumToRender={4}
+          maxToRenderPerBatch={3}
+          updateCellsBatchingPeriod={50}
+          bounces={true}
           contentContainerStyle={styles.scrollContent}
         />
       </LinearGradient>

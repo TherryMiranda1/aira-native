@@ -1,11 +1,12 @@
 import React, { useCallback, useMemo } from "react";
 import {
   View,
+  FlatList,
   StyleSheet,
   TouchableOpacity,
   ColorValue,
+  ListRenderItem,
 } from "react-native";
-import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
@@ -21,7 +22,6 @@ interface OptimizedHorizontalCarouselProps {
 
 const CARD_WIDTH = 280;
 const CARD_MARGIN = 12;
-const ITEM_WIDTH = CARD_WIDTH + CARD_MARGIN;
 
 const gradientColorsMap: { [key: string]: string[] } = {
   "from-orange-400 to-pink-400": ["#FB923C", "#F472B6"],
@@ -105,7 +105,7 @@ export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouse
         </LinearGradient>
 
         <View style={styles.carouselContainer}>
-          <FlashList
+          <FlatList
             data={section.categories}
             renderItem={renderCategoryItem}
             keyExtractor={keyExtractor}
@@ -113,10 +113,13 @@ export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouse
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.carouselContent}
             ItemSeparatorComponent={ItemSeparator}
-            estimatedItemSize={ITEM_WIDTH}
-            drawDistance={ITEM_WIDTH * 3}
+            initialNumToRender={3}
+            maxToRenderPerBatch={3}
+            windowSize={5}
             removeClippedSubviews={true}
+            updateCellsBatchingPeriod={50}
             decelerationRate="fast"
+            bounces={false}
           />
         </View>
       </View>
