@@ -30,6 +30,7 @@ interface PremiumFeature {
 
 interface PremiumCarouselProps {
   features: PremiumFeature[];
+  selectedPlan: string;
   onFeaturePress?: (feature: PremiumFeature) => void;
 }
 
@@ -37,7 +38,8 @@ const PremiumFeatureCard = React.memo<{
   feature: PremiumFeature;
   isActive: boolean;
   onPress: () => void;
-}>(({ feature, isActive, onPress }) => {
+  selectedPlan: string;
+}>(({ feature, isActive, onPress, selectedPlan }) => {
   const scaleAnim = useRef(new Animated.Value(isActive ? 1 : 0.95)).current;
 
   React.useEffect(() => {
@@ -49,6 +51,8 @@ const PremiumFeatureCard = React.memo<{
     }).start();
   }, [isActive, scaleAnim]);
 
+  const isSelected = feature.id === selectedPlan;
+
   return (
     <Animated.View
       style={[
@@ -58,7 +62,10 @@ const PremiumFeatureCard = React.memo<{
         },
       ]}
     >
-      <TouchableOpacity onPress={onPress} style={styles.card}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.card, isSelected && styles.selectedCard]}
+      >
         <LinearGradient
           colors={feature.gradient as [string, string, string]}
           style={styles.cardGradient}
@@ -101,19 +108,6 @@ const PremiumFeatureCard = React.memo<{
               </View>
             ))}
           </View>
-
-          <View style={styles.cardFooter}>
-            <TouchableOpacity style={styles.actionButton} onPress={onPress}>
-              <ThemedText style={styles.actionButtonText}>
-                Ver detalles
-              </ThemedText>
-              <Ionicons
-                name="arrow-forward"
-                size={16}
-                color={AiraColors.background}
-              />
-            </TouchableOpacity>
-          </View>
         </LinearGradient>
       </TouchableOpacity>
     </Animated.View>
@@ -123,7 +117,7 @@ const PremiumFeatureCard = React.memo<{
 PremiumFeatureCard.displayName = "PremiumFeatureCard";
 
 export const PremiumCarousel = React.memo<PremiumCarouselProps>(
-  ({ features, onFeaturePress }) => {
+  ({ features, onFeaturePress, selectedPlan }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const flatListRef = useRef<FlatList>(null);
 
@@ -148,9 +142,10 @@ export const PremiumCarousel = React.memo<PremiumCarouselProps>(
           feature={item}
           isActive={index === activeIndex}
           onPress={() => onFeaturePress?.(item)}
+          selectedPlan={selectedPlan}
         />
       ),
-      [activeIndex, onFeaturePress]
+      [activeIndex, onFeaturePress, selectedPlan]
     );
 
     const ItemSeparator = useCallback(
@@ -246,14 +241,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 8,
   },
+  selectedCard: {
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+  },
   cardGradient: {
     padding: 24,
     minHeight: 320,
   },
   highlightBadge: {
     position: "absolute",
-    top: 16,
-    right: 16,
+    top: -2,
+    right: -2,
     backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.2),
     paddingHorizontal: 12,
     paddingVertical: 6,

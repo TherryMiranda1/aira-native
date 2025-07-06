@@ -17,12 +17,6 @@ export default function ProfileScreen() {
 
   return (
     <PageView>
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
-
       <Topbar title="Mi Perfil" showBackButton showThemeSelector />
 
       <ScrollView
@@ -103,9 +97,7 @@ export default function ProfileScreen() {
             color={AiraColors.primary}
           />
         </TouchableOpacity>
-
         <AiraProCTA />
-
         <SignOutButton />
       </ScrollView>
     </PageView>

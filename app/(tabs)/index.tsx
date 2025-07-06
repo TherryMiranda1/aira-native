@@ -74,16 +74,20 @@ export default function HomeScreen() {
       onEndReach={handleRefresh}
       contentContainerStyle={styles.scrollContent}
       endReachText="Desliza hacia abajo para actualizar"
+      topbar={
+        <Topbar
+          title=""
+          actions={
+            <View
+              style={{ flexDirection: "row", alignItems: "center", gap: 8 }}
+            >
+              <PremiumButton size="small" />
+              <ProfileButton />
+            </View>
+          }
+        />
+      }
     >
-      <Topbar 
-        title="" 
-        actions={
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-            <PremiumButton size="small" />
-            <ProfileButton />
-          </View>
-        } 
-      />
       <LinearGradient
         colors={[
           AiraColors.airaLavenderSoft,

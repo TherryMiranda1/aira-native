@@ -18,230 +18,70 @@ import { PageView } from "@/components/ui/PageView";
 
 const premiumFeatures = [
   {
-    id: "experiencia",
-    title: "Experiencia mejorada",
-    description: "Disfruta de Aira sin interrupciones",
-    icon: "star" as const,
+    id: "premium",
+    title: "Aira Premium",
+    description: "Tu compañera completa de bienestar",
+    icon: "sparkles" as const,
     gradient: ["#8B5CF6", "#A855F7"],
     benefits: [
-      "Mitad de anuncios en Para ti y Siguiendo",
-      "Un poco más boost en respuestas",
-      "Editar publicación",
-      "Publicaciones más largas",
-      "Reproducción de vídeo en segundo plano",
-      "Descargar vídeos",
-    ],
-    isHighlighted: false,
-  },
-  {
-    id: "grok-ai",
-    title: "Grok AI",
-    description: "Inteligencia artificial avanzada",
-    icon: "flash" as const,
-    gradient: ["#F59E0B", "#F97316"],
-    benefits: [
-      "Límites de uso más altos",
-      "Desbloquear DeepSearch y Pensar",
-      "Acceso anticipado a nuevas funciones",
+      "Chat con Aira, tu compañera personal",
+      "Recetas y ejercicios ilimitados",
+      "Planes personalizados completos",
+      "Descarga contenido en PDF",
+      "Métricas ilimitadas",
+      "Historial completo sin límites",
+      "Rutinas de Aira y comunidad",
+      "Añade contenido al calendario",
+      "Personaliza el carácter de Aira",
     ],
     isHighlighted: true,
   },
   {
-    id: "centro-creador",
-    title: "Centro del creador",
-    description: "Herramientas para creadores de contenido",
-    icon: "create" as const,
-    gradient: ["#10B981", "#059669"],
+    id: "free",
+    title: "Plan Gratuito",
+    description: "Comienza tu viaje de bienestar",
+    icon: "heart-outline" as const,
+    gradient: ["#64748B", "#94A3B8"],
     benefits: [
-      "Escribir Artículos",
-      "Recibe dinero por postear",
-      "Suscripciones para creadores",
+      "Planificar tu día",
+      "Recetas y ejercicios limitados",
+      "Mini retos y rituales limitados",
+      "Una métrica (como peso)",
+      "Historial máximo de un mes",
     ],
     isHighlighted: false,
   },
 ];
 
-const pricingPlans = [
-  {
-    id: "monthly",
-    name: "Plan Mensual",
-    price: "$30.000,00",
-    period: "/mes",
-    description: "Perfecto para probar todas las funciones",
-    features: [
-      "Todos los beneficios premium",
-      "Soporte prioritario",
-      "Cancelación en cualquier momento",
-    ],
-    gradient: ["#6366F1", "#8B5CF6"],
-  },
-  {
-    id: "yearly",
-    name: "Plan Anual",
-    price: "$300.000,00",
-    period: "/año",
-    description: "El mejor valor - ahorra 2 meses",
-    features: [
-      "Todos los beneficios premium",
-      "Soporte prioritario",
-      "Descuento del 17%",
-      "Facturación anual",
-    ],
-    gradient: ["#059669", "#10B981"],
-    isPopular: true,
-  },
-];
-
 export default function PremiumPlansScreen() {
-  const [selectedPlan, setSelectedPlan] = useState("yearly");
-
-  const handleFeaturePress = (feature: any) => {
-    Alert.alert(
-      feature.title,
-      `Descubre más sobre: ${feature.description}\n\n${feature.benefits.join(
-        "\n• "
-      )}`,
-      [{ text: "Entendido", style: "default" }]
-    );
-  };
-
-  const handleSubscribe = () => {
-    const plan = pricingPlans.find((p) => p.id === selectedPlan);
-    Alert.alert("Suscripción", `¿Confirmar suscripción al ${plan?.name}?`, [
-      { text: "Cancelar", style: "cancel" },
-      {
-        text: "Suscribirse",
-        style: "default",
-        onPress: () => {
-          Alert.alert("¡Gracias!", "Tu suscripción está siendo procesada.");
-        },
-      },
-    ]);
-  };
+  const [selectedPlan, setSelectedPlan] = useState("premium");
 
   return (
     <PageView>
       <Topbar title="Suscribirse" showBackButton onBack={() => router.back()} />
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Header Hero */}
-        {/* <LinearGradient
-          colors={["#1E1B4B", "#312E81", "#4338CA"]}
-          style={styles.heroSection}
-        >
-          <View style={styles.heroContent}>
-            <Ionicons name="diamond" size={48} color={AiraColors.background} />
-            <ThemedText type="title" style={styles.heroTitle}>
-              Aira Premium
-            </ThemedText>
-            <ThemedText style={styles.heroSubtitle}>
-              Desbloquea todo el potencial de tu bienestar personal
-            </ThemedText>
-          </View>
-        </LinearGradient> */}
-
-        {/* Premium Features Carousel */}
         <PremiumCarousel
           features={premiumFeatures}
-          onFeaturePress={handleFeaturePress}
+          onFeaturePress={(feature) => setSelectedPlan(feature.id)}
+          selectedPlan={selectedPlan}
         />
-
-        {/* Pricing Plans */}
-        {/* <View style={styles.pricingSection}>
-          <View style={styles.pricingHeader}>
-            <ThemedText type="subtitle" style={styles.pricingTitle}>
-              Elige tu plan
-            </ThemedText>
-            <ThemedText style={styles.pricingDescription}>
-              Selecciona la opción que mejor se adapte a ti
-            </ThemedText>
-          </View>
-
-          <View style={styles.plansContainer}>
-            {pricingPlans.map((plan) => (
-              <TouchableOpacity
-                key={plan.id}
-                style={[
-                  styles.planCard,
-                  selectedPlan === plan.id && styles.planCardSelected,
-                ]}
-                onPress={() => setSelectedPlan(plan.id)}
-              >
-                <LinearGradient
-                  colors={plan.gradient as [string, string, string]}
-                  style={[
-                    styles.planGradient,
-                    selectedPlan === plan.id && styles.planGradientSelected,
-                  ]}
-                >
-                  {plan.isPopular && (
-                    <View style={styles.popularBadge}>
-                      <ThemedText style={styles.popularText}>
-                        Más Popular
-                      </ThemedText>
-                    </View>
-                  )}
-
-                  <View style={styles.planHeader}>
-                    <ThemedText type="defaultSemiBold" style={styles.planName}>
-                      {plan.name}
-                    </ThemedText>
-                    <View style={styles.priceContainer}>
-                      <ThemedText type="title" style={styles.planPrice}>
-                        {plan.price}
-                      </ThemedText>
-                      <ThemedText style={styles.planPeriod}>
-                        {plan.period}
-                      </ThemedText>
-                    </View>
-                    <ThemedText style={styles.planDescription}>
-                      {plan.description}
-                    </ThemedText>
-                  </View>
-
-                  <View style={styles.planFeatures}>
-                    {plan.features.map((feature, index) => (
-                      <View key={index} style={styles.featureItem}>
-                        <Ionicons
-                          name="checkmark-circle"
-                          size={18}
-                          color={AiraColors.background}
-                        />
-                        <ThemedText style={styles.featureText}>
-                          {feature}
-                        </ThemedText>
-                      </View>
-                    ))}
-                  </View>
-
-                  {selectedPlan === plan.id && (
-                    <View style={styles.selectedIndicator}>
-                      <Ionicons
-                        name="checkmark-circle"
-                        size={24}
-                        color={AiraColors.background}
-                      />
-                    </View>
-                  )}
-                </LinearGradient>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View> */}
 
         {/* Subscribe Button */}
         <View style={styles.subscribeSection}>
           <TouchableOpacity
             style={styles.subscribeButton}
-            onPress={handleSubscribe}
+            onPress={() => router.push("/default-paywall")}
           >
             <LinearGradient
-              colors={["#8B5CF6", "#A855F7"]}
+              colors={[
+                AiraColors.foreground,
+                AiraColorsWithAlpha.foregroundWithOpacity(0.9),
+              ]}
               style={styles.subscribeGradient}
             >
               <ThemedText style={styles.subscribeText}>
-                Empieza ahora
-                {pricingPlans.find((p) => p.id === selectedPlan)?.price}
+                Únete a Aira Premium
               </ThemedText>
               <Ionicons
                 name="arrow-forward"
@@ -252,8 +92,8 @@ export default function PremiumPlansScreen() {
           </TouchableOpacity>
 
           <ThemedText style={styles.disclaimerText}>
-            Puedes cancelar en cualquier momento. Se aplicarán términos y
-            condiciones.
+            Cancela cuando quieras. Tu bienestar, tu decisión. Se aplicarán
+            términos y condiciones.
           </ThemedText>
         </View>
       </ScrollView>
