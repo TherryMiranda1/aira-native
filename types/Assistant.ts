@@ -311,9 +311,8 @@ export interface Message {
   calendarData?: { reminders: Reminder[] };
   isLoading?: boolean;
   isError?: boolean;
+  completePlan?: PersonalizedPlanOutput;
+  completePlanInputParams?: PersonalizedPlanInput;
 }
 
-export type {
-  ExerciseSuggestionOutput,
-  MotivationalOutput,
-};
+export type { ExerciseSuggestionOutput, MotivationalOutput };

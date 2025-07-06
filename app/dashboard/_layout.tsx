@@ -35,6 +35,11 @@ export default function DashboardLayout() {
 
       <Stack.Screen name="inspiration/mini-retos/[id]" />
       <Stack.Screen name="inspiration/rituales/[id]" />
+      
+      <Stack.Screen
+        name="premium-plans"
+        options={{ presentation: "modal", animation: "slide_from_bottom" }}
+      />
     </Stack>
   );
 }

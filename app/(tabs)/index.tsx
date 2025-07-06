@@ -7,6 +7,8 @@ import { ThemedText } from "@/components/ThemedText";
 import { RefreshablePageView } from "@/components/ui/RefreshablePageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
+import { PremiumButton } from "@/components/ui/PremiumButton";
+import { PremiumCTA } from "@/components/ui/PremiumCTA";
 import WeeklyCalendar from "@/components/weeklyCalendar/WeeklyCalendar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useUser } from "@clerk/clerk-expo";
@@ -73,7 +75,15 @@ export default function HomeScreen() {
       contentContainerStyle={styles.scrollContent}
       endReachText="Desliza hacia abajo para actualizar"
     >
-      <Topbar title="" actions={<ProfileButton />} />
+      <Topbar 
+        title="" 
+        actions={
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+            <PremiumButton size="small" />
+            <ProfileButton />
+          </View>
+        } 
+      />
       <LinearGradient
         colors={[
           AiraColors.airaLavenderSoft,
@@ -109,6 +119,9 @@ export default function HomeScreen() {
 
           {/* Logros reales basados en el historial */}
           <AchievementsSummary />
+
+          {/* Premium CTA */}
+          <PremiumCTA variant="compact" />
 
           {/* Footer cálido */}
           <View style={styles.footer}>
