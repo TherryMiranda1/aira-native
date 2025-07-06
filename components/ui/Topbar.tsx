@@ -10,6 +10,7 @@ import { ThemeSelector } from "./ThemeSelector";
 interface TopbarProps {
   title: string;
   actions?: React.ReactNode;
+  leftActions?: React.ReactNode;
   showBackButton?: boolean;
   onBack?: () => void;
   showThemeSelector?: boolean;
@@ -18,32 +19,36 @@ interface TopbarProps {
 export const Topbar = ({
   title,
   actions,
+  leftActions,
   showBackButton = false,
   onBack,
   showThemeSelector = false,
 }: TopbarProps) => {
   const router = useRouter();
 
+  const renderLeftActions = () => {
+    if (leftActions) {
+      return leftActions;
+    }
+    return showBackButton ? (
+      <TouchableOpacity onPress={onBack ? onBack : () => router.back()}>
+        <Ionicons name="arrow-back" size={24} color={AiraColors.foreground} />
+      </TouchableOpacity>
+    ) : (
+      <TouchableOpacity onPress={() => router.replace("/")}>
+        <Image
+          source={require("../../assets/images/aira-logo.png")}
+          style={styles.logo}
+        />
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <>
       <StatusBar style="auto" />
       <View style={styles.topbarContent}>
-        {showBackButton ? (
-          <TouchableOpacity onPress={onBack ? onBack : () => router.back()}>
-            <Ionicons
-              name="arrow-back"
-              size={24}
-              color={AiraColors.foreground}
-            />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity onPress={() => router.replace("/")}>
-            <Image
-              source={require("../../assets/images/aira-logo.png")}
-              style={styles.logo}
-            />
-          </TouchableOpacity>
-        )}
+        {renderLeftActions()}
         <ThemedText numberOfLines={1} style={styles.topbarTitle} type="title">
           {title}
         </ThemedText>

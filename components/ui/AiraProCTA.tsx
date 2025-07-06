@@ -20,7 +20,7 @@ export const AiraProCTA: React.FC<AiraProCTAProps> = () => {
     const fetchOfferings = async () => {
       const offerings = await Purchases.getOfferings();
       const result = offerings.all["onboarding"];
-      console.log(result);
+
       setOnboardingOffering(result);
     };
     fetchOfferings();

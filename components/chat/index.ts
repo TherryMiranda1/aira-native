@@ -1,11 +1,13 @@
 export { MessageBubble } from './MessageBubble';
 export { SaveButton } from './SaveButton';
 export { LoadingIndicator } from './LoadingIndicator';
-export { ContentCard, ContentSection, ContentText } from './ContentCard';
-export { RecipeCard } from './RecipeCard';
-export { ExerciseCard } from './ExerciseCard';
-export { RoutineCard } from './RoutineCard';
-export { MealPlanCard } from './MealPlanCard';
+export { ContentCard, ContentSection, ContentText, ContentList } from './cards/ContentCard';
+export { RecipeCard } from './cards/RecipeCard';
+export { ExerciseCard } from './cards/ExerciseCard';
+export { RoutineCard } from './cards/RoutineCard';
+export { MealPlanCard } from './cards/MealPlanCard';
+export { MotivationCard } from './cards/MotivationCard';
+export { CompletePlanCard } from './cards/CompletePlanCard';
 export { MessageContent } from './MessageContent';
 export { ChatOptions } from './ChatOptions';
 export { QuickReplies } from './QuickReplies';

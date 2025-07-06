@@ -15,6 +15,7 @@ export interface RefreshablePageViewProps extends PageViewProps {
   endReachThreshold?: number;
   enableEndReachRefresh?: boolean;
   endReachText?: string;
+  topbar?: React.ReactNode;
 }
 
 export const RefreshablePageView = ({
@@ -27,18 +28,21 @@ export const RefreshablePageView = ({
   contentContainerStyle,
   scrollViewStyle,
   endReachThreshold = 50,
+  topbar,
   enableEndReachRefresh = true,
   endReachText = "Desliza hacia abajo para actualizar",
 }: RefreshablePageViewProps) => {
   const [internalRefreshing, setInternalRefreshing] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const { handleScroll: handleEndReachScroll, isRefreshing: isEndReachRefreshing } = 
-    useEndReachRefresh({
-      threshold: endReachThreshold,
-      onEndReach,
-      enabled: enableEndReachRefresh && !!onEndReach,
-    });
+  const {
+    handleScroll: handleEndReachScroll,
+    isRefreshing: isEndReachRefreshing,
+  } = useEndReachRefresh({
+    threshold: endReachThreshold,
+    onEndReach,
+    enabled: enableEndReachRefresh && !!onEndReach,
+  });
 
   const handleRefresh = useCallback(async () => {
     if (!onRefresh) return;
@@ -53,14 +57,18 @@ export const RefreshablePageView = ({
     }
   }, [onRefresh]);
 
-  const combinedScrollHandler = useCallback((event: any) => {
-    handleEndReachScroll(event);
-  }, [handleEndReachScroll]);
+  const combinedScrollHandler = useCallback(
+    (event: any) => {
+      handleEndReachScroll(event);
+    },
+    [handleEndReachScroll]
+  );
 
   const isRefreshing = refreshing || internalRefreshing;
 
   return (
     <PageView style={style}>
+      {topbar}
       <ScrollView
         ref={scrollViewRef}
         style={[{ flex: 1 }, scrollViewStyle]}
@@ -81,18 +89,22 @@ export const RefreshablePageView = ({
         }
       >
         {children}
-        
+
         {enableEndReachRefresh && onEndReach && (
-          <View style={{
-            paddingVertical: 20,
-            alignItems: 'center',
-            opacity: isEndReachRefreshing ? 1 : 0.6,
-          }}>
-            <ThemedText style={{
-              fontSize: 14,
-              color: AiraColors.mutedForeground,
-              textAlign: 'center',
-            }}>
+          <View
+            style={{
+              paddingVertical: 20,
+              alignItems: "center",
+              opacity: isEndReachRefreshing ? 1 : 0.6,
+            }}
+          >
+            <ThemedText
+              style={{
+                fontSize: 14,
+                color: AiraColors.mutedForeground,
+                textAlign: "center",
+              }}
+            >
               {isEndReachRefreshing ? "Actualizando..." : endReachText}
             </ThemedText>
           </View>
@@ -100,4 +112,4 @@ export const RefreshablePageView = ({
       </ScrollView>
     </PageView>
   );
-}; 
+};

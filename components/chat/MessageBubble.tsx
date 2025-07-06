@@ -18,6 +18,14 @@ export function MessageBubble({ message, children }: MessageBubbleProps) {
     });
   };
 
+  const hasSpecialContent =
+    message.recipe ||
+    message.exercise ||
+    message.fullRoutine ||
+    message.dailyMealPlan ||
+    message.motivation ||
+    message.completePlan;
+
   return (
     <View
       style={[
@@ -30,6 +38,7 @@ export function MessageBubble({ message, children }: MessageBubbleProps) {
       <View
         style={[
           styles.messageBubble,
+          !hasSpecialContent && styles.messageBubbleWidth,
           message.sender === "user"
             ? styles.userMessageBubble
             : styles.airaMessageBubble,
@@ -77,12 +86,14 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   messageBubble: {
-    maxWidth: "80%",
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
   },
+  messageBubbleWidth: {
+    maxWidth: "80%",
+  },
   userMessageBubble: {
-    backgroundColor: AiraColors.primary,
+    backgroundColor: AiraColors.foreground,
     borderBottomRightRadius: 4,
   },
   airaMessageBubble: {
@@ -110,4 +121,4 @@ const styles = StyleSheet.create({
   airaMessageTime: {
     color: AiraColorsWithAlpha.foregroundWithOpacity(0.6),
   },
-}); 
+});
