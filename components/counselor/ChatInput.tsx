@@ -43,7 +43,7 @@ export function CounselorChatInput({
         onSubmitEditing={handleSend}
       />
       <TouchableOpacity
-        style={[styles.sendButton, !canSend && styles.sendButtonDisabled]}
+        style={[styles.sendButton]}
         onPress={handleSend}
         disabled={!canSend}
       >
@@ -63,13 +63,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingHorizontal: 20,
     paddingVertical: 8,
-    backgroundColor: AiraColors.card,
-    borderTopWidth: 1,
-    borderTopColor: AiraColors.border,
     alignItems: "flex-end",
   },
   sendButton: {
-    backgroundColor: AiraColors.primary,
     width: 36,
     height: 36,
     borderRadius: 18,
@@ -77,9 +73,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginLeft: 12,
   },
-  sendButtonDisabled: {
-    backgroundColor: AiraColors.secondary,
-  },
+
   input: {
     flex: 1,
     minHeight: 40,

@@ -6,6 +6,7 @@ import { ThemedText } from "../ThemedText";
 import { AiraColors } from "../../constants/Colors";
 import { AiraVariants } from "../../constants/Themes";
 import { useChallenges } from "../../hooks/services/useChallenges";
+import { ThemedView } from "../ThemedView";
 
 interface DailySuggestionProps {
   title?: string;
@@ -137,7 +138,7 @@ export const DailySuggestion = ({
   const difficultyColors = getDifficultyColor(challenge.dificultad);
 
   return (
-    <View style={styles.card}>
+    <ThemedView variant="secondary" style={styles.card}>
       <View style={styles.suggestionContainer}>
         <View style={styles.emojiContainer}>
           <ThemedText style={styles.suggestionEmoji}>
@@ -202,13 +203,12 @@ export const DailySuggestion = ({
       {subtitle && (
         <ThemedText style={styles.subtitleText}>{subtitle}</ThemedText>
       )}
-    </View>
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 16,
@@ -230,7 +230,6 @@ const styles = StyleSheet.create({
     right: -4,
     width: 24,
     height: 24,
-    backgroundColor: AiraColors.background,
     borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
@@ -254,7 +253,6 @@ const styles = StyleSheet.create({
   suggestionType: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-     
   },
   difficultyBadge: {
     borderRadius: AiraVariants.cardRadius,
@@ -263,17 +261,13 @@ const styles = StyleSheet.create({
   },
   difficultyText: {
     fontSize: 10,
-     
   },
   suggestionTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
     marginBottom: 8,
-     
   },
   suggestionDescription: {
     fontSize: 14,
-    color: AiraColors.mutedForeground,
     marginBottom: 12,
     lineHeight: 20,
   },
@@ -290,7 +284,6 @@ const styles = StyleSheet.create({
   suggestionButtonText: {
     color: "#4F46E5",
     fontSize: 14,
-     
   },
   subtitleText: {
     fontSize: 12,
@@ -318,6 +311,5 @@ const styles = StyleSheet.create({
   retryButtonText: {
     fontSize: 14,
     color: AiraColors.foreground,
-     
   },
 });

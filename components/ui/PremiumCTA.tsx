@@ -99,7 +99,6 @@ export const PremiumCTA = ({ variant = "compact" }: PremiumCTAProps) => {
 
 const styles = StyleSheet.create({
   compactContainer: {
-    marginHorizontal: 16,
     marginVertical: 8,
     borderRadius: 16,
     overflow: "hidden",

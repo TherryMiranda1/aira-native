@@ -14,6 +14,7 @@ import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ritual } from "@/services/api/ritual.service";
+import { ThemedView } from "../ThemedView";
 
 interface RitualModalProps {
   visible: boolean;
@@ -132,7 +133,7 @@ export const RitualModal = ({
       presentationStyle="pageSheet"
       onRequestClose={onClose}
     >
-      <View style={styles.container}>
+      <ThemedView style={styles.container}>
         {/* Header minimalista */}
         <View style={styles.header}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
@@ -157,7 +158,7 @@ export const RitualModal = ({
           showsVerticalScrollIndicator={false}
         >
           {/* Ritual Card Principal */}
-          <View style={styles.ritualCard}>
+          <ThemedView variant="secondary" style={styles.ritualCard}>
             {/* Icono y título */}
             <LinearGradient
               colors={categoryColors as [ColorValue, ColorValue]}
@@ -383,11 +384,11 @@ export const RitualModal = ({
                 </View>
               )}
             </View>
-          </View>
+          </ThemedView>
 
           {/* Vista previa de pasos (solo cuando no está iniciado) */}
           {!ritualStarted && (
-            <View style={styles.stepsPreview}>
+            <ThemedView variant="secondary" style={styles.stepsPreview}>
               <ThemedText type="defaultSemiBold" style={styles.stepsTitle}>
                 Pasos del ritual ({ritual.pasos.length})
               </ThemedText>
@@ -423,7 +424,7 @@ export const RitualModal = ({
                   </View>
                 ))}
               </View>
-            </View>
+            </ThemedView>
           )}
 
           {/* Beneficios simplificados */}
@@ -471,7 +472,7 @@ export const RitualModal = ({
             </View>
           )}
         </ScrollView>
-      </View>
+      </ThemedView>
     </Modal>
   );
 };
@@ -479,7 +480,6 @@ export const RitualModal = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     flexDirection: "row",
@@ -521,7 +521,6 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   ritualCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: 20,
     padding: 24,
     alignItems: "center",
@@ -540,7 +539,6 @@ const styles = StyleSheet.create({
   ritualTitle: {
     textAlign: "center",
     marginBottom: 8,
-    color: AiraColors.foreground,
   },
   ritualDescription: {
     textAlign: "center",
@@ -615,7 +613,6 @@ const styles = StyleSheet.create({
   },
   stepTitle: {
     marginBottom: 8,
-    color: AiraColors.foreground,
   },
   stepDescription: {
     color: AiraColors.mutedForeground,
@@ -692,16 +689,13 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
   },
   stepsPreview: {
-    backgroundColor: AiraColors.card,
     borderRadius: 16,
     padding: 20,
+
     marginBottom: 20,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   stepsTitle: {
     marginBottom: 16,
-    color: AiraColors.foreground,
   },
   stepsList: {
     gap: 12,
@@ -741,7 +735,6 @@ const styles = StyleSheet.create({
   },
   benefitsTitle: {
     marginBottom: 12,
-    color: AiraColors.foreground,
   },
   benefitItem: {
     flexDirection: "row",
@@ -751,7 +744,7 @@ const styles = StyleSheet.create({
   },
   benefitText: {
     flex: 1,
-    color: AiraColors.foreground,
+
     lineHeight: 18,
   },
   navigationContainer: {

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  ColorValue,
-} from "react-native";
+import { View, TouchableOpacity, StyleSheet, ColorValue } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -12,6 +7,7 @@ import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ritual } from "@/services/api/ritual.service";
+import { ThemedView } from "@/components/ThemedView";
 
 interface RitualItemProps {
   ritual: Ritual;
@@ -94,7 +90,7 @@ export const RitualItem = ({
       onPress={() => onPress(ritual)}
       activeOpacity={0.7}
     >
-      <View style={styles.content}>
+      <ThemedView style={styles.content}>
         {/* Icon */}
         <LinearGradient
           colors={categoryColors as [ColorValue, ColorValue]}
@@ -111,15 +107,15 @@ export const RitualItem = ({
           <ThemedText style={styles.ritualDescription} numberOfLines={2}>
             {ritual.descripcion}
           </ThemedText>
-          
+
           <View style={styles.metadataContainer}>
             {/* Energy Badge */}
             {ritual.nivel_energia && (
               <View style={styles.energyBadge}>
-                <View 
+                <View
                   style={[
-                    styles.energyDot, 
-                    { backgroundColor: getEnergyColor(ritual.nivel_energia) }
+                    styles.energyDot,
+                    { backgroundColor: getEnergyColor(ritual.nivel_energia) },
                   ]}
                 />
                 <ThemedText style={styles.energyText}>
@@ -127,11 +123,15 @@ export const RitualItem = ({
                 </ThemedText>
               </View>
             )}
-            
+
             {/* Duration Badge */}
             {ritual.duracion_total && (
               <View style={styles.durationBadge}>
-                <Ionicons name="time" size={10} color={AiraColors.mutedForeground} />
+                <Ionicons
+                  name="time"
+                  size={10}
+                  color={AiraColors.mutedForeground}
+                />
                 <ThemedText style={styles.durationText}>
                   {ritual.duracion_total}
                 </ThemedText>
@@ -141,17 +141,17 @@ export const RitualItem = ({
             {/* Moment Badge */}
             {ritual.momento_recomendado && (
               <View style={styles.momentBadge}>
-                <Ionicons 
-                  name={getMomentIcon(ritual.momento_recomendado)} 
-                  size={10} 
-                  color={AiraColors.accent} 
+                <Ionicons
+                  name={getMomentIcon(ritual.momento_recomendado)}
+                  size={10}
+                  color={AiraColors.accent}
                 />
                 <ThemedText style={styles.momentText}>
                   {getMomentLabel(ritual.momento_recomendado)}
                 </ThemedText>
               </View>
             )}
-            
+
             {/* Steps Count */}
             {ritual.pasos && ritual.pasos.length > 0 && (
               <View style={styles.stepsBadge}>
@@ -161,7 +161,7 @@ export const RitualItem = ({
                 </ThemedText>
               </View>
             )}
-            
+
             {/* Popularity Badge */}
             {ritual.popularidad > 0 && (
               <View style={styles.popularityBadge}>
@@ -198,32 +198,23 @@ export const RitualItem = ({
             color={AiraColors.mutedForeground}
           />
         </View>
-      </View>
+      </ThemedView>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
     marginBottom: 8,
-    shadowColor: AiraColors.foreground,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   content: {
     flexDirection: "row",
     alignItems: "center",
     padding: 16,
     gap: 12,
+    borderRadius: AiraVariants.cardRadius,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   iconContainer: {
     width: 40,
@@ -237,8 +228,6 @@ const styles = StyleSheet.create({
   },
   ritualTitle: {
     fontSize: 16,
-     
-    color: AiraColors.foreground,
     lineHeight: 20,
     marginBottom: 4,
   },
@@ -267,7 +256,6 @@ const styles = StyleSheet.create({
   energyText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-     
   },
   durationBadge: {
     flexDirection: "row",
@@ -281,7 +269,6 @@ const styles = StyleSheet.create({
   durationText: {
     fontSize: 10,
     color: AiraColors.mutedForeground,
-     
   },
   momentBadge: {
     flexDirection: "row",
@@ -295,7 +282,6 @@ const styles = StyleSheet.create({
   momentText: {
     fontSize: 10,
     color: AiraColors.accent,
-     
   },
   stepsBadge: {
     flexDirection: "row",
@@ -309,7 +295,6 @@ const styles = StyleSheet.create({
   stepsText: {
     fontSize: 10,
     color: AiraColors.primary,
-     
   },
   popularityBadge: {
     flexDirection: "row",
@@ -319,7 +304,6 @@ const styles = StyleSheet.create({
   popularityText: {
     fontSize: 10,
     color: AiraColors.accent,
-     
   },
   actionsContainer: {
     flexDirection: "row",
@@ -331,4 +315,4 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.tagRadius,
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
-}); 
+});

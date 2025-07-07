@@ -9,6 +9,7 @@ import {
   getExerciseTypeColor,
 } from "@/utils/colors";
 import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "@/components/ThemedView";
 
 interface ExerciseItemProps {
   exercise: Exercise;
@@ -17,147 +18,153 @@ interface ExerciseItemProps {
 }
 
 export const ExerciseItem = memo(
-  ({
-    exercise,
-    onPress,
-    onSchedule,
-  }: ExerciseItemProps) => {
+  ({ exercise, onPress, onSchedule }: ExerciseItemProps) => {
     return (
-      <TouchableOpacity
-        onPress={() => onPress(exercise.id)}
-        style={styles.exerciseCard}
-      >
-        <View style={styles.cardHeader}>
-          <View style={styles.badgesContainer}>
-            <View
-              style={[
-                styles.difficultyBadge,
-                {
-                  backgroundColor:
-                    getExerciseDifficultyColor(exercise.nivel_dificultad) + "20",
-                  borderColor: getExerciseDifficultyColor(
-                    exercise.nivel_dificultad
-                  ),
-                },
-              ]}
-            >
-              <ThemedText
-                type="small"
+      <TouchableOpacity onPress={() => onPress(exercise.id)}>
+        <ThemedView style={styles.exerciseCard}>
+          <View style={styles.cardHeader}>
+            <View style={styles.badgesContainer}>
+              <View
                 style={[
-                  styles.difficultyText,
+                  styles.difficultyBadge,
                   {
-                    color: getExerciseDifficultyColor(exercise.nivel_dificultad),
+                    backgroundColor:
+                      getExerciseDifficultyColor(exercise.nivel_dificultad) +
+                      "20",
+                    borderColor: getExerciseDifficultyColor(
+                      exercise.nivel_dificultad
+                    ),
                   },
                 ]}
               >
-                {exercise.nivel_dificultad.charAt(0).toUpperCase() +
-                  exercise.nivel_dificultad.slice(1)}
-              </ThemedText>
-            </View>
-            <View
-              style={[
-                styles.typeBadge,
-                {
-                  backgroundColor:
-                    getExerciseTypeColor(exercise.tipo_ejercicio) + "20",
-                  borderColor: getExerciseTypeColor(exercise.tipo_ejercicio),
-                },
-              ]}
-            >
-              <ThemedText
-                type="small"
+                <ThemedText
+                  type="small"
+                  style={[
+                    styles.difficultyText,
+                    {
+                      color: getExerciseDifficultyColor(
+                        exercise.nivel_dificultad
+                      ),
+                    },
+                  ]}
+                >
+                  {exercise.nivel_dificultad.charAt(0).toUpperCase() +
+                    exercise.nivel_dificultad.slice(1)}
+                </ThemedText>
+              </View>
+              <View
                 style={[
-                  styles.typeText,
-                  { color: getExerciseTypeColor(exercise.tipo_ejercicio) },
+                  styles.typeBadge,
+                  {
+                    backgroundColor:
+                      getExerciseTypeColor(exercise.tipo_ejercicio) + "20",
+                    borderColor: getExerciseTypeColor(exercise.tipo_ejercicio),
+                  },
                 ]}
               >
-                {exercise.tipo_ejercicio.charAt(0).toUpperCase() +
-                  exercise.tipo_ejercicio.slice(1)}
-              </ThemedText>
-            </View>
-          </View>
-          {onSchedule && (
-            <View style={styles.actionsContainer}>
-              <TouchableOpacity
-                style={styles.scheduleButton}
-                onPress={(e) => {
-                  e.stopPropagation();
-                  onSchedule(exercise.id, exercise.nombre);
-                }}
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              >
-                <Ionicons
-                  name="calendar-outline"
-                  size={20}
-                  color={AiraColors.primary}
-                />
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
-
-        <ThemedText style={styles.exerciseTitle}>{exercise.nombre}</ThemedText>
-
-        <ThemedText style={styles.exerciseCategory}>
-          💪{" "}
-          {exercise.categoria &&
-            exercise.categoria.charAt(0).toUpperCase() +
-              exercise.categoria.slice(1)}
-        </ThemedText>
-
-        <View style={styles.exerciseDetails}>
-          <View style={styles.exerciseDetail}>
-            <Ionicons
-              name="barbell-outline"
-              size={16}
-              color={AiraColors.mutedForeground}
-            />
-            <ThemedText type="small" style={styles.exerciseDetailText}>
-              {exercise.modalidad.charAt(0).toUpperCase() +
-                exercise.modalidad.slice(1)}
-            </ThemedText>
-          </View>
-          {exercise.valores_ejemplo_mujer_principiante?.repeticiones && (
-            <View style={styles.exerciseDetail}>
-              <Ionicons
-                name="repeat-outline"
-                size={16}
-                color={AiraColors.mutedForeground}
-              />
-              <ThemedText type="small" style={styles.exerciseDetailText}>
-                {exercise.valores_ejemplo_mujer_principiante?.repeticiones} reps
-              </ThemedText>
-            </View>
-          )}
-          {exercise.valores_ejemplo_mujer_principiante?.duracion_minutos && (
-            <View style={styles.exerciseDetail}>
-              <Ionicons
-                name="time-outline"
-                size={16}
-                color={AiraColors.mutedForeground}
-              />
-              <ThemedText type="small" style={styles.exerciseDetailText}>
-                {exercise.valores_ejemplo_mujer_principiante?.duracion_minutos}{" "}
-                min
-              </ThemedText>
-            </View>
-          )}
-        </View>
-
-        <ThemedText style={styles.exerciseDescription} numberOfLines={3}>
-          {exercise.descripcion}
-        </ThemedText>
-
-        <View>
-          <ThemedText type="small">Equipamiento:</ThemedText>
-          <View style={styles.equipmentList}>
-            {exercise.equipamiento_necesario.map((equipo, index) => (
-              <View key={index} style={styles.equipmentItem}>
-                <ThemedText type="small">{equipo.replace("_", " ")}</ThemedText>
+                <ThemedText
+                  type="small"
+                  style={[
+                    styles.typeText,
+                    { color: getExerciseTypeColor(exercise.tipo_ejercicio) },
+                  ]}
+                >
+                  {exercise.tipo_ejercicio.charAt(0).toUpperCase() +
+                    exercise.tipo_ejercicio.slice(1)}
+                </ThemedText>
               </View>
-            ))}
+            </View>
+            {onSchedule && (
+              <View style={styles.actionsContainer}>
+                <TouchableOpacity
+                  style={styles.scheduleButton}
+                  onPress={(e) => {
+                    e.stopPropagation();
+                    onSchedule(exercise.id, exercise.nombre);
+                  }}
+                  hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                >
+                  <Ionicons
+                    name="calendar-outline"
+                    size={20}
+                    color={AiraColors.primary}
+                  />
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
-        </View>
+
+          <ThemedText style={styles.exerciseTitle}>
+            {exercise.nombre}
+          </ThemedText>
+
+          <ThemedText style={styles.exerciseCategory}>
+            💪{" "}
+            {exercise.categoria &&
+              exercise.categoria.charAt(0).toUpperCase() +
+                exercise.categoria.slice(1)}
+          </ThemedText>
+
+          <View style={styles.exerciseDetails}>
+            <View style={styles.exerciseDetail}>
+              <Ionicons
+                name="barbell-outline"
+                size={16}
+                color={AiraColors.mutedForeground}
+              />
+              <ThemedText type="small" style={styles.exerciseDetailText}>
+                {exercise.modalidad.charAt(0).toUpperCase() +
+                  exercise.modalidad.slice(1)}
+              </ThemedText>
+            </View>
+            {exercise.valores_ejemplo_mujer_principiante?.repeticiones && (
+              <View style={styles.exerciseDetail}>
+                <Ionicons
+                  name="repeat-outline"
+                  size={16}
+                  color={AiraColors.mutedForeground}
+                />
+                <ThemedText type="small" style={styles.exerciseDetailText}>
+                  {exercise.valores_ejemplo_mujer_principiante?.repeticiones}{" "}
+                  reps
+                </ThemedText>
+              </View>
+            )}
+            {exercise.valores_ejemplo_mujer_principiante?.duracion_minutos && (
+              <View style={styles.exerciseDetail}>
+                <Ionicons
+                  name="time-outline"
+                  size={16}
+                  color={AiraColors.mutedForeground}
+                />
+                <ThemedText type="small" style={styles.exerciseDetailText}>
+                  {
+                    exercise.valores_ejemplo_mujer_principiante
+                      ?.duracion_minutos
+                  }{" "}
+                  min
+                </ThemedText>
+              </View>
+            )}
+          </View>
+
+          <ThemedText style={styles.exerciseDescription} numberOfLines={3}>
+            {exercise.descripcion}
+          </ThemedText>
+
+          <View>
+            <ThemedText type="small">Equipamiento:</ThemedText>
+            <View style={styles.equipmentList}>
+              {exercise.equipamiento_necesario.map((equipo, index) => (
+                <View key={index} style={styles.equipmentItem}>
+                  <ThemedText type="small">
+                    {equipo.replace("_", " ")}
+                  </ThemedText>
+                </View>
+              ))}
+            </View>
+          </View>
+        </ThemedView>
       </TouchableOpacity>
     );
   }
@@ -168,12 +175,8 @@ ExerciseItem.displayName = "ExerciseItem";
 
 const styles = StyleSheet.create({
   exerciseCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
-    marginBottom: 16,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
     padding: 16,
   },
   cardHeader: {
@@ -204,7 +207,6 @@ const styles = StyleSheet.create({
   },
   difficultyText: {
     fontSize: 12,
-     
   },
   typeBadge: {
     paddingHorizontal: 8,
@@ -214,11 +216,9 @@ const styles = StyleSheet.create({
   },
   typeText: {
     fontSize: 12,
-     
   },
   exerciseTitle: {
     fontSize: 18,
-     
     marginBottom: 8,
   },
   exerciseMuscles: {
@@ -254,7 +254,6 @@ const styles = StyleSheet.create({
 
   equipmentTitle: {
     fontSize: 14,
-     
     marginBottom: 4,
   },
   equipmentList: {

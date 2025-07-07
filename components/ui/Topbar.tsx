@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
 import { ThemeSelector } from "./ThemeSelector";
+import { ThemedView } from "@/components/ThemedView";
 
 interface TopbarProps {
   title: string;
@@ -46,8 +47,8 @@ export const Topbar = ({
 
   return (
     <>
-      <StatusBar style="auto" />
-      <View style={styles.topbarContent}>
+      <StatusBar style="light" />
+      <ThemedView style={styles.topbarContent}>
         {renderLeftActions()}
         <ThemedText numberOfLines={1} style={styles.topbarTitle} type="title">
           {title}
@@ -56,7 +57,7 @@ export const Topbar = ({
           {showThemeSelector && <ThemeSelector />}
           {actions}
         </View>
-      </View>
+      </ThemedView>
     </>
   );
 };
@@ -66,10 +67,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: AiraColors.card,
-    borderBottomWidth: 1,
     paddingVertical: 4,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
     paddingHorizontal: 16,
   },
   topbarTitle: {

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   View,
-  Text,
   Modal,
   TouchableOpacity,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
 } from "react-native";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
 
 interface InfoModalProps {
   visible: boolean;
@@ -19,16 +19,19 @@ export default function InfoModal({ visible, onClose }: InfoModalProps) {
   const instructions = [
     {
       title: "Tu compañera de bienestar",
-      description: "Aira está aquí para ayudarte a alcanzar tus objetivos y apoyarte en tu camino hacia el bienestar."
+      description:
+        "Aira está aquí para ayudarte a alcanzar tus objetivos y apoyarte en tu camino hacia el bienestar.",
     },
     {
       title: "Memoria personalizada",
-      description: "Aira puede recordar los detalles que sean importantes para ti."
+      description:
+        "Aira puede recordar los detalles que sean importantes para ti.",
     },
     {
       title: "Control de memoria",
-      description: "Eliminar conversaciones no borra los recuerdos de Aira. Si quieres que olvide algo, simplemente pídelo."
-    }
+      description:
+        "Eliminar conversaciones no borra los recuerdos de Aira. Si quieres que olvide algo, simplemente pídelo.",
+    },
   ];
 
   return (
@@ -39,25 +42,32 @@ export default function InfoModal({ visible, onClose }: InfoModalProps) {
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-        <View style={styles.modalContainer}>
+        <ThemedView style={styles.modalContainer}>
           <View style={styles.header}>
-            <ThemedText type="defaultSemiBold" style={styles.title}>Acerca de Aira</ThemedText>
+            <ThemedText type="defaultSemiBold" style={styles.title}>
+              Acerca de Aira
+            </ThemedText>
             <TouchableOpacity style={styles.closeButton} onPress={onClose}>
               <ThemedText style={styles.closeText}>✕</ThemedText>
             </TouchableOpacity>
           </View>
 
-          <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            style={styles.content}
+            showsVerticalScrollIndicator={false}
+          >
             {instructions.map((instruction, index) => (
               <View key={index} style={styles.instructionItem}>
-                <ThemedText style={styles.instructionTitle}>{instruction.title}</ThemedText>
+                <ThemedText style={styles.instructionTitle}>
+                  {instruction.title}
+                </ThemedText>
                 <ThemedText style={styles.instructionDescription}>
                   {instruction.description}
                 </ThemedText>
               </View>
             ))}
           </ScrollView>
-        </View>
+        </ThemedView>
       </View>
     </Modal>
   );
@@ -72,7 +82,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   modalContainer: {
-    backgroundColor: AiraColors.card,
     borderRadius: 16,
     width: "100%",
     maxWidth: 400,
@@ -85,26 +94,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   title: {
     fontSize: 18,
-    fontWeight: "600",
-    color: AiraColors.foreground,
   },
   closeButton: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: AiraColors.secondary,
     justifyContent: "center",
     alignItems: "center",
   },
   closeText: {
     fontSize: 16,
-    color: AiraColors.mutedForeground,
-    fontWeight: "500",
   },
   content: {
     padding: 20,
@@ -114,8 +116,6 @@ const styles = StyleSheet.create({
   },
   instructionTitle: {
     fontSize: 16,
-    fontWeight: "600",
-    color: AiraColors.foreground,
     marginBottom: 6,
   },
   instructionDescription: {
@@ -123,4 +123,4 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     color: AiraColors.mutedForeground,
   },
-}); 
+});

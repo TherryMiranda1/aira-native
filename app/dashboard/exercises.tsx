@@ -48,7 +48,7 @@
     };
 
     return (
-      <PageView>
+      <PageView variant="secondary">
         <Topbar
           title="Ejercicios 💪"
           actions={

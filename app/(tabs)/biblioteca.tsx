@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 
 import { PageView } from "@/components/ui/PageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
 import { FeedSkeleton } from "@/components/ui/FeedSkeleton";
 import { BibliotecaFeed } from "@/components/ui/BibliotecaFeed";
-import { AiraColors } from "@/constants/Colors";
+import { ThemedGradient } from "@/components/ThemedGradient";
 
 export default function BibliotecaScreen() {
   const [showFeed, setShowFeed] = useState(false);
@@ -21,22 +20,19 @@ export default function BibliotecaScreen() {
   return (
     <PageView>
       <Topbar title="Tu Biblioteca ✨" actions={<ProfileButton />} />
-      <LinearGradient
-        colors={[AiraColors.airaLavenderSoft, AiraColors.background]}
-        style={styles.container}
-      >
+      <ThemedGradient style={styles.container}>
         {!showFeed ? (
           <FeedSkeleton sectionsCount={5} />
         ) : (
           <BibliotecaFeed onFeedReady={handleFeedReady} />
         )}
-        
+
         {!showFeed && (
           <View style={styles.hiddenFeed}>
             <BibliotecaFeed onFeedReady={handleFeedReady} />
           </View>
         )}
-      </LinearGradient>
+      </ThemedGradient>
     </PageView>
   );
 }
@@ -46,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   hiddenFeed: {
-    position: 'absolute',
+    position: "absolute",
     left: -9999,
     top: -9999,
     opacity: 0,

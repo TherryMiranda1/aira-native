@@ -7,6 +7,7 @@ import { AiraColors } from "../../constants/Colors";
 import { AiraVariants } from "../../constants/Themes";
 import { useEvents } from "../../hooks/services/useEvents";
 import { useToastHelpers } from "../ui/ToastSystem";
+import { ThemedView } from "../ThemedView";
 
 type MoodType =
   | "radiante"
@@ -171,7 +172,7 @@ export const MoodTracker = ({
   );
 
   return (
-    <View style={styles.card}>
+    <ThemedView style={styles.card}>
       <ThemedText style={styles.cardTitle}>{title}</ThemedText>
 
       <View style={styles.moodGrid}>
@@ -229,20 +230,18 @@ export const MoodTracker = ({
           </ThemedText>
         </View>
       )}
-    </View>
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 16,
   },
   cardTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
     marginBottom: 16,
   },
   moodGrid: {

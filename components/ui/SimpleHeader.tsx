@@ -39,16 +39,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 20,
     paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
-    backgroundColor: AiraColors.background,
   },
   backButton: {
     marginRight: 16,
   },
   headerTitle: {
     fontSize: 20,
-     
-    color: AiraColors.foreground,
   },
-}); 
+});

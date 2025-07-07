@@ -69,7 +69,7 @@ export default function RecipesScreen() {
   };
 
   return (
-    <PageView>
+    <PageView variant="secondary">
       <Topbar
         title="Recetas 🍽️"
         actions={

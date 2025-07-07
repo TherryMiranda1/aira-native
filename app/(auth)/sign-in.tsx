@@ -19,6 +19,7 @@ import { Ionicons } from "@expo/vector-icons";
 import GoogleAuthButton from "@/components/Buttons/GoogleAuthButton";
 import { PageView } from "@/components/ui/PageView";
 import * as AuthSession from "expo-auth-session";
+import { ThemedView } from "@/components/ThemedView";
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -122,7 +123,7 @@ export default function SignInScreen() {
           ) : null}
 
           <View style={styles.formContainer}>
-            <View style={styles.inputWrapper}>
+            <ThemedView variant="secondary" style={styles.inputWrapper}>
               <Ionicons
                 name="mail-outline"
                 size={20}
@@ -136,9 +137,9 @@ export default function SignInScreen() {
                 placeholder="Correo electrónico"
                 onChangeText={setEmailAddress}
               />
-            </View>
+            </ThemedView>
 
-            <View style={styles.inputWrapper}>
+            <ThemedView variant="secondary" style={styles.inputWrapper}>
               <Ionicons
                 name="lock-closed-outline"
                 size={20}
@@ -162,7 +163,7 @@ export default function SignInScreen() {
                   color={AiraColors.mutedForeground}
                 />
               </TouchableOpacity>
-            </View>
+            </ThemedView>
 
             <TouchableOpacity style={styles.forgotPasswordLink}>
               <ThemedText style={styles.forgotPasswordText}>
@@ -181,7 +182,7 @@ export default function SignInScreen() {
               {isSubmitting ? (
                 <ActivityIndicator color="white" size="small" />
               ) : (
-                <ThemedText style={styles.signInButtonText}>
+                <ThemedText type="defaultSemiBold" style={styles.signInButtonText}>
                   Iniciar sesión
                 </ThemedText>
               )}
@@ -203,10 +204,6 @@ export default function SignInScreen() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: AiraColors.background,
-  },
   keyboardAvoid: {
     flex: 1,
     paddingBottom: 8,
@@ -257,10 +254,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     height: 56,
     paddingHorizontal: 16,
   },

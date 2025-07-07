@@ -10,15 +10,17 @@ interface RecipeCardProps {
 }
 
 export function RecipeCard({ recipe }: RecipeCardProps) {
-  const ingredientsList = recipe.ingredients
-    ?.split("\n")
-    .map((item) => item.trim())
-    .filter((item) => item && item.length > 0) || [];
+  const ingredientsList =
+    recipe.ingredients
+      ?.split("\n")
+      .map((item) => item.trim())
+      .filter((item) => item && item.length > 0) || [];
 
-  const instructionsList = recipe.instructions
-    ?.split("\n")
-    .map((item) => item.trim())
-    .filter((item) => item && item.length > 0) || [];
+  const instructionsList =
+    recipe.instructions
+      ?.split("\n")
+      .map((item) => item.trim())
+      .filter((item) => item && item.length > 0) || [];
 
   return (
     <ContentCard
@@ -33,13 +35,13 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           <ContentList items={ingredientsList} type="bullet" />
         </ContentSection>
       )}
-      
+
       {instructionsList.length > 0 && (
         <ContentSection title="Preparación" icon="👩‍🍳">
           <ContentList items={instructionsList} type="numbered" />
         </ContentSection>
       )}
-      
+
       {recipe.estimatedTime && (
         <View style={styles.timeContainer}>
           <View style={styles.timeCard}>
@@ -61,11 +63,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   timeCard: {
-    backgroundColor: AiraColors.card,
     padding: 12,
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     alignItems: "center",
   },
   timeLabel: {
@@ -75,4 +74,4 @@ const styles = StyleSheet.create({
   timeValue: {
     color: AiraColors.primary,
   },
-}); 
+});

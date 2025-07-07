@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Animated } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 
 const HERO_SECTION_HEIGHT = 150;
@@ -207,7 +207,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   carouselSkeleton: {
-    backgroundColor: AiraColors.card,
     paddingVertical: 16,
   },
   cardsContainer: {
@@ -218,7 +217,6 @@ const styles = StyleSheet.create({
   cardSkeleton: {
     width: 280,
     borderRadius: AiraVariants.cardRadius,
-    backgroundColor: AiraColors.background,
     overflow: "hidden",
   },
   cardImageSkeleton: {
@@ -259,7 +257,7 @@ const styles = StyleSheet.create({
   },
   featuredCardSkeleton: {
     borderRadius: AiraVariants.cardRadius,
-    backgroundColor: AiraColors.card,
+
     overflow: "hidden",
   },
   featuredCardImageSkeleton: {

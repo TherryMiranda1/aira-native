@@ -6,13 +6,14 @@ import { HapticTab } from "@/components/HapticTab";
 import TabBarBackground from "@/components/ui/TabBarBackground";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/ui/TabBarIcon";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: AiraColors.foreground,
-        tabBarInactiveTintColor: AiraColorsWithAlpha.foregroundWithOpacity(0.4),
+        tabBarActiveTintColor: useThemeColor({}, "foreground"),
+        tabBarInactiveTintColor: useThemeColor({}, "muted"),
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -23,7 +24,7 @@ export default function TabLayout() {
           },
           default: {
             height: 60,
-            backgroundColor: AiraColors.card,
+            backgroundColor: useThemeColor({}, "background"),
             borderTopWidth: 0,
           },
         }),

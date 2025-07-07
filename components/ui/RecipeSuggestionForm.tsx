@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -413,7 +408,6 @@ export function RecipeSuggestionForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,
@@ -423,34 +417,26 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
     marginBottom: 12,
   },
   fieldLabel: {
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   input: {
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     fontSize: 16,
-    color: AiraColors.foreground,
+
     minHeight: 50,
   },
   inputFlexible: {
     flex: 1,
   },
   textArea: {
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     fontSize: 16,
-    color: AiraColors.foreground,
+
     minHeight: 100,
   },
   inputError: {
@@ -506,7 +492,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   optionalTitle: {
-    color: AiraColors.foreground,
+
     marginBottom: 16,
     textAlign: "center",
   },

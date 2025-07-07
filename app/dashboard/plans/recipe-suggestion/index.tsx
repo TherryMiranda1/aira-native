@@ -291,7 +291,6 @@ export default function RecipeSuggestionScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     paddingBottom: 20,
@@ -344,7 +343,7 @@ const styles = StyleSheet.create({
   },
   welcomeTitle: {
     fontSize: 20,
-    color: AiraColors.foreground,
+
     textAlign: "center",
     marginBottom: 12,
   },
@@ -375,17 +374,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#F97316",
     borderRadius: AiraVariants.cardRadius,
-    backgroundColor: AiraColors.background,
   },
   optionTitle: {
     fontSize: 18,
-     
+
     color: "white",
     textAlign: "center",
   },
   optionTitleOutline: {
     fontSize: 18,
-     
+
     color: "#F97316",
     textAlign: "center",
   },
@@ -427,7 +425,7 @@ const styles = StyleSheet.create({
   },
   loadingTitle: {
     fontSize: 20,
-     
+
     color: "white",
     textAlign: "center",
   },
@@ -443,7 +441,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   errorCard: {
-    backgroundColor: AiraColors.card,
     padding: 32,
     borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
@@ -453,8 +450,6 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-     
-    color: AiraColors.foreground,
     textAlign: "center",
   },
   errorMessage: {
@@ -477,7 +472,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-     
+
     color: "white",
   },
 });

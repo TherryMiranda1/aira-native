@@ -235,7 +235,6 @@ export function DailyMealPlanForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,
@@ -245,7 +244,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
+
     marginBottom: 4,
   },
   required: {
@@ -277,9 +276,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   textArea: {
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
+
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
     fontSize: 16,

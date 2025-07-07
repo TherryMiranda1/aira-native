@@ -4,6 +4,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Message } from "@/types/Assistant";
+import { ThemedView } from "../ThemedView";
 
 interface MessageBubbleProps {
   message: Message;
@@ -35,7 +36,8 @@ export function MessageBubble({ message, children }: MessageBubbleProps) {
           : styles.airaMessageRow,
       ]}
     >
-      <View
+      <ThemedView
+        variant={message.sender === "user" ? "background" : "secondary"}
         style={[
           styles.messageBubble,
           !hasSpecialContent && styles.messageBubbleWidth,
@@ -45,16 +47,7 @@ export function MessageBubble({ message, children }: MessageBubbleProps) {
         ]}
       >
         {message.text && (
-          <ThemedText
-            style={[
-              styles.messageText,
-              message.sender === "user"
-                ? styles.userMessageText
-                : styles.airaMessageText,
-            ]}
-          >
-            {message.text}
-          </ThemedText>
+          <ThemedText style={[styles.messageText]}>{message.text}</ThemedText>
         )}
 
         {children}
@@ -69,7 +62,7 @@ export function MessageBubble({ message, children }: MessageBubbleProps) {
         >
           {formatTime(message.timestamp)}
         </ThemedText>
-      </View>
+      </ThemedView>
     </View>
   );
 }
@@ -93,23 +86,16 @@ const styles = StyleSheet.create({
     maxWidth: "80%",
   },
   userMessageBubble: {
-    backgroundColor: AiraColors.foreground,
     borderBottomRightRadius: 4,
   },
   airaMessageBubble: {
-    backgroundColor: AiraColors.secondary,
     borderBottomLeftRadius: 4,
   },
   messageText: {
     fontSize: 15,
     lineHeight: 22,
   },
-  userMessageText: {
-    color: AiraColors.primaryForeground,
-  },
-  airaMessageText: {
-    color: AiraColors.foreground,
-  },
+
   messageTime: {
     fontSize: 10,
     marginTop: 4,

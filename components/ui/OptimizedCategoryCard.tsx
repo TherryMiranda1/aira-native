@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 16,
     overflow: "hidden",
-    backgroundColor: AiraColors.card,
     shadowColor: AiraColors.foreground,
     shadowOffset: {
       width: 0,

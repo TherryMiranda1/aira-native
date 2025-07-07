@@ -14,6 +14,8 @@ import {
   useMetricRecentRecords,
 } from "@/hooks/services/useMetrics";
 import { MetricMiniChart } from "./MetricMiniChart";
+import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "@/components/ThemedView";
 
 interface MetricCardProps {
   metric: Metric;
@@ -44,7 +46,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.card}>
+      <ThemedView style={styles.card}>
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.titleContainer}>
@@ -174,15 +176,14 @@ export const MetricCard: React.FC<MetricCardProps> = ({
             color={AiraColors.mutedForeground}
           />
         </View>
-      </View>
+      </ThemedView>
     </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 16,
+    borderRadius: AiraVariants.cardRadius,
     padding: 20,
   },
   header: {
@@ -197,7 +198,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: AiraColors.foreground,
     marginBottom: 4,
   },
   description: {
@@ -224,7 +224,6 @@ const styles = StyleSheet.create({
   },
   statValue: {
     fontSize: 16,
-    color: AiraColors.foreground,
   },
   chartContainer: {
     marginBottom: 16,
@@ -245,7 +244,6 @@ const styles = StyleSheet.create({
   },
   progressLabel: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   progressPercentage: {
     fontSize: 14,
@@ -265,7 +263,6 @@ const styles = StyleSheet.create({
   },
   milestonesLabel: {
     fontSize: 14,
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   milestonesList: {

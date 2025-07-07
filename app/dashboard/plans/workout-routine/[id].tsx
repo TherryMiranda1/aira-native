@@ -128,17 +128,6 @@ export default function WorkoutRoutineDetailScreen() {
     }
   };
 
-  const formatDate = (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("es-ES", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
   const getTotalExercises = (): number => {
     if (!routine) return 0;
     return routine.sessions.reduce(
@@ -526,7 +515,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   errorCard: {
-    backgroundColor: AiraColors.card,
     padding: 32,
     borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
@@ -536,8 +524,6 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-
-    color: AiraColors.foreground,
   },
   errorMessage: {
     fontSize: 16,
@@ -555,12 +541,9 @@ const styles = StyleSheet.create({
     color: "white",
   },
   summaryCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 20,
     marginBottom: 20,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   summaryHeader: {
     flexDirection: "row",
@@ -581,8 +564,6 @@ const styles = StyleSheet.create({
   },
   summaryTitle: {
     fontSize: 18,
-
-    color: AiraColors.foreground,
     marginBottom: 4,
   },
   summarySubtitle: {
@@ -607,15 +588,11 @@ const styles = StyleSheet.create({
   },
   statValue: {
     fontSize: 12,
-    color: AiraColors.foreground,
   },
   equipmentCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 20,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   cardHeader: {
     flexDirection: "row",
@@ -625,12 +602,10 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 16,
-
-    color: AiraColors.foreground,
   },
   equipmentText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+
     lineHeight: 20,
   },
   sessionsSection: {
@@ -638,17 +613,12 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-
-    color: AiraColors.foreground,
     marginBottom: 16,
   },
   sessionCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 16,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   sessionHeader: {
     flexDirection: "row",
@@ -680,7 +650,6 @@ const styles = StyleSheet.create({
   },
   sessionFocusText: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   sessionSection: {
     marginBottom: 16,
@@ -693,12 +662,10 @@ const styles = StyleSheet.create({
   },
   sectionHeaderText: {
     fontSize: 14,
-
-    color: AiraColors.foreground,
   },
   sectionText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+
     lineHeight: 20,
     paddingLeft: 24,
   },
@@ -721,7 +688,6 @@ const styles = StyleSheet.create({
   exerciseName: {
     fontSize: 14,
 
-    color: AiraColors.foreground,
     flex: 1,
     marginRight: 8,
   },
@@ -736,7 +702,7 @@ const styles = StyleSheet.create({
   },
   exerciseDescription: {
     fontSize: 13,
-    color: AiraColors.foreground,
+
     lineHeight: 18,
     marginBottom: 6,
   },
@@ -751,7 +717,6 @@ const styles = StyleSheet.create({
   },
   exerciseDetailText: {
     fontSize: 12,
-    color: AiraColors.foreground,
     flex: 1,
   },
   exerciseTips: {
@@ -765,7 +730,7 @@ const styles = StyleSheet.create({
   },
   exerciseTipsText: {
     fontSize: 12,
-    color: AiraColors.foreground,
+
     flex: 1,
     lineHeight: 16,
   },
@@ -779,7 +744,7 @@ const styles = StyleSheet.create({
   },
   exerciseAlternativeText: {
     fontSize: 12,
-    color: AiraColors.foreground,
+
     flex: 1,
     lineHeight: 16,
   },
@@ -798,7 +763,7 @@ const styles = StyleSheet.create({
   },
   warningText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+
     lineHeight: 20,
   },
   suggestionsCard: {
@@ -811,7 +776,7 @@ const styles = StyleSheet.create({
   },
   suggestionsText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+
     lineHeight: 20,
   },
   tagsSection: {
@@ -820,7 +785,6 @@ const styles = StyleSheet.create({
   tagsTitle: {
     fontSize: 16,
 
-    color: AiraColors.foreground,
     marginBottom: 12,
   },
   tagsContainer: {

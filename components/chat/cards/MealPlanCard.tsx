@@ -3,9 +3,16 @@ import { View, StyleSheet, Alert } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { DailyMealPlanOutput, DailyMealPlanInput } from "@/types/Assistant";
-import { ContentCard, ContentSection, ContentText, ContentList } from "./ContentCard";
+import {
+  ContentCard,
+  ContentSection,
+  ContentText,
+  ContentList,
+} from "./ContentCard";
 import { SaveButton } from "../SaveButton";
 import { useDailyMealPlans } from "@/hooks/services/useDailyMealPlans";
+import { ThemedView } from "@/components/ThemedView";
+import { AiraVariants } from "@/constants/Themes";
 
 interface MealPlanCardProps {
   mealPlan: DailyMealPlanOutput;
@@ -13,12 +20,12 @@ interface MealPlanCardProps {
 }
 
 const mealIcons: Record<string, string> = {
-  "Desayuno": "🌅",
-  "Almuerzo": "☀️",
-  "Cena": "🌙",
-  "Snack": "🍎",
-  "Merienda": "🥨",
-  "default": "🍽️"
+  Desayuno: "🌅",
+  Almuerzo: "☀️",
+  Cena: "🌙",
+  Snack: "🍎",
+  Merienda: "🥨",
+  default: "🍽️",
 };
 
 export function MealPlanCard({ mealPlan, inputParams }: MealPlanCardProps) {
@@ -79,33 +86,31 @@ export function MealPlanCard({ mealPlan, inputParams }: MealPlanCardProps) {
     >
       {/* Resumen del plan */}
       {totalMeals > 0 && (
-        <View style={styles.summaryContainer}>
+        <ThemedView variant="border" style={styles.summaryContainer}>
           <View style={styles.summaryCard}>
             <ThemedText type="small" style={styles.summaryLabel}>
               📊 Resumen del plan
             </ThemedText>
             <ThemedText type="defaultSemiBold" style={styles.summaryValue}>
-              {totalMeals} comida{totalMeals > 1 ? "s" : ""} planificada{totalMeals > 1 ? "s" : ""}
+              {totalMeals} comida{totalMeals > 1 ? "s" : ""} planificada
+              {totalMeals > 1 ? "s" : ""}
             </ThemedText>
           </View>
-        </View>
+        </ThemedView>
       )}
 
       {mealPlan.meals?.map((meal, index) => {
         const mealIcon = mealIcons[meal.mealType] || mealIcons.default;
-        
+
         return (
-          <ContentSection 
-            key={index} 
+          <ContentSection
+            key={index}
             title={meal.mealType || `Comida ${index + 1}`}
             icon={mealIcon}
           >
             {meal.options && meal.options.length > 0 ? (
               <>
-                <ContentList 
-                  items={meal.options.slice(0, 3)}
-                  type="bullet"
-                />
+                <ContentList items={meal.options.slice(0, 3)} type="bullet" />
                 {meal.options.length > 3 && (
                   <ContentText variant="highlight">
                     + {meal.options.length - 3} opciones más
@@ -113,17 +118,17 @@ export function MealPlanCard({ mealPlan, inputParams }: MealPlanCardProps) {
                 )}
               </>
             ) : (
-              <ContentText>No hay opciones definidas para esta comida</ContentText>
+              <ContentText>
+                No hay opciones definidas para esta comida
+              </ContentText>
             )}
           </ContentSection>
         );
       })}
-      
+
       {mealPlan.generalTips && (
         <ContentSection title="Consejos nutricionales" icon="💡">
-          <ContentText variant="highlight">
-            {mealPlan.generalTips}
-          </ContentText>
+          <ContentText variant="highlight">{mealPlan.generalTips}</ContentText>
         </ContentSection>
       )}
 
@@ -141,13 +146,11 @@ export function MealPlanCard({ mealPlan, inputParams }: MealPlanCardProps) {
 const styles = StyleSheet.create({
   summaryContainer: {
     marginBottom: 16,
+    borderRadius: AiraVariants.cardRadius,
   },
   summaryCard: {
-    backgroundColor: AiraColors.card,
     padding: 12,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
+    borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
   },
   summaryLabel: {
@@ -157,4 +160,4 @@ const styles = StyleSheet.create({
   summaryValue: {
     color: AiraColors.primary,
   },
-}); 
+});

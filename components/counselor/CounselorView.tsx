@@ -14,6 +14,7 @@ import InfoModal from "./InfoModal";
 import { ThemedText } from "../ThemedText";
 import { Topbar } from "../ui/Topbar";
 import { ProfileButton } from "../ui/ProfileButton";
+import { ThemedView } from "../ThemedView";
 
 export default function CounselorView() {
   const [showSessionHistory, setShowSessionHistory] = useState(false);
@@ -91,7 +92,7 @@ export default function CounselorView() {
         presentationStyle="pageSheet"
         onRequestClose={() => setShowSessionHistory(false)}
       >
-        <View style={styles.modalContainer}>
+        <ThemedView style={styles.modalContainer}>
           <View style={styles.modalHeader}>
             <ThemedText type="defaultSemiBold" style={styles.modalTitle}>
               Conversaciones
@@ -112,7 +113,7 @@ export default function CounselorView() {
             onDeleteSession={deleteSession}
             isLoading={isLoading}
           />
-        </View>
+        </ThemedView>
       </Modal>
 
       <InfoModal
@@ -126,13 +127,11 @@ export default function CounselorView() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
     paddingHorizontal: 32,
   },
   loadingText: {
@@ -147,9 +146,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: AiraColors.card,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   menuButton: {
     width: 40,
@@ -157,7 +153,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
   },
   menuIcon: {
     fontSize: 18,
@@ -166,7 +161,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "600",
-    color: AiraColors.foreground,
   },
   infoButton: {
     width: 40,
@@ -174,7 +168,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
   },
   infoIcon: {
     fontSize: 16,
@@ -183,7 +176,6 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   modalHeader: {
     flexDirection: "row",
@@ -191,13 +183,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 16,
-    backgroundColor: AiraColors.card,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   modalTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
   },
   closeButton: {
     paddingHorizontal: 12,
@@ -206,6 +194,5 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: AiraColors.primary,
     fontSize: 16,
-    fontWeight: "500",
   },
 });

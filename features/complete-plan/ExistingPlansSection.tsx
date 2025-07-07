@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
@@ -14,6 +9,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { GeneratedPlan } from "@/services/api/generatedPlan.service";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { ThemedView } from "@/components/ThemedView";
 
 interface ExistingPlansSectionProps {
   plans: GeneratedPlan[];
@@ -57,7 +53,7 @@ export const ExistingPlansSection = ({
     if (diffDays === 1) return "Hoy";
     if (diffDays === 2) return "Ayer";
     if (diffDays <= 7) return `Hace ${diffDays - 1} días`;
-    
+
     return date.toLocaleDateString("es-ES", {
       day: "numeric",
       month: "short",
@@ -148,70 +144,80 @@ export const ExistingPlansSection = ({
         contentContainerStyle={styles.plansContainer}
       >
         {plans.map((plan) => (
-          <TouchableOpacity
-            key={plan.id}
-            style={styles.planCard}
-            onPress={() => handlePlanPress(plan)}
-          >
-            <View style={styles.planHeader}>
-              <LinearGradient
-                colors={getPlanTypeColor(plan.planType) as [string, string]}
-                style={styles.planIcon}
-              >
-                <Ionicons
-                  name={getPlanTypeIcon(plan.planType)}
-                  size={18}
-                  color="white"
-                />
-              </LinearGradient>
-
-              {onPlanDelete && (
-                <TouchableOpacity
-                  style={styles.deleteButton}
-                  onPress={() => handleDeletePress(plan)}
+          <TouchableOpacity key={plan.id} onPress={() => handlePlanPress(plan)}>
+            <ThemedView variant="border" style={styles.planCard}>
+              <View style={styles.planHeader}>
+                <LinearGradient
+                  colors={getPlanTypeColor(plan.planType) as [string, string]}
+                  style={styles.planIcon}
                 >
                   <Ionicons
-                    name="close-circle"
+                    name={getPlanTypeIcon(plan.planType)}
                     size={18}
-                    color={AiraColors.mutedForeground}
+                    color="white"
                   />
-                </TouchableOpacity>
-              )}
-            </View>
+                </LinearGradient>
 
-            <View style={styles.planContent}>
-              <ThemedText type="defaultSemiBold" style={styles.planTitle} numberOfLines={2}>
-                {plan.title}
-              </ThemedText>
-
-              <View style={styles.planMeta}>
-                <View style={styles.planTypeContainer}>
-                  <ThemedText type="small" style={styles.planType}>
-                    {getPlanTypeLabel(plan.planType)}
-                  </ThemedText>
-                </View>
-                <ThemedText type="small" style={styles.planDate}>
-                  {formatDate(plan.createdAt)}
-                </ThemedText>
+                {onPlanDelete && (
+                  <TouchableOpacity
+                    style={styles.deleteButton}
+                    onPress={() => handleDeletePress(plan)}
+                  >
+                    <Ionicons
+                      name="close-circle"
+                      size={18}
+                      color={AiraColors.mutedForeground}
+                    />
+                  </TouchableOpacity>
+                )}
               </View>
 
-              {plan.inputParameters?.objetivo && (
-                <View style={styles.planObjective}>
-                  <Ionicons name="flag" size={12} color={AiraColors.primary} />
-                  <ThemedText type="small" style={styles.objectiveText} numberOfLines={1}>
-                    {plan.inputParameters.objetivo}
+              <View style={styles.planContent}>
+                <ThemedText
+                  type="defaultSemiBold"
+                  style={styles.planTitle}
+                  numberOfLines={2}
+                >
+                  {plan.title}
+                </ThemedText>
+
+                <View style={styles.planMeta}>
+                  <View style={styles.planTypeContainer}>
+                    <ThemedText type="small" style={styles.planType}>
+                      {getPlanTypeLabel(plan.planType)}
+                    </ThemedText>
+                  </View>
+                  <ThemedText type="small" style={styles.planDate}>
+                    {formatDate(plan.createdAt)}
                   </ThemedText>
                 </View>
-              )}
-            </View>
 
-            <View style={styles.planFooter}>
-              <Ionicons
-                name="chevron-forward"
-                size={16}
-                color={AiraColors.mutedForeground}
-              />
-            </View>
+                {plan.inputParameters?.objetivo && (
+                  <View style={styles.planObjective}>
+                    <Ionicons
+                      name="flag"
+                      size={12}
+                      color={AiraColors.primary}
+                    />
+                    <ThemedText
+                      type="small"
+                      style={styles.objectiveText}
+                      numberOfLines={1}
+                    >
+                      {plan.inputParameters.objetivo}
+                    </ThemedText>
+                  </View>
+                )}
+              </View>
+
+              <View style={styles.planFooter}>
+                <Ionicons
+                  name="chevron-forward"
+                  size={16}
+                  color={AiraColors.mutedForeground}
+                />
+              </View>
+            </ThemedView>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -228,9 +234,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  sectionTitle: {
-    color: AiraColors.foreground,
-  },
+  sectionTitle: {},
   countBadge: {
     backgroundColor: AiraColors.primary,
     paddingHorizontal: 8,
@@ -248,11 +252,8 @@ const styles = StyleSheet.create({
   },
   planCard: {
     width: 260,
-    height: 160,
-    backgroundColor: AiraColors.card,
+    height: 180,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     padding: 16,
     gap: 12,
   },

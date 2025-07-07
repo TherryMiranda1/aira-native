@@ -10,6 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { Phrase } from "@/services/api/phrase.service";
+import { ThemedView } from "../ThemedView";
 
 interface PhraseModalProps {
   visible: boolean;
@@ -89,7 +90,7 @@ export const PhraseModal = ({
       presentationStyle="pageSheet"
       onRequestClose={onClose}
     >
-      <View style={styles.container}>
+      <ThemedView style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
@@ -145,7 +146,7 @@ export const PhraseModal = ({
             </View>
 
             {phrase.momento_recomendado && (
-              <View style={styles.momentBadge}>
+              <ThemedView variant="border" style={styles.momentBadge}>
                 <Ionicons
                   name={getMomentIcon(phrase.momento_recomendado)}
                   size={14}
@@ -154,7 +155,7 @@ export const PhraseModal = ({
                 <ThemedText style={styles.momentText}>
                   {getMomentLabel(phrase.momento_recomendado)}
                 </ThemedText>
-              </View>
+              </ThemedView>
             )}
 
             {phrase.popularidad > 0 && (
@@ -244,7 +245,7 @@ export const PhraseModal = ({
           {/* Bottom Spacing */}
           <View style={styles.bottomSpacing} />
         </ScrollView>
-      </View>
+      </ThemedView>
     </Modal>
   );
 };
@@ -252,7 +253,6 @@ export const PhraseModal = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     flexDirection: "row",
@@ -260,14 +260,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border + "20",
   },
   closeButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: AiraColors.card,
+
     alignItems: "center",
     justifyContent: "center",
   },
@@ -308,7 +306,6 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   quoteText: {
-    color: AiraColors.foreground,
     textAlign: "center",
     lineHeight: 32,
     paddingHorizontal: 8,
@@ -332,7 +329,7 @@ const styles = StyleSheet.create({
   momentBadge: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
+
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 16,
@@ -364,7 +361,6 @@ const styles = StyleSheet.create({
   actionButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
     paddingHorizontal: 8,
     paddingVertical: 12,
     borderRadius: 20,
@@ -394,7 +390,6 @@ const styles = StyleSheet.create({
   navButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
     paddingHorizontal: 16,
     paddingVertical: 14,
     borderRadius: 20,

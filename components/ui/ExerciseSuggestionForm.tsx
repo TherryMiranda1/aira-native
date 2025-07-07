@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -215,7 +210,6 @@ export function ExerciseSuggestionForm({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   content: {
     padding: 16,
@@ -225,7 +219,6 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
     marginBottom: 16,
   },
   quickOptionsGrid: {
@@ -234,8 +227,6 @@ const styles = StyleSheet.create({
   },
   quickOption: {
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.2),
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
     flexDirection: "row",
@@ -263,13 +254,9 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 0.8)",
   },
   textInput: {
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
     fontSize: 16,
-    color: AiraColors.foreground,
     minHeight: 80,
   },
   fitnessSection: {
@@ -277,11 +264,8 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 24,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   fitnessTitle: {
-    color: AiraColors.foreground,
     marginBottom: 12,
   },
   fitnessLevels: {
@@ -290,9 +274,6 @@ const styles = StyleSheet.create({
   },
   fitnessLevel: {
     flex: 1,
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: 16,
     paddingVertical: 8,
     paddingHorizontal: 12,
@@ -302,9 +283,7 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.primary,
     borderColor: AiraColors.primary,
   },
-  fitnessLevelText: {
-    color: AiraColors.foreground,
-  },
+  fitnessLevelText: {},
   fitnessLevelTextSelected: {
     color: "white",
   },

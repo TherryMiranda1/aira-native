@@ -3,7 +3,13 @@ import { View, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { PersonalizedPlanOutput } from "@/types/Assistant";
-import { ContentCard, ContentSection, ContentText, ContentList } from "./ContentCard";
+import {
+  ContentCard,
+  ContentSection,
+  ContentText,
+  ContentList,
+} from "./ContentCard";
+import { ThemedView } from "@/components/ThemedView";
 
 interface CompletePlanCardProps {
   completePlan: PersonalizedPlanOutput;
@@ -30,25 +36,33 @@ export function CompletePlanCard({ completePlan }: CompletePlanCardProps) {
           </ThemedText>
           <View style={styles.macrosGrid}>
             <View style={styles.macroItem}>
-              <ThemedText type="small" style={styles.macroLabel}>Calorías</ThemedText>
+              <ThemedText type="small" style={styles.macroLabel}>
+                Calorías
+              </ThemedText>
               <ThemedText type="defaultSemiBold" style={styles.macroValue}>
                 {completePlan.planNutricional.desgloseMacros.caloriasTotales}
               </ThemedText>
             </View>
             <View style={styles.macroItem}>
-              <ThemedText type="small" style={styles.macroLabel}>Proteínas</ThemedText>
+              <ThemedText type="small" style={styles.macroLabel}>
+                Proteínas
+              </ThemedText>
               <ThemedText type="defaultSemiBold" style={styles.macroValue}>
                 {completePlan.planNutricional.desgloseMacros.proteinas}
               </ThemedText>
             </View>
             <View style={styles.macroItem}>
-              <ThemedText type="small" style={styles.macroLabel}>Carbohidratos</ThemedText>
+              <ThemedText type="small" style={styles.macroLabel}>
+                Carbohidratos
+              </ThemedText>
               <ThemedText type="defaultSemiBold" style={styles.macroValue}>
                 {completePlan.planNutricional.desgloseMacros.carbohidratos}
               </ThemedText>
             </View>
             <View style={styles.macroItem}>
-              <ThemedText type="small" style={styles.macroLabel}>Grasas</ThemedText>
+              <ThemedText type="small" style={styles.macroLabel}>
+                Grasas
+              </ThemedText>
               <ThemedText type="defaultSemiBold" style={styles.macroValue}>
                 {completePlan.planNutricional.desgloseMacros.grasas}
               </ThemedText>
@@ -58,14 +72,19 @@ export function CompletePlanCard({ completePlan }: CompletePlanCardProps) {
 
         {completePlan.planNutricional.ejemplosRecetasPlatos && (
           <View style={styles.mealsSection}>
-            {completePlan.planNutricional.ejemplosRecetasPlatos.map((comida, index) => (
-              <View key={index} style={styles.mealItem}>
-                <ThemedText type="defaultSemiBold" style={styles.mealType}>
-                  {comida.tipoComida}
-                </ThemedText>
-                <ContentList items={comida.opciones.slice(0, 2)} type="bullet" />
-              </View>
-            ))}
+            {completePlan.planNutricional.ejemplosRecetasPlatos.map(
+              (comida, index) => (
+                <View key={index} style={styles.mealItem}>
+                  <ThemedText type="defaultSemiBold" style={styles.mealType}>
+                    {comida.tipoComida}
+                  </ThemedText>
+                  <ContentList
+                    items={comida.opciones.slice(0, 2)}
+                    type="bullet"
+                  />
+                </View>
+              )
+            )}
           </View>
         )}
       </ContentSection>
@@ -75,34 +94,44 @@ export function CompletePlanCard({ completePlan }: CompletePlanCardProps) {
         <ContentText variant="highlight">
           Tipo: {completePlan.programaEntrenamiento.tipoEjercicio}
         </ContentText>
-        
+
         <ContentText variant="highlight">
-          Frecuencia: {completePlan.programaEntrenamiento.frecuenciaVolumenSemanal}
+          Frecuencia:{" "}
+          {completePlan.programaEntrenamiento.frecuenciaVolumenSemanal}
         </ContentText>
 
         {completePlan.programaEntrenamiento.ejerciciosDetalladosPorSesion && (
           <View style={styles.routinesSection}>
-            {completePlan.programaEntrenamiento.ejerciciosDetalladosPorSesion.map((sesion, index) => (
-              <View key={index} style={styles.routineItem}>
-                <ThemedText type="defaultSemiBold" style={styles.routineName}>
-                  {sesion.nombreSesion}
-                </ThemedText>
-                {sesion.descripcionSesion && (
-                  <ContentText>{sesion.descripcionSesion}</ContentText>
-                )}
-                <ContentList 
-                  items={sesion.ejercicios.slice(0, 3).map(ej => 
-                    `${ej.nombreEjercicio} - ${ej.seriesRepeticiones}`
-                  )} 
-                  type="bullet" 
-                />
-                {sesion.ejercicios.length > 3 && (
-                  <ContentText variant="highlight">
-                    + {sesion.ejercicios.length - 3} ejercicios más
-                  </ContentText>
-                )}
-              </View>
-            ))}
+            {completePlan.programaEntrenamiento.ejerciciosDetalladosPorSesion.map(
+              (sesion, index) => (
+                <ThemedView
+                  key={index}
+                  variant="border"
+                  style={styles.routineItem}
+                >
+                  <ThemedText type="defaultSemiBold" style={styles.routineName}>
+                    {sesion.nombreSesion}
+                  </ThemedText>
+                  {sesion.descripcionSesion && (
+                    <ContentText>{sesion.descripcionSesion}</ContentText>
+                  )}
+                  <ContentList
+                    items={sesion.ejercicios
+                      .slice(0, 3)
+                      .map(
+                        (ej) =>
+                          `${ej.nombreEjercicio} - ${ej.seriesRepeticiones}`
+                      )}
+                    type="bullet"
+                  />
+                  {sesion.ejercicios.length > 3 && (
+                    <ContentText variant="highlight">
+                      + {sesion.ejercicios.length - 3} ejercicios más
+                    </ContentText>
+                  )}
+                </ThemedView>
+              )
+            )}
           </View>
         )}
       </ContentSection>
@@ -112,11 +141,15 @@ export function CompletePlanCard({ completePlan }: CompletePlanCardProps) {
         <ContentText variant="highlight">
           {completePlan.sugerenciasSeguimientoAjustes.indicadoresProgreso}
         </ContentText>
-        
+
         <ContentText>
-          Revisiones: {completePlan.sugerenciasSeguimientoAjustes.frecuenciaRevisionesModificaciones}
+          Revisiones:{" "}
+          {
+            completePlan.sugerenciasSeguimientoAjustes
+              .frecuenciaRevisionesModificaciones
+          }
         </ContentText>
-        
+
         <ContentText variant="highlight">
           {completePlan.sugerenciasSeguimientoAjustes.mensajeFinalMotivador}
         </ContentText>
@@ -139,11 +172,8 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   macroItem: {
-    backgroundColor: AiraColors.card,
     padding: 8,
     borderRadius: 6,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     minWidth: 80,
     alignItems: "center",
   },
@@ -158,11 +188,8 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   mealItem: {
-    backgroundColor: AiraColors.card,
     padding: 8,
     borderRadius: 6,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   mealType: {
     color: AiraColors.foreground,
@@ -173,14 +200,11 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   routineItem: {
-    backgroundColor: AiraColors.card,
     padding: 8,
     borderRadius: 6,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   routineName: {
     color: AiraColors.foreground,
     marginBottom: 4,
   },
-}); 
+});

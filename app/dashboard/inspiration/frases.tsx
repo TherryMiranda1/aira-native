@@ -379,7 +379,7 @@ export default function FrasesScreen() {
     );
   }
   return (
-    <PageView>
+    <PageView variant="secondary">
       <Topbar
         title="Frases Inspiradoras"
         actions={<ProfileButton />}
@@ -470,7 +470,6 @@ export default function FrasesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   pagerView: {
     flex: 1,
@@ -480,10 +479,8 @@ const styles = StyleSheet.create({
   },
   phrasesContainer: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   phrasesContent: {
     padding: 16,
   },
 });
-

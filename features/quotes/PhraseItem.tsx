@@ -7,6 +7,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Phrase } from "@/services/api/phrase.service";
+import { ThemedView } from "@/components/ThemedView";
 
 interface PhraseItemProps {
   phrase: Phrase;
@@ -42,7 +43,7 @@ export const PhraseItem = ({
       onPress={() => onPress(phrase)}
       activeOpacity={0.7}
     >
-      <View style={styles.content}>
+      <ThemedView style={styles.content}>
         {/* Icon */}
         <LinearGradient
           colors={categoryColors as [ColorValue, ColorValue]}
@@ -87,32 +88,23 @@ export const PhraseItem = ({
             color={AiraColors.mutedForeground}
           />
         </View>
-      </View>
+      </ThemedView>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
     marginBottom: 8,
-    shadowColor: AiraColors.foreground,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   content: {
     flexDirection: "row",
     alignItems: "center",
     padding: 16,
     gap: 12,
+    borderRadius: AiraVariants.cardRadius,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   iconContainer: {
     width: 32,
@@ -126,7 +118,6 @@ const styles = StyleSheet.create({
   },
   phraseText: {
     fontSize: 14,
-    color: AiraColors.foreground,
     lineHeight: 20,
     marginBottom: 4,
   },

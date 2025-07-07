@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "@/components/ThemedView";
 
 // Categorías de recetas - Sincronizadas con RecipesGallery
 const categories = [
@@ -126,32 +127,34 @@ const RecipeCard = memo(
         onPress={() => onPress(recipe.id)}
         activeOpacity={0.7}
       >
-        <Image source={recipe.image} style={styles.recipeImage} />
-        <View style={styles.recipeInfo}>
-          <ThemedText style={styles.recipeTitle}>{recipe.title}</ThemedText>
-          <View style={styles.recipeMetaInfo}>
-            <View style={styles.recipeMetaItem}>
-              <Ionicons
-                name="time-outline"
-                size={14}
-                color={AiraColors.mutedForeground}
-              />
-              <ThemedText style={styles.recipeMetaText}>
-                {recipe.time}
-              </ThemedText>
-            </View>
-            <View style={styles.recipeMetaItem}>
-              <Ionicons
-                name="flame-outline"
-                size={14}
-                color={AiraColors.mutedForeground}
-              />
-              <ThemedText style={styles.recipeMetaText}>
-                {recipe.calories}
-              </ThemedText>
+        <ThemedView style={styles.recipeCard}>
+          <Image source={recipe.image} style={styles.recipeImage} />
+          <View style={styles.recipeInfo}>
+            <ThemedText style={styles.recipeTitle}>{recipe.title}</ThemedText>
+            <View style={styles.recipeMetaInfo}>
+              <View style={styles.recipeMetaItem}>
+                <Ionicons
+                  name="time-outline"
+                  size={14}
+                  color={AiraColors.mutedForeground}
+                />
+                <ThemedText style={styles.recipeMetaText}>
+                  {recipe.time}
+                </ThemedText>
+              </View>
+              <View style={styles.recipeMetaItem}>
+                <Ionicons
+                  name="flame-outline"
+                  size={14}
+                  color={AiraColors.mutedForeground}
+                />
+                <ThemedText style={styles.recipeMetaText}>
+                  {recipe.calories}
+                </ThemedText>
+              </View>
             </View>
           </View>
-        </View>
+        </ThemedView>
       </TouchableOpacity>
     );
   }
@@ -270,7 +273,6 @@ const RecipesDashboard: React.FC<RecipesDashboardProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   sectionHeader: {
     flexDirection: "row",
@@ -282,8 +284,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-     
-    color: AiraColors.foreground,
   },
   seeAllText: {
     fontSize: 14,
@@ -338,7 +338,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     borderRadius: 16,
     overflow: "hidden",
-    backgroundColor: AiraColors.card,
   },
   recipeImage: {
     width: "100%",
@@ -350,7 +349,7 @@ const styles = StyleSheet.create({
   },
   recipeTitle: {
     fontSize: 16,
-     
+
     marginBottom: 8,
   },
   recipeMetaInfo: {
@@ -407,7 +406,6 @@ const styles = StyleSheet.create({
   featuredButtonText: {
     color: "white",
     fontSize: 12,
-     
   },
 });
 

@@ -280,7 +280,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 16,
     right: 16,
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     shadowColor: "#000",
     shadowOffset: {
@@ -310,7 +309,6 @@ const styles = StyleSheet.create({
   toastTitle: {
     fontSize: 14,
     fontWeight: "600",
-    color: AiraColors.foreground,
     marginBottom: 2,
   },
   toastMessage: {

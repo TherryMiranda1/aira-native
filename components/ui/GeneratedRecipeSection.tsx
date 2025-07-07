@@ -299,7 +299,6 @@ export function GeneratedRecipeSection({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   content: {
     paddingBottom: 32,
@@ -347,9 +346,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginHorizontal: 16,
@@ -376,7 +372,6 @@ const styles = StyleSheet.create({
     color: AiraColors.foreground,
   },
   ingredientsContainer: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     gap: 10,
@@ -392,9 +387,6 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   instructionsContainer: {
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     gap: 12,
@@ -445,8 +437,6 @@ const styles = StyleSheet.create({
   },
   parametersCard: {
     backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.05),
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginHorizontal: 16,
@@ -484,9 +474,6 @@ const styles = StyleSheet.create({
   },
   editButton: {
     flex: 1,
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,

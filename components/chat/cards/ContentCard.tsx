@@ -14,14 +14,14 @@ interface ContentCardProps {
   variant?: "default" | "success" | "info" | "warning";
 }
 
-export function ContentCard({ 
-  title, 
+export function ContentCard({
+  title,
   subtitle,
-  description, 
-  children, 
+  description,
+  children,
   footer,
   icon,
-  variant = "default"
+  variant = "default",
 }: ContentCardProps) {
   const cardStyle = [
     styles.contentCard,
@@ -35,7 +35,8 @@ export function ContentCard({
       <View style={styles.header}>
         <View style={styles.titleContainer}>
           <ThemedText type="defaultSemiBold" style={styles.contentTitle}>
-            {icon && `${icon} `}{title}
+            {icon && `${icon} `}
+            {title}
           </ThemedText>
           {subtitle && (
             <ThemedText type="small" style={styles.subtitle}>
@@ -44,7 +45,7 @@ export function ContentCard({
           )}
         </View>
       </View>
-      
+
       {description && (
         <View style={styles.descriptionContainer}>
           <ThemedText type="defaultItalic" style={styles.contentDescription}>
@@ -52,18 +53,10 @@ export function ContentCard({
           </ThemedText>
         </View>
       )}
-      
-      {children && (
-        <View style={styles.content}>
-          {children}
-        </View>
-      )}
-      
-      {footer && (
-        <View style={styles.footer}>
-          {footer}
-        </View>
-      )}
+
+      {children && <View style={styles.content}>{children}</View>}
+
+      {footer && <View style={styles.footer}>{footer}</View>}
     </View>
   );
 }
@@ -80,12 +73,11 @@ export function ContentSection({ title, children, icon }: ContentSectionProps) {
       <View style={styles.sectionHeader}>
         <View style={styles.sectionIndicator} />
         <ThemedText type="defaultSemiBold" style={styles.contentSectionTitle}>
-          {icon && `${icon} `}{title}
+          {icon && `${icon} `}
+          {title}
         </ThemedText>
       </View>
-      <View style={styles.sectionContent}>
-        {children}
-      </View>
+      <View style={styles.sectionContent}>{children}</View>
     </View>
   );
 }
@@ -96,19 +88,19 @@ interface ContentTextProps {
   variant?: "default" | "step" | "highlight";
 }
 
-export function ContentText({ children, style, variant = "default" }: ContentTextProps) {
+export function ContentText({
+  children,
+  style,
+  variant = "default",
+}: ContentTextProps) {
   const textStyle = [
     styles.contentText,
     variant === "step" && styles.stepText,
     variant === "highlight" && styles.highlightText,
-    style
+    style,
   ];
 
-  return (
-    <ThemedText style={textStyle}>
-      {children}
-    </ThemedText>
-  );
+  return <ThemedText style={textStyle}>{children}</ThemedText>;
 }
 
 interface ContentListProps {
@@ -124,9 +116,7 @@ export function ContentList({ items, type = "bullet" }: ContentListProps) {
           <ThemedText style={styles.listMarker}>
             {type === "numbered" ? `${index + 1}.` : "•"}
           </ThemedText>
-          <ThemedText style={styles.listText}>
-            {item}
-          </ThemedText>
+          <ThemedText style={styles.listText}>{item}</ThemedText>
         </View>
       ))}
     </View>
@@ -136,44 +126,32 @@ export function ContentList({ items, type = "bullet" }: ContentListProps) {
 const styles = StyleSheet.create({
   contentCard: {
     marginTop: 8,
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     overflow: "hidden",
   },
   successCard: {
     borderColor: "#22c55e",
-    backgroundColor: "#f0fdf4",
   },
   infoCard: {
     borderColor: AiraColors.primary,
-    backgroundColor: AiraColors.secondary,
   },
   warningCard: {
     borderColor: "#f59e0b",
-    backgroundColor: "#fffbeb",
   },
   header: {
     padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   titleContainer: {
     gap: 4,
   },
   contentTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
   },
   subtitle: {
     color: AiraColors.mutedForeground,
   },
   descriptionContainer: {
     padding: 12,
-    backgroundColor: AiraColors.card,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   contentDescription: {
     fontSize: 14,
@@ -187,7 +165,6 @@ const styles = StyleSheet.create({
     padding: 16,
     borderTopWidth: 1,
     borderTopColor: AiraColors.border,
-    backgroundColor: AiraColors.card,
   },
   contentSection: {
     marginBottom: 16,
@@ -206,14 +183,12 @@ const styles = StyleSheet.create({
   },
   contentSectionTitle: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   sectionContent: {
     paddingLeft: 16,
   },
   contentText: {
     fontSize: 14,
-    color: AiraColors.foreground,
     lineHeight: 20,
     marginBottom: 4,
   },
@@ -223,7 +198,6 @@ const styles = StyleSheet.create({
     borderLeftColor: AiraColors.primary,
   },
   highlightText: {
-    backgroundColor: AiraColors.card,
     padding: 8,
     borderRadius: 6,
     marginVertical: 2,
@@ -244,8 +218,7 @@ const styles = StyleSheet.create({
   },
   listText: {
     fontSize: 14,
-    color: AiraColors.foreground,
     lineHeight: 20,
     flex: 1,
   },
-}); 
+});

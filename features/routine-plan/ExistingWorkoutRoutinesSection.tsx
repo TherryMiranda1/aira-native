@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
@@ -14,6 +9,7 @@ import { ThemedText } from "../../components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyWorkoutRoutine } from "@/services/api/dailyWorkoutRoutine.service";
+import { ThemedView } from "@/components/ThemedView";
 
 interface ExistingWorkoutRoutinesSectionProps {
   routines: DailyWorkoutRoutine[];
@@ -57,7 +53,7 @@ export const ExistingWorkoutRoutinesSection = ({
     if (diffDays === 1) return "Hoy";
     if (diffDays === 2) return "Ayer";
     if (diffDays <= 7) return `Hace ${diffDays - 1} días`;
-    
+
     return date.toLocaleDateString("es-ES", {
       day: "numeric",
       month: "short",
@@ -129,75 +125,88 @@ export const ExistingWorkoutRoutinesSection = ({
       >
         {routines.map((routine) => {
           const mainInfo = getMainInfo(routine);
-          
+
           return (
             <TouchableOpacity
               key={routine.id}
-              style={styles.routineCard}
               onPress={() => handleRoutinePress(routine)}
             >
-              <View style={styles.routineHeader}>
-                <LinearGradient
-                  colors={["#EF4444", "#F97316"]}
-                  style={styles.routineIcon}
-                >
-                  <Ionicons name="fitness" size={18} color="white" />
-                </LinearGradient>
+              <ThemedView variant="border" style={styles.routineCard}>
+                <View style={styles.routineHeader}>
+                  <LinearGradient
+                    colors={["#EF4444", "#F97316"]}
+                    style={styles.routineIcon}
+                  >
+                    <Ionicons name="fitness" size={18} color="white" />
+                  </LinearGradient>
 
-                <View style={styles.routineHeaderActions}>
-                  {routine.isFavorite && (
-                    <Ionicons name="heart" size={14} color={AiraColors.accent} />
-                  )}
-                  {onRoutineDelete && (
-                    <TouchableOpacity
-                      style={styles.deleteButton}
-                      onPress={() => handleDeletePress(routine)}
-                    >
+                  <View style={styles.routineHeaderActions}>
+                    {routine.isFavorite && (
                       <Ionicons
-                        name="close-circle"
-                        size={18}
-                        color={AiraColors.mutedForeground}
+                        name="heart"
+                        size={14}
+                        color={AiraColors.accent}
                       />
-                    </TouchableOpacity>
-                  )}
-                </View>
-              </View>
-
-              <View style={styles.routineContent}>
-                <ThemedText type="defaultSemiBold" style={styles.routineTitle} numberOfLines={2}>
-                  {routine.routineName}
-                </ThemedText>
-
-                <View style={styles.routineMeta}>
-                  <ThemedText type="small" style={styles.routineDate}>
-                    {formatDate(routine.createdAt)}
-                  </ThemedText>
-                  <ThemedText type="small" style={styles.sessionsCount}>
-                    {routine.sessions.length} sesiones
-                  </ThemedText>
+                    )}
+                    {onRoutineDelete && (
+                      <TouchableOpacity
+                        style={styles.deleteButton}
+                        onPress={() => handleDeletePress(routine)}
+                      >
+                        <Ionicons
+                          name="close-circle"
+                          size={18}
+                          color={AiraColors.mutedForeground}
+                        />
+                      </TouchableOpacity>
+                    )}
+                  </View>
                 </View>
 
-                {mainInfo && (
-                  <View style={styles.routineInfo}>
-                    <Ionicons 
-                      name={mainInfo.icon} 
-                      size={12} 
-                      color={mainInfo.color} 
-                    />
-                    <ThemedText type="small" style={styles.infoText} numberOfLines={1}>
-                      {mainInfo.text}
+                <View style={styles.routineContent}>
+                  <ThemedText
+                    type="defaultSemiBold"
+                    style={styles.routineTitle}
+                    numberOfLines={2}
+                  >
+                    {routine.routineName}
+                  </ThemedText>
+
+                  <View style={styles.routineMeta}>
+                    <ThemedText type="small" style={styles.routineDate}>
+                      {formatDate(routine.createdAt)}
+                    </ThemedText>
+                    <ThemedText type="small" style={styles.sessionsCount}>
+                      {routine.sessions.length} sesiones
                     </ThemedText>
                   </View>
-                )}
-              </View>
 
-              <View style={styles.routineFooter}>
-                <Ionicons
-                  name="chevron-forward"
-                  size={16}
-                  color={AiraColors.mutedForeground}
-                />
-              </View>
+                  {mainInfo && (
+                    <View style={styles.routineInfo}>
+                      <Ionicons
+                        name={mainInfo.icon}
+                        size={12}
+                        color={mainInfo.color}
+                      />
+                      <ThemedText
+                        type="small"
+                        style={styles.infoText}
+                        numberOfLines={1}
+                      >
+                        {mainInfo.text}
+                      </ThemedText>
+                    </View>
+                  )}
+                </View>
+
+                <View style={styles.routineFooter}>
+                  <Ionicons
+                    name="chevron-forward"
+                    size={16}
+                    color={AiraColors.mutedForeground}
+                  />
+                </View>
+              </ThemedView>
             </TouchableOpacity>
           );
         })}
@@ -215,9 +224,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  sectionTitle: {
-    color: AiraColors.foreground,
-  },
+  sectionTitle: {},
   countBadge: {
     backgroundColor: "#EF4444",
     paddingHorizontal: 8,
@@ -235,11 +242,8 @@ const styles = StyleSheet.create({
   },
   routineCard: {
     width: 260,
-    height: 160,
-    backgroundColor: AiraColors.card,
+    height: 180,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     padding: 16,
     gap: 12,
   },
@@ -268,7 +272,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   routineTitle: {
-    color: AiraColors.foreground,
     lineHeight: 20,
   },
   routineMeta: {
@@ -288,7 +291,6 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   infoText: {
-    color: AiraColors.foreground,
     flex: 1,
   },
   routineFooter: {
@@ -298,7 +300,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   emptyCard: {
-    backgroundColor: AiraColors.card,
     padding: 32,
     borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
@@ -307,7 +308,6 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   emptyTitle: {
-    color: AiraColors.foreground,
     textAlign: "center",
   },
   emptyDescription: {
@@ -315,4 +315,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 18,
   },
-}); 
+});

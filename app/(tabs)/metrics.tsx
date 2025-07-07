@@ -16,6 +16,7 @@ import { MetricCard } from "@/components/metrics/MetricCard";
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
 
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { ThemedGradient } from "@/components/ThemedGradient";
 
 export default function MetricsScreen() {
   const { metrics, loading, error, deleteMetric, refetch } = useMetrics();
@@ -84,21 +85,9 @@ export default function MetricsScreen() {
       contentContainerStyle={styles.scrollContent}
       endReachText="Desliza hacia abajo para actualizar métricas"
     >
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
       <Topbar title="Mis Métricas" actions={<ProfileButton />} />
 
-      <LinearGradient
-        colors={[
-          AiraColors.airaLavenderSoft,
-          AiraColors.airaSageSoft,
-          AiraColors.airaCreamy,
-        ]}
-        style={styles.gradientBackground}
-      >
+      <ThemedGradient style={styles.gradientBackground}>
         {/* Header */}
         <View style={styles.header}>
           <ThemedText type="title" style={styles.title}>
@@ -129,7 +118,7 @@ export default function MetricsScreen() {
             ))}
           </View>
         )}
-      </LinearGradient>
+      </ThemedGradient>
 
       {/* Modal para crear métrica */}
       <CreateMetricModal
@@ -164,7 +153,6 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 8,
-    color: AiraColors.foreground,
   },
   subtitle: {
     fontSize: 16,

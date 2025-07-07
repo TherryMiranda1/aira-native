@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 32,
-    backgroundColor: AiraColors.card,
   },
   loadingTitle: {
     fontSize: 18,

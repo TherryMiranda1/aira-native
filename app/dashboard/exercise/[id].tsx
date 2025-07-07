@@ -15,6 +15,7 @@ import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
 import { exerciseService, Exercise } from "@/services/api/exercise.service";
 import { ScheduleEventModal } from "@/components/modals/ScheduleEventModal";
+import { ThemedView } from "@/components/ThemedView";
 
 export default function ExerciseDetailScreen() {
   const router = useRouter();
@@ -40,11 +41,15 @@ export default function ExerciseDetailScreen() {
       try {
         setLoading(true);
         setError(null);
-        const exerciseData = await exerciseService.getExerciseById(id as string);
+        const exerciseData = await exerciseService.getExerciseById(
+          id as string
+        );
         setExercise(exerciseData);
       } catch (err) {
         console.error("Error al cargar el ejercicio:", err);
-        setError("No pudimos cargar el ejercicio. Por favor, intenta de nuevo.");
+        setError(
+          "No pudimos cargar el ejercicio. Por favor, intenta de nuevo."
+        );
       } finally {
         setLoading(false);
       }
@@ -132,11 +137,7 @@ export default function ExerciseDetailScreen() {
                 onPress={handleScheduleExercise}
                 activeOpacity={0.8}
               >
-                <Ionicons
-                  name="calendar-outline"
-                  size={24}
-                  color="#fff"
-                />
+                <Ionicons name="calendar-outline" size={24} color="#fff" />
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.favoriteButton}
@@ -244,56 +245,56 @@ export default function ExerciseDetailScreen() {
             </ThemedText>
             <View style={styles.metricsGrid}>
               {exercise.valores_ejemplo_mujer_principiante?.series && (
-                <View style={styles.metricCard}>
+                <ThemedView variant="border" style={styles.metricCard}>
                   <Ionicons
                     name="layers-outline"
                     size={20}
                     color={AiraColors.primary}
                   />
-                  <ThemedText style={styles.metricValue}>
+                  <ThemedText type="defaultSemiBold" style={styles.metricValue}>
                     {exercise.valores_ejemplo_mujer_principiante.series}
                   </ThemedText>
                   <ThemedText style={styles.metricLabel}>Series</ThemedText>
-                </View>
+                </ThemedView>
               )}
 
               {exercise.valores_ejemplo_mujer_principiante?.repeticiones && (
-                <View style={styles.metricCard}>
+                <ThemedView variant="border" style={styles.metricCard}>
                   <Ionicons
                     name="repeat-outline"
                     size={20}
                     color={AiraColors.primary}
                   />
-                  <ThemedText style={styles.metricValue}>
+                  <ThemedText type="defaultSemiBold" style={styles.metricValue}>
                     {exercise.valores_ejemplo_mujer_principiante.repeticiones}
                   </ThemedText>
                   <ThemedText style={styles.metricLabel}>Reps</ThemedText>
-                </View>
+                </ThemedView>
               )}
 
               {exercise.valores_ejemplo_mujer_principiante?.peso_kg && (
-                <View style={styles.metricCard}>
+                <ThemedView variant="border" style={styles.metricCard}>
                   <Ionicons
                     name="barbell-outline"
                     size={20}
                     color={AiraColors.primary}
                   />
-                  <ThemedText style={styles.metricValue}>
+                  <ThemedText type="defaultSemiBold" style={styles.metricValue}>
                     {exercise.valores_ejemplo_mujer_principiante.peso_kg} kg
                   </ThemedText>
                   <ThemedText style={styles.metricLabel}>Peso</ThemedText>
-                </View>
+                </ThemedView>
               )}
 
               {exercise.valores_ejemplo_mujer_principiante
                 ?.descanso_entre_series_segundos && (
-                <View style={styles.metricCard}>
+                <ThemedView variant="border" style={styles.metricCard}>
                   <Ionicons
                     name="time-outline"
                     size={20}
                     color={AiraColors.primary}
                   />
-                  <ThemedText style={styles.metricValue}>
+                  <ThemedText type="defaultSemiBold" style={styles.metricValue}>
                     {
                       exercise.valores_ejemplo_mujer_principiante
                         .descanso_entre_series_segundos
@@ -301,7 +302,7 @@ export default function ExerciseDetailScreen() {
                     s
                   </ThemedText>
                   <ThemedText style={styles.metricLabel}>Descanso</ThemedText>
-                </View>
+                </ThemedView>
               )}
             </View>
           </View>
@@ -360,12 +361,10 @@ export default function ExerciseDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   heroContainer: {
     position: "relative",
     height: 280,
-    backgroundColor: AiraColors.card,
   },
   heroImage: {
     width: "100%",
@@ -404,7 +403,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: AiraColors.card,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: -24,
@@ -415,7 +413,6 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   title: {
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   subtitle: {
@@ -425,7 +422,6 @@ const styles = StyleSheet.create({
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: AiraColors.secondary,
     borderRadius: 16,
     paddingVertical: 20,
     marginBottom: 32,
@@ -441,18 +437,15 @@ const styles = StyleSheet.create({
   },
   statText: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   section: {
     marginBottom: 32,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
     marginBottom: 20,
   },
   description: {
     fontSize: 16,
-    color: AiraColors.foreground,
     lineHeight: 24,
   },
   stepsList: {
@@ -478,7 +471,6 @@ const styles = StyleSheet.create({
   stepText: {
     flex: 1,
     fontSize: 16,
-    color: AiraColors.foreground,
     lineHeight: 24,
   },
   metricsGrid: {
@@ -488,7 +480,6 @@ const styles = StyleSheet.create({
   },
   metricCard: {
     width: "48%",
-    backgroundColor: AiraColors.card,
     borderRadius: 16,
     padding: 16,
     alignItems: "center",
@@ -496,7 +487,6 @@ const styles = StyleSheet.create({
   },
   metricValue: {
     fontSize: 20,
-    color: AiraColors.foreground,
   },
   metricLabel: {
     fontSize: 12,
@@ -518,10 +508,8 @@ const styles = StyleSheet.create({
   },
   equipmentText: {
     fontSize: 16,
-    color: AiraColors.foreground,
   },
   warningSection: {
-    backgroundColor: "#FEF3C7",
     borderRadius: 16,
     padding: 16,
     marginBottom: 32,
