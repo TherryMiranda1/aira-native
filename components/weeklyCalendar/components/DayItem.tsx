@@ -32,38 +32,24 @@ export const DayItem: React.FC<DayItemProps> = ({
     >
       <ThemedView
         style={[
-          styles.dayContent, 
+          styles.dayContent,
           isSelected && styles.selectedDay,
-          isCurrentDay && !isSelected && styles.todayDay
+          isCurrentDay && !isSelected && styles.todayDay,
         ]}
-        lightColor={
-          isSelected 
-            ? AiraColors.primary 
-            : isCurrentDay 
-              ? AiraColors.secondary 
-              : AiraColors.card
-        }
-        darkColor={
-          isSelected 
-            ? AiraColors.primary 
-            : isCurrentDay 
-              ? AiraColors.secondary 
-              : AiraColors.card
-        }
       >
         <ThemedText
           style={[
             styles.dayNumber,
-            (isSelected || isCurrentDay) && styles.selectedText
+            (isSelected || isCurrentDay) && styles.selectedText,
           ]}
           lightColor={
-            isSelected || isCurrentDay 
-              ? AiraColors.background 
+            isSelected || isCurrentDay
+              ? AiraColors.background
               : AiraColors.foreground
           }
           darkColor={
-            isSelected || isCurrentDay 
-              ? AiraColors.background 
+            isSelected || isCurrentDay
+              ? AiraColors.background
               : AiraColors.foreground
           }
         >
@@ -71,25 +57,23 @@ export const DayItem: React.FC<DayItemProps> = ({
         </ThemedText>
         <ThemedText
           style={[
-            styles.weekday, 
-            (isSelected || isCurrentDay) && styles.selectedText
+            styles.weekday,
+            (isSelected || isCurrentDay) && styles.selectedText,
           ]}
           lightColor={
-            isSelected || isCurrentDay 
-              ? AiraColors.background 
+            isSelected || isCurrentDay
+              ? AiraColors.background
               : AiraColors.foreground
           }
           darkColor={
-            isSelected || isCurrentDay 
-              ? AiraColors.background 
+            isSelected || isCurrentDay
+              ? AiraColors.background
               : AiraColors.foreground
           }
         >
           {format(date, "EEE", { locale: es })}
         </ThemedText>
-        {hasEvents && (
-          <View style={styles.eventIndicator} />
-        )}
+        {hasEvents && <View style={styles.eventIndicator} />}
       </ThemedView>
     </TouchableOpacity>
   );
@@ -115,7 +99,6 @@ const styles = StyleSheet.create({
   },
   dayNumber: {
     fontSize: 16,
-     
   },
   weekday: {
     fontSize: 12,

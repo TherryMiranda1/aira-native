@@ -49,8 +49,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
   return (
     <ThemedView
       style={[styles.taskItem, task.isImportant && styles.importantTask]}
-      lightColor={AiraColors.background}
-      darkColor={AiraColors.background}
+      variant="foreground"
     >
       <TouchableOpacity
         style={[
@@ -105,8 +104,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({
           <View style={styles.modalContainer}>
             <ThemedView
               style={styles.modalContent}
-              lightColor={AiraColors.card}
-              darkColor={AiraColors.card}
+              variant="foreground"
             >
               <ThemedText style={styles.modalTitle} type="defaultSemiBold">
                 Eliminar tarea recurrente

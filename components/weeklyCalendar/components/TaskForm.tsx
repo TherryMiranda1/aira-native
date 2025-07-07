@@ -113,11 +113,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
       onRequestClose={onClose}
     >
       <View style={styles.modalContainer}>
-        <ThemedView
-          style={styles.modalContent}
-          lightColor={AiraColors.card}
-          darkColor={AiraColors.card}
-        >
+        <ThemedView style={styles.modalContent} variant="foreground">
           <ScrollView showsVerticalScrollIndicator={false}>
             <TextInput
               style={[
