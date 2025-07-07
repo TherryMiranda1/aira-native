@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { router, useFocusEffect } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "../../constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { RefreshablePageView } from "@/components/ui/RefreshablePageView";
@@ -12,13 +11,13 @@ import { PremiumCTA } from "@/components/ui/PremiumCTA";
 import WeeklyCalendar from "@/components/weeklyCalendar/WeeklyCalendar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useUser } from "@clerk/clerk-expo";
-import { useRealmNotes } from "@/infra/realm/services/useRealmNotes";
 import {
   DailyPhrase,
   MoodTracker,
   DailySuggestion,
   AchievementsSummary,
 } from "@/components/dashboard";
+import { ThemedGradient } from "@/components/ThemedGradient";
 
 // Función para obtener un saludo basado en la hora del día
 const getTimeBasedGreeting = (currentTime: Date) => {
@@ -30,7 +29,6 @@ const getTimeBasedGreeting = (currentTime: Date) => {
 
 export default function HomeScreen() {
   const { user, isLoaded: isUserLoaded } = useUser();
-  const { getNotes } = useRealmNotes();
 
   const [currentTime] = useState(new Date());
   const greeting = getTimeBasedGreeting(currentTime);
@@ -38,13 +36,7 @@ export default function HomeScreen() {
   const isLoaded = useRef(false);
   const isPaywallShown = useRef(false);
 
-  const handleRefresh = useCallback(() => {
-    getNotes();
-  }, [getNotes]);
-
   useEffect(() => {
-    getNotes();
-
     if (!isLoaded.current) {
       isLoaded.current = true;
     }
@@ -57,7 +49,7 @@ export default function HomeScreen() {
     useCallback(() => {
       if (!isPaywallShown.current) {
         isPaywallShown.current = true;
-        router.push("/default-paywall");
+        // router.push("/default-paywall");
       }
     }, [])
   );
@@ -70,8 +62,8 @@ export default function HomeScreen() {
 
   return (
     <RefreshablePageView
-      onRefresh={handleRefresh}
-      onEndReach={handleRefresh}
+      onRefresh={() => {}}
+      onEndReach={() => {}}
       contentContainerStyle={styles.scrollContent}
       endReachText="Desliza hacia abajo para actualizar"
       topbar={
@@ -88,14 +80,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <LinearGradient
-        colors={[
-          AiraColors.airaLavenderSoft,
-          AiraColors.airaSageSoft,
-          AiraColors.airaCreamy,
-        ]}
-        style={[styles.gradientBackground]}
-      >
+      <ThemedGradient style={styles.gradientBackground}>
         <GestureHandlerRootView>
           <WeeklyCalendar />
 
@@ -134,7 +119,7 @@ export default function HomeScreen() {
             </ThemedText>
           </View>
         </GestureHandlerRootView>
-      </LinearGradient>
+      </ThemedGradient>
     </RefreshablePageView>
   );
 }

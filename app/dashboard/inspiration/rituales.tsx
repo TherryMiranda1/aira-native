@@ -407,7 +407,7 @@ export default function RitualesScreen() {
   }
 
   return (
-    <PageView>
+    <PageView variant="secondary">
       <Topbar
         title="Rituales de Bienestar"
         actions={<ProfileButton />}
@@ -506,7 +506,6 @@ export default function RitualesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   pagerView: {
     flex: 1,
@@ -516,7 +515,6 @@ const styles = StyleSheet.create({
   },
   ritualsContainer: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   ritualsContent: {
     padding: 16,

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { Button } from "@/components/ui/Button";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import Purchases, { PurchasesOffering } from "react-native-purchases";
 import { presentPaywall } from "@/utils/payments";
+import { ThemedView } from "../ThemedView";
 
 interface AiraProCTAProps {
   onPress?: () => void;
@@ -27,7 +28,7 @@ export const AiraProCTA: React.FC<AiraProCTAProps> = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ThemedView variant="secondary" style={styles.container}>
       <View style={styles.header}>
         <View style={styles.discountBadge}>
           <ThemedText type="defaultSemiBold" style={styles.discountText}>
@@ -76,13 +77,12 @@ export const AiraProCTA: React.FC<AiraProCTAProps> = () => {
           }
         }}
       />
-    </View>
+    </ThemedView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 20,
     marginBottom: 16,
@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   subtitle: {
-    color: AiraColorsWithAlpha.foregroundWithOpacity(0.7),
     marginBottom: 16,
     lineHeight: 20,
   },
@@ -129,7 +128,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   featureText: {
-    color: AiraColorsWithAlpha.foregroundWithOpacity(0.8),
     marginLeft: 8,
     fontSize: 13,
   },

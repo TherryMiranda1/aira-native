@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   carouselContainer: {
-    backgroundColor: AiraColors.card,
     paddingVertical: 16,
   },
   carouselContent: {

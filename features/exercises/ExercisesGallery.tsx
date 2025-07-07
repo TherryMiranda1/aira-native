@@ -1,16 +1,8 @@
-import React, {
-  useState,
-  useRef,
-  useCallback,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import { useRouter } from "expo-router";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
 import PagerView from "react-native-pager-view";
-
-import { AiraColors } from "@/constants/Colors";
 
 import {
   exerciseService,
@@ -251,7 +243,6 @@ const ExercisesGallery: React.FC<ExercisesGalleryProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   pagerView: {
     flex: 1,

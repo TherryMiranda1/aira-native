@@ -1,9 +1,9 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Stack } from 'expo-router';
-import { PageView } from '../ui/PageView';
-import { Topbar } from '../ui/Topbar';
-import { AiraColors } from '@/constants/Colors';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { Stack } from "expo-router";
+import { PageView } from "../ui/PageView";
+import { Topbar } from "../ui/Topbar";
+import { AiraColors } from "@/constants/Colors";
 
 interface ModalScreenProps {
   children: React.ReactNode;
@@ -27,18 +27,16 @@ export const ModalScreen: React.FC<ModalScreenProps> = ({
       <Stack.Screen
         options={{
           headerShown: false,
-          presentation: 'modal',
-          animation: 'slide_from_bottom',
+          presentation: "modal",
+          animation: "slide_from_bottom",
         }}
       />
-      <Topbar 
-        title={title} 
+      <Topbar
+        title={title}
         showBackButton={showBackButton}
         actions={headerRight}
       />
-      <View style={styles.content}>
-        {children}
-      </View>
+      <View style={styles.content}>{children}</View>
     </PageView>
   );
 };
@@ -46,6 +44,5 @@ export const ModalScreen: React.FC<ModalScreenProps> = ({
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
 });

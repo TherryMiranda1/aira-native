@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  Modal,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, Modal, TouchableOpacity } from "react-native";
 import { AiraColors } from "@/constants/Colors";
 import { useCounselorAgent } from "@/hooks/agent/useCounselorAgent";
 import SessionHistory from "./SessionHistory";
@@ -14,6 +8,8 @@ import InfoModal from "./InfoModal";
 import { ThemedText } from "../ThemedText";
 import { Topbar } from "../ui/Topbar";
 import { ProfileButton } from "../ui/ProfileButton";
+import { ThemedView } from "../ThemedView";
+import { CounselorSkeleton } from "../ui/FeedSkeleton";
 
 export default function CounselorView() {
   const [showSessionHistory, setShowSessionHistory] = useState(false);
@@ -30,17 +26,11 @@ export default function CounselorView() {
     createNewSession,
     deleteSession,
     loadPreviousMessages,
+    isMessagesLoading,
   } = useCounselorAgent();
 
   if (sessions.length === 0 && isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={AiraColors.primary} />
-        <ThemedText style={styles.loadingText}>
-          Cargando tu espacio personal...
-        </ThemedText>
-      </View>
-    );
+    return <CounselorSkeleton type="sessions" />;
   }
 
   const handleSessionSelect = (sessionId: string) => {
@@ -80,7 +70,7 @@ export default function CounselorView() {
 
       <ChatInterface
         messages={messages}
-        isLoading={isLoading}
+        isLoading={isMessagesLoading}
         onSendMessage={processUserMessage}
         pagination={pagination}
         onLoadMore={loadPreviousMessages}
@@ -91,7 +81,7 @@ export default function CounselorView() {
         presentationStyle="pageSheet"
         onRequestClose={() => setShowSessionHistory(false)}
       >
-        <View style={styles.modalContainer}>
+        <ThemedView style={styles.modalContainer}>
           <View style={styles.modalHeader}>
             <ThemedText type="defaultSemiBold" style={styles.modalTitle}>
               Conversaciones
@@ -112,7 +102,7 @@ export default function CounselorView() {
             onDeleteSession={deleteSession}
             isLoading={isLoading}
           />
-        </View>
+        </ThemedView>
       </Modal>
 
       <InfoModal
@@ -126,13 +116,11 @@ export default function CounselorView() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
     paddingHorizontal: 32,
   },
   loadingText: {
@@ -147,9 +135,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: AiraColors.card,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   menuButton: {
     width: 40,
@@ -157,7 +142,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
   },
   menuIcon: {
     fontSize: 18,
@@ -166,7 +150,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "600",
-    color: AiraColors.foreground,
   },
   infoButton: {
     width: 40,
@@ -174,7 +157,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
   },
   infoIcon: {
     fontSize: 16,
@@ -183,7 +165,6 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
   modalHeader: {
     flexDirection: "row",
@@ -191,13 +172,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 16,
     paddingVertical: 16,
-    backgroundColor: AiraColors.card,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColors.border,
   },
   modalTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
   },
   closeButton: {
     paddingHorizontal: 12,
@@ -206,6 +183,5 @@ const styles = StyleSheet.create({
   closeButtonText: {
     color: AiraColors.primary,
     fontSize: 16,
-    fontWeight: "500",
   },
 });

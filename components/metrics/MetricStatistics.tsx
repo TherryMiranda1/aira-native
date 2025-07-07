@@ -4,6 +4,8 @@ import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { Ionicons } from "@expo/vector-icons";
 import { Metric } from "@/services/api/metrics.service";
+import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "../ThemedView";
 
 interface MetricStatisticsProps {
   statistics: {
@@ -100,7 +102,7 @@ export const MetricStatistics: React.FC<MetricStatisticsProps> = ({
             </ThemedText>
           </View>
 
-          <View style={styles.progressBar}>
+          <ThemedView variant="foreground" style={styles.progressBar}>
             <View
               style={[
                 styles.progressFill,
@@ -112,7 +114,7 @@ export const MetricStatistics: React.FC<MetricStatisticsProps> = ({
                 },
               ]}
             />
-          </View>
+          </ThemedView>
 
           <View style={styles.progressLabels}>
             <ThemedText style={styles.progressLabel}>
@@ -153,14 +155,12 @@ export const MetricStatistics: React.FC<MetricStatisticsProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 16,
+    borderRadius: AiraVariants.cardRadius,
     padding: 20,
     marginBottom: 20,
   },
   title: {
     fontSize: 18,
-    color: AiraColors.foreground,
     marginBottom: 16,
   },
   statsGrid: {
@@ -172,8 +172,7 @@ const styles = StyleSheet.create({
   statCard: {
     flex: 1,
     minWidth: "45%",
-    backgroundColor: AiraColors.muted,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
     padding: 12,
     alignItems: "center",
   },
@@ -186,7 +185,6 @@ const styles = StyleSheet.create({
   },
   statValue: {
     fontSize: 14,
-    color: AiraColors.foreground,
     textAlign: "center",
   },
   progressSection: {
@@ -204,18 +202,16 @@ const styles = StyleSheet.create({
   },
   progressPercentage: {
     fontSize: 16,
-     
   },
   progressBar: {
     height: 8,
-    backgroundColor: AiraColors.muted,
-    borderRadius: 4,
+    borderRadius: AiraVariants.cardRadius,
     overflow: "hidden",
     marginBottom: 8,
   },
   progressFill: {
     height: "100%",
-    borderRadius: 4,
+    borderRadius: AiraVariants.cardRadius,
   },
   progressLabels: {
     flexDirection: "row",

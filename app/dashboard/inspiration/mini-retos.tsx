@@ -281,7 +281,10 @@ export default function MiniRetosScreen() {
     }
   };
 
-  const handleScheduleChallenge = (challengeId: string, challengeTitle: string) => {
+  const handleScheduleChallenge = (
+    challengeId: string,
+    challengeTitle: string
+  ) => {
     setScheduleModal({
       visible: true,
       challengeId,
@@ -369,7 +372,7 @@ export default function MiniRetosScreen() {
   }
 
   return (
-    <PageView>
+    <PageView variant="secondary">
       <Topbar
         title="Mini Retos de Bienestar"
         actions={<ProfileButton />}
@@ -468,7 +471,6 @@ export default function MiniRetosScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   pagerView: {
     flex: 1,
@@ -478,10 +480,8 @@ const styles = StyleSheet.create({
   },
   challengesContainer: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   challengesContent: {
     padding: 16,
   },
 });
-

@@ -10,8 +10,6 @@ import { useRouter } from "expo-router";
 import { useCategoryScroll } from "@/hooks/useCategoryScroll";
 import PagerView from "react-native-pager-view";
 
-import { AiraColors } from "@/constants/Colors";
-
 import {
   recipeService,
   Recipe as RecipeType,
@@ -252,7 +250,6 @@ const RecipesGallery = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   pagerView: {
     flex: 1,
@@ -262,7 +259,6 @@ const styles = StyleSheet.create({
   },
   recipesContainer: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   recipesContent: {
     padding: 16,

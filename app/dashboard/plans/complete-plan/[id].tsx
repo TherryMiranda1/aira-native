@@ -105,33 +105,12 @@ export default function PlanDetailScreen() {
       router.back();
     } catch (error) {
       console.error("Error deleting plan:", error);
-      showErrorToast("Error", "No se pudo eliminar el plan. Inténtalo de nuevo.");
-    } finally {
-      setIsDeleting(false);
-    }
-  };
-
-  const handleUpdatePlan = async (updates: Partial<GeneratedPlan>) => {
-    if (!plan) return;
-
-    try {
-      setIsUpdating(true);
-      const allowedUpdates = {
-        title: updates.title,
-        tags: updates.tags,
-        notes: updates.notes,
-      };
-
-      await updatePlan(plan.id, allowedUpdates);
-      setPlan((prev) => (prev ? { ...prev, ...updates } : null));
-    } catch (error) {
-      console.error("Error updating plan:", error);
       showErrorToast(
         "Error",
-        "No se pudo actualizar el plan. Inténtalo de nuevo."
+        "No se pudo eliminar el plan. Inténtalo de nuevo."
       );
     } finally {
-      setIsUpdating(false);
+      setIsDeleting(false);
     }
   };
 
@@ -378,7 +357,6 @@ export default function PlanDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     paddingBottom: 20,
@@ -427,7 +405,6 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -444,7 +421,7 @@ const styles = StyleSheet.create({
   },
   loadingTitle: {
     fontSize: 20,
-     
+
     color: "white",
     textAlign: "center",
   },
@@ -455,7 +432,6 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   errorCard: {
-    backgroundColor: AiraColors.card,
     padding: 32,
     borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
@@ -465,8 +441,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-     
-    color: AiraColors.foreground,
+
     textAlign: "center",
   },
   errorMessage: {
@@ -489,7 +464,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-     
+
     color: "white",
   },
 });

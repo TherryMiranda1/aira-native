@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  ColorValue,
-} from "react-native";
+import { View, TouchableOpacity, StyleSheet, ColorValue } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -12,6 +7,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Challenge } from "@/services/api/challenge.service";
+import { ThemedView } from "@/components/ThemedView";
 
 interface ChallengeItemProps {
   challenge: Challenge;
@@ -60,7 +56,7 @@ export const ChallengeItem = ({
       onPress={() => onPress(challenge)}
       activeOpacity={0.7}
     >
-      <View style={styles.content}>
+      <ThemedView style={styles.content}>
         {/* Icon */}
         <LinearGradient
           colors={categoryColors as [ColorValue, ColorValue]}
@@ -77,31 +73,35 @@ export const ChallengeItem = ({
           <ThemedText style={styles.challengeDescription} numberOfLines={2}>
             {challenge.description}
           </ThemedText>
-          
+
           <View style={styles.metadataContainer}>
             {/* Difficulty Badge */}
             <View style={styles.difficultyBadge}>
-              <View 
+              <View
                 style={[
-                  styles.difficultyDot, 
-                  { backgroundColor: getDifficultyColor(challenge.dificultad) }
+                  styles.difficultyDot,
+                  { backgroundColor: getDifficultyColor(challenge.dificultad) },
                 ]}
               />
               <ThemedText style={styles.difficultyText}>
                 {getDifficultyLabel(challenge.dificultad)}
               </ThemedText>
             </View>
-            
+
             {/* Duration Badge */}
             {challenge.duration && (
               <View style={styles.durationBadge}>
-                <Ionicons name="time" size={10} color={AiraColors.mutedForeground} />
+                <Ionicons
+                  name="time"
+                  size={10}
+                  color={AiraColors.mutedForeground}
+                />
                 <ThemedText style={styles.durationText}>
                   {challenge.duration}
                 </ThemedText>
               </View>
             )}
-            
+
             {/* Popularity Badge */}
             {challenge.popularidad > 0 && (
               <View style={styles.popularityBadge}>
@@ -139,30 +139,21 @@ export const ChallengeItem = ({
             />
           </View>
         </View>
-      </View>
+      </ThemedView>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: AiraColors.card,
-    borderRadius: AiraVariants.cardRadius,
     marginBottom: 8,
-    shadowColor: AiraColors.foreground,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   content: {
     flexDirection: "row",
     alignItems: "center",
+    borderRadius: AiraVariants.cardRadius,
+    borderWidth: 1,
+    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     padding: 16,
     gap: 12,
   },
@@ -178,8 +169,6 @@ const styles = StyleSheet.create({
   },
   challengeTitle: {
     fontSize: 16,
-     
-    color: AiraColors.foreground,
     lineHeight: 20,
     marginBottom: 4,
   },
@@ -208,7 +197,6 @@ const styles = StyleSheet.create({
   difficultyText: {
     fontSize: 12,
     color: AiraColors.mutedForeground,
-     
   },
   durationBadge: {
     flexDirection: "row",
@@ -222,7 +210,6 @@ const styles = StyleSheet.create({
   durationText: {
     fontSize: 10,
     color: AiraColors.mutedForeground,
-     
   },
   popularityBadge: {
     flexDirection: "row",
@@ -232,7 +219,6 @@ const styles = StyleSheet.create({
   popularityText: {
     fontSize: 10,
     color: AiraColors.accent,
-     
   },
   actionsContainer: {
     flexDirection: "row",
@@ -247,4 +233,4 @@ const styles = StyleSheet.create({
   arrowContainer: {
     padding: 4,
   },
-}); 
+});

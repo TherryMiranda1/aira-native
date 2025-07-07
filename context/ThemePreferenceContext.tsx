@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useColorScheme as useSystemColorScheme } from "react-native";
+import { useColorScheme } from "react-native";
 
 type ThemeMode = "light" | "dark" | "system";
 type ActualTheme = "light" | "dark";
@@ -21,7 +21,7 @@ interface ThemePreferenceProviderProps {
 export const ThemePreferenceProvider = ({ children }: ThemePreferenceProviderProps) => {
   const [themeMode, setThemeModeState] = useState<ThemeMode>("system");
   const [isLoading, setIsLoading] = useState(true);
-  const systemColorScheme = useSystemColorScheme();
+  const systemColorScheme = useColorScheme();
 
   const actualTheme: ActualTheme = themeMode === "system" 
     ? (systemColorScheme || "light") 

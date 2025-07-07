@@ -14,6 +14,7 @@ import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 
 import { DailyMealPlanInput, DailyMealPlanOutput } from "@/types/Assistant";
+import { ThemedView } from "@/components/ThemedView";
 
 interface GeneratedDailyMealPlanSectionProps {
   plan: DailyMealPlanOutput;
@@ -67,7 +68,7 @@ export function GeneratedDailyMealPlanSection({
             Tu Plan de Comidas
           </ThemedText>
           {plan.meals.map((meal, index) => (
-            <View key={index} style={styles.mealCard}>
+            <ThemedView variant="border" key={index} style={styles.mealCard}>
               <View style={styles.mealHeader}>
                 <ThemedText type="defaultSemiBold" style={styles.mealType}>
                   {meal.mealType}
@@ -83,7 +84,7 @@ export function GeneratedDailyMealPlanSection({
                   </View>
                 ))}
               </View>
-            </View>
+            </ThemedView>
           ))}
         </View>
 
@@ -171,7 +172,6 @@ export function GeneratedDailyMealPlanSection({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   content: {
     padding: 16,
@@ -188,7 +188,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   planTitle: {
-    color: "white",
     textAlign: "center",
   },
   introduction: {
@@ -200,11 +199,9 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
     marginBottom: 16,
   },
   mealCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 12,
@@ -253,7 +250,6 @@ const styles = StyleSheet.create({
     color: AiraColors.primary,
   },
   tipsText: {
-    color: AiraColors.foreground,
     lineHeight: 18,
   },
   actionsSection: {
@@ -284,9 +280,6 @@ const styles = StyleSheet.create({
   },
   editButton: {
     flex: 1,
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,

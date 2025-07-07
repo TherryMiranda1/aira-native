@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -63,11 +58,15 @@ export function GeneratedExerciseSection({
             {exercise.suggestedNextActions &&
               exercise.suggestedNextActions.length > 0 && (
                 <View style={styles.actionsSection}>
-                  <ThemedText type="defaultSemiBold" style={styles.actionsTitle}>
+                  <ThemedText
+                    type="defaultSemiBold"
+                    style={styles.actionsTitle}
+                  >
                     Opciones sugeridas:
                   </ThemedText>
-                  {exercise.suggestedNextActions.slice(0, 3).map(
-                    (action: any, index: number) => (
+                  {exercise.suggestedNextActions
+                    .slice(0, 3)
+                    .map((action: any, index: number) => (
                       <TouchableOpacity
                         key={index}
                         style={styles.actionButton}
@@ -75,7 +74,10 @@ export function GeneratedExerciseSection({
                           handleSuggestedAction(action.actionPrompt)
                         }
                       >
-                        <ThemedText type="small" style={styles.actionButtonText}>
+                        <ThemedText
+                          type="small"
+                          style={styles.actionButtonText}
+                        >
                           {action.label}
                         </ThemedText>
                         <Ionicons
@@ -84,8 +86,7 @@ export function GeneratedExerciseSection({
                           color={AiraColors.primary}
                         />
                       </TouchableOpacity>
-                    )
-                  )}
+                    ))}
                 </View>
               )}
           </View>
@@ -124,11 +125,15 @@ export function GeneratedExerciseSection({
             {exercise.suggestedNextActions &&
               exercise.suggestedNextActions.length > 0 && (
                 <View style={styles.actionsSection}>
-                  <ThemedText type="defaultSemiBold" style={styles.actionsTitle}>
+                  <ThemedText
+                    type="defaultSemiBold"
+                    style={styles.actionsTitle}
+                  >
                     ¿Qué te gustaría hacer después?
                   </ThemedText>
-                  {exercise.suggestedNextActions.slice(0, 3).map(
-                    (action: any, index: number) => (
+                  {exercise.suggestedNextActions
+                    .slice(0, 3)
+                    .map((action: any, index: number) => (
                       <TouchableOpacity
                         key={index}
                         style={styles.actionButton}
@@ -136,7 +141,10 @@ export function GeneratedExerciseSection({
                           handleSuggestedAction(action.actionPrompt)
                         }
                       >
-                        <ThemedText type="small" style={styles.actionButtonText}>
+                        <ThemedText
+                          type="small"
+                          style={styles.actionButtonText}
+                        >
                           {action.label}
                         </ThemedText>
                         <Ionicons
@@ -145,8 +153,7 @@ export function GeneratedExerciseSection({
                           color={AiraColors.primary}
                         />
                       </TouchableOpacity>
-                    )
-                  )}
+                    ))}
                 </View>
               )}
           </View>
@@ -181,11 +188,7 @@ export function GeneratedExerciseSection({
               onPress={onEditParams}
               disabled={isRegenerating}
             >
-              <Ionicons
-                name="create"
-                size={18}
-                color={AiraColors.primary}
-              />
+              <Ionicons name="create" size={18} color={AiraColors.primary} />
               <ThemedText type="small" style={styles.editButtonText}>
                 Editar
               </ThemedText>
@@ -200,11 +203,7 @@ export function GeneratedExerciseSection({
                 colors={["#EF4444", "#F97316"]}
                 style={styles.regenerateGradient}
               >
-                <Ionicons
-                  name="refresh"
-                  size={18}
-                  color="white"
-                />
+                <Ionicons name="refresh" size={18} color="white" />
                 <ThemedText type="small" style={styles.regenerateButtonText}>
                   {isRegenerating ? "Regenerando..." : "Regenerar"}
                 </ThemedText>
@@ -220,19 +219,15 @@ export function GeneratedExerciseSection({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   content: {
     padding: 16,
     paddingBottom: 32,
   },
   clarificationSection: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 24,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   questionHeader: {
     flexDirection: "row",
@@ -249,12 +244,9 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   exerciseSection: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 24,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   exerciseHeader: {
     flexDirection: "row",
@@ -306,8 +298,6 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 12,
     marginBottom: 8,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   actionButtonText: {
     color: AiraColors.primary,
@@ -318,8 +308,6 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 24,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   parametersTitle: {
     color: AiraColors.foreground,
@@ -346,9 +334,6 @@ const styles = StyleSheet.create({
   },
   editButton: {
     flex: 1,
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: AiraVariants.cardRadius,
     paddingVertical: 12,
     paddingHorizontal: 16,

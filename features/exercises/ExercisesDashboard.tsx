@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "@/components/ThemedView";
 
 // Categorías de ejercicios - Sincronizadas con ExercisesGallery
 const categories = [
@@ -232,7 +233,8 @@ const ExercisesDashboard: React.FC<ExercisesDashboardProps> = ({
       </ScrollView>
 
       {/* Programa destacado */}
-      <TouchableOpacity style={styles.featuredProgramContainer}>
+      <TouchableOpacity>
+        <ThemedView style={styles.featuredProgramContainer}>
         <View style={styles.featuredProgramContent}>
           <ThemedText
             type="defaultSemiBold"
@@ -246,8 +248,9 @@ const ExercisesDashboard: React.FC<ExercisesDashboardProps> = ({
         </View>
         <Image
           source={require("@/assets/images/exercises/back.jpg")}
-          style={styles.featuredProgramImage}
-        />
+            style={styles.featuredProgramImage}
+          />
+        </ThemedView>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -256,7 +259,7 @@ const ExercisesDashboard: React.FC<ExercisesDashboardProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
+
   },
   sectionHeader: {
     flexDirection: "row",
@@ -267,7 +270,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
   },
   seeAllText: {
     fontSize: 14,
@@ -352,14 +354,11 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   featuredProgramContainer: {
-    margin: 16,
-   
+    margin: 16,   
     borderRadius: 16,
     overflow: "hidden",
     flexDirection: "row",
-    backgroundColor: AiraColors.card,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.5),
+
   },
   featuredProgramContent: {
     flex: 1,
@@ -368,7 +367,6 @@ const styles = StyleSheet.create({
   },
   featuredProgramTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
   },
   featuredProgramSubtitle: {
     fontSize: 14,

@@ -6,13 +6,14 @@ import {
   Modal,
   Pressable,
   Platform,
-  useColorScheme as useSystemColorScheme,
+  useColorScheme,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { ThemedText } from "../ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { useThemePreference } from "@/context/ThemePreferenceContext";
+import { ThemedView } from "@/components/ThemedView";
 
 type ThemeMode = "light" | "dark" | "system";
 
@@ -23,13 +24,13 @@ interface ThemeSelectorProps {
 export const ThemeSelector = ({ onThemeChange }: ThemeSelectorProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { themeMode, setThemeMode } = useThemePreference();
-  const systemColorScheme = useSystemColorScheme();
+  const systemColorScheme = useColorScheme();
 
-  const themeOptions: Array<{
+  const themeOptions: {
     value: ThemeMode;
     label: string;
     icon: keyof typeof Ionicons.glyphMap;
-  }> = [
+  }[] = [
     { value: "light", label: "Claro", icon: "sunny" },
     { value: "dark", label: "Oscuro", icon: "moon" },
     { value: "system", label: "Sistema", icon: "phone-portrait" },
@@ -72,7 +73,7 @@ export const ThemeSelector = ({ onThemeChange }: ThemeSelectorProps) => {
           style={styles.overlay}
           onPress={() => setIsDropdownOpen(false)}
         >
-          <View style={styles.dropdown}>
+          <ThemedView style={styles.dropdown}>
             {themeOptions.map((option) => (
               <TouchableOpacity
                 key={option.value}
@@ -109,7 +110,7 @@ export const ThemeSelector = ({ onThemeChange }: ThemeSelectorProps) => {
                 )}
               </TouchableOpacity>
             ))}
-          </View>
+          </ThemedView>
         </Pressable>
       </Modal>
     </View>
@@ -132,7 +133,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   dropdown: {
-    backgroundColor: AiraColors.card,
     borderRadius: 12,
     paddingVertical: 8,
     minWidth: 150,
@@ -145,8 +145,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 8,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   option: {
     flexDirection: "row",

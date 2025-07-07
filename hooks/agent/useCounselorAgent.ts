@@ -12,7 +12,7 @@ const GREETING_MESSAGE =
 export function useCounselorAgent() {
   const [isProcessing, setIsProcessing] = useState(false);
   const initialLoadRef = useRef(false);
-  
+
   const { processToolResponse } = useResponseMapper();
   const {
     sessions,
@@ -34,6 +34,7 @@ export function useCounselorAgent() {
     addAgentMessage,
     loadPreviousMessages: loadPreviousMessagesFromHook,
     initializeFromSession,
+    isLoading: isMessagesLoading,
   } = useAgentMessages([], activeSessionId || undefined);
 
   const initializeSession = useCallback(async () => {
@@ -57,7 +58,13 @@ export function useCounselorAgent() {
         ]);
       }
     }
-  }, [activeSessionId, initializeFromSession, setMessages, loadSessions, setActiveSessionId]);
+  }, [
+    activeSessionId,
+    initializeFromSession,
+    setMessages,
+    loadSessions,
+    setActiveSessionId,
+  ]);
 
   const setActiveSession = useCallback(
     async (sessionId: string) => {
@@ -81,7 +88,13 @@ export function useCounselorAgent() {
         ]);
       }
     },
-    [activeSessionId, sessions, initializeFromSession, setMessages, setActiveSessionId]
+    [
+      activeSessionId,
+      sessions,
+      initializeFromSession,
+      setMessages,
+      setActiveSessionId,
+    ]
   );
 
   const createNewSession = useCallback(
@@ -110,7 +123,7 @@ export function useCounselorAgent() {
     async (sessionId: string) => {
       try {
         await deleteSessionFromManager(sessionId);
-        
+
         if (sessionId === activeSessionId) {
           const remainingSessions = sessions.filter((s) => s._id !== sessionId);
           if (remainingSessions.length > 0) {
@@ -127,14 +140,20 @@ export function useCounselorAgent() {
             ]);
           }
         }
-        
+
         return true;
       } catch (error) {
         console.error("Error deleting session:", error);
         throw error;
       }
     },
-    [deleteSessionFromManager, activeSessionId, sessions, setActiveSession, setMessages]
+    [
+      deleteSessionFromManager,
+      activeSessionId,
+      sessions,
+      setActiveSession,
+      setMessages,
+    ]
   );
 
   const processUserMessage = useCallback(
@@ -176,13 +195,32 @@ export function useCounselorAgent() {
         setIsProcessing(false);
       }
     },
-    [activeSessionId, addUserMessage, addAgentMessage, updateMessage, processToolResponse, updateSessionChat]
+    [
+      activeSessionId,
+      addUserMessage,
+      addAgentMessage,
+      updateMessage,
+      processToolResponse,
+      updateSessionChat,
+    ]
   );
 
   const loadPreviousMessages = useCallback(async () => {
-    if (!activeSessionId || !pagination?.hasMore || sessionLoading || isProcessing) return;
+    if (
+      !activeSessionId ||
+      !pagination?.hasMore ||
+      sessionLoading ||
+      isProcessing
+    )
+      return;
     await loadPreviousMessagesFromHook();
-  }, [activeSessionId, pagination, sessionLoading, isProcessing, loadPreviousMessagesFromHook]);
+  }, [
+    activeSessionId,
+    pagination,
+    sessionLoading,
+    isProcessing,
+    loadPreviousMessagesFromHook,
+  ]);
 
   useEffect(() => {
     if (!initialLoadRef.current) {
@@ -191,7 +229,9 @@ export function useCounselorAgent() {
     }
   }, [initializeSession]);
 
-  const isLoading = sessionLoading || isProcessing || 
+  const isLoading =
+    sessionLoading ||
+    isProcessing ||
     (messages.length > 0 && !!messages[messages.length - 1].isLoading);
 
   return {
@@ -199,6 +239,7 @@ export function useCounselorAgent() {
     sessions,
     activeSessionId,
     isLoading,
+    isMessagesLoading,
     pagination,
     processUserMessage,
     setActiveSession,

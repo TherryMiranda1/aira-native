@@ -14,6 +14,7 @@ import { CounselorChatInput } from "./ChatInput";
 import { PaginationInfo } from "@/services/api/counselor.service";
 import { Message } from "@/types/Assistant";
 import { ThemedText } from "../ThemedText";
+import { CounselorSkeleton } from "../ui/FeedSkeleton";
 
 interface ChatInterfaceProps {
   messages: Message[];
@@ -21,6 +22,7 @@ interface ChatInterfaceProps {
   onSendMessage: (message: string) => void;
   pagination?: PaginationInfo | null;
   onLoadMore?: () => void;
+  showSkeleton?: boolean;
 }
 
 export default function ChatInterface({
@@ -57,6 +59,10 @@ export default function ChatInterface({
       onLoadMore();
     }
   };
+
+  if (isLoading) {
+    return <CounselorSkeleton type="chat" messagesCount={5} />;
+  }
 
   return (
     <KeyboardAvoidingView
@@ -145,9 +151,7 @@ export default function ChatInterface({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
   },
-
   scrollView: {
     flex: 1,
   },
@@ -159,15 +163,11 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     marginBottom: 16,
-    backgroundColor: AiraColors.secondary,
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   loadMoreText: {
     color: AiraColors.primary,
     fontSize: 14,
-    fontWeight: "500",
   },
   emptyState: {
     flex: 1,
@@ -182,8 +182,6 @@ const styles = StyleSheet.create({
   },
   welcomeTitle: {
     fontSize: 28,
-    fontWeight: "600",
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   welcomeSubtitle: {
@@ -198,16 +196,11 @@ const styles = StyleSheet.create({
   },
   suggestionCard: {
     padding: 16,
-    backgroundColor: AiraColors.secondary,
     borderRadius: 12,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     marginBottom: 8,
   },
   suggestionText: {
-    color: AiraColors.foreground,
     fontSize: 15,
-    fontWeight: "400",
     textAlign: "center",
   },
 });

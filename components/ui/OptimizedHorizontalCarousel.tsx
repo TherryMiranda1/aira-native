@@ -32,8 +32,8 @@ const gradientColorsMap: { [key: string]: string[] } = {
   "from-indigo-400 to-purple-400": ["#818CF8", "#A78BFA"],
 };
 
-export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouselProps>(
-  ({ section }) => {
+export const OptimizedHorizontalCarousel =
+  React.memo<OptimizedHorizontalCarouselProps>(({ section }) => {
     const gradientColors = useMemo(
       () => gradientColorsMap[section.gradient] || ["#60A5FA", "#A78BFA"],
       [section.gradient]
@@ -43,8 +43,6 @@ export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouse
       router.push(section.href as any);
     }, [section.href]);
 
-
-
     const keyExtractor = useCallback(
       (item: LibraryCategory) => `${section.id}-${item.id}`,
       [section.id]
@@ -53,16 +51,19 @@ export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouse
     const renderCategoryItem: ListRenderItem<LibraryCategory> = useCallback(
       ({ item }) => (
         <View style={styles.categoryItemContainer}>
-          <OptimizedCategoryCard 
-            category={item} 
-            sectionGradient={section.gradient} 
+          <OptimizedCategoryCard
+            category={item}
+            sectionGradient={section.gradient}
           />
         </View>
       ),
       [section.gradient]
     );
 
-    const ItemSeparator = useCallback(() => <View style={styles.separator} />, []);
+    const ItemSeparator = useCallback(
+      () => <View style={styles.separator} />,
+      []
+    );
 
     return (
       <View style={styles.container}>
@@ -125,8 +126,7 @@ export const OptimizedHorizontalCarousel = React.memo<OptimizedHorizontalCarouse
         </View>
       </View>
     );
-  }
-);
+  });
 
 OptimizedHorizontalCarousel.displayName = "OptimizedHorizontalCarousel";
 
@@ -184,7 +184,6 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   carouselContainer: {
-    backgroundColor: AiraColors.card,
     paddingVertical: 16,
   },
   carouselContent: {
@@ -196,4 +195,4 @@ const styles = StyleSheet.create({
   separator: {
     width: CARD_MARGIN,
   },
-}); 
+});

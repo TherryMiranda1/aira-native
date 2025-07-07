@@ -37,13 +37,12 @@ export function CounselorChatInput({
         value={value}
         onChangeText={setValue}
         placeholder={placeholder}
-        multiline
         maxLength={500}
         returnKeyType="send"
         onSubmitEditing={handleSend}
       />
       <TouchableOpacity
-        style={[styles.sendButton, !canSend && styles.sendButtonDisabled]}
+        style={[styles.sendButton]}
         onPress={handleSend}
         disabled={!canSend}
       >
@@ -59,17 +58,11 @@ export function CounselorChatInput({
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginBottom: 24,
     flexDirection: "row",
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    backgroundColor: AiraColors.card,
-    borderTopWidth: 1,
-    borderTopColor: AiraColors.border,
+    padding: 8,
     alignItems: "flex-end",
   },
   sendButton: {
-    backgroundColor: AiraColors.primary,
     width: 36,
     height: 36,
     borderRadius: 18,
@@ -77,11 +70,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginLeft: 12,
   },
-  sendButtonDisabled: {
-    backgroundColor: AiraColors.secondary,
-  },
+
   input: {
     flex: 1,
-    minHeight: 40,
   },
 });

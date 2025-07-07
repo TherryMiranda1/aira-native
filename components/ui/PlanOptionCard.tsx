@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#F97316",
     borderRadius: AiraVariants.cardRadius,
-    backgroundColor: AiraColors.background,
+   
   },
   disabled: {
     opacity: 0.5,

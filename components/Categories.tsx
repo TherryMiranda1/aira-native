@@ -3,6 +3,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { ScrollToIndexFailedInfo } from "@/hooks/useCategoryScroll";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
+import { useThemePreference } from "@/context/ThemePreferenceContext";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 export interface Category {
   id: string;
@@ -26,8 +29,10 @@ export const CategoriesList = ({
   handleCategoryChange,
   categoryScrollHook,
 }: Props) => {
+  const foreground = useThemeColor({}, "foreground");
+  const muted = useThemeColor({}, "muted");
   return (
-    <View style={styles.categoriesContainer}>
+    <ThemedView style={styles.categoriesContainer}>
       <FlatList
         ref={categoryScrollHook.categoriesListRef}
         horizontal
@@ -38,17 +43,27 @@ export const CategoriesList = ({
             key={item.id}
             style={[
               styles.categoryButton,
-              selectedCategory === item.id && styles.categoryButtonActive,
+              {
+                borderColor:
+                  selectedCategory === item.id ? foreground : "transparent",
+              },
             ]}
             onPress={() => handleCategoryChange(item.id)}
           >
             <Ionicons
               name={item.icon}
               size={18}
-              color={AiraColors.foreground}
               style={styles.categoryIcon}
+              color={foreground}
             />
-            <ThemedText style={[styles.categoryText]}>{item.label}</ThemedText>
+            <ThemedText
+              type={
+                selectedCategory === item.id ? "defaultSemiBold" : "default"
+              }
+              style={[styles.categoryText]}
+            >
+              {item.label}
+            </ThemedText>
           </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id}
@@ -60,7 +75,7 @@ export const CategoriesList = ({
           index,
         })}
       />
-    </View>
+    </ThemedView>
   );
 };
 
@@ -83,17 +98,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderColor: "transparent",
   },
-  categoryButtonActive: {
-    borderColor: AiraColors.foreground,
-  },
+
   categoryIcon: {
     marginRight: 8,
   },
   categoryText: {
     fontSize: 14,
-    color: AiraColors.foreground,
-  },
-  categoryTextActive: {
-    color: AiraColors.background,
   },
 });

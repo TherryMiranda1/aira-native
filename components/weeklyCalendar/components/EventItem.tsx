@@ -205,8 +205,7 @@ export const EventItem: React.FC<EventItemProps> = ({
         event.priority === "urgent" && styles.urgentEvent,
         navigationPath && styles.clickableEvent,
       ]}
-      lightColor={AiraColors.card}
-      darkColor={AiraColors.card}
+      variant="foreground"
     >
       <TouchableOpacity
         style={[
@@ -251,11 +250,7 @@ export const EventItem: React.FC<EventItemProps> = ({
           onRequestClose={() => setDeleteModalVisible(false)}
         >
           <View style={styles.modalContainer}>
-            <ThemedView
-              style={styles.modalContent}
-              lightColor={AiraColors.card}
-              darkColor={AiraColors.card}
-            >
+            <ThemedView style={styles.modalContent} variant="foreground">
               <ThemedText style={styles.modalTitle} type="defaultSemiBold">
                 Eliminar evento recurrente
               </ThemedText>

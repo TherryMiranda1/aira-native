@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import { Stack, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
@@ -10,6 +10,7 @@ import { SignOutButton } from "@/components/Buttons/SignOutButton";
 import { PageView } from "@/components/ui/PageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { AiraProCTA } from "@/components/ui/AiraProCTA";
+import { ThemedView } from "@/components/ThemedView";
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function ProfileScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Información del Perfil */}
-        <View style={styles.card}>
+        <ThemedView style={styles.card}>
           <View style={styles.avatarCircle}>
             <Ionicons name="person" size={32} color="#fff" />
           </View>
@@ -37,10 +38,10 @@ export default function ProfileScreen() {
             Me alegra tanto tenerte aquí. Cada día que dedicas a cuidarte es un
             regalo hermoso que te das a ti misma.
           </ThemedText>
-        </View>
+        </ThemedView>
 
         {/* Mensaje Motivacional */}
-        <View style={styles.card}>
+        <ThemedView variant="secondary" style={styles.card}>
           <View style={styles.heartContainer}>
             <Ionicons name="heart" size={32} color="#ec4899" />
           </View>
@@ -49,7 +50,7 @@ export default function ProfileScreen() {
             bienestar es una prioridad.{"\n"}
             Estoy aquí para acompañarte en cada paso de tu hermoso viaje.
           </ThemedText>
-        </View>
+        </ThemedView>
 
         {/* Onboarding */}
         <TouchableOpacity
@@ -57,9 +58,9 @@ export default function ProfileScreen() {
           activeOpacity={0.9}
           onPress={() => router.push("/onboarding")}
         >
-          <View style={[styles.iconCircle, { backgroundColor: "#e0e7ff" }]}>
+          <ThemedView variant="secondary" style={[styles.iconCircle]}>
             <Ionicons name="compass-outline" size={24} color="#4f46e5" />
-          </View>
+          </ThemedView>
           <View style={styles.linkContent}>
             <ThemedText style={styles.linkTitle}>Comienza tu viaje</ThemedText>
             <ThemedText style={styles.linkDescription}>
@@ -80,9 +81,9 @@ export default function ProfileScreen() {
           activeOpacity={0.9}
           onPress={() => alert("Funcionalidad de configuración en desarrollo")}
         >
-          <View style={[styles.iconCircle, { backgroundColor: "#e0e7ff" }]}>
+          <ThemedView variant="secondary" style={[styles.iconCircle]}>
             <Ionicons name="settings-outline" size={24} color="#4f46e5" />
-          </View>
+          </ThemedView>
           <View style={styles.linkContent}>
             <ThemedText style={styles.linkTitle}>
               Personalización Avanzada
@@ -111,10 +112,8 @@ const styles = StyleSheet.create({
   scrollContent: {
     padding: 16,
     paddingBottom: 48,
-    backgroundColor: AiraColors.background,
   },
   card: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 20,
     marginBottom: 16,
@@ -135,7 +134,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   message: {
-    color: AiraColorsWithAlpha.foregroundWithOpacity(0.7),
     textAlign: "center",
     lineHeight: 22,
   },
@@ -146,7 +144,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   linkCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 16,
@@ -173,6 +170,5 @@ const styles = StyleSheet.create({
   },
   linkDescription: {
     fontSize: 13,
-    color: AiraColorsWithAlpha.foregroundWithOpacity(0.7),
   },
 });

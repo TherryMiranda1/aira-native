@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -17,6 +12,7 @@ import {
 } from "@/types/Assistant";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
+import { ThemedView } from "@/components/ThemedView";
 
 interface GeneratedPlanSectionProps {
   plan: PersonalizedPlanOutput;
@@ -63,7 +59,10 @@ export const GeneratedPlanSection = ({
         "Tu plan personalizado se ha guardado correctamente"
       );
     } catch (error) {
-      showErrorToast("Error", "No se pudo guardar el plan. Inténtalo de nuevo.");
+      showErrorToast(
+        "Error",
+        "No se pudo guardar el plan. Inténtalo de nuevo."
+      );
     }
   };
 
@@ -131,7 +130,7 @@ export const GeneratedPlanSection = ({
         </View>
       </View>
 
-      <View style={styles.sectionContainer}>
+      <ThemedView variant="border" style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => toggleSection("nutrition")}
@@ -251,9 +250,9 @@ export const GeneratedPlanSection = ({
             </View>
           </View>
         )}
-      </View>
+      </ThemedView>
 
-      <View style={styles.sectionContainer}>
+      <ThemedView variant="border" style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => toggleSection("workout")}
@@ -280,7 +279,7 @@ export const GeneratedPlanSection = ({
         </TouchableOpacity>
 
         {expandedSections.workout && (
-          <View style={styles.sectionContent}>
+          <ThemedView variant="border" style={styles.sectionContent}>
             <View style={styles.subsectionContainer}>
               <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Tipo de Ejercicio
@@ -364,11 +363,11 @@ export const GeneratedPlanSection = ({
                 </ThemedText>
               </View>
             )}
-          </View>
+          </ThemedView>
         )}
-      </View>
+      </ThemedView>
 
-      <View style={styles.sectionContainer}>
+      <ThemedView variant="border" style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.sectionHeader}
           onPress={() => toggleSection("tracking")}
@@ -395,7 +394,7 @@ export const GeneratedPlanSection = ({
         </TouchableOpacity>
 
         {expandedSections.tracking && (
-          <View style={styles.sectionContent}>
+          <ThemedView variant="border" style={styles.sectionContent}>
             <View style={styles.subsectionContainer}>
               <ThemedText type="defaultSemiBold" style={styles.subsectionTitle}>
                 Indicadores de Progreso
@@ -434,12 +433,12 @@ export const GeneratedPlanSection = ({
                 {plan.sugerenciasSeguimientoAjustes.mensajeFinalMotivador}
               </ThemedText>
             </View>
-          </View>
+          </ThemedView>
         )}
-      </View>
+      </ThemedView>
 
       {onEditParams && (
-        <View style={styles.sectionContainer}>
+        <ThemedView variant="border" style={styles.sectionContainer}>
           <TouchableOpacity
             style={styles.sectionHeader}
             onPress={() => toggleSection("params")}
@@ -509,7 +508,7 @@ export const GeneratedPlanSection = ({
               </View>
             </View>
           )}
-        </View>
+        </ThemedView>
       )}
 
       <View style={styles.bottomSpacing} />
@@ -520,7 +519,6 @@ export const GeneratedPlanSection = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     marginHorizontal: 16,
@@ -560,7 +558,7 @@ const styles = StyleSheet.create({
     gap: 6,
     borderWidth: 1,
     borderColor: AiraColors.primary,
-    backgroundColor: AiraColors.background,
+
     borderRadius: AiraVariants.cardRadius,
   },
   regenerateButtonText: {
@@ -585,10 +583,7 @@ const styles = StyleSheet.create({
   sectionContainer: {
     marginHorizontal: 16,
     marginBottom: 16,
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     overflow: "hidden",
   },
   sectionHeader: {
@@ -608,7 +603,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
     marginBottom: 2,
   },
   sectionSubtitle: {
@@ -639,7 +633,6 @@ const styles = StyleSheet.create({
     borderLeftColor: AiraColors.primary,
   },
   messageText: {
-    color: AiraColors.foreground,
     lineHeight: 20,
   },
   macrosContainer: {
@@ -653,31 +646,22 @@ const styles = StyleSheet.create({
   macroCard: {
     flex: 1,
     minWidth: "45%",
-    backgroundColor: AiraColors.background,
     padding: 12,
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   macroLabel: {
     color: AiraColors.mutedForeground,
     marginBottom: 4,
   },
-  macroValue: {
-    color: AiraColors.foreground,
-  },
+  macroValue: {},
   subsectionContainer: {
     gap: 8,
   },
-  subsectionTitle: {
-    color: AiraColors.foreground,
-  },
+  subsectionTitle: {},
   subsectionText: {
-    color: AiraColors.foreground,
     lineHeight: 18,
   },
   mealContainer: {
-    backgroundColor: AiraColors.background,
     padding: 12,
     borderRadius: 8,
     gap: 8,
@@ -691,18 +675,14 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   mealOptionText: {
-    color: AiraColors.foreground,
     flex: 1,
   },
   sessionContainer: {
-    backgroundColor: AiraColors.background,
     padding: 16,
     borderRadius: 12,
     gap: 12,
   },
-  sessionTitle: {
-    color: AiraColors.foreground,
-  },
+  sessionTitle: {},
   sessionDescription: {
     color: AiraColors.mutedForeground,
     lineHeight: 18,
@@ -711,16 +691,12 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   exerciseCard: {
-    backgroundColor: AiraColors.card,
     padding: 12,
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
+
     gap: 4,
   },
-  exerciseName: {
-    color: AiraColors.foreground,
-  },
+  exerciseName: {},
   exerciseDetails: {
     color: AiraColors.mutedForeground,
   },
@@ -735,7 +711,6 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.accentWithOpacity(0.2),
   },
   finalMessage: {
-    color: AiraColors.foreground,
     lineHeight: 20,
     textAlign: "center",
   },
@@ -747,7 +722,7 @@ const styles = StyleSheet.create({
   paramItem: {
     flex: 1,
     minWidth: "45%",
-    backgroundColor: AiraColors.background,
+
     padding: 12,
     borderRadius: 8,
     gap: 4,
@@ -755,9 +730,7 @@ const styles = StyleSheet.create({
   paramLabel: {
     color: AiraColors.mutedForeground,
   },
-  paramValue: {
-    color: AiraColors.foreground,
-  },
+  paramValue: {},
   bottomSpacing: {
     height: 32,
   },

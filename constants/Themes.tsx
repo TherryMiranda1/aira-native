@@ -55,10 +55,6 @@ export const getThemeVariants = (theme: "light" | "dark") => ({
     shadow: false,
     cardRadius: 12,
     tagRadius: 50,
-    backgroundView: Colors[theme].backgroundCard,
-    backgroundCard: Colors[theme].backgroundCard,
-    backgroundCardTransparent: Colors[theme].backgroundCardTransparent,
-    backgroundViewTransparent: Colors[theme].backgroundViewTransparent,
   },
   [ThemeVariantType.BORDER_SQUARED]: {
     colors: Colors[theme],
@@ -66,10 +62,6 @@ export const getThemeVariants = (theme: "light" | "dark") => ({
     shadow: false,
     cardRadius: 4,
     tagRadius: 4,
-    backgroundView: Colors[theme].backgroundCard,
-    backgroundCard: Colors[theme].backgroundCard,
-    backgroundCardTransparent: Colors[theme].backgroundCardTransparent,
-    backgroundViewTransparent: Colors[theme].backgroundViewTransparent,
   },
   [ThemeVariantType.ZEN]: {
     colors: Colors[theme],
@@ -77,10 +69,6 @@ export const getThemeVariants = (theme: "light" | "dark") => ({
     shadow: false,
     cardRadius: 0,
     tagRadius: 0,
-    backgroundView: Colors[theme].backgroundView,
-    backgroundCard: Colors[theme].backgroundView,
-    backgroundCardTransparent: Colors[theme].backgroundCardTransparent,
-    backgroundViewTransparent: Colors[theme].backgroundViewTransparent,
   },
   [ThemeVariantType.BUBBLE]: {
     colors: Colors[theme],
@@ -88,10 +76,6 @@ export const getThemeVariants = (theme: "light" | "dark") => ({
     shadow: false,
     cardRadius: 12,
     tagRadius: 50,
-    backgroundView: Colors[theme].backgroundView,
-    backgroundCard: Colors[theme].backgroundCard,
-    backgroundCardTransparent: Colors[theme].backgroundCardTransparent,
-    backgroundViewTransparent: Colors[theme].backgroundViewTransparent,
   },
   [ThemeVariantType.BUBBLE_SQUARED]: {
     colors: Colors[theme],
@@ -99,14 +83,10 @@ export const getThemeVariants = (theme: "light" | "dark") => ({
     shadow: false,
     cardRadius: 4,
     tagRadius: 4,
-    backgroundView: Colors[theme].backgroundView,
-    backgroundCard: Colors[theme].backgroundCard,
-    backgroundCardTransparent: Colors[theme].backgroundCardTransparent,
-    backgroundViewTransparent: Colors[theme].backgroundViewTransparent,
   },
 });
 
 export const AiraVariants = {
-  cardRadius: 16,
+  cardRadius: 12,
   tagRadius: 50,
 };

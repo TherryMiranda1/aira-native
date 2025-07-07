@@ -67,12 +67,12 @@ export const RefreshablePageView = ({
   const isRefreshing = refreshing || internalRefreshing;
 
   return (
-    <PageView style={style}>
+    <PageView style={style} safeAreaBottom={false}>
       {topbar}
       <ScrollView
         ref={scrollViewRef}
-        style={[{ flex: 1 }, scrollViewStyle]}
-        contentContainerStyle={[{ flexGrow: 1 }, contentContainerStyle]}
+        style={[scrollViewStyle]}
+        contentContainerStyle={[contentContainerStyle]}
         showsVerticalScrollIndicator={showsVerticalScrollIndicator}
         onScroll={combinedScrollHandler}
         scrollEventThrottle={16}
@@ -93,7 +93,6 @@ export const RefreshablePageView = ({
         {enableEndReachRefresh && onEndReach && (
           <View
             style={{
-              paddingVertical: 20,
               alignItems: "center",
               opacity: isEndReachRefreshing ? 1 : 0.6,
             }}

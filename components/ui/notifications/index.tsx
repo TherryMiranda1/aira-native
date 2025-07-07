@@ -1,3 +1,7 @@
+import React from "react";
+import { AlertProvider } from "../AlertSystem";
+import { ToastProvider } from "../ToastSystem";
+
 export {
   AlertProvider,
   useAlert,
@@ -14,11 +18,6 @@ export {
   type ToastType,
   type ToastConfig,
 } from "../ToastSystem";
-
-// Provider combinado para usar ambos sistemas
-import React from "react";
-import { AlertProvider } from "../AlertSystem";
-import { ToastProvider } from "../ToastSystem";
 
 interface NotificationProviderProps {
   children: React.ReactNode;

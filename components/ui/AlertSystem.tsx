@@ -8,12 +8,14 @@ import {
   Animated,
   Dimensions,
   ColorValue,
+  useColorScheme,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -59,6 +61,7 @@ export function AlertProvider({ children }: AlertProviderProps) {
   const [visible, setVisible] = useState(false);
   const [fadeAnim] = useState(new Animated.Value(0));
   const [scaleAnim] = useState(new Animated.Value(0.8));
+  const backgroundColor = useThemeColor({}, "background");
 
   const showAlert = useCallback(
     (config: AlertConfig) => {
@@ -68,12 +71,12 @@ export function AlertProvider({ children }: AlertProviderProps) {
       Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 200,
+          duration: 50,
           useNativeDriver: true,
         }),
         Animated.spring(scaleAnim, {
           toValue: 1,
-          tension: 100,
+          tension: 50,
           friction: 8,
           useNativeDriver: true,
         }),
@@ -192,6 +195,7 @@ export function AlertProvider({ children }: AlertProviderProps) {
               style={[
                 styles.alertContainer,
                 {
+                  backgroundColor: backgroundColor,
                   opacity: fadeAnim,
                   transform: [{ scale: scaleAnim }],
                 },
@@ -236,7 +240,7 @@ export function AlertProvider({ children }: AlertProviderProps) {
                   <View style={styles.alertActions}>
                     {buttons.map((button, index) => {
                       const buttonStyle = getButtonStyle(button.style);
-                      const isLastButton = index === buttons.length - 1;
+
                       const isSingleButton = buttons.length === 1;
 
                       return (
@@ -379,7 +383,6 @@ const styles = StyleSheet.create({
   },
   alertContainer: {
     width: Math.min(screenWidth - 40, 340),
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     shadowColor: "#000",
     shadowOffset: {
@@ -413,7 +416,6 @@ const styles = StyleSheet.create({
   alertTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 8,
   },
@@ -438,6 +440,5 @@ const styles = StyleSheet.create({
   },
   alertButtonText: {
     fontSize: 14,
-    fontWeight: "600",
   },
 });

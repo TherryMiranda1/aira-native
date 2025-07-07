@@ -14,6 +14,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Challenge } from "@/services/api/challenge.service";
+import { ThemedView } from "../ThemedView";
 
 interface ChallengeModalProps {
   visible: boolean;
@@ -127,7 +128,7 @@ export const ChallengeModal = ({
       presentationStyle="pageSheet"
       onRequestClose={onClose}
     >
-      <View style={styles.container}>
+      <ThemedView style={styles.container}>
         <View style={styles.content}>
           <View style={styles.header}>
             <TouchableOpacity style={styles.closeButton} onPress={onClose}>
@@ -359,7 +360,7 @@ export const ChallengeModal = ({
             )}
           </ScrollView>
         </View>
-      </View>
+      </ThemedView>
     </Modal>
   );
 };
@@ -370,7 +371,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: AiraColors.background,
   },
   header: {
     flexDirection: "row",
@@ -389,9 +389,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  headerTitle: {
-    color: AiraColors.foreground,
-  },
+  headerTitle: {},
   randomButton: {
     width: 40,
     height: 40,
@@ -408,7 +406,6 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   challengeCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
     padding: 24,
     alignItems: "center",
@@ -435,7 +432,6 @@ const styles = StyleSheet.create({
   challengeTitle: {
     textAlign: "center",
     marginBottom: 8,
-    color: AiraColors.foreground,
   },
   challengeDescription: {
     textAlign: "center",
@@ -587,7 +583,6 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
   },
   benefitsTitle: {
-    color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 12,
   },
@@ -601,7 +596,7 @@ const styles = StyleSheet.create({
   },
   benefitText: {
     flex: 1,
-    color: AiraColors.foreground,
+
     lineHeight: 18,
   },
   navigationContainer: {

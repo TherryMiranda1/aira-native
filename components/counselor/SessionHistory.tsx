@@ -5,11 +5,13 @@ import {
   FlatList,
   StyleSheet,
   ActivityIndicator,
-  Alert,
 } from "react-native";
 import { AiraColors } from "@/constants/Colors";
 import { Session } from "@/services/api/counselor.service";
 import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
+import { useAlert } from "@/components/ui/AlertSystem";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface SessionHistoryProps {
   sessions: Session[];
@@ -28,8 +30,11 @@ export default function SessionHistory({
   onDeleteSession,
   isLoading,
 }: SessionHistoryProps) {
-  const [deletingSessionId, setDeletingSessionId] = useState<string | null>(null);
-
+  const [deletingSessionId, setDeletingSessionId] = useState<string | null>(
+    null
+  );
+  const { showAlert } = useAlert();
+  const { showErrorToast } = useToastHelpers();
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -47,14 +52,12 @@ export default function SessionHistory({
   };
 
   const handleDeleteSession = (sessionId: string, sessionName: string) => {
-    Alert.alert(
-      "Eliminar conversación",
-      `¿Estás seguro de que quieres eliminar "${sessionName}"? Esta acción no se puede deshacer.`,
-      [
-        {
-          text: "Cancelar",
-          style: "cancel",
-        },
+    showAlert({
+      type: "confirm",
+      title: "Eliminar conversación",
+      message: `¿Estás seguro de que quieres eliminar "${sessionName}"? Esta acción no se puede deshacer.`,
+      buttons: [
+        { text: "Cancelar", style: "cancel" },
         {
           text: "Eliminar",
           style: "destructive",
@@ -62,8 +65,8 @@ export default function SessionHistory({
             try {
               setDeletingSessionId(sessionId);
               await onDeleteSession(sessionId);
-            } catch (error) {
-              Alert.alert(
+            } catch {
+              showErrorToast(
                 "Error",
                 "No se pudo eliminar la conversación. Inténtalo de nuevo."
               );
@@ -72,8 +75,8 @@ export default function SessionHistory({
             }
           },
         },
-      ]
-    );
+      ],
+    });
   };
 
   const renderSession = ({ item }: { item: Session }) => {
@@ -81,10 +84,13 @@ export default function SessionHistory({
     const isDeleting = deletingSessionId === item._id;
     const lastChat = item.chats[item.chats.length - 1];
     const preview =
-      lastChat?.question?.substring(0, 50) + "..." || "Nueva conversación";
+      lastChat?.question?.substring(0, 50) || "Nueva conversación";
 
     return (
-      <View style={[styles.sessionItem, isActive && styles.activeSession]}>
+      <ThemedView
+        variant={isActive ? "background" : "secondary"}
+        style={[styles.sessionItem]}
+      >
         <TouchableOpacity
           style={styles.sessionContent}
           onPress={() => onSessionSelect(item._id)}
@@ -105,7 +111,7 @@ export default function SessionHistory({
             {preview}
           </ThemedText>
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={styles.deleteButton}
           onPress={() => handleDeleteSession(item._id, item.sessionName)}
@@ -118,12 +124,12 @@ export default function SessionHistory({
             <ThemedText style={styles.deleteIcon}>🗑️</ThemedText>
           )}
         </TouchableOpacity>
-      </View>
+      </ThemedView>
     );
   };
 
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.newSessionButton}
@@ -154,16 +160,13 @@ export default function SessionHistory({
           contentContainerStyle={styles.sessionsContent}
         />
       )}
-    </View>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: AiraColors.card,
-    borderRightWidth: 1,
-    borderRightColor: AiraColors.foreground,
   },
   header: {
     padding: 16,
@@ -171,21 +174,16 @@ const styles = StyleSheet.create({
   newSessionButton: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderRadius: 8,
   },
   newSessionIcon: {
     fontSize: 16,
-    fontWeight: "500",
-    color: AiraColors.foreground,
     marginRight: 8,
   },
   newSessionText: {
-    color: AiraColors.foreground,
     fontSize: 14,
-    fontWeight: "500",
   },
   loadingContainer: {
     flex: 1,
@@ -195,7 +193,6 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     marginTop: 8,
-    color: AiraColors.mutedForeground,
     fontSize: 14,
   },
   sessionsList: {
@@ -205,14 +202,10 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   sessionItem: {
-    backgroundColor: AiraColors.card,
     marginVertical: 4,
     borderRadius: 8,
     flexDirection: "row",
     alignItems: "center",
-  },
-  activeSession: {
-    backgroundColor: AiraColors.secondary,
   },
   sessionContent: {
     flex: 1,
@@ -227,7 +220,6 @@ const styles = StyleSheet.create({
   sessionName: {
     fontSize: 14,
     fontWeight: "500",
-    color: AiraColors.foreground,
     flex: 1,
   },
   activeSessionText: {
@@ -235,11 +227,9 @@ const styles = StyleSheet.create({
   },
   sessionDate: {
     fontSize: 12,
-    color: AiraColors.mutedForeground,
   },
   sessionPreview: {
     fontSize: 12,
-    color: AiraColors.mutedForeground,
     lineHeight: 16,
   },
   deleteButton: {

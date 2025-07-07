@@ -9,7 +9,6 @@ import {
 } from "@/services/api/event.service";
 import { WeekNavigation, EventList, EventForm } from "./components";
 import { Button } from "../ui/Button";
-import { ThemedText } from "../ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 

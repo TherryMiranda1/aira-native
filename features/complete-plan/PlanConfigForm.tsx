@@ -9,6 +9,7 @@ import { AiraVariants } from "@/constants/Themes";
 import { PersonalizedPlanInput } from "@/types/Assistant";
 import { ThemedInput } from "@/components/ThemedInput";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { ThemedView } from "@/components/ThemedView";
 
 interface PlanConfigFormProps {
   onSubmit: (data: PersonalizedPlanInput) => void;
@@ -218,18 +219,19 @@ export const PlanConfigForm = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <View style={styles.header}>
-        <ThemedText type="title" style={styles.title}>
-          Personaliza tu Plan
-        </ThemedText>
         <ThemedText type="default" style={styles.subtitle}>
           Completa la información para generar un plan adaptado a ti
         </ThemedText>
       </View>
 
       {sections.map((section, index) => (
-        <View key={index} style={styles.sectionContainer}>
+        <ThemedView
+          variant="border"
+          key={index}
+          style={styles.sectionContainer}
+        >
           <TouchableOpacity
             style={styles.sectionHeader}
             onPress={() => toggleSection(index)}
@@ -266,7 +268,7 @@ export const PlanConfigForm = ({
               {section.fields.map((field) => renderField(field))}
             </View>
           )}
-        </View>
+        </ThemedView>
       ))}
 
       <TouchableOpacity
@@ -305,16 +307,12 @@ export const PlanConfigForm = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: AiraColors.secondary,
-  },
   header: {
     paddingHorizontal: 20,
     paddingVertical: 24,
     alignItems: "center",
   },
   title: {
-    color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 8,
   },
@@ -326,10 +324,7 @@ const styles = StyleSheet.create({
   sectionContainer: {
     marginHorizontal: 16,
     marginBottom: 16,
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     overflow: "hidden",
   },
   sectionHeader: {
@@ -348,9 +343,7 @@ const styles = StyleSheet.create({
   sectionTitleContainer: {
     flex: 1,
   },
-  sectionTitle: {
-    color: AiraColors.foreground,
-  },
+  sectionTitle: {},
   sectionContent: {
     paddingHorizontal: 16,
     paddingBottom: 16,
@@ -359,18 +352,12 @@ const styles = StyleSheet.create({
   fieldContainer: {
     gap: 8,
   },
-  fieldLabel: {
-    color: AiraColors.foreground,
-  },
+  fieldLabel: {},
   textInput: {
-    backgroundColor: AiraColors.secondary,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
     borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 12,
     fontSize: 16,
-    color: AiraColors.foreground,
     minHeight: 44,
   },
   multilineInput: {

@@ -14,6 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraVariants } from "@/constants/Themes";
 
 interface ModalViewProps {
   title: string;
@@ -45,52 +46,60 @@ export const ModalView: React.FC<ModalViewProps> = ({
       onRequestClose={onClose}
       presentationStyle="pageSheet"
     >
-      <View style={styles.modalContainer}>
-        <KeyboardAvoidingView
-          style={styles.modalContent}
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-        >
-          <View style={styles.header}>
-            <TouchableOpacity onPress={onClose} style={styles.closeButton}>
-              <ThemedText style={styles.closeButtonText}>
-                {closeButtonText}
-              </ThemedText>
-            </TouchableOpacity>
+      <ThemedView style={styles.modalContainer}>
+        <ThemedView style={styles.modalContent}>
+          <KeyboardAvoidingView
+            style={styles.modalContent}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+          >
+            <View style={styles.header}>
+              <TouchableOpacity onPress={onClose} style={styles.closeButton}>
+                <ThemedText style={styles.closeButtonText}>
+                  {closeButtonText}
+                </ThemedText>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={onSubmit}
-              disabled={loading}
-              style={[styles.saveButton, loading && styles.saveButtonDisabled]}
-            >
-              {loading ? (
-                <ActivityIndicator size="small" color={AiraColors.background} />
-              ) : (
-                <>
-                  <Ionicons
-                    name={submitButtonIcon as any}
-                    size={16}
+              <TouchableOpacity
+                onPress={onSubmit}
+                disabled={loading}
+                style={[
+                  styles.saveButton,
+                  loading && styles.saveButtonDisabled,
+                ]}
+              >
+                {loading ? (
+                  <ActivityIndicator
+                    size="small"
                     color={AiraColors.background}
                   />
-                  <ThemedText style={styles.saveButtonText}>
-                    {submitButtonText}
-                  </ThemedText>
-                </>
-              )}
-            </TouchableOpacity>
-          </View>
+                ) : (
+                  <>
+                    <Ionicons
+                      name={submitButtonIcon as any}
+                      size={16}
+                      color={AiraColors.background}
+                    />
+                    <ThemedText style={styles.saveButtonText}>
+                      {submitButtonText}
+                    </ThemedText>
+                  </>
+                )}
+              </TouchableOpacity>
+            </View>
 
-          <ScrollView
-            style={styles.content}
-            showsVerticalScrollIndicator={false}
-          >
-            <ThemedText type="defaultSemiBold" style={styles.title}>
-              {title}
-            </ThemedText>
-            <View style={styles.divider} />
-            {children}
-          </ScrollView>
-        </KeyboardAvoidingView>
-      </View>
+            <ScrollView
+              style={styles.content}
+              showsVerticalScrollIndicator={false}
+            >
+              <ThemedText type="defaultSemiBold" style={styles.title}>
+                {title}
+              </ThemedText>
+              <View style={styles.divider} />
+              {children}
+            </ScrollView>
+          </KeyboardAvoidingView>
+        </ThemedView>
+      </ThemedView>
     </Modal>
   );
 };
@@ -105,16 +114,13 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 50 : 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    backgroundColor: AiraColors.card,
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
+    paddingVertical: 8,
   },
   closeButton: {
     paddingVertical: 8,
@@ -128,7 +134,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     alignSelf: "center",
-    color: AiraColors.foreground,
   },
   divider: {
     height: 1,
@@ -136,10 +141,9 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   saveButton: {
-    backgroundColor: AiraColors.foreground,
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 16,
+    borderRadius: AiraVariants.cardRadius,
     flexDirection: "row",
     alignItems: "center",
     gap: 4,

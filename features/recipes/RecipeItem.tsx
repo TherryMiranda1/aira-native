@@ -6,6 +6,7 @@ import { Recipe as RecipeType } from "@/services/api/recipe.service";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { getRecipeDifficultyColor } from "@/utils/colors";
+import { ThemedView } from "@/components/ThemedView";
 
 export const RecipeItem = memo(
   ({
@@ -18,81 +19,77 @@ export const RecipeItem = memo(
     onSchedule?: (recipeId: string, recipeTitle: string) => void;
   }) => {
     return (
-      <TouchableOpacity
-        style={styles.recipeCard}
-        onPress={() => onPress(recipe.id || "")}
-      >
-        <View style={styles.cardHeader}>
-          <View
-            style={[
-              styles.difficultyBadge,
-              {
-                backgroundColor:
-                  getRecipeDifficultyColor(recipe.dificultad) + "20",
-                borderColor: getRecipeDifficultyColor(recipe.dificultad),
-              },
-            ]}
-          >
-            <ThemedText
-              type="small"
-              style={[{ color: getRecipeDifficultyColor(recipe.dificultad) }]}
+      <TouchableOpacity onPress={() => onPress(recipe.id || "")}>
+        <ThemedView style={styles.recipeCard}>
+          <View style={styles.cardHeader}>
+            <View
+              style={[
+                styles.difficultyBadge,
+                {
+                  backgroundColor:
+                    getRecipeDifficultyColor(recipe.dificultad) + "20",
+                  borderColor: getRecipeDifficultyColor(recipe.dificultad),
+                },
+              ]}
             >
-              {recipe.dificultad}
-            </ThemedText>
-          </View>
-          <View style={styles.actionsContainer}>
-            {onSchedule && (
-              <TouchableOpacity
-                style={styles.scheduleButton}
-                onPress={(e) => {
-                  e.stopPropagation();
-                  onSchedule(recipe.id || "", recipe.titulo);
-                }}
+              <ThemedText
+                type="small"
+                style={[{ color: getRecipeDifficultyColor(recipe.dificultad) }]}
               >
-                <Ionicons
-                  name="calendar-outline"
-                  size={16}
-                  color={AiraColors.primary}
-                />
+                {recipe.dificultad}
+              </ThemedText>
+            </View>
+            <View style={styles.actionsContainer}>
+              {onSchedule && (
+                <TouchableOpacity
+                  style={styles.scheduleButton}
+                  onPress={(e) => {
+                    e.stopPropagation();
+                    onSchedule(recipe.id || "", recipe.titulo);
+                  }}
+                >
+                  <Ionicons
+                    name="calendar-outline"
+                    size={16}
+                    color={AiraColors.primary}
+                  />
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity>
+                <Ionicons name="heart-outline" size={20} color="#9ca3af" />
               </TouchableOpacity>
-            )}
-            <TouchableOpacity>
-              <Ionicons name="heart-outline" size={20} color="#9ca3af" />
-            </TouchableOpacity>
+            </View>
           </View>
-        </View>
 
-        <ThemedText style={styles.recipeTitle}>{recipe.titulo}</ThemedText>
+          <ThemedText style={styles.recipeTitle}>{recipe.titulo}</ThemedText>
 
-        <ThemedText type="small">🥘 {recipe.ingrediente_principal}</ThemedText>
+          <ThemedText type="small">
+            🥘 {recipe.ingrediente_principal}
+          </ThemedText>
 
-        <View style={styles.recipeDetails}>
-          <View style={styles.recipeDetail}>
-            <Ionicons name="time-outline" size={16} color="#6b7280" />
-            <ThemedText type="small">{recipe.tiempo_preparacion}</ThemedText>
+          <View style={styles.recipeDetails}>
+            <View style={styles.recipeDetail}>
+              <Ionicons name="time-outline" size={16} color="#6b7280" />
+              <ThemedText type="small">{recipe.tiempo_preparacion}</ThemedText>
+            </View>
+            <View style={styles.recipeDetail}>
+              <Ionicons name="restaurant-outline" size={16} color="#6b7280" />
+              <ThemedText type="small">{recipe.calorias}</ThemedText>
+            </View>
           </View>
-          <View style={styles.recipeDetail}>
-            <Ionicons name="restaurant-outline" size={16} color="#6b7280" />
-            <ThemedText type="small">{recipe.calorias}</ThemedText>
-          </View>
-        </View>
+        </ThemedView>
       </TouchableOpacity>
     );
   }
 );
 
-// Añadir displayName para resolver error de lint
 RecipeItem.displayName = "RecipeItem";
 
 const styles = StyleSheet.create({
   recipeCard: {
-    backgroundColor: AiraColors.card,
     borderRadius: AiraVariants.cardRadius,
-    marginBottom: 16,
-    overflow: "hidden",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     padding: 16,
+    overflow: "hidden",
   },
   cardHeader: {
     flexDirection: "row",
@@ -118,7 +115,6 @@ const styles = StyleSheet.create({
   },
   recipeTitle: {
     fontSize: 18,
-     
     marginBottom: 8,
   },
 

@@ -22,6 +22,7 @@ import { eventService, RecurrenceType } from "@/services/api/event.service";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
 import { ModalView } from "./ModalView";
+import { AiraVariants } from "@/constants/Themes";
 
 interface ScheduleEventModalProps {
   visible: boolean;
@@ -337,7 +338,7 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
       </View>
 
       {/* Summary */}
-      <View style={styles.summary}>
+      <ThemedView variant="border" style={styles.summary}>
         <ThemedText style={styles.summaryText}>
           📅 Resumen: {itemTitle} el{" "}
           {format(startTime, "d 'de' MMMM", { locale: es })} a las{" "}
@@ -353,7 +354,7 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
             </ThemedText>
           )}
         </ThemedText>
-      </View>
+      </ThemedView>
 
       {/* Date/Time Pickers */}
       {showDatePicker && (
@@ -407,37 +408,30 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
 
 const styles = StyleSheet.create({
   itemInfo: {
-    backgroundColor: AiraColorsWithAlpha.backgroundWithOpacity(0.1),
     padding: 16,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
     marginTop: 16,
     marginBottom: 8,
   },
   itemTypeLabel: {
     fontSize: 14,
-    fontWeight: "600",
-    color: AiraColors.mutedForeground,
     marginBottom: 4,
   },
   itemTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
   },
   section: {
     marginTop: 16,
   },
   label: {
     fontSize: 16,
-    fontWeight: "600",
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   dateTimeButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: AiraColors.background,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
     padding: 16,
     marginBottom: 8,
     borderWidth: 1,
@@ -460,16 +454,12 @@ const styles = StyleSheet.create({
   recurrenceOption: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.background,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
     padding: 12,
     minWidth: "48%",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
   recurrenceOptionSelected: {
     backgroundColor: AiraColors.primary,
-    borderColor: AiraColors.primary,
   },
   recurrenceIcon: {
     fontSize: 16,
@@ -477,58 +467,40 @@ const styles = StyleSheet.create({
   },
   recurrenceLabel: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   recurrenceLabelSelected: {
-    color: "#fff",
-  },
-  input: {
-    backgroundColor: AiraColors.background,
-    borderRadius: 12,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
-    fontSize: 16,
-    color: AiraColors.foreground,
+    color: AiraColors.mutedForeground,
   },
   textArea: {
-    backgroundColor: AiraColors.background,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
     padding: 16,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
     fontSize: 16,
-    color: AiraColors.foreground,
     minHeight: 80,
     textAlignVertical: "top",
   },
   summary: {
-    backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
     padding: 16,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
     marginTop: 16,
     marginBottom: 24,
   },
   summaryText: {
     fontSize: 14,
-    color: AiraColors.foreground,
     lineHeight: 20,
   },
   recurrenceNote: {
     color: AiraColors.mutedForeground,
   },
   pickerContainer: {
-    backgroundColor: AiraColors.card,
     borderTopWidth: 1,
     borderTopColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
+    borderRadius: AiraVariants.cardRadius,
   },
   pickerHeader: {
     flexDirection: "row",
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   pickerButton: {
     paddingVertical: 8,
@@ -537,6 +509,5 @@ const styles = StyleSheet.create({
   pickerButtonText: {
     fontSize: 16,
     color: AiraColors.primary,
-    fontWeight: "600",
   },
 });

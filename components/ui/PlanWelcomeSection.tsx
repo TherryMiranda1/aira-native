@@ -24,18 +24,10 @@ export const PlanWelcomeSection: React.FC<PlanWelcomeSectionProps> = ({
   return (
     <View style={[styles.welcomeSection, containerStyle]}>
       <View style={styles.iconContainer}>
-        <Ionicons
-          name={iconName}
-          size={iconSize}
-          color={iconColor}
-        />
+        <Ionicons name={iconName} size={iconSize} color={iconColor} />
       </View>
-      <ThemedText style={styles.welcomeTitle}>
-        {title}
-      </ThemedText>
-      <ThemedText style={styles.welcomeDescription}>
-        {description}
-      </ThemedText>
+      <ThemedText style={styles.welcomeTitle}>{title}</ThemedText>
+      <ThemedText style={styles.welcomeDescription}>{description}</ThemedText>
     </View>
   );
 };
@@ -57,8 +49,6 @@ const styles = StyleSheet.create({
   },
   welcomeTitle: {
     fontSize: 20,
-     
-    color: AiraColors.foreground,
     textAlign: "center",
     marginBottom: 12,
   },
@@ -69,4 +59,4 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     paddingHorizontal: 16,
   },
-}); 
+});

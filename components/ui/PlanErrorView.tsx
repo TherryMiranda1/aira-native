@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
+import { ThemedView } from "../ThemedView";
 
 interface PlanErrorViewProps {
   title?: string;
@@ -28,11 +29,12 @@ export const PlanErrorView: React.FC<PlanErrorViewProps> = ({
     if (useGradientButton) {
       return (
         <TouchableOpacity style={styles.retryButton} onPress={onRetry}>
-          <LinearGradient colors={gradientColors} style={styles.retryButtonGradient}>
+          <LinearGradient
+            colors={gradientColors}
+            style={styles.retryButtonGradient}
+          >
             <Ionicons name="refresh" size={20} color="white" />
-            <ThemedText style={styles.retryButtonText}>
-              {retryText}
-            </ThemedText>
+            <ThemedText style={styles.retryButtonText}>{retryText}</ThemedText>
           </LinearGradient>
         </TouchableOpacity>
       );
@@ -41,30 +43,20 @@ export const PlanErrorView: React.FC<PlanErrorViewProps> = ({
     return (
       <TouchableOpacity style={styles.retryButtonPlain} onPress={onRetry}>
         <Ionicons name="refresh" size={20} color={AiraColors.primary} />
-        <ThemedText style={styles.retryButtonTextPlain}>
-          {retryText}
-        </ThemedText>
+        <ThemedText style={styles.retryButtonTextPlain}>{retryText}</ThemedText>
       </TouchableOpacity>
     );
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.errorCard}>
-        <Ionicons
-          name={iconName}
-          size={48}
-          color={AiraColors.destructive}
-        />
-        <ThemedText style={styles.errorTitle}>
-          {title}
-        </ThemedText>
-        <ThemedText style={styles.errorMessage}>
-          {message}
-        </ThemedText>
+    <ThemedView style={styles.container}>
+      <ThemedView variant="border" style={styles.errorCard}>
+        <Ionicons name={iconName} size={48} color={AiraColors.destructive} />
+        <ThemedText style={styles.errorTitle}>{title}</ThemedText>
+        <ThemedText style={styles.errorMessage}>{message}</ThemedText>
         {renderRetryButton()}
-      </View>
-    </View>
+      </ThemedView>
+    </ThemedView>
   );
 };
 
@@ -74,11 +66,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 40,
-    backgroundColor: AiraColors.background,
   },
   errorCard: {
     alignItems: "center",
-    backgroundColor: AiraColors.card,
+
     borderRadius: 16,
     padding: 32,
     shadowColor: "#000",
@@ -92,7 +83,7 @@ const styles = StyleSheet.create({
   },
   errorTitle: {
     fontSize: 20,
-     
+
     color: AiraColors.foreground,
     textAlign: "center",
     marginTop: 16,
@@ -119,7 +110,7 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 16,
-     
+
     color: "white",
   },
   retryButtonPlain: {
@@ -136,7 +127,7 @@ const styles = StyleSheet.create({
   },
   retryButtonTextPlain: {
     fontSize: 16,
-     
+
     color: AiraColors.primary,
   },
-}); 
+});

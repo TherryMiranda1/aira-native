@@ -10,16 +10,15 @@ import {
   ScrollView,
 } from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
-import { Link, Stack, useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedInput } from "@/components/ThemedInput";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Ionicons } from "@expo/vector-icons";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { PageView } from "@/components/ui/PageView";
 import * as AuthSession from "expo-auth-session";
+import { ThemedView } from "@/components/ThemedView";
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -257,7 +256,7 @@ export default function SignUpScreen() {
           ) : null}
 
           <View style={styles.formContainer}>
-            <View style={styles.inputWrapper}>
+            <ThemedView variant="secondary" style={styles.inputWrapper}>
               <Ionicons
                 name="mail-outline"
                 size={20}
@@ -271,9 +270,9 @@ export default function SignUpScreen() {
                 placeholder="Email address"
                 onChangeText={setEmailAddress}
               />
-            </View>
+            </ThemedView>
 
-            <View style={styles.inputWrapper}>
+            <ThemedView variant="secondary" style={styles.inputWrapper}>
               <Ionicons
                 name="lock-closed-outline"
                 size={20}
@@ -297,16 +296,16 @@ export default function SignUpScreen() {
                   color={AiraColors.mutedForeground}
                 />
               </TouchableOpacity>
-            </View>
+            </ThemedView>
 
             <View style={styles.termsContainer}>
               <ThemedText style={styles.termsText}>
-                By signing up, you agree to our{" "}
+                Al crear una cuenta, aceptas nuestros{" "}
                 <ThemedText style={styles.termsLink}>
-                  Terms of Service
+                  Términos de Servicio
                 </ThemedText>{" "}
-                and{" "}
-                <ThemedText style={styles.termsLink}>Privacy Policy</ThemedText>
+                y{" "}
+                <ThemedText style={styles.termsLink}>Política de Privacidad</ThemedText>
               </ThemedText>
             </View>
 
@@ -321,7 +320,7 @@ export default function SignUpScreen() {
               {isSubmitting ? (
                 <ActivityIndicator color="white" size="small" />
               ) : (
-                <ThemedText style={styles.signInButtonText}>
+                <ThemedText type="defaultSemiBold" style={styles.signInButtonText}>
                   Crear Cuenta
                 </ThemedText>
               )}
@@ -344,10 +343,6 @@ export default function SignUpScreen() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: AiraColors.background,
-  },
   keyboardAvoid: {
     flex: 1,
   },
@@ -397,10 +392,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     height: 56,
     paddingHorizontal: 16,
   },

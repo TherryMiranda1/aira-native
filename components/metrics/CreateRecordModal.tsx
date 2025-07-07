@@ -1,13 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  Modal,
-  ScrollView,
-  TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
@@ -19,6 +11,7 @@ import { AiraVariants } from "@/constants/Themes";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
 import { useToastHelpers } from "@/components/ui/ToastSystem";
 import { ModalView } from "../modals/ModalView";
+import { ThemedView } from "../ThemedView";
 
 interface CreateRecordModalProps {
   visible: boolean;
@@ -183,7 +176,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
         <ThemedText style={styles.label}>
           Valor <ThemedText style={styles.required}>*</ThemedText>
         </ThemedText>
-        <View style={styles.valueInputContainer}>
+        <ThemedView variant="secondary" style={styles.valueInputContainer}>
           <ThemedInput
             variant="numeric"
             value={value}
@@ -192,7 +185,7 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
             keyboardType="numeric"
           />
           <ThemedText style={styles.unitLabel}>{metric.unit}</ThemedText>
-        </View>
+        </ThemedView>
       </View>
 
       {/* Fecha y hora */}
@@ -211,16 +204,16 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
             }
           }}
         >
-          <View style={styles.dateInfo}>
+          <ThemedView variant="secondary" style={styles.dateInfo}>
             <ThemedText style={styles.dateText}>
               📅 {formatDate(recordDate)}
             </ThemedText>
-          </View>
-          <Ionicons
-            name="calendar-outline"
-            size={20}
-            color={AiraColors.primary}
-          />
+            <Ionicons
+              name="calendar-outline"
+              size={20}
+              color={AiraColors.primary}
+            />
+          </ThemedView>
         </TouchableOpacity>
 
         {/* Hora */}
@@ -235,12 +228,16 @@ export const CreateRecordModal: React.FC<CreateRecordModalProps> = ({
             }
           }}
         >
-          <View style={styles.dateInfo}>
+          <ThemedView variant="secondary" style={styles.dateInfo}>
             <ThemedText style={styles.dateText}>
               🕐 {formatTime(recordTime)}
             </ThemedText>
-          </View>
-          <Ionicons name="time-outline" size={20} color={AiraColors.primary} />
+            <Ionicons
+              name="time-outline"
+              size={20}
+              color={AiraColors.primary}
+            />
+          </ThemedView>
         </TouchableOpacity>
       </View>
 
@@ -385,28 +382,22 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   metricInfo: {
-    backgroundColor: AiraColors.card,
     borderRadius: 12,
     padding: 16,
     marginBottom: 24,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
   },
   metricTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
     marginBottom: 4,
   },
   metricUnit: {
     fontSize: 14,
-    color: AiraColors.mutedForeground,
   },
   section: {
     marginBottom: 24,
   },
   label: {
     fontSize: 16,
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   required: {
@@ -415,56 +406,43 @@ const styles = StyleSheet.create({
   valueInputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
     paddingRight: 16,
   },
   unitLabel: {
     fontSize: 16,
-    color: AiraColors.mutedForeground,
   },
-  dateButton: {
+  dateButton: {},
+  dateInfo: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    borderWidth: 1,
-    borderColor: AiraColors.border,
-    borderRadius: 8,
     paddingHorizontal: 12,
-    paddingVertical: 12,
-    backgroundColor: AiraColors.card,
-  },
-  dateInfo: {
-    flex: 1,
+    paddingVertical: 16,
+    borderRadius: AiraVariants.cardRadius,
   },
   dateText: {
     fontSize: 16,
-    color: AiraColors.foreground,
     marginBottom: 2,
   },
   input: {
-    borderWidth: 1,
-    borderColor: AiraColors.border,
     borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 12,
     fontSize: 16,
-    color: AiraColors.foreground,
-    backgroundColor: AiraColors.card,
   },
   referenceItem: {
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 8,
     paddingHorizontal: 12,
-    backgroundColor: AiraColors.muted,
     borderRadius: 8,
     marginBottom: 8,
   },
   referenceText: {
     marginLeft: 8,
     fontSize: 14,
-    color: AiraColors.foreground,
     flex: 1,
   },
   pickerContainer: {
@@ -480,13 +458,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 12,
-    backgroundColor: AiraColors.card,
   },
   pickerButton: {
     padding: 8,
   },
   pickerButtonText: {
     fontSize: 16,
-    color: AiraColors.primary,
   },
 });

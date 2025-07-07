@@ -1,11 +1,22 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
-import { FullExerciseRoutineOutput, FullExerciseRoutineInput } from "@/types/Assistant";
-import { ContentCard, ContentSection, ContentText, ContentList } from "./ContentCard";
+import {
+  FullExerciseRoutineOutput,
+  FullExerciseRoutineInput,
+} from "@/types/Assistant";
+import {
+  ContentCard,
+  ContentSection,
+  ContentText,
+  ContentList,
+} from "./ContentCard";
 import { SaveButton } from "../SaveButton";
 import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
+import { ThemedView } from "@/components/ThemedView";
+import { AiraVariants } from "@/constants/Themes";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface RoutineCardProps {
   routine: FullExerciseRoutineOutput;
@@ -15,10 +26,13 @@ interface RoutineCardProps {
 export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
   const [isSaving, setIsSaving] = useState(false);
   const { createRoutine } = useDailyWorkoutRoutines();
-
+  const { showErrorToast, showSuccessToast } = useToastHelpers();
   const handleSave = async () => {
     if (!inputParams) {
-      Alert.alert("Error", "No se pueden guardar los parámetros de la rutina");
+      showErrorToast(
+        "Error",
+        "No se pueden guardar los parámetros de la rutina"
+      );
       return;
     }
 
@@ -30,17 +44,15 @@ export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
         tags: ["rutina-ejercicio", "entrenamiento", "chat"],
       });
 
-      Alert.alert(
+      showSuccessToast(
         "Rutina de Ejercicio Guardada",
-        "Tu rutina se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK" }]
+        "Tu rutina se ha guardado exitosamente en tu biblioteca"
       );
     } catch (error) {
       console.error("Error guardando rutina de ejercicio:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
-        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo.",
-        [{ text: "OK" }]
+        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo."
       );
       throw error;
     } finally {
@@ -67,33 +79,34 @@ export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
     >
       {/* Resumen de la rutina */}
       {routine.sesiones && routine.sesiones.length > 0 && (
-        <View style={styles.summaryContainer}>
+        <ThemedView variant="border" style={styles.summaryContainer}>
           <View style={styles.summaryCard}>
             <ThemedText type="small" style={styles.summaryLabel}>
               📊 Resumen de la rutina
             </ThemedText>
             <ThemedText type="defaultSemiBold" style={styles.summaryValue}>
-              {routine.sesiones.length} sesión{routine.sesiones.length > 1 ? "es" : ""}
+              {routine.sesiones.length} sesión
+              {routine.sesiones.length > 1 ? "es" : ""}
             </ThemedText>
           </View>
-        </View>
+        </ThemedView>
       )}
 
       {routine.sesiones?.map((sesion, index) => (
-        <ContentSection 
-          key={index} 
+        <ContentSection
+          key={index}
           title={sesion.nombreSesion || `Sesión ${index + 1}`}
           icon="💪"
         >
           {sesion.ejercicios && sesion.ejercicios.length > 0 ? (
             <>
-              <ContentList 
+              <ContentList
                 items={sesion.ejercicios
                   .slice(0, 3)
-                  .map(ejercicio => 
-                    `${ejercicio.nombreEjercicio} - ${ejercicio.seriesRepeticiones}`
-                  )
-                }
+                  .map(
+                    (ejercicio) =>
+                      `${ejercicio.nombreEjercicio} - ${ejercicio.seriesRepeticiones}`
+                  )}
                 type="bullet"
               />
               {sesion.ejercicios.length > 3 && (
@@ -103,7 +116,9 @@ export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
               )}
             </>
           ) : (
-            <ContentText>No hay ejercicios definidos para esta sesión</ContentText>
+            <ContentText>
+              No hay ejercicios definidos para esta sesión
+            </ContentText>
           )}
         </ContentSection>
       ))}
@@ -122,13 +137,11 @@ export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
 const styles = StyleSheet.create({
   summaryContainer: {
     marginBottom: 16,
+    borderRadius: AiraVariants.cardRadius,
   },
   summaryCard: {
-    backgroundColor: AiraColors.card,
     padding: 12,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: AiraColors.border,
+    borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
   },
   summaryLabel: {
@@ -138,4 +151,4 @@ const styles = StyleSheet.create({
   summaryValue: {
     color: AiraColors.primary,
   },
-}); 
+});

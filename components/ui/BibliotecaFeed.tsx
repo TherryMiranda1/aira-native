@@ -369,7 +369,6 @@ const styles = StyleSheet.create({
   },
   heroDescription: {
     fontSize: 16,
-    color: AiraColors.mutedForeground,
     textAlign: "center",
     lineHeight: 24,
     marginBottom: 8,
@@ -405,7 +404,6 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 20,
-    color: AiraColors.foreground,
     marginBottom: 2,
   },
   sectionSubtitle: {
@@ -456,7 +454,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: AiraColors.background,
     paddingVertical: 14,
     paddingHorizontal: 24,
     borderRadius: AiraVariants.cardRadius,
@@ -490,14 +487,12 @@ const styles = StyleSheet.create({
   },
   footerText: {
     fontSize: 12,
-    color: AiraColors.mutedForeground,
     textAlign: "center",
     lineHeight: 18,
     marginBottom: 8,
   },
   footerCredit: {
     fontSize: 12,
-    color: AiraColors.mutedForeground,
     textAlign: "center",
   },
 });

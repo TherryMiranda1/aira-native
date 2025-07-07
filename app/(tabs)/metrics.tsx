@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Stack, router } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { RefreshablePageView } from "@/components/ui/RefreshablePageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { ProfileButton } from "@/components/ui/ProfileButton";
-import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
 import { ErrorState } from "@/components/States/ErrorState";
 import { useMetrics } from "@/hooks/services/useMetrics";
@@ -16,6 +14,8 @@ import { MetricCard } from "@/components/metrics/MetricCard";
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
 
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { ThemedGradient } from "@/components/ThemedGradient";
+import { MetricsSkeleton } from "@/components/ui/FeedSkeleton";
 
 export default function MetricsScreen() {
   const { metrics, loading, error, deleteMetric, refetch } = useMetrics();
@@ -49,7 +49,7 @@ export default function MetricsScreen() {
           }}
         />
         <Topbar title="Mis Métricas" actions={<ProfileButton />} />
-        <LoadingState title="Cargando tus métricas..." />
+        <MetricsSkeleton />
       </RefreshablePageView>
     );
   }
@@ -79,26 +79,12 @@ export default function MetricsScreen() {
   return (
     <RefreshablePageView
       onRefresh={refetch}
-      onEndReach={refetch}
       refreshing={loading}
       contentContainerStyle={styles.scrollContent}
       endReachText="Desliza hacia abajo para actualizar métricas"
+      topbar={<Topbar title="Mis Métricas" actions={<ProfileButton />} />}
     >
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Topbar title="Mis Métricas" actions={<ProfileButton />} />
-
-      <LinearGradient
-        colors={[
-          AiraColors.airaLavenderSoft,
-          AiraColors.airaSageSoft,
-          AiraColors.airaCreamy,
-        ]}
-        style={styles.gradientBackground}
-      >
+      <ThemedGradient style={styles.gradientBackground}>
         {/* Header */}
         <View style={styles.header}>
           <ThemedText type="title" style={styles.title}>
@@ -129,7 +115,7 @@ export default function MetricsScreen() {
             ))}
           </View>
         )}
-      </LinearGradient>
+      </ThemedGradient>
 
       {/* Modal para crear métrica */}
       <CreateMetricModal
@@ -164,7 +150,6 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 8,
-    color: AiraColors.foreground,
   },
   subtitle: {
     fontSize: 16,

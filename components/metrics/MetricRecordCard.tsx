@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-import { AiraColors } from "@/constants/Colors";
+import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { Ionicons } from "@expo/vector-icons";
 import { MetricRecord, Metric } from "@/services/api/metrics.service";
+import { AiraVariants } from "@/constants/Themes";
 
 interface MetricRecordCardProps {
   record: MetricRecord;
@@ -50,13 +51,13 @@ export const MetricRecordCard: React.FC<MetricRecordCardProps> = ({
     let color = AiraColors.mutedForeground;
     let icon = "remove-outline";
 
-    if (progress >= 100) {
+    if (progress >= 0) {
       color = AiraColors.accent;
       icon = "checkmark-circle";
-    } else if (progress >= 75) {
+    } else if (progress < 0) {
       color = AiraColors.primary;
       icon = "trending-up";
-    } else if (progress >= 50) {
+    } else if (progress < -25) {
       color = "#FFA726"; // Warning color
       icon = "trending-up";
     } else {
@@ -149,22 +150,21 @@ export const MetricRecordCard: React.FC<MetricRecordCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
+    borderRadius: AiraVariants.cardRadius,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
     padding: 16,
   },
   header: {
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-between",
-    marginBottom: 12,
+    marginBottom: 4,
   },
   dateContainer: {
     flex: 1,
   },
   dateText: {
     fontSize: 14,
-    color: AiraColors.foreground,
     marginBottom: 2,
   },
   timeText: {
@@ -177,7 +177,6 @@ const styles = StyleSheet.create({
   },
   valueText: {
     fontSize: 24,
-    color: AiraColors.primary,
     marginBottom: 2,
   },
   unitText: {
@@ -199,7 +198,6 @@ const styles = StyleSheet.create({
     gap: 4,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    backgroundColor: AiraColors.muted,
     borderRadius: 12,
   },
   progressText: {

@@ -261,7 +261,6 @@ const styles = StyleSheet.create({
   heroContainer: {
     position: "relative",
     height: 280,
-    backgroundColor: AiraColors.card,
   },
   heroImage: {
     width: "100%",
@@ -300,7 +299,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: AiraColors.card,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: -24,
@@ -312,7 +310,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    color: AiraColors.foreground,
     lineHeight: 34,
     marginBottom: 8,
   },
@@ -323,7 +320,6 @@ const styles = StyleSheet.create({
   statsContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: AiraColors.secondary,
     borderRadius: 16,
     paddingVertical: 20,
     marginBottom: 32,
@@ -334,14 +330,12 @@ const styles = StyleSheet.create({
   },
   statText: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   section: {
     marginBottom: 32,
   },
   sectionTitle: {
     fontSize: 20,
-    color: AiraColors.foreground,
     marginBottom: 20,
   },
   ingredientsList: {
@@ -366,7 +360,6 @@ const styles = StyleSheet.create({
   },
   ingredientName: {
     fontSize: 16,
-    color: AiraColors.foreground,
     flex: 1,
   },
   ingredientAmount: {
@@ -396,7 +389,6 @@ const styles = StyleSheet.create({
   stepText: {
     flex: 1,
     fontSize: 16,
-    color: AiraColors.foreground,
     lineHeight: 24,
   },
   bottomSpacing: {

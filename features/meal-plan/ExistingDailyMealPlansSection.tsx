@@ -3,17 +3,18 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Alert,
+  TouchableOpacity
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 
 import { ThemedText } from "../../components/ThemedText";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyMealPlan } from "@/services/api/dailyMealPlan.service";
+import { ThemedView } from "@/components/ThemedView";
+import { useAlert } from "@/components/ui/AlertSystem";
 
 interface ExistingDailyMealPlansSectionProps {
   plans: DailyMealPlan[];
@@ -27,7 +28,7 @@ export const ExistingDailyMealPlansSection = ({
   onPlanDelete,
 }: ExistingDailyMealPlansSectionProps) => {
   const router = useRouter();
-
+  const { showAlert } = useAlert();
   const handlePlanPress = (plan: DailyMealPlan) => {
     if (onPlanSelect) {
       onPlanSelect(plan);
@@ -40,18 +41,19 @@ export const ExistingDailyMealPlansSection = ({
   };
 
   const handleDeletePress = (plan: DailyMealPlan) => {
-    Alert.alert(
-      "Eliminar Plan",
-      `¿Segura que quieres eliminar "${plan.planTitle}"?`,
-      [
+    showAlert({
+      type: "confirm",
+      title: "Eliminar Plan",
+      message: `¿Segura que quieres eliminar "${plan.planTitle}"?`,
+      buttons: [
         { text: "Cancelar", style: "cancel" },
         {
           text: "Eliminar",
           style: "destructive",
           onPress: () => onPlanDelete?.(plan.id),
         },
-      ]
-    );
+      ],
+    });
   };
 
   const formatDate = (dateString: string): string => {
@@ -63,7 +65,7 @@ export const ExistingDailyMealPlansSection = ({
     if (diffDays === 1) return "Hoy";
     if (diffDays === 2) return "Ayer";
     if (diffDays <= 7) return `Hace ${diffDays - 1} días`;
-    
+
     return date.toLocaleDateString("es-ES", {
       day: "numeric",
       month: "short",
@@ -128,75 +130,88 @@ export const ExistingDailyMealPlansSection = ({
       >
         {plans.map((plan) => {
           const mainInfo = getMainInfo(plan);
-          
+
           return (
             <TouchableOpacity
               key={plan.id}
-              style={styles.planCard}
               onPress={() => handlePlanPress(plan)}
             >
-              <View style={styles.planHeader}>
-                <LinearGradient
-                  colors={[AiraColors.accent, AiraColors.primary]}
-                  style={styles.planIcon}
-                >
-                  <Ionicons name="restaurant" size={18} color="white" />
-                </LinearGradient>
+              <ThemedView variant="border" style={styles.planCard}>
+                <View style={styles.planHeader}>
+                  <LinearGradient
+                    colors={[AiraColors.accent, AiraColors.primary]}
+                    style={styles.planIcon}
+                  >
+                    <Ionicons name="restaurant" size={18} color="white" />
+                  </LinearGradient>
 
-                <View style={styles.planHeaderActions}>
-                  {plan.isFavorite && (
-                    <Ionicons name="heart" size={14} color={AiraColors.accent} />
-                  )}
-                  {onPlanDelete && (
-                    <TouchableOpacity
-                      style={styles.deleteButton}
-                      onPress={() => handleDeletePress(plan)}
-                    >
+                  <View style={styles.planHeaderActions}>
+                    {plan.isFavorite && (
                       <Ionicons
-                        name="close-circle"
-                        size={18}
-                        color={AiraColors.mutedForeground}
+                        name="heart"
+                        size={14}
+                        color={AiraColors.accent}
                       />
-                    </TouchableOpacity>
-                  )}
-                </View>
-              </View>
-
-              <View style={styles.planContent}>
-                <ThemedText type="defaultSemiBold" style={styles.planTitle} numberOfLines={2}>
-                  {plan.planTitle}
-                </ThemedText>
-
-                <View style={styles.planMeta}>
-                  <ThemedText type="small" style={styles.planDate}>
-                    {formatDate(plan.createdAt)}
-                  </ThemedText>
-                  <ThemedText type="small" style={styles.mealsCount}>
-                    {plan.meals.length} comidas
-                  </ThemedText>
+                    )}
+                    {onPlanDelete && (
+                      <TouchableOpacity
+                        style={styles.deleteButton}
+                        onPress={() => handleDeletePress(plan)}
+                      >
+                        <Ionicons
+                          name="close-circle"
+                          size={18}
+                          color={AiraColors.mutedForeground}
+                        />
+                      </TouchableOpacity>
+                    )}
+                  </View>
                 </View>
 
-                {mainInfo && (
-                  <View style={styles.planInfo}>
-                    <Ionicons 
-                      name={mainInfo.icon} 
-                      size={12} 
-                      color={mainInfo.color} 
-                    />
-                    <ThemedText type="small" style={styles.infoText} numberOfLines={1}>
-                      {mainInfo.text}
+                <View style={styles.planContent}>
+                  <ThemedText
+                    type="defaultSemiBold"
+                    style={styles.planTitle}
+                    numberOfLines={2}
+                  >
+                    {plan.planTitle}
+                  </ThemedText>
+
+                  <View style={styles.planMeta}>
+                    <ThemedText type="small" style={styles.planDate}>
+                      {formatDate(plan.createdAt)}
+                    </ThemedText>
+                    <ThemedText type="small" style={styles.mealsCount}>
+                      {plan.meals.length} comidas
                     </ThemedText>
                   </View>
-                )}
-              </View>
 
-              <View style={styles.planFooter}>
-                <Ionicons
-                  name="chevron-forward"
-                  size={16}
-                  color={AiraColors.mutedForeground}
-                />
-              </View>
+                  {mainInfo && (
+                    <View style={styles.planInfo}>
+                      <Ionicons
+                        name={mainInfo.icon}
+                        size={12}
+                        color={mainInfo.color}
+                      />
+                      <ThemedText
+                        type="small"
+                        style={styles.infoText}
+                        numberOfLines={1}
+                      >
+                        {mainInfo.text}
+                      </ThemedText>
+                    </View>
+                  )}
+                </View>
+
+                <View style={styles.planFooter}>
+                  <Ionicons
+                    name="chevron-forward"
+                    size={16}
+                    color={AiraColors.mutedForeground}
+                  />
+                </View>
+              </ThemedView>
             </TouchableOpacity>
           );
         })}
@@ -214,9 +229,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  sectionTitle: {
-    color: AiraColors.foreground,
-  },
+  sectionTitle: {},
   countBadge: {
     backgroundColor: AiraColors.accent,
     paddingHorizontal: 8,
@@ -234,11 +247,8 @@ const styles = StyleSheet.create({
   },
   planCard: {
     width: 260,
-    height: 160,
-    backgroundColor: AiraColors.card,
+    height: 180,
     borderRadius: AiraVariants.cardRadius,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
     padding: 16,
     gap: 12,
   },
@@ -267,7 +277,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   planTitle: {
-    color: AiraColors.foreground,
     lineHeight: 20,
   },
   planMeta: {
@@ -287,7 +296,6 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   infoText: {
-    color: AiraColors.foreground,
     flex: 1,
   },
   planFooter: {
@@ -297,16 +305,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   emptyCard: {
-    backgroundColor: AiraColors.card,
     padding: 32,
     borderRadius: AiraVariants.cardRadius,
     alignItems: "center",
     gap: 12,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   emptyTitle: {
-    color: AiraColors.foreground,
     textAlign: "center",
   },
   emptyDescription: {
@@ -314,4 +318,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 18,
   },
-}); 
+});

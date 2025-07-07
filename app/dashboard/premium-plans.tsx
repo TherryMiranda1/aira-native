@@ -3,8 +3,7 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
-  Alert,
+  ScrollView
 } from "react-native";
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";

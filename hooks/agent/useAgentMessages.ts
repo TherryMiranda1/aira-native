@@ -1,8 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { Message, AgentOption } from "@/types/Assistant";
-import {
-    counselorService
-} from "@/services/api/counselor.service";
+import { counselorService } from "@/services/api/counselor.service";
 import { useResponseMapper } from "./useResponseMapper";
 
 const MAX_HISTORY_MESSAGES = 8;
@@ -20,6 +18,7 @@ export function useAgentMessages(
   initialMessages: Message[] = [],
   sessionId?: string
 ) {
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [pagination, setPagination] = useState<PaginationState>({
     currentPage: 1,
@@ -39,8 +38,6 @@ export function useAgentMessages(
     return `aira-msg-${Date.now()}-${messageIdCounter.current}`;
   }, []);
 
-
-
   const loadPreviousMessages = useCallback(async () => {
     if (!sessionId || pagination.isLoading || !pagination.hasMore) {
       return;
@@ -58,16 +55,16 @@ export function useAgentMessages(
 
       const newMessages: Message[] = [];
 
-              response.messages.forEach((chat, index) => {
-          const convertedMessages = convertChatToMessages(chat, index);
+      response.messages.forEach((chat, index) => {
+        const convertedMessages = convertChatToMessages(chat, index);
 
-          convertedMessages.forEach((msg: Message) => {
-            if (!loadedMessageIds.current.has(msg.id)) {
-              newMessages.push(msg);
-              loadedMessageIds.current.add(msg.id);
-            }
-          });
+        convertedMessages.forEach((msg: Message) => {
+          if (!loadedMessageIds.current.has(msg.id)) {
+            newMessages.push(msg);
+            loadedMessageIds.current.add(msg.id);
+          }
         });
+      });
 
       if (newMessages.length > 0) {
         setMessages((prev) => [...newMessages, ...prev]);
@@ -89,6 +86,7 @@ export function useAgentMessages(
 
   const initializeFromSession = useCallback(
     async (sessionId: string) => {
+      setIsLoading(true);
       setPagination((prev) => ({ ...prev, isLoading: true }));
 
       try {
@@ -101,14 +99,14 @@ export function useAgentMessages(
         const initialMessages: Message[] = [];
         loadedMessageIds.current.clear();
 
-              response.messages.forEach((chat, index) => {
-        const convertedMessages = convertChatToMessages(chat, index);
+        response.messages.forEach((chat, index) => {
+          const convertedMessages = convertChatToMessages(chat, index);
 
-        convertedMessages.forEach((msg: Message) => {
-          initialMessages.push(msg);
-          loadedMessageIds.current.add(msg.id);
+          convertedMessages.forEach((msg: Message) => {
+            initialMessages.push(msg);
+            loadedMessageIds.current.add(msg.id);
+          });
         });
-      });
 
         setMessages(initialMessages);
         setPagination({
@@ -122,6 +120,8 @@ export function useAgentMessages(
       } catch (error) {
         console.error("Error initializing session messages:", error);
         setPagination((prev) => ({ ...prev, isLoading: false }));
+      } finally {
+        setIsLoading(false);
       }
     },
     [convertChatToMessages]
@@ -262,5 +262,6 @@ export function useAgentMessages(
     prepareChatHistory,
     loadPreviousMessages,
     initializeFromSession,
+    isLoading,
   };
 }

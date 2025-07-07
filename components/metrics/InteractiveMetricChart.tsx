@@ -15,10 +15,11 @@ import Svg, {
   LinearGradient as SvgLinearGradient,
   Stop,
 } from "react-native-svg";
-import { AiraColors } from "@/constants/Colors";
+import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { MetricRecord, Metric } from "@/services/api/metrics.service";
 import { Ionicons } from "@expo/vector-icons";
+import { AiraVariants } from "@/constants/Themes";
 
 interface InteractiveMetricChartProps {
   records: MetricRecord[];
@@ -58,7 +59,7 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
   const screenWidth = Dimensions.get("window").width;
   const chartWidth = screenWidth - 32;
   const chartHeight = height;
-  const padding = { top: 30, right: 30, bottom: 50, left: 50 };
+  const padding = { top: 30, right: 30, bottom: 50, left: 40 };
   const innerWidth = chartWidth - padding.left - padding.right;
   const innerHeight = chartHeight - padding.top - padding.bottom;
 
@@ -493,7 +494,7 @@ export const InteractiveMetricChart: React.FC<InteractiveMetricChartProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: AiraColors.card,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
     borderRadius: 16,
     padding: 16,
     marginVertical: 8,
@@ -535,7 +536,7 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: AiraColors.muted,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
     alignItems: "center",
     justifyContent: "center",
     marginRight: 12,
@@ -550,11 +551,10 @@ const styles = StyleSheet.create({
   },
   insightValue: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
   emptyContainer: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 16,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.4),
+    borderRadius: AiraVariants.cardRadius,
     padding: 48,
     marginVertical: 8,
     alignItems: "center",
@@ -580,8 +580,8 @@ const styles = StyleSheet.create({
   },
   tooltip: {
     position: "absolute",
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.4),
+    borderRadius: AiraVariants.cardRadius,
     padding: 16,
     minWidth: 200,
 
@@ -608,8 +608,6 @@ const styles = StyleSheet.create({
   },
   tooltipNotes: {
     fontSize: 12,
-    color: AiraColors.foreground,
-
     marginTop: 8,
     paddingTop: 8,
     borderTopWidth: 1,
