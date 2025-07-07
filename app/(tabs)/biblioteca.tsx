@@ -18,7 +18,7 @@ export default function BibliotecaScreen() {
   };
 
   return (
-    <PageView>
+    <PageView safeAreaBottom={false}>
       <Topbar title="Tu Biblioteca ✨" actions={<ProfileButton />} />
       <ThemedGradient style={styles.container}>
         {!showFeed ? (

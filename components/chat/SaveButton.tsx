@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface SaveButtonProps {
   onSave: () => Promise<void>;
@@ -20,10 +21,11 @@ export function SaveButton({
   label = "Guardar en mi biblioteca",
 }: SaveButtonProps) {
   const { user } = useUser();
+  const { showErrorToast } = useToastHelpers();
 
   const handlePress = async () => {
     if (!user) {
-      Alert.alert("Error", "Debes iniciar sesión para guardar contenido");
+      showErrorToast("Error", "Debes iniciar sesión para guardar contenido");
       return;
     }
 

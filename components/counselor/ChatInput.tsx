@@ -37,7 +37,6 @@ export function CounselorChatInput({
         value={value}
         onChangeText={setValue}
         placeholder={placeholder}
-        multiline
         maxLength={500}
         returnKeyType="send"
         onSubmitEditing={handleSend}
@@ -59,10 +58,8 @@ export function CounselorChatInput({
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginBottom: 24,
     flexDirection: "row",
-    paddingHorizontal: 20,
-    paddingVertical: 8,
+    padding: 8,
     alignItems: "flex-end",
   },
   sendButton: {
@@ -76,6 +73,5 @@ const styles = StyleSheet.create({
 
   input: {
     flex: 1,
-    minHeight: 40,
   },
 });

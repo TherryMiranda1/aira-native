@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColorsWithAlpha } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { Message } from "@/types/Assistant";
 import { ThemedView } from "../ThemedView";

@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Modal,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  ActivityIndicator,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import {
   Event,
   EventCategory,
@@ -23,8 +14,10 @@ import {
 import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { useUser } from "@clerk/clerk-expo";
 import { ThemedInput } from "@/components/ThemedInput";
-import { IconSelector, getIconById } from "@/components/ui/IconSelector";
+import { getIconById } from "@/components/ui/IconSelector";
 import { ModalView } from "@/components/modals/ModalView";
+import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "@/components/ThemedView";
 
 interface EventFormProps {
   visible: boolean;
@@ -181,14 +174,13 @@ export const EventForm: React.FC<EventFormProps> = ({
       <View style={styles.section}>
         <ThemedText style={styles.questionText}>¿Qué día?</ThemedText>
 
-        <TouchableOpacity
-          style={styles.dateTimeButton}
-          onPress={() => setShowDatePicker(true)}
-        >
-          <ThemedText style={styles.dateTimeButtonText}>
-            📅 {format(eventDate, "EEEE, d 'de' MMMM", { locale: es })}
-          </ThemedText>
-          <ThemedText style={styles.chevron}>›</ThemedText>
+        <TouchableOpacity onPress={() => setShowDatePicker(true)}>
+          <ThemedView variant="secondary" style={styles.dateTimeButton}>
+            <ThemedText style={styles.dateTimeButtonText}>
+              📅 {format(eventDate, "EEEE, d 'de' MMMM", { locale: es })}
+            </ThemedText>
+            <ThemedText style={styles.chevron}>›</ThemedText>
+          </ThemedView>
         </TouchableOpacity>
 
         {showDatePicker && (
@@ -219,14 +211,13 @@ export const EventForm: React.FC<EventFormProps> = ({
       <View style={styles.section}>
         <ThemedText style={styles.questionText}>¿A qué hora?</ThemedText>
 
-        <TouchableOpacity
-          style={styles.dateTimeButton}
-          onPress={() => setShowTimePicker(true)}
-        >
-          <ThemedText style={styles.dateTimeButtonText}>
-            🕐 {format(eventTime, "HH:mm")}
-          </ThemedText>
-          <ThemedText style={styles.chevron}>›</ThemedText>
+        <TouchableOpacity onPress={() => setShowTimePicker(true)}>
+          <ThemedView variant="secondary" style={styles.dateTimeButton}>
+            <ThemedText style={styles.dateTimeButtonText}>
+              🕐 {format(eventTime, "HH:mm")}
+            </ThemedText>
+            <ThemedText style={styles.chevron}>›</ThemedText>
+          </ThemedView>
         </TouchableOpacity>
 
         {showTimePicker && (
@@ -359,14 +350,13 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 50 : 20,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    backgroundColor: AiraColors.card,
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderBottomWidth: 1,
     borderBottomColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
@@ -380,8 +370,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-
-    color: AiraColors.foreground,
   },
   saveButton: {
     backgroundColor: AiraColors.primary,
@@ -407,34 +395,20 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 20,
-
-    color: AiraColors.foreground,
     marginBottom: 8,
   },
   titleInput: {
     fontSize: 16,
-    color: AiraColors.foreground,
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
-    padding: 16,
-    minHeight: 50,
-    textAlignVertical: "top",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
   dateTimeButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
     padding: 16,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
+    borderRadius: AiraVariants.cardRadius,
   },
   dateTimeButtonText: {
     fontSize: 16,
-    color: AiraColors.foreground,
   },
   chevron: {
     fontSize: 20,
@@ -443,18 +417,15 @@ const styles = StyleSheet.create({
   optionsGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 12,
+    gap: 8,
   },
   optionCard: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
-    padding: 16,
+    flex: 1,
+    padding: 4,
     alignItems: "center",
     minWidth: 80,
-    flex: 1,
+    borderRadius: AiraVariants.cardRadius,
     maxWidth: "48%",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
   optionCardSelected: {
     backgroundColor: AiraColors.primary + "20",
@@ -466,7 +437,6 @@ const styles = StyleSheet.create({
   },
   optionLabel: {
     fontSize: 14,
-    color: AiraColors.foreground,
     textAlign: "center",
   },
   optionLabelSelected: {
@@ -476,13 +446,10 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   recurrenceOption: {
+    padding: 12,
+    borderRadius: AiraVariants.cardRadius,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
     position: "relative",
   },
   recurrenceOptionSelected: {
@@ -495,7 +462,6 @@ const styles = StyleSheet.create({
   },
   recurrenceLabel: {
     fontSize: 16,
-    color: AiraColors.foreground,
     flex: 1,
   },
   recurrenceLabelSelected: {
@@ -508,15 +474,11 @@ const styles = StyleSheet.create({
     backgroundColor: AiraColors.primary,
   },
   summaryInfo: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
-    padding: 16,
     marginBottom: 24,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
   summaryText: {
     fontSize: 14,
+    padding: 12,
     color: AiraColors.mutedForeground,
     lineHeight: 20,
   },
@@ -524,12 +486,8 @@ const styles = StyleSheet.create({
     color: AiraColors.primary,
   },
   pickerContainer: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
     marginTop: 16,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
   pickerHeader: {
     backgroundColor: AiraColors.primary,
@@ -541,18 +499,13 @@ const styles = StyleSheet.create({
   pickerButton: {
     paddingHorizontal: 16,
     paddingVertical: 8,
-    backgroundColor: "rgba(255,255,255,0.2)",
-    borderRadius: 8,
+    borderRadius: AiraVariants.cardRadius,
   },
   pickerButtonText: {
     color: "#fff",
     fontSize: 16,
   },
   iconSelectorContainer: {
-    backgroundColor: AiraColors.card,
-    borderRadius: 12,
     padding: 16,
-    borderWidth: 1,
-    borderColor: AiraColorsWithAlpha.borderWithOpacity(0.2),
   },
 });

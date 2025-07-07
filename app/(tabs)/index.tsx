@@ -49,7 +49,7 @@ export default function HomeScreen() {
     useCallback(() => {
       if (!isPaywallShown.current) {
         isPaywallShown.current = true;
-        router.push("/default-paywall");
+        // router.push("/default-paywall");
       }
     }, [])
   );

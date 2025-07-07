@@ -14,6 +14,7 @@ import { CounselorChatInput } from "./ChatInput";
 import { PaginationInfo } from "@/services/api/counselor.service";
 import { Message } from "@/types/Assistant";
 import { ThemedText } from "../ThemedText";
+import { CounselorSkeleton } from "../ui/FeedSkeleton";
 
 interface ChatInterfaceProps {
   messages: Message[];
@@ -21,6 +22,7 @@ interface ChatInterfaceProps {
   onSendMessage: (message: string) => void;
   pagination?: PaginationInfo | null;
   onLoadMore?: () => void;
+  showSkeleton?: boolean;
 }
 
 export default function ChatInterface({
@@ -57,6 +59,10 @@ export default function ChatInterface({
       onLoadMore();
     }
   };
+
+  if (isLoading) {
+    return <CounselorSkeleton type="chat" messagesCount={5} />;
+  }
 
   return (
     <KeyboardAvoidingView
@@ -146,7 +152,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   scrollView: {
     flex: 1,
   },

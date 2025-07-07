@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import {
@@ -16,6 +16,7 @@ import { SaveButton } from "../SaveButton";
 import { useDailyWorkoutRoutines } from "@/hooks/services/useDailyWorkoutRoutines";
 import { ThemedView } from "@/components/ThemedView";
 import { AiraVariants } from "@/constants/Themes";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 interface RoutineCardProps {
   routine: FullExerciseRoutineOutput;
@@ -25,10 +26,13 @@ interface RoutineCardProps {
 export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
   const [isSaving, setIsSaving] = useState(false);
   const { createRoutine } = useDailyWorkoutRoutines();
-
+  const { showErrorToast, showSuccessToast } = useToastHelpers();
   const handleSave = async () => {
     if (!inputParams) {
-      Alert.alert("Error", "No se pueden guardar los parámetros de la rutina");
+      showErrorToast(
+        "Error",
+        "No se pueden guardar los parámetros de la rutina"
+      );
       return;
     }
 
@@ -40,17 +44,15 @@ export function RoutineCard({ routine, inputParams }: RoutineCardProps) {
         tags: ["rutina-ejercicio", "entrenamiento", "chat"],
       });
 
-      Alert.alert(
+      showSuccessToast(
         "Rutina de Ejercicio Guardada",
-        "Tu rutina se ha guardado exitosamente en tu biblioteca",
-        [{ text: "OK" }]
+        "Tu rutina se ha guardado exitosamente en tu biblioteca"
       );
     } catch (error) {
       console.error("Error guardando rutina de ejercicio:", error);
-      Alert.alert(
+      showErrorToast(
         "Error",
-        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo.",
-        [{ text: "OK" }]
+        "No se pudo guardar la rutina de ejercicio. Inténtalo de nuevo."
       );
       throw error;
     } finally {

@@ -4,7 +4,7 @@ import CounselorView from "@/components/counselor/CounselorView";
 
 export default function ChatScreen() {
   return (
-    <PageView>
+    <PageView safeAreaBottom={false}>
       <CounselorView />
     </PageView>
   );

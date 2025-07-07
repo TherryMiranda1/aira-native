@@ -1,12 +1,13 @@
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import React from "react";
-import { StyleSheet, View, ActivityIndicator, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
+import { StyleSheet, View, NativeSyntheticEvent, NativeScrollEvent } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedScrollView } from "../../Views/ThemedScrollView";
 import { Event } from "@/services/api/event.service";
 import { EventItem } from "./EventItem";
 import { AiraColors } from "@/constants/Colors";
+import { EventListSkeleton } from "@/components/ui/FeedSkeleton";
 
 interface EventListProps {
   selectedDate: Date;
@@ -27,6 +28,9 @@ export const EventList: React.FC<EventListProps> = ({
   onDeleteEvent,
   onScroll,
 }) => {
+  if (loading) {
+    return <EventListSkeleton count={3} />;
+  }
   return (
     <View style={styles.contentContainer}>
       <View style={styles.contentHeader}>
@@ -40,14 +44,7 @@ export const EventList: React.FC<EventListProps> = ({
         onScroll={onScroll}
         scrollEventThrottle={16}
       >
-        {loading ? (
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator size="large" color={AiraColors.primary} />
-            <ThemedText style={styles.loadingText}>
-              Cargando eventos...
-            </ThemedText>
-          </View>
-        ) : events.length === 0 ? (
+        {events.length === 0 ? (
           <View style={styles.emptyContainer}>
             <ThemedText
               style={styles.emptyText}

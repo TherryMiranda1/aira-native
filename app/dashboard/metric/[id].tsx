@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import { Stack, useLocalSearchParams, router } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { PageView } from "@/components/ui/PageView";
 import { Topbar } from "@/components/ui/Topbar";
-import { LoadingState } from "@/components/States/LoadingState";
 import { EmptyState } from "@/components/States/EmptyState";
 import { ErrorState } from "@/components/States/ErrorState";
 import {
@@ -22,6 +20,8 @@ import { InteractiveMetricChart } from "@/components/metrics/InteractiveMetricCh
 import { FloatingActionButton } from "@/components/ui/FloatingActionButton";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { useAlertHelpers } from "@/components/ui/AlertSystem";
+import { MetricDetailSkeleton } from "@/components/ui/FeedSkeleton";
+import { ThemedGradient } from "@/components/ThemedGradient";
 
 export default function MetricDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -36,9 +36,8 @@ export default function MetricDetailScreen() {
   const { statistics } = useMetricStatistics(id);
   const { showConfirm } = useAlertHelpers();
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [showInteractiveChart, setShowInteractiveChart] = useState(false);
   const [metric, setMetric] = useState<Metric | null>(null);
-  const { showText, handleScroll } = useScrollDirection();
+  const { handleScroll } = useScrollDirection();
 
   useEffect(() => {
     if (metrics.length > 0 && id) {
@@ -73,7 +72,7 @@ export default function MetricDetailScreen() {
           }}
         />
         <Topbar title="Cargando..." showBackButton onBack={handleBack} />
-        <LoadingState title="Cargando métrica..." />
+        <MetricDetailSkeleton />
       </PageView>
     );
   }
@@ -119,14 +118,7 @@ export default function MetricDetailScreen() {
     <PageView>
       <Topbar title={metric.title} showBackButton onBack={handleBack} />
 
-      <LinearGradient
-        colors={[
-          AiraColors.airaLavenderSoft,
-          AiraColors.airaSageSoft,
-          AiraColors.airaCreamy,
-        ]}
-        style={styles.gradientBackground}
-      >
+      <ThemedGradient style={styles.gradientBackground}>
         <ScrollView
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
@@ -134,7 +126,6 @@ export default function MetricDetailScreen() {
           onScroll={handleScroll}
           scrollEventThrottle={16}
         >
-          {/* Información de la métrica */}
           <View style={styles.metricInfo}>
             <ThemedText type="title" style={styles.metricTitle}>
               {metric.title}
@@ -158,12 +149,6 @@ export default function MetricDetailScreen() {
 
           {/* Gráfico de progreso */}
           <View style={styles.chartSection}>
-            <View style={styles.chartHeader}>
-              <ThemedText type="defaultSemiBold" style={styles.chartTitle}>
-                Visualización del Progreso
-              </ThemedText>
-            </View>
-
             <InteractiveMetricChart
               records={records}
               metric={metric}
@@ -208,7 +193,7 @@ export default function MetricDetailScreen() {
             )}
           </View>
         </ScrollView>
-      </LinearGradient>
+      </ThemedGradient>
 
       {/* Modal para crear registro */}
       <CreateRecordModal
@@ -244,14 +229,12 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   metricInfo: {
-    backgroundColor: AiraColors.card,
     borderRadius: 16,
     padding: 20,
-    marginBottom: 20,
+    marginBottom: 16,
   },
   metricTitle: {
     marginBottom: 8,
-    color: AiraColors.foreground,
   },
   metricDescription: {
     fontSize: 16,
@@ -277,7 +260,6 @@ const styles = StyleSheet.create({
   },
   recordsTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
     marginBottom: 16,
   },
   recordsList: {
@@ -295,19 +277,16 @@ const styles = StyleSheet.create({
   },
   chartTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
   },
   chartToggle: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: AiraColors.muted,
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 20,
   },
   chartToggleText: {
     fontSize: 12,
-    color: AiraColors.primary,
     marginLeft: 6,
   },
 });

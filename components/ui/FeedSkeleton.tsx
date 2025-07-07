@@ -137,6 +137,150 @@ export const FeedSkeleton: React.FC<FeedSkeletonProps> = ({
   );
 };
 
+interface CounselorSkeletonProps {
+  type: "sessions" | "chat";
+  messagesCount?: number;
+}
+
+export const CounselorSkeleton: React.FC<CounselorSkeletonProps> = ({
+  type,
+  messagesCount = 3,
+}) => {
+  if (type === "sessions") {
+    return (
+      <View style={styles.counselorSessionsContainer}>
+        <SkeletonPulse style={styles.sessionHeaderSkeleton} />
+
+        {Array.from({ length: messagesCount }, (_, index) => (
+          <SkeletonPulse
+            key={`session-skeleton-${index}`}
+            style={styles.sessionItemSkeleton}
+          />
+        ))}
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.counselorChatContainer}>
+      {Array.from({ length: messagesCount }, (_, index) => (
+        <View
+          key={`message-skeleton-${index}`}
+          style={[styles.messageSkeleton]}
+        >
+          <SkeletonPulse style={styles.messageContentSkeleton} />
+        </View>
+      ))}
+
+      <SkeletonPulse style={styles.inputSkeleton} />
+    </View>
+  );
+};
+
+export const MetricsSkeleton: React.FC<{ count?: number }> = ({
+  count = 4,
+}) => (
+  <View style={{ flex: 1, padding: 16 }}>
+    <View style={{ marginBottom: 24 }}>
+      <SkeletonPulse
+        style={{
+          height: 28,
+          width: "60%",
+          borderRadius: 8,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+          marginBottom: 8,
+        }}
+      />
+      <SkeletonPulse
+        style={{
+          height: 18,
+          width: "80%",
+          borderRadius: 8,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.3),
+        }}
+      />
+    </View>
+    {Array.from({ length: count }).map((_, i) => (
+      <SkeletonPulse
+        key={i}
+        style={{
+          height: 80,
+          borderRadius: 16,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+          marginBottom: 16,
+        }}
+      />
+    ))}
+  </View>
+);
+
+export const MetricDetailSkeleton: React.FC = () => (
+  <View style={{ flex: 1, padding: 16 }}>
+    <SkeletonPulse
+      style={{
+        height: 60,
+        borderRadius: 16,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+        marginBottom: 20,
+      }}
+    />
+    <SkeletonPulse
+      style={{
+        height: 320,
+        borderRadius: 16,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.3),
+        marginBottom: 24,
+      }}
+    />
+    <SkeletonPulse
+      style={{
+        height: 60,
+        borderRadius: 16,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.2),
+        marginBottom: 20,
+      }}
+    />
+    {Array.from({ length: 3 }).map((_, i) => (
+      <SkeletonPulse
+        key={i}
+        style={{
+          height: 60,
+          borderRadius: 12,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+          marginBottom: 12,
+        }}
+      />
+    ))}
+  </View>
+);
+
+export const EventListSkeleton: React.FC<{ count?: number }> = ({
+  count = 3,
+}) => (
+  <View style={{ flex: 1, padding: 16 }}>
+    <SkeletonPulse
+      style={{
+        height: 20,
+        width: "50%",
+        borderRadius: 8,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.3),
+        marginBottom: 16,
+      }}
+    />
+    {Array.from({ length: count }).map((_, i) => (
+      <SkeletonPulse
+        key={i}
+        style={{
+          height: 60,
+          borderRadius: 12,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+          marginBottom: 12,
+        }}
+      />
+    ))}
+  </View>
+);
+
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 24,
@@ -278,5 +422,44 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.05),
     borderRadius: AiraVariants.cardRadius,
+  },
+  counselorSessionsContainer: {
+    flex: 1,
+    padding: 16,
+    gap: 16,
+  },
+  sessionHeaderSkeleton: {
+    height: 40,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+    borderRadius: AiraVariants.cardRadius,
+    marginBottom: 16,
+  },
+  sessionItemSkeleton: {
+    height: 80,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+    borderRadius: AiraVariants.cardRadius,
+    marginBottom: 8,
+  },
+  counselorChatContainer: {
+    flex: 1,
+    padding: 16,
+    gap: 16,
+  },
+  messageSkeleton: {
+    height: 40,
+  },
+
+  messageContentSkeleton: {
+    height: 40,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+    borderRadius: AiraVariants.cardRadius,
+    maxWidth: "80%",
+  },
+  inputSkeleton: {
+    height: 50,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+    borderRadius: AiraVariants.cardRadius,
+    marginTop: "auto",
+    marginBottom: 16,
   },
 });

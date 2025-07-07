@@ -3,11 +3,12 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useUser } from "@clerk/clerk-expo";
 import { ThemedText } from "../ThemedText";
-import { AiraColors } from "../../constants/Colors";
+import { AiraColors, AiraColorsWithAlpha } from "../../constants/Colors";
 import { AiraVariants } from "../../constants/Themes";
 import { useEvents } from "../../hooks/services/useEvents";
 import { useToastHelpers } from "../ui/ToastSystem";
 import { ThemedView } from "../ThemedView";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 type MoodType =
   | "radiante"
@@ -32,7 +33,7 @@ const moodOptions: MoodOption[] = [
     id: "radiante",
     label: "Radiante",
     icon: "sunny-outline",
-    color: "#FEFCE8",
+    color: AiraColorsWithAlpha.sageWithOpacity(0.2),
     textColor: "#CA8A04",
     borderColor: "#FEF08A",
     description: "Me siento llena de energía",
@@ -41,7 +42,7 @@ const moodOptions: MoodOption[] = [
     id: "tranquila",
     label: "Tranquila",
     icon: "happy-outline",
-    color: "#ECFDF5",
+    color: AiraColorsWithAlpha.lavenderWithOpacity(0.2),
     textColor: "#059669",
     borderColor: "#A7F3D0",
     description: "En paz conmigo misma",
@@ -50,7 +51,7 @@ const moodOptions: MoodOption[] = [
     id: "reflexiva",
     label: "Reflexiva",
     icon: "cloud-outline",
-    color: "#F5F3FF",
+    color: AiraColorsWithAlpha.coralWithOpacity(0.2),
     textColor: "#7C3AED",
     borderColor: "#DDD6FE",
     description: "Pensando en mí",
@@ -59,7 +60,7 @@ const moodOptions: MoodOption[] = [
     id: "cansada",
     label: "Cansada",
     icon: "moon-outline",
-    color: "#FFFBEB",
+    color: AiraColorsWithAlpha.sageWithOpacity(0.2),
     textColor: "#B45309",
     borderColor: "#FDE68A",
     description: "Necesito descansar",
@@ -68,7 +69,7 @@ const moodOptions: MoodOption[] = [
     id: "sensible",
     label: "Sensible",
     icon: "heart-outline",
-    color: "#FFF1F2",
+    color: AiraColorsWithAlpha.destructiveWithOpacity(0.2),
     textColor: "#BE185D",
     borderColor: "#FECDD3",
     description: "Sintiendo mucho hoy",
@@ -77,7 +78,7 @@ const moodOptions: MoodOption[] = [
     id: "neutral",
     label: "Neutral",
     icon: "remove-outline",
-    color: "#F9FAFB",
+    color: AiraColorsWithAlpha.foregroundWithOpacity(0.2),
     textColor: "#4B5563",
     borderColor: "#E5E7EB",
     description: "Día común",
@@ -98,6 +99,7 @@ export const MoodTracker = ({
   const { showSuccessToast, showErrorToast } = useToastHelpers();
   const [selectedMood, setSelectedMood] = useState<string>("");
   const [savingMood, setSavingMood] = useState(false);
+  const backgroundColor = useThemeColor({}, "background");
 
   const handleMoodSelection = useCallback(
     async (moodId: MoodType) => {
@@ -186,7 +188,7 @@ export const MoodTracker = ({
               style={[
                 styles.moodCard,
                 {
-                  backgroundColor: mood.color,
+                  backgroundColor,
                   borderColor: isSelected ? mood.textColor : mood.borderColor,
                   borderWidth: isSelected ? 2 : 1,
                   opacity: isDisabled ? 0.5 : 1,

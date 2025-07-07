@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import { AiraColors } from "@/constants/Colors";
+import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
 import { Ionicons } from "@expo/vector-icons";
 import { Metric } from "@/services/api/metrics.service";
@@ -183,7 +183,8 @@ export const MetricCard: React.FC<MetricCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: AiraVariants.cardRadius,
+    borderRadius: 16,
+    backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.1),
     padding: 20,
   },
   header: {

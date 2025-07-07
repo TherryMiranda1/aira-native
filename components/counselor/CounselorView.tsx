@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  Modal,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, Modal, TouchableOpacity } from "react-native";
 import { AiraColors } from "@/constants/Colors";
 import { useCounselorAgent } from "@/hooks/agent/useCounselorAgent";
 import SessionHistory from "./SessionHistory";
@@ -15,6 +9,7 @@ import { ThemedText } from "../ThemedText";
 import { Topbar } from "../ui/Topbar";
 import { ProfileButton } from "../ui/ProfileButton";
 import { ThemedView } from "../ThemedView";
+import { CounselorSkeleton } from "../ui/FeedSkeleton";
 
 export default function CounselorView() {
   const [showSessionHistory, setShowSessionHistory] = useState(false);
@@ -31,17 +26,11 @@ export default function CounselorView() {
     createNewSession,
     deleteSession,
     loadPreviousMessages,
+    isMessagesLoading,
   } = useCounselorAgent();
 
   if (sessions.length === 0 && isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={AiraColors.primary} />
-        <ThemedText style={styles.loadingText}>
-          Cargando tu espacio personal...
-        </ThemedText>
-      </View>
-    );
+    return <CounselorSkeleton type="sessions" />;
   }
 
   const handleSessionSelect = (sessionId: string) => {
@@ -81,7 +70,7 @@ export default function CounselorView() {
 
       <ChatInterface
         messages={messages}
-        isLoading={isLoading}
+        isLoading={isMessagesLoading}
         onSendMessage={processUserMessage}
         pagination={pagination}
         onLoadMore={loadPreviousMessages}

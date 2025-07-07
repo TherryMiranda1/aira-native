@@ -3,18 +3,18 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  TouchableOpacity,
-  Alert,
+  TouchableOpacity
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 
 import { ThemedText } from "../../components/ThemedText";
-import { AiraColors, AiraColorsWithAlpha } from "@/constants/Colors";
+import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
 import { DailyMealPlan } from "@/services/api/dailyMealPlan.service";
 import { ThemedView } from "@/components/ThemedView";
+import { useAlert } from "@/components/ui/AlertSystem";
 
 interface ExistingDailyMealPlansSectionProps {
   plans: DailyMealPlan[];
@@ -28,7 +28,7 @@ export const ExistingDailyMealPlansSection = ({
   onPlanDelete,
 }: ExistingDailyMealPlansSectionProps) => {
   const router = useRouter();
-
+  const { showAlert } = useAlert();
   const handlePlanPress = (plan: DailyMealPlan) => {
     if (onPlanSelect) {
       onPlanSelect(plan);
@@ -41,18 +41,19 @@ export const ExistingDailyMealPlansSection = ({
   };
 
   const handleDeletePress = (plan: DailyMealPlan) => {
-    Alert.alert(
-      "Eliminar Plan",
-      `¿Segura que quieres eliminar "${plan.planTitle}"?`,
-      [
+    showAlert({
+      type: "confirm",
+      title: "Eliminar Plan",
+      message: `¿Segura que quieres eliminar "${plan.planTitle}"?`,
+      buttons: [
         { text: "Cancelar", style: "cancel" },
         {
           text: "Eliminar",
           style: "destructive",
           onPress: () => onPlanDelete?.(plan.id),
         },
-      ]
-    );
+      ],
+    });
   };
 
   const formatDate = (dateString: string): string => {
