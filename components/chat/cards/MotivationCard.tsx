@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   tipsTitle: {
-    color: AiraColors.foreground,
+     
     marginBottom: 8,
   },
 }); 

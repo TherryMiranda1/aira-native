@@ -356,14 +356,14 @@ const styles = StyleSheet.create({
     color: AiraColors.destructive,
   },
   warningText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 18,
   },
   sessionsSection: {
     marginBottom: 24,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
+     
     marginBottom: 16,
   },
   sessionCard: {
@@ -406,10 +406,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   subsectionTitle: {
-    color: AiraColors.foreground,
+     
   },
   subsectionText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 18,
     paddingLeft: 20,
   },
@@ -429,7 +429,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   exerciseName: {
-    color: AiraColors.foreground,
+     
     flex: 1,
     marginRight: 8,
   },
@@ -441,7 +441,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   exerciseDescription: {
-    color: AiraColors.foreground,
+     
     lineHeight: 16,
     marginBottom: 8,
   },
@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
     minWidth: 60,
   },
   exerciseDetailText: {
-    color: AiraColors.foreground,
+     
     flex: 1,
   },
   tipsSection: {
@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   tipsText: {
-    color: AiraColors.foreground,
+     
     flex: 1,
     lineHeight: 14,
   },
@@ -485,7 +485,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   alternativeText: {
-    color: AiraColors.foreground,
+     
     flex: 1,
     lineHeight: 14,
   },
@@ -507,7 +507,7 @@ const styles = StyleSheet.create({
     color: AiraColors.primary,
   },
   suggestionsText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 18,
   },
   actionsSection: {

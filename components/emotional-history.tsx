@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   streakTitle: {
     fontSize: 18,
     fontFamily: "MontserratBold",
-    color: AiraColors.foreground,
+     
     marginBottom: 8,
     textAlign: "center",
   },
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontFamily: "MontserratBold",
-    color: AiraColors.foreground,
+     
     marginLeft: 8,
   },
   entryCard: {
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   achievementTitle: {
     fontSize: 14,
     fontFamily: "MontserratBold",
-    color: AiraColors.foreground,
+     
     marginBottom: 4,
   },
   achievementNote: {

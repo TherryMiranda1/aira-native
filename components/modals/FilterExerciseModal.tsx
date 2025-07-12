@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
   },
   filterOptionTextActive: {
-    color: AiraColors.foreground,
+     
   },
   buttonContainer: {
     flexDirection: "row",
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   applyButtonText: {
-    color: AiraColors.foreground,
+     
     fontSize: 16,
   },
 });

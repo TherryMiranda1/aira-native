@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     padding: 8,
-    alignItems: "flex-end",
   },
   sendButton: {
     width: 36,

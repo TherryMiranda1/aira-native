@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   macrosTitle: {
-    color: AiraColors.foreground,
+     
     marginBottom: 8,
   },
   macrosGrid: {
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   mealType: {
-    color: AiraColors.foreground,
+     
     marginBottom: 4,
   },
   routinesSection: {
@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   routineName: {
-    color: AiraColors.foreground,
+     
     marginBottom: 4,
   },
 });

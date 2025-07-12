@@ -7,6 +7,7 @@ import { tokenCache } from "@clerk/clerk-expo/token-cache";
 
 import { NotificationProvider } from "@/components/ui/notifications";
 import { ThemePreferenceProvider } from "@/context/ThemePreferenceContext";
+import { CustomerProvider } from "@/context/CustomerContext";
 import Purchases from "react-native-purchases";
 Purchases.setLogLevel(Purchases.LOG_LEVEL.VERBOSE);
 
@@ -38,14 +39,16 @@ export default function RootLayout() {
     >
       <ThemePreferenceProvider>
         <NotificationProvider>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(auth)" />
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="dashboard" />
-            <Stack.Screen name="onboarding" />
-            <Stack.Screen name="default-paywall" />
-            <Stack.Screen name="+not-found" />
-          </Stack>
+          <CustomerProvider>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(auth)" />
+              <Stack.Screen name="(tabs)" />
+              <Stack.Screen name="dashboard" />
+              <Stack.Screen name="onboarding" />
+              <Stack.Screen name="default-paywall" />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </CustomerProvider>
         </NotificationProvider>
       </ThemePreferenceProvider>
     </ClerkProvider>

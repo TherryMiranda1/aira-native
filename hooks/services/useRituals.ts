@@ -4,6 +4,7 @@ import {
   Ritual,
   RitualFilters,
 } from "@/services/api/ritual.service";
+import { useUser } from "@clerk/clerk-expo";
 
 interface UseRitualsOptions {
   filters?: RitualFilters;
@@ -37,7 +38,7 @@ export const useRituals = (
   options: UseRitualsOptions = {}
 ): UseRitualsReturn => {
   const { filters: initialFilters = {}, autoFetch = false } = options;
-
+  const { user } = useUser();
   const [rituals, setRituals] = useState<Ritual[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -194,11 +195,11 @@ export const useRituals = (
   }, []);
 
   useEffect(() => {
-    if (autoFetch && !hasInitialized.current) {
+    if (autoFetch && !hasInitialized.current && user?.id) {
       hasInitialized.current = true;
       fetchRituals(filtersRef.current);
     }
-  }, [autoFetch, fetchRituals]);
+  }, [autoFetch, fetchRituals, user?.id]);
 
   const categories = ritualService.getCategories();
   const moments = ritualService.getMoments();

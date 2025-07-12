@@ -328,7 +328,7 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     minHeight: 80,
   },
   inputError: {

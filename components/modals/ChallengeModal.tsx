@@ -35,7 +35,6 @@ export const ChallengeModal = ({
   visible,
   challenge,
   categoryColors,
-  categoryLabel,
   currentIndex,
   totalCount,
   onClose,

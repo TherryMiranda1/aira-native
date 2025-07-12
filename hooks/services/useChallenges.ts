@@ -4,6 +4,7 @@ import {
   Challenge,
   ChallengeFilters,
 } from "@/services/api/challenge.service";
+import { useUser } from "@clerk/clerk-expo";
 
 interface UseChallengesOptions {
   filters?: ChallengeFilters;
@@ -37,6 +38,7 @@ interface UseChallengesReturn {
 export function useChallenges(
   options: UseChallengesOptions = {}
 ): UseChallengesReturn {
+  const { user } = useUser();
   const { filters = {}, autoFetch = true } = options;
 
   const [challenges, setChallenges] = useState<Challenge[]>([]);
@@ -213,12 +215,12 @@ export function useChallenges(
 
   // Efecto inicial optimizado - solo se ejecuta una vez
   useEffect(() => {
-    if (autoFetch && !hasInitialized.current) {
+    if (autoFetch && !hasInitialized.current && user?.id) {
       hasInitialized.current = true;
       fetchChallenges();
       fetchCategories();
     }
-  }, [autoFetch, fetchChallenges, fetchCategories]);
+  }, [autoFetch, fetchChallenges, fetchCategories, user?.id]);
 
   return {
     challenges,

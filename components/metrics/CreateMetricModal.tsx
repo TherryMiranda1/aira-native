@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
+     
   },
   saveButton: {
     paddingHorizontal: 16,
@@ -389,7 +389,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
 
-    color: AiraColors.foreground,
+     
     marginBottom: 8,
   },
   required: {
@@ -421,7 +421,7 @@ const styles = StyleSheet.create({
   },
   unitChipText: {
     fontSize: 12,
-    color: AiraColors.foreground,
+     
   },
   milestonesHeader: {
     flexDirection: "row",
@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
   directionText: {
     fontSize: 16,
     fontWeight: "600",
-    color: AiraColors.foreground,
+     
     marginTop: 8,
   },
   directionTextSelected: {

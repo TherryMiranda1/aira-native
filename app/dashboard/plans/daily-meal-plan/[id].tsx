@@ -537,7 +537,7 @@ const styles = StyleSheet.create({
   },
   planTitle: {
     fontSize: 20,
-    color: AiraColors.foreground,
+     
     textAlign: "center",
     marginBottom: 8,
   },
@@ -557,7 +557,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
 
-    color: AiraColors.foreground,
+     
   },
   mealsSection: {
     marginBottom: 24,
@@ -597,7 +597,7 @@ const styles = StyleSheet.create({
   optionText: {
     flex: 1,
     fontSize: 14,
-    color: AiraColors.foreground,
+     
     lineHeight: 20,
   },
   tipsSection: {
@@ -613,7 +613,7 @@ const styles = StyleSheet.create({
   },
   tipsText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
     lineHeight: 20,
   },
   actionsSection: {
@@ -663,7 +663,7 @@ const styles = StyleSheet.create({
   metadataValue: {
     flex: 1,
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   tagsContainer: {
     flex: 1,
@@ -716,7 +716,7 @@ const styles = StyleSheet.create({
   errorTitle: {
     fontSize: 20,
 
-    color: AiraColors.foreground,
+     
     textAlign: "center",
   },
   errorMessage: {

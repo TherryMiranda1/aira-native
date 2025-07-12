@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   pricingTitle: {
     fontSize: 24,
-    color: AiraColors.foreground,
+     
     marginBottom: 8,
   },
   pricingDescription: {

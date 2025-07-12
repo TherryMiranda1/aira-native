@@ -236,10 +236,10 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   questionTitle: {
-    color: AiraColors.foreground,
+     
   },
   clarificationText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 20,
     marginBottom: 16,
   },
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   exerciseName: {
-    color: AiraColors.foreground,
+     
     flex: 1,
   },
   instructionsSection: {
@@ -276,18 +276,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   instructionsText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 20,
   },
   benefitsText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 20,
   },
   actionsSection: {
     marginTop: 16,
   },
   actionsTitle: {
-    color: AiraColors.foreground,
+     
     marginBottom: 12,
   },
   actionButton: {
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   parametersTitle: {
-    color: AiraColors.foreground,
+     
     marginBottom: 12,
   },
   parameterItem: {
@@ -322,7 +322,7 @@ const styles = StyleSheet.create({
     width: 120,
   },
   parameterValue: {
-    color: AiraColors.foreground,
+     
     flex: 1,
   },
   controlsSection: {

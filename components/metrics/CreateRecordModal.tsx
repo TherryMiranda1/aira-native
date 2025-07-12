@@ -357,7 +357,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 18,
-    color: AiraColors.foreground,
+     
   },
   saveButton: {
     paddingHorizontal: 16,

@@ -1,6 +1,7 @@
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import { AiraColors } from "@/constants/Colors";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "../ThemedView";
 
 interface LoadingStateProps {
   title?: string;
@@ -8,10 +9,10 @@ interface LoadingStateProps {
 
 export const LoadingState = ({ title = "Cargando..." }: LoadingStateProps) => {
   return (
-    <View style={styles.loadingContainer}>
+    <ThemedView style={styles.loadingContainer}>
       <ActivityIndicator size="large" color={AiraColors.primary} />
       <ThemedText style={styles.loadingText}>{title}</ThemedText>
-    </View>
+    </ThemedView>
   );
 };
 

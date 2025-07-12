@@ -425,7 +425,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     marginBottom: 4,
   },
   subtitle: {
@@ -456,7 +456,7 @@ const styles = StyleSheet.create({
   },
   statValue: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   trendContainer: {
     alignItems: "center",

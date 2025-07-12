@@ -245,7 +245,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   suggestionTypeContainer: {
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
     paddingHorizontal: 10,
     paddingVertical: 4,
@@ -272,7 +271,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   suggestionButton: {
-    backgroundColor: AiraColors.airaLavender,
     borderRadius: AiraVariants.cardRadius,
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -293,7 +291,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    color: AiraColors.foreground,
+
     textAlign: "center",
   },
   errorText: {
@@ -302,7 +300,6 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   retryButton: {
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
     paddingHorizontal: 12,
     paddingVertical: 8,
@@ -310,6 +307,5 @@ const styles = StyleSheet.create({
   },
   retryButtonText: {
     fontSize: 14,
-    color: AiraColors.foreground,
   },
 });

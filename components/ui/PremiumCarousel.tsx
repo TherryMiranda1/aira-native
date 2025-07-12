@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 24,
-    color: AiraColors.foreground,
+     
     marginBottom: 4,
   },
   sectionDescription: {

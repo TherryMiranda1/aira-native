@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
   },
   quickReplyText: {
     fontSize: 13,
-    color: AiraColors.foreground,
+     
   },
 }); 

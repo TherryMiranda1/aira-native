@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginTop: 16,
     marginBottom: 8,
-    color: AiraColors.foreground,
+     
   },
   subtitle: {
     fontSize: 16,
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 8,
-    color: AiraColors.foreground,
+     
   },
   row: {
     flexDirection: "row",
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
   },
   radioText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   radioTextSelected: {
     color: AiraColors.primary,

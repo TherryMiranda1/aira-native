@@ -11,11 +11,12 @@ import { PageView } from "@/components/ui/PageView";
 import { Topbar } from "@/components/ui/Topbar";
 import { AiraProCTA } from "@/components/ui/AiraProCTA";
 import { ThemedView } from "@/components/ThemedView";
+import { useToastHelpers } from "@/components/ui/ToastSystem";
 
 export default function ProfileScreen() {
   const router = useRouter();
   const { user } = useUser();
-
+  const { showInfoToast } = useToastHelpers();
   return (
     <PageView>
       <Topbar title="Mi Perfil" showBackButton showThemeSelector />
@@ -79,7 +80,9 @@ export default function ProfileScreen() {
         <TouchableOpacity
           style={styles.linkCard}
           activeOpacity={0.9}
-          onPress={() => alert("Funcionalidad de configuración en desarrollo")}
+          onPress={() =>
+            showInfoToast("Funcionalidad de configuración en desarrollo")
+          }
         >
           <ThemedView variant="secondary" style={[styles.iconCircle]}>
             <Ionicons name="settings-outline" size={24} color="#4f46e5" />

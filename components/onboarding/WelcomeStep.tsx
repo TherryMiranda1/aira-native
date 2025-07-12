@@ -128,11 +128,11 @@ const styles = StyleSheet.create({
     fontSize: 32,
     paddingVertical: 4,
     marginBottom: 4,
-    color: AiraColors.foreground,
+     
   },
   subtitle: {
     fontSize: 24,
-    color: AiraColors.foreground,
+     
     paddingVertical: 4,
   },
   messageContainer: {

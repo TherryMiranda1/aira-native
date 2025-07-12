@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   searchButtonText: {
-    color: AiraColors.foreground,
+     
     fontSize: 16,
   },
 });

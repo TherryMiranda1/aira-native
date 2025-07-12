@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   errorTitle: {
     fontSize: 20,
 
-    color: AiraColors.foreground,
+     
     textAlign: "center",
     marginTop: 16,
     marginBottom: 8,

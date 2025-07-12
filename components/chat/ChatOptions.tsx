@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
     textAlign: "center",
   },
 }); 

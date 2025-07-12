@@ -66,6 +66,53 @@ class ApiClient {
     }
   }
 
+  // Método especializado para subir archivos usando FormData
+  async uploadFile<T = any>(
+    endpoint: string,
+    formData: FormData,
+    headers: Record<string, string> = {}
+  ): Promise<ApiResponse<T>> {
+    try {
+      const sessionToken = await getClerkSessionToken();
+
+      const requestHeaders: Record<string, string> = {
+        // No establecemos Content-Type para que el navegador/dispositivo establezca el boundary correcto
+        ...headers,
+      };
+
+      if (sessionToken) {
+        requestHeaders.Authorization = `Bearer ${sessionToken}`;
+      }
+
+      const requestConfig: RequestInit = {
+        method: "POST",
+        headers: requestHeaders,
+        body: formData,
+      };
+
+      const response = await fetch(`${this.baseURL}${endpoint}`, requestConfig);
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+      }
+
+      const data = await response.json();
+
+      return {
+        data,
+        status: response.status,
+        statusText: response.statusText,
+      };
+    } catch (error) {
+      console.error(
+        `File upload failed for ${this.baseURL}${endpoint}:`,
+        error
+      );
+      throw error;
+    }
+  }
+
   async get<T = any>(
     endpoint: string,
     headers?: Record<string, string>

@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     marginBottom: 16,
   },
   achievementsContainer: {
@@ -266,12 +266,12 @@ const styles = StyleSheet.create({
   },
   achievementText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
     flex: 1,
   },
   achievementValue: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   achievementFooter: {
     alignItems: "center",
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     textAlign: "center",
   },
 });

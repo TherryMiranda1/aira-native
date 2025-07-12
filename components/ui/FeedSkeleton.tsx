@@ -281,6 +281,75 @@ export const EventListSkeleton: React.FC<{ count?: number }> = ({
   </View>
 );
 
+export const PostsSkeleton: React.FC<{ count?: number }> = ({
+  count = 5,
+}) => (
+  <View style={{ flex: 1, padding: 16 }}>
+    {Array.from({ length: count }).map((_, i) => (
+      <SkeletonPulse
+        key={i}
+        style={{
+          height: 180,
+          marginBottom: 16,
+          borderRadius: 12,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+        }}
+      />
+    ))}
+  </View>
+);
+
+export const PostDetailSkeleton: React.FC = () => (
+  <View style={{ flex: 1, padding: 16 }}>
+    {/* Post skeleton */}
+    <SkeletonPulse
+      style={{
+        height: 250,
+        marginBottom: 20,
+        borderRadius: 12,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+      }}
+    />
+
+    {/* Comments header */}
+    <SkeletonPulse
+      style={{
+        height: 24,
+        width: '40%',
+        borderRadius: 4,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.7),
+        marginBottom: 16,
+      }}
+    />
+
+    {/* Comments */}
+    {Array.from({ length: 3 }).map((_, i) => (
+      <SkeletonPulse
+        key={i}
+        style={{
+          height: 80,
+          marginBottom: 8,
+          borderRadius: 8,
+          backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+        }}
+      />
+    ))}
+
+    {/* Comment input */}
+    <SkeletonPulse
+      style={{
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: AiraColorsWithAlpha.foregroundWithOpacity(0.5),
+        position: 'absolute',
+        bottom: 16,
+        left: 16,
+        right: 16,
+      }}
+    />
+  </View>
+);
+
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 24,

@@ -154,12 +154,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     marginBottom: 8,
-    color: AiraColors.foreground,
+     
     textAlign: "center",
   },
   subtitle: {
     fontSize: 22,
-    color: AiraColors.foreground,
+     
     textAlign: "center",
   },
   messageContainer: {
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 16,
     textAlign: "center",
-    color: AiraColors.foreground,
+     
   },
   summaryItem: {
     flexDirection: 'row',
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   },
   summaryValue: {
     fontSize: 16,
-    color: AiraColors.foreground,
+     
   },
   completeButton: {
     backgroundColor: AiraColors.primary,

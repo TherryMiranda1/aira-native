@@ -271,12 +271,10 @@ const styles = StyleSheet.create({
   moodFeedback: {
     marginTop: 12,
     padding: 12,
-    backgroundColor: AiraColors.secondary,
     borderRadius: AiraVariants.cardRadius,
   },
   moodFeedbackText: {
     fontSize: 14,
-    color: AiraColors.foreground,
     textAlign: "center",
   },
 });

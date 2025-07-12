@@ -46,6 +46,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="wall"
+        options={{
+          title: "Muro",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon size={28} name="reader-outline" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="metrics"
         options={{
           title: "Métricas",
@@ -57,7 +66,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="chat"
         options={{
-          title: "Chat",
+          title: "Aira",
           tabBarIcon: ({ color }) => (
             <TabBarIcon size={28} name="chatbubble" color={color} />
           ),

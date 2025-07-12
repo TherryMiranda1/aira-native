@@ -205,7 +205,7 @@ export const EventItem: React.FC<EventItemProps> = ({
         event.priority === "urgent" && styles.urgentEvent,
         navigationPath && styles.clickableEvent,
       ]}
-      variant="foreground"
+      variant="secondary"
     >
       <TouchableOpacity
         style={[

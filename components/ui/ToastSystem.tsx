@@ -11,6 +11,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ThemedText } from "@/components/ThemedText";
 import { AiraColors } from "@/constants/Colors";
 import { AiraVariants } from "@/constants/Themes";
+import { ThemedView } from "../ThemedView";
 
 export type ToastType = "success" | "error" | "warning" | "info";
 
@@ -168,7 +169,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
                   },
                 ]}
               >
-                <View style={styles.toastContent}>
+                <ThemedView border style={styles.toastContent}>
                   <LinearGradient
                     colors={toastStyle.gradientColors as [string, string]}
                     style={styles.toastIcon}
@@ -190,7 +191,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
                       </ThemedText>
                     )}
                   </View>
-                </View>
+                </ThemedView>
               </Animated.View>
             </TouchableOpacity>
           );
@@ -294,6 +295,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 16,
+    borderRadius: AiraVariants.cardRadius,
   },
   toastIcon: {
     width: 36,

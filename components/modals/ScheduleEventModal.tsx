@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Modal,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  ActivityIndicator,
-  Platform,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { format, addHours } from "date-fns";
 import { es } from "date-fns/locale";
@@ -63,18 +55,6 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
   const [notes, setNotes] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showTimePicker, setShowTimePicker] = useState(false);
-
-  const getIcon = () => {
-    if (type === "recipe") {
-      return "restaurant-outline";
-    } else if (type === "exercise") {
-      return "fitness-outline";
-    } else if (type === "ritual") {
-      return "sparkles-outline";
-    } else {
-      return "trophy-outline";
-    }
-  };
 
   const getTitle = () => {
     if (type === "recipe") {
@@ -226,6 +206,7 @@ export const ScheduleEventModal: React.FC<ScheduleEventModalProps> = ({
       onClose={handleClose}
       onSubmit={handleSchedule}
       title={getTitle()}
+      loading={loading}
     >
       <View style={styles.itemInfo}>
         <ThemedText style={styles.itemTypeLabel}>
@@ -443,7 +424,7 @@ const styles = StyleSheet.create({
   },
   dateTimeText: {
     fontSize: 16,
-    color: AiraColors.foreground,
+
     marginLeft: 8,
   },
   recurrenceGrid: {

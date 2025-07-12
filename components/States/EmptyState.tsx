@@ -17,7 +17,7 @@ export const EmptyState = memo(
     <View style={styles.emptyContainer}>
       <Ionicons
         name="search-outline"
-        size={64}
+        size={32}
         color={AiraColors.mutedForeground}
       />
       <ThemedText style={styles.emptyText}>{title}</ThemedText>

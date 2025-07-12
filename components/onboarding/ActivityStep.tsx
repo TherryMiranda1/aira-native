@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   optionTextSelected: {
     color: AiraColors.primary,
@@ -417,7 +417,7 @@ const styles = StyleSheet.create({
   },
   checkboxText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   navigation: {
     flexDirection: "row",

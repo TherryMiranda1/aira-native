@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     minHeight: 80,
   },
   inputError: {
@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   optionalTitle: {
-    color: AiraColors.foreground,
+     
     marginBottom: 16,
   },
   inputGroup: {
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
     padding: 12,
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     minHeight: 44,
   },
   submitButton: {

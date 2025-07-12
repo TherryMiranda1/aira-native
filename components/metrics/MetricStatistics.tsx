@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
   progressTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
+     
   },
   progressPercentage: {
     fontSize: 16,

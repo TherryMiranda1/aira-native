@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
 
-    color: AiraColors.foreground,
+     
     marginBottom: 12,
   },
   recentSearchesList: {
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     marginTop: "auto",
   },
   searchButtonText: {
-    color: AiraColors.foreground,
+     
     fontSize: 16,
   },
 });

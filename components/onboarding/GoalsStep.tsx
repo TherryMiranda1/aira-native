@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginTop: 16,
     marginBottom: 8,
-    color: AiraColors.foreground,
+     
   },
   subtitle: {
     fontSize: 16,
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 12,
-    color: AiraColors.foreground,
+     
   },
   optionsContainer: {
     flexDirection: 'row',
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   optionTextSelected: {
     color: AiraColors.primary,
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
   },
   checkboxText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   checkboxTextDisabled: {
     color: AiraColorsWithAlpha.foregroundWithOpacity(0.5),

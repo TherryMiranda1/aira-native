@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   planTitle: {
-    color: AiraColors.foreground,
+     
     lineHeight: 20,
   },
   planMeta: {
@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   objectiveText: {
-    color: AiraColors.foreground,
+     
     flex: 1,
   },
   planFooter: {
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
     borderColor: AiraColorsWithAlpha.borderWithOpacity(0.1),
   },
   emptyTitle: {
-    color: AiraColors.foreground,
+     
     textAlign: "center",
   },
   emptyDescription: {

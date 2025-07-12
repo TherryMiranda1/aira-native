@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
   },
   optionText: {
     flex: 1,
-    color: AiraColors.foreground,
+     
     lineHeight: 18,
   },
   tipsSection: {

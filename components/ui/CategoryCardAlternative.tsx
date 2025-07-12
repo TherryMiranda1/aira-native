@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
      
-    color: AiraColors.foreground,
+     
     marginBottom: 4,
   },
   description: {

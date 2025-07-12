@@ -336,10 +336,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reasonTitle: {
-    color: AiraColors.foreground,
+     
   },
   reasonText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 18,
   },
   timeCard: {
@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   sectionTitle: {
-    color: AiraColors.foreground,
+     
   },
   ingredientsContainer: {
     borderRadius: AiraVariants.cardRadius,
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   ingredientText: {
-    color: AiraColors.foreground,
+     
     flex: 1,
     lineHeight: 18,
   },
@@ -409,7 +409,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   instructionText: {
-    color: AiraColors.foreground,
+     
     flex: 1,
     lineHeight: 18,
   },
@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
     color: "#F59E0B",
   },
   clarificationText: {
-    color: AiraColors.foreground,
+     
     lineHeight: 18,
   },
   parametersCard: {
@@ -449,7 +449,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   parametersTitle: {
-    color: AiraColors.foreground,
+     
   },
   parametersContent: {
     gap: 10,
@@ -461,7 +461,7 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
   },
   parameterValue: {
-    color: AiraColors.foreground,
+     
     lineHeight: 16,
   },
   controlsSection: {

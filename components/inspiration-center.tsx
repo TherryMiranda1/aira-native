@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
   },
   categoryText: {
     fontSize: 14,
-    color: AiraColors.foreground,
+     
   },
   categoryTextActive: {
     color: AiraColors.background,
@@ -503,7 +503,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 26,
     marginBottom: 16,
-    color: AiraColors.foreground,
+     
   },
   quoteAuthor: {
     fontSize: 14,
@@ -558,7 +558,7 @@ const styles = StyleSheet.create({
   challengeTitle: {
     fontSize: 16,
 
-    color: AiraColors.foreground,
+     
   },
   durationBadge: {
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),
@@ -608,7 +608,7 @@ const styles = StyleSheet.create({
   ritualTitle: {
     fontSize: 16,
 
-    color: AiraColors.foreground,
+     
   },
   timeBadge: {
     backgroundColor: AiraColorsWithAlpha.primaryWithOpacity(0.1),

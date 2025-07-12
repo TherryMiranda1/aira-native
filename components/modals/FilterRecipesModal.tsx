@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 16,
-    color: AiraColors.foreground,
+     
     marginBottom: 12,
   },
   optionsContainer: {
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     color: AiraColors.mutedForeground,
   },
   filterOptionTextActive: {
-    color: AiraColors.foreground,
+     
   },
   buttonsContainer: {
     flexDirection: "row",
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     borderRadius: AiraVariants.cardRadius,
   },
   applyButtonText: {
-    color: AiraColors.foreground,
+     
     fontSize: 16,
   },
 });
