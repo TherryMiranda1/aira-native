@@ -3,8 +3,7 @@
  */
 
 export const API_CONFIG = {
-  //  BASE_URL: "https://aira-cms.vercel.app",
-  BASE_URL: "https://6eafcb4fbc86.ngrok-free.app",
+  BASE_URL: "https://aira-cms.vercel.app",
   AI_API_URL: "https://aira-one.vercel.app",
   DENO_AI_API_URL: "https://aira-deno.deno.dev",
   ENDPOINTS: {
